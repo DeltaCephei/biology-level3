@@ -1,0 +1,290 @@
+---
+/* ==========================================================================
+   Standards Overview — Browse content by NCEA standard
+   Five standards, each linking to a filtered view of relevant weeks.
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const standards = [
+  {
+    code: '91601',
+    title: 'Practical Investigation',
+    fullTitle: 'Carry out a practical investigation in a biological context, with guidance',
+    credits: 4,
+    type: 'Internal',
+    colour: 'var(--standard-1-colour)',
+    weeks: [],
+  },
+  {
+    code: '91602',
+    title: 'Socio-Scientific Issue',
+    fullTitle: 'Integrate biological knowledge to develop an informed response to a socio-scientific issue',
+    credits: 3,
+    type: 'Internal',
+    colour: 'var(--standard-2-colour)',
+    weeks: [],
+  },
+  {
+    code: '91603',
+    title: 'Animal & Plant Responses',
+    fullTitle: 'Demonstrate understanding of the responses of plants and animals to their external environment',
+    credits: 5,
+    type: 'External',
+    colour: 'var(--standard-3-colour)',
+    weeks: [
+      { num: 2, title: 'Introduction to the Course & Structure' },
+      { num: 3, title: 'Simple Animal Responses' },
+    ],
+  },
+  {
+    code: '91604',
+    title: 'Homeostasis',
+    fullTitle: 'Demonstrate understanding of how an animal maintains a stable internal environment',
+    credits: 3,
+    type: 'External',
+    colour: 'var(--standard-4-colour)',
+    weeks: [],
+  },
+  {
+    code: '91605',
+    title: 'Evolution & Speciation',
+    fullTitle: 'Demonstrate understanding of evolutionary processes leading to speciation',
+    credits: 4,
+    type: 'External',
+    colour: 'var(--standard-5-colour)',
+    weeks: [],
+  },
+];
+---
+
+<BaseLayout title="Standards — Dr Eliot's Level 3 Biology">
+
+  <div class="standards-page">
+
+    <header class="page-header fade-in-up">
+      <h1>Standards</h1>
+      <p class="page-subtitle">
+        Browse course content by NCEA standard. Click a standard to see all
+        related weeks and resources.
+      </p>
+    </header>
+
+    <div class="standards-list">
+      {standards.map((s) => (
+        <a href={`/standards/${s.code}`} class="std-card fade-in-up" style={`--std-colour: ${s.colour};`}>
+          <div class="std-card__left">
+            <div class="std-card__top">
+              <span class="std-card__code">AS {s.code}</span>
+              <div class="std-card__badges">
+                <span class={`badge badge--${s.type.toLowerCase()}`}>{s.type}</span>
+                <span class="badge badge--credits">{s.credits} credits</span>
+              </div>
+            </div>
+            <h2 class="std-card__title">{s.title}</h2>
+            <p class="std-card__desc">{s.fullTitle}</p>
+          </div>
+          <div class="std-card__right">
+            {s.weeks.length > 0 ? (
+              <span class="std-card__count">{s.weeks.length} week{s.weeks.length !== 1 ? 's' : ''}</span>
+            ) : (
+              <span class="std-card__coming">Coming soon</span>
+            )}
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+  .standards-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .page-header {
+    margin-bottom: var(--space-7);
+  }
+
+  .page-header h1 {
+    margin-bottom: var(--space-2);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  /* Fade-in-up */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Standards list */
+  .standards-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .std-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--std-colour);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+  }
+
+  .std-card:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--std-colour);
+  }
+
+  .std-card__left {
+    flex: 1;
+  }
+
+  .std-card__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .std-card__code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--std-colour);
+  }
+
+  .std-card__badges {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-full);
+    line-height: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .badge--internal {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--green-vivid);
+  }
+
+  .badge--external {
+    background: rgba(255, 110, 199, 0.1);
+    color: var(--fluoro-pink);
+  }
+
+  .badge--credits {
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--text-secondary);
+  }
+
+  .std-card__title {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .std-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .std-card__right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    color: var(--text-muted);
+  }
+
+  .std-card__count {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--accent);
+  }
+
+  .std-card__coming {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Stagger */
+  .standards-list .std-card:nth-child(1) { transition-delay: 0.05s; }
+  .standards-list .std-card:nth-child(2) { transition-delay: 0.10s; }
+  .standards-list .std-card:nth-child(3) { transition-delay: 0.15s; }
+  .standards-list .std-card:nth-child(4) { transition-delay: 0.20s; }
+  .standards-list .std-card:nth-child(5) { transition-delay: 0.25s; }
+
+  @media (max-width: 560px) {
+    .std-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .std-card__right {
+      align-self: flex-end;
+    }
+  }
+</style>
+
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+</script>
