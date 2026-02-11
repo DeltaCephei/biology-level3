@@ -519,7 +519,10 @@ const base = import.meta.env.BASE_URL;
              Section 5: How to Watch Videos to Actually Learn
              —————————————————————————————————————————————————————————————— -->
         <section id="how-to-watch" class="content-section fade-in-up">
-          <h2>How to Watch Videos to Actually Learn</h2>
+          <div class="section-header-with-audio">
+            <h2>How to Watch Videos to Actually Learn</h2>
+            <button class="audio-btn" id="how-to-watch-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
           <p>
             Research consistently shows that <strong>passively watching a video
             teaches you almost nothing</strong>. Students who just press play
@@ -1788,6 +1791,54 @@ const base = import.meta.env.BASE_URL;
 
 
   /* ==========================================================================
+     Audio Button
+     ========================================================================== */
+  .section-header-with-audio {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .section-header-with-audio h2 {
+    margin-bottom: 0;
+  }
+
+  .audio-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-default);
+    background: var(--surface-2);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+
+  .audio-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.1);
+    transform: scale(1.1);
+  }
+
+  .audio-btn.playing {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--surface-1);
+    animation: audio-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes audio-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
+  }
+
+
+  /* ==========================================================================
      How to Watch — Tips Grid
      ========================================================================== */
   .watch-tips-grid {
@@ -2360,6 +2411,54 @@ const base = import.meta.env.BASE_URL;
   if (startBtn) startBtn.addEventListener('click', startQuiz);
   if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
   if (restartBtn) restartBtn.addEventListener('click', startQuiz);
+
+
+  /* --------------------------------------------------------------------------
+     Audio Playback — "How to Watch" narration
+     -------------------------------------------------------------------------- */
+  (function initAudio() {
+    const btn = document.getElementById('how-to-watch-audio');
+    if (!btn) return;
+
+    let audio = null;
+
+    btn.addEventListener('click', () => {
+      // If already playing, pause
+      if (audio && !audio.paused) {
+        audio.pause();
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        return;
+      }
+
+      // If paused mid-way, resume
+      if (audio && audio.paused && audio.currentTime > 0) {
+        audio.play();
+        btn.textContent = '\u23F8\uFE0E';
+        btn.classList.add('playing');
+        return;
+      }
+
+      // Start fresh
+      // Astro base path is /biology-level3 — audio lives in public/audio/
+      audio = new Audio('/biology-level3/audio/how_to_watch.mp3');
+      btn.textContent = '\u23F8\uFE0E';
+      btn.classList.add('playing');
+      audio.play();
+
+      audio.addEventListener('ended', () => {
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        audio = null;
+      });
+
+      audio.addEventListener('error', () => {
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        audio = null;
+      });
+    });
+  })();
 
 
   /* --------------------------------------------------------------------------
