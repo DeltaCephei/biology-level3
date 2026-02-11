@@ -1,0 +1,76 @@
+---
+/* ==========================================================================
+   Quiz — Coming Soon placeholder
+   ========================================================================== */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Quiz — Dr Eliot's Level 3 Biology">
+  <section class="coming-soon">
+    <div class="coming-soon__icon" aria-hidden="true">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="22" stroke="var(--fluoro-cyan)" stroke-width="2" fill="none" />
+        <text x="32" y="40" text-anchor="middle" fill="var(--fluoro-cyan)" font-family="var(--font-display)" font-size="24" font-weight="600">?</text>
+      </svg>
+    </div>
+    <h1>Quiz</h1>
+    <p>Multiple choice and true/false quizzes across all standards are coming soon.</p>
+    <a href={base} class="coming-soon__link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to Home
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    gap: 1rem;
+  }
+
+  .coming-soon__icon {
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--text-primary);
+  }
+
+  .coming-soon p {
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    max-width: 28rem;
+  }
+
+  .coming-soon__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .coming-soon__link:hover {
+    color: var(--text-primary);
+    border-color: var(--border-default);
+  }
+</style>

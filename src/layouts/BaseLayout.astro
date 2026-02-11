@@ -108,13 +108,15 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           </a>
         </nav>
 
-        <!-- Theme toggle (sun/moon) -->
+        <!-- Theme toggle (sun/moon) — transition:persist keeps the same
+             DOM element (and its click handler) across View Transitions -->
         <button
           class="theme-toggle"
           id="theme-toggle"
           type="button"
           aria-label="Toggle colour theme"
           title="Toggle colour theme"
+          transition:persist
         >
           <!-- Sun icon (shown in dark mode — click to switch to light) -->
           <svg
@@ -176,37 +178,44 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <!-- ============================
          Theme toggle + active nav
          ============================ -->
-    <!-- Inline: runs on every navigation to prevent flash of wrong theme -->
+    <!--
+      Theme toggle — two scripts for robustness:
+      1. is:inline re-runs every navigation: applies stored theme + attaches
+         click handler (guarded so the persisted button doesn't get duplicates)
+      2. Non-inline runs once: registers astro:after-swap to re-apply theme
+         to the fresh <html> element before paint
+    -->
     <script is:inline>
+      /* Apply stored theme immediately to prevent flash */
       (function () {
         var stored = localStorage.getItem('bio-theme');
         if (stored === 'light' || stored === 'dark') {
           document.documentElement.setAttribute('data-theme', stored);
         }
       })();
+
+      /* Attach click handler — guard prevents duplicates on persisted button */
+      (function () {
+        var toggle = document.getElementById('theme-toggle');
+        if (toggle && !toggle._themeInit) {
+          toggle._themeInit = true;
+          toggle.addEventListener('click', function () {
+            var root = document.documentElement;
+            var current = root.getAttribute('data-theme') || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('bio-theme', next);
+          });
+        }
+      })();
     </script>
 
-    <!-- Non-inline: Astro runs this exactly once, no matter how many navigations -->
     <script>
       /* Re-apply stored theme after View Transition swap (before paint) */
       document.addEventListener('astro:after-swap', () => {
         const stored = localStorage.getItem('bio-theme');
         if (stored === 'light' || stored === 'dark') {
           document.documentElement.setAttribute('data-theme', stored);
-        }
-      });
-
-      /* Attach toggle handler after every page load (initial + navigations) */
-      document.addEventListener('astro:page-load', () => {
-        const toggle = document.getElementById('theme-toggle');
-        if (toggle) {
-          toggle.addEventListener('click', () => {
-            const root = document.documentElement;
-            const current = root.getAttribute('data-theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            root.setAttribute('data-theme', next);
-            localStorage.setItem('bio-theme', next);
-          });
         }
       });
     </script>
