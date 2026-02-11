@@ -176,41 +176,34 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <!-- ============================
          Theme toggle + active nav
          ============================ -->
+    <!-- Inline: runs on every navigation to prevent flash of wrong theme -->
     <script is:inline>
-      /**
-       * Theme toggle logic.
-       * Reads stored preference from localStorage ('bio-theme'),
-       * falls back to 'dark' (the design default), and applies
-       * the data-theme attribute on <html>.
-       *
-       * Uses Astro lifecycle events so the toggle works across
-       * View Transition navigations (not just the initial load).
-       */
-
-      /* Apply saved theme immediately to prevent flash of wrong theme */
       (function () {
         var stored = localStorage.getItem('bio-theme');
         if (stored === 'light' || stored === 'dark') {
           document.documentElement.setAttribute('data-theme', stored);
         }
       })();
+    </script>
 
+    <!-- Non-inline: Astro runs this exactly once, no matter how many navigations -->
+    <script>
       /* Re-apply stored theme after View Transition swap (before paint) */
-      document.addEventListener('astro:after-swap', function () {
-        var stored = localStorage.getItem('bio-theme');
+      document.addEventListener('astro:after-swap', () => {
+        const stored = localStorage.getItem('bio-theme');
         if (stored === 'light' || stored === 'dark') {
           document.documentElement.setAttribute('data-theme', stored);
         }
       });
 
       /* Attach toggle handler after every page load (initial + navigations) */
-      document.addEventListener('astro:page-load', function () {
-        var toggle = document.getElementById('theme-toggle');
+      document.addEventListener('astro:page-load', () => {
+        const toggle = document.getElementById('theme-toggle');
         if (toggle) {
-          toggle.addEventListener('click', function () {
-            var root = document.documentElement;
-            var current = root.getAttribute('data-theme') || 'dark';
-            var next = current === 'dark' ? 'light' : 'dark';
+          toggle.addEventListener('click', () => {
+            const root = document.documentElement;
+            const current = root.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', next);
             localStorage.setItem('bio-theme', next);
           });
