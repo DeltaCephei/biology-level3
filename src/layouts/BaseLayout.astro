@@ -24,8 +24,11 @@ const {
   description = 'Week-by-week Level 3 NCEA Biology course companion',
 } = Astro.props;
 
-/* Determine active nav link from the current URL path */
-const currentPath = Astro.url.pathname;
+/* Base URL for prefixing internal links (includes trailing slash) */
+const base = import.meta.env.BASE_URL;
+
+/* Strip the base prefix so active-link detection uses simple paths like '/' */
+const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '/';
 ---
 
 <!doctype html>
@@ -42,8 +45,8 @@ const currentPath = Astro.url.pathname;
     <meta property="og:type" content="website" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" href={`${base}/favicon.ico`} />
 
     <!-- Google Fonts — Space Grotesk (display) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,41 +67,41 @@ const currentPath = Astro.url.pathname;
     <header class="site-header">
       <div class="header-inner">
         <!-- Site title / logo (display font) -->
-        <a href="/" class="site-title" transition:persist>
+        <a href={base} class="site-title" transition:persist>
           <span class="title-accent">Dr Eliot's</span> Level 3 Biology
         </a>
 
         <!-- Primary navigation -->
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="/" class:list={['nav-link', { active: currentPath === '/' }]}>
+          <a href={base} class:list={['nav-link', { active: currentPath === '/' }]}>
             Home
           </a>
           <a
-            href="/standards"
+            href={`${base}/standards`}
             class:list={['nav-link', { active: currentPath.startsWith('/standards') }]}
           >
             Standards
           </a>
           <a
-            href="/flashcards"
+            href={`${base}/flashcards`}
             class:list={['nav-link', { active: currentPath.startsWith('/flashcards') }]}
           >
             Flashcards
           </a>
           <a
-            href="/quiz"
+            href={`${base}/quiz`}
             class:list={['nav-link', { active: currentPath.startsWith('/quiz') }]}
           >
             Quiz
           </a>
           <a
-            href="/braindump"
+            href={`${base}/braindump`}
             class:list={['nav-link', { active: currentPath.startsWith('/braindump') }]}
           >
             Brain Dump
           </a>
           <a
-            href="/progress"
+            href={`${base}/progress`}
             class:list={['nav-link', { active: currentPath.startsWith('/progress') }]}
           >
             Progress
@@ -179,29 +182,40 @@ const currentPath = Astro.url.pathname;
        * Reads stored preference from localStorage ('bio-theme'),
        * falls back to 'dark' (the design default), and applies
        * the data-theme attribute on <html>.
+       *
+       * Uses Astro lifecycle events so the toggle works across
+       * View Transition navigations (not just the initial load).
        */
+
+      /* Apply saved theme immediately to prevent flash of wrong theme */
       (function () {
-        const STORAGE_KEY = 'bio-theme';
-        const root = document.documentElement;
-        const toggle = document.getElementById('theme-toggle');
-
-        /* Apply saved theme on load (before paint via is:inline) */
-        const stored = localStorage.getItem(STORAGE_KEY);
+        var stored = localStorage.getItem('bio-theme');
         if (stored === 'light' || stored === 'dark') {
-          root.setAttribute('data-theme', stored);
-        }
-        /* If nothing stored, leave the default 'dark' from the HTML attribute */
-
-        /* Toggle on click */
-        if (toggle) {
-          toggle.addEventListener('click', function () {
-            const current = root.getAttribute('data-theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            root.setAttribute('data-theme', next);
-            localStorage.setItem(STORAGE_KEY, next);
-          });
+          document.documentElement.setAttribute('data-theme', stored);
         }
       })();
+
+      /* Re-apply stored theme after View Transition swap (before paint) */
+      document.addEventListener('astro:after-swap', function () {
+        var stored = localStorage.getItem('bio-theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored);
+        }
+      });
+
+      /* Attach toggle handler after every page load (initial + navigations) */
+      document.addEventListener('astro:page-load', function () {
+        var toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            var root = document.documentElement;
+            var current = root.getAttribute('data-theme') || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('bio-theme', next);
+          });
+        }
+      });
     </script>
   </body>
 </html>
