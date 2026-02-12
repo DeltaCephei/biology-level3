@@ -740,6 +740,17 @@ const base = import.meta.env.BASE_URL;
           <!-- ── Practicals & Choice Chambers ── -->
           <h3>Practicals & Choice Chambers</h3>
 
+          <!-- Simulator callout -->
+          <div class="simulator-callout">
+            <div class="simulator-callout__text">
+              <strong>Try the virtual choice chamber</strong> — select an organism, set conditions,
+              and watch taxis and kinesis in action. Record your data just like a real practical.
+            </div>
+            <a href={`${base}/experiments/choice-chamber`} class="btn btn--primary simulator-callout__btn">
+              Launch Simulator →
+            </a>
+          </div>
+
           <h4>Choice Chambers — Investigating Taxis in Invertebrates</h4>
           <p>
             Walks through the choice-chamber method step by step and explains
@@ -870,6 +881,24 @@ const base = import.meta.env.BASE_URL;
           </p>
 
           <div class="go-further-grid">
+
+            <div class="go-further-card go-further-card--highlight">
+              <h4>Choice Chamber Simulator</h4>
+              <p>
+                Run a virtual choice chamber experiment. Choose from 5 organisms, set light and
+                moisture conditions, and observe taxis and kinesis in real time. Includes a
+                chi-squared calculator to test your results.
+              </p>
+              <a
+                href={`${base}/experiments/choice-chamber`}
+                class="go-further-link"
+              >
+                Launch Simulator
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
 
             <div class="go-further-card">
               <h4>Past Paper Practice</h4>
@@ -2031,6 +2060,53 @@ const base = import.meta.env.BASE_URL;
 
   .go-further-link:hover {
     gap: var(--space-3);
+  }
+
+  /* Highlighted go-further card (simulator) */
+  .go-further-card--highlight {
+    border-color: var(--accent);
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Simulator callout in the videos section */
+  .simulator-callout {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+    background: rgba(0, 255, 136, 0.06);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: var(--radius-md);
+  }
+
+  .simulator-callout__text {
+    flex: 1;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .simulator-callout__text strong {
+    color: var(--text-primary);
+  }
+
+  .simulator-callout__btn {
+    flex-shrink: 0;
+    text-decoration: none;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    .simulator-callout {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .simulator-callout__btn {
+      text-align: center;
+      justify-content: center;
+    }
   }
 
 

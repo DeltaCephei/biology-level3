@@ -83,6 +83,12 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
             Standards
           </a>
           <a
+            href={`${base}/experiments`}
+            class:list={['nav-link', { active: currentPath.startsWith('/experiments') }]}
+          >
+            Experiments
+          </a>
+          <a
             href={`${base}/flashcards`}
             class:list={['nav-link', { active: currentPath.startsWith('/flashcards') }]}
           >

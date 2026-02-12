@@ -1,0 +1,2637 @@
+---
+/**
+ * Choice Chamber Simulator
+ *
+ * Interactive experiment where students select an organism, configure
+ * quadrant conditions (light/dark, damp/dry), run a timed experiment
+ * with real-time canvas animation, record data on paper at timed
+ * intervals, then compare their counts with the system's snapshots
+ * and run a chi-squared test.
+ *
+ * All HTML, CSS, and JS in one file — no external dependencies.
+ *
+ * ── Changes from original ──
+ * 1. Hints removed from organism selector cards
+ * 2. astro:page-load pattern for View Transitions compatibility
+ * 3. Circular chamber (arc quadrants, circular wall bouncing)
+ * 4. Organism-specific animations (head-swing, flagellum, legs, etc.)
+ * 5. Icons match simulation shapes (all face +x direction)
+ * 6. Greater individual variation (speed range 0.2–1.2, contrary behaviour)
+ * 7. Movement trails with toggle button
+ * 8. Ecological info cards replace response-tag labels
+ * 9. Results reveal section shows actual response types post-experiment
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Choice Chamber Simulator — Level 3 Biology"
+  description="Virtual choice chamber experiment for investigating taxis and kinesis in invertebrates"
+>
+  <div class="sim-page">
+
+    <!-- Page header -->
+    <header class="sim-header">
+      <a href={`${base}/experiments`} class="back-link">← Back to Experiments</a>
+      <h1 class="sim-title">Choice Chamber Simulator</h1>
+      <p class="sim-subtitle">
+        Run a virtual choice chamber experiment — choose an organism, set conditions,
+        observe movement, and record your data just like a real practical.
+      </p>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════════
+         Phase 1: Setup
+         ═══════════════════════════════════════════ -->
+    <div id="phase-setup" class="phase">
+
+      <!-- Organism selector -->
+      <section class="setup-section">
+        <h2 class="setup-heading">1. Choose an Organism</h2>
+        <div class="organism-selector" id="organism-selector" role="radiogroup" aria-label="Select organism">
+          <!-- Populated by JS -->
+        </div>
+        <!-- Info card for selected organism -->
+        <div class="organism-info" id="organism-info" hidden>
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Organism count -->
+      <section class="setup-section">
+        <h2 class="setup-heading">2. Number of Organisms</h2>
+        <div class="slider-row">
+          <input type="range" id="count-slider" min="5" max="20" value="10" class="slider" />
+          <span class="slider-value" id="count-value">10</span>
+        </div>
+      </section>
+
+      <!-- Variable to test -->
+      <section class="setup-section">
+        <h2 class="setup-heading">3. Variable to Test</h2>
+        <div class="pill-group" id="variable-pills" role="radiogroup" aria-label="Variable to test">
+          <!-- Populated by JS based on organism -->
+        </div>
+      </section>
+
+      <!-- Quadrant configurator -->
+      <section class="setup-section">
+        <h2 class="setup-heading">4. Configure Quadrants</h2>
+        <p class="setup-hint">Click a quadrant to cycle its conditions. Or use the default setup.</p>
+        <div class="quadrant-config-row">
+          <div class="quadrant-grid" id="quadrant-grid">
+            <button class="quadrant-btn" data-q="0" aria-label="Quadrant 1 conditions">
+              <span class="q-label">Q1</span>
+              <span class="q-conditions"></span>
+            </button>
+            <button class="quadrant-btn" data-q="1" aria-label="Quadrant 2 conditions">
+              <span class="q-label">Q2</span>
+              <span class="q-conditions"></span>
+            </button>
+            <button class="quadrant-btn" data-q="2" aria-label="Quadrant 3 conditions">
+              <span class="q-label">Q3</span>
+              <span class="q-conditions"></span>
+            </button>
+            <button class="quadrant-btn" data-q="3" aria-label="Quadrant 4 conditions">
+              <span class="q-label">Q4</span>
+              <span class="q-conditions"></span>
+            </button>
+          </div>
+          <button class="btn btn--secondary" id="default-setup-btn">Default Setup</button>
+        </div>
+      </section>
+
+      <!-- Recording interval -->
+      <section class="setup-section">
+        <h2 class="setup-heading">5. Recording Interval</h2>
+        <div class="pill-group" id="interval-pills" role="radiogroup" aria-label="Recording interval">
+          <button class="pill" data-val="30" role="radio" aria-checked="false">30s</button>
+          <button class="pill active" data-val="60" role="radio" aria-checked="true">60s</button>
+          <button class="pill" data-val="120" role="radio" aria-checked="false">2 min</button>
+        </div>
+      </section>
+
+      <!-- Begin button -->
+      <div class="begin-row">
+        <button class="btn btn--begin" id="begin-btn" disabled>
+          Begin Experiment
+        </button>
+        <p class="begin-hint" id="begin-hint">Select an organism to start.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════
+         Phase 2: Running Experiment
+         ═══════════════════════════════════════════ -->
+    <div id="phase-experiment" class="phase" hidden>
+
+      <!-- Timer bar -->
+      <div class="timer-bar">
+        <span class="timer-time" id="timer-time">00:00</span>
+        <div class="timer-progress">
+          <div class="timer-progress__fill" id="timer-fill"></div>
+        </div>
+        <span class="timer-label" id="timer-label">10:00 total</span>
+      </div>
+
+      <!-- Recording alert overlay -->
+      <div class="record-alert" id="record-alert" role="alert" aria-live="assertive" hidden>
+        <span class="record-alert__text" id="record-alert-text">RECORD NOW</span>
+      </div>
+
+      <!-- Canvas container — circular frame -->
+      <div class="canvas-container" id="canvas-container">
+        <canvas id="chamber-canvas" role="img" aria-label="Choice chamber with organisms moving"></canvas>
+      </div>
+
+      <!-- Screen reader live region for quadrant counts -->
+      <div class="sr-only" aria-live="polite" id="sr-counts"></div>
+
+      <!-- Controls -->
+      <div class="experiment-controls">
+        <button class="btn btn--secondary" id="trails-btn">Show Trails</button>
+        <button class="btn btn--secondary" id="pause-btn">Pause to Count (10s)</button>
+        <button class="btn btn--danger" id="end-btn">End Experiment</button>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════
+         Phase 3: Results
+         ═══════════════════════════════════════════ -->
+    <div id="phase-results" class="phase" hidden>
+
+      <h2 class="results-heading">Results</h2>
+
+      <!-- Counts table -->
+      <section class="results-section">
+        <h3>Recorded Counts</h3>
+        <p class="results-hint">
+          Compare these system-recorded snapshots with the counts you wrote down on paper.
+        </p>
+        <div class="table-scroll">
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+              </tr>
+            </thead>
+            <tbody id="results-tbody">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Chi-squared calculator -->
+      <section class="results-section">
+        <h3>Chi-Squared Test</h3>
+        <p class="results-hint">
+          Enter your observed counts from one recording interval to test whether the distribution
+          is significantly different from chance (equal numbers in each quadrant).
+        </p>
+        <div class="chi-form">
+          <div class="chi-inputs">
+            <label class="chi-label">Q1 <input type="number" class="chi-input" id="chi-q1" min="0" value="0"/></label>
+            <label class="chi-label">Q2 <input type="number" class="chi-input" id="chi-q2" min="0" value="0"/></label>
+            <label class="chi-label">Q3 <input type="number" class="chi-input" id="chi-q3" min="0" value="0"/></label>
+            <label class="chi-label">Q4 <input type="number" class="chi-input" id="chi-q4" min="0" value="0"/></label>
+          </div>
+          <button class="btn btn--primary" id="chi-calc-btn">Calculate χ²</button>
+          <div class="chi-result" id="chi-result" hidden></div>
+        </div>
+      </section>
+
+      <!-- Results reveal — shows actual response types after the experiment -->
+      <section class="results-section">
+        <h3>What Was Happening?</h3>
+        <div id="results-reveal">
+          <!-- Populated by JS after experiment ends -->
+        </div>
+      </section>
+
+      <!-- Interpretation guide -->
+      <section class="results-section">
+        <h3>Interpreting Your Results</h3>
+        <div class="interpret-grid">
+          <div class="interpret-card">
+            <h4>Taxis</h4>
+            <p>
+              If organisms cluster in quadrants with a specific condition (e.g. dark),
+              this suggests a <strong>directional response</strong> — taxis. The organism
+              detects the stimulus direction and moves toward or away from it.
+            </p>
+          </div>
+          <div class="interpret-card">
+            <h4>Kinesis</h4>
+            <p>
+              If organisms end up in preferred quadrants but without moving in straight
+              lines, this suggests <strong>kinesis</strong> — they move faster/turn more
+              in unfavourable conditions and slow down/turn less in favourable ones,
+              spending more time where conditions suit them.
+            </p>
+          </div>
+          <div class="interpret-card">
+            <h4>No Preference</h4>
+            <p>
+              If organisms are roughly evenly distributed (χ² not significant), there is
+              no evidence of a response to the tested variable. The organism may respond
+              to a different stimulus, or may not have a strong innate response.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Run again -->
+      <div class="begin-row">
+        <button class="btn btn--begin" id="run-again-btn">Run Again</button>
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     Styles
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Page container */
+  .sim-page {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .sim-header {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--space-4);
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .sim-title {
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-2);
+  }
+
+  .sim-subtitle {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 640px;
+  }
+
+  /* Phase visibility */
+  .phase[hidden] { display: none; }
+
+  /* ── Setup ── */
+  .setup-section {
+    margin-bottom: var(--space-5);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .setup-heading {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-4);
+  }
+
+  .setup-hint {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  /* Organism selector — horizontal scroll */
+  .organism-selector {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .organism-card {
+    flex-shrink: 0;
+    width: 140px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-3);
+    background: var(--surface-2);
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    text-align: center;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+  }
+
+  .organism-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+  }
+
+  .organism-card.selected {
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+  }
+
+  .organism-card__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .organism-card__name {
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+  }
+
+  /* Change 1: organism-card__hint removed entirely */
+
+  /* Organism info card */
+  .organism-info {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+  }
+
+  .organism-info[hidden] { display: none; }
+
+  .organism-info h3 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+  }
+
+  .organism-info p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-2);
+  }
+
+  .organism-info p:last-child { margin-bottom: 0; }
+
+  /* Change 8: prediction prompt styling (italic, muted) */
+  .prediction-prompt {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Change 1/8: response-tag styles removed — replaced by ecological info */
+
+  /* Slider */
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: var(--radius-full);
+    outline: none;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface-1);
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.3);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface-1);
+  }
+
+  .slider-value {
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    min-width: 2.5ch;
+    text-align: center;
+  }
+
+  /* Pill groups (variable selector, interval selector) */
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .pill {
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    border: 2px solid var(--border-default);
+    border-radius: var(--radius-full);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .pill:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+  }
+
+  .pill.active {
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.15);
+    color: var(--accent);
+  }
+
+  .pill:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .pill:disabled:hover {
+    border-color: var(--border-default);
+    color: var(--text-secondary);
+  }
+
+  /* ── Quadrant configurator — CIRCULAR (Change 3) ── */
+  .quadrant-config-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  /* Circular grid with cross dividing lines via pseudo-elements */
+  .quadrant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border-default);
+    position: relative;
+  }
+
+  /* Vertical dividing line */
+  .quadrant-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--border-default);
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Horizontal dividing line */
+  .quadrant-grid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--border-default);
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .quadrant-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .q-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  .q-conditions {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Quadrant condition fills */
+  .quadrant-btn[data-light="true"][data-damp="false"] {
+    background: rgba(255, 220, 80, 0.15);
+    color: var(--text-primary);
+  }
+  .quadrant-btn[data-light="true"][data-damp="true"] {
+    background: rgba(100, 180, 255, 0.15);
+    color: var(--text-primary);
+  }
+  .quadrant-btn[data-light="false"][data-damp="false"] {
+    background: rgba(80, 80, 100, 0.3);
+    color: var(--text-primary);
+  }
+  .quadrant-btn[data-light="false"][data-damp="true"] {
+    background: rgba(60, 100, 140, 0.3);
+    color: var(--text-primary);
+  }
+
+  /* Begin button */
+  .begin-row {
+    text-align: center;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-base);
+    padding: var(--space-3) var(--space-5);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-height: 44px;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .btn--primary:hover:not(:disabled) { box-shadow: var(--shadow-glow); }
+
+  .btn--secondary {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+  }
+
+  .btn--secondary:hover:not(:disabled) { background: var(--surface-3); }
+
+  .btn--danger {
+    background: rgba(255, 82, 82, 0.15);
+    color: var(--error, #ff5252);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+  }
+
+  .btn--danger:hover:not(:disabled) { background: rgba(255, 82, 82, 0.25); }
+
+  .btn--begin {
+    background: var(--accent);
+    color: var(--surface-0);
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-7);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 24px rgba(0, 255, 136, 0.2);
+  }
+
+  .btn--begin:hover:not(:disabled) {
+    box-shadow: 0 0 36px rgba(0, 255, 136, 0.4);
+  }
+
+  .begin-hint {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+  }
+
+
+  /* ── Experiment phase ── */
+  .timer-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .timer-time {
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    min-width: 5.5ch;
+  }
+
+  .timer-progress {
+    flex: 1;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+
+  .timer-progress__fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: var(--radius-full);
+    transition: width 1s linear;
+    width: 0%;
+  }
+
+  .timer-label {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* Canvas container — circular frame (Change 3) */
+  .canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+    aspect-ratio: 1;
+    background: var(--surface-1);
+    border: 2px solid var(--border-default);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Recording alert */
+  .record-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-modal, 400);
+    background: rgba(0, 0, 0, 0.85);
+    border: 3px solid var(--fluoro-cyan, #7df9ff);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5) var(--space-7);
+    text-align: center;
+    pointer-events: none;
+    animation: recordPulse 0.6s ease infinite alternate;
+  }
+
+  .record-alert[hidden] { display: none; }
+
+  .record-alert__text {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--fluoro-cyan, #7df9ff);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes recordPulse {
+    from { border-color: var(--fluoro-cyan, #7df9ff); box-shadow: 0 0 20px rgba(125, 249, 255, 0.3); }
+    to   { border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 255, 136, 0.4); }
+  }
+
+  /* Controls */
+  .experiment-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+
+  /* ── Results phase ── */
+  .results-heading {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-5);
+  }
+
+  .results-section {
+    margin-bottom: var(--space-5);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .results-section h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-3);
+  }
+
+  .results-hint {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .results-table th,
+  .results-table td {
+    text-align: center;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .results-table th {
+    background: var(--surface-2);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  .results-table td {
+    color: var(--text-secondary);
+    font-family: var(--font-mono, monospace);
+  }
+
+  .results-table tr:last-child td { border-bottom: none; }
+  .results-table tr:hover td { background: var(--surface-2); }
+
+  /* Chi-squared */
+  .chi-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .chi-inputs {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .chi-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+  }
+
+  .chi-input {
+    width: 80px;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-base);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    min-height: 44px;
+  }
+
+  .chi-input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .chi-result {
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .chi-result[hidden] { display: none; }
+
+  .chi-result strong { color: var(--text-primary); }
+
+  .chi-significant {
+    color: var(--accent);
+    font-weight: var(--weight-bold);
+  }
+
+  .chi-not-significant {
+    color: var(--warning, #ffd600);
+    font-weight: var(--weight-bold);
+  }
+
+  /* Change 9: Results reveal section styles */
+  .reveal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .reveal-item {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .reveal-type {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    color: var(--accent);
+    margin-bottom: var(--space-1);
+  }
+
+  .reveal-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .reveal-note {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: var(--space-3);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Interpretation guide */
+  .interpret-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .interpret-card {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .interpret-card h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .interpret-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+
+  /* ── Responsive ── */
+  @media (max-width: 560px) {
+    .setup-section { padding: var(--space-4); }
+    .quadrant-grid { width: 200px; height: 200px; }
+    .chi-inputs { flex-direction: column; }
+    .chi-input { width: 100%; }
+    .timer-time { font-size: var(--text-lg); }
+    .experiment-controls { flex-direction: column; align-items: stretch; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .record-alert { animation: none; }
+  }
+</style>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     JavaScript — All simulation logic
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<script>
+  /* ═══════════════════════════════════════════════════════════════════════
+     Constants — never change between navigations
+     ═══════════════════════════════════════════════════════════════════════ */
+  const PI = Math.PI;
+  const EXPERIMENT_DURATION = 600;  /* 10 minutes in seconds */
+  const MIN_CANVAS = 280;
+
+  /**
+   * Quadrant arc angles for the circular chamber (canvas coords: 0=right, clockwise).
+   * Each entry is [startAngle, endAngle] used for drawing filled arcs.
+   * Q1 = top-left, Q2 = top-right, Q3 = bottom-left, Q4 = bottom-right
+   */
+  const Q_ARCS = [
+    [PI, 1.5 * PI],       /* Q1: top-left */
+    [1.5 * PI, 2 * PI],   /* Q2: top-right */
+    [0.5 * PI, PI],        /* Q3: bottom-left */
+    [0, 0.5 * PI],         /* Q4: bottom-right */
+  ];
+
+  /**
+   * Centre angles for each quadrant — used for taxis bias targeting.
+   * Organism navigates toward a point at ~50% radius in this direction.
+   */
+  const Q_CENTRES = [
+    1.25 * PI,  /* Q1 centre */
+    1.75 * PI,  /* Q2 centre */
+    0.75 * PI,  /* Q3 centre */
+    0.25 * PI,  /* Q4 centre */
+  ];
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Organism data — constant reference, no hints (Change 1),
+     ecological info (Change 8), responses array (Change 9)
+     ═══════════════════════════════════════════════════════════════════════ */
+  const ORGANISMS = [
+    {
+      id: 'woodlice',
+      name: 'Woodlice',
+      colour: '#8a8a8a',
+      /* Behaviour profile */
+      lightResponse: -1,      /* -1 = negative phototaxis */
+      moistureResponse: 1,    /* 1 = positive hydrotaxis */
+      taxisStrength: 0.6,
+      orthokinesis: true,     /* Speed changes with conditions */
+      klinokinesis: true,     /* Turning rate changes with conditions */
+      thigmotaxis: false,
+      speedScale: 0.7,        /* Woodlice trundle at moderate pace */
+      variables: ['light', 'moisture', 'both'],
+      /* Change 8: ecological info with prediction prompt */
+      info: `<h3>Woodlice <em>(Oniscus / Porcellio)</em></h3>
+        <p>Terrestrial crustaceans found under logs, stones, and leaf litter — dark, damp microhabitats. They breathe through gill-like structures that must stay moist.</p>
+        <p class="prediction-prompt"><strong>Prediction:</strong> Based on their natural habitat, what conditions might woodlice prefer?</p>`,
+      /* Change 9: actual responses revealed after experiment */
+      responses: [
+        { type: 'Negative phototaxis', desc: 'Move away from light — they detect light direction and actively crawl toward darkness.' },
+        { type: 'Positive hydrotaxis', desc: 'Move toward damp areas — moisture is essential for their gill-like breathing structures.' },
+        { type: 'Orthokinesis', desc: 'Move faster in unfavourable (dry/bright) conditions, slower in preferred (dark/damp) conditions.' },
+        { type: 'Klinokinesis', desc: 'Turn more frequently in unfavourable conditions, meaning they wander out of bad areas but settle in good ones.' },
+      ],
+    },
+    {
+      id: 'maggots',
+      name: 'Maggots',
+      colour: '#e8dcc8',
+      lightResponse: -1,
+      moistureResponse: 0,
+      taxisStrength: 0.7,
+      orthokinesis: true,
+      klinokinesis: false,
+      thigmotaxis: false,
+      speedScale: 0.8,        /* Maggots crawl fairly briskly */
+      variables: ['light'],
+      info: `<h3>Maggots <em>(Calliphora larvae)</em></h3>
+        <p>Blowfly larvae found in decaying organic matter in sheltered, shaded locations. They navigate by swinging their head side to side, comparing conditions on each side.</p>
+        <p class="prediction-prompt"><strong>Prediction:</strong> What conditions do you think maggots would move toward or away from?</p>`,
+      responses: [
+        { type: 'Negative phototaxis (klinotaxis)', desc: 'Detect light direction by swinging their head side-to-side and crawl away from the light source.' },
+        { type: 'Orthokinesis', desc: 'Move faster in bright conditions — a classic NCEA exam example of non-directional response alongside their taxis.' },
+      ],
+    },
+    {
+      id: 'brine_shrimp',
+      name: 'Brine Shrimp',
+      colour: '#ff7043',
+      lightResponse: 1,       /* Positive phototaxis */
+      moistureResponse: 0,
+      taxisStrength: 0.55,
+      orthokinesis: false,
+      klinokinesis: false,
+      thigmotaxis: false,
+      speedScale: 1.0,        /* Brine shrimp are active swimmers */
+      variables: ['light'],
+      info: `<h3>Brine Shrimp <em>(Artemia salina)</em></h3>
+        <p>Tiny crustaceans found in shallow, sunlit salt lakes. They feed on photosynthetic algae that thrive in well-lit water.</p>
+        <p class="prediction-prompt"><strong>Prediction:</strong> Given where brine shrimp feed, how might they respond to light?</p>`,
+      responses: [
+        { type: 'Positive phototaxis', desc: 'Swim toward light — the opposite of woodlice. Light means algae, their main food source.' },
+      ],
+    },
+    {
+      id: 'euglena',
+      name: 'Euglena',
+      colour: '#66bb6a',
+      lightResponse: 0,       /* Special: switches based on intensity */
+      moistureResponse: 0,
+      taxisStrength: 0.5,
+      orthokinesis: false,
+      klinokinesis: false,
+      thigmotaxis: false,
+      speedScale: 0.9,        /* Euglena swim at moderate speed */
+      isEuglena: true,        /* Flag for special switching logic */
+      variables: ['light'],
+      info: `<h3>Euglena <em>(Euglena gracilis)</em></h3>
+        <p>Single-celled freshwater organisms with chloroplasts for photosynthesis and an eyespot that detects light intensity. Found in ponds and puddles. They need light for energy — but intense light can damage their chloroplasts.</p>
+        <p class="prediction-prompt"><strong>Prediction:</strong> How might Euglena respond differently to low versus high light intensity?</p>`,
+      responses: [
+        { type: 'Positive phototaxis (low light)', desc: 'Swim toward moderate light to power photosynthesis — their eyespot detects light direction.' },
+        { type: 'Negative phototaxis (high light)', desc: 'Swim away from intense light that would damage their chloroplasts — an intensity-dependent switch.' },
+      ],
+    },
+    {
+      id: 'earthworms',
+      name: 'Earthworms',
+      colour: '#8d6e63',
+      lightResponse: -1,
+      moistureResponse: 1,
+      taxisStrength: 0.5,
+      orthokinesis: true,
+      klinokinesis: true,
+      thigmotaxis: true,      /* Wall-following tendency */
+      speedScale: 0.4,        /* Earthworms are slow crawlers */
+      variables: ['light', 'moisture', 'both'],
+      info: `<h3>Earthworms <em>(Lumbricus terrestris)</em></h3>
+        <p>Live in underground burrows, emerging at night or after rain. They respire through their skin, which must stay moist. Sensitive to light, moisture, and physical contact with surfaces.</p>
+        <p class="prediction-prompt"><strong>Prediction:</strong> Based on their natural behaviour, what conditions would earthworms prefer?</p>`,
+      responses: [
+        { type: 'Negative phototaxis', desc: 'Move away from light — in nature, light exposure means they are above ground and vulnerable.' },
+        { type: 'Positive hydrotaxis', desc: 'Move toward moisture — their skin must stay moist for gas exchange (cutaneous respiration).' },
+        { type: 'Ortho + klinokinesis', desc: 'Move faster and turn more in unfavourable conditions (dry/bright), settling in damp/dark areas.' },
+        { type: 'Thigmotaxis', desc: 'Tendency to follow walls and maintain contact with surfaces — you may notice them travelling along the chamber edge.' },
+      ],
+    },
+  ];
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Module-level state — persists across View Transitions
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Audio context persists so it doesn't need user-gesture re-init */
+  let audioCtx = null;
+
+  /* Animation/timing state — must be cleaned up before page swap */
+  let running = false;
+  let animFrameId = null;
+  let alertTimeout = null;
+
+  /* All other state is reset inside initChoiceChamber() */
+  let selectedOrganism = null;
+  let organismCount = 10;
+  let selectedVariable = null;
+  let recordingInterval = 60;
+  let quadrants = [];
+  let organisms = [];
+  let paused = false;
+  let pauseCountdown = 0;
+  let elapsedSeconds = 0;
+  let lastFrameTime = 0;
+  let snapshots = [];
+  let nextSnapshotTime = 0;
+  let snapshotIndex = 0;
+  let showTrails = false;   /* Change 7: trail toggle state */
+
+  /* DOM reference object — rebound on every page load */
+  let $ = {};
+  let ctx = null;
+  let canvasSize = 600;
+
+  /* Reduced motion preference */
+  let prefersReducedMotion = false;
+  let reducedMotionAccum = 0;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Change 2: astro:before-swap — clean up before View Transition
+     ═══════════════════════════════════════════════════════════════════════ */
+  document.addEventListener('astro:before-swap', () => {
+    running = false;
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    if (alertTimeout) {
+      clearTimeout(alertTimeout);
+      alertTimeout = null;
+    }
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Change 2: astro:page-load — initialise on every page load/navigation
+     ═══════════════════════════════════════════════════════════════════════ */
+  document.addEventListener('astro:page-load', () => {
+    /* Guard: only run if we're on the choice chamber page */
+    if (!document.getElementById('chamber-canvas')) return;
+    initChoiceChamber();
+  });
+
+  /**
+   * Window resize listener — added once at module level.
+   * Guards on canvas existence so it's safe on other pages.
+   */
+  window.addEventListener('resize', () => {
+    if ($.canvas && $.canvasContainer) resizeCanvas();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     initChoiceChamber() — full setup, called on every page load
+     ═══════════════════════════════════════════════════════════════════════ */
+  function initChoiceChamber() {
+    /* ── Bind all DOM references ── */
+    $ = {
+      phaseSetup:       document.getElementById('phase-setup'),
+      phaseExperiment:  document.getElementById('phase-experiment'),
+      phaseResults:     document.getElementById('phase-results'),
+      organismSelector: document.getElementById('organism-selector'),
+      organismInfo:     document.getElementById('organism-info'),
+      countSlider:      document.getElementById('count-slider'),
+      countValue:       document.getElementById('count-value'),
+      variablePills:    document.getElementById('variable-pills'),
+      quadrantGrid:     document.getElementById('quadrant-grid'),
+      defaultSetupBtn:  document.getElementById('default-setup-btn'),
+      intervalPills:    document.getElementById('interval-pills'),
+      beginBtn:         document.getElementById('begin-btn'),
+      beginHint:        document.getElementById('begin-hint'),
+      timerTime:        document.getElementById('timer-time'),
+      timerFill:        document.getElementById('timer-fill'),
+      timerLabel:       document.getElementById('timer-label'),
+      recordAlert:      document.getElementById('record-alert'),
+      recordAlertText:  document.getElementById('record-alert-text'),
+      canvasContainer:  document.getElementById('canvas-container'),
+      canvas:           document.getElementById('chamber-canvas'),
+      srCounts:         document.getElementById('sr-counts'),
+      trailsBtn:        document.getElementById('trails-btn'),
+      pauseBtn:         document.getElementById('pause-btn'),
+      endBtn:           document.getElementById('end-btn'),
+      resultsTbody:     document.getElementById('results-tbody'),
+      chiCalcBtn:       document.getElementById('chi-calc-btn'),
+      chiResult:        document.getElementById('chi-result'),
+      runAgainBtn:      document.getElementById('run-again-btn'),
+      resultsReveal:    document.getElementById('results-reveal'),
+    };
+
+    ctx = $.canvas.getContext('2d');
+
+    /* ── Reset all state ── */
+    selectedOrganism = null;
+    organismCount = 10;
+    selectedVariable = null;
+    recordingInterval = 60;
+    quadrants = [
+      { light: true,  damp: false },
+      { light: true,  damp: true },
+      { light: false, damp: false },
+      { light: false, damp: true },
+    ];
+    organisms = [];
+    running = false;
+    paused = false;
+    pauseCountdown = 0;
+    elapsedSeconds = 0;
+    lastFrameTime = 0;
+    snapshots = [];
+    nextSnapshotTime = 0;
+    snapshotIndex = 0;
+    showTrails = false;
+    reducedMotionAccum = 0;
+    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── Build UI ── */
+    buildOrganismSelector();
+    updateQuadrantDisplay();
+    updateBeginState();
+
+    /* ── Attach event listeners ── */
+
+    /* Count slider */
+    $.countSlider.addEventListener('input', () => {
+      organismCount = parseInt($.countSlider.value, 10);
+      $.countValue.textContent = String(organismCount);
+    });
+
+    /* Interval pills */
+    $.intervalPills.querySelectorAll('.pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        recordingInterval = parseInt(pill.dataset.val, 10);
+        $.intervalPills.querySelectorAll('.pill').forEach(p => {
+          const isActive = p === pill;
+          p.classList.toggle('active', isActive);
+          p.setAttribute('aria-checked', isActive ? 'true' : 'false');
+        });
+      });
+    });
+
+    /* Quadrant grid buttons — click to cycle conditions */
+    $.quadrantGrid.querySelectorAll('.quadrant-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        const q = quadrants[i];
+        if (selectedVariable === 'light') {
+          q.light = !q.light;
+        } else if (selectedVariable === 'moisture') {
+          q.damp = !q.damp;
+        } else {
+          /* Cycle through 4 combinations for 'both' */
+          if (q.light && !q.damp)       { q.light = true;  q.damp = true; }
+          else if (q.light && q.damp)   { q.light = false; q.damp = false; }
+          else if (!q.light && !q.damp) { q.light = false; q.damp = true; }
+          else                          { q.light = true;  q.damp = false; }
+        }
+        updateQuadrantDisplay();
+      });
+    });
+
+    /* Default setup button */
+    $.defaultSetupBtn.addEventListener('click', () => {
+      quadrants = [
+        { light: true,  damp: false },
+        { light: true,  damp: true },
+        { light: false, damp: false },
+        { light: false, damp: true },
+      ];
+      updateQuadrantDisplay();
+    });
+
+    /* Begin / end / pause / run again buttons */
+    $.beginBtn.addEventListener('click', beginExperiment);
+    $.pauseBtn.addEventListener('click', () => {
+      if (!paused) {
+        paused = true;
+        pauseCountdown = 10;
+        $.pauseBtn.disabled = true;
+      }
+    });
+    $.endBtn.addEventListener('click', () => endExperiment());
+    $.runAgainBtn.addEventListener('click', () => {
+      $.phaseSetup.hidden = false;
+      $.phaseExperiment.hidden = true;
+      $.phaseResults.hidden = true;
+    });
+
+    /* Change 7: trails toggle button */
+    $.trailsBtn.addEventListener('click', () => {
+      showTrails = !showTrails;
+      $.trailsBtn.textContent = showTrails ? 'Hide Trails' : 'Show Trails';
+    });
+
+    /* Chi-squared calculator */
+    $.chiCalcBtn.addEventListener('click', calculateChiSquared);
+
+    /* ── Canvas sizing ── */
+    resizeCanvas();
+
+    /* Use ResizeObserver for responsive canvas */
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(() => resizeCanvas()).observe($.canvasContainer);
+    }
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Setup UI — Organism selector cards (Change 1: no hints)
+     ═══════════════════════════════════════════════════════════════════════ */
+  function buildOrganismSelector() {
+    $.organismSelector.innerHTML = '';
+    ORGANISMS.forEach((org) => {
+      const card = document.createElement('button');
+      card.className = 'organism-card';
+      card.setAttribute('role', 'radio');
+      card.setAttribute('aria-checked', 'false');
+      card.setAttribute('data-org', org.id);
+      /* Change 1: no hint span — just icon + name */
+      card.innerHTML = `
+        <canvas class="organism-card__icon" width="56" height="56"></canvas>
+        <span class="organism-card__name">${org.name}</span>
+      `;
+      card.addEventListener('click', () => selectOrganism(org.id));
+      $.organismSelector.appendChild(card);
+
+      /* Draw organism icon on the small preview canvas */
+      const iconCanvas = card.querySelector('canvas');
+      const iconCtx = iconCanvas.getContext('2d');
+      drawOrganismIcon(iconCtx, org, 28, 28, 20);
+    });
+  }
+
+  function selectOrganism(id) {
+    selectedOrganism = ORGANISMS.find(o => o.id === id);
+    if (!selectedOrganism) return;
+
+    /* Update card selection state */
+    $.organismSelector.querySelectorAll('.organism-card').forEach(c => {
+      const isSelected = c.dataset.org === id;
+      c.classList.toggle('selected', isSelected);
+      c.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+    });
+
+    /* Show info card (Change 8: ecological info with prediction prompt) */
+    $.organismInfo.innerHTML = selectedOrganism.info;
+    $.organismInfo.hidden = false;
+
+    /* Update variable pills based on organism */
+    buildVariablePills();
+    updateBeginState();
+  }
+
+  function buildVariablePills() {
+    if (!selectedOrganism) return;
+    $.variablePills.innerHTML = '';
+    const vars = selectedOrganism.variables;
+    const labels = { light: 'Light', moisture: 'Moisture', both: 'Light + Moisture' };
+
+    vars.forEach((v, i) => {
+      const pill = document.createElement('button');
+      pill.className = 'pill' + (i === 0 ? ' active' : '');
+      pill.setAttribute('role', 'radio');
+      pill.setAttribute('aria-checked', i === 0 ? 'true' : 'false');
+      pill.dataset.val = v;
+      pill.textContent = labels[v];
+      pill.addEventListener('click', () => selectVariable(v));
+      $.variablePills.appendChild(pill);
+    });
+
+    /* Auto-select first variable */
+    selectedVariable = vars[0];
+    updateQuadrantDisplay();
+  }
+
+  function selectVariable(v) {
+    selectedVariable = v;
+    $.variablePills.querySelectorAll('.pill').forEach(p => {
+      const isActive = p.dataset.val === v;
+      p.classList.toggle('active', isActive);
+      p.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
+    updateQuadrantDisplay();
+    updateBeginState();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Setup UI — Quadrant configurator display
+     ═══════════════════════════════════════════════════════════════════════ */
+  function updateQuadrantDisplay() {
+    $.quadrantGrid.querySelectorAll('.quadrant-btn').forEach((btn, i) => {
+      const q = quadrants[i];
+      btn.setAttribute('data-light', q.light);
+      btn.setAttribute('data-damp', q.damp);
+
+      const parts = [];
+      if (selectedVariable === 'light' || selectedVariable === 'both') {
+        parts.push(q.light ? '☀ Light' : '● Dark');
+      }
+      if (selectedVariable === 'moisture' || selectedVariable === 'both') {
+        parts.push(q.damp ? '💧 Damp' : '○ Dry');
+      }
+      btn.querySelector('.q-conditions').textContent = parts.join('\n');
+    });
+  }
+
+  function updateBeginState() {
+    const ready = selectedOrganism && selectedVariable;
+    $.beginBtn.disabled = !ready;
+    $.beginHint.textContent = ready ? '' : 'Select an organism to start.';
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Canvas — DPI-aware sizing
+     ═══════════════════════════════════════════════════════════════════════ */
+  function resizeCanvas() {
+    const w = Math.max(MIN_CANVAS, Math.min(600, $.canvasContainer.clientWidth));
+    canvasSize = w;
+    const dpr = window.devicePixelRatio || 1;
+    $.canvas.width = w * dpr;
+    $.canvas.height = w * dpr;
+    $.canvas.style.width = w + 'px';
+    $.canvas.style.height = w + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Organism drawing — icons for selector cards
+     Change 5: all organisms face +x direction, match simulation shapes
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Draw a small organism icon on a canvas for the selector cards.
+   * All organisms face the +x direction (right) in local coordinates.
+   */
+  function drawOrganismIcon(iconCtx, org, cx, cy, size) {
+    iconCtx.save();
+    iconCtx.translate(cx, cy);
+    const s = size / 20;
+
+    switch (org.id) {
+      case 'woodlice': {
+        /* Grey oval body with segment lines, legs, and antennae — facing right */
+        iconCtx.fillStyle = org.colour;
+        iconCtx.beginPath();
+        iconCtx.ellipse(0, 0, 12 * s, 8 * s, 0, 0, PI * 2);
+        iconCtx.fill();
+        /* Segment lines (vertical across body) */
+        iconCtx.strokeStyle = 'rgba(0,0,0,0.2)';
+        iconCtx.lineWidth = 1;
+        for (let i = -2; i <= 2; i++) {
+          iconCtx.beginPath();
+          iconCtx.moveTo(i * 4 * s, -7 * s);
+          iconCtx.lineTo(i * 4 * s, 7 * s);
+          iconCtx.stroke();
+        }
+        /* Legs (7 pairs along body) */
+        iconCtx.strokeStyle = org.colour;
+        iconCtx.lineWidth = 1;
+        for (let i = 0; i < 7; i++) {
+          const lx = -9 * s + i * 3 * s;
+          iconCtx.beginPath();
+          iconCtx.moveTo(lx, -7 * s); iconCtx.lineTo(lx - 1 * s, -10 * s);
+          iconCtx.moveTo(lx,  7 * s); iconCtx.lineTo(lx - 1 * s,  10 * s);
+          iconCtx.stroke();
+        }
+        /* Antennae (front = right side, facing +x) */
+        iconCtx.strokeStyle = org.colour;
+        iconCtx.lineWidth = 1.5;
+        iconCtx.beginPath();
+        iconCtx.moveTo(10 * s, -2 * s); iconCtx.lineTo(16 * s, -8 * s);
+        iconCtx.moveTo(10 * s, 2 * s);  iconCtx.lineTo(16 * s, 8 * s);
+        iconCtx.stroke();
+        break;
+      }
+
+      case 'maggots': {
+        /* Cream tapered body — head (narrow end) faces +x */
+        iconCtx.fillStyle = org.colour;
+        iconCtx.beginPath();
+        iconCtx.moveTo(-14 * s, 0);
+        iconCtx.bezierCurveTo(-10 * s, -6 * s, 8 * s, -4 * s, 14 * s, 0);
+        iconCtx.bezierCurveTo(8 * s, 4 * s, -10 * s, 6 * s, -14 * s, 0);
+        iconCtx.fill();
+        /* Dark head tip */
+        iconCtx.fillStyle = 'rgba(0,0,0,0.15)';
+        iconCtx.beginPath();
+        iconCtx.arc(12 * s, 0, 3 * s, 0, PI * 2);
+        iconCtx.fill();
+        break;
+      }
+
+      case 'brine_shrimp': {
+        /* Change 5: reoriented to face +x (horizontal), was vertical */
+        iconCtx.fillStyle = org.colour;
+        iconCtx.beginPath();
+        /* Teardrop body facing right — wide front, tapered tail */
+        iconCtx.moveTo(12 * s, 0);
+        iconCtx.bezierCurveTo(6 * s, -8 * s, -6 * s, -8 * s, -12 * s, 0);
+        iconCtx.bezierCurveTo(-6 * s, 8 * s, 6 * s, 8 * s, 12 * s, 0);
+        iconCtx.fill();
+        /* Tail fork (at back = left side) */
+        iconCtx.strokeStyle = org.colour;
+        iconCtx.lineWidth = 1.5;
+        iconCtx.beginPath();
+        iconCtx.moveTo(-12 * s, 0); iconCtx.lineTo(-18 * s, -4 * s);
+        iconCtx.moveTo(-12 * s, 0); iconCtx.lineTo(-18 * s, 4 * s);
+        iconCtx.stroke();
+        /* Swimming legs (4 pairs underneath) */
+        iconCtx.lineWidth = 1;
+        for (let i = 0; i < 4; i++) {
+          const lx = 6 * s - i * 4 * s;
+          iconCtx.beginPath();
+          iconCtx.moveTo(lx, 6 * s); iconCtx.lineTo(lx - 2 * s, 10 * s);
+          iconCtx.stroke();
+        }
+        break;
+      }
+
+      case 'euglena': {
+        /* Change 5: reoriented to face +x (horizontal), was vertical */
+        iconCtx.fillStyle = org.colour;
+        iconCtx.beginPath();
+        /* Elongated cell body — horizontal */
+        iconCtx.ellipse(0, 0, 14 * s, 5 * s, 0, 0, PI * 2);
+        iconCtx.fill();
+        /* Eyespot (front = right side) */
+        iconCtx.fillStyle = '#e53935';
+        iconCtx.beginPath();
+        iconCtx.arc(10 * s, -2 * s, 2 * s, 0, PI * 2);
+        iconCtx.fill();
+        /* Flagellum (extends from front) */
+        iconCtx.strokeStyle = org.colour;
+        iconCtx.lineWidth = 1.5;
+        iconCtx.beginPath();
+        iconCtx.moveTo(14 * s, 0);
+        iconCtx.quadraticCurveTo(20 * s, -6 * s, 24 * s, -2 * s);
+        iconCtx.stroke();
+        break;
+      }
+
+      case 'earthworms': {
+        /* Brown S-curve body facing +x */
+        iconCtx.strokeStyle = org.colour;
+        iconCtx.lineWidth = 5 * s;
+        iconCtx.lineCap = 'round';
+        iconCtx.beginPath();
+        iconCtx.moveTo(-14 * s, 2 * s);
+        iconCtx.quadraticCurveTo(-4 * s, -6 * s, 4 * s, 2 * s);
+        iconCtx.quadraticCurveTo(10 * s, 8 * s, 14 * s, 0);
+        iconCtx.stroke();
+        /* Segment markings */
+        iconCtx.strokeStyle = 'rgba(0,0,0,0.15)';
+        iconCtx.lineWidth = 1;
+        for (let t = 0.15; t < 0.9; t += 0.12) {
+          const x = -14 * s + (28 * s * t);
+          iconCtx.beginPath();
+          iconCtx.moveTo(x, -4 * s);
+          iconCtx.lineTo(x, 8 * s);
+          iconCtx.stroke();
+        }
+        break;
+      }
+    }
+    iconCtx.restore();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Organism drawing — main simulation canvas
+     Change 4: organism-specific animations (animPhase)
+     Change 5: all face +x direction, matching icons
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Draw a single organism on the simulation canvas.
+   * Earthworms use a separate function (drawEarthworm) because
+   * they're rendered through trail positions rather than at a single point.
+   */
+  function drawOrganism(o) {
+    /* Earthworms are drawn separately via trail positions */
+    if (selectedOrganism.id === 'earthworms') {
+      drawEarthworm(o);
+      return;
+    }
+
+    ctx.save();
+    ctx.translate(o.x, o.y);
+    ctx.rotate(o.heading);
+
+    /* Dead organisms are greyed and transparent */
+    if (o.dead) {
+      ctx.globalAlpha = 0.3;
+    }
+
+    /* Stuck organisms flash slightly */
+    if (o.stuck > 0) {
+      ctx.globalAlpha = 0.5 + 0.3 * Math.sin(Date.now() / 100);
+    }
+
+    const scale = canvasSize / 600;  /* Scale factor relative to base 600px */
+    const r = 5 * scale;             /* Base radius */
+
+    switch (selectedOrganism.id) {
+      case 'woodlice': {
+        /* Oval body */
+        ctx.fillStyle = o.dead ? '#666' : '#8a8a8a';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, r * 2.2, r * 1.4, 0, 0, PI * 2);
+        ctx.fill();
+        /* Segment lines */
+        ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+        ctx.lineWidth = 0.5 * scale;
+        for (let i = -2; i <= 2; i++) {
+          ctx.beginPath();
+          ctx.moveTo(i * r * 0.7, -r * 1.3);
+          ctx.lineTo(i * r * 0.7, r * 1.3);
+          ctx.stroke();
+        }
+        /* Change 4: animated legs — 7 pairs with phase-offset sine oscillation */
+        if (!o.dead) {
+          ctx.strokeStyle = o.dead ? '#666' : '#8a8a8a';
+          ctx.lineWidth = 0.8 * scale;
+          for (let i = 0; i < 7; i++) {
+            const lx = -r * 1.8 + i * r * 0.6;
+            /* Each leg pair oscillates with a phase offset for walking effect */
+            const legSwing = Math.sin(o.animPhase * 12 + i * 0.9) * r * 0.4;
+            ctx.beginPath();
+            ctx.moveTo(lx, -r * 1.3);
+            ctx.lineTo(lx + legSwing, -r * 2.2);
+            ctx.moveTo(lx, r * 1.3);
+            ctx.lineTo(lx + legSwing, r * 2.2);
+            ctx.stroke();
+          }
+          /* Change 4: antennae with wiggle — front is +x direction */
+          const antWiggle = Math.sin(o.animPhase * 6) * r * 0.3;
+          ctx.strokeStyle = '#8a8a8a';
+          ctx.lineWidth = 0.8 * scale;
+          ctx.beginPath();
+          ctx.moveTo(r * 2, -r * 0.3);
+          ctx.lineTo(r * 3.2, -r * 1.2 + antWiggle);
+          ctx.moveTo(r * 2, r * 0.3);
+          ctx.lineTo(r * 3.2, r * 1.2 - antWiggle);
+          ctx.stroke();
+        }
+        break;
+      }
+
+      case 'maggots': {
+        /* Change 4: head-swing animation (klinotaxis visual) */
+        const headSwing = o.dead ? 0 : Math.sin(o.animPhase * 10) * r * 0.6;
+        ctx.fillStyle = o.dead ? '#999' : '#e8dcc8';
+        ctx.beginPath();
+        /* Tapered body: wide tail (-x), narrow head (+x) with swing offset */
+        ctx.moveTo(-r * 2, 0);
+        ctx.bezierCurveTo(-r * 1.5, -r, r * 1.2, -r * 0.8, r * 2, headSwing);
+        ctx.bezierCurveTo(r * 1.2, r * 0.8 + headSwing * 0.5, -r * 1.5, r, -r * 2, 0);
+        ctx.fill();
+        break;
+      }
+
+      case 'brine_shrimp': {
+        /* Change 5: horizontal orientation facing +x */
+        ctx.fillStyle = o.dead ? '#999' : '#ff7043';
+        ctx.beginPath();
+        /* Teardrop body facing right */
+        ctx.moveTo(r * 1.8, 0);
+        ctx.bezierCurveTo(r, -r * 1.2, -r, -r * 1.2, -r * 1.8, 0);
+        ctx.bezierCurveTo(-r, r * 1.2, r, r * 1.2, r * 1.8, 0);
+        ctx.fill();
+        if (!o.dead) {
+          /* Change 4: animated swimming legs (4 pairs) */
+          ctx.strokeStyle = '#ff7043';
+          ctx.lineWidth = 0.6 * scale;
+          for (let i = 0; i < 4; i++) {
+            const lx = r * 1.0 - i * r * 0.7;
+            const legKick = Math.sin(o.animPhase * 15 + i * 1.2) * r * 0.5;
+            ctx.beginPath();
+            ctx.moveTo(lx, r * 0.8);
+            ctx.lineTo(lx - r * 0.3, r * 1.8 + legKick);
+            ctx.stroke();
+          }
+          /* Change 4: tail wag */
+          const tailWag = Math.sin(o.animPhase * 8) * r * 0.4;
+          ctx.strokeStyle = '#ff7043';
+          ctx.lineWidth = 0.8 * scale;
+          ctx.beginPath();
+          ctx.moveTo(-r * 1.8, 0); ctx.lineTo(-r * 2.8, -r * 0.5 + tailWag);
+          ctx.moveTo(-r * 1.8, 0); ctx.lineTo(-r * 2.8, r * 0.5 + tailWag);
+          ctx.stroke();
+        }
+        break;
+      }
+
+      case 'euglena': {
+        /* Change 5: horizontal orientation facing +x */
+        ctx.fillStyle = o.dead ? '#777' : '#66bb6a';
+        ctx.beginPath();
+        /* Elongated cell body — horizontal */
+        ctx.ellipse(0, 0, r * 2, r * 0.8, 0, 0, PI * 2);
+        ctx.fill();
+        /* Eyespot (front = +x side) */
+        if (!o.dead) {
+          ctx.fillStyle = '#e53935';
+          ctx.beginPath();
+          ctx.arc(r * 1.5, -r * 0.3, r * 0.3, 0, PI * 2);
+          ctx.fill();
+        }
+        /* Change 4: flagellum with wiggle animation */
+        const flagWiggle = o.dead ? 0 : Math.sin(o.animPhase * 15) * r * 0.6;
+        ctx.strokeStyle = o.dead ? '#777' : '#66bb6a';
+        ctx.lineWidth = scale;
+        ctx.beginPath();
+        ctx.moveTo(r * 2, 0);
+        ctx.quadraticCurveTo(r * 3, flagWiggle, r * 3.5, r * 0.3 + flagWiggle * 0.5);
+        ctx.stroke();
+        break;
+      }
+    }
+    ctx.restore();
+  }
+
+
+  /**
+   * Change 4: Draw earthworm through trail positions for sinusoidal crawling look.
+   * Uses world-coordinates (no rotate) — the body is the trail itself.
+   * Always uses trail regardless of showTrails toggle.
+   */
+  function drawEarthworm(o) {
+    ctx.save();
+
+    if (o.dead) {
+      ctx.globalAlpha = 0.3;
+    }
+    if (o.stuck > 0) {
+      ctx.globalAlpha = 0.5 + 0.3 * Math.sin(Date.now() / 100);
+    }
+
+    const scale = canvasSize / 600;
+    const r = 5 * scale;
+
+    /* Use more trail points for a longer, visible worm body.
+       Subsample every 3rd point from the full trail (~90 frames = 1.5s)
+       giving ~30 points — a realistic body length. */
+    const bodyPoints = [];
+    for (let i = 0; i < o.trail.length; i += 3) {
+      bodyPoints.push(o.trail[i]);
+    }
+    bodyPoints.push({ x: o.x, y: o.y });
+
+    if (bodyPoints.length >= 3) {
+      /* Draw the worm body as a thick line through recent positions */
+      ctx.strokeStyle = o.dead ? '#888' : '#8d6e63';
+      ctx.lineWidth = r * 2.8;  /* Chunky earthworm body */
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(bodyPoints[0].x, bodyPoints[0].y);
+      for (let i = 1; i < bodyPoints.length; i++) {
+        ctx.lineTo(bodyPoints[i].x, bodyPoints[i].y);
+      }
+      ctx.stroke();
+
+      /* Lighter clitellum band near the front */
+      if (bodyPoints.length >= 4 && !o.dead) {
+        const ci = Math.floor(bodyPoints.length * 0.7);
+        ctx.fillStyle = 'rgba(180, 140, 110, 0.6)';
+        ctx.beginPath();
+        ctx.arc(bodyPoints[ci].x, bodyPoints[ci].y, r * 1.6, 0, PI * 2);
+        ctx.fill();
+      }
+    } else {
+      /* Fallback: draw at current position if not enough trail data */
+      ctx.strokeStyle = o.dead ? '#888' : '#8d6e63';
+      ctx.lineWidth = r * 2.8;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(o.x - r * 2, o.y);
+      ctx.lineTo(o.x + r * 2, o.y);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Change 7: Movement trail rendering
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Draw the fading movement trail behind an organism.
+   * Each segment's alpha increases (fades in) from oldest to newest.
+   * Earthworms always use trails for body rendering (separate function),
+   * so this only draws the visual trail when the toggle is on.
+   */
+  function drawTrail(o) {
+    if (!showTrails || o.trail.length < 2) return;
+
+    const scale = canvasSize / 600;
+
+    for (let i = 1; i < o.trail.length; i++) {
+      /* Alpha fades in: oldest trail point is most transparent */
+      ctx.globalAlpha = (i / o.trail.length) * 0.4;
+      ctx.strokeStyle = selectedOrganism.colour;
+      ctx.lineWidth = 1.5 * scale;
+      ctx.beginPath();
+      ctx.moveTo(o.trail[i - 1].x, o.trail[i - 1].y);
+      ctx.lineTo(o.trail[i].x, o.trail[i].y);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Chamber rendering — CIRCULAR (Change 3)
+     ═══════════════════════════════════════════════════════════════════════ */
+  function getThemeColors() {
+    const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    if (theme === 'light') {
+      return {
+        bg: '#f1f5f9',
+        line: '#94a3b8',
+        lightFill: 'rgba(255, 220, 80, 0.2)',
+        darkFill: 'rgba(100, 100, 120, 0.15)',
+        dampFill: 'rgba(80, 160, 240, 0.15)',
+        dryFill: 'rgba(200, 180, 140, 0.1)',
+        text: '#475569',
+        centerBg: 'rgba(0,0,0,0.05)',
+      };
+    }
+    return {
+      bg: '#111827',
+      line: 'rgba(148, 163, 184, 0.3)',
+      lightFill: 'rgba(255, 220, 80, 0.1)',
+      darkFill: 'rgba(50, 50, 70, 0.4)',
+      dampFill: 'rgba(60, 120, 200, 0.12)',
+      dryFill: 'rgba(180, 160, 120, 0.06)',
+      text: 'rgba(148, 163, 184, 0.7)',
+      centerBg: 'rgba(255,255,255,0.03)',
+    };
+  }
+
+  /**
+   * Draw the circular chamber with four quarter-circle quadrants.
+   * Each quadrant is a pie-slice arc fill with condition-based colours.
+   */
+  function drawChamber() {
+    const s = canvasSize;
+    const cx = s / 2;           /* Centre x */
+    const cy = s / 2;           /* Centre y */
+    const scale = s / 600;
+    const padding = 10 * scale;
+    const chamberR = s / 2 - padding;  /* Chamber radius */
+    const tc = getThemeColors();
+
+    /* Clear canvas with background */
+    ctx.fillStyle = tc.bg;
+    ctx.fillRect(0, 0, s, s);
+
+    /* Draw each quadrant as a filled arc (pie slice) */
+    quadrants.forEach((q, i) => {
+      const [startAngle, endAngle] = Q_ARCS[i];
+
+      /* Light/dark base fill */
+      ctx.fillStyle = q.light ? tc.lightFill : tc.darkFill;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, chamberR, startAngle, endAngle);
+      ctx.closePath();
+      ctx.fill();
+
+      /* Damp/dry overlay if moisture is being tested */
+      if (selectedVariable === 'moisture' || selectedVariable === 'both') {
+        ctx.fillStyle = q.damp ? tc.dampFill : tc.dryFill;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, chamberR, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      /* Condition labels inside each quadrant */
+      const labelAngle = Q_CENTRES[i];
+      const labelR = chamberR * 0.65;
+      const lx = cx + Math.cos(labelAngle) * labelR;
+      const ly = cy + Math.sin(labelAngle) * labelR;
+
+      ctx.fillStyle = tc.text;
+      ctx.font = `${10 * scale}px Inter, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      const parts = [];
+      if (selectedVariable === 'light' || selectedVariable === 'both') {
+        parts.push(q.light ? '☀ Light' : '● Dark');
+      }
+      if (selectedVariable === 'moisture' || selectedVariable === 'both') {
+        parts.push(q.damp ? '💧 Damp' : '○ Dry');
+      }
+      parts.forEach((t, j) => {
+        ctx.fillText(t, lx, ly + (j - (parts.length - 1) / 2) * 14 * scale);
+      });
+
+      /* Quadrant number */
+      const qNumR = chamberR * 0.35;
+      const qnx = cx + Math.cos(labelAngle) * qNumR;
+      const qny = cy + Math.sin(labelAngle) * qNumR;
+      ctx.fillStyle = tc.text;
+      ctx.font = `bold ${12 * scale}px "Space Grotesk", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(`Q${i + 1}`, qnx, qny);
+    });
+
+    /* Dividing lines — two diameters forming a cross */
+    ctx.strokeStyle = tc.line;
+    ctx.lineWidth = 2 * scale;
+    /* Vertical line */
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - chamberR);
+    ctx.lineTo(cx, cy + chamberR);
+    ctx.stroke();
+    /* Horizontal line */
+    ctx.beginPath();
+    ctx.moveTo(cx - chamberR, cy);
+    ctx.lineTo(cx + chamberR, cy);
+    ctx.stroke();
+
+    /* Chamber circle border */
+    ctx.strokeStyle = tc.line;
+    ctx.lineWidth = 2 * scale;
+    ctx.beginPath();
+    ctx.arc(cx, cy, chamberR, 0, PI * 2);
+    ctx.stroke();
+
+    /* Central release area (small circle at centre) */
+    const cr = 20 * scale;
+    ctx.fillStyle = tc.centerBg;
+    ctx.beginPath();
+    ctx.arc(cx, cy, cr, 0, PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = tc.line;
+    ctx.lineWidth = 1.5 * scale;
+    ctx.stroke();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Organism creation + movement
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /** Gaussian random with mean 0, std 1 (Box-Muller transform) */
+  function gaussRandom() {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * PI * v);
+  }
+
+  /**
+   * Create the organisms array for the experiment.
+   * Change 4: animPhase for animations
+   * Change 6: wider speed range (0.2–1.2), contrary behaviour timers
+   * Change 7: trail array
+   */
+  function createOrganisms() {
+    organisms = [];
+    const cx = canvasSize / 2;
+    const cy = canvasSize / 2;
+    const cr = 25 * (canvasSize / 600);
+
+    for (let i = 0; i < organismCount; i++) {
+      /* Start near centre with slight random offset */
+      const angle = Math.random() * PI * 2;
+      const dist = Math.random() * cr * 0.8;
+      organisms.push({
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
+        heading: Math.random() * PI * 2,
+        /* Change 6: wider speed range 0.2–1.2 (was 0.5–1.0) */
+        speed: 0.2 + Math.random() * 1.0,
+        /* Individual variation — Gaussian around species mean */
+        taxisStrength: Math.max(0.1, selectedOrganism.taxisStrength + gaussRandom() * 0.15),
+        dead: false,
+        stuck: 0,          /* Seconds stuck against wall */
+        fatigue: 1.0,      /* Speed multiplier, decays over time */
+        /* Change 4: animation phase — random start so organisms aren't synchronised */
+        animPhase: Math.random() * PI * 2,
+        /* Change 7: trail — stores last ~90 positions */
+        trail: [],
+        /* Change 6: "contrary" behaviour — occasionally reverses taxis direction */
+        contrary: false,
+        contraryTimer: 30 + Math.random() * 60,    /* 30–90s until first reversal */
+        contraryDuration: 0,                        /* Seconds remaining in contrary mode */
+      });
+    }
+  }
+
+  /**
+   * Determine which quadrant an (x, y) point is in (0–3).
+   * Same logic as before — x vs cx, y vs cy.
+   * Q1=top-left, Q2=top-right, Q3=bottom-left, Q4=bottom-right
+   */
+  function getQuadrant(x, y) {
+    const cx = canvasSize / 2;
+    const cy = canvasSize / 2;
+    if (x < cx && y < cy) return 0;   /* Q1: top-left */
+    if (x >= cx && y < cy) return 1;  /* Q2: top-right */
+    if (x < cx && y >= cy) return 2;  /* Q3: bottom-left */
+    return 3;                         /* Q4: bottom-right */
+  }
+
+  /** Get count of living organisms in each quadrant */
+  function getQuadrantCounts() {
+    const counts = [0, 0, 0, 0];
+    organisms.forEach(o => {
+      if (!o.dead) counts[getQuadrant(o.x, o.y)]++;
+    });
+    return counts;
+  }
+
+  /**
+   * Calculate the preferred heading bias for an organism.
+   * Change 3: uses circular quadrant centre positions instead of rectangular.
+   * Change 6: contrary organisms get PI added to their bias angle (reverse direction).
+   * Returns an angle offset (radians) toward/away from preferred conditions.
+   */
+  function getTaxisBias(o) {
+    const cx = canvasSize / 2;
+    const cy = canvasSize / 2;
+    const scale = canvasSize / 600;
+    const padding = 10 * scale;
+    const chamberR = canvasSize / 2 - padding;
+    const qi = getQuadrant(o.x, o.y);
+    const q = quadrants[qi];
+    const org = selectedOrganism;
+
+    /* Acclimatisation ramp: response builds over first 60 seconds */
+    const ramp = Math.min(1, elapsedSeconds / 60);
+
+    let biasAngle = 0;
+    let biasStrength = 0;
+
+    /* Light response */
+    if (selectedVariable === 'light' || selectedVariable === 'both') {
+      let lightDir = org.lightResponse;
+
+      /* Euglena special: positive in dark quadrants, negative in light */
+      if (org.isEuglena) {
+        lightDir = q.light ? -1 : 1;
+      }
+
+      if (lightDir !== 0) {
+        /* Find nearest quadrant with preferred light condition */
+        const preferred = lightDir > 0;  /* true = wants light, false = wants dark */
+        const targetQ = quadrants.findIndex((qd) => qd.light === preferred);
+        if (targetQ !== -1 && quadrants[qi].light !== preferred) {
+          /* Change 3: use circular quadrant centre positions */
+          const angle = Q_CENTRES[targetQ];
+          const targetX = cx + Math.cos(angle) * chamberR * 0.5;
+          const targetY = cy + Math.sin(angle) * chamberR * 0.5;
+          biasAngle = Math.atan2(targetY - o.y, targetX - o.x);
+          biasStrength += 0.5;
+        }
+      }
+    }
+
+    /* Moisture response */
+    if (selectedVariable === 'moisture' || selectedVariable === 'both') {
+      if (org.moistureResponse !== 0) {
+        const preferred = org.moistureResponse > 0;
+        const targetQ = quadrants.findIndex((qd) => qd.damp === preferred);
+        if (targetQ !== -1 && quadrants[qi].damp !== preferred) {
+          const angle = Q_CENTRES[targetQ];
+          const targetX = cx + Math.cos(angle) * chamberR * 0.5;
+          const targetY = cy + Math.sin(angle) * chamberR * 0.5;
+          const moistAngle = Math.atan2(targetY - o.y, targetX - o.x);
+          if (biasStrength > 0) {
+            /* Average the two bias angles */
+            biasAngle = (biasAngle + moistAngle) / 2;
+          } else {
+            biasAngle = moistAngle;
+          }
+          biasStrength += 0.5;
+        }
+      }
+    }
+
+    /* Change 6: contrary behaviour reverses the bias direction */
+    if (o.contrary && biasStrength > 0) {
+      biasAngle += PI;
+    }
+
+    return { angle: biasAngle, strength: biasStrength * o.taxisStrength * ramp };
+  }
+
+  /**
+   * Check if organism is in preferred conditions for kinesis calculations.
+   * Returns 0–1 where 1 = fully preferred conditions.
+   */
+  function isInPreferred(o) {
+    const qi = getQuadrant(o.x, o.y);
+    const q = quadrants[qi];
+    const org = selectedOrganism;
+    let score = 0;
+    let factors = 0;
+
+    if (selectedVariable === 'light' || selectedVariable === 'both') {
+      if (org.lightResponse !== 0) {
+        const wantsLight = org.isEuglena ? !q.light : (org.lightResponse > 0);
+        score += (q.light === wantsLight) ? 1 : 0;
+        factors++;
+      }
+    }
+    if (selectedVariable === 'moisture' || selectedVariable === 'both') {
+      if (org.moistureResponse !== 0) {
+        score += (q.damp === (org.moistureResponse > 0)) ? 1 : 0;
+        factors++;
+      }
+    }
+    return factors === 0 ? 0.5 : score / factors;
+  }
+
+  /**
+   * Update all organisms for one frame.
+   * Change 3: circular wall bouncing
+   * Change 4: animPhase advances with speed
+   * Change 6: contrary behaviour timer logic
+   * Change 7: trail position storage
+   */
+  function updateOrganisms(dt) {
+    const s = canvasSize;
+    const cx = s / 2;
+    const cy = s / 2;
+    const scale = s / 600;
+    const padding = 10 * scale;
+    const chamberR = s / 2 - padding;
+    /* Maximum distance from centre — leave a small margin for organism radius */
+    const maxDist = chamberR - 4 * scale;
+    const org = selectedOrganism;
+
+    organisms.forEach(o => {
+      if (o.dead) return;
+
+      /* Handle stuck state */
+      if (o.stuck > 0) {
+        o.stuck -= dt;
+        return;
+      }
+
+      /* ~0.02% death chance per second in unfavourable conditions */
+      const pref = isInPreferred(o);
+      const deathChance = (1 - pref) * 0.0002 * dt;
+      if (Math.random() < deathChance) {
+        o.dead = true;
+        return;
+      }
+
+      /* Fatigue: speed decays over the experiment */
+      o.fatigue = Math.max(0.6, 1.0 - (elapsedSeconds / EXPERIMENT_DURATION) * 0.4);
+
+      /* Change 6: contrary behaviour timer — organisms occasionally reverse their taxis */
+      if (!o.contrary) {
+        /* Count down to next contrary episode */
+        o.contraryTimer -= dt;
+        if (o.contraryTimer <= 0) {
+          o.contrary = true;
+          o.contraryDuration = 3 + Math.random() * 5;  /* 3–8 seconds */
+        }
+      } else {
+        /* Currently contrary — count down duration */
+        o.contraryDuration -= dt;
+        if (o.contraryDuration <= 0) {
+          o.contrary = false;
+          o.contraryTimer = 20 + Math.random() * 70;  /* 20–90s until next episode */
+        }
+      }
+
+      /* Random exploration: ~5% chance per second of ignoring taxis */
+      const ignoring = Math.random() < 0.05 * dt;
+
+      /* Taxis bias */
+      const bias = getTaxisBias(o);
+      if (!ignoring && bias.strength > 0) {
+        /* Steer toward bias direction */
+        let angleDiff = bias.angle - o.heading;
+        /* Normalise to [-PI, PI] */
+        while (angleDiff > PI) angleDiff -= PI * 2;
+        while (angleDiff < -PI) angleDiff += PI * 2;
+        o.heading += angleDiff * bias.strength * 0.15 * dt;
+      }
+
+      /* Kinesis effects */
+      let speedMult = 1.0;
+      let turnMult = 1.0;
+
+      if (org.orthokinesis) {
+        /* Move faster in non-preferred conditions */
+        speedMult = 1.0 + (1 - pref) * 0.8;
+      }
+
+      if (org.klinokinesis) {
+        /* Turn more in non-preferred conditions */
+        turnMult = 1.0 + (1 - pref) * 1.5;
+      }
+
+      /* Gaussian noise on heading */
+      o.heading += gaussRandom() * 0.3 * turnMult * dt;
+
+      /* Social aggregation: slight pull toward nearest same-species neighbour */
+      let nearestDist = Infinity;
+      let nearestAngle = 0;
+      organisms.forEach(other => {
+        if (other === o || other.dead) return;
+        const dx = other.x - o.x;
+        const dy = other.y - o.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < nearestDist && dist < 60 * scale) {
+          nearestDist = dist;
+          nearestAngle = Math.atan2(dy, dx);
+        }
+      });
+      if (nearestDist < 60 * scale) {
+        let angleDiff = nearestAngle - o.heading;
+        while (angleDiff > PI) angleDiff -= PI * 2;
+        while (angleDiff < -PI) angleDiff += PI * 2;
+        o.heading += angleDiff * 0.02 * dt;
+      }
+
+      /* Thigmotaxis: earthworms follow circular walls */
+      if (org.thigmotaxis) {
+        const dx = o.x - cx;
+        const dy = o.y - cy;
+        const distFromCentre = Math.sqrt(dx * dx + dy * dy);
+        const wallDist = chamberR - distFromCentre;
+        if (wallDist < 20 * scale) {
+          /* Slow down near walls */
+          speedMult *= 0.7;
+        }
+      }
+
+      /* Calculate final speed and move — speedScale varies by organism */
+      const baseSpeed = o.speed * 40 * scale * (org.speedScale || 1);
+      const finalSpeed = baseSpeed * speedMult * o.fatigue;
+      const moveDx = Math.cos(o.heading) * finalSpeed * dt;
+      const moveDy = Math.sin(o.heading) * finalSpeed * dt;
+
+      o.x += moveDx;
+      o.y += moveDy;
+
+      /* Change 3: Circular wall bouncing — reflect off circle boundary */
+      const dx = o.x - cx;
+      const dy = o.y - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > maxDist) {
+        /* Push organism back inside the circle */
+        const normalAngle = Math.atan2(dy, dx);
+        o.x = cx + Math.cos(normalAngle) * maxDist;
+        o.y = cy + Math.sin(normalAngle) * maxDist;
+        /* Reflect heading off the circular wall with random deviation */
+        o.heading = 2 * normalAngle - o.heading + PI + gaussRandom() * 0.3;
+
+        /* Getting stuck: 3% chance per wall collision */
+        if (Math.random() < 0.03) {
+          o.stuck = 2 + Math.random() * 4;  /* 2–6 seconds */
+        }
+      }
+
+      /* Change 4: advance animation phase based on organism's speed */
+      o.animPhase += o.speed * dt * 2;
+
+      /* Change 7: store trail position */
+      o.trail.push({ x: o.x, y: o.y });
+      if (o.trail.length > 90) o.trail.shift();  /* Keep last ~90 positions (~1.5s at 60fps) */
+    });
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Audio beep (Web Audio API) — audioCtx persists at module level
+     ═══════════════════════════════════════════════════════════════════════ */
+  function playBeep() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.frequency.value = 440;
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+      osc.start(audioCtx.currentTime);
+      osc.stop(audioCtx.currentTime + 0.2);
+    } catch (e) {
+      /* Audio not available — fail silently */
+    }
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Experiment lifecycle
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  function beginExperiment() {
+    /* Switch to experiment phase */
+    $.phaseSetup.hidden = true;
+    $.phaseExperiment.hidden = false;
+    $.phaseResults.hidden = true;
+
+    /* Reset trails toggle */
+    showTrails = false;
+    $.trailsBtn.textContent = 'Show Trails';
+
+    /* Initialise state */
+    resizeCanvas();
+    createOrganisms();
+    elapsedSeconds = 0;
+    snapshots = [];
+    snapshotIndex = 0;
+    nextSnapshotTime = recordingInterval;
+    running = true;
+    paused = false;
+    pauseCountdown = 0;
+    lastFrameTime = performance.now();
+
+    $.timerLabel.textContent = formatTime(EXPERIMENT_DURATION) + ' total';
+    $.pauseBtn.disabled = false;
+    $.pauseBtn.textContent = 'Pause to Count (10s)';
+
+    /* Start animation loop */
+    animFrameId = requestAnimationFrame(gameLoop);
+  }
+
+  function formatTime(secs) {
+    const m = Math.floor(secs / 60);
+    const s = Math.floor(secs % 60);
+    return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  }
+
+  function gameLoop(timestamp) {
+    if (!running) return;
+
+    const rawDt = (timestamp - lastFrameTime) / 1000;
+    lastFrameTime = timestamp;
+    /* Clamp delta to prevent huge jumps if tab was inactive */
+    const dt = Math.min(rawDt, 0.1);
+
+    /* Reduced motion: update at ~5fps equivalent */
+    if (prefersReducedMotion) {
+      reducedMotionAccum += dt;
+      if (reducedMotionAccum < 0.2) {
+        animFrameId = requestAnimationFrame(gameLoop);
+        return;
+      }
+      reducedMotionAccum = 0;
+    }
+
+    /* Advance time (always, even when paused — organisms just don't move visually) */
+    if (!paused) {
+      elapsedSeconds += dt;
+    }
+
+    /* Handle pause countdown */
+    if (paused && pauseCountdown > 0) {
+      pauseCountdown -= dt;
+      if (pauseCountdown <= 0) {
+        paused = false;
+        pauseCountdown = 0;
+        $.pauseBtn.textContent = 'Pause to Count (10s)';
+        $.pauseBtn.disabled = false;
+      } else {
+        $.pauseBtn.textContent = `Resuming in ${Math.ceil(pauseCountdown)}s`;
+      }
+    }
+
+    /* Update organisms (always, even during pause — they move internally) */
+    updateOrganisms(dt);
+
+    /* Check for recording snapshot */
+    if (elapsedSeconds >= nextSnapshotTime) {
+      snapshotIndex++;
+      const counts = getQuadrantCounts();
+      snapshots.push({
+        time: formatTime(nextSnapshotTime),
+        counts: counts.slice(),
+      });
+      nextSnapshotTime += recordingInterval;
+
+      /* Show recording alert */
+      const totalSnapshots = Math.floor(EXPERIMENT_DURATION / recordingInterval);
+      $.recordAlertText.textContent = `RECORD NOW — Recording ${snapshotIndex} of ${totalSnapshots}`;
+      $.recordAlert.hidden = false;
+      playBeep();
+
+      /* Flash canvas border */
+      $.canvasContainer.style.borderColor = 'var(--fluoro-cyan, #7df9ff)';
+      $.canvasContainer.style.boxShadow = '0 0 20px rgba(125, 249, 255, 0.4)';
+
+      /* Clear alert after 3 seconds */
+      if (alertTimeout) clearTimeout(alertTimeout);
+      alertTimeout = setTimeout(() => {
+        $.recordAlert.hidden = true;
+        $.canvasContainer.style.borderColor = '';
+        $.canvasContainer.style.boxShadow = '';
+      }, 3000);
+    }
+
+    /* Update timer display */
+    $.timerTime.textContent = formatTime(elapsedSeconds);
+    $.timerFill.style.width = `${(elapsedSeconds / EXPERIMENT_DURATION) * 100}%`;
+
+    /* Update screen reader counts every 30 seconds */
+    if (Math.floor(elapsedSeconds) % 30 === 0 && Math.floor(elapsedSeconds) !== Math.floor(elapsedSeconds - dt)) {
+      const counts = getQuadrantCounts();
+      $.srCounts.textContent = `Quadrant counts: Q1 ${counts[0]}, Q2 ${counts[1]}, Q3 ${counts[2]}, Q4 ${counts[3]}`;
+    }
+
+    /* Draw frame — skip drawing during pause (organisms frozen visually) */
+    if (!paused) {
+      drawChamber();
+      /* Change 7: draw trails before organisms so organisms render on top */
+      organisms.forEach(o => drawTrail(o));
+      organisms.forEach(o => drawOrganism(o));
+    }
+
+    /* Auto-end at experiment duration */
+    if (elapsedSeconds >= EXPERIMENT_DURATION) {
+      endExperiment();
+      return;
+    }
+
+    animFrameId = requestAnimationFrame(gameLoop);
+  }
+
+  function endExperiment() {
+    running = false;
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+    if (alertTimeout) clearTimeout(alertTimeout);
+    $.recordAlert.hidden = true;
+
+    /* Take a final snapshot if we haven't taken one at the end */
+    if (snapshots.length === 0 || snapshots[snapshots.length - 1].time !== formatTime(EXPERIMENT_DURATION)) {
+      snapshots.push({
+        time: formatTime(Math.min(elapsedSeconds, EXPERIMENT_DURATION)),
+        counts: getQuadrantCounts().slice(),
+      });
+    }
+
+    showResultsPhase();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Results phase
+     ═══════════════════════════════════════════════════════════════════════ */
+  function showResultsPhase() {
+    $.phaseSetup.hidden = true;
+    $.phaseExperiment.hidden = true;
+    $.phaseResults.hidden = false;
+
+    /* Build results table */
+    $.resultsTbody.innerHTML = '';
+    snapshots.forEach(snap => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${snap.time}</td>
+        <td>${snap.counts[0]}</td>
+        <td>${snap.counts[1]}</td>
+        <td>${snap.counts[2]}</td>
+        <td>${snap.counts[3]}</td>
+      `;
+      $.resultsTbody.appendChild(row);
+    });
+
+    /* Pre-fill chi-squared with last snapshot if available */
+    if (snapshots.length > 0) {
+      const last = snapshots[snapshots.length - 1].counts;
+      document.getElementById('chi-q1').value = last[0];
+      document.getElementById('chi-q2').value = last[1];
+      document.getElementById('chi-q3').value = last[2];
+      document.getElementById('chi-q4').value = last[3];
+    }
+
+    $.chiResult.hidden = true;
+
+    /* Change 9: Build and display the results reveal section */
+    buildResultsReveal();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Change 9: Results reveal — show actual response types after experiment
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Build the results reveal section from the organism's responses array.
+   * Shows each response type with a plain-English description,
+   * then prompts the student to compare predictions with observations.
+   */
+  function buildResultsReveal() {
+    if (!selectedOrganism || !selectedOrganism.responses) {
+      $.resultsReveal.innerHTML = '';
+      return;
+    }
+
+    const responses = selectedOrganism.responses;
+    let html = '<ul class="reveal-list">';
+    responses.forEach(r => {
+      html += `
+        <li class="reveal-item">
+          <div class="reveal-type">${r.type}</div>
+          <div class="reveal-desc">${r.desc}</div>
+        </li>
+      `;
+    });
+    html += '</ul>';
+    html += '<p class="reveal-note">Did you observe these behaviours? Compare your predictions with the actual responses.</p>';
+
+    $.resultsReveal.innerHTML = html;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Chi-squared calculator
+     ═══════════════════════════════════════════════════════════════════════ */
+  function calculateChiSquared() {
+    const observed = [
+      Math.max(0, parseInt(document.getElementById('chi-q1').value, 10) || 0),
+      Math.max(0, parseInt(document.getElementById('chi-q2').value, 10) || 0),
+      Math.max(0, parseInt(document.getElementById('chi-q3').value, 10) || 0),
+      Math.max(0, parseInt(document.getElementById('chi-q4').value, 10) || 0),
+    ];
+
+    const total = observed.reduce((a, b) => a + b, 0);
+    if (total === 0) {
+      $.chiResult.innerHTML = '<p>Enter at least one non-zero count.</p>';
+      $.chiResult.hidden = false;
+      return;
+    }
+
+    const expected = total / 4; /* Equal distribution expected under null hypothesis */
+    let chiSquared = 0;
+    observed.forEach(o => {
+      chiSquared += Math.pow(o - expected, 2) / expected;
+    });
+
+    const df = 3;                /* Degrees of freedom = categories - 1 */
+    const critical = 7.815;      /* Critical value at p = 0.05, df = 3 */
+    const significant = chiSquared > critical;
+
+    let interpretation = '';
+    if (significant) {
+      interpretation = `<p class="chi-significant">The distribution IS significantly different from chance (p < 0.05).</p>
+        <p>This suggests the organisms show a real preference — likely taxis or kinesis in response to the tested variable. Look at which quadrants have the highest counts to identify the preferred conditions.</p>`;
+    } else {
+      interpretation = `<p class="chi-not-significant">The distribution is NOT significantly different from chance (p > 0.05).</p>
+        <p>There is no statistical evidence of a preference. The organisms may not respond strongly to this variable, or the experiment may need longer/more organisms to detect the effect.</p>`;
+    }
+
+    $.chiResult.innerHTML = `
+      <p><strong>Observed:</strong> ${observed.join(', ')} &nbsp; <strong>Expected:</strong> ${expected.toFixed(1)} each</p>
+      <p><strong>χ² = ${chiSquared.toFixed(2)}</strong> &nbsp; (df = ${df}, critical value at p = 0.05 is ${critical})</p>
+      ${interpretation}
+    `;
+    $.chiResult.hidden = false;
+  }
+</script>
