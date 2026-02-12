@@ -1,0 +1,1467 @@
+---
+/**
+ * Taxis vs Kinesis — Interactive Comparison
+ *
+ * Side-by-side animated simulations showing the difference between
+ * taxis (directional response) and kinesis (non-directional response).
+ *
+ * Left panel:  KINESIS — Slaters (woodlice) in a moisture gradient.
+ *              Organisms move faster and turn more in dry (unfavourable)
+ *              areas, slower with fewer turns in damp (favourable) areas.
+ *              Result: accumulation in favourable zone without directional
+ *              movement.
+ *
+ * Right panel: TAXIS — Pūriri moths (Aenetus virescens) showing positive
+ *              phototaxis toward a light source. Moths detect light
+ *              direction and fly directly toward it.
+ *
+ * Controls: play/pause, speed selector, reset, organism count.
+ * Educational annotations label key behaviours in real time.
+ *
+ * All HTML, CSS, and JS in one file — no external dependencies.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Taxis vs Kinesis — Level 3 Biology"
+  description="Interactive side-by-side comparison of taxis and kinesis behaviour in animals"
+>
+  <div class="sim-page">
+
+    <!-- Page header -->
+    <header class="sim-header">
+      <a href={`${base}/experiments`} class="back-link">← Back to Experiments</a>
+      <h1 class="sim-title">Taxis vs Kinesis</h1>
+      <p class="sim-subtitle">
+        Watch two fundamentally different orientation behaviours side by side.
+        <strong>Kinesis</strong> is a non-directional change in speed or turning rate.
+        <strong>Taxis</strong> is a directional movement toward or away from a stimulus.
+      </p>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════════
+         Controls
+         ═══════════════════════════════════════════ -->
+    <div class="controls-bar">
+      <button class="btn btn--primary" id="play-btn" aria-label="Play simulation">
+        <span id="play-icon">▶</span> <span id="play-label">Play</span>
+      </button>
+      <button class="btn btn--secondary" id="reset-btn" aria-label="Reset simulation">
+        ↺ Reset
+      </button>
+      <div class="control-group">
+        <label class="control-label" for="speed-select">Speed</label>
+        <select id="speed-select" class="control-select">
+          <option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option>
+          <option value="2">2×</option>
+          <option value="3">3×</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="count-slider">Organisms</label>
+        <div class="slider-row">
+          <input type="range" id="count-slider" min="5" max="25" value="12" class="slider" />
+          <span class="slider-value" id="count-value">12</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════
+         Side-by-side simulation panels
+         ═══════════════════════════════════════════ -->
+    <div class="sim-grid">
+
+      <!-- KINESIS panel -->
+      <div class="sim-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Kinesis</h2>
+          <span class="panel-badge badge--kinesis">Non-directional</span>
+        </div>
+        <p class="panel-organism">
+          <span class="organism-name">Slaters</span>
+          <em class="organism-latin">(<a href="https://inaturalist.nz/taxa/Porcellio_scaber" target="_blank" rel="noopener noreferrer" class="organism-link">Porcellio scaber</a>)</em>
+        </p>
+        <p class="panel-desc">
+          Slaters move <strong>faster</strong> and <strong>turn more often</strong> in dry
+          conditions (unfavourable). In damp conditions (favourable), they slow down and
+          turn less — so they accumulate where it's damp, without ever detecting the
+          direction of moisture.
+        </p>
+        <div class="canvas-container" id="kinesis-container">
+          <canvas id="kinesis-canvas" aria-label="Kinesis simulation showing slaters in a moisture gradient"></canvas>
+          <!-- Gradient labels -->
+          <div class="gradient-label gradient-label--left">DRY</div>
+          <div class="gradient-label gradient-label--right">DAMP</div>
+        </div>
+        <!-- Live stats -->
+        <div class="live-stats" id="kinesis-stats">
+          <div class="stat">
+            <span class="stat-label">Dry side</span>
+            <span class="stat-value" id="kinesis-dry-count">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Damp side</span>
+            <span class="stat-value" id="kinesis-damp-count">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Avg speed (dry)</span>
+            <span class="stat-value" id="kinesis-dry-speed">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Avg speed (damp)</span>
+            <span class="stat-value" id="kinesis-damp-speed">—</span>
+          </div>
+        </div>
+        <!-- Key concept -->
+        <div class="concept-card">
+          <h3>Key Concept</h3>
+          <p>
+            <strong>Orthokinesis:</strong> speed changes with stimulus intensity.<br>
+            <strong>Klinokinesis:</strong> rate of turning changes with stimulus intensity.<br>
+            The organism <em>does not</em> detect stimulus direction — the accumulation
+            in favourable areas is a <em>consequence</em> of spending more time there.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- TAXIS panel -->
+      <div class="sim-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Taxis</h2>
+          <span class="panel-badge badge--taxis">Directional</span>
+        </div>
+        <p class="panel-organism">
+          <span class="organism-name">Pūriri Moth</span>
+          <em class="organism-latin">(<a href="https://inaturalist.nz/taxa/409639-Aenetus-virescens" target="_blank" rel="noopener noreferrer" class="organism-link">Aenetus virescens</a>)</em>
+        </p>
+        <p class="panel-desc">
+          The pūriri moth — one of Aotearoa's largest moths — shows <strong>positive
+          phototaxis</strong>, flying directly toward light sources. The moth detects
+          the direction of light and actively orients its movement toward it.
+        </p>
+        <div class="canvas-container" id="taxis-container">
+          <canvas id="taxis-canvas" aria-label="Taxis simulation showing pūriri moths flying toward a light source"></canvas>
+          <!-- Light source indicator -->
+          <div class="light-source" id="light-source" aria-hidden="true">
+            <div class="light-glow"></div>
+            <span class="light-label">LIGHT</span>
+          </div>
+        </div>
+        <!-- Live stats -->
+        <div class="live-stats" id="taxis-stats">
+          <div class="stat">
+            <span class="stat-label">Near light</span>
+            <span class="stat-value" id="taxis-near-count">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Far from light</span>
+            <span class="stat-value" id="taxis-far-count">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Avg bearing error</span>
+            <span class="stat-value" id="taxis-bearing">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Arrived at light</span>
+            <span class="stat-value" id="taxis-arrived">0</span>
+          </div>
+        </div>
+        <!-- Key concept -->
+        <div class="concept-card">
+          <h3>Key Concept</h3>
+          <p>
+            <strong>Positive phototaxis:</strong> movement <em>toward</em> a light source.<br>
+            <strong>Negative phototaxis:</strong> movement <em>away from</em> light (e.g. woodlice).<br>
+            The organism <em>detects stimulus direction</em> using sensory receptors and
+            actively steers toward (or away from) it.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════
+         Comparison summary
+         ═══════════════════════════════════════════ -->
+    <section class="comparison-section">
+      <h2 class="comparison-title">Comparing the Two Responses</h2>
+      <div class="comparison-grid">
+        <div class="compare-card">
+          <h3>Direction</h3>
+          <div class="compare-row">
+            <span class="compare-label compare-label--kinesis">Kinesis</span>
+            <span>Random — no directional component</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label compare-label--taxis">Taxis</span>
+            <span>Directional — toward or away from stimulus</span>
+          </div>
+        </div>
+        <div class="compare-card">
+          <h3>Mechanism</h3>
+          <div class="compare-row">
+            <span class="compare-label compare-label--kinesis">Kinesis</span>
+            <span>Change in speed (ortho-) or turning rate (klino-)</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label compare-label--taxis">Taxis</span>
+            <span>Sensory detection of stimulus direction</span>
+          </div>
+        </div>
+        <div class="compare-card">
+          <h3>Result</h3>
+          <div class="compare-row">
+            <span class="compare-label compare-label--kinesis">Kinesis</span>
+            <span>Accumulation in favourable area (indirect)</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label compare-label--taxis">Taxis</span>
+            <span>Direct movement to favourable area</span>
+          </div>
+        </div>
+        <div class="compare-card">
+          <h3>NZ Examples</h3>
+          <div class="compare-row">
+            <span class="compare-label compare-label--kinesis">Kinesis</span>
+            <span>Slaters in leaf litter, huhu beetle larvae</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label compare-label--taxis">Taxis</span>
+            <span>Pūriri moths to light, wētā away from light</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     Styles
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Page container */
+  .sim-page {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .sim-header {
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--space-4);
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .sim-title {
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-2);
+  }
+
+  .sim-subtitle {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 720px;
+  }
+
+
+  /* ── Controls bar ── */
+  .controls-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+    padding: var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .control-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .control-select {
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    min-height: 36px;
+  }
+
+  .control-select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .slider {
+    width: 100px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: var(--radius-full);
+    outline: none;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface-1);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface-1);
+  }
+
+  .slider-value {
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    min-width: 2ch;
+    text-align: center;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-height: 36px;
+    white-space: nowrap;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .btn--primary:hover:not(:disabled) { box-shadow: var(--shadow-glow); }
+
+  .btn--secondary {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+  }
+
+  .btn--secondary:hover:not(:disabled) { background: var(--surface-3); }
+
+
+  /* ── Simulation grid — side by side ── */
+  .sim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .sim-panel {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .panel-title {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+  }
+
+  .panel-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-full);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .badge--kinesis {
+    background: rgba(255, 110, 199, 0.15);
+    color: var(--fluoro-pink, #ff6ec7);
+  }
+
+  .badge--taxis {
+    background: rgba(125, 249, 255, 0.15);
+    color: var(--fluoro-cyan, #7df9ff);
+  }
+
+  .panel-organism {
+    margin-bottom: var(--space-2);
+  }
+
+  .organism-name {
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+  }
+
+  .organism-latin {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .organism-link {
+    color: var(--fluoro-cyan, #7df9ff);
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .organism-link:hover {
+    color: var(--accent);
+    border-bottom-style: solid;
+  }
+
+  .panel-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+
+  /* ── Canvas containers ── */
+  .canvas-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--surface-0);
+    border: 2px solid var(--border-default);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-3);
+  }
+
+  .canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Gradient labels for kinesis panel */
+  .gradient-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .gradient-label--left {
+    left: var(--space-2);
+    background: rgba(200, 120, 60, 0.7);
+    color: #fff;
+  }
+
+  .gradient-label--right {
+    right: var(--space-2);
+    background: rgba(60, 130, 200, 0.7);
+    color: #fff;
+  }
+
+  /* Light source indicator for taxis panel */
+  .light-source {
+    position: absolute;
+    top: 50%;
+    right: var(--space-3);
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .light-glow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 180, 0.9), rgba(255, 220, 80, 0.3) 60%, transparent 100%);
+    box-shadow: 0 0 20px rgba(255, 220, 80, 0.5), 0 0 40px rgba(255, 220, 80, 0.2);
+    animation: lightPulse 2s ease-in-out infinite alternate;
+  }
+
+  .light-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: rgba(255, 220, 80, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @keyframes lightPulse {
+    from { box-shadow: 0 0 20px rgba(255, 220, 80, 0.5), 0 0 40px rgba(255, 220, 80, 0.2); }
+    to   { box-shadow: 0 0 30px rgba(255, 220, 80, 0.7), 0 0 60px rgba(255, 220, 80, 0.3); }
+  }
+
+
+  /* ── Live stats ── */
+  .live-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+  }
+
+  .stat-label {
+    color: var(--text-muted);
+    font-weight: var(--weight-semibold);
+  }
+
+  .stat-value {
+    font-family: var(--font-mono, monospace);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+  }
+
+
+  /* ── Concept card ── */
+  .concept-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .concept-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .concept-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+
+  /* ── Comparison section ── */
+  .comparison-section {
+    margin-bottom: var(--space-6);
+  }
+
+  .comparison-title {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-4);
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .compare-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .compare-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .compare-row {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-2);
+  }
+
+  .compare-row:last-child { margin-bottom: 0; }
+
+  .compare-label {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-sm);
+    min-width: 60px;
+    justify-content: center;
+  }
+
+  .compare-label--kinesis {
+    background: rgba(255, 110, 199, 0.15);
+    color: var(--fluoro-pink, #ff6ec7);
+  }
+
+  .compare-label--taxis {
+    background: rgba(125, 249, 255, 0.15);
+    color: var(--fluoro-cyan, #7df9ff);
+  }
+
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .sim-grid {
+      grid-template-columns: 1fr;
+    }
+    .controls-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .controls-bar .btn {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .sim-panel { padding: var(--space-3); }
+    .live-stats { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .light-glow { animation: none; }
+  }
+</style>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     JavaScript — All simulation logic
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<script>
+  /* ═══════════════════════════════════════════════════════════════════════
+     Constants
+     ═══════════════════════════════════════════════════════════════════════ */
+  const PI = Math.PI;
+  const TWO_PI = PI * 2;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Module-level state — persists across View Transitions
+     ═══════════════════════════════════════════════════════════════════════ */
+  let animFrameId: number | null = null;
+  let running = false;
+  let lastFrameTime = 0;
+  let speedMultiplier = 1;
+  let organismCount = 12;
+
+  /* DOM references — rebound on each page load */
+  let $ = {} as Record<string, HTMLElement | HTMLCanvasElement>;
+  let kinesisCtx: CanvasRenderingContext2D;
+  let taxisCtx: CanvasRenderingContext2D;
+  let kinesisW = 0, kinesisH = 0;
+  let taxisW = 0, taxisH = 0;
+
+  /* Organism arrays */
+  let slaters: Organism[] = [];
+  let moths: Organism[] = [];
+
+  /* Light source position (taxis canvas) — placed at right side, vertically centred */
+  let lightX = 0;
+  let lightY = 0;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Types
+     ═══════════════════════════════════════════════════════════════════════ */
+  interface Organism {
+    x: number;
+    y: number;
+    heading: number;       /* radians, 0 = right */
+    speed: number;         /* individual speed factor (0.3–1.2) */
+    animPhase: number;     /* for leg/wing animation */
+    trail: { x: number; y: number }[];
+    /* Moth-specific */
+    orbiting?: boolean;    /* true when circling the light */
+    orbitAngle?: number;   /* current orbit position */
+    orbitRadius?: number;  /* distance from light while orbiting */
+    wingPhase?: number;    /* wing flap cycle */
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Utility functions
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /** Gaussian random (Box-Muller) — centred at 0 with std dev ~1 */
+  function gaussRandom(): number {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(TWO_PI * v);
+  }
+
+  /** Normalise angle to [-PI, PI] */
+  function normAngle(a: number): number {
+    while (a > PI) a -= TWO_PI;
+    while (a < -PI) a += TWO_PI;
+    return a;
+  }
+
+  /** Linear interpolation */
+  function lerp(a: number, b: number, t: number): number {
+    return a + (b - a) * t;
+  }
+
+  /** Clamp value between min and max */
+  function clamp(v: number, min: number, max: number): number {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  /** Get the moisture factor at a given x position (0 = dry, 1 = damp) */
+  function moistureFactor(x: number, width: number): number {
+    return clamp(x / width, 0, 1);
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     View Transitions cleanup
+     ═══════════════════════════════════════════════════════════════════════ */
+  document.addEventListener('astro:before-swap', () => {
+    running = false;
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Initialise on every page load
+     ═══════════════════════════════════════════════════════════════════════ */
+  document.addEventListener('astro:page-load', () => {
+    /* Guard: only run on this page */
+    if (!document.getElementById('kinesis-canvas')) return;
+    initSimulation();
+  });
+
+  window.addEventListener('resize', () => {
+    if ($.kinesisCanvas) resizeCanvases();
+  });
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     initSimulation() — bind DOM, create organisms, wire controls
+     ═══════════════════════════════════════════════════════════════════════ */
+  function initSimulation() {
+    /* Bind DOM */
+    $ = {
+      playBtn:        document.getElementById('play-btn')!,
+      playIcon:       document.getElementById('play-icon')!,
+      playLabel:      document.getElementById('play-label')!,
+      resetBtn:       document.getElementById('reset-btn')!,
+      speedSelect:    document.getElementById('speed-select')!,
+      countSlider:    document.getElementById('count-slider')!,
+      countValue:     document.getElementById('count-value')!,
+      kinesisContainer: document.getElementById('kinesis-container')!,
+      kinesisCanvas:  document.getElementById('kinesis-canvas')!,
+      taxisContainer: document.getElementById('taxis-container')!,
+      taxisCanvas:    document.getElementById('taxis-canvas')!,
+      /* Kinesis stats */
+      kinesisDryCount:  document.getElementById('kinesis-dry-count')!,
+      kinesisDampCount: document.getElementById('kinesis-damp-count')!,
+      kinesisDrySpeed:  document.getElementById('kinesis-dry-speed')!,
+      kinesisDampSpeed: document.getElementById('kinesis-damp-speed')!,
+      /* Taxis stats */
+      taxisNearCount:  document.getElementById('taxis-near-count')!,
+      taxisFarCount:   document.getElementById('taxis-far-count')!,
+      taxisBearing:    document.getElementById('taxis-bearing')!,
+      taxisArrived:    document.getElementById('taxis-arrived')!,
+    };
+
+    kinesisCtx = ($.kinesisCanvas as HTMLCanvasElement).getContext('2d')!;
+    taxisCtx = ($.taxisCanvas as HTMLCanvasElement).getContext('2d')!;
+
+    /* Resize canvases */
+    resizeCanvases();
+
+    /* Create organisms */
+    organismCount = parseInt(($.countSlider as HTMLInputElement).value, 10);
+    createOrganisms();
+
+    /* Draw initial frame */
+    drawFrame();
+
+    /* ── Wire controls ── */
+    $.playBtn.addEventListener('click', togglePlay);
+    $.resetBtn.addEventListener('click', resetSimulation);
+
+    ($.speedSelect as HTMLSelectElement).addEventListener('change', () => {
+      speedMultiplier = parseFloat(($.speedSelect as HTMLSelectElement).value);
+    });
+
+    ($.countSlider as HTMLInputElement).addEventListener('input', () => {
+      organismCount = parseInt(($.countSlider as HTMLInputElement).value, 10);
+      $.countValue.textContent = String(organismCount);
+    });
+
+    /* Changing count resets the simulation */
+    ($.countSlider as HTMLInputElement).addEventListener('change', () => {
+      organismCount = parseInt(($.countSlider as HTMLInputElement).value, 10);
+      $.countValue.textContent = String(organismCount);
+      resetSimulation();
+    });
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Canvas sizing
+     ═══════════════════════════════════════════════════════════════════════ */
+  function resizeCanvases() {
+    const kc = $.kinesisContainer as HTMLElement;
+    const tc = $.taxisContainer as HTMLElement;
+    const dpr = window.devicePixelRatio || 1;
+
+    /* Kinesis canvas */
+    kinesisW = kc.clientWidth;
+    kinesisH = kc.clientHeight;
+    ($.kinesisCanvas as HTMLCanvasElement).width = kinesisW * dpr;
+    ($.kinesisCanvas as HTMLCanvasElement).height = kinesisH * dpr;
+    kinesisCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    /* Taxis canvas */
+    taxisW = tc.clientWidth;
+    taxisH = tc.clientHeight;
+    ($.taxisCanvas as HTMLCanvasElement).width = taxisW * dpr;
+    ($.taxisCanvas as HTMLCanvasElement).height = taxisH * dpr;
+    taxisCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    /* Light source position: 85% across, vertically centred */
+    lightX = taxisW * 0.85;
+    lightY = taxisH * 0.5;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Organism creation
+     ═══════════════════════════════════════════════════════════════════════ */
+  function createOrganisms() {
+    slaters = [];
+    moths = [];
+
+    for (let i = 0; i < organismCount; i++) {
+      /* Slaters start randomly distributed across the kinesis arena */
+      slaters.push({
+        x: Math.random() * kinesisW,
+        y: Math.random() * kinesisH,
+        heading: Math.random() * TWO_PI,
+        speed: 0.4 + Math.random() * 0.8,  /* 0.4–1.2 */
+        animPhase: Math.random() * TWO_PI,
+        trail: [],
+      });
+
+      /* Moths start on the left side of the taxis arena */
+      moths.push({
+        x: taxisW * 0.05 + Math.random() * taxisW * 0.3,
+        y: taxisH * 0.1 + Math.random() * taxisH * 0.8,
+        heading: Math.random() * TWO_PI,
+        speed: 0.5 + Math.random() * 0.7,  /* 0.5–1.2 */
+        animPhase: Math.random() * TWO_PI,
+        trail: [],
+        orbiting: false,
+        orbitAngle: Math.random() * TWO_PI,
+        orbitRadius: 15 + Math.random() * 20,
+        wingPhase: Math.random() * TWO_PI,
+      });
+    }
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Play / pause / reset
+     ═══════════════════════════════════════════════════════════════════════ */
+  function togglePlay() {
+    if (running) {
+      running = false;
+      if (animFrameId) {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+      }
+      $.playIcon.textContent = '▶';
+      $.playLabel.textContent = 'Play';
+    } else {
+      running = true;
+      lastFrameTime = performance.now();
+      $.playIcon.textContent = '⏸';
+      $.playLabel.textContent = 'Pause';
+      animFrameId = requestAnimationFrame(tick);
+    }
+  }
+
+  function resetSimulation() {
+    running = false;
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    $.playIcon.textContent = '▶';
+    $.playLabel.textContent = 'Play';
+
+    resizeCanvases();
+    createOrganisms();
+    drawFrame();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Animation loop
+     ═══════════════════════════════════════════════════════════════════════ */
+  function tick(now: number) {
+    if (!running) return;
+
+    const rawDt = (now - lastFrameTime) / 1000;
+    lastFrameTime = now;
+    /* Cap dt to avoid huge jumps when tab is backgrounded */
+    const dt = Math.min(rawDt, 0.1) * speedMultiplier;
+
+    updateSlaters(dt);
+    updateMoths(dt);
+    drawFrame();
+    updateStats();
+
+    animFrameId = requestAnimationFrame(tick);
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     KINESIS — Slater update logic
+     ═══════════════════════════════════════════════════════════════════════ */
+  function updateSlaters(dt: number) {
+    const w = kinesisW;
+    const h = kinesisH;
+
+    slaters.forEach(s => {
+      /* Moisture factor: 0 (left, dry) → 1 (right, damp) */
+      const mf = moistureFactor(s.x, w);
+
+      /* ORTHOKINESIS: faster in dry (unfavourable), slower in damp (favourable) */
+      /* In dry (mf≈0): speedMult ≈ 2.0.  In damp (mf≈1): speedMult ≈ 0.4 */
+      const speedMult = 2.0 - mf * 1.6;
+
+      /* KLINOKINESIS: more turning in dry, less in damp */
+      /* In dry (mf≈0): turnRate ≈ 2.5.  In damp (mf≈1): turnRate ≈ 0.3 */
+      const turnRate = 2.5 - mf * 2.2;
+
+      /* Apply random turning — Gaussian noise scaled by turning rate */
+      s.heading += gaussRandom() * turnRate * dt;
+
+      /* Calculate movement */
+      const baseSpeed = s.speed * 60;  /* pixels per second at speed factor 1 */
+      const finalSpeed = baseSpeed * speedMult;
+
+      s.x += Math.cos(s.heading) * finalSpeed * dt;
+      s.y += Math.sin(s.heading) * finalSpeed * dt;
+
+      /* Wall bouncing */
+      if (s.x < 0) { s.x = 0; s.heading = PI - s.heading + gaussRandom() * 0.3; }
+      if (s.x > w) { s.x = w; s.heading = PI - s.heading + gaussRandom() * 0.3; }
+      if (s.y < 0) { s.y = 0; s.heading = -s.heading + gaussRandom() * 0.3; }
+      if (s.y > h) { s.y = h; s.heading = -s.heading + gaussRandom() * 0.3; }
+
+      /* Animation phase */
+      s.animPhase += finalSpeed * dt * 0.05;
+
+      /* Trail */
+      s.trail.push({ x: s.x, y: s.y });
+      if (s.trail.length > 60) s.trail.shift();
+    });
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     TAXIS — Moth update logic
+     ═══════════════════════════════════════════════════════════════════════ */
+  function updateMoths(dt: number) {
+    const w = taxisW;
+    const h = taxisH;
+
+    moths.forEach(m => {
+      const dx = lightX - m.x;
+      const dy = lightY - m.y;
+      const distToLight = Math.sqrt(dx * dx + dy * dy);
+      const angleToLight = Math.atan2(dy, dx);
+
+      /* Once close enough to the light, enter orbiting mode */
+      if (!m.orbiting && distToLight < 30) {
+        m.orbiting = true;
+        m.orbitAngle = Math.atan2(m.y - lightY, m.x - lightX);
+        m.orbitRadius = 12 + Math.random() * 18;
+      }
+
+      if (m.orbiting) {
+        /* Orbit the light source — tight circles like real moths */
+        const orbitSpeed = (1.5 + m.speed * 0.8) * dt;
+        m.orbitAngle! += orbitSpeed;
+        m.x = lightX + Math.cos(m.orbitAngle!) * m.orbitRadius!;
+        m.y = lightY + Math.sin(m.orbitAngle!) * m.orbitRadius!;
+        m.heading = m.orbitAngle! + PI / 2;  /* face tangent to orbit */
+
+        /* Occasionally break out of orbit (~2% chance per second) */
+        if (Math.random() < 0.02 * dt) {
+          m.orbiting = false;
+          m.heading = m.orbitAngle! + PI / 2 + gaussRandom() * 0.5;
+        }
+      } else {
+        /* POSITIVE PHOTOTAXIS: steer toward the light */
+        let angleDiff = normAngle(angleToLight - m.heading);
+
+        /* Stronger correction when further from light */
+        const correctionStrength = clamp(0.4 + distToLight / w * 0.6, 0.3, 1.0);
+
+        /* Steer toward light — not perfect, with some noise */
+        m.heading += angleDiff * correctionStrength * 3.0 * dt;
+        m.heading += gaussRandom() * 0.3 * dt;  /* Small random wobble */
+
+        /* Move forward */
+        const baseSpeed = m.speed * 80;
+        m.x += Math.cos(m.heading) * baseSpeed * dt;
+        m.y += Math.sin(m.heading) * baseSpeed * dt;
+
+        /* Wall bouncing */
+        if (m.x < 0) { m.x = 0; m.heading = PI - m.heading + gaussRandom() * 0.2; }
+        if (m.x > w) { m.x = w; m.heading = PI - m.heading + gaussRandom() * 0.2; }
+        if (m.y < 0) { m.y = 0; m.heading = -m.heading + gaussRandom() * 0.2; }
+        if (m.y > h) { m.y = h; m.heading = -m.heading + gaussRandom() * 0.2; }
+      }
+
+      /* Wing flap animation */
+      m.wingPhase! += (3 + m.speed * 2) * dt;
+      m.animPhase += m.speed * dt * 2;
+
+      /* Trail */
+      m.trail.push({ x: m.x, y: m.y });
+      if (m.trail.length > 60) m.trail.shift();
+    });
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Drawing
+     ═══════════════════════════════════════════════════════════════════════ */
+  function drawFrame() {
+    drawKinesisCanvas();
+    drawTaxisCanvas();
+  }
+
+
+  /* ── Kinesis canvas ── */
+  function drawKinesisCanvas() {
+    const ctx = kinesisCtx;
+    const w = kinesisW;
+    const h = kinesisH;
+
+    /* Background: moisture gradient from brown/tan (dry) to blue (damp) */
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, 'rgba(140, 90, 40, 0.3)');    /* Dry — warm brown */
+    grad.addColorStop(0.3, 'rgba(120, 100, 60, 0.2)');
+    grad.addColorStop(0.7, 'rgba(60, 100, 140, 0.2)');
+    grad.addColorStop(1, 'rgba(40, 100, 180, 0.35)');   /* Damp — cool blue */
+    ctx.fillStyle = 'rgba(10, 14, 23, 1)';  /* Base dark */
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    /* Midline indicator */
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 8]);
+    ctx.beginPath();
+    ctx.moveTo(w / 2, 0);
+    ctx.lineTo(w / 2, h);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* Draw trails */
+    slaters.forEach(s => drawTrail(ctx, s, 'rgba(160, 160, 160, '));
+
+    /* Draw slaters */
+    slaters.forEach(s => drawSlater(ctx, s));
+  }
+
+
+  /* ── Taxis canvas ── */
+  function drawTaxisCanvas() {
+    const ctx = taxisCtx;
+    const w = taxisW;
+    const h = taxisH;
+
+    /* Dark background */
+    ctx.fillStyle = 'rgba(10, 14, 23, 1)';
+    ctx.fillRect(0, 0, w, h);
+
+    /* Light source glow — radial gradient from light position */
+    const glowR = Math.max(w, h) * 0.6;
+    const lightGrad = ctx.createRadialGradient(lightX, lightY, 0, lightX, lightY, glowR);
+    lightGrad.addColorStop(0, 'rgba(255, 255, 180, 0.25)');
+    lightGrad.addColorStop(0.2, 'rgba(255, 220, 80, 0.12)');
+    lightGrad.addColorStop(0.5, 'rgba(255, 200, 60, 0.04)');
+    lightGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = lightGrad;
+    ctx.fillRect(0, 0, w, h);
+
+    /* Light source circle */
+    ctx.beginPath();
+    ctx.arc(lightX, lightY, 8, 0, TWO_PI);
+    ctx.fillStyle = 'rgba(255, 255, 200, 0.9)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(lightX, lightY, 14, 0, TWO_PI);
+    ctx.strokeStyle = 'rgba(255, 220, 80, 0.4)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    /* Draw trails */
+    moths.forEach(m => drawTrail(ctx, m, 'rgba(200, 180, 120, '));
+
+    /* Draw moths */
+    moths.forEach(m => drawMoth(ctx, m));
+  }
+
+
+  /* ── Draw a trail ── */
+  function drawTrail(ctx: CanvasRenderingContext2D, o: Organism, colourBase: string) {
+    if (o.trail.length < 2) return;
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
+    for (let i = 1; i < o.trail.length; i++) {
+      const alpha = (i / o.trail.length) * 0.25;
+      ctx.strokeStyle = colourBase + alpha.toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.moveTo(o.trail[i - 1].x, o.trail[i - 1].y);
+      ctx.lineTo(o.trail[i].x, o.trail[i].y);
+      ctx.stroke();
+    }
+  }
+
+
+  /* ── Draw a slater (woodlouse) ── */
+  function drawSlater(ctx: CanvasRenderingContext2D, s: Organism) {
+    const size = 6;
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(s.heading);
+
+    /* Body — oval */
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * 1.3, size * 0.8, 0, 0, TWO_PI);
+    ctx.fillStyle = '#7a7a7a';
+    ctx.fill();
+    ctx.strokeStyle = '#5a5a5a';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+
+    /* Segments — horizontal lines across body */
+    ctx.strokeStyle = 'rgba(90, 90, 90, 0.6)';
+    ctx.lineWidth = 0.5;
+    for (let i = -2; i <= 2; i++) {
+      const sx = i * size * 0.3;
+      ctx.beginPath();
+      ctx.moveTo(sx, -size * 0.6);
+      ctx.lineTo(sx, size * 0.6);
+      ctx.stroke();
+    }
+
+    /* Legs — animated with walking motion */
+    ctx.strokeStyle = '#6a6a6a';
+    ctx.lineWidth = 0.8;
+    const legCount = 7;
+    for (let i = 0; i < legCount; i++) {
+      const lx = (i - 3) * size * 0.3;
+      const phase = s.animPhase + i * 0.5;
+      const legSwing = Math.sin(phase) * 2;
+      /* Top legs */
+      ctx.beginPath();
+      ctx.moveTo(lx, -size * 0.7);
+      ctx.lineTo(lx + legSwing, -size * 1.3);
+      ctx.stroke();
+      /* Bottom legs */
+      ctx.beginPath();
+      ctx.moveTo(lx, size * 0.7);
+      ctx.lineTo(lx - legSwing, size * 1.3);
+      ctx.stroke();
+    }
+
+    /* Antennae */
+    ctx.strokeStyle = '#8a8a8a';
+    ctx.lineWidth = 0.6;
+    const antSwing = Math.sin(s.animPhase * 0.7) * 1.5;
+    ctx.beginPath();
+    ctx.moveTo(size * 1.2, -size * 0.3);
+    ctx.lineTo(size * 2, -size * 0.6 + antSwing);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(size * 1.2, size * 0.3);
+    ctx.lineTo(size * 2, size * 0.6 - antSwing);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+
+  /* ── Draw a moth (pūriri moth) ── */
+  function drawMoth(ctx: CanvasRenderingContext2D, m: Organism) {
+    const size = 7;
+    ctx.save();
+    ctx.translate(m.x, m.y);
+    ctx.rotate(m.heading);
+
+    /* Wing flap angle */
+    const wingFlap = Math.sin(m.wingPhase || 0) * 0.4;
+
+    /* Upper wings — large, triangular, green-tinged (pūriri moth is green) */
+    ctx.save();
+    ctx.rotate(wingFlap);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(-size * 0.5, -size * 2, -size * 1.8, -size * 1.2);
+    ctx.quadraticCurveTo(-size * 1.5, -size * 0.3, 0, 0);
+    ctx.fillStyle = 'rgba(80, 160, 80, 0.8)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(60, 130, 60, 0.6)';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    /* Wing pattern — lighter spots */
+    ctx.beginPath();
+    ctx.arc(-size * 0.8, -size * 0.9, size * 0.25, 0, TWO_PI);
+    ctx.fillStyle = 'rgba(120, 200, 100, 0.4)';
+    ctx.fill();
+    ctx.restore();
+
+    /* Lower upper wing (mirrored) */
+    ctx.save();
+    ctx.rotate(-wingFlap);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(-size * 0.5, size * 2, -size * 1.8, size * 1.2);
+    ctx.quadraticCurveTo(-size * 1.5, size * 0.3, 0, 0);
+    ctx.fillStyle = 'rgba(80, 160, 80, 0.8)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(60, 130, 60, 0.6)';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(-size * 0.8, size * 0.9, size * 0.25, 0, TWO_PI);
+    ctx.fillStyle = 'rgba(120, 200, 100, 0.4)';
+    ctx.fill();
+    ctx.restore();
+
+    /* Body — elongated oval */
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * 0.9, size * 0.3, 0, 0, TWO_PI);
+    ctx.fillStyle = '#5a4a30';
+    ctx.fill();
+
+    /* Head */
+    ctx.beginPath();
+    ctx.arc(size * 0.7, 0, size * 0.25, 0, TWO_PI);
+    ctx.fillStyle = '#5a4a30';
+    ctx.fill();
+
+    /* Antennae — feathery, characteristic of moths */
+    ctx.strokeStyle = '#7a6a50';
+    ctx.lineWidth = 0.6;
+    const antSwing = Math.sin((m.wingPhase || 0) * 0.5) * 1;
+    /* Left antenna */
+    ctx.beginPath();
+    ctx.moveTo(size * 0.8, -size * 0.15);
+    ctx.quadraticCurveTo(size * 1.3, -size * 0.8 + antSwing, size * 1.6, -size * 0.6 + antSwing);
+    ctx.stroke();
+    /* Feathering on left */
+    for (let i = 0; i < 3; i++) {
+      const t = 0.3 + i * 0.2;
+      const ax = lerp(size * 0.8, size * 1.6, t);
+      const ay = lerp(-size * 0.15, -size * 0.6 + antSwing, t);
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(ax - 1, ay - 2);
+      ctx.stroke();
+    }
+    /* Right antenna */
+    ctx.beginPath();
+    ctx.moveTo(size * 0.8, size * 0.15);
+    ctx.quadraticCurveTo(size * 1.3, size * 0.8 - antSwing, size * 1.6, size * 0.6 - antSwing);
+    ctx.stroke();
+    for (let i = 0; i < 3; i++) {
+      const t = 0.3 + i * 0.2;
+      const ax = lerp(size * 0.8, size * 1.6, t);
+      const ay = lerp(size * 0.15, size * 0.6 - antSwing, t);
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(ax - 1, ay + 2);
+      ctx.stroke();
+    }
+
+    /* Eyes — small, reflective */
+    ctx.beginPath();
+    ctx.arc(size * 0.85, -size * 0.12, 1.2, 0, TWO_PI);
+    ctx.fillStyle = 'rgba(255, 200, 100, 0.8)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(size * 0.85, size * 0.12, 1.2, 0, TWO_PI);
+    ctx.fillStyle = 'rgba(255, 200, 100, 0.8)';
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     Live stats update
+     ═══════════════════════════════════════════════════════════════════════ */
+  function updateStats() {
+    /* Kinesis stats — count organisms on each side + avg speed */
+    let dryCount = 0, dampCount = 0;
+    let drySpeedSum = 0, dampSpeedSum = 0;
+
+    slaters.forEach(s => {
+      const mf = moistureFactor(s.x, kinesisW);
+      if (mf < 0.5) {
+        dryCount++;
+        drySpeedSum += 2.0 - mf * 1.6;
+      } else {
+        dampCount++;
+        dampSpeedSum += 2.0 - mf * 1.6;
+      }
+    });
+
+    $.kinesisDryCount.textContent = String(dryCount);
+    $.kinesisDampCount.textContent = String(dampCount);
+    $.kinesisDrySpeed.textContent = dryCount > 0
+      ? (drySpeedSum / dryCount).toFixed(1) + '×'
+      : '—';
+    $.kinesisDampSpeed.textContent = dampCount > 0
+      ? (dampSpeedSum / dampCount).toFixed(1) + '×'
+      : '—';
+
+    /* Taxis stats */
+    let nearCount = 0, farCount = 0, arrivedCount = 0;
+    let bearingErrorSum = 0;
+
+    moths.forEach(m => {
+      const dx = lightX - m.x;
+      const dy = lightY - m.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const idealAngle = Math.atan2(dy, dx);
+      const bearingError = Math.abs(normAngle(idealAngle - m.heading));
+
+      if (dist < taxisW * 0.3) {
+        nearCount++;
+      } else {
+        farCount++;
+      }
+      if (m.orbiting) arrivedCount++;
+      bearingErrorSum += bearingError;
+    });
+
+    $.taxisNearCount.textContent = String(nearCount);
+    $.taxisFarCount.textContent = String(farCount);
+    $.taxisArrived.textContent = String(arrivedCount);
+    $.taxisBearing.textContent = moths.length > 0
+      ? (bearingErrorSum / moths.length * 180 / PI).toFixed(0) + '°'
+      : '—';
+  }
+</script>
