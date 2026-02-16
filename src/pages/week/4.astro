@@ -1,0 +1,2360 @@
+---
+/* ==========================================================================
+   Week 4 — Taxes & Kineses: Consolidation
+   AS 91603: Responses of plants and animals to their external environment
+
+   Lesson 1: Textbook questions exercise (fully built)
+   Lesson 2: Pheromones (placeholder)
+   Lessons 3–4: Navigation (placeholder)
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Week 4: Taxes & Kineses Consolidation — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 4</span>
+        <h1 class="week-title">Taxes &amp; Kineses: Consolidation</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91603</span>
+        <span class="badge badge--desc">Responses of plants and animals to their external environment</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Textbook Questions</a>
+      <a href="#lesson-2" class="week-nav__link week-nav__link--disabled">Lesson 2: Pheromones</a>
+      <a href="#lesson-3" class="week-nav__link week-nav__link--disabled">Lessons 3–4: Navigation</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: Textbook Questions Exercise
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <h2>Lesson 1: Taxes &amp; Kineses — Textbook Questions</h2>
+
+          <p class="section-intro">
+            Work through these questions to consolidate your understanding of taxes and kineses.
+            Type your answers below, then download as a PDF to submit via Teams.
+          </p>
+
+          <!-- Student name input -->
+          <div class="student-name-row">
+            <label for="student-name" class="student-name-label">Your name</label>
+            <input type="text" id="student-name" class="text-input" placeholder="Enter your name for the PDF header" />
+          </div>
+
+
+          <!-- ============================================================
+               Section A: Kineses
+               ============================================================ -->
+          <div class="question-section">
+            <h3 class="question-section__title">Section A — Kineses</h3>
+
+            <!-- Q1 -->
+            <div class="question-card" data-q="1">
+              <div class="question-card__header">
+                <span class="question-number">1</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">Define the term 'kinesis'.</p>
+              <textarea class="answer-input answer-input--short" data-answer="1" placeholder="Type your answer..." rows="3"></textarea>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card" data-q="2">
+              <div class="question-card__header">
+                <span class="question-number">2</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">Outline the difference between an 'orthokinesis' and a 'klinokinesis'.</p>
+              <textarea class="answer-input answer-input--short" data-answer="2" placeholder="Type your answer..." rows="3"></textarea>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card" data-q="3">
+              <div class="question-card__header">
+                <span class="question-number">3</span>
+                <span class="question-type-badge question-type-badge--long">Extended answer</span>
+              </div>
+              <p class="question-text">
+                Explain why the term positive or negative must be stated prior to a taxic movement,
+                but not in a kinesis movement.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="3" placeholder="Type your answer..." rows="5"></textarea>
+            </div>
+
+            <!-- Q4: Woodlouse Petri dish experiment -->
+            <div class="question-card" data-q="4">
+              <div class="question-card__header">
+                <span class="question-number">4</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <div class="question-context">
+                <p>
+                  Woodlice are a terrestrial crustacean that prefer humid (moist/damp) environments as
+                  they are prone to desiccation (drying out). An experiment was carried out where one
+                  Petri dish was placed in humid conditions and the other was placed in dry conditions.
+                  The results are shown in the diagrams below. The path of the woodlouse inside a Petri
+                  dish was tracked and its position was recorded with a cross every 15 seconds.
+                </p>
+              </div>
+
+              <!-- SVG: Petri dish diagrams -->
+              <div class="diagram-row">
+                <div class="diagram-container">
+                  <span class="diagram-label">Plate A</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="Plate A: woodlouse path showing many turns and direction changes across the entire dish">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Scattered path with many turns — dry conditions -->
+                    <polyline points="60,40 80,55 65,75 90,70 110,50 130,65 120,90 140,100 125,120 145,135 120,140 100,125 80,140 60,130 75,110 55,95 70,80 50,60 75,50 95,40"
+                      fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                    <!-- Crosses marking positions -->
+                    <g fill="var(--fluoro-cyan)" font-size="10" text-anchor="middle">
+                      <text x="60" y="43">x</text><text x="80" y="58">x</text><text x="65" y="78">x</text>
+                      <text x="90" y="73">x</text><text x="110" y="53">x</text><text x="130" y="68">x</text>
+                      <text x="120" y="93">x</text><text x="140" y="103">x</text><text x="125" y="123">x</text>
+                      <text x="145" y="138">x</text><text x="120" y="143">x</text><text x="100" y="128">x</text>
+                      <text x="80" y="143">x</text><text x="60" y="133">x</text><text x="75" y="113">x</text>
+                      <text x="55" y="98">x</text><text x="70" y="83">x</text><text x="50" y="63">x</text>
+                    </g>
+                  </svg>
+                </div>
+                <div class="diagram-container">
+                  <span class="diagram-label">Plate B</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="Plate B: woodlouse path showing small clustered movements in one area of the dish">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Clustered path — humid conditions, slow movement in small area -->
+                    <polyline points="90,85 95,90 88,95 92,100 87,105 93,98 96,103 90,108 94,112 89,107 95,102 91,96 97,92 93,88 98,94 95,100"
+                      fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                    <g fill="var(--accent)" font-size="10" text-anchor="middle">
+                      <text x="90" y="88">x</text><text x="95" y="93">x</text><text x="88" y="98">x</text>
+                      <text x="92" y="103">x</text><text x="87" y="108">x</text><text x="93" y="101">x</text>
+                      <text x="96" y="106">x</text><text x="90" y="111">x</text><text x="94" y="115">x</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Q4a -->
+              <div class="sub-question">
+                <span class="sub-label">(a)</span>
+                <p class="question-text">Identify which plate is set in dry conditions.</p>
+                <div class="mcq-group" data-answer="4a">
+                  <label class="mcq-option">
+                    <input type="radio" name="q4a" value="Plate A" />
+                    <span class="mcq-option__label">Plate A</span>
+                  </label>
+                  <label class="mcq-option">
+                    <input type="radio" name="q4a" value="Plate B" />
+                    <span class="mcq-option__label">Plate B</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q4b -->
+              <div class="sub-question">
+                <span class="sub-label">(b)</span>
+                <p class="question-text">
+                  Based on the observed results, state whether the woodlouse showed orthokinesis,
+                  klinokinesis or both.
+                </p>
+                <div class="mcq-group" data-answer="4b">
+                  <label class="mcq-option">
+                    <input type="radio" name="q4b" value="Orthokinesis" />
+                    <span class="mcq-option__label">Orthokinesis</span>
+                  </label>
+                  <label class="mcq-option">
+                    <input type="radio" name="q4b" value="Klinokinesis" />
+                    <span class="mcq-option__label">Klinokinesis</span>
+                  </label>
+                  <label class="mcq-option">
+                    <input type="radio" name="q4b" value="Both" />
+                    <span class="mcq-option__label">Both</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q4c -->
+              <div class="sub-question">
+                <span class="sub-label">(c)</span>
+                <p class="question-text">Justify your answer for both (a) and (b).</p>
+                <textarea class="answer-input answer-input--long" data-answer="4c" placeholder="Type your answer..." rows="5"></textarea>
+              </div>
+
+              <!-- Q4d -->
+              <div class="sub-question">
+                <span class="sub-label">(d)</span>
+                <p class="question-text">Describe the adaptive advantage of the response shown by the woodlouse.</p>
+                <textarea class="answer-input answer-input--long" data-answer="4d" placeholder="Type your answer..." rows="4"></textarea>
+              </div>
+            </div>
+
+            <!-- Q5: Body lice experiment -->
+            <div class="question-card" data-q="5">
+              <div class="question-card__header">
+                <span class="question-number">5</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <div class="question-context">
+                <p>
+                  Human body lice (<em>Pediculus humanus</em>) prefer to live in an environment with
+                  a temperature of 30°C, similar to that found on human skin. In 1941, British
+                  entomologist Vincent Wigglesworth studied the sensory physiology of the human body
+                  louse. He set up a Petri dish at 35°C and another plate at 30°C. The diagrams below
+                  show a summary of his results.
+                </p>
+              </div>
+
+              <!-- SVG: Lice Petri dish diagrams -->
+              <div class="diagram-row">
+                <div class="diagram-container">
+                  <span class="diagram-label">30°C</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="30°C plate: louse tracks show a small, tight cluster of movements near the centre">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Tight, small movements — preferred temperature -->
+                    <path d="M95,95 Q100,90 105,95 Q110,100 105,105 Q100,110 95,105 Q90,100 95,95 M98,97 Q102,93 106,97 Q108,102 104,106 Q100,108 96,104 Q94,100 98,97"
+                      fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                    <text x="100" y="85" fill="var(--text-muted)" font-size="8" text-anchor="middle">Louse tracks</text>
+                  </svg>
+                </div>
+                <div class="diagram-container">
+                  <span class="diagram-label">35°C</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="35°C plate: louse tracks are scattered widely across the dish with many random turns">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Scattered, wide movements with many turns — unfavourable temperature -->
+                    <path d="M50,60 L75,45 L95,65 L80,85 L110,75 L130,55 L150,70 L135,95 L155,110 L140,130 L115,120 L130,145 L105,140 L85,155 L70,135 L55,145 L45,120 L65,105 L50,85 L70,70"
+                      fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+                    <text x="100" y="170" fill="var(--text-muted)" font-size="8" text-anchor="middle">Louse tracks</text>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Q5a -->
+              <div class="sub-question">
+                <span class="sub-label">(a)</span>
+                <p class="question-text">
+                  Based on the observed results, state whether the body louse shows orthokinesis,
+                  klinokinesis or both.
+                </p>
+                <div class="mcq-group" data-answer="5a">
+                  <label class="mcq-option">
+                    <input type="radio" name="q5a" value="Orthokinesis" />
+                    <span class="mcq-option__label">Orthokinesis</span>
+                  </label>
+                  <label class="mcq-option">
+                    <input type="radio" name="q5a" value="Klinokinesis" />
+                    <span class="mcq-option__label">Klinokinesis</span>
+                  </label>
+                  <label class="mcq-option">
+                    <input type="radio" name="q5a" value="Both" />
+                    <span class="mcq-option__label">Both</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Q5b -->
+              <div class="sub-question">
+                <span class="sub-label">(b)</span>
+                <p class="question-text">Justify your answer to (a).</p>
+                <textarea class="answer-input answer-input--long" data-answer="5b" placeholder="Type your answer..." rows="5"></textarea>
+              </div>
+            </div>
+
+            <!-- Q6: Spiny rock lobsters -->
+            <div class="question-card" data-q="6">
+              <div class="question-card__header">
+                <span class="question-number">6</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <div class="question-context">
+                <p>
+                  Spiny rock lobsters (crayfish) will move backwards into crevices and caves until
+                  their body is touching the back wall of the crevice/cave.
+                </p>
+              </div>
+
+              <!-- Q6a -->
+              <div class="sub-question">
+                <span class="sub-label">(a)</span>
+                <p class="question-text">Name this type of response.</p>
+                <input type="text" class="text-input" data-answer="6a" placeholder="Type your answer..." />
+              </div>
+
+              <!-- Q6b -->
+              <div class="sub-question">
+                <span class="sub-label">(b)</span>
+                <p class="question-text">Describe the adaptive advantage of this response.</p>
+                <textarea class="answer-input answer-input--long" data-answer="6b" placeholder="Type your answer..." rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ============================================================
+               Section B: Taxes & Kineses
+               ============================================================ -->
+          <div class="question-section">
+            <h3 class="question-section__title">Section B — Taxes &amp; Kineses</h3>
+
+            <p class="section-intro">
+              Study the six examples (A–F) below, then answer the questions that follow.
+            </p>
+
+            <!-- Scenario cards A–F -->
+            <div class="scenario-grid">
+              <!-- A: Snail -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">A</span>
+                  <span class="scenario-organism">Snail</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Simplified snail on vertical surface -->
+                    <ellipse cx="45" cy="55" rx="18" ry="12" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.7"/>
+                    <path d="M40,43 Q35,25 45,20 Q55,15 55,30 Q55,40 45,43" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="35" y1="55" x2="35" y2="70" stroke="var(--border-default)" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="40" y="78" fill="var(--text-muted)" font-size="6" text-anchor="middle">vertical surface</text>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  When confronted with a vertical surface, snails will reorientate themselves so that
+                  they climb vertically upwards. The adaptive advantage of this may be to help the
+                  snail find food or shelter, or to avoid overly wet surfaces.
+                </p>
+              </div>
+
+              <!-- B: Male moth -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">B</span>
+                  <span class="scenario-organism">Male moth</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Female moth (small) and male moth following pheromone trail -->
+                    <text x="15" y="20" fill="var(--text-muted)" font-size="6">Female</text>
+                    <circle cx="15" cy="28" r="4" fill="none" stroke="var(--fluoro-pink)" stroke-width="1"/>
+                    <!-- Pheromone trail -->
+                    <path d="M20,28 Q35,30 50,40 Q60,50 65,60" fill="none" stroke="var(--fluoro-pink)" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <!-- Male moth -->
+                    <path d="M60,58 L68,52 L65,60 L72,60 L65,64 L68,70 L60,64 Z" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2"/>
+                    <text x="65" y="78" fill="var(--text-muted)" font-size="6" text-anchor="middle">Male</text>
+                    <!-- Arrow showing direction -->
+                    <path d="M58,56 L52,48" stroke="var(--fluoro-cyan)" stroke-width="1" marker-end="url(#arrowhead)"/>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  A flying male moth, encountering an odour (pheromone) trail left by a female, will
+                  turn and fly upwind until it reaches the female. This behaviour increases the chances
+                  of the male moth mating and passing on its genes to the next generation.
+                </p>
+              </div>
+
+              <!-- C: Human body louse -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">C</span>
+                  <span class="scenario-organism">Human body louse</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Two circles representing petri dishes -->
+                    <circle cx="25" cy="40" r="18" fill="none" stroke="var(--border-default)" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="25" y="20" fill="var(--text-muted)" font-size="6" text-anchor="middle">35°C</text>
+                    <!-- Scattered path in 35°C -->
+                    <path d="M18,35 L28,30 L35,38 L22,45 L30,50 L20,48" fill="none" stroke="var(--fluoro-cyan)" stroke-width="0.8" opacity="0.6"/>
+                    <circle cx="55" cy="40" r="18" fill="none" stroke="var(--border-default)" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="55" y="20" fill="var(--text-muted)" font-size="6" text-anchor="middle">30°C</text>
+                    <!-- Tight path in 30°C -->
+                    <circle cx="55" cy="40" r="4" fill="none" stroke="var(--accent)" stroke-width="0.8" opacity="0.6"/>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  In a circular chamber, lice make relatively few turns at their preferred temperature
+                  of 30°C, but many random turns at 35°C. This response enables the lice to increase
+                  their chances of finding favourable conditions and remaining in them once found.
+                </p>
+              </div>
+
+              <!-- D: Spiny lobster -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">D</span>
+                  <span class="scenario-organism">Spiny lobster</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Lobster backing into a crevice -->
+                    <rect x="55" y="15" width="20" height="55" fill="var(--surface-2)" stroke="var(--border-default)" stroke-width="1" rx="2"/>
+                    <text x="65" y="12" fill="var(--text-muted)" font-size="5" text-anchor="middle">crevice</text>
+                    <!-- Lobster body -->
+                    <ellipse cx="45" cy="42" rx="15" ry="8" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2"/>
+                    <!-- Antennae -->
+                    <line x1="30" y1="38" x2="15" y2="28" stroke="var(--fluoro-cyan)" stroke-width="1"/>
+                    <line x1="30" y1="46" x2="15" y2="56" stroke="var(--fluoro-cyan)" stroke-width="1"/>
+                    <!-- Arrow showing backward movement -->
+                    <path d="M52,42 L60,42" stroke="var(--fluoro-cyan)" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  Spiny lobsters will back into tight crevices so that their body is touching the
+                  crevice sides. The antennae may be extended out. Behaving in such a way gives the
+                  lobsters greater protection from predators.
+                </p>
+              </div>
+
+              <!-- E: Mosquito -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">E</span>
+                  <span class="scenario-organism">Mosquito</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Human silhouette with heat gradient -->
+                    <ellipse cx="30" cy="30" rx="8" ry="10" fill="none" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                    <rect x="26" y="40" width="8" height="20" fill="none" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                    <!-- Heat waves -->
+                    <path d="M42,25 Q45,20 48,25" fill="none" stroke="var(--fluoro-pink)" stroke-width="0.8" opacity="0.4"/>
+                    <path d="M44,30 Q47,25 50,30" fill="none" stroke="var(--fluoro-pink)" stroke-width="0.8" opacity="0.3"/>
+                    <!-- Mosquito approaching -->
+                    <circle cx="62" cy="35" r="3" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1"/>
+                    <line x1="59" y1="35" x2="50" y2="32" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-dasharray="2 2"/>
+                    <path d="M52,33 L48,31" stroke="var(--fluoro-cyan)" stroke-width="1" marker-end="url(#arrowhead)"/>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  At close range, mosquitoes use the temperature gradient generated by the body heat
+                  of a host to locate exposed flesh. This allows the female to find the blood needed
+                  for the development of eggs.
+                </p>
+              </div>
+
+              <!-- F: Blowfly maggots -->
+              <div class="scenario-card">
+                <div class="scenario-card__header">
+                  <span class="scenario-letter">F</span>
+                  <span class="scenario-organism">Blowfly maggots</span>
+                </div>
+                <div class="scenario-card__icon">
+                  <svg viewBox="0 0 80 80" class="scenario-svg" aria-hidden="true">
+                    <!-- Sun/light source -->
+                    <circle cx="65" cy="15" r="6" fill="none" stroke="var(--yellow-vivid, #fbbf24)" stroke-width="1.2"/>
+                    <line x1="65" y1="24" x2="65" y2="30" stroke="var(--yellow-vivid, #fbbf24)" stroke-width="0.8"/>
+                    <line x1="56" y1="20" x2="52" y2="24" stroke="var(--yellow-vivid, #fbbf24)" stroke-width="0.8"/>
+                    <text x="65" y="10" fill="var(--text-muted)" font-size="5" text-anchor="middle">light</text>
+                    <!-- Light rays downward -->
+                    <line x1="60" y1="22" x2="40" y2="45" stroke="var(--yellow-vivid, #fbbf24)" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="65" y1="24" x2="50" y2="50" stroke="var(--yellow-vivid, #fbbf24)" stroke-width="0.5" opacity="0.3"/>
+                    <!-- Maggots moving away -->
+                    <ellipse cx="30" cy="55" rx="5" ry="2" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1"/>
+                    <ellipse cx="22" cy="62" rx="5" ry="2" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" transform="rotate(-20 22 62)"/>
+                    <!-- Arrows showing movement away from light -->
+                    <path d="M25,55 L18,55" stroke="var(--fluoro-cyan)" stroke-width="1" marker-end="url(#arrowhead)"/>
+                    <path d="M17,62 L10,65" stroke="var(--fluoro-cyan)" stroke-width="1" marker-end="url(#arrowhead)"/>
+                  </svg>
+                </div>
+                <p class="scenario-card__desc">
+                  Blowfly maggots will turn and move rapidly away from a directional light source.
+                  Light usually indicates hot dry areas and the maggots avoid predators and desiccation
+                  (drying out) by avoiding the light.
+                </p>
+              </div>
+            </div>
+
+            <!-- SVG defs for arrowheads (shared) -->
+            <svg style="position:absolute;width:0;height:0;">
+              <defs>
+                <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                  <polygon points="0 0, 6 2, 0 4" fill="var(--fluoro-cyan)"/>
+                </marker>
+              </defs>
+            </svg>
+
+            <!-- Q7 -->
+            <div class="question-card" data-q="7">
+              <div class="question-card__header">
+                <span class="question-number">7</span>
+                <span class="question-type-badge question-type-badge--long">Extended answer</span>
+              </div>
+              <p class="question-text">
+                Distinguish between a <strong>kinesis</strong> and a <strong>taxis</strong>,
+                describing examples to illustrate your answer.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="7" placeholder="Type your answer..." rows="6"></textarea>
+            </div>
+
+            <!-- Q8 -->
+            <div class="question-card" data-q="8">
+              <div class="question-card__header">
+                <span class="question-number">8</span>
+                <span class="question-type-badge question-type-badge--long">Extended answer</span>
+              </div>
+              <p class="question-text">
+                Describe the adaptive value of simple orientation behaviours such as kineses.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="8" placeholder="Type your answer..." rows="5"></textarea>
+            </div>
+
+            <!-- Q9: Prefixes -->
+            <div class="question-card" data-q="9">
+              <div class="question-card__header">
+                <span class="question-number">9</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">
+                Name the physical stimulus for each of the following <strong>prefixes</strong>
+                used in naming orientation responses:
+              </p>
+              <div class="prefix-grid">
+                <div class="prefix-item">
+                  <span class="prefix-label">(a) Gravi-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9a" placeholder="..." />
+                </div>
+                <div class="prefix-item">
+                  <span class="prefix-label">(b) Hydro-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9b" placeholder="..." />
+                </div>
+                <div class="prefix-item">
+                  <span class="prefix-label">(c) Thigmo-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9c" placeholder="..." />
+                </div>
+                <div class="prefix-item">
+                  <span class="prefix-label">(d) Photo-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9d" placeholder="..." />
+                </div>
+                <div class="prefix-item">
+                  <span class="prefix-label">(e) Chemo-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9e" placeholder="..." />
+                </div>
+                <div class="prefix-item">
+                  <span class="prefix-label">(f) Thermo-</span>
+                  <input type="text" class="text-input text-input--short" data-answer="9f" placeholder="..." />
+                </div>
+              </div>
+            </div>
+
+            <!-- Q10: Examples A-F identification -->
+            <div class="question-card" data-q="10">
+              <div class="question-card__header">
+                <span class="question-number">10</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">
+                For each of the above examples (<strong>A–F</strong>), describe the orientation
+                response and whether it is positive or negative:
+              </p>
+              <div class="example-grid">
+                <div class="example-item">
+                  <span class="example-label-letter">(a) A:</span>
+                  <input type="text" class="text-input" data-answer="10a" placeholder="e.g. Positive gravitaxis..." />
+                </div>
+                <div class="example-item">
+                  <span class="example-label-letter">(b) B:</span>
+                  <input type="text" class="text-input" data-answer="10b" placeholder="e.g. Positive chemotaxis..." />
+                </div>
+                <div class="example-item">
+                  <span class="example-label-letter">(c) C:</span>
+                  <input type="text" class="text-input" data-answer="10c" placeholder="e.g. Thermokinesis..." />
+                </div>
+                <div class="example-item">
+                  <span class="example-label-letter">(d) D:</span>
+                  <input type="text" class="text-input" data-answer="10d" placeholder="e.g. Positive thigmotaxis..." />
+                </div>
+                <div class="example-item">
+                  <span class="example-label-letter">(e) E:</span>
+                  <input type="text" class="text-input" data-answer="10e" placeholder="e.g. Positive thermotaxis..." />
+                </div>
+                <div class="example-item">
+                  <span class="example-label-letter">(f) F:</span>
+                  <input type="text" class="text-input" data-answer="10f" placeholder="e.g. Negative phototaxis..." />
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ============================================================
+               Section C: Kinesis in Woodlice
+               ============================================================ -->
+          <div class="question-section">
+            <h3 class="question-section__title">Section C — Kinesis in Woodlice</h3>
+
+            <!-- Context: Woodlice kinesis info + graph -->
+            <div class="question-card" data-q="11">
+              <div class="question-card__header">
+                <span class="question-number">11</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <div class="question-context">
+                <p>
+                  Woodlice are commonly found living in damp conditions under logs or bark. Many of the
+                  behavioural responses of woodlice are concerned with retaining moisture. Unlike most
+                  other terrestrial arthropods, they lack a waterproof cuticle, so water can diffuse
+                  through the exoskeleton, making them vulnerable to drying out. When exposed to low
+                  humidity, or high temperature or high light levels, woodlice show a kinesis response
+                  to return them to their preferred, high humidity environment.
+                </p>
+              </div>
+
+              <!-- SVG: Woodlice kinesis graph -->
+              <div class="graph-container">
+                <svg viewBox="0 0 420 260" class="graph-svg" aria-label="Graph showing woodlice kinesis data: number of turnings per hour, speed, and percentage of time at rest plotted against relative humidity from 0 to 100%">
+                  <!-- Background grid -->
+                  <g stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3">
+                    <line x1="60" y1="30" x2="60" y2="220"/><line x1="60" y1="220" x2="380" y2="220"/>
+                    <!-- Horizontal gridlines -->
+                    <line x1="60" y1="68" x2="380" y2="68" stroke-dasharray="3 3"/>
+                    <line x1="60" y1="106" x2="380" y2="106" stroke-dasharray="3 3"/>
+                    <line x1="60" y1="144" x2="380" y2="144" stroke-dasharray="3 3"/>
+                    <line x1="60" y1="182" x2="380" y2="182" stroke-dasharray="3 3"/>
+                  </g>
+
+                  <!-- Y-axis labels (left): Number of turnings per hour / Speed (mm per min) -->
+                  <text x="12" y="125" fill="var(--text-muted)" font-size="7" text-anchor="middle" transform="rotate(-90 12 125)">Number of turnings per hour / Speed (mm per min)</text>
+                  <!-- Y-axis scale (left) -->
+                  <text x="55" y="223" fill="var(--text-secondary)" font-size="8" text-anchor="end">0</text>
+                  <text x="55" y="185" fill="var(--text-secondary)" font-size="8" text-anchor="end">50</text>
+                  <text x="55" y="147" fill="var(--text-secondary)" font-size="8" text-anchor="end">100</text>
+                  <text x="55" y="109" fill="var(--text-secondary)" font-size="8" text-anchor="end">150</text>
+                  <text x="55" y="71" fill="var(--text-secondary)" font-size="8" text-anchor="end">200</text>
+                  <text x="55" y="33" fill="var(--text-secondary)" font-size="8" text-anchor="end">350</text>
+
+                  <!-- Y-axis labels (right): % of time at rest -->
+                  <text x="408" y="125" fill="var(--text-muted)" font-size="7" text-anchor="middle" transform="rotate(90 408 125)">% of time at rest</text>
+                  <!-- Y-axis scale (right) -->
+                  <text x="385" y="223" fill="var(--text-secondary)" font-size="8" text-anchor="start">0</text>
+                  <text x="385" y="185" fill="var(--text-secondary)" font-size="8" text-anchor="start">5</text>
+                  <text x="385" y="147" fill="var(--text-secondary)" font-size="8" text-anchor="start">10</text>
+                  <text x="385" y="109" fill="var(--text-secondary)" font-size="8" text-anchor="start">15</text>
+                  <text x="385" y="71" fill="var(--text-secondary)" font-size="8" text-anchor="start">20</text>
+                  <text x="385" y="33" fill="var(--text-secondary)" font-size="8" text-anchor="start">40</text>
+
+                  <!-- X-axis labels -->
+                  <text x="220" y="250" fill="var(--text-muted)" font-size="8" text-anchor="middle">Relative humidity</text>
+                  <text x="92" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">10</text>
+                  <text x="124" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">20</text>
+                  <text x="156" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">30</text>
+                  <text x="188" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">40</text>
+                  <text x="220" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">50</text>
+                  <text x="252" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">60</text>
+                  <text x="284" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">70</text>
+                  <text x="316" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">80</text>
+                  <text x="348" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">90</text>
+                  <text x="380" y="237" fill="var(--text-secondary)" font-size="8" text-anchor="middle">100</text>
+
+                  <!-- Data: Number of turnings (solid line with dots) -->
+                  <!-- Values approx: 10%=350, 20%=300, 30%=280, 40%=250, 50%=230, 60%=250, 70%=300, 80%=60, 90%=50, 100%=40 -->
+                  <polyline points="92,33 124,47 156,53 188,62 220,68 252,62 284,47 316,170 348,178 380,185"
+                    fill="none" stroke="var(--fluoro-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g fill="var(--fluoro-cyan)">
+                    <circle cx="92" cy="33" r="3"/><circle cx="124" cy="47" r="3"/><circle cx="156" cy="53" r="3"/>
+                    <circle cx="188" cy="62" r="3"/><circle cx="220" cy="68" r="3"/><circle cx="252" cy="62" r="3"/>
+                    <circle cx="284" cy="47" r="3"/><circle cx="316" cy="170" r="3"/><circle cx="348" cy="178" r="3"/>
+                    <circle cx="380" cy="185" r="3"/>
+                  </g>
+
+                  <!-- Data: Speed (dashed line with dots) -->
+                  <!-- Values approx: 10%=300, 20%=250, 30%=220, 40%=200, 50%=180, 60%=200, 70%=250, 80%=50, 90%=40, 100%=30 -->
+                  <polyline points="92,47 124,62 156,72 188,80 220,88 252,80 284,62 316,182 348,188 380,192"
+                    fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4"/>
+                  <g fill="var(--accent)">
+                    <circle cx="92" cy="47" r="3"/><circle cx="124" cy="62" r="3"/><circle cx="156" cy="72" r="3"/>
+                    <circle cx="188" cy="80" r="3"/><circle cx="220" cy="88" r="3"/><circle cx="252" cy="80" r="3"/>
+                    <circle cx="284" cy="62" r="3"/><circle cx="316" cy="182" r="3"/><circle cx="348" cy="188" r="3"/>
+                    <circle cx="380" cy="192" r="3"/>
+                  </g>
+
+                  <!-- Data: % time at rest (dotted line with squares) -->
+                  <!-- Values approx: 10%=0, 20%=2, 30%=3, 40%=4, 50%=5, 60%=5, 70%=8, 80%=25, 90%=30, 100%=40 -->
+                  <polyline points="92,220 124,214 156,211 188,208 220,204 252,204 284,196 316,143 348,128 380,33"
+                    fill="none" stroke="var(--fluoro-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4"/>
+                  <g fill="var(--fluoro-pink)">
+                    <rect x="89" y="217" width="6" height="6" rx="1"/><rect x="121" y="211" width="6" height="6" rx="1"/>
+                    <rect x="153" y="208" width="6" height="6" rx="1"/><rect x="185" y="205" width="6" height="6" rx="1"/>
+                    <rect x="217" y="201" width="6" height="6" rx="1"/><rect x="249" y="201" width="6" height="6" rx="1"/>
+                    <rect x="281" y="193" width="6" height="6" rx="1"/><rect x="313" y="140" width="6" height="6" rx="1"/>
+                    <rect x="345" y="125" width="6" height="6" rx="1"/><rect x="377" y="30" width="6" height="6" rx="1"/>
+                  </g>
+
+                  <!-- Legend -->
+                  <g transform="translate(80, 5)">
+                    <line x1="0" y1="8" x2="20" y2="8" stroke="var(--fluoro-cyan)" stroke-width="2"/>
+                    <circle cx="10" cy="8" r="2.5" fill="var(--fluoro-cyan)"/>
+                    <text x="25" y="11" fill="var(--text-secondary)" font-size="7">Number of turnings</text>
+
+                    <line x1="140" y1="8" x2="160" y2="8" stroke="var(--accent)" stroke-width="2" stroke-dasharray="8 4"/>
+                    <circle cx="150" cy="8" r="2.5" fill="var(--accent)"/>
+                    <text x="165" y="11" fill="var(--text-secondary)" font-size="7">Speed</text>
+
+                    <line x1="210" y1="8" x2="230" y2="8" stroke="var(--fluoro-pink)" stroke-width="2" stroke-dasharray="2 4"/>
+                    <rect x="217" y="5" width="5" height="5" rx="1" fill="var(--fluoro-pink)"/>
+                    <text x="235" y="11" fill="var(--text-secondary)" font-size="7">% of time at rest</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Q11: questions about the graph -->
+              <p class="question-text" style="margin-top: var(--space-4);">
+                Use the data on woodlice above to answer the following questions:
+              </p>
+
+              <!-- Q11a -->
+              <div class="sub-question">
+                <span class="sub-label">(a)</span>
+                <p class="question-text">At which relative humidities do the following occur:</p>
+                <div class="prefix-grid">
+                  <div class="prefix-item prefix-item--wide">
+                    <span class="prefix-label">i. Largest number of turnings per hour:</span>
+                    <input type="text" class="text-input text-input--short" data-answer="11ai" placeholder="..." />
+                  </div>
+                  <div class="prefix-item prefix-item--wide">
+                    <span class="prefix-label">ii. Highest speed of movement:</span>
+                    <input type="text" class="text-input text-input--short" data-answer="11aii" placeholder="..." />
+                  </div>
+                  <div class="prefix-item prefix-item--wide">
+                    <span class="prefix-label">iii. Largest percentage of time at rest:</span>
+                    <input type="text" class="text-input text-input--short" data-answer="11aiii" placeholder="..." />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q11b -->
+              <div class="sub-question">
+                <span class="sub-label">(b)</span>
+                <p class="question-text">Explain the significance of these movements.</p>
+                <textarea class="answer-input answer-input--long" data-answer="11b" placeholder="Type your answer..." rows="5"></textarea>
+              </div>
+
+              <!-- Q11c -->
+              <div class="sub-question">
+                <span class="sub-label">(c)</span>
+                <p class="question-text">What is the preferred range of relative humidity for the woodlouse?</p>
+                <input type="text" class="text-input" data-answer="11c" placeholder="Type your answer..." />
+              </div>
+            </div>
+
+            <!-- Q12: Nematode plates -->
+            <div class="question-card" data-q="12">
+              <div class="question-card__header">
+                <span class="question-number">12</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <div class="question-context">
+                <p>
+                  The diagrams on the right show the movement of nematodes on plates where a salt
+                  (NH<sub>4</sub>Cl) was added (<strong>A</strong>) and on a plate where no NH<sub>4</sub>Cl
+                  was added (<strong>B</strong>).
+                </p>
+              </div>
+
+              <!-- SVG: Nematode plates -->
+              <div class="diagram-row">
+                <div class="diagram-container">
+                  <span class="diagram-label">Plate A (NH₄Cl added)</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="Plate A: nematodes cluster around the drop of NH4Cl in the top right, moving towards it from the bottom left where they were added">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Drop of NH4Cl -->
+                    <circle cx="140" cy="55" r="8" fill="rgba(0, 255, 136, 0.15)" stroke="var(--accent)" stroke-width="1"/>
+                    <text x="140" y="40" fill="var(--text-muted)" font-size="7" text-anchor="middle">Drop of NH₄Cl</text>
+                    <!-- Nematodes added position -->
+                    <text x="60" y="170" fill="var(--text-muted)" font-size="7" text-anchor="middle">Nematodes added</text>
+                    <circle cx="60" cy="155" r="5" fill="none" stroke="var(--border-default)" stroke-width="0.8"/>
+                    <!-- Nematode tracks moving toward salt -->
+                    <path d="M65,150 Q80,130 95,110 Q110,90 130,65" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M60,148 Q75,125 100,105 Q120,85 135,60" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M68,152 Q85,135 105,115 Q125,95 138,62" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <!-- Clustered nematodes near salt -->
+                    <g fill="var(--fluoro-cyan)" opacity="0.5">
+                      <ellipse cx="135" cy="60" rx="3" ry="1" transform="rotate(-30 135 60)"/>
+                      <ellipse cx="130" cy="55" rx="3" ry="1" transform="rotate(20 130 55)"/>
+                      <ellipse cx="142" cy="50" rx="3" ry="1" transform="rotate(-10 142 50)"/>
+                      <ellipse cx="138" cy="65" rx="3" ry="1" transform="rotate(40 138 65)"/>
+                      <ellipse cx="145" cy="58" rx="3" ry="1" transform="rotate(-45 145 58)"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="diagram-container">
+                  <span class="diagram-label">Plate B (no NH₄Cl)</span>
+                  <svg viewBox="0 0 200 200" class="petri-svg" aria-label="Plate B: nematodes spread randomly from the point where they were added, showing no directional movement">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <!-- Nematodes added position -->
+                    <text x="100" y="170" fill="var(--text-muted)" font-size="7" text-anchor="middle">Nematodes added</text>
+                    <circle cx="100" cy="155" r="5" fill="none" stroke="var(--border-default)" stroke-width="0.8"/>
+                    <!-- Random spread from centre -->
+                    <path d="M100,150 Q95,140 85,130 Q75,120 70,110" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M102,148 Q110,135 120,125 Q130,115 135,105" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M98,150 Q90,145 80,145 Q70,145 65,140" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M103,150 Q108,140 115,138 Q125,136 130,135" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <path d="M100,148 Q98,135 100,120 Q102,110 100,100" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.6"/>
+                    <!-- Scattered nematodes -->
+                    <g fill="var(--fluoro-cyan)" opacity="0.5">
+                      <ellipse cx="70" cy="110" rx="3" ry="1" transform="rotate(-30 70 110)"/>
+                      <ellipse cx="135" cy="105" rx="3" ry="1" transform="rotate(20 135 105)"/>
+                      <ellipse cx="65" cy="140" rx="3" ry="1" transform="rotate(-60 65 140)"/>
+                      <ellipse cx="130" cy="135" rx="3" ry="1" transform="rotate(45 130 135)"/>
+                      <ellipse cx="100" cy="100" rx="3" ry="1" transform="rotate(10 100 100)"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Q12a -->
+              <div class="sub-question">
+                <span class="sub-label">(a)</span>
+                <p class="question-text">Describe the movements of the nematodes in plates A and B.</p>
+                <textarea class="answer-input answer-input--long" data-answer="12a" placeholder="Type your answer..." rows="5"></textarea>
+              </div>
+
+              <!-- Q12b -->
+              <div class="sub-question">
+                <span class="sub-label">(b)</span>
+                <p class="question-text">Name the orientation behaviour shown in plate A.</p>
+                <input type="text" class="text-input" data-answer="12b" placeholder="Type your answer..." />
+              </div>
+
+              <!-- Q12c -->
+              <div class="sub-question">
+                <span class="sub-label">(c)</span>
+                <p class="question-text">Describe an advantage of this kind of behaviour to nematodes.</p>
+                <textarea class="answer-input answer-input--long" data-answer="12c" placeholder="Type your answer..." rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ============================================================
+               Export Actions
+               ============================================================ -->
+          <div class="export-actions fade-in-up">
+            <button id="download-pdf" class="export-btn export-btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Download as PDF
+            </button>
+            <button id="copy-all" class="export-btn export-btn--secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Copy All Answers
+            </button>
+            <span id="copy-feedback" class="copy-feedback" hidden>Copied to clipboard</span>
+          </div>
+
+          <!-- Why we do this -->
+          <div class="why-section fade-in-up">
+            <div class="section-header-with-audio">
+              <h4 class="why-section__heading">Why are we doing this?</h4>
+              <button class="audio-btn" id="why-writing-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+            </div>
+            <p>
+              Good question. There are two reasons I want you to write your answers here
+              rather than just scribbling them in a notebook.
+            </p>
+            <p>
+              <strong>First, it gives you a record of your own thinking.</strong>
+              Once you download the PDF (or copy your answers into OneNote), you've got
+              a snapshot of how you explained these concepts <em>today</em>. Come back to
+              it in a few weeks and you'll be able to see how much clearer your writing
+              has become — that's genuinely useful revision.
+            </p>
+            <p>
+              <strong>Second, writing well matters in Biology.</strong>
+              The external exams reward clear, precise explanations. I'll be reading
+              through your submissions in Teams Assignments so I can give you feedback on
+              how to tighten up your answers — not just the science, but how you
+              communicate it. The earlier we start practising that, the better you'll be
+              by the time exams come around.
+            </p>
+            <p>
+              So: answer the questions, download the PDF, and upload it to the Teams
+              Assignment. If you'd also like a copy in your OneNote, use the
+              <strong>Copy All Answers</strong> button and paste it straight in.
+            </p>
+          </div>
+
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 2: Pheromones (Placeholder)
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-2" class="content-section fade-in-up" data-release="2026-02-17">
+          <h2>Lesson 2: Pheromones</h2>
+          <div class="placeholder-lesson">
+            <div class="placeholder-lesson__icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="20" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <path d="M24 14v12l8 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Coming Soon</h3>
+            <p>This lesson will cover pheromones — chemical signals used for communication between organisms of the same species.</p>
+            <div class="placeholder-lesson__topics">
+              <span class="topic-chip">Types of pheromones</span>
+              <span class="topic-chip">Releaser vs primer pheromones</span>
+              <span class="topic-chip">NZ examples</span>
+              <span class="topic-chip">Adaptive advantages</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lessons 3–4: Navigation (Placeholder)
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up" data-release="2026-02-19">
+          <h2>Lessons 3–4: Navigation</h2>
+          <div class="placeholder-lesson">
+            <div class="placeholder-lesson__icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="20" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <path d="M24 14v12l8 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Coming Soon</h3>
+            <p>These lessons will explore how animals navigate over long distances using a range of environmental cues.</p>
+            <div class="placeholder-lesson__topics">
+              <span class="topic-chip">Piloting &amp; landmarks</span>
+              <span class="topic-chip">Sun compass</span>
+              <span class="topic-chip">Magnetic navigation</span>
+              <span class="topic-chip">Star navigation</span>
+              <span class="topic-chip">Migration in NZ species</span>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Define taxis and kinesis and distinguish between them</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain the difference between orthokinesis and klinokinesis</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Use correct prefixes to name orientation responses</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Interpret experimental data on kinesis responses</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe the adaptive advantages of simple innate behaviours</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Apply knowledge to novel organism scenarios</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- On this page -->
+        <div class="sidebar-card sidebar-card--sticky fade-in-up">
+          <h3>On This Page</h3>
+          <nav class="sidebar-toc" aria-label="Table of contents">
+            <a href="#lesson-1" class="sidebar-toc__link sidebar-toc__link--active">Lesson 1: Textbook Questions</a>
+            <a href="#lesson-2" class="sidebar-toc__link">Lesson 2: Pheromones</a>
+            <a href="#lesson-3" class="sidebar-toc__link">Lessons 3–4: Navigation</a>
+          </nav>
+        </div>
+
+        <!-- Textbook references -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Textbook References</h3>
+          <ul class="textbook-list">
+            <li class="textbook-item">
+              <span class="textbook-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="var(--accent)" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>Kineses — workbook questions</span>
+            </li>
+            <li class="textbook-item">
+              <span class="textbook-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="var(--accent)" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>Taxes &amp; Kineses — Ch. 1</span>
+            </li>
+            <li class="textbook-item">
+              <span class="textbook-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="var(--accent)" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>Kinesis in Woodlice — data analysis</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Teams assignment card -->
+        <div class="sidebar-card sidebar-card--teams fade-in-up">
+          <h3>Teams Assignment</h3>
+          <p class="teams-text">Week 4: Taxes &amp; Kineses Questions — download PDF and submit via Teams Assignments</p>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+  /* ==========================================================================
+     Week 4 Page Styles
+     ========================================================================== */
+
+  .week-page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  /* --------------------------------------------------------------------------
+     Fade-in-up animation
+     -------------------------------------------------------------------------- */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  /* ==========================================================================
+     Week Header (same as Week 3)
+     ========================================================================== */
+  .week-header {
+    margin-bottom: var(--space-7);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .week-header__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .term-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    background: var(--surface-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .week-header__title-row { margin-bottom: var(--space-3); }
+
+  .week-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+  }
+
+  .week-title {
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+  }
+
+  .week-header__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-full);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .badge--standard {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--standard-3-colour, var(--accent));
+  }
+
+  .badge--desc {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0;
+    font-weight: var(--weight-normal);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+  }
+
+
+  /* ==========================================================================
+     Quick Navigation
+     ========================================================================== */
+  .week-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .week-nav__link {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+  .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+  .week-nav__link--disabled { color: var(--text-muted); opacity: 0.5; pointer-events: none; }
+
+
+  /* ==========================================================================
+     Two-Column Layout
+     ========================================================================== */
+  .week-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .week-layout { grid-template-columns: 1fr; }
+  }
+
+
+  /* ==========================================================================
+     Main Content
+     ========================================================================== */
+  .week-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .content-section {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .content-section h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+    color: var(--accent);
+  }
+
+  .section-intro {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-5);
+    line-height: var(--leading-relaxed);
+  }
+
+
+  /* ==========================================================================
+     Student Name Input
+     ========================================================================== */
+  .student-name-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .student-name-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+
+  /* ==========================================================================
+     Question Sections
+     ========================================================================== */
+  .question-section {
+    margin-top: var(--space-6);
+  }
+
+  .question-section__title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--accent);
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--accent);
+    opacity: 0.9;
+  }
+
+
+  /* ==========================================================================
+     Question Cards
+     ========================================================================== */
+  .question-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+    transition: border-color var(--transition-fast);
+  }
+
+  .question-card:focus-within {
+    border-color: var(--accent);
+  }
+
+  .question-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .question-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    color: var(--surface-0);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    flex-shrink: 0;
+  }
+
+  .question-type-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  .question-type-badge--short { background: rgba(0, 200, 255, 0.1); color: var(--fluoro-cyan); }
+  .question-type-badge--long { background: rgba(200, 100, 255, 0.1); color: var(--purple-light); }
+  .question-type-badge--multi { background: rgba(255, 100, 150, 0.1); color: var(--fluoro-pink); }
+
+  .question-text {
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+  .question-context {
+    background: var(--surface-1);
+    border-left: 3px solid var(--fluoro-cyan);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .question-context p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+
+  /* ==========================================================================
+     Sub-questions
+     ========================================================================== */
+  .sub-question {
+    margin-top: var(--space-4);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--border-subtle);
+  }
+
+  .sub-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    font-family: var(--font-display);
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+
+  /* ==========================================================================
+     Inputs & Textareas
+     ========================================================================== */
+  .text-input,
+  .answer-input {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+    resize: vertical;
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+
+  .text-input:focus,
+  .answer-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+  }
+
+  .text-input::placeholder,
+  .answer-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .text-input--short {
+    max-width: 280px;
+  }
+
+  .answer-input--short { min-height: 80px; }
+  .answer-input--long { min-height: 120px; }
+
+
+  /* ==========================================================================
+     MCQ Radio Buttons
+     ========================================================================== */
+  .mcq-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .mcq-option:hover {
+    border-color: var(--accent);
+    background: var(--surface-3);
+  }
+
+  .mcq-option input[type="radio"] {
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .mcq-option__label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+  }
+
+  .mcq-option:has(input:checked) {
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.08);
+  }
+
+
+  /* ==========================================================================
+     Prefix & Example Grids
+     ========================================================================== */
+  .prefix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .prefix-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .prefix-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    min-width: fit-content;
+  }
+
+  /* When prefix labels are long (e.g. Q11a), allow wrapping and stack vertically */
+  .prefix-item--wide {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .prefix-item--wide .prefix-label {
+    white-space: normal;
+  }
+
+  .prefix-item--wide .text-input--short {
+    max-width: 120px;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .example-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .example-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .example-label-letter {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    white-space: nowrap;
+    min-width: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .example-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* ==========================================================================
+     Scenario Cards (A-F)
+     ========================================================================== */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .scenario-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: border-color var(--transition-fast);
+  }
+
+  .scenario-card:hover {
+    border-color: var(--border-default);
+  }
+
+  .scenario-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .scenario-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    background: var(--surface-2);
+    color: var(--fluoro-cyan);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    flex-shrink: 0;
+  }
+
+  .scenario-organism {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+  }
+
+  .scenario-card__icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .scenario-svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .scenario-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+
+  /* ==========================================================================
+     SVG Diagrams
+     ========================================================================== */
+  .diagram-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+
+  @media (max-width: 500px) {
+    .diagram-row { grid-template-columns: 1fr; }
+  }
+
+  .diagram-container {
+    text-align: center;
+  }
+
+  .diagram-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .petri-svg {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+
+
+  /* ==========================================================================
+     Graph
+     ========================================================================== */
+  .graph-container {
+    margin: var(--space-4) 0;
+    overflow-x: auto;
+  }
+
+  .graph-svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  /* ==========================================================================
+     Export Actions
+     ========================================================================== */
+  .export-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+  }
+
+  .export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .export-btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .export-btn--primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .export-btn--secondary {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .export-btn--secondary:hover {
+    background: var(--surface-3);
+    border-color: var(--border-default);
+  }
+
+  .copy-feedback {
+    font-size: var(--text-sm);
+    color: var(--accent);
+    font-weight: var(--weight-medium);
+    animation: fadeInOut 2s ease;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+
+  /* ==========================================================================
+     Why Section — explanatory note below export buttons
+     ========================================================================== */
+  .why-section {
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--accent);
+  }
+
+  .why-section__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .why-section p {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .why-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Audio play button — inline with heading */
+  .section-header-with-audio {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .audio-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-subtle);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+
+  .audio-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.1);
+    transform: scale(1.1);
+  }
+
+  .audio-btn.playing {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--surface-1);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
+  }
+
+
+  /* ==========================================================================
+     Locked (date-gated) Sections
+     ========================================================================== */
+  .content-section.locked {
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-8) var(--space-6);
+    border: 1px dashed var(--border-default);
+    background: var(--surface-1);
+    opacity: 0.7;
+  }
+
+  .locked__icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+    opacity: 0.5;
+  }
+
+  .locked__title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .locked__date {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+
+  /* ==========================================================================
+     Sidebar
+     ========================================================================== */
+  .week-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sidebar-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .sidebar-card--sticky {
+    position: sticky;
+    top: calc(var(--space-6) + 60px);
+  }
+
+  .sidebar-card h3 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+  }
+
+  .sidebar-card--teams {
+    border-left: 3px solid var(--purple-rich);
+  }
+
+  .teams-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .objectives-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .objective-checkbox {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border: 1.5px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    transition: border-color var(--transition-fast);
+  }
+
+  .objective-item:hover .objective-checkbox {
+    border-color: var(--accent);
+  }
+
+  /* Sidebar TOC */
+  .sidebar-toc {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sidebar-toc__link {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .sidebar-toc__link:hover {
+    background: var(--surface-2);
+    color: var(--text-primary);
+  }
+
+  .sidebar-toc__link--active {
+    color: var(--accent);
+    font-weight: var(--weight-medium);
+  }
+
+  /* Textbook references */
+  .textbook-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .textbook-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .textbook-icon {
+    flex-shrink: 0;
+    display: flex;
+  }
+
+
+  /* ==========================================================================
+     Placeholder Lessons
+     ========================================================================== */
+  .placeholder-lesson {
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .placeholder-lesson__icon {
+    margin-bottom: var(--space-3);
+    opacity: 0.5;
+  }
+
+  .placeholder-lesson h3 {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .placeholder-lesson p {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto var(--space-4);
+    line-height: var(--leading-relaxed);
+  }
+
+  .placeholder-lesson__topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .topic-chip {
+    padding: var(--space-1) var(--space-3);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+
+  /* Stagger animations */
+  .week-sidebar .sidebar-card:nth-child(1) { transition-delay: 0.1s; }
+  .week-sidebar .sidebar-card:nth-child(2) { transition-delay: 0.15s; }
+  .week-sidebar .sidebar-card:nth-child(3) { transition-delay: 0.2s; }
+  .week-sidebar .sidebar-card:nth-child(4) { transition-delay: 0.25s; }
+
+
+  /* ==========================================================================
+     Print Styles — clean PDF output
+     ========================================================================== */
+  @media print {
+    /* Hide navigation, sidebar, and interactive elements */
+    .week-nav,
+    .week-sidebar,
+    .export-actions,
+    .back-link,
+    .term-badge,
+    .placeholder-lesson__icon,
+    .question-type-badge,
+    header nav,
+    footer {
+      display: none !important;
+    }
+
+    /* Reset to white background for printing */
+    * {
+      color: #111 !important;
+      background: white !important;
+      border-color: #ccc !important;
+      box-shadow: none !important;
+    }
+
+    body, .week-page {
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: none !important;
+    }
+
+    .week-layout {
+      display: block !important;
+    }
+
+    /* Show student name prominently */
+    .student-name-row {
+      border: 2px solid #111 !important;
+      padding: 8px 12px !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* Make animations visible immediately */
+    .fade-in-up {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Style question cards for print */
+    .question-card {
+      page-break-inside: avoid;
+      border: 1px solid #ccc !important;
+      padding: 12px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .question-number {
+      background: #111 !important;
+      color: white !important;
+    }
+
+    /* Show textarea/input content as text */
+    .answer-input,
+    .text-input {
+      border: 1px solid #999 !important;
+      min-height: auto !important;
+      padding: 6px 8px !important;
+      font-size: 11pt !important;
+      white-space: pre-wrap !important;
+    }
+
+    /* Ensure SVGs print cleanly */
+    .petri-svg, .scenario-svg, .graph-svg {
+      max-width: 180px !important;
+    }
+
+    .scenario-grid {
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 8px !important;
+    }
+
+    .scenario-card {
+      padding: 8px !important;
+      font-size: 9pt !important;
+    }
+
+    /* SVG colours for print */
+    svg line, svg polyline, svg path, svg circle, svg rect, svg ellipse {
+      stroke: #333 !important;
+    }
+
+    svg text {
+      fill: #333 !important;
+    }
+
+    /* Page breaks */
+    .question-section {
+      page-break-before: auto;
+    }
+
+    .question-section__title {
+      color: #111 !important;
+      border-bottom-color: #111 !important;
+    }
+
+    /* Print header with student name */
+    .week-header {
+      border-bottom: 2px solid #111 !important;
+      margin-bottom: 12px !important;
+      padding-bottom: 8px !important;
+    }
+
+    /* Content section reset */
+    .content-section {
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    /* MCQ — show selected answer */
+    .mcq-option {
+      border: 1px solid #ccc !important;
+      padding: 4px 8px !important;
+    }
+
+    .mcq-option:has(input:checked) {
+      border: 2px solid #111 !important;
+      font-weight: bold !important;
+    }
+
+    /* Placeholder lessons hidden in print */
+    .placeholder-lesson {
+      display: none !important;
+    }
+
+    #lesson-2, #lesson-3 {
+      display: none !important;
+    }
+  }
+</style>
+
+
+<!-- ==========================================================================
+     JavaScript — Export functionality & IntersectionObserver
+     ========================================================================== -->
+<script>
+  /* --------------------------------------------------------------------------
+     Date-Gating — hide unreleased lesson sections
+     Uses NZ timezone so release dates match school days.
+     Set data-release="YYYY-MM-DD" on any <section> to gate it.
+     -------------------------------------------------------------------------- */
+  (function dategate() {
+    /* Today's date in NZ, as YYYY-MM-DD string for simple comparison */
+    const nzDate = new Date().toLocaleDateString('en-CA', { timeZone: 'Pacific/Auckland' });
+
+    document.querySelectorAll('[data-release]').forEach((section) => {
+      const releaseDate = section.dataset.release;
+      if (nzDate >= releaseDate) return; // already released — leave it alone
+
+      /* Store the original heading text before replacing content */
+      const heading = section.querySelector('h2');
+      const title = heading ? heading.textContent : 'This lesson';
+
+      /* Format the release date nicely for display */
+      const [y, m, d] = releaseDate.split('-').map(Number);
+      const dateObj = new Date(y, m - 1, d);
+      const formatted = dateObj.toLocaleDateString('en-NZ', {
+        weekday: 'long', day: 'numeric', month: 'long'
+      });
+
+      /* Replace section content with locked message */
+      section.innerHTML = `
+        <div class="locked__icon" aria-hidden="true">&#x1F512;</div>
+        <p class="locked__title">${title}</p>
+        <p class="locked__date">Available ${formatted}</p>
+      `;
+      section.classList.add('locked');
+
+      /* Hide corresponding sidebar TOC link */
+      const tocLink = document.querySelector(`.sidebar-toc__link[href="#${section.id}"]`);
+      if (tocLink) tocLink.style.display = 'none';
+    });
+  })();
+
+
+  /* --------------------------------------------------------------------------
+     PDF Download — uses browser print dialog
+     -------------------------------------------------------------------------- */
+  const downloadBtn = document.getElementById('download-pdf');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+
+  /* --------------------------------------------------------------------------
+     Copy All Answers — collects all answers into formatted text
+     -------------------------------------------------------------------------- */
+  const copyBtn = document.getElementById('copy-all');
+  const copyFeedback = document.getElementById('copy-feedback');
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const nameInput = document.getElementById('student-name') as HTMLInputElement;
+      const studentName = nameInput?.value || 'Not provided';
+
+      let text = `TAXES & KINESES — TEXTBOOK QUESTIONS\n`;
+      text += `Name: ${studentName}\n`;
+      text += `Date: ${new Date().toLocaleDateString('en-NZ')}\n`;
+      text += `${'='.repeat(50)}\n\n`;
+
+      /* Collect all answers in order */
+      const allInputs = document.querySelectorAll('[data-answer]');
+      let currentSection = '';
+
+      allInputs.forEach((input) => {
+        const answerId = input.getAttribute('data-answer') || '';
+
+        /* Determine section */
+        const card = input.closest('.question-section');
+        const sectionTitle = card?.querySelector('.question-section__title')?.textContent || '';
+        if (sectionTitle && sectionTitle !== currentSection) {
+          currentSection = sectionTitle;
+          text += `\n--- ${currentSection} ---\n\n`;
+        }
+
+        /* Get the question text */
+        const questionCard = input.closest('.question-card') || input.closest('.sub-question');
+        const questionText = questionCard?.querySelector('.question-text')?.textContent?.trim() || '';
+
+        /* Get the answer value */
+        let value = '';
+        if (input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) {
+          if (input.type === 'radio') {
+            /* For MCQ, find the checked radio in the same group */
+            const group = input.closest('.mcq-group');
+            const checked = group?.querySelector('input:checked') as HTMLInputElement | null;
+            if (checked && checked === input) {
+              value = checked.value;
+            } else {
+              return; /* Skip unchecked radios */
+            }
+          } else {
+            value = input.value;
+          }
+        }
+
+        /* Format the question label */
+        const subLabel = input.closest('.sub-question')?.querySelector('.sub-label')?.textContent || '';
+        const prefixLabel = input.closest('.prefix-item')?.querySelector('.prefix-label')?.textContent || '';
+        const exampleLabel = input.closest('.example-item')?.querySelector('.example-label-letter')?.textContent || '';
+
+        let label = '';
+        if (prefixLabel) {
+          label = prefixLabel;
+        } else if (exampleLabel) {
+          label = exampleLabel;
+        } else if (subLabel) {
+          label = `Q${answerId.replace(/[a-z]/g, '').charAt(0)} ${subLabel}`;
+        } else {
+          label = `Q${answerId}`;
+        }
+
+        if (value || !input.closest('.mcq-group')) {
+          text += `${label} ${questionText ? questionText.substring(0, 80) + (questionText.length > 80 ? '...' : '') : ''}\n`;
+          text += `Answer: ${value || '(not answered)'}\n\n`;
+        }
+      });
+
+      try {
+        await navigator.clipboard.writeText(text);
+        if (copyFeedback) {
+          copyFeedback.hidden = false;
+          setTimeout(() => { copyFeedback.hidden = true; }, 2000);
+        }
+      } catch {
+        /* Fallback for older browsers */
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (copyFeedback) {
+          copyFeedback.hidden = false;
+          setTimeout(() => { copyFeedback.hidden = true; }, 2000);
+        }
+      }
+    });
+  }
+
+
+  /* --------------------------------------------------------------------------
+     Audio Playback — "Why are we writing?" narration
+     -------------------------------------------------------------------------- */
+  (function initAudio() {
+    const btn = document.getElementById('why-writing-audio');
+    if (!btn) return;
+
+    let audio = null;
+
+    btn.addEventListener('click', () => {
+      // If already playing, pause
+      if (audio && !audio.paused) {
+        audio.pause();
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        return;
+      }
+
+      // If paused mid-way, resume
+      if (audio && audio.paused && audio.currentTime > 0) {
+        audio.play();
+        btn.textContent = '\u23F8\uFE0E';
+        btn.classList.add('playing');
+        return;
+      }
+
+      // Start fresh — base path is /biology-level3/
+      audio = new Audio('/biology-level3/audio/week4_why_writing.mp3');
+      btn.textContent = '\u23F8\uFE0E';
+      btn.classList.add('playing');
+      audio.play();
+
+      audio.addEventListener('ended', () => {
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        audio = null;
+      });
+
+      audio.addEventListener('error', () => {
+        btn.textContent = '\u25B6';
+        btn.classList.remove('playing');
+        audio = null;
+      });
+    });
+  })();
+
+
+  /* --------------------------------------------------------------------------
+     IntersectionObserver — triggers .fade-in-up animations on viewport entry
+     -------------------------------------------------------------------------- */
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+</script>

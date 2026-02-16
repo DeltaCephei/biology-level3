@@ -32,6 +32,17 @@ And finally — don't binge. Watching all twelve videos in one sitting might fee
 
 So the bottom line is this. Watching a video is not studying. Watching a video while pausing, predicting, sketching, and testing yourself — that is studying. The students who do best aren't the ones who watch the most videos. They're the ones who think the hardest while watching.
 """,
+
+    # ── Week 4: Why We Write Answers ─────────────────────────────────────
+    "week4_why_writing": """
+Why are we doing this? Good question. There are two reasons I want you to write your answers here rather than just scribbling them in a notebook.
+
+First, it gives you a record of your own thinking. Once you download the PDF, or copy your answers into OneNote, you've got a snapshot of how you explained these concepts today. Come back to it in a few weeks and you'll be able to see how much clearer your writing has become. That's genuinely useful revision.
+
+Second, writing well matters in Biology. The external exams reward clear, precise explanations. I'll be reading through your submissions in Teams Assignments so I can give you feedback on how to tighten up your answers — not just the science, but how you communicate it. The earlier we start practising that, the better you'll be by the time exams come around.
+
+So: answer the questions, download the PDF, and upload it to the Teams Assignment. If you'd also like a copy in your OneNote, use the Copy All Answers button and paste it straight in.
+""",
 }
 
 

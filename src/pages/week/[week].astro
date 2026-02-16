@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 export function getStaticPaths() {
   return Array.from({ length: 40 }, (_, i) => ({
     params: { week: String(i + 1) },
-  })).filter(p => p.params.week !== '3');
+  })).filter(p => p.params.week !== '3' && p.params.week !== '4');
 }
 
 /* --------------------------------------------------------------------------
