@@ -48,7 +48,7 @@ const base = import.meta.env.BASE_URL;
          ==================================================================== -->
     <nav class="week-nav fade-in-up" aria-label="Page sections">
       <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Textbook Questions</a>
-      <a href="#lesson-2" class="week-nav__link week-nav__link--disabled">Lesson 2: Pheromones</a>
+      <a href="#lesson-2" class="week-nav__link">Lesson 2: Pheromones</a>
       <a href="#lesson-3" class="week-nav__link week-nav__link--disabled">Lessons 3–4: Navigation</a>
     </nav>
 
@@ -918,24 +918,707 @@ const base = import.meta.env.BASE_URL;
 
 
         <!-- ——————————————————————————————————————————————————————————————
-             Lesson 2: Pheromones (Placeholder)
+             Lesson 2: Pheromones
              —————————————————————————————————————————————————————————————— -->
-        <section id="lesson-2" class="content-section fade-in-up" data-release="2026-02-17">
+        <section id="lesson-2" class="content-section fade-in-up">
           <h2>Lesson 2: Pheromones</h2>
-          <div class="placeholder-lesson">
-            <div class="placeholder-lesson__icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="20" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                <path d="M24 14v12l8 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+
+          <p>
+            In Week 3 you learned about <strong>chemotaxis</strong> — directional movement towards
+            or away from a chemical stimulus. Pheromones are one of the most important chemical
+            signals in nature, and the responses they trigger are textbook examples of chemotaxis
+            in action.
+          </p>
+
+
+          <!-- ── What Are Pheromones? ── -->
+          <h3>What Are Pheromones?</h3>
+
+          <p>
+            <strong>Pheromones</strong> are chemical substances secreted by an organism into the
+            external environment that trigger a specific behavioural or physiological response in
+            another member of the <strong>same species</strong>. The term was coined in 1959 by
+            Karlson and Lüscher, from the Greek <em>pherein</em> (to carry) and <em>hormon</em>
+            (to excite).
+          </p>
+
+          <div class="key-concept">
+            <h4>Pheromones vs Hormones</h4>
+            <div class="table-wrapper">
+              <table class="stimuli-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Pheromone</th>
+                    <th>Hormone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Target</strong></td>
+                    <td>Other individuals of the same species</td>
+                    <td>The organism's own cells / tissues</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Transmission</strong></td>
+                    <td>Released into the external environment (air, water, surface)</td>
+                    <td>Transported internally via blood / haemolymph</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Concentration</strong></td>
+                    <td>Detected at extraordinarily low levels (parts per trillion)</td>
+                    <td>Relatively higher concentrations in blood</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Produced by</strong></td>
+                    <td>Exocrine glands (secreted externally)</td>
+                    <td>Endocrine glands (secreted internally)</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <h3>Coming Soon</h3>
-            <p>This lesson will cover pheromones — chemical signals used for communication between organisms of the same species.</p>
-            <div class="placeholder-lesson__topics">
-              <span class="topic-chip">Types of pheromones</span>
-              <span class="topic-chip">Releaser vs primer pheromones</span>
-              <span class="topic-chip">NZ examples</span>
-              <span class="topic-chip">Adaptive advantages</span>
+          </div>
+
+
+          <!-- ── Releaser vs Primer ── -->
+          <h3>Releaser vs Primer Pheromones</h3>
+
+          <p>
+            Not all pheromones work the same way. The two major categories tell us about
+            <em>how fast</em> the response occurs and <em>what system</em> is affected.
+          </p>
+
+          <div class="key-concept">
+            <div class="concept-pair">
+              <div class="concept-card concept-card--releaser">
+                <h5>Releaser Pheromones</h5>
+                <p>
+                  Trigger an <strong>immediate, rapid behavioural response</strong> in the receiver.
+                  The response is fast and stereotypic — it acts on the <strong>nervous system</strong>.
+                </p>
+                <div class="concept-example">
+                  <span class="example-label">Examples</span>
+                  Alarm pheromones causing flight or defence; sex pheromones triggering courtship;
+                  trail pheromones guiding foraging ants.
+                </div>
+              </div>
+
+              <div class="concept-card concept-card--primer">
+                <h5>Primer Pheromones</h5>
+                <p>
+                  Trigger a <strong>slow, long-term physiological change</strong> in the receiver
+                  over days or weeks. They act on the <strong>endocrine system</strong>, altering
+                  hormone levels.
+                </p>
+                <div class="concept-example">
+                  <span class="example-label">Examples</span>
+                  Honeybee queen substance suppressing worker ovary development; the Bruce Effect
+                  in mice causing pregnancy termination.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              A single pheromone can be <strong>both</strong> a releaser and a primer. Honeybee
+              queen mandibular pheromone (QMP) acts as a releaser (immediately attracts workers
+              to groom the queen) <strong>and</strong> a primer (suppresses worker ovary
+              development over weeks). Examiners love this example.
+            </p>
+          </div>
+
+
+          <!-- ── Types of Pheromones ── -->
+          <h3>Types of Pheromones</h3>
+
+          <div class="pheromone-types-grid">
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="14" cy="20" r="6" stroke="var(--fluoro-pink)" stroke-width="1.5"/>
+                  <circle cx="26" cy="20" r="6" stroke="var(--fluoro-cyan)" stroke-width="1.5"/>
+                  <path d="M18.5 17.5C20 16 22 16 23.5 17.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M18.5 22.5C20 24 22 24 23.5 22.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Sex / Mating Pheromones</h4>
+              <p>
+                Released by one sex to attract mates, often over <strong>enormous distances</strong>
+                (kilometres in some moth species). Highly species-specific — the precise ratio of
+                chemical components prevents cross-species attraction.
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--releaser">Releaser</span>
+            </div>
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 8L22 14H28L23 18L25 24L20 20L15 24L17 18L12 14H18L20 8Z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <circle cx="20" cy="20" r="14" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Alarm Pheromones</h4>
+              <p>
+                Released when an organism is disturbed or detects a predator. Alert conspecifics to
+                danger. Typically <strong>volatile</strong> — they evaporate quickly so they don't
+                persist after the threat passes.
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--releaser">Releaser</span>
+            </div>
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="10" cy="30" r="4" fill="var(--accent)" opacity="0.3"/>
+                  <circle cx="16" cy="24" r="3" fill="var(--accent)" opacity="0.4"/>
+                  <circle cx="23" cy="19" r="3" fill="var(--accent)" opacity="0.5"/>
+                  <circle cx="30" cy="14" r="3" fill="var(--accent)" opacity="0.6"/>
+                  <path d="M10 30L16 24L23 19L30 14" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 2"/>
+                </svg>
+              </div>
+              <h4>Trail Pheromones</h4>
+              <p>
+                Deposited on surfaces to guide conspecifics to resources. Concentration encodes quality
+                — better food sources produce stronger trails. Trails fade when not reinforced, so
+                exhausted sources are automatically "de-advertised."
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--releaser">Releaser</span>
+            </div>
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="5" fill="var(--fluoro-cyan)" opacity="0.3"/>
+                  <circle cx="12" cy="14" r="3" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <circle cx="28" cy="14" r="3" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <circle cx="12" cy="26" r="3" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <circle cx="28" cy="26" r="3" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <path d="M15 17L18 19M22 19L25 17M15 23L18 21M22 21L25 23" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-dasharray="2 2"/>
+                </svg>
+              </div>
+              <h4>Aggregation Pheromones</h4>
+              <p>
+                Attract <strong>both sexes</strong> to a location (unlike sex pheromones). Often used
+                to overwhelm a host's defences through mass attack — bark beetles use these to
+                coordinate attacks on trees.
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--releaser">Releaser</span>
+            </div>
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <rect x="8" y="12" width="24" height="16" rx="3" stroke="var(--purple-light)" stroke-width="1.5" fill="none"/>
+                  <path d="M8 20h24" stroke="var(--purple-light)" stroke-width="1" stroke-dasharray="3 2"/>
+                  <circle cx="20" cy="20" r="2" fill="var(--purple-light)"/>
+                </svg>
+              </div>
+              <h4>Territorial Marking</h4>
+              <p>
+                Deposited to define and defend territory boundaries. Common in mammals via urine,
+                faeces, or specialised glands. NZ kiwi may use faecal scent-marking to define
+                territories.
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--both">Both</span>
+            </div>
+
+            <div class="pheromone-type-card">
+              <div class="pheromone-type-card__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <ellipse cx="20" cy="22" rx="12" ry="8" stroke="var(--blue-soft)" stroke-width="1.5" fill="none"/>
+                  <circle cx="20" cy="16" r="4" stroke="var(--blue-soft)" stroke-width="1.5"/>
+                  <path d="M20 20v8" stroke="var(--blue-soft)" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h4>Queen / Social Pheromones</h4>
+              <p>
+                Regulate colony behaviour in eusocial insects. The honeybee queen's mandibular
+                pheromone suppresses worker reproduction and controls colony organisation — the
+                classic <strong>primer pheromone</strong>.
+              </p>
+              <span class="pheromone-type-badge pheromone-type-badge--primer">Primer</span>
+            </div>
+
+          </div>
+
+
+          <!-- ── How Pheromones Are Detected ── -->
+          <h3>How Pheromones Are Detected</h3>
+
+          <p>
+            The detection mechanism differs between invertebrates and vertebrates — and this
+            distinction matters for exam answers.
+          </p>
+
+          <div class="key-concept">
+            <div class="concept-pair">
+              <div class="concept-card concept-card--detection-insect">
+                <h5>Insects: Antennal Chemoreceptors</h5>
+                <p>
+                  Insect antennae contain thousands of <strong>sensilla</strong> — tiny hair-like
+                  structures housing olfactory receptor neurons. Pheromone molecules enter through
+                  pores and bind to <strong>odorant-binding proteins</strong>, which ferry them to
+                  receptor proteins on sensory neurons.
+                </p>
+                <p>
+                  Each specialist neuron is "tuned" to one specific pheromone component. Male moths
+                  often have <strong>feathery (plumose) antennae</strong> with vastly more sensilla
+                  than females, maximising surface area for pheromone detection.
+                </p>
+              </div>
+
+              <div class="concept-card concept-card--detection-vertebrate">
+                <h5>Vertebrates: Vomeronasal Organ (VNO)</h5>
+                <p>
+                  Also called <strong>Jacobson's organ</strong> — a specialised chemosensory structure
+                  separate from the main olfactory epithelium. Found in many reptiles, amphibians,
+                  and mammals.
+                </p>
+                <p>
+                  Signals travel to the <strong>accessory olfactory bulb → amygdala → hypothalamus</strong>,
+                  triggering behavioural or endocrine responses. The <strong>flehmen response</strong>
+                  (lip curl) in mammals helps draw pheromone molecules into the VNO.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pheromone plume SVG diagram -->
+          <div class="pheromone-plume-diagram">
+            <h4>How a Male Moth Locates a Female</h4>
+            <p class="diagram-caption">
+              The male detects the pheromone plume and flies upwind in a characteristic zigzag
+              pattern (<strong>positive chemotaxis + anemotaxis</strong>). If he loses the scent,
+              he casts wider until he re-enters the plume.
+            </p>
+            <svg class="plume-svg" viewBox="0 0 600 200" fill="none" aria-label="Diagram showing a male moth navigating a pheromone plume from a female moth">
+              <!-- Wind arrows -->
+              <text x="300" y="16" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="var(--font-display)">WIND DIRECTION →</text>
+
+              <!-- Plume shape -->
+              <path d="M80 100 Q200 70 360 50 Q440 40 560 20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3" fill="none"/>
+              <path d="M80 100 Q200 130 360 150 Q440 160 560 180" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3" fill="none"/>
+
+              <!-- Plume gradient fill -->
+              <defs>
+                <linearGradient id="plumeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="var(--fluoro-pink)" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="var(--fluoro-pink)" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <path d="M80 100 Q200 70 360 50 Q440 40 560 20 L560 180 Q440 160 360 150 Q200 130 80 100Z" fill="url(#plumeGrad)"/>
+
+              <!-- Female moth (source) -->
+              <circle cx="68" cy="100" r="10" fill="var(--fluoro-pink)" opacity="0.6"/>
+              <text x="68" y="130" text-anchor="middle" fill="var(--fluoro-pink)" font-size="11" font-weight="600" font-family="var(--font-display)">♀ Female</text>
+              <text x="68" y="142" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-body)">(pheromone source)</text>
+
+              <!-- Male moth zigzag path -->
+              <path d="M520 105 L480 85 L440 115 L400 80 L360 110 L320 75 L280 105 L240 82 L200 100 L160 90 L120 100" stroke="var(--fluoro-cyan)" stroke-width="2" stroke-dasharray="6 3" fill="none"/>
+
+              <!-- Male moth (receiver) -->
+              <circle cx="520" cy="105" r="8" fill="var(--fluoro-cyan)" opacity="0.8"/>
+              <text x="520" y="80" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-weight="600" font-family="var(--font-display)">♂ Male</text>
+              <text x="520" y="68" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-body)">(zigzag upwind flight)</text>
+
+              <!-- Concentration labels -->
+              <text x="160" y="175" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-body)">High concentration</text>
+              <text x="440" y="175" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-body)">Low concentration</text>
+            </svg>
+          </div>
+
+
+          <!-- ── Adaptive Advantages ── -->
+          <h3>Adaptive Advantages of Pheromone Communication</h3>
+
+          <ul class="feature-list feature-list--advantages">
+            <li><strong>Works in darkness</strong> — effective for nocturnal species (most NZ native moths, wētā)</li>
+            <li><strong>Works over vast distances</strong> — sex pheromones detected kilometres downwind</li>
+            <li><strong>Species-specific</strong> — precise chemical ratios prevent wasted reproductive effort</li>
+            <li><strong>Low energy cost</strong> — only nanograms needed to produce a signal</li>
+            <li><strong>Self-dissipating</strong> — alarm and trail pheromones fade when no longer relevant</li>
+            <li><strong>Encodes quality information</strong> — ants deposit more trail pheromone for better food</li>
+            <li><strong>Coordinates colony behaviour</strong> — enables eusocial organisation without centralised control</li>
+          </ul>
+
+          <div class="summary-box">
+            <h4>Connection to Chemotaxis</h4>
+            <p>
+              Pheromone-guided movement is a <strong>taxis</strong> (directional), not a kinesis
+              (non-directional). A male moth flying upwind along a pheromone plume demonstrates
+              <strong>positive chemotaxis</strong> combined with <strong>anemotaxis</strong>
+              (orientation to wind direction). An ant following a trail to food is performing
+              positive chemotaxis along an increasing concentration gradient.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             NZ & Global Pheromone Examples
+             —————————————————————————————————————————————————————————————— -->
+        <section id="pheromone-examples" class="content-section fade-in-up">
+          <h2>NZ &amp; Global Examples</h2>
+
+          <p>
+            These examples range from native Aotearoa species to famous global case studies.
+            Several include published research — the kind of detail that strengthens an
+            Excellence answer.
+          </p>
+
+          <!-- ── NZ Examples ── -->
+          <h3>New Zealand Species</h3>
+
+          <div class="examples-grid">
+
+            <!-- Pūriri moth -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Pūriri Moth / Pepetuna</h4>
+                <span class="example-card__latin">Aenetus virescens</span>
+                <span class="response-badge response-badge--pheromone">Male sex pheromone</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  NZ's largest moth. <strong>Unusually, the male produces the sex pheromone</strong>
+                  — in most moth species the female is the signaller. Males have specialised
+                  brush-like organs on their hind legs that exude pheromones after dusk to
+                  attract females.
+                </p>
+                <p class="example-card__detail">
+                  Larvae bore into living pūriri and pūtaputawēta trees and live as wood-borers
+                  for up to 6 years. The reversed sex role in pheromone production is thought to
+                  relate to the female's larger body size and the energetic cost of flight.
+                </p>
+              </div>
+            </div>
+
+            <!-- Huhu beetle -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Huhu Beetle</h4>
+                <span class="example-card__latin">Prionoplus reticularis</span>
+                <span class="response-badge response-badge--pheromone">Female sex pheromone</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  NZ's largest beetle. Females remain stationary at night emitting volatile sex
+                  pheromones while males fly through the air searching. Males have <strong>longer
+                  antennae with unique sensillum types</strong> (sensilla filiformia, sensilla
+                  auricillica) not found in females.
+                </p>
+                <p class="example-card__detail">
+                  A 2025 ultrastructure study confirmed that male-specific antennal sensilla
+                  have chemosensory and mechanosensory functions — a clear example of sexual
+                  dimorphism driven by pheromone detection pressure.
+                </p>
+              </div>
+            </div>
+
+            <!-- Kōwhai moth -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Kōwhai Moth</h4>
+                <span class="example-card__latin">Uresiphita polygonalis maorialis</span>
+                <span class="response-badge response-badge--pheromone">Sex pheromone (2025)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Native crambid moth whose larvae feed on kōwhai (<em>Sophora</em> spp.). In 2025,
+                  researchers identified <strong>four antennally active sex pheromone components</strong>
+                  using gas chromatography-electroantennogram detection (GC-EAD).
+                </p>
+                <p class="example-card__detail">
+                  This is <strong>one of the first native NZ moths</strong> to have its sex
+                  pheromone fully characterised. Most NZ native moth pheromones remain unidentified
+                  because they are not agricultural pests — research funding has been limited.
+                </p>
+              </div>
+            </div>
+
+            <!-- Tree wētā -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Tree Wētā</h4>
+                <span class="example-card__latin">Hemideina spp.</span>
+                <span class="response-badge response-badge--pheromone">Cuticular hydrocarbons</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Tree wētā use chemical signals from <strong>frass</strong> and <strong>cuticular
+                  hydrocarbons</strong> (CHCs) for mate-finding. Artificial galleries primed with
+                  female frass reached <strong>80% occupancy</strong> after 6 months vs much lower
+                  in unprimed controls.
+                </p>
+                <p class="example-card__detail">
+                  Interestingly, males did not discriminate between male vs female cues, or between
+                  conspecific vs heterospecific cues — suggesting relatively weak selection pressure
+                  on species-specific chemical recognition in this group.
+                </p>
+              </div>
+            </div>
+
+            <!-- NZ Biosecurity -->
+            <div class="example-card example-card--nz example-card--wide">
+              <div class="example-card__header">
+                <h4>Pheromones in NZ Biosecurity</h4>
+                <span class="response-badge response-badge--applied">Applied biology</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  New Zealand uses pheromone biology for real-world biosecurity and horticulture:
+                </p>
+                <ul class="feature-list">
+                  <li>
+                    <strong>Gypsy moth surveillance:</strong> MPI deploys <strong>1,500+ disparlure
+                    traps</strong> annually at ports and airports to detect Asian gypsy moth
+                    (<em>Lymantria dispar</em>) incursions
+                  </li>
+                  <li>
+                    <strong>Orchard mating disruption:</strong> Hawke's Bay apple growers release
+                    synthetic codling moth pheromone to saturate orchards, preventing males from
+                    locating females — reducing insecticide use and producing residue-free export fruit
+                  </li>
+                  <li>
+                    <strong>Painted apple moth eradication:</strong> Successfully eradicated from
+                    Auckland using pheromone traps as part of an integrated programme
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Global Examples ── -->
+          <h3>Famous Global Examples</h3>
+
+          <div class="examples-grid">
+
+            <!-- Bombykol -->
+            <div class="example-card example-card--global example-card--featured">
+              <div class="example-card__header">
+                <h4>Bombykol — The First Pheromone Ever Identified</h4>
+                <span class="example-card__latin">Bombyx mori (silkworm moth)</span>
+                <span class="response-badge response-badge--pheromone">Sex pheromone (1959)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  In 1959, Adolf Butenandt's team isolated the first pheromone by processing the
+                  abdominal tips of over <strong>500,000 female silkworm moths</strong> over 20 years.
+                  The compound, named <strong>bombykol</strong>, is a 16-carbon alcohol
+                  ((10E,12Z)-hexadeca-10,12-dien-1-ol).
+                </p>
+                <p class="example-card__detail">
+                  A single female carries only ~0.01 micrograms, yet males can detect it at
+                  concentrations of <strong>10<sup>−12</sup> micrograms per mL</strong> from
+                  several kilometres downwind. Other stereoisomers of the molecule were
+                  100–1,000,000× less active — demonstrating the critical importance of
+                  molecular geometry in pheromone specificity.
+                </p>
+              </div>
+            </div>
+
+            <!-- Honeybee -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Honeybee Queen Mandibular Pheromone</h4>
+                <span class="example-card__latin">Apis mellifera</span>
+                <span class="response-badge response-badge--pheromone">Releaser + Primer</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Queen mandibular pheromone (QMP) is a blend of at least 9 compounds, dominated
+                  by 9-ODA. It simultaneously acts as a <strong>releaser</strong> (immediately
+                  attracts workers to groom and feed the queen) and a <strong>primer</strong>
+                  (suppresses worker ovary development, prevents new queen rearing, alters juvenile
+                  hormone levels over weeks).
+                </p>
+                <p class="example-card__detail">
+                  The bee alarm pheromone isopentyl acetate (released when stinging) <strong>smells
+                  like bananas</strong>. At low concentrations it attracts nestmates to investigate;
+                  at high concentrations it triggers aggressive defence. When the queen dies, workers
+                  detect QMP loss within hours and begin emergency queen cell production.
+                </p>
+              </div>
+            </div>
+
+            <!-- Ant trail pheromones -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Ant Trail Pheromones</h4>
+                <span class="example-card__latin">Formicidae (various species)</span>
+                <span class="response-badge response-badge--pheromone">Trail pheromone</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Workers deposit trail pheromone <strong>only on the return journey</strong> after
+                  finding food — not on the outward search. More rewarding food = more pheromone
+                  deposited. The result: a <strong>positive feedback loop</strong> where more ants
+                  on a trail = more pheromone = more ants recruited.
+                </p>
+                <p class="example-card__detail">
+                  This is a textbook example of <strong>emergent behaviour</strong> — complex
+                  colony-level optimisation from simple individual rules, without any centralised
+                  control. When food is exhausted, ants stop reinforcing the trail and it
+                  evaporates — a self-correcting system.
+                </p>
+              </div>
+            </div>
+
+            <!-- Elephant -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Asian Elephant — Context-Dependent Response</h4>
+                <span class="example-card__latin">Elephas maximus</span>
+                <span class="response-badge response-badge--pheromone">Frontalin (musth)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Males in musth (annual testosterone surge — up to 140× normal) secrete
+                  <strong>frontalin</strong> from their temporal glands. The same pheromone
+                  <strong>attracts</strong> receptive females but <strong>repels</strong> subadult males.
+                </p>
+                <p class="example-card__detail">
+                  This elegantly demonstrates that the response to a pheromone depends on the
+                  <strong>physiological state of the receiver</strong>, not just the chemical signal.
+                  Females approaching ovulation produce (Z)-7-dodecenyl acetate, detected by males
+                  via the vomeronasal organ.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bruce Effect -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>The Bruce Effect — Primer Pheromone in Mice</h4>
+                <span class="example-card__latin">Mus musculus</span>
+                <span class="response-badge response-badge--pheromone">Primer (pregnancy block)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  If a recently mated female mouse is exposed to pheromones from an
+                  <strong>unfamiliar male</strong> (not the father), she may spontaneously
+                  abort the pregnancy. The strange male's urinary pheromones are detected via the VNO
+                  and trigger a neuroendocrine cascade that blocks prolactin release.
+                </p>
+                <p class="example-card__detail">
+                  <strong>Adaptive advantage:</strong> prevents the female investing in offspring
+                  that the new dominant male would likely kill (infanticide avoidance). Discovered
+                  by Hilda Bruce in 1959 — the same year as bombykol.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Pheromone Videos
+             —————————————————————————————————————————————————————————————— -->
+        <section id="pheromone-videos" class="content-section fade-in-up">
+          <h2>Videos &amp; Resources</h2>
+
+          <h4>The Smelly Mystery of the Human Pheromone — Tristram Wyatt (TED)</h4>
+          <p>
+            Oxford zoologist Tristram Wyatt covers pheromone biology broadly before diving into
+            the controversy around human pheromones. Excellent overview of how pheromones are
+            studied scientifically.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/PdPJBJI_oDM"
+              title="The smelly mystery of the human pheromone — Tristram Wyatt, TED"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>How Do Ants Communicate? — TED-Ed</h4>
+          <p>
+            Beautiful animation explaining ant trail pheromones, alarm signals, and colony
+            coordination. Perfect for understanding the positive feedback loop in trail-laying.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/Kzce2a7kFzs"
+              title="How do ants communicate? — TED-Ed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>Further Reading</h4>
+          <ul class="feature-list">
+            <li>
+              <a href="https://www.nzgeo.com/stories/night-moves-the-world-of-moths/" target="_blank" rel="noopener noreferrer">
+                NZ Geographic — "Night Moves: The World of Moths"
+              </a> — NZ native moth pheromone biology including pūriri moth
+            </li>
+            <li>
+              <a href="https://www.sciencelearn.org.nz/resources/2446-new-zealand-moths" target="_blank" rel="noopener noreferrer">
+                Science Learning Hub — NZ Moths
+              </a> — NZ educational resource covering native moth diversity
+            </li>
+            <li>
+              <a href="https://link.springer.com/article/10.1007/s10886-025-01564-8" target="_blank" rel="noopener noreferrer">
+                Journal of Chemical Ecology (2025) — Kōwhai moth pheromone identification
+              </a>
+            </li>
+          </ul>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Pheromone Quiz — Multichoice
+             —————————————————————————————————————————————————————————————— -->
+        <section id="pheromone-quiz" class="content-section fade-in-up">
+          <h2>Test Yourself: Pheromones</h2>
+          <p>
+            Ten multichoice questions covering the key concepts from this lesson. See how you go.
+          </p>
+
+          <div class="phero-quiz" id="phero-quiz">
+            <div class="quiz-start" id="phero-quiz-start">
+              <button class="btn btn--primary" id="phero-quiz-start-btn">Start Quiz</button>
+            </div>
+
+            <div class="quiz-active" id="phero-quiz-active" hidden>
+              <div class="quiz-progress">
+                <div class="quiz-progress__bar">
+                  <div class="quiz-progress__fill" id="phero-quiz-progress-fill"></div>
+                </div>
+                <span class="quiz-progress__text">
+                  Question <span id="phero-q-num">1</span> / <span id="phero-q-total">10</span>
+                </span>
+              </div>
+
+              <div class="quiz-scenario" id="phero-quiz-scenario"></div>
+              <div class="quiz-options" id="phero-quiz-options"></div>
+              <div class="quiz-feedback" id="phero-quiz-feedback" hidden></div>
+
+              <button class="btn btn--secondary quiz-next" id="phero-quiz-next" hidden>
+                Next
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="quiz-results" id="phero-quiz-results" hidden>
+              <h3>Your Results</h3>
+              <div class="quiz-score">
+                <span class="quiz-score__number" id="phero-quiz-score-number">0</span>
+                <span class="quiz-score__total">/ <span id="phero-quiz-score-total">10</span></span>
+              </div>
+              <p class="quiz-score__label" id="phero-quiz-score-label"></p>
+              <div class="quiz-review" id="phero-quiz-review"></div>
+              <button class="btn btn--primary" id="phero-quiz-restart-btn">Try Again</button>
             </div>
           </div>
         </section>
@@ -991,15 +1674,23 @@ const base = import.meta.env.BASE_URL;
             </li>
             <li class="objective-item">
               <span class="objective-checkbox" aria-hidden="true"></span>
-              <span>Interpret experimental data on kinesis responses</span>
+              <span>Define pheromone and distinguish from hormones</span>
             </li>
             <li class="objective-item">
               <span class="objective-checkbox" aria-hidden="true"></span>
-              <span>Describe the adaptive advantages of simple innate behaviours</span>
+              <span>Compare releaser and primer pheromones with examples</span>
             </li>
             <li class="objective-item">
               <span class="objective-checkbox" aria-hidden="true"></span>
-              <span>Apply knowledge to novel organism scenarios</span>
+              <span>Describe NZ species that use pheromone communication</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain adaptive advantages of pheromone signalling</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Connect pheromone responses to chemotaxis</span>
             </li>
           </ul>
         </div>
@@ -1009,7 +1700,10 @@ const base = import.meta.env.BASE_URL;
           <h3>On This Page</h3>
           <nav class="sidebar-toc" aria-label="Table of contents">
             <a href="#lesson-1" class="sidebar-toc__link sidebar-toc__link--active">Lesson 1: Textbook Questions</a>
-            <a href="#lesson-2" class="sidebar-toc__link">Lesson 2: Pheromones</a>
+            <a href="#lesson-2" class="sidebar-toc__link">Pheromones: Core Content</a>
+            <a href="#pheromone-examples" class="sidebar-toc__link sidebar-toc__link--sub">NZ &amp; Global Examples</a>
+            <a href="#pheromone-videos" class="sidebar-toc__link sidebar-toc__link--sub">Videos &amp; Resources</a>
+            <a href="#pheromone-quiz" class="sidebar-toc__link sidebar-toc__link--sub">Test Yourself</a>
             <a href="#lesson-3" class="sidebar-toc__link">Lessons 3–4: Navigation</a>
           </nav>
         </div>
@@ -2134,9 +2828,648 @@ const base = import.meta.env.BASE_URL;
       display: none !important;
     }
 
-    #lesson-2, #lesson-3 {
+    #lesson-3 {
       display: none !important;
     }
+  }
+
+
+  /* ==========================================================================
+     Pheromones — Lesson 2 Styles
+     ========================================================================== */
+
+  /* ── Key concept cards (reused from Week 3 pattern) ── */
+  .key-concept {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .key-concept h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .concept-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 700px) {
+    .concept-pair { grid-template-columns: 1fr; }
+  }
+
+  .concept-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    border-top: 3px solid var(--accent);
+  }
+
+  .concept-card--releaser { border-top-color: var(--fluoro-cyan); }
+  .concept-card--primer { border-top-color: var(--fluoro-pink); }
+  .concept-card--detection-insect { border-top-color: var(--accent); }
+  .concept-card--detection-vertebrate { border-top-color: var(--purple-light); }
+
+  .concept-card h5 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+  }
+
+  .concept-card p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .concept-example {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .example-label {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-1);
+  }
+
+
+  /* ── Pheromone types grid ── */
+  .pheromone-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
+  }
+
+  .pheromone-type-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    position: relative;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+
+  .pheromone-type-card:hover {
+    border-color: var(--border-default);
+    transform: translateY(-2px);
+  }
+
+  .pheromone-type-card__icon {
+    margin-bottom: var(--space-3);
+  }
+
+  .pheromone-type-card h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .pheromone-type-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .pheromone-type-badge {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    padding: 2px var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .pheromone-type-badge--releaser {
+    background: rgba(0, 200, 255, 0.1);
+    color: var(--fluoro-cyan);
+  }
+
+  .pheromone-type-badge--primer {
+    background: rgba(255, 100, 150, 0.1);
+    color: var(--fluoro-pink);
+  }
+
+  .pheromone-type-badge--both {
+    background: rgba(200, 100, 255, 0.1);
+    color: var(--purple-light);
+  }
+
+
+  /* ── Pheromone plume diagram ── */
+  .pheromone-plume-diagram {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .pheromone-plume-diagram h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .diagram-caption {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .plume-svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+
+  /* ── Feature list (advantages) ── */
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0;
+  }
+
+  .feature-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  .feature-list--advantages li::before {
+    background: var(--fluoro-cyan);
+  }
+
+
+  /* ── Summary box ── */
+  .summary-box {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .summary-box h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .summary-box p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+
+  /* ── Exam tip ── */
+  .exam-tip {
+    background: rgba(255, 200, 50, 0.05);
+    border: 1px solid rgba(255, 200, 50, 0.2);
+    border-left: 4px solid rgba(255, 200, 50, 0.5);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-4) 0;
+  }
+
+  .exam-tip h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: rgba(255, 200, 50, 0.9);
+    margin-bottom: var(--space-2);
+  }
+
+  .exam-tip p, .exam-tip ul {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+
+  /* ── Example cards grid ── */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-4) 0 var(--space-6);
+  }
+
+  .example-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+
+  .example-card:hover {
+    border-color: var(--border-default);
+    transform: translateY(-2px);
+  }
+
+  .example-card--nz {
+    border-top: 3px solid var(--accent);
+  }
+
+  .example-card--global {
+    border-top: 3px solid var(--fluoro-cyan);
+  }
+
+  .example-card--featured {
+    border-top-color: var(--fluoro-pink);
+    grid-column: 1 / -1;
+  }
+
+  .example-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .example-card__header {
+    padding: var(--space-4) var(--space-4) var(--space-2);
+  }
+
+  .example-card__header h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .example-card__latin {
+    display: block;
+    font-size: var(--text-xs);
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .response-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    padding: 2px var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .response-badge--pheromone {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--accent);
+  }
+
+  .response-badge--applied {
+    background: rgba(200, 100, 255, 0.1);
+    color: var(--purple-light);
+  }
+
+  .example-card__body {
+    padding: var(--space-2) var(--space-4) var(--space-4);
+  }
+
+  .example-card__body p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .example-card__detail {
+    font-size: var(--text-xs) !important;
+    color: var(--text-muted) !important;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: var(--space-2);
+    margin-top: var(--space-2) !important;
+  }
+
+
+  /* ── Video wrapper ── */
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin: var(--space-3) 0 var(--space-5);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+
+  /* ── Table wrapper ── */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: var(--space-3) 0;
+  }
+
+  .stimuli-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .stimuli-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-1);
+    color: var(--accent);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .stimuli-table td {
+    padding: var(--space-3) var(--space-4);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: var(--leading-relaxed);
+  }
+
+
+  /* ── Sidebar sub-links ── */
+  .sidebar-toc__link--sub {
+    padding-left: var(--space-5);
+    font-size: var(--text-xs);
+    opacity: 0.8;
+  }
+
+
+  /* ── Quiz styles (pheromone quiz) ── */
+  .phero-quiz {
+    margin-top: var(--space-4);
+  }
+
+  .quiz-start {
+    text-align: center;
+    padding: var(--space-6);
+  }
+
+  .quiz-progress {
+    margin-bottom: var(--space-4);
+  }
+
+  .quiz-progress__bar {
+    height: 4px;
+    background: var(--surface-2);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+  }
+
+  .quiz-progress__fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base);
+    width: 0%;
+  }
+
+  .quiz-progress__text {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-family: var(--font-display);
+  }
+
+  .quiz-scenario {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--accent);
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+    line-height: var(--leading-relaxed);
+  }
+
+  .quiz-option:hover:not(.quiz-option--locked) {
+    border-color: var(--accent);
+    background: var(--surface-3);
+  }
+
+  .quiz-option--correct {
+    border-color: var(--accent) !important;
+    background: rgba(0, 255, 136, 0.1) !important;
+    color: var(--accent) !important;
+  }
+
+  .quiz-option--incorrect {
+    border-color: var(--fluoro-pink) !important;
+    background: rgba(255, 100, 150, 0.08) !important;
+    color: var(--fluoro-pink) !important;
+  }
+
+  .quiz-option--locked {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .quiz-option--locked.quiz-option--correct {
+    opacity: 1;
+  }
+
+  .quiz-feedback {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .quiz-feedback--correct {
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    color: var(--text-secondary);
+  }
+
+  .quiz-feedback--incorrect {
+    background: rgba(255, 100, 150, 0.06);
+    border: 1px solid rgba(255, 100, 150, 0.2);
+    color: var(--text-secondary);
+  }
+
+  .quiz-next {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .quiz-score {
+    text-align: center;
+    margin: var(--space-4) 0;
+  }
+
+  .quiz-score__number {
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--accent);
+  }
+
+  .quiz-score__total {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .quiz-score__label {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+
+  .quiz-review {
+    margin: var(--space-4) 0;
+  }
+
+  .quiz-review-item {
+    padding: var(--space-3);
+    margin-bottom: var(--space-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .quiz-review-item--correct {
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 3px solid var(--accent);
+  }
+
+  .quiz-review-item--incorrect {
+    background: rgba(255, 100, 150, 0.05);
+    border-left: 3px solid var(--fluoro-pink);
+  }
+
+  .quiz-review-item strong {
+    color: var(--text-primary);
+  }
+
+  /* ── Buttons (shared) ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .btn--primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .btn--secondary {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn--secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Further reading links ── */
+  .content-section a {
+    color: var(--fluoro-cyan);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 200, 255, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color var(--transition-fast);
+  }
+
+  .content-section a:hover {
+    text-decoration-color: var(--fluoro-cyan);
   }
 </style>
 
@@ -2357,4 +3690,228 @@ const base = import.meta.env.BASE_URL;
   );
 
   document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+
+
+  /* --------------------------------------------------------------------------
+     Pheromone Quiz — Multichoice
+     -------------------------------------------------------------------------- */
+  (function pheroQuiz() {
+    const questions = [
+      {
+        q: 'What is the key difference between a pheromone and a hormone?',
+        options: [
+          'Pheromones are released externally and affect other individuals of the same species; hormones are transported internally and affect the same organism',
+          'Pheromones are produced by the nervous system; hormones are produced by exocrine glands',
+          'Pheromones only work in insects; hormones work in all organisms',
+          'Pheromones are always proteins; hormones are always steroids'
+        ],
+        correct: 0,
+        explanation: 'Pheromones are secreted into the external environment and trigger responses in conspecifics. Hormones are transported internally (via blood) and affect the organism\'s own tissues.'
+      },
+      {
+        q: 'A honeybee queen\'s mandibular pheromone (QMP) suppresses worker ovary development over several weeks. This makes QMP an example of a:',
+        options: [
+          'Releaser pheromone',
+          'Primer pheromone',
+          'Trail pheromone',
+          'Alarm pheromone'
+        ],
+        correct: 1,
+        explanation: 'Primer pheromones trigger slow, long-term physiological changes by acting on the endocrine system. QMP suppresses worker reproduction over weeks. (QMP is also a releaser — it immediately attracts workers to groom the queen — making it both.)'
+      },
+      {
+        q: 'Male pūriri moths (Aenetus virescens) are unusual because:',
+        options: [
+          'They are the largest moths in the Southern Hemisphere',
+          'The male produces the sex pheromone, not the female',
+          'They use alarm pheromones to deter predators',
+          'They are the only NZ moth that uses primer pheromones'
+        ],
+        correct: 1,
+        explanation: 'In most moth species, the female produces the sex pheromone. Pūriri moths reverse this — males have specialised brush-like organs on their hind legs that exude pheromones to attract females.'
+      },
+      {
+        q: 'Adolf Butenandt identified bombykol in 1959 by processing the abdominal tips of over 500,000 female silkworm moths. Bombykol is a:',
+        options: [
+          'Primer pheromone that suppresses larval development',
+          'Alarm pheromone that triggers colony defence',
+          'Sex pheromone — the first pheromone ever chemically identified',
+          'Trail pheromone used by caterpillars to find food'
+        ],
+        correct: 2,
+        explanation: 'Bombykol ((10E,12Z)-hexadeca-10,12-dien-1-ol) was the first pheromone ever identified. Males can detect it at concentrations of 10⁻¹² μg/mL from kilometres away.'
+      },
+      {
+        q: 'How do insects detect pheromones?',
+        options: [
+          'Through the vomeronasal organ (Jacobson\'s organ)',
+          'Through chemoreceptors in sensilla on their antennae',
+          'Through taste receptors on their mouthparts',
+          'Through photoreceptors in their compound eyes'
+        ],
+        correct: 1,
+        explanation: 'Insects detect pheromones via olfactory receptor neurons housed in sensilla on their antennae. Pheromone molecules enter through pores and bind to odorant-binding proteins. The vomeronasal organ is a vertebrate structure.'
+      },
+      {
+        q: 'Ant trail pheromones are deposited:',
+        options: [
+          'On both the outward search and the return journey',
+          'Only on the outward search for food',
+          'Only on the return journey after finding food',
+          'Continuously, regardless of food availability'
+        ],
+        correct: 2,
+        explanation: 'Workers deposit trail pheromone only on the return journey after finding food. More rewarding food = more pheromone deposited. This creates a positive feedback loop and a self-correcting system.'
+      },
+      {
+        q: 'The Bruce Effect in mice is an example of a primer pheromone because:',
+        options: [
+          'It triggers immediate aggressive behaviour toward the unfamiliar male',
+          'It causes a physiological change (pregnancy termination) over days via neuroendocrine disruption',
+          'It attracts the female to the new male for mating',
+          'It suppresses the male\'s testosterone production'
+        ],
+        correct: 1,
+        explanation: 'The strange male\'s urinary pheromones block prolactin release via the VNO, causing corpus luteum regression and pregnancy termination over days — a primer effect on the endocrine system.'
+      },
+      {
+        q: 'New Zealand deploys 1,500+ pheromone traps annually at ports and airports to detect:',
+        options: [
+          'Codling moth (Cydia pomonella)',
+          'Common wasp (Vespula vulgaris)',
+          'Asian gypsy moth (Lymantria dispar)',
+          'Huhu beetle (Prionoplus reticularis)'
+        ],
+        correct: 2,
+        explanation: 'MPI uses disparlure (synthetic sex pheromone) traps to detect Asian gypsy moth incursions — a direct application of pheromone biology for national biosecurity.'
+      },
+      {
+        q: 'Male Asian elephants in musth secrete frontalin, which attracts receptive females but repels subadult males. This demonstrates that:',
+        options: [
+          'Elephants use different pheromones for different purposes',
+          'The response to a pheromone depends on the physiological state of the receiver',
+          'Only female elephants have vomeronasal organs',
+          'Frontalin is both a releaser and a primer pheromone'
+        ],
+        correct: 1,
+        explanation: 'The same chemical signal (frontalin) produces opposite responses depending on the receiver\'s age and reproductive state — a beautiful example of context-dependent pheromone responses.'
+      },
+      {
+        q: 'A male moth flying upwind in a zigzag pattern along a female\'s pheromone plume is demonstrating:',
+        options: [
+          'Klinokinesis — changing direction more in the presence of the chemical',
+          'Orthokinesis — moving faster in the presence of the chemical',
+          'Positive chemotaxis combined with anemotaxis',
+          'Negative phototaxis toward darker areas'
+        ],
+        correct: 2,
+        explanation: 'The moth is performing positive chemotaxis (directed movement toward the pheromone source) combined with anemotaxis (orientation to wind direction). This is a taxis, not a kinesis — the moth can determine the direction of the stimulus.'
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+    let answers = [];
+
+    const startEl = document.getElementById('phero-quiz-start');
+    const startBtn = document.getElementById('phero-quiz-start-btn');
+    const activeEl = document.getElementById('phero-quiz-active');
+    const resultsEl = document.getElementById('phero-quiz-results');
+    const scenarioEl = document.getElementById('phero-quiz-scenario');
+    const optionsEl = document.getElementById('phero-quiz-options');
+    const feedbackEl = document.getElementById('phero-quiz-feedback');
+    const nextBtn = document.getElementById('phero-quiz-next');
+    const progressFill = document.getElementById('phero-quiz-progress-fill');
+    const qNumEl = document.getElementById('phero-q-num');
+    const scoreNumEl = document.getElementById('phero-quiz-score-number');
+    const scoreLabelEl = document.getElementById('phero-quiz-score-label');
+    const reviewEl = document.getElementById('phero-quiz-review');
+    const restartBtn = document.getElementById('phero-quiz-restart-btn');
+
+    if (!startBtn) return;
+
+    function showQuestion() {
+      const q = questions[currentQ];
+      scenarioEl.innerHTML = q.q;
+      optionsEl.innerHTML = '';
+      feedbackEl.hidden = true;
+      nextBtn.hidden = true;
+      qNumEl.textContent = String(currentQ + 1);
+      progressFill.style.width = ((currentQ / questions.length) * 100) + '%';
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => selectAnswer(i));
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(idx) {
+      const q = questions[currentQ];
+      const btns = optionsEl.querySelectorAll('.quiz-option');
+      const isCorrect = idx === q.correct;
+
+      btns.forEach((btn, i) => {
+        btn.classList.add('quiz-option--locked');
+        if (i === q.correct) btn.classList.add('quiz-option--correct');
+        if (i === idx && !isCorrect) btn.classList.add('quiz-option--incorrect');
+      });
+
+      if (isCorrect) score++;
+      answers.push({ qIdx: currentQ, chosen: idx, correct: isCorrect });
+
+      feedbackEl.hidden = false;
+      feedbackEl.className = 'quiz-feedback ' + (isCorrect ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect');
+      feedbackEl.innerHTML = (isCorrect ? '<strong>Correct!</strong> ' : '<strong>Not quite.</strong> ') + q.explanation;
+
+      nextBtn.hidden = false;
+    }
+
+    function showResults() {
+      activeEl.hidden = true;
+      resultsEl.hidden = false;
+      scoreNumEl.textContent = String(score);
+      progressFill.style.width = '100%';
+
+      const pct = (score / questions.length) * 100;
+      if (pct >= 90) scoreLabelEl.textContent = 'Outstanding — you know your pheromones!';
+      else if (pct >= 70) scoreLabelEl.textContent = 'Solid work — review the ones you missed.';
+      else if (pct >= 50) scoreLabelEl.textContent = 'Getting there — re-read the core content above.';
+      else scoreLabelEl.textContent = 'Keep going — read through the lesson again and try once more.';
+
+      reviewEl.innerHTML = answers.map((a) => {
+        const q = questions[a.qIdx];
+        return `<div class="quiz-review-item ${a.correct ? 'quiz-review-item--correct' : 'quiz-review-item--incorrect'}">
+          <strong>Q${a.qIdx + 1}:</strong> ${q.q.substring(0, 80)}${q.q.length > 80 ? '...' : ''}
+          ${a.correct ? ' ✓' : ` ✗ — Correct answer: ${q.options[q.correct]}`}
+        </div>`;
+      }).join('');
+    }
+
+    startBtn.addEventListener('click', () => {
+      startEl.hidden = true;
+      activeEl.hidden = false;
+      showQuestion();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentQ++;
+      if (currentQ >= questions.length) {
+        showResults();
+      } else {
+        showQuestion();
+      }
+    });
+
+    restartBtn.addEventListener('click', () => {
+      currentQ = 0;
+      score = 0;
+      answers = [];
+      resultsEl.hidden = true;
+      activeEl.hidden = false;
+      showQuestion();
+    });
+  })();
 </script>
