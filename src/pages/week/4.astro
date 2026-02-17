@@ -1826,34 +1826,108 @@ const base = import.meta.env.BASE_URL;
           <div class="nav-diagram">
             <h4>Earth's Magnetic Field Lines</h4>
             <p class="diagram-caption">
-              Field lines emerge vertically at the poles and run parallel to the surface at the
-              equator. The inclination angle provides latitude information.
+              Field lines emerge from the magnetic south pole and curve around to enter at the
+              magnetic north pole. The <strong>inclination (dip) angle</strong> — how steeply the
+              field lines meet the surface — changes with latitude, giving animals positional information.
             </p>
-            <svg class="magnetic-field-svg" viewBox="0 0 500 250" fill="none" aria-label="Cross-section of Earth showing magnetic field lines curving from south pole to north pole">
-              <!-- Earth -->
-              <ellipse cx="250" cy="140" rx="100" ry="90" fill="rgba(0,200,255,0.05)" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.6"/>
-              <text x="250" y="145" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-family="var(--font-display)" opacity="0.6">EARTH</text>
+            <svg class="magnetic-field-svg" viewBox="0 0 600 400" fill="none" aria-label="Cross-section of Earth showing magnetic field lines curving from south to north, with dip angle arrows at different latitudes">
 
-              <!-- Field lines (simplified arcs) -->
-              <path d="M150 140 Q150 40 250 30 Q350 40 350 140" stroke="var(--accent)" stroke-width="1" opacity="0.4" fill="none"/>
-              <path d="M130 140 Q130 20 250 10 Q370 20 370 140" stroke="var(--accent)" stroke-width="1" opacity="0.3" fill="none"/>
-              <path d="M170 140 Q170 60 250 50 Q330 60 330 140" stroke="var(--accent)" stroke-width="1" opacity="0.5" fill="none"/>
+              <!-- ── Earth circle ── -->
+              <circle cx="300" cy="200" r="110" fill="rgba(0,200,255,0.04)" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.7"/>
 
-              <!-- Arrows on field lines -->
-              <path d="M195 55 L200 50 L200 60" fill="var(--accent)" opacity="0.5"/>
-              <path d="M305 55 L300 60 L300 50" fill="var(--accent)" opacity="0.5"/>
+              <!-- ── Bar magnet inside Earth ── -->
+              <rect x="275" y="140" width="50" height="120" rx="6" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4 3" opacity="0.4"/>
+              <rect x="275" y="140" width="50" height="60" rx="6" fill="rgba(255,100,150,0.12)"/>
+              <rect x="275" y="200" width="50" height="60" rx="6" fill="rgba(0,200,255,0.12)"/>
+              <text x="300" y="175" text-anchor="middle" fill="var(--fluoro-pink)" font-size="11" font-weight="600" font-family="var(--font-display)" opacity="0.7">S</text>
+              <text x="300" y="235" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-weight="600" font-family="var(--font-display)" opacity="0.7">N</text>
 
-              <!-- Poles -->
-              <text x="150" y="160" text-anchor="middle" fill="var(--fluoro-pink)" font-size="9" font-weight="600" font-family="var(--font-display)">S</text>
-              <text x="350" y="160" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="9" font-weight="600" font-family="var(--font-display)">N</text>
+              <!-- ── Field lines ── -->
+              <!-- Each line emerges from bottom (geographic south / magnetic north) and curves to top (geographic north / magnetic south) -->
 
-              <!-- Inclination annotations -->
-              <line x1="150" y1="140" x2="150" y2="100" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="3 2"/>
-              <text x="120" y="95" fill="var(--fluoro-pink)" font-size="8" font-family="var(--font-display)">Vertical</text>
-              <text x="120" y="105" fill="var(--fluoro-pink)" font-size="8" font-family="var(--font-display)">(poles)</text>
+              <!-- Innermost field lines (close to poles) -->
+              <path d="M300 310 C260 340 160 300 160 200 C160 100 260 60 300 90"
+                stroke="var(--accent)" stroke-width="1.2" opacity="0.5" fill="none"/>
+              <path d="M300 310 C340 340 440 300 440 200 C440 100 340 60 300 90"
+                stroke="var(--accent)" stroke-width="1.2" opacity="0.5" fill="none"/>
 
-              <line x1="250" y1="230" x2="300" y2="230" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 2"/>
-              <text x="250" y="245" fill="var(--accent)" font-size="8" font-family="var(--font-display)">Horizontal (equator)</text>
+              <!-- Middle field lines -->
+              <path d="M300 310 C240 370 100 310 100 200 C100 90 240 30 300 90"
+                stroke="var(--accent)" stroke-width="1" opacity="0.4" fill="none"/>
+              <path d="M300 310 C360 370 500 310 500 200 C500 90 360 30 300 90"
+                stroke="var(--accent)" stroke-width="1" opacity="0.4" fill="none"/>
+
+              <!-- Outer field lines -->
+              <path d="M300 310 C220 400 40 320 40 200 C40 80 220 0 300 90"
+                stroke="var(--accent)" stroke-width="0.8" opacity="0.3" fill="none"/>
+              <path d="M300 310 C380 400 560 320 560 200 C560 80 380 0 300 90"
+                stroke="var(--accent)" stroke-width="0.8" opacity="0.3" fill="none"/>
+
+              <!-- Arrows showing field direction (south → north, i.e. bottom → top on left side) -->
+              <!-- Left side arrows (going upward) -->
+              <polygon points="155,220 160,210 165,220" fill="var(--accent)" opacity="0.6"/>
+              <polygon points="95,220 100,210 105,220" fill="var(--accent)" opacity="0.5"/>
+              <polygon points="35,220 40,210 45,220" fill="var(--accent)" opacity="0.4"/>
+
+              <!-- Right side arrows (going upward) -->
+              <polygon points="435,180 440,190 445,180" fill="var(--accent)" opacity="0.6"/>
+              <polygon points="495,180 500,190 505,180" fill="var(--accent)" opacity="0.5"/>
+              <polygon points="555,180 560,190 565,180" fill="var(--accent)" opacity="0.4"/>
+
+              <!-- ── Dip angle arrows at Earth's surface ── -->
+              <!-- These show the inclination angle at different latitudes -->
+
+              <!-- Geographic North Pole (top) — field enters vertically (90° dip) -->
+              <line x1="300" y1="90" x2="300" y2="55" stroke="var(--fluoro-pink)" stroke-width="2.5" opacity="0.9"/>
+              <polygon points="295,58 300,46 305,58" fill="var(--fluoro-pink)" opacity="0.9"/>
+
+              <!-- ~60° N latitude — steep dip angle -->
+              <line x1="355" y1="108" x2="372" y2="78" stroke="var(--fluoro-pink)" stroke-width="2" opacity="0.8"/>
+              <polygon points="366,82 375,72 377,85" fill="var(--fluoro-pink)" opacity="0.8"/>
+
+              <!-- Equator (right side) — horizontal (0° dip) -->
+              <line x1="410" y1="200" x2="450" y2="200" stroke="var(--accent)" stroke-width="2.5" opacity="0.9"/>
+              <polygon points="447,195 459,200 447,205" fill="var(--accent)" opacity="0.9"/>
+
+              <!-- ~60° S latitude — steep dip angle (downward into Earth) -->
+              <line x1="355" y1="292" x2="372" y2="322" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.8"/>
+              <polygon points="366,318 375,328 377,315" fill="var(--fluoro-cyan)" opacity="0.8"/>
+
+              <!-- Geographic South Pole (bottom) — field emerges vertically (−90° dip) -->
+              <line x1="300" y1="310" x2="300" y2="345" stroke="var(--fluoro-cyan)" stroke-width="2.5" opacity="0.9"/>
+              <polygon points="295,342 300,354 305,342" fill="var(--fluoro-cyan)" opacity="0.9"/>
+
+              <!-- ~30° N latitude — moderate dip -->
+              <line x1="395" y1="148" x2="420" y2="128" stroke="var(--fluoro-pink)" stroke-width="1.8" opacity="0.7"/>
+              <polygon points="414,131 423,123 424,136" fill="var(--fluoro-pink)" opacity="0.7"/>
+
+              <!-- ~30° S latitude — moderate dip (downward) -->
+              <line x1="395" y1="252" x2="420" y2="272" stroke="var(--fluoro-cyan)" stroke-width="1.8" opacity="0.7"/>
+              <polygon points="414,269 423,277 424,264" fill="var(--fluoro-cyan)" opacity="0.7"/>
+
+              <!-- Equator (left side) — horizontal -->
+              <line x1="190" y1="200" x2="150" y2="200" stroke="var(--accent)" stroke-width="2.5" opacity="0.9"/>
+              <polygon points="153,195 141,200 153,205" fill="var(--accent)" opacity="0.9"/>
+
+              <!-- ── Labels ── -->
+              <!-- Geographic poles -->
+              <text x="300" y="30" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600" font-family="var(--font-display)">Geographic North</text>
+              <text x="300" y="42" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-display)">(Magnetic South)</text>
+
+              <text x="300" y="375" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600" font-family="var(--font-display)">Geographic South</text>
+              <text x="300" y="387" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-display)">(Magnetic North)</text>
+
+              <!-- Dip angle annotations -->
+              <text x="468" y="197" fill="var(--accent)" font-size="9" font-weight="600" font-family="var(--font-display)">0° dip</text>
+              <text x="468" y="208" fill="var(--text-muted)" font-size="8" font-family="var(--font-display)">(equator)</text>
+
+              <text x="310" y="53" fill="var(--fluoro-pink)" font-size="9" font-weight="600" font-family="var(--font-display)">90° dip</text>
+
+              <text x="310" y="350" fill="var(--fluoro-cyan)" font-size="9" font-weight="600" font-family="var(--font-display)">90° dip</text>
+
+              <!-- Equator line -->
+              <line x1="185" y1="200" x2="415" y2="200" stroke="var(--text-muted)" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4"/>
+
             </svg>
           </div>
 
