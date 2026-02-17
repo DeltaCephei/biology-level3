@@ -4,8 +4,8 @@
    AS 91603: Responses of plants and animals to their external environment
 
    Lesson 1: Textbook questions exercise (fully built)
-   Lesson 2: Pheromones (placeholder)
-   Lessons 3–4: Navigation (placeholder)
+   Lesson 2: Pheromones (fully built)
+   Lessons 3–4: Navigation (fully built)
    ========================================================================== */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -49,7 +49,7 @@ const base = import.meta.env.BASE_URL;
     <nav class="week-nav fade-in-up" aria-label="Page sections">
       <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Textbook Questions</a>
       <a href="#lesson-2" class="week-nav__link">Lesson 2: Pheromones</a>
-      <a href="#lesson-3" class="week-nav__link week-nav__link--disabled">Lessons 3–4: Navigation</a>
+      <a href="#lesson-3" class="week-nav__link">Lessons 3–4: Navigation</a>
     </nav>
 
 
@@ -1625,25 +1625,724 @@ const base = import.meta.env.BASE_URL;
 
 
         <!-- ——————————————————————————————————————————————————————————————
-             Lessons 3–4: Navigation (Placeholder)
+             Lessons 3–4: Navigation
              —————————————————————————————————————————————————————————————— -->
         <section id="lesson-3" class="content-section fade-in-up" data-release="2026-02-19">
           <h2>Lessons 3–4: Navigation</h2>
-          <div class="placeholder-lesson">
-            <div class="placeholder-lesson__icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="20" stroke="var(--border-default)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                <path d="M24 14v12l8 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+
+          <p>
+            Taxes and kineses explain how organisms orient to <strong>local stimuli</strong> — a
+            light source, a chemical gradient, a moisture difference. But many animals travel
+            <strong>hundreds or thousands of kilometres</strong> between breeding and feeding
+            grounds, crossing featureless ocean or open sky. How do they know where to go?
+          </p>
+
+          <p>
+            Navigation is the ability to <strong>determine and maintain a course toward a
+            specific destination</strong>. It goes beyond simple orientation — the animal must
+            have some form of "map" (knowing where it is relative to its goal) and a "compass"
+            (knowing which direction to travel).
+          </p>
+
+
+          <!-- ── Piloting: Landmarks & Familiar Routes ── -->
+          <h3>Piloting: Landmarks &amp; Familiar Routes</h3>
+
+          <p>
+            The simplest form of navigation. Animals follow a series of <strong>learned visual
+            landmarks</strong> — coastlines, rivers, mountain ranges, even roads. This requires
+            <strong>prior experience</strong> of the route.
+          </p>
+
+          <div class="key-concept">
+            <h4>How Piloting Works</h4>
+            <p>
+              The animal recognises a sequence of familiar features and uses each one to orient
+              toward the next. Think of it like following a series of road signs — you don't need
+              to know your GPS coordinates, you just need to recognise the next turn.
+            </p>
+            <div class="concept-example">
+              <span class="example-label">Example</span>
+              <p>
+                <strong>Homing pigeons</strong> released near home use familiar landmarks for the
+                final approach, even if they used other cues (sun compass, magnetic field) for the
+                long-distance phase. Young pigeons that haven't learned the local landmarks take
+                longer to find the loft than experienced birds.
+              </p>
             </div>
-            <h3>Coming Soon</h3>
-            <p>These lessons will explore how animals navigate over long distances using a range of environmental cues.</p>
-            <div class="placeholder-lesson__topics">
-              <span class="topic-chip">Piloting &amp; landmarks</span>
-              <span class="topic-chip">Sun compass</span>
-              <span class="topic-chip">Magnetic navigation</span>
-              <span class="topic-chip">Star navigation</span>
-              <span class="topic-chip">Migration in NZ species</span>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              Piloting is limited — it only works in <strong>familiar territory</strong> and fails
+              over featureless ocean or at night. This is why long-distance migrants need additional
+              compass mechanisms. A strong answer explains <em>why</em> piloting alone is insufficient.
+            </p>
+          </div>
+
+
+          <!-- ── Sun Compass ── -->
+          <h3>Sun Compass Navigation</h3>
+
+          <p>
+            Many animals use the <strong>position of the sun</strong> relative to the horizon as a
+            directional reference. Because the sun moves across the sky (~15° per hour), the animal
+            must compensate for this movement using an <strong>internal circadian clock</strong> —
+            this is called <strong>time-compensated sun compass navigation</strong>.
+          </p>
+
+          <div class="key-concept">
+            <h4>Time-Compensated Sun Compass</h4>
+            <div class="concept-pair">
+              <div class="concept-card concept-card--sun">
+                <h5>The Compass</h5>
+                <p>
+                  The sun's position provides directional information. In the Southern Hemisphere,
+                  the sun is due north at solar noon. An animal "knows" that if the sun is to its
+                  left in the morning, it is heading roughly south.
+                </p>
+              </div>
+              <div class="concept-card concept-card--clock">
+                <h5>The Clock</h5>
+                <p>
+                  The animal's internal circadian clock tracks the time of day, allowing it to
+                  compensate for the sun's apparent movement. Without this clock, a bee trained to
+                  find food to the east in the morning would search to the south at midday.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sun compass diagram -->
+          <div class="nav-diagram">
+            <h4>Sun Compass: Why the Clock Matters</h4>
+            <p class="diagram-caption">
+              The sun appears to move ~15° per hour across the sky. Without an internal clock to
+              compensate, the animal would misjudge direction as the day progresses.
+            </p>
+            <svg class="sun-compass-svg" viewBox="0 0 500 220" fill="none" aria-label="Diagram showing sun positions at morning, noon, and afternoon, with compass directions">
+              <!-- Horizon line -->
+              <line x1="30" y1="170" x2="470" y2="170" stroke="var(--border-default)" stroke-width="1.5"/>
+              <text x="250" y="200" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-display)">HORIZON</text>
+
+              <!-- Compass points -->
+              <text x="30" y="185" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-display)">E</text>
+              <text x="250" y="185" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-display)">N</text>
+              <text x="470" y="185" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="var(--font-display)">W</text>
+
+              <!-- Sun arc -->
+              <path d="M50 165 Q250 -20 450 165" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-dasharray="4 3" opacity="0.4" fill="none"/>
+
+              <!-- Morning sun -->
+              <circle cx="100" cy="120" r="16" fill="rgba(255,200,50,0.3)" stroke="rgba(255,200,50,0.8)" stroke-width="1.5"/>
+              <text x="100" y="100" text-anchor="middle" fill="rgba(255,200,50,0.9)" font-size="9" font-weight="600" font-family="var(--font-display)">Morning</text>
+
+              <!-- Noon sun -->
+              <circle cx="250" cy="30" r="18" fill="rgba(255,200,50,0.4)" stroke="rgba(255,200,50,0.9)" stroke-width="1.5"/>
+              <text x="250" y="60" text-anchor="middle" fill="rgba(255,200,50,0.9)" font-size="9" font-weight="600" font-family="var(--font-display)">Solar noon</text>
+
+              <!-- Afternoon sun -->
+              <circle cx="400" cy="120" r="16" fill="rgba(255,200,50,0.3)" stroke="rgba(255,200,50,0.8)" stroke-width="1.5"/>
+              <text x="400" y="100" text-anchor="middle" fill="rgba(255,200,50,0.9)" font-size="9" font-weight="600" font-family="var(--font-display)">Afternoon</text>
+
+              <!-- Southern Hemisphere note -->
+              <text x="250" y="215" text-anchor="middle" fill="var(--accent)" font-size="9" font-family="var(--font-display)">Southern Hemisphere: sun due NORTH at solar noon</text>
+            </svg>
+          </div>
+
+          <div class="summary-box">
+            <h4>Classic Evidence: Clock-Shifted Bees &amp; Pigeons</h4>
+            <p>
+              Scientists proved the clock component by keeping animals in artificial light cycles
+              shifted by 6 hours. When released, <strong>clock-shifted pigeons</strong> flew ~90°
+              off course — exactly the error predicted if their internal clock was 6 hours wrong.
+              This elegant experiment confirmed that the sun compass depends on a functioning
+              circadian clock.
+            </p>
+          </div>
+
+
+          <!-- ── Magnetic Navigation ── -->
+          <h3>Magnetic Navigation</h3>
+
+          <p>
+            Earth's magnetic field provides a <strong>globally available</strong> directional cue
+            that works day and night, in cloud, fog, and underwater. Many migratory species —
+            birds, sea turtles, lobsters, salmon — can detect magnetic fields and use them for
+            both compass direction and positional ("map") information.
+          </p>
+
+          <div class="key-concept">
+            <h4>Two Types of Magnetic Information</h4>
+            <div class="concept-pair">
+              <div class="concept-card concept-card--mag-compass">
+                <h5>Magnetic Compass (Inclination)</h5>
+                <p>
+                  Earth's field lines emerge vertically at the poles and run horizontally at the
+                  equator. The <strong>inclination angle</strong> (dip angle) tells the animal
+                  whether it is heading poleward or equatorward — functioning as a compass.
+                </p>
+                <p>
+                  Birds appear to detect <strong>the axis of the field</strong> rather than its
+                  polarity, distinguishing "poleward" from "equatorward" rather than magnetic
+                  north from south.
+                </p>
+              </div>
+              <div class="concept-card concept-card--mag-map">
+                <h5>Magnetic Map (Intensity &amp; Inclination)</h5>
+                <p>
+                  Both <strong>total field intensity</strong> and <strong>inclination angle</strong>
+                  vary geographically in a predictable way. By detecting both parameters, an animal
+                  can estimate its <strong>latitude and longitude</strong> — a bicoordinate
+                  magnetic map.
+                </p>
+                <p>
+                  Sea turtles and lobsters have been shown to use this map sense to determine
+                  their position relative to their goal.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Magnetic field diagram -->
+          <div class="nav-diagram">
+            <h4>Earth's Magnetic Field Lines</h4>
+            <p class="diagram-caption">
+              Field lines emerge vertically at the poles and run parallel to the surface at the
+              equator. The inclination angle provides latitude information.
+            </p>
+            <svg class="magnetic-field-svg" viewBox="0 0 500 250" fill="none" aria-label="Cross-section of Earth showing magnetic field lines curving from south pole to north pole">
+              <!-- Earth -->
+              <ellipse cx="250" cy="140" rx="100" ry="90" fill="rgba(0,200,255,0.05)" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.6"/>
+              <text x="250" y="145" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-family="var(--font-display)" opacity="0.6">EARTH</text>
+
+              <!-- Field lines (simplified arcs) -->
+              <path d="M150 140 Q150 40 250 30 Q350 40 350 140" stroke="var(--accent)" stroke-width="1" opacity="0.4" fill="none"/>
+              <path d="M130 140 Q130 20 250 10 Q370 20 370 140" stroke="var(--accent)" stroke-width="1" opacity="0.3" fill="none"/>
+              <path d="M170 140 Q170 60 250 50 Q330 60 330 140" stroke="var(--accent)" stroke-width="1" opacity="0.5" fill="none"/>
+
+              <!-- Arrows on field lines -->
+              <path d="M195 55 L200 50 L200 60" fill="var(--accent)" opacity="0.5"/>
+              <path d="M305 55 L300 60 L300 50" fill="var(--accent)" opacity="0.5"/>
+
+              <!-- Poles -->
+              <text x="150" y="160" text-anchor="middle" fill="var(--fluoro-pink)" font-size="9" font-weight="600" font-family="var(--font-display)">S</text>
+              <text x="350" y="160" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="9" font-weight="600" font-family="var(--font-display)">N</text>
+
+              <!-- Inclination annotations -->
+              <line x1="150" y1="140" x2="150" y2="100" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <text x="120" y="95" fill="var(--fluoro-pink)" font-size="8" font-family="var(--font-display)">Vertical</text>
+              <text x="120" y="105" fill="var(--fluoro-pink)" font-size="8" font-family="var(--font-display)">(poles)</text>
+
+              <line x1="250" y1="230" x2="300" y2="230" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <text x="250" y="245" fill="var(--accent)" font-size="8" font-family="var(--font-display)">Horizontal (equator)</text>
+            </svg>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              Don't just say animals "sense the magnetic field." For Excellence, explain
+              <strong>what information</strong> the field provides (inclination = compass direction;
+              intensity + inclination = position) and <strong>how</strong> it is detected (magnetite
+              crystals or cryptochrome proteins in the eye).
+            </p>
+          </div>
+
+          <div class="key-concept">
+            <h4>How Is the Magnetic Field Detected?</h4>
+            <p>
+              Two mechanisms have been proposed, and both may operate in different species:
+            </p>
+            <div class="concept-pair">
+              <div class="concept-card concept-card--magnetite">
+                <h5>Magnetite-Based Reception</h5>
+                <p>
+                  Tiny crystals of <strong>magnetite (Fe<sub>3</sub>O<sub>4</sub>)</strong> —
+                  a naturally magnetic mineral — have been found in the beaks and nasal tissues of
+                  birds, and in the brains of fish and sea turtles. These crystals physically rotate
+                  in response to the magnetic field, stimulating nearby nerve cells.
+                </p>
+              </div>
+              <div class="concept-card concept-card--cryptochrome">
+                <h5>Radical Pair Mechanism (Cryptochrome)</h5>
+                <p>
+                  <strong>Cryptochrome proteins</strong> in the retina of birds are activated by
+                  blue light and form radical pairs whose chemistry is influenced by the magnetic
+                  field. This may allow birds to literally <strong>"see" the magnetic field</strong>
+                  as a visual pattern overlaid on their normal vision.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Star Navigation ── -->
+          <h3>Star Navigation</h3>
+
+          <p>
+            Nocturnal migrants cannot use a sun compass. Instead, some species orient using
+            <strong>star patterns</strong>. Unlike the sun, the stars' positions change slowly
+            enough that no time compensation is needed within a single night — the pattern
+            of constellations itself provides directional information.
+          </p>
+
+          <div class="key-concept">
+            <h4>How Star Navigation Works</h4>
+            <p>
+              In the Northern Hemisphere, stars appear to rotate around <strong>Polaris</strong>
+              (the pole star), which remains essentially stationary. Birds learn that the centre of
+              celestial rotation = north. In the Southern Hemisphere, the
+              <strong>Southern Cross</strong> and pointer stars serve a similar (though less
+              precise) role.
+            </p>
+            <div class="concept-example">
+              <span class="example-label">Classic experiment</span>
+              <p>
+                Stephen Emlen (1970s) raised <strong>indigo buntings</strong> in a planetarium.
+                Birds raised under a normal star pattern oriented correctly. Birds raised under a
+                <em>rotated</em> sky (where a different star was at the centre of rotation) treated
+                that star as "north." This proved birds <strong>learn</strong> the star pattern
+                during development — it is not innate.
+              </p>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              A common exam mistake is saying birds "follow Polaris." The key insight is that birds
+              learn which point is the <strong>centre of celestial rotation</strong> — they don't
+              innately know which star is the pole star.
+            </p>
+          </div>
+
+
+          <!-- ── Olfactory Navigation ── -->
+          <h3>Olfactory (Smell) Navigation</h3>
+
+          <p>
+            Some species use <strong>airborne or waterborne chemical cues</strong> for navigation
+            over long distances — distinct from short-range chemotaxis.
+          </p>
+
+          <div class="key-concept">
+            <h4>Olfactory Map Hypothesis</h4>
+            <p>
+              Homing pigeons may build an <strong>olfactory map</strong> by learning the
+              characteristic smells carried by winds from different directions. When displaced,
+              they sniff the local air, compare it to their learned odour map, and determine
+              which direction is home. Pigeons with blocked nasal passages or severed olfactory
+              nerves show severely impaired homing.
+            </p>
+          </div>
+
+          <div class="summary-box">
+            <h4>Salmon Homing — Olfactory Imprinting</h4>
+            <p>
+              Pacific salmon (<em>Oncorhynchus</em> spp.) famously return to their natal stream
+              to spawn after years at sea. During a critical developmental window as juveniles,
+              they <strong>imprint on the unique chemical signature</strong> of their home stream.
+              Years later, they follow this chemical "address" upstream, using
+              <strong>positive chemotaxis</strong> to trace the scent gradient to their birthplace.
+              This is one of the most extraordinary examples of long-range chemically guided
+              navigation in nature.
+            </p>
+          </div>
+
+
+          <!-- ── Multi-Cue Navigation ── -->
+          <h3>Multi-Cue Navigation: Putting It All Together</h3>
+
+          <p>
+            No single mechanism explains all of navigation. Real migrants use <strong>multiple
+            cues redundantly</strong>, switching between them depending on conditions.
+          </p>
+
+          <div class="nav-diagram">
+            <h4>Navigation Hierarchy</h4>
+            <p class="diagram-caption">
+              Long-distance migrants typically use different cues at different stages of the journey.
+            </p>
+            <div class="nav-hierarchy">
+              <div class="nav-hierarchy__stage">
+                <div class="nav-hierarchy__icon" aria-hidden="true">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="12" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <path d="M16 6v20M6 16h20" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.5"/>
+                  </svg>
+                </div>
+                <h5>Departure</h5>
+                <p>Magnetic compass + inherited direction programme (young birds on first migration)</p>
+              </div>
+              <div class="nav-hierarchy__arrow" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M15 8l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="nav-hierarchy__stage">
+                <div class="nav-hierarchy__icon" aria-hidden="true">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="10" r="5" fill="rgba(255,200,50,0.3)" stroke="rgba(255,200,50,0.7)" stroke-width="1"/>
+                    <path d="M8 24h16" stroke="var(--text-muted)" stroke-width="1"/>
+                  </svg>
+                </div>
+                <h5>En Route</h5>
+                <p>Sun compass (day) or star compass (night) + magnetic compass as backup</p>
+              </div>
+              <div class="nav-hierarchy__arrow" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M15 8l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="nav-hierarchy__stage">
+                <div class="nav-hierarchy__icon" aria-hidden="true">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M8 24L16 8l8 16" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                    <circle cx="16" cy="20" r="3" fill="var(--accent)" opacity="0.3"/>
+                  </svg>
+                </div>
+                <h5>Arrival</h5>
+                <p>Visual landmarks (piloting) + olfactory cues for final homing</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-box">
+            <h4>Connection to Taxes</h4>
+            <p>
+              Navigation mechanisms are built on the same <strong>taxis</strong> responses you
+              studied in Weeks 2–3. Sun compass navigation involves <strong>phototaxis</strong>
+              (orientation to light). Magnetic navigation is <strong>magnetotaxis</strong>. Salmon
+              homing is <strong>positive chemotaxis</strong>. The difference is <em>scale</em> —
+              navigation operates over kilometres, but the underlying sensory mechanisms are the
+              same directional responses to environmental stimuli.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Navigation: NZ & Global Examples
+             —————————————————————————————————————————————————————————————— -->
+        <section id="nav-examples" class="content-section fade-in-up">
+          <h2>Navigation: NZ &amp; Global Examples</h2>
+
+          <p>
+            These examples demonstrate how different species combine navigation mechanisms.
+            NZ species are particularly interesting because of the vast oceanic distances involved.
+          </p>
+
+          <!-- ── NZ Examples ── -->
+          <h3>New Zealand Species</h3>
+
+          <div class="examples-grid">
+
+            <!-- Bar-tailed godwit -->
+            <div class="example-card example-card--nz example-card--featured">
+              <div class="example-card__header">
+                <h4>Bar-Tailed Godwit / Kuaka</h4>
+                <span class="example-card__latin">Limosa lapponica baueri</span>
+                <span class="response-badge response-badge--nav">Magnetic + sun compass</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Holds the record for the <strong>longest non-stop flight of any bird</strong> —
+                  up to <strong>13,000 km</strong> from Alaska to NZ without landing, eating, or
+                  drinking, taking 8–10 days of continuous flight over the Pacific Ocean.
+                </p>
+                <p>
+                  With no landmarks over open ocean, godwits must rely on <strong>magnetic compass</strong>
+                  and <strong>time-compensated sun compass</strong> navigation. They depart Alaska in
+                  September and arrive at NZ estuaries (Miranda, Farewell Spit, Avon-Heathcote) in
+                  October. Juveniles make their first journey <strong>without parental guidance</strong>,
+                  suggesting an inherited magnetic direction programme.
+                </p>
+                <p class="example-card__detail">
+                  In 2022, a satellite-tagged godwit (4BBRW) flew 13,560 km non-stop from Alaska to
+                  near Invercargill in 11 days — setting a new world record. These birds lose up to
+                  55% of their body mass during the flight, having converted most of their internal
+                  organs to fuel before departure.
+                </p>
+              </div>
+            </div>
+
+            <!-- Sooty shearwater -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Sooty Shearwater / Tītī</h4>
+                <span class="example-card__latin">Ardenna grisea</span>
+                <span class="response-badge response-badge--nav">Multi-cue (64,000 km)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Breeds on NZ offshore islands (Whenua Hou / Codfish Island, The Snares) then
+                  undertakes a <strong>figure-8 migration across the entire Pacific</strong> —
+                  approximately <strong>64,000 km per year</strong>, one of the longest migrations
+                  of any animal.
+                </p>
+                <p class="example-card__detail">
+                  GPS tracking shows they follow a consistent trans-Pacific route: NZ → Japan/North
+                  Pacific → Alaska/Canada → California → back to NZ. They use prevailing wind
+                  patterns (anemotaxis) combined with magnetic and celestial cues. Muttonbirding
+                  (tītī harvesting) by Ngāi Tahu is a protected cultural practice.
+                </p>
+              </div>
+            </div>
+
+            <!-- Long-finned eel -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Longfin Eel / Tuna</h4>
+                <span class="example-card__latin">Anguilla dieffenbachii</span>
+                <span class="response-badge response-badge--nav">Magnetic + olfactory</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  NZ's endemic longfin eel lives in freshwater for <strong>up to 80 years</strong>
+                  before migrating to the deep Pacific (thought to be near Tonga) to spawn and die.
+                  The exact spawning grounds have <strong>never been found</strong>.
+                </p>
+                <p class="example-card__detail">
+                  Juvenile glass eels return to NZ and navigate upstream using olfactory cues and
+                  positive rheotaxis (swimming against current). Their magnetic sense is thought to
+                  guide them across open ocean. This species is classified as "At Risk — Declining"
+                  due to habitat loss and barriers to migration (dams, weirs).
+                </p>
+              </div>
+            </div>
+
+            <!-- Humpback whale -->
+            <div class="example-card example-card--nz">
+              <div class="example-card__header">
+                <h4>Humpback Whale</h4>
+                <span class="example-card__latin">Megaptera novaeangliae</span>
+                <span class="response-badge response-badge--nav">Magnetic + acoustic</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Migrates <strong>~5,000 km</strong> between Antarctic feeding grounds (krill) and
+                  warm breeding waters around Tonga, Raoul Island, and NZ's Kermadec Islands.
+                  Research shows humpbacks follow <strong>remarkably straight courses</strong>
+                  across open ocean, deviating less than 1° — strongly suggesting magnetic compass use.
+                </p>
+                <p class="example-card__detail">
+                  A 2011 study found humpback whale migration tracks correlated with Earth's
+                  geomagnetic field lines rather than ocean currents, supporting magnetic navigation.
+                  NZ's Cook Strait is an important transit corridor.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ── Global Examples ── -->
+          <h3>Famous Global Examples</h3>
+
+          <div class="examples-grid">
+
+            <!-- Monarch butterfly -->
+            <div class="example-card example-card--global example-card--featured">
+              <div class="example-card__header">
+                <h4>Monarch Butterfly — Multi-Generational Migration</h4>
+                <span class="example-card__latin">Danaus plexippus</span>
+                <span class="response-badge response-badge--nav">Sun compass + magnetic</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  North American monarchs migrate <strong>up to 4,000 km</strong> from Canada/USA
+                  to overwintering sites in central Mexico. They use a <strong>time-compensated sun
+                  compass</strong> located in their antennae — remarkably, the antennae contain
+                  both the clock and the compass sensor.
+                </p>
+                <p>
+                  The return journey north takes <strong>multiple generations</strong>. The autumn
+                  migrants that fly south are great-great-grandchildren of the butterflies that left
+                  Mexico the previous spring. The navigational programme must therefore be
+                  <strong>entirely inherited</strong> — no learning from parents is possible.
+                </p>
+                <p class="example-card__detail">
+                  Clock-shift experiments confirm the sun compass: monarchs kept in 6-hour shifted
+                  light cycles flew ~90° off course, just like clock-shifted pigeons. A magnetic
+                  compass serves as a backup on overcast days.
+                </p>
+              </div>
+            </div>
+
+            <!-- Loggerhead sea turtle -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Loggerhead Sea Turtle</h4>
+                <span class="example-card__latin">Caretta caretta</span>
+                <span class="response-badge response-badge--nav">Magnetic map</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Hatchlings in Florida enter the Atlantic and use a <strong>bicoordinate magnetic
+                  map</strong> to navigate the North Atlantic gyre — a circular current system.
+                  Lohmann's lab showed that exposing hatchlings to magnetic fields matching
+                  different Atlantic locations caused them to swim in the <strong>direction that
+                  would keep them within the gyre</strong>.
+                </p>
+                <p class="example-card__detail">
+                  Adults return to nest on the <strong>same beach</strong> where they hatched,
+                  decades later. They likely use magnetic coordinates to locate the general area,
+                  then olfactory cues for final homing — a multi-cue strategy.
+                </p>
+              </div>
+            </div>
+
+            <!-- Arctic tern -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Arctic Tern</h4>
+                <span class="example-card__latin">Sterna paradisaea</span>
+                <span class="response-badge response-badge--nav">Multi-cue (71,000 km)</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Holds the record for the <strong>longest annual migration</strong> — approximately
+                  <strong>71,000 km</strong> pole to pole, from Arctic breeding grounds to Antarctic
+                  feeding waters and back. Over a 30-year lifespan, an Arctic tern may fly the
+                  equivalent of <strong>three round trips to the Moon</strong>.
+                </p>
+                <p class="example-card__detail">
+                  They experience more daylight than any other animal, breeding under the midnight
+                  sun and feeding under Antarctic summer light. Their navigation likely combines
+                  magnetic compass, sun compass, and wind patterns.
+                </p>
+              </div>
+            </div>
+
+            <!-- Spiny lobster -->
+            <div class="example-card example-card--global">
+              <div class="example-card__header">
+                <h4>Spiny Lobster — Magnetic Map in an Invertebrate</h4>
+                <span class="example-card__latin">Panulirus argus</span>
+                <span class="response-badge response-badge--nav">Magnetic map</span>
+              </div>
+              <div class="example-card__body">
+                <p>
+                  Caribbean spiny lobsters can determine their <strong>position</strong> (not just
+                  direction) from the magnetic field alone. When displaced to unfamiliar locations,
+                  they orient directly homeward — even when denied access to visual, chemical,
+                  and wave cues.
+                </p>
+                <p class="example-card__detail">
+                  This was one of the first demonstrations of a <strong>true magnetic map sense</strong>
+                  in an invertebrate, showing that magnetic navigation is not limited to vertebrates.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Navigation Videos
+             —————————————————————————————————————————————————————————————— -->
+        <section id="nav-videos" class="content-section fade-in-up">
+          <h2>Videos &amp; Resources</h2>
+
+          <h4>How Do Birds Navigate? — SciShow</h4>
+          <p>
+            Clear overview of sun compass, magnetic navigation, and star navigation in
+            migratory birds, with reference to key experiments.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/FYbjOJqcaYk"
+              title="How Do Birds Navigate? — SciShow"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>The Bar-Tailed Godwit's Epic Journey — Cornell Lab</h4>
+          <p>
+            Focuses on the bar-tailed godwit's record-breaking non-stop migration from Alaska
+            to New Zealand — directly relevant to the NZ curriculum.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/FnMBJg-u0mI"
+              title="The Bar-Tailed Godwit — Cornell Lab of Ornithology"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>Further Reading</h4>
+          <ul class="feature-list">
+            <li>
+              <a href="https://www.doc.govt.nz/nature/native-animals/birds/birds-a-z/bar-tailed-godwit-kuaka/" target="_blank" rel="noopener noreferrer">
+                DOC — Bar-Tailed Godwit / Kuaka
+              </a> — Department of Conservation species profile
+            </li>
+            <li>
+              <a href="https://www.sciencelearn.org.nz/resources/308-bird-migration" target="_blank" rel="noopener noreferrer">
+                Science Learning Hub — Bird Migration
+              </a> — NZ educational resource on migratory birds
+            </li>
+            <li>
+              <a href="https://www.doc.govt.nz/nature/native-animals/marine-fish-and-invertebrates/eels-tuna/" target="_blank" rel="noopener noreferrer">
+                DOC — Eels / Tuna
+              </a> — Longfin and shortfin eel conservation
+            </li>
+          </ul>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Navigation Quiz — Multichoice
+             —————————————————————————————————————————————————————————————— -->
+        <section id="nav-quiz" class="content-section fade-in-up">
+          <h2>Test Yourself: Navigation</h2>
+          <p>
+            Ten multichoice questions covering navigation mechanisms and examples. See how you go.
+          </p>
+
+          <div class="nav-quiz" id="nav-quiz">
+            <div class="quiz-start" id="nav-quiz-start">
+              <button class="btn btn--primary" id="nav-quiz-start-btn">Start Quiz</button>
+            </div>
+
+            <div class="quiz-active" id="nav-quiz-active" hidden>
+              <div class="quiz-progress">
+                <div class="quiz-progress__bar">
+                  <div class="quiz-progress__fill" id="nav-quiz-progress-fill"></div>
+                </div>
+                <span class="quiz-progress__text">
+                  Question <span id="nav-q-num">1</span> / <span id="nav-q-total">10</span>
+                </span>
+              </div>
+
+              <div class="quiz-scenario" id="nav-quiz-scenario"></div>
+              <div class="quiz-options" id="nav-quiz-options"></div>
+              <div class="quiz-feedback" id="nav-quiz-feedback" hidden></div>
+
+              <button class="btn btn--secondary quiz-next" id="nav-quiz-next" hidden>
+                Next
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="quiz-results" id="nav-quiz-results" hidden>
+              <h3>Your Results</h3>
+              <div class="quiz-score">
+                <span class="quiz-score__number" id="nav-quiz-score-number">0</span>
+                <span class="quiz-score__total">/ <span id="nav-quiz-score-total">10</span></span>
+              </div>
+              <p class="quiz-score__label" id="nav-quiz-score-label"></p>
+              <div class="quiz-review" id="nav-quiz-review"></div>
+              <button class="btn btn--primary" id="nav-quiz-restart-btn">Try Again</button>
             </div>
           </div>
         </section>
@@ -1692,6 +2391,22 @@ const base = import.meta.env.BASE_URL;
               <span class="objective-checkbox" aria-hidden="true"></span>
               <span>Connect pheromone responses to chemotaxis</span>
             </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe navigation mechanisms: piloting, sun compass, magnetic, star, olfactory</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain how animals use time-compensated sun compass navigation</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe magnetic field detection (magnetite &amp; cryptochrome)</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Give NZ examples of animal navigation with specific cues used</span>
+            </li>
           </ul>
         </div>
 
@@ -1704,7 +2419,10 @@ const base = import.meta.env.BASE_URL;
             <a href="#pheromone-examples" class="sidebar-toc__link sidebar-toc__link--sub">NZ &amp; Global Examples</a>
             <a href="#pheromone-videos" class="sidebar-toc__link sidebar-toc__link--sub">Videos &amp; Resources</a>
             <a href="#pheromone-quiz" class="sidebar-toc__link sidebar-toc__link--sub">Test Yourself</a>
-            <a href="#lesson-3" class="sidebar-toc__link">Lessons 3–4: Navigation</a>
+            <a href="#lesson-3" class="sidebar-toc__link">Navigation: Core Content</a>
+            <a href="#nav-examples" class="sidebar-toc__link sidebar-toc__link--sub">NZ &amp; Global Examples</a>
+            <a href="#nav-videos" class="sidebar-toc__link sidebar-toc__link--sub">Videos &amp; Resources</a>
+            <a href="#nav-quiz" class="sidebar-toc__link sidebar-toc__link--sub">Test Yourself</a>
           </nav>
         </div>
 
@@ -3471,6 +4189,102 @@ const base = import.meta.env.BASE_URL;
   .content-section a:hover {
     text-decoration-color: var(--fluoro-cyan);
   }
+
+
+  /* ==========================================================================
+     Navigation — Lessons 3–4 Styles
+     ========================================================================== */
+
+  /* ── Navigation diagrams ── */
+  .nav-diagram {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .nav-diagram h4 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .sun-compass-svg,
+  .magnetic-field-svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* ── Concept card variants for navigation ── */
+  .concept-card--sun { border-top-color: rgba(255, 200, 50, 0.8); }
+  .concept-card--clock { border-top-color: var(--fluoro-cyan); }
+  .concept-card--mag-compass { border-top-color: var(--fluoro-pink); }
+  .concept-card--mag-map { border-top-color: var(--purple-light); }
+  .concept-card--magnetite { border-top-color: var(--fluoro-cyan); }
+  .concept-card--cryptochrome { border-top-color: var(--fluoro-pink); }
+
+  /* ── Navigation hierarchy (multi-cue) ── */
+  .nav-hierarchy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-hierarchy__stage {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+    max-width: 200px;
+  }
+
+  .nav-hierarchy__stage h5 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin: var(--space-2) 0;
+  }
+
+  .nav-hierarchy__stage p {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .nav-hierarchy__arrow {
+    flex-shrink: 0;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 600px) {
+    .nav-hierarchy {
+      flex-direction: column;
+    }
+    .nav-hierarchy__arrow {
+      transform: rotate(90deg);
+    }
+    .nav-hierarchy__stage {
+      max-width: 100%;
+    }
+  }
+
+  /* ── Navigation response badge ── */
+  .response-badge--nav {
+    background: rgba(0, 200, 255, 0.1);
+    color: var(--fluoro-cyan);
+  }
 </style>
 
 
@@ -3877,6 +4691,230 @@ const base = import.meta.env.BASE_URL;
 
       const pct = (score / questions.length) * 100;
       if (pct >= 90) scoreLabelEl.textContent = 'Outstanding — you know your pheromones!';
+      else if (pct >= 70) scoreLabelEl.textContent = 'Solid work — review the ones you missed.';
+      else if (pct >= 50) scoreLabelEl.textContent = 'Getting there — re-read the core content above.';
+      else scoreLabelEl.textContent = 'Keep going — read through the lesson again and try once more.';
+
+      reviewEl.innerHTML = answers.map((a) => {
+        const q = questions[a.qIdx];
+        return `<div class="quiz-review-item ${a.correct ? 'quiz-review-item--correct' : 'quiz-review-item--incorrect'}">
+          <strong>Q${a.qIdx + 1}:</strong> ${q.q.substring(0, 80)}${q.q.length > 80 ? '...' : ''}
+          ${a.correct ? ' ✓' : ` ✗ — Correct answer: ${q.options[q.correct]}`}
+        </div>`;
+      }).join('');
+    }
+
+    startBtn.addEventListener('click', () => {
+      startEl.hidden = true;
+      activeEl.hidden = false;
+      showQuestion();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentQ++;
+      if (currentQ >= questions.length) {
+        showResults();
+      } else {
+        showQuestion();
+      }
+    });
+
+    restartBtn.addEventListener('click', () => {
+      currentQ = 0;
+      score = 0;
+      answers = [];
+      resultsEl.hidden = true;
+      activeEl.hidden = false;
+      showQuestion();
+    });
+  })();
+
+
+  /* --------------------------------------------------------------------------
+     Navigation Quiz — Multichoice
+     -------------------------------------------------------------------------- */
+  (function navQuiz() {
+    const questions = [
+      {
+        q: 'What is the key difference between navigation and simple orientation (taxis)?',
+        options: [
+          'Navigation only works over short distances; taxis works over long distances',
+          'Navigation requires a "map" (position sense) and a "compass" (direction sense); taxis requires only direction',
+          'Navigation is innate; taxis is always learned',
+          'Navigation uses chemical cues; taxis uses physical cues'
+        ],
+        correct: 1,
+        explanation: 'Navigation requires both knowing where you are relative to your goal (map) and knowing which direction to travel (compass). Simple taxis only requires detecting and responding to the direction of a stimulus.'
+      },
+      {
+        q: 'Piloting (landmark navigation) is limited because:',
+        options: [
+          'It only works during the day',
+          'It requires prior experience of the route and fails over featureless terrain',
+          'It only works for birds, not marine animals',
+          'It requires a magnetic sense to calibrate landmarks'
+        ],
+        correct: 1,
+        explanation: 'Piloting relies on recognising learned visual landmarks — it requires prior experience and fails over featureless ocean or in conditions where landmarks are invisible (fog, night over open water).'
+      },
+      {
+        q: 'Time-compensated sun compass navigation requires an internal circadian clock because:',
+        options: [
+          'The sun produces different wavelengths at different times of day',
+          'The sun\'s position changes ~15° per hour, so the same sun position means different directions at different times',
+          'The sun is only visible for part of the day',
+          'The circadian clock tells the animal when to start migrating'
+        ],
+        correct: 1,
+        explanation: 'The sun moves ~15° per hour across the sky. Without a clock to compensate, the animal would misjudge direction. Clock-shifted pigeons fly ~90° off course, confirming the clock is essential.'
+      },
+      {
+        q: 'In the clock-shift experiment, pigeons kept in artificial light cycles shifted by 6 hours flew approximately:',
+        options: [
+          '45° off course',
+          '90° off course',
+          '180° off course (opposite direction)',
+          'In random directions'
+        ],
+        correct: 1,
+        explanation: 'A 6-hour shift corresponds to 90° of sun movement (6 hours × 15°/hour = 90°). This elegant experiment proved the sun compass depends on a functioning circadian clock.'
+      },
+      {
+        q: 'The bar-tailed godwit (kuaka) is remarkable because:',
+        options: [
+          'It is the only bird that uses magnetic navigation',
+          'It makes the longest non-stop flight of any bird — up to 13,000 km from Alaska to NZ without landing',
+          'It navigates exclusively by star patterns',
+          'It teaches its young the migration route through piloting'
+        ],
+        correct: 1,
+        explanation: 'Bar-tailed godwits fly non-stop over the Pacific from Alaska to NZ (up to 13,000+ km) without eating, drinking, or resting. Juveniles make the journey without parental guidance, suggesting an inherited magnetic programme.'
+      },
+      {
+        q: 'How might birds detect the magnetic field? Two proposed mechanisms are:',
+        options: [
+          'Magnetite crystals in tissues and cryptochrome proteins in the retina',
+          'Pressure sensors in the ear and infrared receptors in the beak',
+          'Electroreceptors in the skin and piezoelectric crystals in bones',
+          'Iron particles in the blood and calcium channels in neurons'
+        ],
+        correct: 0,
+        explanation: 'Magnetite (Fe₃O₄) crystals in the beak/nasal area physically rotate in the field, stimulating nerves. Cryptochrome proteins in the retina may allow birds to "see" the magnetic field as a visual overlay — both mechanisms may operate together.'
+      },
+      {
+        q: 'Stephen Emlen\'s planetarium experiments with indigo buntings showed that:',
+        options: [
+          'Birds are born knowing which star is Polaris',
+          'Birds learn the star pattern during development — they identify the centre of celestial rotation, not a specific star',
+          'Star navigation only works in the Northern Hemisphere',
+          'Birds use individual star brightness, not pattern recognition'
+        ],
+        correct: 1,
+        explanation: 'Emlen raised buntings under rotated skies where a different star was at the centre of rotation. Birds treated that star as "north" — proving they learn which point is the rotational centre, rather than innately recognising Polaris.'
+      },
+      {
+        q: 'Pacific salmon return to their natal stream to spawn by:',
+        options: [
+          'Following magnetic field lines upstream',
+          'Imprinting on the unique chemical signature of their home stream during development, then using chemotaxis',
+          'Piloting using underwater landmarks learned as juveniles',
+          'Following the sun compass upstream'
+        ],
+        correct: 1,
+        explanation: 'Salmon imprint on their home stream\'s unique chemical signature as juveniles. Years later, they use positive chemotaxis to trace the scent gradient upstream to their birthplace — one of the most extraordinary examples of olfactory navigation.'
+      },
+      {
+        q: 'Loggerhead sea turtle hatchlings use a bicoordinate magnetic map. This means they can determine:',
+        options: [
+          'Only magnetic north from south',
+          'Both their latitude and longitude from the magnetic field\'s intensity and inclination angle',
+          'The distance to the nearest land mass',
+          'The depth of the ocean below them'
+        ],
+        correct: 1,
+        explanation: 'Both total field intensity and inclination angle vary geographically in predictable ways. By sensing both parameters, turtles can estimate their position (latitude and longitude) — a true magnetic "map."'
+      },
+      {
+        q: 'Long-distance migrants typically use different navigation cues at different journey stages. The correct order is:',
+        options: [
+          'Landmarks → sun compass → magnetic compass',
+          'Magnetic compass (departure) → sun/star compass (en route) → landmarks + olfactory (arrival)',
+          'Star compass → olfactory cues → piloting',
+          'Sun compass → magnetic compass → echolocation'
+        ],
+        correct: 1,
+        explanation: 'Most migrants use magnetic compass + inherited direction for departure, sun/star compass for the main journey, and visual landmarks + olfactory cues for final homing. This multi-cue strategy provides redundancy.'
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+    let answers = [];
+
+    const startEl = document.getElementById('nav-quiz-start');
+    const startBtn = document.getElementById('nav-quiz-start-btn');
+    const activeEl = document.getElementById('nav-quiz-active');
+    const resultsEl = document.getElementById('nav-quiz-results');
+    const scenarioEl = document.getElementById('nav-quiz-scenario');
+    const optionsEl = document.getElementById('nav-quiz-options');
+    const feedbackEl = document.getElementById('nav-quiz-feedback');
+    const nextBtn = document.getElementById('nav-quiz-next');
+    const progressFill = document.getElementById('nav-quiz-progress-fill');
+    const qNumEl = document.getElementById('nav-q-num');
+    const scoreNumEl = document.getElementById('nav-quiz-score-number');
+    const scoreLabelEl = document.getElementById('nav-quiz-score-label');
+    const reviewEl = document.getElementById('nav-quiz-review');
+    const restartBtn = document.getElementById('nav-quiz-restart-btn');
+
+    if (!startBtn) return;
+
+    function showQuestion() {
+      const q = questions[currentQ];
+      scenarioEl.innerHTML = q.q;
+      optionsEl.innerHTML = '';
+      feedbackEl.hidden = true;
+      nextBtn.hidden = true;
+      qNumEl.textContent = String(currentQ + 1);
+      progressFill.style.width = ((currentQ / questions.length) * 100) + '%';
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => selectAnswer(i));
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(idx) {
+      const q = questions[currentQ];
+      const btns = optionsEl.querySelectorAll('.quiz-option');
+      const isCorrect = idx === q.correct;
+
+      btns.forEach((btn, i) => {
+        btn.classList.add('quiz-option--locked');
+        if (i === q.correct) btn.classList.add('quiz-option--correct');
+        if (i === idx && !isCorrect) btn.classList.add('quiz-option--incorrect');
+      });
+
+      if (isCorrect) score++;
+      answers.push({ qIdx: currentQ, chosen: idx, correct: isCorrect });
+
+      feedbackEl.hidden = false;
+      feedbackEl.className = 'quiz-feedback ' + (isCorrect ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect');
+      feedbackEl.innerHTML = (isCorrect ? '<strong>Correct!</strong> ' : '<strong>Not quite.</strong> ') + q.explanation;
+
+      nextBtn.hidden = false;
+    }
+
+    function showResults() {
+      activeEl.hidden = true;
+      resultsEl.hidden = false;
+      scoreNumEl.textContent = String(score);
+      progressFill.style.width = '100%';
+
+      const pct = (score / questions.length) * 100;
+      if (pct >= 90) scoreLabelEl.textContent = 'Outstanding — you really know your navigation!';
       else if (pct >= 70) scoreLabelEl.textContent = 'Solid work — review the ones you missed.';
       else if (pct >= 50) scoreLabelEl.textContent = 'Getting there — re-read the core content above.';
       else scoreLabelEl.textContent = 'Keep going — read through the lesson again and try once more.';
