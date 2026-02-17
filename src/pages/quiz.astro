@@ -1,6 +1,7 @@
 ---
 /* ==========================================================================
-   Quiz — Coming Soon placeholder
+   Quiz — MCQ & True/False with Practice and Test modes
+   Covers Week 3 (Taxis & Kinesis) and Week 4 (Pheromones & Navigation)
    ========================================================================== */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -8,69 +9,1747 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Quiz — Dr Eliot's Level 3 Biology">
-  <section class="coming-soon">
-    <div class="coming-soon__icon" aria-hidden="true">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="22" stroke="var(--fluoro-cyan)" stroke-width="2" fill="none" />
-        <text x="32" y="40" text-anchor="middle" fill="var(--fluoro-cyan)" font-family="var(--font-display)" font-size="24" font-weight="600">?</text>
-      </svg>
+
+  <div class="quiz-page" data-base-url={base}>
+
+    <!-- Header -->
+    <header class="quiz-header fade-in-up">
+      <div class="quiz-header__meta">
+        <a href={base} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+      </div>
+      <h1 class="quiz-header__title">Quiz</h1>
+      <p class="quiz-header__subtitle" id="quiz-subtitle">AS 91603 — Test Your Knowledge</p>
+    </header>
+
+    <!-- ================================================================
+         Setup Screen
+         ================================================================ -->
+    <div class="setup-screen fade-in-up" id="setup-screen">
+
+      <!-- Mode selector -->
+      <div class="setup-section">
+        <h2 class="setup-label">Choose your mode</h2>
+        <div class="mode-selector">
+          <button class="mode-btn active" data-mode="practice" id="mode-practice">
+            <div class="mode-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M10 14l2.5 2.5L18 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="mode-name">Practice Mode</span>
+            <span class="mode-desc">See the answer after each question</span>
+          </button>
+          <button class="mode-btn" data-mode="test" id="mode-test">
+            <div class="mode-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="5" y="4" width="18" height="20" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M9 10h10M9 14h10M9 18h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+              </svg>
+            </div>
+            <span class="mode-name">Test Mode</span>
+            <span class="mode-desc">Answer all, then see your results</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scope selector -->
+      <div class="setup-section">
+        <h2 class="setup-label">Choose your topic</h2>
+        <div class="scope-selector">
+          <button class="scope-btn" data-scope="week3">Week 3 — Simple Animal Responses</button>
+          <button class="scope-btn" data-scope="week4">Week 4 — Pheromones &amp; Navigation</button>
+          <button class="scope-btn active" data-scope="all">All Weeks (Boss Level)</button>
+        </div>
+      </div>
+
+      <!-- Length selector -->
+      <div class="setup-section">
+        <h2 class="setup-label">Number of questions</h2>
+        <div class="length-selector">
+          <button class="length-btn" data-length="10">10</button>
+          <button class="length-btn active" data-length="15">15</button>
+          <button class="length-btn" data-length="20">20</button>
+        </div>
+      </div>
+
+      <!-- Start button -->
+      <button class="start-btn" id="start-quiz">
+        Start Quiz
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <p class="setup-hint" id="setup-hint"></p>
     </div>
-    <h1>Quiz</h1>
-    <p>Multiple choice and true/false quizzes across all standards are coming soon.</p>
-    <a href={base} class="coming-soon__link">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Back to Home
-    </a>
-  </section>
+
+    <!-- ================================================================
+         Question Screen
+         ================================================================ -->
+    <div class="question-screen" id="question-screen" style="display: none;">
+
+      <!-- Progress bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="question-counter">
+        <span>Question <span id="q-current">1</span> of <span id="q-total">10</span></span>
+        <span class="question-type-badge" id="q-type-badge">MCQ</span>
+      </div>
+
+      <!-- Question -->
+      <div class="question-card fade-in-up" id="question-card">
+        <p class="question-text" id="question-text"></p>
+
+        <!-- MCQ options -->
+        <div class="options-container" id="options-container"></div>
+
+        <!-- T/F options -->
+        <div class="tf-container" id="tf-container" style="display: none;">
+          <button class="tf-btn" data-tf="true">True</button>
+          <button class="tf-btn" data-tf="false">False</button>
+        </div>
+      </div>
+
+      <!-- Feedback (practice mode only) -->
+      <div class="feedback-panel" id="feedback-panel" style="display: none;">
+        <div class="feedback-icon" id="feedback-icon"></div>
+        <p class="feedback-result" id="feedback-result"></p>
+        <p class="feedback-explanation" id="feedback-explanation"></p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="question-nav">
+        <button class="nav-btn" id="btn-prev" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <button class="nav-btn nav-btn--primary" id="btn-check" style="display: none;">Check Answer</button>
+        <button class="nav-btn nav-btn--primary" id="btn-next" style="display: none;">
+          Next
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn nav-btn--primary" id="btn-submit" style="display: none;">Submit Quiz</button>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         Results Screen
+         ================================================================ -->
+    <div class="results-screen" id="results-screen" style="display: none;">
+
+      <div class="results-summary fade-in-up">
+        <div class="results-score-ring" id="results-score-ring">
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="var(--border-subtle)" stroke-width="8"/>
+            <circle cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="8"
+              stroke-dasharray="326.73" stroke-dashoffset="326.73" stroke-linecap="round"
+              transform="rotate(-90 60 60)" id="score-circle"/>
+          </svg>
+          <span class="score-text" id="score-text">0%</span>
+        </div>
+        <h2 class="results-title" id="results-title">Quiz Complete</h2>
+        <p class="results-detail" id="results-detail"></p>
+      </div>
+
+      <div class="results-breakdown fade-in-up" id="results-breakdown"></div>
+
+      <div class="results-actions fade-in-up">
+        <button class="nav-btn nav-btn--primary" id="btn-retry">Try Again</button>
+        <a href={base} class="nav-btn">Back to Dashboard</a>
+      </div>
+    </div>
+
+  </div>
+
 </BaseLayout>
 
+
 <style>
-  .coming-soon {
+  /* ==========================================================================
+     Quiz Page Styles — Dark Theme
+     ========================================================================== */
+
+  .quiz-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  /* --------------------------------------------------------------------------
+     Fade-in-up animation
+     -------------------------------------------------------------------------- */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --------------------------------------------------------------------------
+     Header
+     -------------------------------------------------------------------------- */
+  .quiz-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .quiz-header__meta {
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .quiz-header__title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .quiz-header__subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  /* --------------------------------------------------------------------------
+     Setup Screen
+     -------------------------------------------------------------------------- */
+  .setup-screen {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .setup-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .setup-label {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+  }
+
+  /* Mode selector */
+  .mode-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .mode-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    background: var(--surface-2);
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-secondary);
     text-align: center;
-    min-height: 50vh;
-    gap: 1rem;
   }
 
-  .coming-soon__icon {
-    opacity: 0.6;
-    margin-bottom: 0.5rem;
+  .mode-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
-  .coming-soon h1 {
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
+  .mode-btn.active {
+    border-color: var(--accent);
+    background: var(--accent-muted);
     color: var(--text-primary);
   }
 
-  .coming-soon p {
-    color: var(--text-secondary);
-    font-size: var(--text-lg);
-    max-width: 28rem;
+  .mode-icon {
+    color: var(--accent);
   }
 
-  .coming-soon__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
+  .mode-name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-base);
+  }
+
+  .mode-desc {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  /* Scope selector */
+  .scope-selector {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .scope-btn {
+    padding: var(--space-3) var(--space-4);
     background: var(--surface-2);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
     color: var(--text-secondary);
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    text-align: left;
+    transition: all 0.2s ease;
   }
 
-  .coming-soon__link:hover {
+  .scope-btn:hover {
+    border-color: var(--accent);
     color: var(--text-primary);
-    border-color: var(--border-default);
+  }
+
+  .scope-btn.active {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+    color: var(--text-primary);
+    font-weight: var(--weight-semibold);
+  }
+
+  /* Length selector */
+  .length-selector {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .length-btn {
+    padding: var(--space-2) var(--space-5);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+
+  .length-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+  }
+
+  .length-btn.active {
+    background: var(--accent);
+    color: var(--surface-0);
+    border-color: var(--accent);
+  }
+
+  /* Start button */
+  .start-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    background: var(--accent);
+    color: var(--surface-0);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: center;
+  }
+
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .setup-hint {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  /* --------------------------------------------------------------------------
+     Question Screen
+     -------------------------------------------------------------------------- */
+
+  /* Progress bar */
+  .progress-bar-container {
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: var(--radius-full);
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 0%;
+  }
+
+  .question-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-5);
+  }
+
+  .question-type-badge {
+    padding: var(--space-1) var(--space-3);
+    background: var(--accent-muted);
+    color: var(--accent);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+  }
+
+  /* Question card */
+  .question-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-5);
+  }
+
+  .question-text {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    line-height: var(--leading-normal);
+    margin-bottom: var(--space-5);
+  }
+
+  /* MCQ options */
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-1);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    text-align: left;
+    line-height: var(--leading-normal);
+    transition: all 0.15s ease;
+  }
+
+  .option-btn:hover:not(.disabled) {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+  }
+
+  .option-btn.selected {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+  }
+
+  .option-btn.correct {
+    border-color: var(--green-vivid);
+    background: rgba(0, 255, 136, 0.08);
+  }
+
+  .option-btn.incorrect {
+    border-color: var(--error);
+    background: rgba(255, 82, 82, 0.08);
+  }
+
+  .option-btn.disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .option-btn.disabled.correct {
+    opacity: 1;
+  }
+
+  .option-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-3);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-xs);
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .option-btn.selected .option-letter {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .option-btn.correct .option-letter {
+    background: var(--green-vivid);
+    color: var(--surface-0);
+  }
+
+  .option-btn.incorrect .option-letter {
+    background: var(--error);
+    color: white;
+  }
+
+  /* True/False buttons */
+  .tf-container {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .tf-btn {
+    flex: 1;
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface-1);
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+
+  .tf-btn:hover:not(.disabled) {
+    border-color: var(--accent);
+    color: var(--text-primary);
+  }
+
+  .tf-btn.selected {
+    border-color: var(--accent);
+    background: var(--accent-muted);
+    color: var(--text-primary);
+  }
+
+  .tf-btn.correct {
+    border-color: var(--green-vivid);
+    background: rgba(0, 255, 136, 0.08);
+    color: var(--green-vivid);
+  }
+
+  .tf-btn.incorrect {
+    border-color: var(--error);
+    background: rgba(255, 82, 82, 0.08);
+    color: var(--error);
+  }
+
+  .tf-btn.disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .tf-btn.disabled.correct {
+    opacity: 1;
+  }
+
+  /* Feedback panel */
+  .feedback-panel {
+    text-align: center;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .feedback-panel.is-correct {
+    background: rgba(0, 255, 136, 0.06);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+  }
+
+  .feedback-panel.is-incorrect {
+    background: rgba(255, 82, 82, 0.06);
+    border: 1px solid rgba(255, 82, 82, 0.2);
+  }
+
+  .feedback-icon {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .feedback-result {
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    margin-bottom: var(--space-2);
+  }
+
+  .feedback-panel.is-correct .feedback-result {
+    color: var(--green-vivid);
+  }
+
+  .feedback-panel.is-incorrect .feedback-result {
+    color: var(--error);
+  }
+
+  .feedback-explanation {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Navigation buttons */
+  .question-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-5);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .nav-btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+    border-color: var(--accent);
+  }
+
+  .nav-btn--primary:hover {
+    color: var(--surface-0);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* --------------------------------------------------------------------------
+     Results Screen
+     -------------------------------------------------------------------------- */
+
+  .results-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    padding: var(--space-6);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .results-score-ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-text {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+  }
+
+  .results-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+  }
+
+  .results-detail {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+  }
+
+  /* Per-question breakdown */
+  .results-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .breakdown-item {
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--border-subtle);
+  }
+
+  .breakdown-item.is-correct {
+    border-left-color: var(--green-vivid);
+  }
+
+  .breakdown-item.is-incorrect {
+    border-left-color: var(--error);
+  }
+
+  .breakdown-q {
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+  }
+
+  .breakdown-answer {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .breakdown-answer strong {
+    color: var(--text-primary);
+  }
+
+  .breakdown-explanation {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    font-style: italic;
+    line-height: var(--leading-relaxed);
+  }
+
+  .results-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  /* --------------------------------------------------------------------------
+     Animation
+     -------------------------------------------------------------------------- */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --------------------------------------------------------------------------
+     Responsive
+     -------------------------------------------------------------------------- */
+  @media (max-width: 640px) {
+    .mode-selector {
+      grid-template-columns: 1fr;
+    }
+
+    .question-text {
+      font-size: var(--text-lg);
+    }
+
+    .question-card {
+      padding: var(--space-4);
+    }
+
+    .tf-container {
+      flex-direction: column;
+    }
+
+    .question-nav {
+      gap: var(--space-2);
+    }
+
+    .nav-btn {
+      font-size: var(--text-xs);
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .results-summary {
+      padding: var(--space-4);
+    }
   }
 </style>
+
+
+<script>
+  /* ==========================================================================
+     Quiz Data — Week 3 & Week 4
+     ========================================================================== */
+
+  const questions = [
+    // ——— WEEK 3: Simple Animal Responses (MCQ) ———
+
+    { id: 'w3_01', week: 'week3', type: 'mcq',
+      question: 'What is a taxis?',
+      options: [
+        'A directional movement toward or away from a stimulus',
+        'A random change in speed in response to stimulus intensity',
+        'A non-directional increase in turning rate',
+        'A learned behaviour pattern triggered by experience'
+      ],
+      correct: 0,
+      explanation: 'A taxis is a directional movement — the animal detects where the stimulus is coming from and moves toward it (positive) or away from it (negative).'
+    },
+
+    { id: 'w3_02', week: 'week3', type: 'mcq',
+      question: 'Which of these is NOT a property of innate behaviour?',
+      options: [
+        'Heritable — passed from parents to offspring',
+        'Stereotypic — the same across all members of a species',
+        'Learned — refined through practice and experience',
+        'Intrinsic — present even in animals raised in isolation'
+      ],
+      correct: 2,
+      explanation: 'Innate behaviour is heritable, stereotypic, intrinsic, and immutable (not changed by experience). By definition, it is NOT learned.'
+    },
+
+    { id: 'w3_03', week: 'week3', type: 'mcq',
+      question: 'A blowfly maggot swings its head side to side as it moves away from light. What type of taxis is this?',
+      options: [
+        'Tropotaxis',
+        'Klinotaxis',
+        'Orthokinesis',
+        'Klinokinesis'
+      ],
+      correct: 1,
+      explanation: 'Klinotaxis involves sequential comparison — the animal swings its body side to side, comparing stimulus intensity at different positions to determine direction.'
+    },
+
+    { id: 'w3_04', week: 'week3', type: 'mcq',
+      question: 'A barnacle larva uses paired receptors (one on each side of its body) to compare light intensity simultaneously. This is an example of:',
+      options: [
+        'Klinotaxis',
+        'Orthokinesis',
+        'Tropotaxis',
+        'Klinokinesis'
+      ],
+      correct: 2,
+      explanation: 'Tropotaxis uses paired receptors for simultaneous bilateral comparison of stimulus intensity, allowing the animal to determine direction without swinging.'
+    },
+
+    { id: 'w3_05', week: 'week3', type: 'mcq',
+      question: 'A woodlouse moves faster in dry conditions and slower in humid conditions. What type of response is this?',
+      options: [
+        'Positive hydrotaxis',
+        'Klinokinesis',
+        'Orthokinesis',
+        'Negative phototaxis'
+      ],
+      correct: 2,
+      explanation: 'Orthokinesis is a kinesis where the speed of movement changes with stimulus intensity. The woodlouse moves faster in unfavourable (dry) conditions and slower in favourable (humid) conditions.'
+    },
+
+    { id: 'w3_06', week: 'week3', type: 'mcq',
+      question: 'A flatworm turns more frequently in bright light and moves in straighter lines in the dark. This is:',
+      options: [
+        'Orthokinesis',
+        'Positive phototaxis',
+        'Klinokinesis',
+        'Negative phototaxis'
+      ],
+      correct: 2,
+      explanation: 'Klinokinesis is a kinesis where the rate of turning (direction changes) varies with stimulus intensity. More turning in bright light means the flatworm stays in the dark — without knowing where the dark is.'
+    },
+
+    { id: 'w3_07', week: 'week3', type: 'mcq',
+      question: 'The prefix "rheo-" in taxis/kinesis refers to:',
+      options: [
+        'Light',
+        'Touch or physical contact',
+        'Water current',
+        'Temperature'
+      ],
+      correct: 2,
+      explanation: 'Rheo- refers to water current. Positive rheotaxis means swimming against the current, as seen in longfin eel glass eels migrating upstream.'
+    },
+
+    { id: 'w3_08', week: 'week3', type: 'mcq',
+      question: 'The NZ glow-worm (Arachnocampa luminosa) uses bioluminescence to attract prey. The prey\'s response is an example of:',
+      options: [
+        'Negative phototaxis',
+        'Positive chemotaxis',
+        'Positive phototaxis',
+        'Orthokinesis'
+      ],
+      correct: 2,
+      explanation: 'Midges and moths exhibit positive phototaxis — they fly toward the glow-worm\'s light and become trapped in sticky silk threads.'
+    },
+
+    { id: 'w3_09', week: 'week3', type: 'mcq',
+      question: 'Research showed an 87.5% reduction in tree weta activity under LED lights. This suggests the tree weta shows:',
+      options: [
+        'Positive phototaxis — it is attracted to light',
+        'Klinokinesis — it turns more in dark conditions',
+        'Negative phototaxis — it avoids light',
+        'Orthokinesis — it slows down in the dark'
+      ],
+      correct: 2,
+      explanation: 'The tree weta (Hemideina thoracica) shows negative phototaxis. As a nocturnal forager, avoiding light helps it evade predators.'
+    },
+
+    { id: 'w3_10', week: 'week3', type: 'mcq',
+      question: 'Peripatus (ngaokeoke) moves faster in dry conditions because it lacks:',
+      options: [
+        'Eyes to detect light direction',
+        'A waterproof cuticle and closeable spiracles',
+        'Paired antennae for bilateral comparison',
+        'A nervous system capable of directional movement'
+      ],
+      correct: 1,
+      explanation: 'Peripatus lacks a waterproof cuticle and closeable spiracles, making it highly susceptible to desiccation. Its hygrokinesis (moving faster in dry air) is an orthokinesis that reduces time spent in dangerous dry conditions.'
+    },
+
+    { id: 'w3_11', week: 'week3', type: 'mcq',
+      question: 'What does the prefix "thigmo-" refer to?',
+      options: [
+        'Water or moisture',
+        'Chemicals',
+        'Temperature',
+        'Touch or physical contact'
+      ],
+      correct: 3,
+      explanation: 'Thigmo- refers to touch. Thigmotaxis is movement in response to a touch stimulus, such as a barnacle larva cementing to a rock surface.'
+    },
+
+    { id: 'w3_12', week: 'week3', type: 'mcq',
+      question: 'Both taxis and kinesis lead to the same survival outcome because:',
+      options: [
+        'Both involve the animal detecting the direction of the stimulus',
+        'Both result in the animal ending up in a more favourable environment',
+        'Both require paired receptors for bilateral comparison',
+        'Both are forms of learned behaviour'
+      ],
+      correct: 1,
+      explanation: 'Both result in the animal ending up in favourable conditions. Taxis achieves this by directed movement. Kinesis achieves it indirectly — the animal spends more time in favourable conditions because it moves slowly or turns less there.'
+    },
+
+    // ——— WEEK 3: Simple Animal Responses (True/False) ———
+
+    { id: 'w3_13', week: 'week3', type: 'tf',
+      question: 'Kinesis involves directed movement toward or away from a stimulus.',
+      correct: false,
+      explanation: 'Kinesis is non-directional. The animal only detects stimulus intensity — its speed or turning rate changes, but it does not move in a specific direction relative to the stimulus.'
+    },
+
+    { id: 'w3_14', week: 'week3', type: 'tf',
+      question: 'In tropotaxis, the animal compares stimulus intensity simultaneously using paired receptors.',
+      correct: true,
+      explanation: 'Correct. Tropotaxis uses paired receptors (one on each side) for simultaneous bilateral comparison, unlike klinotaxis which compares sequentially by swinging.'
+    },
+
+    { id: 'w3_15', week: 'week3', type: 'tf',
+      question: 'Innate behaviour can be modified through experience and learning.',
+      correct: false,
+      explanation: 'Innate behaviour is immutable — it cannot be changed by experience. This is one of the four key properties (heritable, intrinsic, stereotypic, immutable).'
+    },
+
+    { id: 'w3_16', week: 'week3', type: 'tf',
+      question: 'The prefix "chemo-" refers to response to chemical stimuli.',
+      correct: true,
+      explanation: 'Correct. For example, positive chemotaxis means movement toward a chemical stimulus, such as paua larvae swimming toward coralline algae chemicals.'
+    },
+
+    { id: 'w3_17', week: 'week3', type: 'tf',
+      question: 'An animal performing kinesis must have receptors sophisticated enough to detect the direction of a stimulus.',
+      correct: false,
+      explanation: 'An animal performing kinesis can only detect stimulus intensity, not direction. Taxis requires directional detection. This distinction reveals the animal\'s sensory capabilities.'
+    },
+
+    { id: 'w3_18', week: 'week3', type: 'tf',
+      question: 'Positive hydrotaxis means movement toward moisture.',
+      correct: true,
+      explanation: 'Correct. Hydro- refers to water or moisture. An earthworm moving toward damp soil is an example of positive hydrotaxis.'
+    },
+
+    { id: 'w3_19', week: 'week3', type: 'tf',
+      question: 'Peripatus shows hygrokinesis — a form of taxis related to humidity.',
+      correct: false,
+      explanation: 'Peripatus shows hygrokinesis, but this is a form of kinesis (specifically orthokinesis), not taxis. It changes speed based on humidity intensity but does not detect the direction of the moisture gradient.'
+    },
+
+    { id: 'w3_20', week: 'week3', type: 'tf',
+      question: 'In orthokinesis, the rate of turning changes with stimulus intensity.',
+      correct: false,
+      explanation: 'In orthokinesis, the speed of movement changes with stimulus intensity. It is klinokinesis where the rate of turning changes.'
+    },
+
+    // ——— WEEK 4: Pheromones (MCQ) ———
+
+    { id: 'w4_01', week: 'week4', type: 'mcq',
+      question: 'What is a pheromone?',
+      options: [
+        'A hormone released into the bloodstream that targets cells within the same individual',
+        'A chemical secreted into the external environment that triggers a response in another member of the same species',
+        'A neurotransmitter that transmits signals between neurons',
+        'A chemical that attracts members of different species'
+      ],
+      correct: 1,
+      explanation: 'A pheromone is a chemical secreted into the external environment that triggers a specific behavioural or physiological response in another member of the same species.'
+    },
+
+    { id: 'w4_02', week: 'week4', type: 'mcq',
+      question: 'A releaser pheromone differs from a primer pheromone because it:',
+      options: [
+        'Causes slow physiological changes over weeks',
+        'Acts on the endocrine system',
+        'Triggers an immediate behavioural response',
+        'Can only be detected at high concentrations'
+      ],
+      correct: 2,
+      explanation: 'Releaser pheromones trigger an immediate, rapid behavioural response by acting on the nervous system. Primer pheromones cause slow, long-term physiological changes via the endocrine system.'
+    },
+
+    { id: 'w4_03', week: 'week4', type: 'mcq',
+      question: 'Bombykol is significant in the history of pheromone research because:',
+      options: [
+        'It was the first plant pheromone discovered',
+        'It was the first pheromone ever identified (from the silkworm moth)',
+        'It is the only pheromone that works across species',
+        'It was the first primer pheromone to be synthesised'
+      ],
+      correct: 1,
+      explanation: 'Bombykol, the sex pheromone of the silkworm moth (Bombyx mori), was identified in 1959 by Butenandt after processing 500,000 females over 20 years. It was the first pheromone ever identified.'
+    },
+
+    { id: 'w4_04', week: 'week4', type: 'mcq',
+      question: 'The Bruce Effect in mice is an example of:',
+      options: [
+        'A releaser pheromone causing immediate aggression',
+        'A primer pheromone causing pregnancy termination',
+        'Positive chemotaxis toward a mate',
+        'Olfactory navigation to a natal stream'
+      ],
+      correct: 1,
+      explanation: 'The Bruce Effect is a primer pheromone effect: urinary pheromones from a strange male block prolactin secretion in a recently mated female, causing pregnancy termination. This is adaptive because the new male would likely commit infanticide.'
+    },
+
+    { id: 'w4_05', week: 'week4', type: 'mcq',
+      question: 'The vomeronasal organ (VNO) is also known as:',
+      options: [
+        'The olfactory bulb',
+        'The antennal sensillum',
+        'Jacobson\'s organ',
+        'The lateral line organ'
+      ],
+      correct: 2,
+      explanation: 'The VNO (Jacobson\'s organ) detects pheromones in many vertebrates. It connects to the accessory olfactory bulb, then to the amygdala and hypothalamus. The flehmen response draws pheromones into the VNO.'
+    },
+
+    { id: 'w4_06', week: 'week4', type: 'mcq',
+      question: 'What is unusual about the puriri moth (pepetuna) compared to most moth species?',
+      options: [
+        'It uses visual signals instead of pheromones',
+        'The male produces the sex pheromone, not the female',
+        'It is the smallest moth in New Zealand',
+        'It has no antennae for pheromone detection'
+      ],
+      correct: 1,
+      explanation: 'The puriri moth is unusual because the male produces the sex pheromone using brush-like organs on its hind legs. In most moth species, the female produces the sex pheromone.'
+    },
+
+    { id: 'w4_07', week: 'week4', type: 'mcq',
+      question: 'How do male moths detect female sex pheromones at extremely low concentrations?',
+      options: [
+        'Through their compound eyes',
+        'Via the vomeronasal organ',
+        'Using feathery (plumose) antennae with many sensilla',
+        'Through vibration receptors on their legs'
+      ],
+      correct: 2,
+      explanation: 'Male moths often have feathery (plumose) antennae containing many sensilla — tiny hair-like structures with odorant-binding proteins and receptor neurons that detect pheromones at parts-per-trillion concentrations.'
+    },
+
+    { id: 'w4_08', week: 'week4', type: 'mcq',
+      question: 'The honeybee queen mandibular pheromone (QMP) demonstrates that:',
+      options: [
+        'Pheromones only work within a few centimetres',
+        'A single pheromone can act as both a releaser and a primer',
+        'Primers always work faster than releasers',
+        'Pheromones cannot affect the reproductive system'
+      ],
+      correct: 1,
+      explanation: 'QMP acts as a releaser (immediately attracts workers) and as a primer (over time, suppresses worker ovary development). This shows a single pheromone can have dual functions.'
+    },
+
+    // ——— WEEK 4: Navigation (MCQ) ———
+
+    { id: 'w4_09', week: 'week4', type: 'mcq',
+      question: 'Animal navigation requires two components:',
+      options: [
+        'A map (knowing your position) and a compass (knowing direction)',
+        'Vision and hearing',
+        'A brain and a nervous system',
+        'Speed and endurance'
+      ],
+      correct: 0,
+      explanation: 'Navigation requires a "map" (knowing where you are relative to your goal) and a "compass" (knowing which direction to travel).'
+    },
+
+    { id: 'w4_10', week: 'week4', type: 'mcq',
+      question: 'Clock-shift experiments with pigeons showed they flew ~90 degrees off course. This provides evidence for:',
+      options: [
+        'Magnetic navigation',
+        'Olfactory homing',
+        'A time-compensated sun compass',
+        'Star navigation'
+      ],
+      correct: 2,
+      explanation: 'Pigeons kept under artificially shifted light-dark cycles flew approximately 90 degrees off course. This confirms they use an internal clock to compensate for the sun\'s apparent movement (~15 degrees/hour).'
+    },
+
+    { id: 'w4_11', week: 'week4', type: 'mcq',
+      question: 'What are the two mechanisms for detecting the Earth\'s magnetic field?',
+      options: [
+        'Echolocation and the lateral line',
+        'Magnetite crystals and the radical pair mechanism (cryptochrome)',
+        'The VNO and antennal sensilla',
+        'Infrared detection and electroreception'
+      ],
+      correct: 1,
+      explanation: 'Magnetite (Fe3O4) crystals physically rotate in the field. The radical pair mechanism involves cryptochrome proteins in the retina — the magnetic field influences radical pair chemistry, so birds may "see" the field overlaid on their vision.'
+    },
+
+    { id: 'w4_12', week: 'week4', type: 'mcq',
+      question: 'Emlen\'s planetarium experiments with indigo buntings showed that:',
+      options: [
+        'Star navigation is entirely innate',
+        'Birds navigate using the brightest star',
+        'Birds learn the centre of celestial rotation during development',
+        'Stars are irrelevant to bird migration'
+      ],
+      correct: 2,
+      explanation: 'Birds raised under a rotated sky treated the new rotation centre as "north" — proving star navigation is learned during development, not innate.'
+    },
+
+    { id: 'w4_13', week: 'week4', type: 'mcq',
+      question: 'Pacific salmon find their natal stream by:',
+      options: [
+        'Following the Earth\'s magnetic field exclusively',
+        'Visual recognition of landmarks',
+        'Imprinting on the stream\'s unique chemical signature as juveniles, then following it upstream as adults',
+        'Listening for the sound of the waterfall where they hatched'
+      ],
+      correct: 2,
+      explanation: 'Salmon imprint on the unique chemical signature of their natal stream during a juvenile critical window. As adults returning from the ocean, they follow the scent gradient upstream using positive chemotaxis.'
+    },
+
+    { id: 'w4_14', week: 'week4', type: 'mcq',
+      question: 'The bar-tailed godwit (kuaka) is remarkable for its:',
+      options: [
+        'Ability to swim underwater for 200 km',
+        'Non-stop flight of over 13,000 km from Alaska to NZ',
+        'Use of echolocation during migration',
+        'Migration that takes over 12 months to complete'
+      ],
+      correct: 1,
+      explanation: 'The kuaka makes the longest non-stop bird flight — over 13,000 km. It uses magnetic and sun compass navigation, and juveniles navigate without parental guidance (inherited programme).'
+    },
+
+    { id: 'w4_15', week: 'week4', type: 'mcq',
+      question: 'The multi-cue navigation hierarchy operates in what order?',
+      options: [
+        'Landmarks first, then magnetic compass, then olfactory cues',
+        'Magnetic compass at departure, sun/star compass en route, landmarks and olfaction at arrival',
+        'Sun compass first, then star compass, then magnetic compass',
+        'Olfactory cues first, then magnetic compass, then landmarks'
+      ],
+      correct: 1,
+      explanation: 'Departure: magnetic compass + inherited direction. En route: sun compass (day) or star compass (night). Arrival: visual landmarks (piloting) + olfactory cues for final homing.'
+    },
+
+    { id: 'w4_16', week: 'week4', type: 'mcq',
+      question: 'Loggerhead sea turtles can determine both latitude and longitude from the Earth\'s magnetic field. This is called a:',
+      options: [
+        'Magnetic compass',
+        'Bicoordinate magnetic map',
+        'Time-compensated sun compass',
+        'Radical pair navigation system'
+      ],
+      correct: 1,
+      explanation: 'Loggerhead sea turtles use total field intensity + inclination angle to create a bicoordinate position estimate (like latitude and longitude), not just directional information.'
+    },
+
+    // ——— WEEK 4: Pheromones & Navigation (True/False) ———
+
+    { id: 'w4_17', week: 'week4', type: 'tf',
+      question: 'Pheromones are transmitted through the bloodstream, just like hormones.',
+      correct: false,
+      explanation: 'Pheromones are transmitted through the external environment (air, water, surfaces), not the bloodstream. Hormones travel through the blood within the same individual.'
+    },
+
+    { id: 'w4_18', week: 'week4', type: 'tf',
+      question: 'A single pheromone can function as both a releaser and a primer.',
+      correct: true,
+      explanation: 'Correct. For example, honeybee QMP immediately attracts workers (releaser) and over time suppresses worker ovary development (primer).'
+    },
+
+    { id: 'w4_19', week: 'week4', type: 'tf',
+      question: 'Piloting (landmark navigation) works well over open ocean where there are no visual references.',
+      correct: false,
+      explanation: 'Piloting requires learned visual landmarks such as coastlines, rivers, and roads. It fails in unfamiliar territory or over open ocean where there are no visual references.'
+    },
+
+    { id: 'w4_20', week: 'week4', type: 'tf',
+      question: 'In the Southern Hemisphere, the sun is due north at solar noon.',
+      correct: true,
+      explanation: 'Correct. In the Southern Hemisphere, the sun appears to track across the northern sky, and is due north at solar noon — the opposite of the Northern Hemisphere.'
+    },
+
+    { id: 'w4_21', week: 'week4', type: 'tf',
+      question: 'The monarch butterfly\'s time-compensated sun compass is located in its brain.',
+      correct: false,
+      explanation: 'The monarch butterfly\'s time-compensated sun compass is located in its antennae — both the circadian clock and the compass sensor are in the same structure, which is unusual.'
+    },
+
+    { id: 'w4_22', week: 'week4', type: 'tf',
+      question: 'The longfin eel (tuna) can live for up to 80 years in freshwater.',
+      correct: true,
+      explanation: 'Correct. The longfin eel (Anguilla dieffenbachii) can live up to 80 years in freshwater before migrating to its spawning grounds near Tonga, which have never been found.'
+    },
+
+    { id: 'w4_23', week: 'week4', type: 'tf',
+      question: 'Pheromone-guided movement in moths is a form of chemotaxis.',
+      correct: true,
+      explanation: 'Correct. A male moth navigating upwind toward a female\'s pheromone plume is performing positive chemotaxis (combined with anemotaxis — response to wind direction).'
+    },
+
+    { id: 'w4_24', week: 'week4', type: 'tf',
+      question: 'Juvenile bar-tailed godwits learn the migration route by following their parents.',
+      correct: false,
+      explanation: 'Juvenile kuaka navigate without parental guidance — they use an inherited (innate) direction programme combined with magnetic and sun compass navigation.'
+    },
+
+    { id: 'w4_25', week: 'week4', type: 'tf',
+      question: 'The flehmen response (lip curl) helps draw pheromones into the vomeronasal organ.',
+      correct: true,
+      explanation: 'Correct. The flehmen response — the characteristic lip curl seen in many mammals — exposes the VNO ducts and draws pheromone-laden air into Jacobson\'s organ for detection.'
+    },
+  ];
+
+
+  /* ==========================================================================
+     Quiz Engine
+     ========================================================================== */
+
+  const STORAGE_KEY = 'bio_l3_quiz_history';
+  const MAX_HISTORY = 20;
+
+  let quizState = {
+    mode: 'practice',
+    scope: 'all',
+    length: 15,
+    questions: [],
+    currentIndex: 0,
+    answers: [],      // user's selected answers (index for MCQ, boolean for T/F, null for unanswered)
+    checked: false,    // practice mode: has the current question been checked?
+  };
+
+  /* --------------------------------------------------------------------------
+     Setup Screen
+     -------------------------------------------------------------------------- */
+  function initSetup() {
+    const params = new URLSearchParams(window.location.search);
+    const weekParam = params.get('week');
+    if (weekParam === 'week3' || weekParam === 'week4') {
+      quizState.scope = weekParam;
+      document.querySelectorAll('.scope-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.scope === weekParam);
+      });
+    }
+
+    updateHint();
+  }
+
+  function updateHint() {
+    const available = questions.filter(q =>
+      quizState.scope === 'all' || q.week === quizState.scope
+    ).length;
+    const hint = document.getElementById('setup-hint');
+    const requested = quizState.length;
+    if (requested > available) {
+      hint.textContent = `Only ${available} questions available for this topic — all will be used.`;
+    } else {
+      hint.textContent = `${available} questions available — ${requested} will be randomly selected.`;
+    }
+  }
+
+  // Mode buttons
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      quizState.mode = btn.dataset.mode;
+    });
+  });
+
+  // Scope buttons
+  document.querySelectorAll('.scope-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.scope-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      quizState.scope = btn.dataset.scope;
+      updateHint();
+    });
+  });
+
+  // Length buttons
+  document.querySelectorAll('.length-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.length-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      quizState.length = parseInt(btn.dataset.length);
+      updateHint();
+    });
+  });
+
+  // Start quiz
+  document.getElementById('start-quiz').addEventListener('click', startQuiz);
+
+  function startQuiz() {
+    // Filter by scope
+    let pool = questions.filter(q =>
+      quizState.scope === 'all' || q.week === quizState.scope
+    );
+
+    // Shuffle
+    pool = shuffleArray([...pool]);
+
+    // Take requested length
+    quizState.questions = pool.slice(0, quizState.length);
+    quizState.answers = new Array(quizState.questions.length).fill(null);
+    quizState.currentIndex = 0;
+    quizState.checked = false;
+
+    // Update subtitle
+    const subtitleMap = {
+      week3: 'Week 3 — Simple Animal Responses',
+      week4: 'Week 4 — Pheromones & Navigation',
+      all: 'All Weeks — Boss Level'
+    };
+    document.getElementById('quiz-subtitle').textContent = subtitleMap[quizState.scope];
+    document.getElementById('q-total').textContent = quizState.questions.length;
+
+    // Switch screens
+    document.getElementById('setup-screen').style.display = 'none';
+    document.getElementById('question-screen').style.display = 'block';
+
+    renderQuestion();
+  }
+
+  /* --------------------------------------------------------------------------
+     Question Rendering
+     -------------------------------------------------------------------------- */
+  function renderQuestion() {
+    const q = quizState.questions[quizState.currentIndex];
+    const idx = quizState.currentIndex;
+    const answer = quizState.answers[idx];
+
+    // Progress
+    document.getElementById('q-current').textContent = idx + 1;
+    document.getElementById('progress-bar').style.width =
+      ((idx + 1) / quizState.questions.length * 100) + '%';
+
+    // Type badge
+    document.getElementById('q-type-badge').textContent = q.type === 'mcq' ? 'MCQ' : 'True / False';
+
+    // Question text
+    document.getElementById('question-text').textContent = q.question;
+
+    // Reset feedback
+    document.getElementById('feedback-panel').style.display = 'none';
+    quizState.checked = false;
+
+    // Render options
+    const optionsEl = document.getElementById('options-container');
+    const tfEl = document.getElementById('tf-container');
+
+    if (q.type === 'mcq') {
+      optionsEl.style.display = 'flex';
+      tfEl.style.display = 'none';
+      renderMCQOptions(q, answer);
+    } else {
+      optionsEl.style.display = 'none';
+      tfEl.style.display = 'flex';
+      renderTFOptions(q, answer);
+    }
+
+    // Fade in the question card
+    const card = document.getElementById('question-card');
+    card.classList.remove('is-visible');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => card.classList.add('is-visible'));
+    });
+
+    updateNav();
+  }
+
+  function renderMCQOptions(q, selectedAnswer) {
+    const container = document.getElementById('options-container');
+    const letters = ['A', 'B', 'C', 'D'];
+    container.innerHTML = '';
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
+
+      if (selectedAnswer === i) {
+        btn.classList.add('selected');
+      }
+
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('disabled')) return;
+        quizState.answers[quizState.currentIndex] = i;
+        // Update visual selection
+        container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        updateNav();
+      });
+
+      container.appendChild(btn);
+    });
+  }
+
+  function renderTFOptions(q, selectedAnswer) {
+    const tfBtns = document.querySelectorAll('.tf-btn');
+    tfBtns.forEach(btn => {
+      btn.classList.remove('selected', 'correct', 'incorrect', 'disabled');
+      const val = btn.dataset.tf === 'true';
+      if (selectedAnswer === val) {
+        btn.classList.add('selected');
+      }
+    });
+
+    tfBtns.forEach(btn => {
+      // Remove old listeners by cloning
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+
+      newBtn.addEventListener('click', () => {
+        if (newBtn.classList.contains('disabled')) return;
+        const val = newBtn.dataset.tf === 'true';
+        quizState.answers[quizState.currentIndex] = val;
+        document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected'));
+        newBtn.classList.add('selected');
+        updateNav();
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Navigation
+     -------------------------------------------------------------------------- */
+  function updateNav() {
+    const idx = quizState.currentIndex;
+    const total = quizState.questions.length;
+    const hasAnswer = quizState.answers[idx] !== null;
+    const isLast = idx === total - 1;
+    const isPractice = quizState.mode === 'practice';
+
+    const btnPrev = document.getElementById('btn-prev');
+    const btnCheck = document.getElementById('btn-check');
+    const btnNext = document.getElementById('btn-next');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    // Previous: only in test mode and not first question
+    btnPrev.style.display = (!isPractice && idx > 0) ? 'inline-flex' : 'none';
+
+    if (isPractice) {
+      if (!quizState.checked) {
+        // Show Check Answer when an answer is selected
+        btnCheck.style.display = hasAnswer ? 'inline-flex' : 'none';
+        btnNext.style.display = 'none';
+        btnSubmit.style.display = 'none';
+      } else {
+        // After checking, show Next or Submit
+        btnCheck.style.display = 'none';
+        if (isLast) {
+          btnNext.style.display = 'none';
+          btnSubmit.style.display = 'inline-flex';
+        } else {
+          btnNext.style.display = 'inline-flex';
+          btnSubmit.style.display = 'none';
+        }
+      }
+    } else {
+      // Test mode: no check, just next/submit
+      btnCheck.style.display = 'none';
+      if (isLast) {
+        btnNext.style.display = 'none';
+        btnSubmit.style.display = hasAnswer ? 'inline-flex' : 'none';
+      } else {
+        btnNext.style.display = hasAnswer ? 'inline-flex' : 'none';
+        btnSubmit.style.display = 'none';
+      }
+    }
+  }
+
+  // Previous
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    if (quizState.currentIndex > 0) {
+      quizState.currentIndex--;
+      renderQuestion();
+    }
+  });
+
+  // Check (practice mode)
+  document.getElementById('btn-check').addEventListener('click', () => {
+    checkAnswer();
+  });
+
+  // Next
+  document.getElementById('btn-next').addEventListener('click', () => {
+    quizState.currentIndex++;
+    renderQuestion();
+  });
+
+  // Submit
+  document.getElementById('btn-submit').addEventListener('click', () => {
+    showResults();
+  });
+
+  // Retry
+  document.getElementById('btn-retry').addEventListener('click', () => {
+    document.getElementById('results-screen').style.display = 'none';
+    document.getElementById('setup-screen').style.display = 'flex';
+  });
+
+  /* --------------------------------------------------------------------------
+     Check Answer (Practice Mode)
+     -------------------------------------------------------------------------- */
+  function checkAnswer() {
+    const q = quizState.questions[quizState.currentIndex];
+    const answer = quizState.answers[quizState.currentIndex];
+    const isCorrect = (q.type === 'mcq') ? answer === q.correct : answer === q.correct;
+
+    quizState.checked = true;
+
+    // Show feedback
+    const panel = document.getElementById('feedback-panel');
+    panel.style.display = 'block';
+    panel.className = 'feedback-panel ' + (isCorrect ? 'is-correct' : 'is-incorrect');
+
+    document.getElementById('feedback-icon').textContent = isCorrect ? '\u2713' : '\u2717';
+    document.getElementById('feedback-result').textContent = isCorrect ? 'Correct!' : 'Incorrect';
+    document.getElementById('feedback-explanation').textContent = q.explanation;
+
+    // Highlight correct/incorrect options
+    if (q.type === 'mcq') {
+      const optBtns = document.querySelectorAll('.option-btn');
+      optBtns.forEach((btn, i) => {
+        btn.classList.add('disabled');
+        if (i === q.correct) btn.classList.add('correct');
+        if (i === answer && !isCorrect) btn.classList.add('incorrect');
+      });
+    } else {
+      const tfBtns = document.querySelectorAll('.tf-btn');
+      tfBtns.forEach(btn => {
+        btn.classList.add('disabled');
+        const val = btn.dataset.tf === 'true';
+        if (val === q.correct) btn.classList.add('correct');
+        if (val === answer && !isCorrect) btn.classList.add('incorrect');
+      });
+    }
+
+    updateNav();
+  }
+
+  /* --------------------------------------------------------------------------
+     Results
+     -------------------------------------------------------------------------- */
+  function showResults() {
+    const total = quizState.questions.length;
+    let correct = 0;
+
+    quizState.questions.forEach((q, i) => {
+      const answer = quizState.answers[i];
+      if (q.type === 'mcq' ? answer === q.correct : answer === q.correct) {
+        correct++;
+      }
+    });
+
+    const pct = Math.round((correct / total) * 100);
+
+    // Switch screens
+    document.getElementById('question-screen').style.display = 'none';
+    document.getElementById('results-screen').style.display = 'block';
+
+    // Score ring animation
+    const circle = document.getElementById('score-circle');
+    const circumference = 2 * Math.PI * 52; // r=52
+    const offset = circumference - (pct / 100) * circumference;
+    setTimeout(() => {
+      circle.style.strokeDashoffset = offset;
+      circle.style.transition = 'stroke-dashoffset 1s cubic-bezier(0.23, 1, 0.32, 1)';
+
+      // Colour based on score
+      let colour = 'var(--error)';
+      if (pct >= 80) colour = 'var(--green-vivid)';
+      else if (pct >= 50) colour = 'var(--fluoro-cyan)';
+      else if (pct >= 30) colour = 'var(--warning)';
+      circle.style.stroke = colour;
+    }, 100);
+
+    document.getElementById('score-text').textContent = pct + '%';
+
+    // Title message
+    let title = 'Keep Practising';
+    if (pct >= 90) title = 'Outstanding!';
+    else if (pct >= 75) title = 'Great Work!';
+    else if (pct >= 50) title = 'Getting There';
+    document.getElementById('results-title').textContent = title;
+
+    document.getElementById('results-detail').textContent =
+      `You scored ${correct} out of ${total} (${pct}%)`;
+
+    // Breakdown
+    const breakdown = document.getElementById('results-breakdown');
+    breakdown.innerHTML = '';
+
+    quizState.questions.forEach((q, i) => {
+      const answer = quizState.answers[i];
+      const isCorrect = q.type === 'mcq' ? answer === q.correct : answer === q.correct;
+
+      const item = document.createElement('div');
+      item.className = 'breakdown-item ' + (isCorrect ? 'is-correct' : 'is-incorrect');
+
+      let yourAnswer = 'Not answered';
+      let correctAnswer = '';
+
+      if (q.type === 'mcq') {
+        if (answer !== null) yourAnswer = q.options[answer];
+        correctAnswer = q.options[q.correct];
+      } else {
+        if (answer !== null) yourAnswer = answer ? 'True' : 'False';
+        correctAnswer = q.correct ? 'True' : 'False';
+      }
+
+      item.innerHTML = `
+        <p class="breakdown-q">${i + 1}. ${q.question}</p>
+        <p class="breakdown-answer">
+          Your answer: <strong>${yourAnswer}</strong>
+          ${!isCorrect ? `<br>Correct answer: <strong>${correctAnswer}</strong>` : ''}
+        </p>
+        <p class="breakdown-explanation">${q.explanation}</p>
+      `;
+
+      breakdown.appendChild(item);
+    });
+
+    // Trigger fade-in
+    document.querySelectorAll('#results-screen .fade-in-up').forEach(el => {
+      el.classList.remove('is-visible');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.add('is-visible'));
+      });
+    });
+
+    // Save to localStorage
+    saveAttempt(correct, total, pct);
+  }
+
+  /* --------------------------------------------------------------------------
+     localStorage
+     -------------------------------------------------------------------------- */
+  function saveAttempt(correct, total, pct) {
+    try {
+      const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      history.push({
+        date: new Date().toISOString(),
+        week: quizState.scope,
+        mode: quizState.mode,
+        score: correct,
+        total: total,
+        pct: pct
+      });
+      // Keep last MAX_HISTORY
+      while (history.length > MAX_HISTORY) history.shift();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+    } catch (e) {
+      // localStorage unavailable — silently fail
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     Utilities
+     -------------------------------------------------------------------------- */
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  /* --------------------------------------------------------------------------
+     Init
+     -------------------------------------------------------------------------- */
+  // Fade in visible elements
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+
+  initSetup();
+</script>
