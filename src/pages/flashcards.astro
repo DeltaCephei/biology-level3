@@ -1,6 +1,8 @@
 ---
 /* ==========================================================================
-   Flashcards — Coming Soon placeholder
+   Flashcards — Spaced Repetition Review
+   Covers Week 3 (Taxis & Kinesis) and Week 4 (Pheromones & Navigation)
+   SM-2 algorithm adapted from Psychology Level 3 site.
    ========================================================================== */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -8,69 +10,1207 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Flashcards — Dr Eliot's Level 3 Biology">
-  <section class="coming-soon">
-    <div class="coming-soon__icon" aria-hidden="true">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <rect x="8" y="16" width="40" height="32" rx="6" stroke="var(--green-vivid)" stroke-width="2" fill="none" />
-        <rect x="16" y="10" width="40" height="32" rx="6" stroke="var(--accent-muted)" stroke-width="2" fill="none" opacity="0.5" />
-      </svg>
+
+  <div class="flashcards-page" data-base-url={base}>
+
+    <!-- Header -->
+    <header class="fc-header fade-in-up">
+      <div class="fc-header__meta">
+        <a href={base} class="back-link" id="fc-back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="fc-back-text">Back to Dashboard</span>
+        </a>
+      </div>
+      <h1 class="fc-header__title">Flashcards</h1>
+      <p class="fc-header__subtitle" id="fc-subtitle">AS 91603 — All Weeks</p>
+    </header>
+
+    <!-- Collapsible explainer -->
+    <details class="fc-explainer fade-in-up">
+      <summary>How to get the most from flashcards</summary>
+      <div class="fc-explainer__content">
+
+        <div class="fc-explainer__section">
+          <h4 class="fc-explainer__heading">Write your answer, don't just think it</h4>
+          <p>
+            Before you flip each card, <strong>write your answer on paper</strong> rather than
+            just thinking it. Research shows that the physical act of writing activates motor
+            pathways that strengthen memory encoding — this is called the <em>generation effect</em>.
+            When you only think an answer, it's easy to fool yourself into believing you know it
+            better than you do. Writing forces you to be precise and exposes gaps in your understanding.
+          </p>
+        </div>
+
+        <div class="fc-explainer__section">
+          <h4 class="fc-explainer__heading">How spaced repetition works</h4>
+          <p>
+            These flashcards use a <strong>spaced repetition algorithm</strong> (SM-2). When you
+            rate a card as "Hard", it comes back tomorrow. Rate it "Good" and it spaces out over
+            days. Rate it "Easy" and it won't appear again for a week or more. Over time, cards
+            you struggle with get reviewed frequently while cards you've mastered fade into the
+            background. Use the <strong>Review Due</strong> filter to see only the cards the
+            algorithm thinks you need to revisit today.
+          </p>
+        </div>
+
+        <div class="fc-explainer__section">
+          <h4 class="fc-explainer__heading">The confidence + rating system</h4>
+          <p>
+            <strong>Before flipping:</strong> Rate how sure you are — "Not sure", "Think I know",
+            or "Confident". This primes your brain for retrieval and helps track calibration
+            (are you accurate about what you know?).
+          </p>
+          <p>
+            <strong>After flipping:</strong> Rate how well you actually knew it — "Hard", "Good",
+            or "Easy". This drives the spaced repetition schedule. Be honest — rating "Hard" on
+            a tricky card is far more useful than pretending you knew it.
+          </p>
+        </div>
+
+        <div class="fc-explainer__section">
+          <h4 class="fc-explainer__heading">Thinking prompts</h4>
+          <p>
+            After flipping, you'll sometimes see a deeper "why" or "how" question. These
+            <strong>elaboration prompts</strong> push you beyond surface recall into genuine
+            understanding — connecting ideas, considering examples, and thinking about mechanisms.
+            This kind of deep processing is what separates A-grade answers from C-grade ones.
+            You can toggle these on or off with the checkbox below the card.
+          </p>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Confidence rating — shown BEFORE flipping -->
+    <div class="confidence-buttons" id="confidence-buttons">
+      <span class="confidence-label">How sure are you?</span>
+      <div class="confidence-btns">
+        <button class="confidence-btn conf-unsure" data-confidence="1">Not sure</button>
+        <button class="confidence-btn conf-think" data-confidence="2">Think I know</button>
+        <button class="confidence-btn conf-confident" data-confidence="3">Confident</button>
+      </div>
     </div>
-    <h1>Flashcards</h1>
-    <p>Spaced repetition flashcards for each week's content are coming soon.</p>
-    <a href={base} class="coming-soon__link">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Back to Home
-    </a>
-  </section>
+
+    <!-- Flashcard container -->
+    <div class="flashcard-container fade-in-up">
+      <button class="flashcard-nav prev" aria-label="Previous card">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="flashcard" id="current-flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <p class="flashcard-question"></p>
+          </div>
+          <div class="flashcard-back">
+            <p class="flashcard-answer"></p>
+          </div>
+        </div>
+      </div>
+
+      <button class="flashcard-nav next" aria-label="Next card">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- SR rating buttons — visible only when card is flipped -->
+    <div class="sr-rating-buttons" id="sr-rating-buttons">
+      <span class="sr-label">How well did you know this?</span>
+      <div class="sr-btns">
+        <button class="sr-btn sr-hard" data-rating="hard">Hard</button>
+        <button class="sr-btn sr-good" data-rating="good">Good</button>
+        <button class="sr-btn sr-easy" data-rating="easy">Easy</button>
+      </div>
+    </div>
+
+    <!-- Elaboration prompt -->
+    <div class="elaboration-prompt" id="elaboration-prompt" style="display: none;">
+      <p class="elaboration-text" id="elaboration-text"></p>
+    </div>
+
+    <!-- Controls -->
+    <div class="flashcard-controls fade-in-up">
+      <span class="card-counter">Card <span id="current-card-num">1</span> of <span id="total-cards">0</span></span>
+      <button class="shuffle-btn" id="shuffle-cards">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 4h4l2 4-2 4H2M14 4h-4l-2 4 2 4h4M5 4l6 8M11 4L5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Shuffle
+      </button>
+      <label class="elaboration-toggle">
+        <input type="checkbox" id="elaboration-toggle" checked>
+        <span>Thinking prompts</span>
+      </label>
+    </div>
+
+    <!-- Category filter -->
+    <div class="flashcard-categories fade-in-up">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn review-due-btn" data-category="review">Review Due <span class="due-badge" id="due-badge">0</span></button>
+      <button class="category-btn" data-category="week3">Week 3</button>
+      <button class="category-btn" data-category="week4">Week 4</button>
+    </div>
+
+  </div>
+
 </BaseLayout>
 
+
 <style>
-  .coming-soon {
+  /* ==========================================================================
+     Flashcards Page Styles — Dark Theme
+     ========================================================================== */
+
+  .flashcards-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  /* --------------------------------------------------------------------------
+     Fade-in-up animation (matches index.astro)
+     -------------------------------------------------------------------------- */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --------------------------------------------------------------------------
+     Header
+     -------------------------------------------------------------------------- */
+  .fc-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .fc-header__meta {
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .fc-header__title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .fc-header__subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  /* --------------------------------------------------------------------------
+     Explainer
+     -------------------------------------------------------------------------- */
+  .fc-explainer {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    overflow: hidden;
+  }
+
+  .fc-explainer summary {
+    padding: var(--space-4) var(--space-5);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .fc-explainer summary::before {
+    content: '+';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: var(--radius-sm);
+    background: var(--accent-muted);
+    color: var(--accent);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+  }
+
+  .fc-explainer[open] summary::before {
+    content: '\2212';
+  }
+
+  .fc-explainer summary::-webkit-details-marker { display: none; }
+
+  .fc-explainer__content {
+    padding: 0 var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .fc-explainer__content p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .fc-explainer__section {
+    padding-bottom: var(--space-2);
+  }
+
+  .fc-explainer__section:last-child {
+    padding-bottom: 0;
+  }
+
+  .fc-explainer__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--accent);
+    margin-bottom: var(--space-1);
+  }
+
+  /* --------------------------------------------------------------------------
+     Confidence Buttons (pre-flip)
+     -------------------------------------------------------------------------- */
+  .confidence-buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 50vh;
-    gap: 1rem;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+    animation: fadeIn 0.3s ease;
   }
 
-  .coming-soon__icon {
-    opacity: 0.6;
-    margin-bottom: 0.5rem;
-  }
+  .confidence-buttons.hidden { display: none; }
 
-  .coming-soon h1 {
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    color: var(--text-primary);
-  }
-
-  .coming-soon p {
+  .confidence-label {
+    font-size: var(--text-sm);
     color: var(--text-secondary);
-    font-size: var(--text-lg);
-    max-width: 28rem;
+    font-weight: var(--weight-medium);
   }
 
-  .coming-soon__link {
+  .confidence-btns {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .confidence-btn {
+    padding: var(--space-2) var(--space-5);
+    border: 2px solid;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .confidence-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .conf-unsure {
+    border-color: var(--warning);
+    color: var(--warning);
+  }
+  .conf-unsure:hover { background: rgba(255, 214, 0, 0.12); }
+
+  .conf-think {
+    border-color: var(--fluoro-cyan);
+    color: var(--fluoro-cyan);
+  }
+  .conf-think:hover { background: rgba(125, 249, 255, 0.12); }
+
+  .conf-confident {
+    border-color: var(--green-vivid);
+    color: var(--green-vivid);
+  }
+  .conf-confident:hover { background: rgba(0, 255, 136, 0.12); }
+
+  /* --------------------------------------------------------------------------
+     Flashcard
+     -------------------------------------------------------------------------- */
+  .flashcard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    margin: var(--space-4) 0;
+  }
+
+  .flashcard {
+    width: 500px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+  }
+
+  .flashcard-front {
+    background: linear-gradient(135deg, var(--surface-3) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--accent);
+    border-left: 4px solid var(--accent);
+  }
+
+  .flashcard-back {
+    background: var(--surface-3);
+    border: 2px solid var(--fluoro-cyan);
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-question {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    line-height: var(--leading-normal);
+  }
+
+  .flashcard-answer {
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Nav arrows */
+  .flashcard-nav {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .flashcard-nav:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.08);
+  }
+
+  /* --------------------------------------------------------------------------
+     SR Rating Buttons (post-flip)
+     -------------------------------------------------------------------------- */
+  .sr-rating-buttons {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .sr-rating-buttons.visible { display: flex; }
+
+  .sr-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    font-weight: var(--weight-medium);
+  }
+
+  .sr-btns {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .sr-btn {
+    padding: var(--space-2) var(--space-5);
+    border: 2px solid;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .sr-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .sr-hard {
+    border-color: var(--error);
+    color: var(--error);
+  }
+  .sr-hard:hover { background: rgba(255, 82, 82, 0.12); }
+
+  .sr-good {
+    border-color: var(--fluoro-cyan);
+    color: var(--fluoro-cyan);
+  }
+  .sr-good:hover { background: rgba(125, 249, 255, 0.12); }
+
+  .sr-easy {
+    border-color: var(--green-vivid);
+    color: var(--green-vivid);
+  }
+  .sr-easy:hover { background: rgba(0, 255, 136, 0.12); }
+
+  /* --------------------------------------------------------------------------
+     Elaboration Prompt
+     -------------------------------------------------------------------------- */
+  .elaboration-prompt {
+    text-align: center;
+    margin: 0 auto var(--space-4);
+    padding: var(--space-3) var(--space-5);
+    background: var(--accent-muted);
+    border: 1px dashed var(--accent);
+    border-radius: var(--radius-md);
+    max-width: 500px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .elaboration-text {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* --------------------------------------------------------------------------
+     Controls
+     -------------------------------------------------------------------------- */
+  .flashcard-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+  }
+
+  .card-counter {
+    color: var(--text-secondary);
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+  }
+
+  .shuffle-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
     background: var(--surface-2);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-default);
     border-radius: var(--radius-md);
     color: var(--text-secondary);
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
   }
 
-  .coming-soon__link:hover {
-    color: var(--text-primary);
-    border-color: var(--border-default);
+  .shuffle-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .elaboration-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .elaboration-toggle input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+
+  /* --------------------------------------------------------------------------
+     Category Filter
+     -------------------------------------------------------------------------- */
+  .flashcard-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .category-btn {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border-default);
+    background: var(--surface-2);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+  }
+
+  .category-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .category-btn.active {
+    background: var(--accent);
+    color: var(--surface-0);
+    border-color: var(--accent);
+    font-weight: var(--weight-semibold);
+  }
+
+  .due-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4rem;
+    height: 1.4rem;
+    padding: 0 0.35rem;
+    font-size: 0.7rem;
+    font-weight: var(--weight-bold);
+    border-radius: var(--radius-full);
+    background: var(--error);
+    color: white;
+    margin-left: var(--space-1);
+    vertical-align: middle;
+  }
+
+  .category-btn.active .due-badge {
+    background: var(--surface-0);
+    color: var(--accent);
+  }
+
+  /* --------------------------------------------------------------------------
+     Animation
+     -------------------------------------------------------------------------- */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --------------------------------------------------------------------------
+     Responsive
+     -------------------------------------------------------------------------- */
+  @media (max-width: 640px) {
+    .flashcard { width: 100%; max-width: 360px; height: 260px; }
+    .flashcard-container { gap: var(--space-3); }
+    .flashcard-nav { width: 40px; height: 40px; }
+    .flashcard-question { font-size: var(--text-lg); }
+    .flashcard-controls { gap: var(--space-3); flex-wrap: wrap; }
+    .confidence-btns { gap: var(--space-2); }
+    .confidence-btn { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); }
+    .sr-btns { gap: var(--space-2); }
+    .sr-btn { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); }
   }
 </style>
+
+
+<script>
+  /* ==========================================================================
+     Flashcard Data — Week 3 & Week 4
+     ========================================================================== */
+
+  const flashcards = [
+    // ——— WEEK 3: Simple Animal Responses ———
+
+    { week: 'week3', question: 'What is innate behaviour?', answer: 'Behaviour that is hardwired (genetically determined) and not learned through experience. It is heritable, intrinsic, stereotypic, and immutable.' },
+
+    { week: 'week3', question: 'What are the four properties of innate behaviour?', answer: 'Heritable (passed from parents to offspring), intrinsic (present in isolation-reared animals), stereotypic (same across all individuals of the species), and immutable (not changed by experience).' },
+
+    { week: 'week3', question: 'What is a taxis?', answer: 'A directional movement in response to a stimulus. The animal detects where the stimulus is coming from and moves toward it (positive taxis) or away from it (negative taxis).' },
+
+    { week: 'week3', question: 'What is a kinesis?', answer: 'A non-directional movement response to a stimulus. The animal cannot detect the direction of the stimulus — instead, its speed or rate of turning changes with stimulus intensity.' },
+
+    { week: 'week3', question: 'What is the key difference between taxis and kinesis?', answer: 'In taxis, the animal detects the direction of the stimulus and moves toward or away from it. In kinesis, the animal only detects stimulus intensity — its movement pattern changes but is not directed.' },
+
+    { week: 'week3', question: 'What is positive taxis?', answer: 'Movement toward a stimulus. For example, a moth flying toward a light source is positive phototaxis.' },
+
+    { week: 'week3', question: 'What is negative taxis?', answer: 'Movement away from a stimulus. For example, a blowfly maggot moving away from light is negative phototaxis.' },
+
+    { week: 'week3', question: 'What is klinotaxis?', answer: 'A type of taxis where the animal has receptor(s) in one region of its body and swings its body side to side, comparing stimulus intensity sequentially to determine direction. Example: blowfly maggot.' },
+
+    { week: 'week3', question: 'What is tropotaxis?', answer: 'A type of taxis where the animal has paired receptors (one on each side) and makes a simultaneous bilateral comparison of stimulus intensity to determine direction. Example: barnacle larva.' },
+
+    { week: 'week3', question: 'What is orthokinesis?', answer: 'A type of kinesis where the speed of movement changes with stimulus intensity. Example: a woodlouse moves faster in dry air and slower in humid air.' },
+
+    { week: 'week3', question: 'What is klinokinesis?', answer: 'A type of kinesis where the rate of turning (direction changes) varies with stimulus intensity. Example: a flatworm turns more frequently in bright light and moves in straighter lines in the dark.' },
+
+    { week: 'week3', question: 'What does the prefix "photo-" refer to in taxis/kinesis?', answer: 'Light. For example, positive phototaxis means movement toward light.' },
+
+    { week: 'week3', question: 'What does the prefix "chemo-" refer to in taxis/kinesis?', answer: 'Chemicals. For example, positive chemotaxis means movement toward a chemical stimulus, such as paua larvae swimming toward coralline algae chemicals.' },
+
+    { week: 'week3', question: 'What does the prefix "thermo-" refer to in taxis/kinesis?', answer: 'Temperature. For example, positive thermotaxis means movement toward warmth, such as a tuatara basking in the sun.' },
+
+    { week: 'week3', question: 'What does the prefix "rheo-" refer to in taxis/kinesis?', answer: 'Water current. For example, positive rheotaxis means swimming against (into) the current, as seen in longfin eel glass eels migrating upstream.' },
+
+    { week: 'week3', question: 'What does the prefix "thigmo-" refer to?', answer: 'Touch or physical contact. For example, thigmotaxis is movement in response to a touch stimulus, such as a barnacle larva cementing to a rock surface.' },
+
+    { week: 'week3', question: 'What does the prefix "hydro-" refer to?', answer: 'Water or moisture. For example, positive hydrotaxis means movement toward moisture, such as an earthworm moving toward damp soil.' },
+
+    { week: 'week3', question: 'Describe the NZ glow-worm as an example of taxis.', answer: 'The NZ glow-worm (Arachnocampa luminosa) uses bioluminescent light to attract prey. Midges and moths exhibit positive phototaxis — they fly toward the glow-worm\'s light and become trapped in sticky silk threads.' },
+
+    { week: 'week3', question: 'Describe the tree weta as an example of taxis.', answer: 'The tree weta (Hemideina thoracica) shows negative phototaxis — it avoids light. Research showed an 87.5% reduction in weta activity under LED lights. As a nocturnal forager, avoiding light helps it evade predators.' },
+
+    { week: 'week3', question: 'Describe Peripatus as an example of kinesis.', answer: 'Peripatus/ngaokeoke (Peripatoides novaezealandiae) shows hygrokinesis (orthokinesis related to moisture). It lacks a waterproof cuticle or closeable spiracles, so it moves faster in dry conditions and slows in humid areas, reducing water loss.' },
+
+    { week: 'week3', question: 'Why do both taxis and kinesis lead to the same survival outcome?', answer: 'Both result in the animal ending up in a more favourable environment. Taxis achieves this by directed movement toward/away from a stimulus. Kinesis achieves it indirectly — the animal spends more time in favourable conditions because it moves slowly/turns less there.' },
+
+    { week: 'week3', question: 'What does the distinction between taxis and kinesis tell us about the animal?', answer: 'It reveals the animal\'s sensory capabilities. An animal performing taxis has receptors sophisticated enough to detect the direction of a stimulus. An animal performing kinesis can only detect stimulus intensity, not direction.' },
+
+    // ——— WEEK 4: Pheromones ———
+
+    { week: 'week4', question: 'What is a pheromone?', answer: 'A chemical substance secreted into the external environment that triggers a specific behavioural or physiological response in another member of the same species. The term was coined in 1959 by Karlson and Luscher.' },
+
+    { week: 'week4', question: 'Give three differences between pheromones and hormones.', answer: 'Pheromones target other individuals (hormones target own cells), are transmitted through the external environment (hormones via blood), and are detected at extremely low concentrations (parts per trillion). Pheromones come from exocrine glands; hormones from endocrine glands.' },
+
+    { week: 'week4', question: 'What is a releaser pheromone?', answer: 'A pheromone that triggers an immediate, rapid behavioural response by acting on the nervous system. Examples include alarm pheromones, sex pheromones, and trail pheromones.' },
+
+    { week: 'week4', question: 'What is a primer pheromone?', answer: 'A pheromone that causes slow, long-term physiological changes (over days or weeks) by acting on the endocrine system. Examples include honeybee queen substance suppressing worker reproduction, and the Bruce Effect in mice.' },
+
+    { week: 'week4', question: 'Can a single pheromone be both a releaser and a primer?', answer: 'Yes. For example, the honeybee queen mandibular pheromone (QMP) acts as a releaser (immediately attracts workers) and as a primer (over time, suppresses worker ovary development).' },
+
+    { week: 'week4', question: 'What are the main types of pheromones?', answer: 'Sex/mating pheromones (attract mates), alarm pheromones (alert conspecifics to danger), trail pheromones (mark routes to food), aggregation pheromones (attract both sexes to a location), territorial marking pheromones, and queen/social pheromones.' },
+
+    { week: 'week4', question: 'How do insects detect pheromones?', answer: 'Via antennal sensilla — tiny hair-like structures containing odorant-binding proteins and receptor neurons. Male moths often have feathery (plumose) antennae with more sensilla to detect female sex pheromones at extremely low concentrations.' },
+
+    { week: 'week4', question: 'What is the vomeronasal organ (VNO)?', answer: 'Also called Jacobson\'s organ, it is a sensory organ in many vertebrates that detects pheromones. It connects to the accessory olfactory bulb, then to the amygdala and hypothalamus. The flehmen response (lip curl) draws pheromones into the VNO.' },
+
+    { week: 'week4', question: 'What is Bombykol and why is it significant?', answer: 'Bombykol is the sex pheromone of the silkworm moth (Bombyx mori), identified in 1959 by Butenandt. It was the first pheromone ever identified — he processed 500,000 females over 20 years. Males can detect it at concentrations as low as 10^-12 micrograms per mL.' },
+
+    { week: 'week4', question: 'Describe the puriri moth as an NZ pheromone example.', answer: 'The puriri moth/pepetuna (Aenetus virescens) is unusual because the male produces the sex pheromone (using brush-like organs on its hind legs), rather than the female. It is NZ\'s largest moth, and its larvae bore into puriri trees for up to 6 years.' },
+
+    { week: 'week4', question: 'What is the Bruce Effect?', answer: 'A primer pheromone effect in mice. When a recently mated female is exposed to urinary pheromones from a strange (unfamiliar) male, detected via the VNO, it blocks prolactin secretion and causes pregnancy termination. This is adaptive because the new male would likely commit infanticide.' },
+
+    { week: 'week4', question: 'How does pheromone-guided movement connect to taxis?', answer: 'Pheromone-guided movement is a form of chemotaxis — a directional movement toward a chemical stimulus. For example, a male moth navigates upwind in a zigzag pattern toward a female\'s pheromone plume (positive chemotaxis combined with anemotaxis).' },
+
+    // ——— WEEK 4: Navigation ———
+
+    { week: 'week4', question: 'What is navigation in animal behaviour?', answer: 'The ability to determine and maintain a course toward a specific destination. It requires a "map" (knowing where you are relative to your goal) and a "compass" (knowing which direction to travel). It operates over hundreds or thousands of kilometres.' },
+
+    { week: 'week4', question: 'What is piloting (landmark navigation)?', answer: 'Navigation by following learned visual landmarks such as coastlines, rivers, and roads. It requires prior experience of the route and fails in unfamiliar territory or over open ocean.' },
+
+    { week: 'week4', question: 'What is a time-compensated sun compass?', answer: 'A navigation mechanism where the animal uses the sun\'s position as a directional reference, but compensates for the sun\'s apparent movement (~15 degrees/hour) using an internal circadian clock. In the Southern Hemisphere, the sun is due north at solar noon.' },
+
+    { week: 'week4', question: 'What evidence supports the sun compass? (Clock-shift experiments)', answer: 'Pigeons kept under artificially shifted light-dark cycles (e.g. 6 hours forward) flew approximately 90 degrees off course when released. This confirms they use an internal clock to compensate for the sun\'s movement.' },
+
+    { week: 'week4', question: 'How do animals use the Earth\'s magnetic field for navigation?', answer: 'Two types of information: (1) Magnetic compass — uses the inclination (dip) angle to determine poleward vs equatorward direction. (2) Magnetic map — uses total field intensity + inclination angle to create a bicoordinate position estimate (like latitude and longitude).' },
+
+    { week: 'week4', question: 'What are the two mechanisms for detecting magnetic fields?', answer: 'Magnetite (Fe3O4) — tiny crystals in beaks, nasal tissues, or brains that physically rotate in the magnetic field. Radical pair mechanism (cryptochrome) — proteins in the retina activated by blue light; the magnetic field influences radical pair chemistry, so birds may "see" the field overlaid on their vision.' },
+
+    { week: 'week4', question: 'How do nocturnal migrants use stars for navigation?', answer: 'They learn the centre of celestial rotation during development (near Polaris in the north, the Southern Cross pointers in the south). Emlen\'s planetarium experiments with indigo buntings showed birds raised under a rotated sky treated the new rotation centre as "north" — proving star navigation is learned, not innate.' },
+
+    { week: 'week4', question: 'Explain olfactory navigation in salmon.', answer: 'Pacific salmon imprint on the unique chemical signature of their natal stream during a juvenile critical window. As adults returning from the ocean, they follow the scent gradient upstream using positive chemotaxis to find the exact stream where they hatched.' },
+
+    { week: 'week4', question: 'Describe the multi-cue navigation hierarchy.', answer: '1. Departure: magnetic compass + inherited direction programme. 2. En route: sun compass (day) or star compass (night), with magnetic compass as backup/calibration. 3. Arrival: visual landmarks (piloting) + olfactory cues for final homing.' },
+
+    { week: 'week4', question: 'Describe the bar-tailed godwit (kuaka) as a navigation example.', answer: 'The kuaka (Limosa lapponica baueri) makes the longest non-stop bird flight — over 13,000 km from Alaska to NZ. It uses magnetic and sun compass navigation. Juveniles navigate without parental guidance (inherited programme). Birds lose up to 55% body mass during the flight.' },
+
+    { week: 'week4', question: 'Describe the longfin eel (tuna) as a navigation example.', answer: 'The longfin eel (Anguilla dieffenbachii) can live up to 80 years in freshwater. Its spawning grounds (near Tonga) have never been found. Glass eels use olfactory cues and positive rheotaxis to migrate upstream, and likely use magnetic sense for ocean crossing.' },
+
+    { week: 'week4', question: 'What is unique about the monarch butterfly\'s sun compass?', answer: 'The monarch butterfly\'s time-compensated sun compass is located in its antennae — both the circadian clock and the compass sensor are in the same structure. Its 4,000 km migration is entirely an inherited programme (multi-generational; no individual completes a round trip).' },
+
+    { week: 'week4', question: 'How do loggerhead sea turtles use magnetic navigation?', answer: 'Loggerhead sea turtles (Caretta caretta) have a bicoordinate magnetic map — they can determine both latitude and longitude from the Earth\'s magnetic field. Florida hatchlings use this to navigate the North Atlantic gyre, and adults return to their natal beach decades later using magnetic coordinates combined with olfactory cues.' },
+
+    { week: 'week4', question: 'How does navigation connect to taxis?', answer: 'Navigation is built on taxis responses at a larger scale. It involves phototaxis (sun compass), magnetotaxis (magnetic compass), chemotaxis (olfactory homing), and rheotaxis (upstream migration). The difference is the scale and complexity of the multi-cue integration.' },
+  ];
+
+  /* ==========================================================================
+     Elaboration Prompts — deeper thinking nudges
+     ========================================================================== */
+
+  const elaborationPrompts = [
+    'Why would this be an adaptive advantage for the organism?',
+    'How could you test this response in a controlled experiment?',
+    'Can you think of a NZ example that illustrates this concept?',
+    'What would happen if this mechanism failed or was disrupted?',
+    'How does this concept connect to the organism\'s survival and reproduction?',
+    'Could you explain this concept to a classmate in your own words?',
+    'What is the difference between this and a closely related concept?',
+    'How might this response vary between different species? Why?',
+    'What sensory structures are involved in this response?',
+    'How does this connect to the concept of natural selection?',
+    'What evidence would you need to distinguish this from an alternative explanation?',
+    'How would you draw a diagram to illustrate this concept?',
+  ];
+
+  /* ==========================================================================
+     State
+     ========================================================================== */
+
+  let currentFlashcardIndex = 0;
+  let filteredFlashcards = [];
+  let currentConfidence = null;
+  let currentFilterCategory = 'all';
+
+  const LS_SR_KEY = 'bio_l3_flashcard_data';
+  const LS_CONF_KEY = 'bio_l3_confidence_data';
+  const MAX_NEW_CARDS_PER_SESSION = 5;
+
+  /* ==========================================================================
+     localStorage — SR state
+     ========================================================================== */
+
+  function getCardId(card) {
+    return `${card.week}_${card._origIndex}`;
+  }
+
+  function loadSRData() {
+    try { return JSON.parse(localStorage.getItem(LS_SR_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveSRData(data) {
+    localStorage.setItem(LS_SR_KEY, JSON.stringify(data));
+  }
+
+  function getCardSRState(cardId) {
+    const data = loadSRData();
+    return data[cardId] || { ease: 2.5, interval: 0, repetitions: 0, dueDate: null, lastReviewed: null };
+  }
+
+  function setCardSRState(cardId, state) {
+    const data = loadSRData();
+    data[cardId] = state;
+    saveSRData(data);
+  }
+
+  /* ==========================================================================
+     localStorage — Confidence data
+     ========================================================================== */
+
+  function loadConfidenceData() {
+    try { return JSON.parse(localStorage.getItem(LS_CONF_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveConfidenceRecord(cardId, confidence, rating) {
+    const data = loadConfidenceData();
+    if (!data[cardId]) data[cardId] = [];
+    data[cardId].push({ confidence, rating, date: new Date().toISOString().slice(0, 10) });
+    if (data[cardId].length > 10) data[cardId] = data[cardId].slice(-10);
+    localStorage.setItem(LS_CONF_KEY, JSON.stringify(data));
+  }
+
+  /* ==========================================================================
+     SM-2 Algorithm
+     ========================================================================== */
+
+  function calculateSR(state, rating) {
+    const today = new Date().toISOString().slice(0, 10);
+    let { ease, interval, repetitions } = state;
+
+    if (rating === 'hard') {
+      interval = 1;
+      ease = Math.max(1.3, ease - 0.2);
+      repetitions = 0;
+    } else if (rating === 'good') {
+      ease = Math.max(1.3, ease - 0.1);
+      if (interval === 0) interval = 1;
+      else if (interval === 1) interval = 3;
+      else interval = Math.round(interval * ease);
+      repetitions++;
+    } else if (rating === 'easy') {
+      ease = Math.min(2.5, ease + 0.1);
+      if (interval === 0) interval = 3;
+      else if (interval <= 3) interval = 7;
+      else interval = Math.round(interval * ease * 1.3);
+      repetitions++;
+    }
+
+    const due = new Date();
+    due.setDate(due.getDate() + interval);
+    const dueDate = due.toISOString().slice(0, 10);
+
+    return { ease, interval, repetitions, dueDate, lastReviewed: today };
+  }
+
+  function isCardDue(cardId) {
+    const state = getCardSRState(cardId);
+    if (!state.lastReviewed || !state.dueDate) return true;
+    return state.dueDate <= new Date().toISOString().slice(0, 10);
+  }
+
+  function countDueCards() {
+    let reviewCount = 0;
+    let newCount = 0;
+    flashcards.forEach((card, i) => {
+      const cardId = `${card.week}_${i}`;
+      const state = getCardSRState(cardId);
+      if (!state.lastReviewed) newCount++;
+      else if (isCardDue(cardId)) reviewCount++;
+    });
+    return reviewCount + Math.min(newCount, MAX_NEW_CARDS_PER_SESSION);
+  }
+
+  /* ==========================================================================
+     Filtering
+     ========================================================================== */
+
+  function filterFlashcards(category) {
+    currentFilterCategory = category;
+    const tagged = flashcards.map((card, i) => ({ ...card, _origIndex: i }));
+
+    if (category === 'review') {
+      const due = [];
+      const neverSeen = [];
+      tagged.forEach(card => {
+        const cardId = getCardId(card);
+        const state = getCardSRState(cardId);
+        if (!state.lastReviewed) neverSeen.push(card);
+        else if (isCardDue(cardId)) due.push(card);
+      });
+      filteredFlashcards = [...neverSeen.slice(0, MAX_NEW_CARDS_PER_SESSION), ...due];
+    } else if (category === 'all') {
+      filteredFlashcards = tagged;
+    } else {
+      filteredFlashcards = tagged.filter(card => card.week === category);
+    }
+
+    currentFlashcardIndex = 0;
+    const fc = document.getElementById('current-flashcard');
+    if (fc) fc.classList.remove('flipped');
+    updateFlashcard();
+  }
+
+  /* ==========================================================================
+     Card Display
+     ========================================================================== */
+
+  function updateFlashcard() {
+    document.getElementById('sr-rating-buttons')?.classList.remove('visible');
+    hideElaborationPrompt();
+    updateConfidenceVisibility();
+
+    const questionEl = document.querySelector('.flashcard-question');
+    const answerEl = document.querySelector('.flashcard-answer');
+    const numEl = document.getElementById('current-card-num');
+    const totalEl = document.getElementById('total-cards');
+
+    if (filteredFlashcards.length === 0) {
+      if (questionEl) questionEl.textContent = currentFilterCategory === 'review'
+        ? 'No cards due for review right now. Great work!'
+        : 'No flashcards available for this category.';
+      if (answerEl) answerEl.textContent = '';
+      if (numEl) numEl.textContent = '0';
+      if (totalEl) totalEl.textContent = '0';
+      document.getElementById('confidence-buttons')?.classList.add('hidden');
+      return;
+    }
+
+    const card = filteredFlashcards[currentFlashcardIndex];
+    if (questionEl) questionEl.textContent = card.question;
+    if (answerEl) answerEl.textContent = card.answer;
+    if (numEl) numEl.textContent = String(currentFlashcardIndex + 1);
+    if (totalEl) totalEl.textContent = String(filteredFlashcards.length);
+  }
+
+  function navigateFlashcard(direction) {
+    if (filteredFlashcards.length === 0) return;
+    const fc = document.getElementById('current-flashcard');
+    if (fc) fc.classList.remove('flipped');
+
+    currentFlashcardIndex += direction;
+    if (currentFlashcardIndex < 0) currentFlashcardIndex = filteredFlashcards.length - 1;
+    else if (currentFlashcardIndex >= filteredFlashcards.length) currentFlashcardIndex = 0;
+
+    setTimeout(() => updateFlashcard(), 150);
+  }
+
+  function shuffleFlashcards() {
+    for (let i = filteredFlashcards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [filteredFlashcards[i], filteredFlashcards[j]] = [filteredFlashcards[j], filteredFlashcards[i]];
+    }
+    currentFlashcardIndex = 0;
+    const fc = document.getElementById('current-flashcard');
+    if (fc) fc.classList.remove('flipped');
+    updateFlashcard();
+  }
+
+  /* ==========================================================================
+     Confidence (pre-flip)
+     ========================================================================== */
+
+  function recordConfidence(level) {
+    currentConfidence = level;
+    const fc = document.getElementById('current-flashcard');
+    if (fc) fc.classList.add('flipped');
+    document.getElementById('sr-rating-buttons')?.classList.add('visible');
+    document.getElementById('confidence-buttons')?.classList.add('hidden');
+
+    if (filteredFlashcards.length > 0) {
+      maybeShowElaborationPrompt();
+    }
+  }
+
+  function updateConfidenceVisibility() {
+    const fc = document.getElementById('current-flashcard');
+    const confEl = document.getElementById('confidence-buttons');
+    if (!confEl) return;
+    if (fc && !fc.classList.contains('flipped') && filteredFlashcards.length > 0) {
+      confEl.classList.remove('hidden');
+    } else {
+      confEl.classList.add('hidden');
+    }
+    currentConfidence = null;
+  }
+
+  /* ==========================================================================
+     SR Rating (post-flip)
+     ========================================================================== */
+
+  function rateCurrentCard(rating) {
+    if (filteredFlashcards.length === 0) return;
+    const card = filteredFlashcards[currentFlashcardIndex];
+    const cardId = getCardId(card);
+    const newState = calculateSR(getCardSRState(cardId), rating);
+    setCardSRState(cardId, newState);
+
+    if (currentConfidence !== null) {
+      saveConfidenceRecord(cardId, currentConfidence, rating);
+      currentConfidence = null;
+    }
+
+    updateDueBadge();
+
+    setTimeout(() => {
+      const fc = document.getElementById('current-flashcard');
+      if (fc) fc.classList.remove('flipped');
+      document.getElementById('sr-rating-buttons')?.classList.remove('visible');
+
+      if (currentFilterCategory === 'review') {
+        if (!isCardDue(cardId)) {
+          filteredFlashcards.splice(currentFlashcardIndex, 1);
+          if (filteredFlashcards.length === 0) { updateFlashcard(); updateDueBadge(); return; }
+          if (currentFlashcardIndex >= filteredFlashcards.length) currentFlashcardIndex = 0;
+        } else {
+          currentFlashcardIndex++;
+          if (currentFlashcardIndex >= filteredFlashcards.length) currentFlashcardIndex = 0;
+        }
+      } else {
+        currentFlashcardIndex++;
+        if (currentFlashcardIndex >= filteredFlashcards.length) currentFlashcardIndex = 0;
+      }
+
+      setTimeout(() => updateFlashcard(), 150);
+    }, 200);
+  }
+
+  function updateDueBadge() {
+    const badge = document.getElementById('due-badge');
+    if (badge) badge.textContent = String(countDueCards());
+  }
+
+  /* ==========================================================================
+     Elaboration Prompts
+     ========================================================================== */
+
+  function maybeShowElaborationPrompt() {
+    const toggle = document.getElementById('elaboration-toggle');
+    if (!toggle || !toggle.checked) return;
+    if (Math.random() > 0.35) return;
+
+    const prompt = elaborationPrompts[Math.floor(Math.random() * elaborationPrompts.length)];
+    const el = document.getElementById('elaboration-prompt');
+    const textEl = document.getElementById('elaboration-text');
+    if (el && textEl) {
+      textEl.textContent = prompt;
+      el.style.display = 'block';
+    }
+  }
+
+  function hideElaborationPrompt() {
+    const el = document.getElementById('elaboration-prompt');
+    if (el) el.style.display = 'none';
+  }
+
+  /* ==========================================================================
+     Initialisation
+     ========================================================================== */
+
+  function init() {
+    const fc = document.getElementById('current-flashcard');
+    const prevBtn = document.querySelector('.flashcard-nav.prev');
+    const nextBtn = document.querySelector('.flashcard-nav.next');
+    const shuffleBtn = document.getElementById('shuffle-cards');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+
+    // Card click: if flipped, unflip; if not flipped, do nothing (use confidence buttons)
+    if (fc) {
+      fc.addEventListener('click', () => {
+        if (fc.classList.contains('flipped')) {
+          fc.classList.remove('flipped');
+          document.getElementById('sr-rating-buttons')?.classList.remove('visible');
+          hideElaborationPrompt();
+          updateConfidenceVisibility();
+        }
+      });
+    }
+
+    // Nav buttons
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateFlashcard(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateFlashcard(1); });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      // Only handle when flashcards page is active
+      if (!document.querySelector('.flashcards-page')) return;
+      if (e.key === 'ArrowLeft') navigateFlashcard(-1);
+      if (e.key === 'ArrowRight') navigateFlashcard(1);
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (fc && !fc.classList.contains('flipped')) {
+          recordConfidence(2); // Quick-flip
+        } else if (fc) {
+          fc.classList.remove('flipped');
+          document.getElementById('sr-rating-buttons')?.classList.remove('visible');
+          hideElaborationPrompt();
+          updateConfidenceVisibility();
+        }
+      }
+    });
+
+    // Shuffle
+    if (shuffleBtn) shuffleBtn.addEventListener('click', shuffleFlashcards);
+
+    // Category buttons
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterFlashcards(btn.dataset.category);
+      });
+    });
+
+    // Confidence buttons
+    document.querySelectorAll('.confidence-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        recordConfidence(parseInt(btn.dataset.confidence));
+      });
+    });
+
+    // SR rating buttons
+    document.querySelectorAll('.sr-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        rateCurrentCard(btn.dataset.rating);
+      });
+    });
+
+    // Check for week query parameter
+    const params = new URLSearchParams(window.location.search);
+    const weekParam = params.get('week');
+    const subtitleEl = document.getElementById('fc-subtitle');
+    const backLink = document.getElementById('fc-back-link');
+    const backText = document.getElementById('fc-back-text');
+
+    const weekMeta = {
+      week3: { label: 'Week 3 — Simple Animal Responses', backLabel: 'Back to Week 3', backHref: `${document.querySelector('.flashcards-page')?.dataset.baseUrl || '/biology-level3'}/week/3` },
+      week4: { label: 'Week 4 — Pheromones & Navigation', backLabel: 'Back to Week 4', backHref: `${document.querySelector('.flashcards-page')?.dataset.baseUrl || '/biology-level3'}/week/4` },
+    };
+
+    if (weekParam && weekMeta[weekParam]) {
+      const meta = weekMeta[weekParam];
+      if (subtitleEl) subtitleEl.textContent = `AS 91603 — ${meta.label}`;
+      if (backLink) backLink.href = meta.backHref;
+      if (backText) backText.textContent = meta.backLabel;
+
+      // Auto-select the week filter button
+      const targetBtn = document.querySelector(`.category-btn[data-category="${weekParam}"]`);
+      if (targetBtn) {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        targetBtn.classList.add('active');
+        filterFlashcards(weekParam);
+      } else {
+        filterFlashcards('all');
+      }
+    } else {
+      if (subtitleEl) subtitleEl.textContent = 'AS 91603 — All Weeks';
+      filterFlashcards('all');
+    }
+
+    updateDueBadge();
+  }
+
+  /* ==========================================================================
+     IntersectionObserver — fade-in-up animations
+     ========================================================================== */
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+
+  // Init
+  init();
+</script>

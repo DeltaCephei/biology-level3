@@ -1004,6 +1004,24 @@ const base = import.meta.env.BASE_URL;
           </p>
         </div>
 
+        <!-- Review Flashcards -->
+        <a href={`${base}/flashcards?week=week3`} class="sidebar-card sidebar-card--flashcards fade-in-up">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="vertical-align: -3px; margin-right: 6px;">
+              <rect x="4" y="8" width="20" height="16" rx="3" stroke="var(--green-vivid)" stroke-width="1.5" fill="none"/>
+              <rect x="8" y="4" width="20" height="16" rx="3" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.4"/>
+            </svg>
+            Review Flashcards
+          </h3>
+          <p class="sidebar-fc-stat">61 cards for this week</p>
+          <span class="sidebar-fc-cta">
+            Start Review
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+
       </aside>
 
     </div>
@@ -2209,6 +2227,46 @@ const base = import.meta.env.BASE_URL;
   .week-sidebar .sidebar-card:nth-child(1) { transition-delay: 0.10s; }
   .week-sidebar .sidebar-card:nth-child(2) { transition-delay: 0.15s; }
   .week-sidebar .sidebar-card:nth-child(3) { transition-delay: 0.20s; }
+  .week-sidebar .sidebar-card:nth-child(4) { transition-delay: 0.25s; }
+
+  /* Flashcard sidebar card */
+  a.sidebar-card--flashcards,
+  a.sidebar-card--flashcards:link,
+  a.sidebar-card--flashcards:visited {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-color: var(--green-vivid);
+    border-left: 3px solid var(--green-vivid);
+    transition: all var(--transition-fast);
+  }
+
+  a.sidebar-card--flashcards:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);
+    border-color: var(--green-vivid);
+  }
+
+  .sidebar-fc-stat {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .sidebar-fc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    color: var(--green-vivid);
+    transition: gap var(--transition-fast);
+  }
+
+  a.sidebar-card--flashcards:hover .sidebar-fc-cta {
+    gap: var(--space-3);
+  }
 
   @media (max-width: 560px) {
     .content-section {

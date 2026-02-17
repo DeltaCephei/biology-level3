@@ -112,35 +112,63 @@ const activeWeeks = [3, 4];
 
       <div class="bento-grid">
 
-        <!-- Large card: Current topic (spans 2 columns) -->
+        <!-- Child 1: Large topic card (spans 2 cols, 2 rows) -->
         <WeekCard
-          title="Taxes &amp; Kineses: Consolidation"
-          subtitle="AS 91603 — Textbook Questions &amp; Pheromones"
-          href={`${base}/week/4`}
+          title="Pheromones &amp; Animal Navigation"
+          subtitle="AS 91603 — Consolidation, Chemical Signals &amp; Methods of Navigation"
           size="large"
           accentColour="var(--standard-3-colour)"
         >
-          <p class="card-description">
-            Consolidate your understanding of taxis and kinesis through textbook questions,
-            then explore pheromones and animal navigation.
-          </p>
-          <div class="card-meta">
-            <span class="badge badge--standard">AS 91603</span>
-            <span class="badge badge--credits">5 credits</span>
-            <span class="badge badge--external">External</span>
-          </div>
           <a href={`${base}/week/4`} class="card-cta">
             Start Learning
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
+          <p class="card-description">
+            Consolidate taxis and kinesis with textbook questions, then explore how
+            animals use pheromones for communication and navigate across vast distances
+            using magnetic fields, celestial cues, and learned landmarks.
+          </p>
+          <div class="card-illustration" aria-hidden="true">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Stylised organism (woodlouse) with taxis/kinesis arrows -->
+              <ellipse cx="60" cy="60" rx="22" ry="16" stroke="var(--standard-3-colour)" stroke-width="1.5" opacity="0.7"/>
+              <ellipse cx="60" cy="60" rx="14" ry="10" stroke="var(--standard-3-colour)" stroke-width="1" opacity="0.4"/>
+              <!-- Antennae -->
+              <path d="M42 52 L32 40" stroke="var(--standard-3-colour)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+              <path d="M42 56 L30 50" stroke="var(--standard-3-colour)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+              <!-- Legs -->
+              <path d="M48 72 L44 82" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              <path d="M56 74 L54 84" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              <path d="M64 74 L66 84" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              <path d="M72 72 L76 82" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              <!-- Taxis arrow (directed movement) -->
+              <line x1="90" y1="60" x2="110" y2="60" stroke="var(--green-vivid)" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.6"/>
+              <polygon points="110,56 118,60 110,64" fill="var(--green-vivid)" opacity="0.6"/>
+              <text x="104" y="52" font-size="7" fill="var(--green-vivid)" opacity="0.5" font-family="var(--font-mono)">taxis</text>
+              <!-- Kinesis arrows (random turning) -->
+              <path d="M20 30 Q30 20 26 10" stroke="var(--fluoro-cyan)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+              <polygon points="24,11 26,4 30,12" fill="var(--fluoro-cyan)" opacity="0.5"/>
+              <path d="M14 40 Q8 34 12 26" stroke="var(--fluoro-cyan)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+              <polygon points="10,27 12,20 16,28" fill="var(--fluoro-cyan)" opacity="0.5"/>
+              <text x="6" y="22" font-size="7" fill="var(--fluoro-cyan)" opacity="0.5" font-family="var(--font-mono)">kinesis</text>
+              <!-- Stimulus dot -->
+              <circle cx="60" cy="20" r="4" fill="var(--fluoro-pink)" opacity="0.3"/>
+              <circle cx="60" cy="20" r="8" stroke="var(--fluoro-pink)" stroke-width="0.8" fill="none" opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <span class="badge badge--standard">AS 91603</span>
+            <span class="badge badge--credits">5 credits</span>
+            <span class="badge badge--external">External</span>
+          </div>
         </WeekCard>
 
-        <!-- Medium card: Flashcards -->
+        <!-- Child 2: Week Flashcards (right top) -->
         <WeekCard
-          title="Flashcards"
-          href={`${base}/flashcards`}
+          title="Week 4 Flashcards"
+          subtitle="Learn and revise the keywords and ideas for this week"
           size="medium"
           accentColour="var(--green-vivid)"
         >
@@ -150,8 +178,8 @@ const activeWeeks = [3, 4];
               <rect x="8" y="4" width="20" height="16" rx="3" stroke="var(--green-muted)" stroke-width="1.5" fill="none" opacity="0.5"/>
             </svg>
           </div>
-          <p class="card-stat">12 cards this week</p>
-          <a href={`${base}/flashcards`} class="card-cta card-cta--sm">
+          <p class="card-stat">42 cards</p>
+          <a href={`${base}/flashcards?week=week4`} class="card-cta card-cta--sm">
             Start Review
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,47 +187,73 @@ const activeWeeks = [3, 4];
           </a>
         </WeekCard>
 
-        <!-- Medium card: Quiz -->
+        <!-- Child 3: Boss Level Flashcards (right bottom) -->
         <WeekCard
-          title="Quiz"
-          href={`${base}/quiz`}
+          title="Boss Level Flashcards"
+          subtitle="Learn and revise everything so far"
           size="medium"
           accentColour="var(--fluoro-cyan)"
         >
           <div class="card-icon" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="11" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
-              <path d="M13 16.5l2.5 2.5L20 13" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="10" width="18" height="14" rx="3" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+              <rect x="6" y="6" width="18" height="14" rx="3" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <rect x="10" y="2" width="18" height="14" rx="3" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.3"/>
             </svg>
           </div>
-          <p class="card-stat">8 questions available</p>
-          <a href={`${base}/quiz`} class="card-cta card-cta--sm">
-            Take Quiz
+          <p class="card-stat">103 cards</p>
+          <a href={`${base}/flashcards`} class="card-cta card-cta--sm">
+            Take the Challenge
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </WeekCard>
 
-        <!-- Small card: Study streak -->
+        <!-- Child 4: Week Quiz -->
         <WeekCard
-          title="Study Streak"
+          title="Week 4 Quiz"
+          subtitle="Test your knowledge of this week's content"
+          href={`${base}/quiz`}
           size="small"
+          accentColour="var(--fluoro-cyan)"
         >
-          <p class="streak-number">0 <span class="streak-unit">day streak</span></p>
-          <p class="card-hint">Keep it going!</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="11" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+              <path d="M9 14.5l3 3 7-7" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </WeekCard>
 
-        <!-- Small card: Teams reference -->
+        <!-- Child 5: Boss Level Quiz -->
         <WeekCard
-          title="Teams Assignment"
+          title="Boss Level Quiz"
+          subtitle="Shuffled questions from all weeks"
+          href={`${base}/quiz`}
           size="small"
-          accentColour="var(--purple-rich)"
+          accentColour="var(--purple-deep)"
         >
-          <p class="teams-ref">Week 3: Taxis and kinesis &mdash; see class for details</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M7 10h14M7 14h14M7 18h14" stroke="var(--purple-deep, #7c3aed)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+              <path d="M19 7l3 3-3 3" stroke="var(--purple-deep, #7c3aed)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 15l3 3-3 3" stroke="var(--purple-deep, #7c3aed)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </WeekCard>
 
-        <!-- Medium card (full width): Progress snapshot -->
+        <!-- Child 6: Dr Eliot AI Marked (coming soon) -->
+        <WeekCard
+          title="Dr Eliot AI Marked"
+          subtitle="Written answers marked by AI"
+          size="small"
+          accentColour="var(--fluoro-pink)"
+        >
+          <span class="badge badge--coming-soon">Coming Soon</span>
+        </WeekCard>
+
+        <!-- Child 7: Progress Snapshot (full width) -->
         <WeekCard
           title="Progress Snapshot"
           subtitle="Your journey across all five standards"
@@ -485,32 +539,39 @@ const activeWeeks = [3, 4];
 
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
   }
 
   /* Card spanning rules via :global() so they reach into the child component */
   .bento-grid > :global(:nth-child(1)) {
-    /* Large topic card — spans 2 cols */
+    /* Large topic card — spans 2 cols, 2 rows */
     grid-column: span 2;
     grid-row: span 2;
   }
 
-  .bento-grid > :global(:nth-child(2)),
+  .bento-grid > :global(:nth-child(2)) {
+    /* Week flashcards — right top */
+    grid-column: 3;
+    grid-row: 1;
+  }
+
   .bento-grid > :global(:nth-child(3)) {
-    /* Medium cards — Flashcards and Quiz */
-    grid-column: span 1;
+    /* Boss level flashcards — right bottom */
+    grid-column: 3;
+    grid-row: 2;
   }
 
   .bento-grid > :global(:nth-child(4)),
-  .bento-grid > :global(:nth-child(5)) {
-    /* Small cards — Streak and Teams */
+  .bento-grid > :global(:nth-child(5)),
+  .bento-grid > :global(:nth-child(6)) {
+    /* Bottom row — quiz / quiz / AI marked */
     grid-column: span 1;
   }
 
-  .bento-grid > :global(:nth-child(6)) {
+  .bento-grid > :global(:nth-child(7)) {
     /* Progress snapshot — full width */
-    grid-column: span 4;
+    grid-column: span 3;
   }
 
   /* Stagger the fade-in-up animation across bento cards */
@@ -520,8 +581,9 @@ const activeWeeks = [3, 4];
   .bento-grid > :global(:nth-child(4)) { transition-delay: 0.20s; }
   .bento-grid > :global(:nth-child(5)) { transition-delay: 0.25s; }
   .bento-grid > :global(:nth-child(6)) { transition-delay: 0.30s; }
+  .bento-grid > :global(:nth-child(7)) { transition-delay: 0.35s; }
 
-  /* Responsive: stack on smaller viewports */
+  /* Responsive: tablet (2 cols) */
   @media (max-width: 900px) {
     .bento-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -530,17 +592,23 @@ const activeWeeks = [3, 4];
       grid-column: span 2;
       grid-row: span 1;
     }
-    .bento-grid > :global(:nth-child(6)) {
+    .bento-grid > :global(:nth-child(2)),
+    .bento-grid > :global(:nth-child(3)) {
+      grid-column: span 1;
+      grid-row: auto;
+    }
+    .bento-grid > :global(:nth-child(7)) {
       grid-column: span 2;
     }
   }
 
+  /* Responsive: mobile (1 col) */
   @media (max-width: 560px) {
     .bento-grid {
       grid-template-columns: 1fr;
     }
     .bento-grid > :global(:nth-child(1)),
-    .bento-grid > :global(:nth-child(6)) {
+    .bento-grid > :global(:nth-child(7)) {
       grid-column: span 1;
     }
   }
@@ -600,33 +668,10 @@ const activeWeeks = [3, 4];
     font-weight: var(--weight-medium);
   }
 
-  /* Hint text — "Keep it going!" */
-  .card-hint {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* Streak number */
-  .streak-number {
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    font-weight: var(--weight-bold);
-    color: var(--text-primary);
-    line-height: 1;
-  }
-
-  .streak-unit {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-normal);
-    color: var(--text-secondary);
-  }
-
-  /* Teams reference text */
-  .teams-ref {
-    font-size: var(--text-xs);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
+  /* SVG illustration inside the large topic card */
+  .card-illustration {
+    margin-top: var(--space-2);
+    opacity: 0.85;
   }
 
   /* --------------------------------------------------------------------------
@@ -672,6 +717,12 @@ const activeWeeks = [3, 4];
   .badge--external {
     background: rgba(255, 110, 199, 0.1);
     color: var(--fluoro-pink);
+  }
+
+  .badge--coming-soon {
+    background: rgba(255, 110, 199, 0.12);
+    color: var(--fluoro-pink);
+    font-size: var(--text-xs);
   }
 
 
