@@ -107,55 +107,61 @@ const activeWeeks = [3, 4, 5];
     <div class="container">
       <div class="section-header fade-in-up">
         <h2 id="this-week-heading">This Week</h2>
-        <p class="section-subtitle">Week 4 &mdash; Term 1</p>
+        <p class="section-subtitle">Week 5 &mdash; Term 1</p>
       </div>
 
       <div class="bento-grid">
 
         <!-- Child 1: Large topic card (spans 2 cols, 2 rows) -->
         <WeekCard
-          title="Pheromones &amp; Animal Navigation"
-          subtitle="AS 91603 — Consolidation, Chemical Signals &amp; Methods of Navigation"
+          title="The Waggle Dance"
+          subtitle="AS 91603 — Communication Behaviour in Honey Bees"
           size="large"
           accentColour="var(--standard-3-colour)"
         >
-          <a href={`${base}/week/4`} class="card-cta">
+          <a href={`${base}/week/5`} class="card-cta">
             Start Learning
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
           <p class="card-description">
-            Consolidate taxis and kinesis with textbook questions, then explore how
-            animals use pheromones for communication and navigate across vast distances
-            using magnetic fields, celestial cues, and learned landmarks.
+            Discover how honey bees use the waggle dance to communicate the direction
+            and distance of food sources. Explore an interactive simulation, decode
+            dances yourself, and test your understanding with a quiz and AI-marked
+            exam question.
           </p>
           <div class="card-illustration" aria-hidden="true">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Stylised organism (woodlouse) with taxis/kinesis arrows -->
-              <ellipse cx="60" cy="60" rx="22" ry="16" stroke="var(--standard-3-colour)" stroke-width="1.5" opacity="0.7"/>
-              <ellipse cx="60" cy="60" rx="14" ry="10" stroke="var(--standard-3-colour)" stroke-width="1" opacity="0.4"/>
-              <!-- Antennae -->
-              <path d="M42 52 L32 40" stroke="var(--standard-3-colour)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-              <path d="M42 56 L30 50" stroke="var(--standard-3-colour)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-              <!-- Legs -->
-              <path d="M48 72 L44 82" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-              <path d="M56 74 L54 84" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-              <path d="M64 74 L66 84" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-              <path d="M72 72 L76 82" stroke="var(--standard-3-colour)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-              <!-- Taxis arrow (directed movement) -->
-              <line x1="90" y1="60" x2="110" y2="60" stroke="var(--green-vivid)" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.6"/>
-              <polygon points="110,56 118,60 110,64" fill="var(--green-vivid)" opacity="0.6"/>
-              <text x="104" y="52" font-size="7" fill="var(--green-vivid)" opacity="0.5" font-family="var(--font-mono)">taxis</text>
-              <!-- Kinesis arrows (random turning) -->
-              <path d="M20 30 Q30 20 26 10" stroke="var(--fluoro-cyan)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
-              <polygon points="24,11 26,4 30,12" fill="var(--fluoro-cyan)" opacity="0.5"/>
-              <path d="M14 40 Q8 34 12 26" stroke="var(--fluoro-cyan)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
-              <polygon points="10,27 12,20 16,28" fill="var(--fluoro-cyan)" opacity="0.5"/>
-              <text x="6" y="22" font-size="7" fill="var(--fluoro-cyan)" opacity="0.5" font-family="var(--font-mono)">kinesis</text>
-              <!-- Stimulus dot -->
-              <circle cx="60" cy="20" r="4" fill="var(--fluoro-pink)" opacity="0.3"/>
-              <circle cx="60" cy="20" r="8" stroke="var(--fluoro-pink)" stroke-width="0.8" fill="none" opacity="0.2"/>
+              <!-- Honeycomb cells -->
+              <path d="M40 30 L50 24 L60 30 L60 42 L50 48 L40 42 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M60 30 L70 24 L80 30 L80 42 L70 48 L60 42 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M50 48 L60 42 L70 48 L70 60 L60 66 L50 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M30 48 L40 42 L50 48 L50 60 L40 66 L30 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M70 48 L80 42 L90 48 L90 60 L80 66 L70 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M40 66 L50 60 L60 66 L60 78 L50 84 L40 78 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <path d="M60 66 L70 60 L80 66 L80 78 L70 84 L60 78 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
+              <!-- Figure-8 waggle dance path -->
+              <path d="M60 45 C75 45 78 58 60 65" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2" opacity="0.4" stroke-dasharray="3 2"/>
+              <path d="M60 45 C45 45 42 58 60 65" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2" opacity="0.4" stroke-dasharray="3 2"/>
+              <!-- Waggle run -->
+              <line x1="60" y1="45" x2="60" y2="65" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.7"/>
+              <polyline points="57,48 63,52 57,56 63,60 57,64" fill="none" stroke="var(--green-vivid)" stroke-width="1" opacity="0.5"/>
+              <!-- Bee -->
+              <ellipse cx="60" cy="50" rx="5" ry="8" fill="var(--standard-3-colour)" opacity="0.5"/>
+              <ellipse cx="60" cy="50" rx="3" ry="5" fill="var(--standard-3-colour)" opacity="0.3"/>
+              <!-- Wings -->
+              <ellipse cx="53" cy="49" rx="4" ry="7" fill="rgba(200,230,255,0.15)" transform="rotate(-15 53 49)"/>
+              <ellipse cx="67" cy="49" rx="4" ry="7" fill="rgba(200,230,255,0.15)" transform="rotate(15 67 49)"/>
+              <!-- Sun -->
+              <circle cx="90" cy="20" r="6" fill="none" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.4"/>
+              <line x1="90" y1="10" x2="90" y2="13" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
+              <line x1="90" y1="27" x2="90" y2="30" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
+              <line x1="80" y1="20" x2="83" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
+              <line x1="97" y1="20" x2="100" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
+              <!-- Direction arrow -->
+              <line x1="60" y1="85" x2="60" y2="100" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+              <text x="60" y="112" font-size="7" fill="var(--accent)" opacity="0.5" font-family="var(--font-mono)" text-anchor="middle">direction</text>
             </svg>
           </div>
           <div class="card-meta">
@@ -167,7 +173,7 @@ const activeWeeks = [3, 4, 5];
 
         <!-- Child 2: Week Flashcards (right top) -->
         <WeekCard
-          title="Week 4 Flashcards"
+          title="Week 5 Flashcards"
           subtitle="Learn and revise the keywords and ideas for this week"
           size="medium"
           accentColour="var(--green-vivid)"
@@ -178,8 +184,8 @@ const activeWeeks = [3, 4, 5];
               <rect x="8" y="4" width="20" height="16" rx="3" stroke="var(--green-muted)" stroke-width="1.5" fill="none" opacity="0.5"/>
             </svg>
           </div>
-          <p class="card-stat">42 cards</p>
-          <a href={`${base}/flashcards?week=week4`} class="card-cta card-cta--sm">
+          <p class="card-stat">Coming soon</p>
+          <a href={`${base}/flashcards?week=week5`} class="card-cta card-cta--sm">
             Start Review
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -212,9 +218,9 @@ const activeWeeks = [3, 4, 5];
 
         <!-- Child 4: Week Quiz -->
         <WeekCard
-          title="Week 4 Quiz"
+          title="Week 5 Quiz"
           subtitle="Test your knowledge of this week's content"
-          href={`${base}/quiz?week=week4`}
+          href={`${base}/quiz?week=week5`}
           size="small"
           accentColour="var(--fluoro-cyan)"
         >
