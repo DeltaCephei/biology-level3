@@ -1,0 +1,2581 @@
+---
+/* ==========================================================================
+   Week 5 — The Waggle Dance
+   AS 91603: Responses of plants and animals to their external environment
+
+   Lesson 1: The Waggle Dance of the Honey Bee
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Week 5: The Waggle Dance — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 5</span>
+        <h1 class="week-title">The Waggle Dance</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91603</span>
+        <span class="badge badge--desc">Responses of plants and animals to their external environment</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: The Waggle Dance</a>
+      <a href="#simulation" class="week-nav__link">Simulation</a>
+      <a href="#videos" class="week-nav__link">Videos</a>
+      <a href="#quiz" class="week-nav__link">Quiz</a>
+      <a href="#exam-question" class="week-nav__link">Exam Question</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: The Waggle Dance
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <h2>Lesson 1: The Waggle Dance of the Honey Bee</h2>
+
+          <p class="section-intro">
+            In previous weeks you learned about simple innate behaviours — taxis (directional movement
+            toward or away from a stimulus) and kinesis (non-directional changes in speed or turning
+            rate). This week, we step up in complexity to one of the most remarkable communication
+            behaviours in the animal kingdom: the <strong>waggle dance</strong> of the honey bee.
+          </p>
+
+
+          <!-- ── What is the Waggle Dance? ── -->
+          <h3>What is the Waggle Dance?</h3>
+
+          <p>
+            When a forager honey bee (<em>Apis mellifera</em>) discovers a profitable food source —
+            nectar-rich flowers, for example — she returns to the hive and performs a specific
+            dance on the vertical surface of the honeycomb. This dance communicates three critical
+            pieces of information to her nestmates:
+          </p>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--direction">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="16" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.3"/>
+                  <path d="M20 8V20L28 14" stroke="var(--fluoro-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Direction</h4>
+              <p>
+                The <strong>angle of the waggle run</strong> relative to vertical on the comb
+                encodes the direction of the food source relative to the sun.
+              </p>
+            </div>
+            <div class="info-card info-card--distance">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <line x1="8" y1="20" x2="32" y2="20" stroke="var(--green-vivid)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+                  <circle cx="8" cy="20" r="3" fill="var(--green-vivid)" opacity="0.5"/>
+                  <circle cx="32" cy="20" r="3" fill="var(--green-vivid)" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Distance</h4>
+              <p>
+                The <strong>duration of the waggle run</strong> indicates how far away the food
+                source is. Longer waggle = greater distance.
+              </p>
+            </div>
+            <div class="info-card info-card--quality">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 8l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Quality</h4>
+              <p>
+                The <strong>vigour and number of dance circuits</strong> indicate the richness
+                of the food source. Better food = more enthusiastic dancing.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- ── The Figure-8 Pattern ── -->
+          <h3>The Figure-8 Pattern</h3>
+
+          <p>
+            The waggle dance follows a <strong>figure-8 pattern</strong>. The bee runs in a straight
+            line while rapidly waggling her abdomen from side to side (the <strong>waggle run</strong>),
+            then loops back around to the starting point, alternating left and right return loops.
+          </p>
+
+          <div class="dance-diagram">
+            <svg viewBox="0 0 300 360" class="dance-svg" aria-label="Figure-8 waggle dance pattern diagram showing the waggle run and return loops">
+              <!-- Honeycomb background hexagons -->
+              <defs>
+                <pattern id="hex-pattern" width="30" height="52" patternUnits="userSpaceOnUse" patternTransform="translate(0,0)">
+                  <path d="M15 0 L30 13 L30 39 L15 52 L0 39 L0 13 Z" fill="none" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+                </pattern>
+              </defs>
+              <rect width="300" height="360" fill="url(#hex-pattern)"/>
+
+              <!-- Vertical reference line -->
+              <line x1="150" y1="30" x2="150" y2="330" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
+              <text x="158" y="42" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">vertical</text>
+
+              <!-- Right return loop -->
+              <path d="M150,130 C200,130 220,200 150,230" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+              <text x="210" y="185" fill="var(--text-secondary)" font-size="10" opacity="0.6">return loop</text>
+
+              <!-- Left return loop -->
+              <path d="M150,130 C100,130 80,200 150,230" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+              <text x="30" y="185" fill="var(--text-secondary)" font-size="10" opacity="0.6">return loop</text>
+
+              <!-- Waggle run (the key part) -->
+              <line x1="150" y1="130" x2="150" y2="230" stroke="var(--fluoro-cyan)" stroke-width="3" stroke-linecap="round"/>
+              <!-- Waggle zig-zag overlay -->
+              <polyline points="146,135 154,145 146,155 154,165 146,175 154,185 146,195 154,205 146,215 154,225"
+                fill="none" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.6"/>
+
+              <!-- Bee icon at start of waggle run -->
+              <ellipse cx="150" cy="125" rx="10" ry="14" fill="var(--fluoro-cyan)" opacity="0.2" stroke="var(--fluoro-cyan)" stroke-width="1"/>
+              <ellipse cx="150" cy="125" rx="6" ry="9" fill="var(--fluoro-cyan)" opacity="0.15"/>
+
+              <!-- Labels -->
+              <text x="170" y="185" fill="var(--fluoro-cyan)" font-size="12" font-weight="600" font-family="var(--font-display)">waggle run</text>
+
+              <!-- Arrow showing direction encoding -->
+              <path d="M150,80 L150,110" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowhead)"/>
+              <defs>
+                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+                </marker>
+              </defs>
+              <text x="90" y="74" fill="var(--accent)" font-size="11" font-weight="600">angle = direction</text>
+              <text x="95" y="88" fill="var(--accent)" font-size="11" font-weight="600">relative to sun</text>
+
+              <!-- Distance label -->
+              <line x1="135" y1="130" x2="135" y2="230" stroke="var(--green-vivid)" stroke-width="1" opacity="0.5"/>
+              <line x1="132" y1="130" x2="138" y2="130" stroke="var(--green-vivid)" stroke-width="1" opacity="0.5"/>
+              <line x1="132" y1="230" x2="138" y2="230" stroke="var(--green-vivid)" stroke-width="1" opacity="0.5"/>
+              <text x="105" y="265" fill="var(--green-vivid)" font-size="11" font-weight="600">duration = distance</text>
+
+              <!-- Sun symbol at top -->
+              <circle cx="150" cy="20" r="8" fill="none" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.5"/>
+              <line x1="150" y1="6" x2="150" y2="10" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="150" y1="30" x2="150" y2="34" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="136" y1="20" x2="140" y2="20" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="160" y1="20" x2="164" y2="20" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.4"/>
+            </svg>
+          </div>
+
+          <p>
+            The dance takes place <strong>inside the dark hive</strong>, on the vertical surface of the
+            comb. Other worker bees follow the dancer using their antennae (touch) and detect vibrations
+            through the comb surface. The returning forager also carries the <strong>scent of the
+            flowers</strong> she visited, giving recruits an additional chemical cue to identify the
+            correct food source once they arrive in the general area.
+          </p>
+
+
+          <!-- ── Direction Encoding ── -->
+          <h3>How Direction is Encoded</h3>
+
+          <p>
+            The bee uses <strong>gravity as a reference for the sun's position</strong>. On the vertical
+            comb surface:
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <strong>Waggle run pointing straight up</strong> = food is in the direction of the sun
+            </li>
+            <li>
+              <strong>Waggle run pointing straight down</strong> = food is directly away from the sun
+            </li>
+            <li>
+              <strong>Waggle run at 60° right of vertical</strong> = food is 60° to the right of the
+              sun's direction (as seen from the hive)
+            </li>
+          </ul>
+
+          <p>
+            This is remarkable because the bee must <strong>transpose a horizontal map</strong> (the
+            landscape outside) into a <strong>vertical code</strong> (the comb surface), using gravity
+            to represent the sun. This ability is <strong>innate</strong> — worker bees do not need to
+            be taught how to perform or interpret the dance, although recent research (Dong et al., 2023)
+            has shown that young bees who miss out on observing experienced dancers produce less accurate
+            dances, suggesting a <strong>social learning component</strong> that fine-tunes the innate
+            behaviour.
+          </p>
+
+
+          <!-- ── Distance Encoding ── -->
+          <h3>How Distance is Encoded</h3>
+
+          <p>
+            The <strong>duration of the waggle run</strong> correlates with the distance to the food
+            source. For the European honey bee (<em>Apis mellifera</em>):
+          </p>
+
+          <ul class="feature-list">
+            <li>~1 second waggle run ≈ 1 km distance</li>
+            <li>~2 seconds waggle run ≈ 2 km distance</li>
+            <li>Food sources closer than ~50 m trigger a simpler <strong>round dance</strong> (a circular
+              pattern without directional information)</li>
+          </ul>
+
+          <p>
+            Different subspecies and species of honey bee have slightly different
+            <strong>"dialects"</strong> — the same waggle duration may encode a different distance.
+            This is analogous to regional dialects in human language and is evidence that the
+            calibration has a <strong>genetic basis</strong>.
+          </p>
+
+
+          <!-- ── Karl von Frisch ── -->
+          <h3>Karl von Frisch and the Decoding of the Dance</h3>
+
+          <p>
+            The waggle dance was decoded by Austrian ethologist <strong>Karl von Frisch</strong>
+            (1886–1982) through decades of meticulous observation and experiment. His key methods
+            included:
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <strong>Glass-walled observation hives</strong> — allowed him to watch dances while
+              tracking which bees visited marked feeding stations
+            </li>
+            <li>
+              <strong>Numbered bees</strong> — he painted tiny identification marks on individual
+              foragers to track who danced and who was recruited
+            </li>
+            <li>
+              <strong>Systematic displacement experiments</strong> — moving feeding stations to
+              test whether recruits followed the dance information or other cues
+            </li>
+          </ul>
+
+          <p>
+            Von Frisch shared the <strong>1973 Nobel Prize in Physiology or Medicine</strong> with
+            fellow ethologists Konrad Lorenz and Nikolaas Tinbergen — the first (and so far only)
+            Nobel Prize awarded for research into animal behaviour.
+          </p>
+
+
+          <!-- ── Connection to AS 91603 ── -->
+          <h3>How This Fits AS 91603</h3>
+
+          <div class="connection-box">
+            <h4>Why the waggle dance matters for your exam</h4>
+            <p>
+              The waggle dance is a prime example of an <strong>innate behavioural response</strong>
+              to external environmental stimuli. It connects to several key concepts in AS 91603:
+            </p>
+            <ul class="feature-list">
+              <li>
+                <strong>Innate behaviour</strong> — the dance is heritable, stereotypic (performed
+                the same way by all workers), and does not require learning from scratch
+              </li>
+              <li>
+                <strong>Response to external stimuli</strong> — the bee responds to the presence
+                of a food source, the sun's position, and gravity
+              </li>
+              <li>
+                <strong>Communication</strong> — the dance is a symbolic communication system,
+                often described as the only known symbolic "language" in non-human animals
+              </li>
+              <li>
+                <strong>Adaptive advantage</strong> — efficient recruitment of foragers to the
+                best food sources gives the colony a survival advantage, particularly when
+                resources are patchy or ephemeral (e.g. a tree that flowers for only a few days)
+              </li>
+              <li>
+                <strong>Links to navigation</strong> (Week 4) — the dance requires the forager to
+                have navigated to the food source and back using the sun compass, and to encode
+                that navigational information for others
+              </li>
+            </ul>
+          </div>
+
+
+          <!-- ── Think About It: Activities ── -->
+          <h3>Activities: Decode the Dance</h3>
+
+          <p class="section-intro">
+            Use the diagrams below to work out where each food source is located. Remember:
+            the angle of the waggle run relative to vertical = the angle from the sun's direction,
+            and the duration of the waggle run tells you the distance.
+          </p>
+
+          <!-- Activity 1: Decode three dances -->
+          <div class="activity-card">
+            <h4>Activity 1: Reading the Dance</h4>
+            <p>
+              The sun is directly to the <strong>east</strong> (right) of the hive. For each
+              waggle dance shown below, identify:
+            </p>
+            <ol class="activity-steps">
+              <li>The direction of the food source (compass direction)</li>
+              <li>The approximate distance</li>
+            </ol>
+
+            <div class="decode-diagrams">
+              <!-- Dance A: straight up = toward sun = East -->
+              <div class="decode-card">
+                <span class="decode-label">Dance A</span>
+                <svg viewBox="0 0 120 150" class="decode-svg">
+                  <rect width="120" height="150" fill="var(--surface-2)" rx="8"/>
+                  <text x="60" y="20" fill="var(--text-muted)" font-size="9" text-anchor="middle" font-family="var(--font-mono)">vertical ↑</text>
+                  <!-- Waggle run pointing straight up -->
+                  <line x1="60" y1="100" x2="60" y2="50" stroke="var(--fluoro-cyan)" stroke-width="3" stroke-linecap="round"/>
+                  <polygon points="56,52 60,42 64,52" fill="var(--fluoro-cyan)"/>
+                  <!-- Return loops -->
+                  <path d="M60,100 C85,100 90,70 60,50" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <path d="M60,100 C35,100 30,70 60,50" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <text x="60" y="130" fill="var(--text-secondary)" font-size="9" text-anchor="middle">~1 sec waggle</text>
+                </svg>
+              </div>
+
+              <!-- Dance B: 90° right of vertical = 90° right of sun = South -->
+              <div class="decode-card">
+                <span class="decode-label">Dance B</span>
+                <svg viewBox="0 0 120 150" class="decode-svg">
+                  <rect width="120" height="150" fill="var(--surface-2)" rx="8"/>
+                  <text x="60" y="20" fill="var(--text-muted)" font-size="9" text-anchor="middle" font-family="var(--font-mono)">vertical ↑</text>
+                  <!-- Waggle run pointing right (90° from vertical) -->
+                  <line x1="40" y1="75" x2="90" y2="75" stroke="var(--fluoro-cyan)" stroke-width="3" stroke-linecap="round"/>
+                  <polygon points="88,71 98,75 88,79" fill="var(--fluoro-cyan)"/>
+                  <!-- Return loops -->
+                  <path d="M40,75 C40,50 70,40 90,75" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <path d="M40,75 C40,100 70,110 90,75" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <text x="60" y="130" fill="var(--text-secondary)" font-size="9" text-anchor="middle">~2 sec waggle</text>
+                </svg>
+              </div>
+
+              <!-- Dance C: 45° left of vertical -->
+              <div class="decode-card">
+                <span class="decode-label">Dance C</span>
+                <svg viewBox="0 0 120 150" class="decode-svg">
+                  <rect width="120" height="150" fill="var(--surface-2)" rx="8"/>
+                  <text x="60" y="20" fill="var(--text-muted)" font-size="9" text-anchor="middle" font-family="var(--font-mono)">vertical ↑</text>
+                  <!-- Waggle run at 45° left of vertical = NE direction -->
+                  <line x1="78" y1="100" x2="42" y2="55" stroke="var(--fluoro-cyan)" stroke-width="3" stroke-linecap="round"/>
+                  <polygon points="37,60 38,48 47,57" fill="var(--fluoro-cyan)"/>
+                  <!-- Return loops -->
+                  <path d="M78,100 C95,85 80,55 42,55" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <path d="M78,100 C60,110 30,80 42,55" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+                  <text x="60" y="130" fill="var(--text-secondary)" font-size="9" text-anchor="middle">~0.5 sec waggle</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Reveal answers -->
+            <div class="reveal-section" id="activity1-reveal">
+              <button class="reveal-btn" data-target="activity1-answers">
+                <span class="reveal-btn__text">Show Answers</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="reveal-content" id="activity1-answers" hidden>
+                <div class="answer-card">
+                  <strong>Dance A:</strong> Waggle run points straight up → food is in the direction of
+                  the sun → <strong>East</strong>, approximately <strong>1 km</strong> away.
+                </div>
+                <div class="answer-card">
+                  <strong>Dance B:</strong> Waggle run points 90° to the right of vertical → food is
+                  90° clockwise from the sun's direction (East + 90° clockwise) →
+                  <strong>South</strong>, approximately <strong>2 km</strong> away.
+                </div>
+                <div class="answer-card">
+                  <strong>Dance C:</strong> Waggle run points 45° to the left of vertical → food is
+                  45° anticlockwise from the sun's direction (East − 45°) →
+                  <strong>North-east</strong>, approximately <strong>500 m</strong> away.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity 2: Design a dance -->
+          <div class="activity-card">
+            <h4>Activity 2: Design Your Own Dance</h4>
+            <p>
+              It is 3 pm and the sun is in the <strong>west</strong>. A forager bee has found an
+              excellent patch of mānuka flowers approximately <strong>1.5 km to the north</strong>
+              of the hive. Sketch or describe what the waggle dance would look like on the comb.
+            </p>
+            <div class="think-prompt">
+              <p><strong>Think about:</strong></p>
+              <ul class="feature-list">
+                <li>What angle would the waggle run make relative to vertical?</li>
+                <li>How long would the waggle run last?</li>
+                <li>How would the bee indicate this is a high-quality food source?</li>
+              </ul>
+            </div>
+
+            <div class="reveal-section" id="activity2-reveal">
+              <button class="reveal-btn" data-target="activity2-answers">
+                <span class="reveal-btn__text">Show Answer</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="reveal-content" id="activity2-answers" hidden>
+                <div class="answer-card">
+                  <p>
+                    The sun is in the <strong>west</strong> and the food is to the <strong>north</strong>.
+                    North is 90° to the right of west (clockwise). So the waggle run would point
+                    <strong>90° to the right of vertical</strong> on the comb (i.e. horizontally to the
+                    right).
+                  </p>
+                  <p>
+                    At 1.5 km distance, the waggle run would last approximately <strong>1.5 seconds</strong>.
+                  </p>
+                  <p>
+                    To indicate high quality, the bee would dance <strong>vigorously</strong> with
+                    many repeated circuits and enthusiastic abdominal waggles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Waggle Dance Simulation — placeholder for Part 2
+             —————————————————————————————————————————————————————————————— -->
+        <section id="simulation" class="content-section fade-in-up">
+          <h2>Interactive Waggle Dance Simulation</h2>
+          <p class="section-intro">
+            Explore how the waggle dance encodes direction and distance. Place a food source on
+            the field and watch the corresponding dance on the honeycomb — or switch to
+            <strong>Challenge Mode</strong> to decode dances yourself.
+          </p>
+
+          <div class="sim-container">
+            <!-- Controls bar -->
+            <div class="sim-controls">
+              <button class="sim-btn sim-btn--primary" id="sim-mode-btn">
+                <span id="sim-mode-label">Switch to Challenge Mode</span>
+              </button>
+              <button class="sim-btn" id="sim-reset-btn">Reset</button>
+              <label class="sim-speed-label">
+                Speed:
+                <input type="range" id="sim-speed" min="0.5" max="3" step="0.5" value="1" class="sim-slider"/>
+                <span id="sim-speed-val">1×</span>
+              </label>
+            </div>
+
+            <!-- Two-panel simulation -->
+            <div class="sim-panels">
+              <div class="sim-panel">
+                <h4 class="sim-panel__title">Field View <span class="sim-panel__hint" id="field-hint">(click to place food)</span></h4>
+                <canvas id="field-canvas" width="400" height="400"></canvas>
+              </div>
+              <div class="sim-panel">
+                <h4 class="sim-panel__title">Honeycomb View</h4>
+                <canvas id="comb-canvas" width="400" height="400"></canvas>
+              </div>
+            </div>
+
+            <!-- Challenge mode feedback -->
+            <div class="sim-feedback" id="sim-feedback" hidden>
+              <p id="sim-feedback-text"></p>
+            </div>
+
+            <!-- Legend -->
+            <div class="sim-legend">
+              <span class="sim-legend__item"><span class="sim-legend__dot" style="background: var(--fluoro-pink);"></span> Sun direction</span>
+              <span class="sim-legend__item"><span class="sim-legend__dot" style="background: var(--green-vivid);"></span> Hive</span>
+              <span class="sim-legend__item"><span class="sim-legend__dot" style="background: var(--fluoro-cyan);"></span> Food source</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Videos
+             —————————————————————————————————————————————————————————————— -->
+        <section id="videos" class="content-section fade-in-up">
+          <h2>Videos</h2>
+
+          <h4>The Waggle Dance of the Honeybee — Georgia Tech</h4>
+          <p>
+            The most thorough single video on the topic. Covers von Frisch's experiments in detail,
+            with excellent animations showing how bees transpose horizontal directions onto the
+            vertical comb surface using gravity as a reference for the sun.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/bFDGPgXtK-U"
+              title="The Waggle Dance of the Honeybee — Georgia Tech"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>What's the Waggle Dance? — Smithsonian</h4>
+          <p>
+            A concise clip narrated by David Attenborough showing real footage of bees performing the
+            waggle dance inside the hive. Excellent as a visual introduction before diving into the
+            theory.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/LU_KD1enR3Q"
+              title="What's the Waggle Dance? And Why Do Honey Bees Do It? — Smithsonian"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>The Waggle Dance — Inside the Animal Mind (BBC)</h4>
+          <p>
+            From the BBC documentary series presented by Chris Packham. Clear explanation of how
+            the waggle run angle and duration encode direction and distance, with real hive footage.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/12Q8FfyLLso"
+              title="The Waggle Dance — Inside the Animal Mind — BBC Earth"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>How Do Bees Learn to Dance? — Science Magazine</h4>
+          <p>
+            Features the landmark 2023 study showing that young bees must observe experienced
+            dancers to produce accurate dances — suggesting a <strong>social learning
+            component</strong> that fine-tunes the innate behaviour. This is the most
+            curriculum-relevant video for discussing whether animal behaviour is purely
+            innate or has a learned component.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/Cylim87fFgU"
+              title="How Do Bees Learn to Dance? — Science Magazine"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Multi-Choice Quiz
+             —————————————————————————————————————————————————————————————— -->
+        <section id="quiz" class="content-section fade-in-up">
+          <h2>Test Yourself: Waggle Dance Quiz</h2>
+          <p class="section-intro">
+            Answer these questions to check your understanding. Click "Check Answers" when you're done.
+          </p>
+
+          <div class="inline-quiz" id="waggle-quiz">
+
+            <!-- Q1 -->
+            <div class="quiz-q" data-correct="b">
+              <p class="quiz-q__text"><strong>1.</strong> What does the angle of the waggle run relative to vertical represent?</p>
+              <label class="mcq-option"><input type="radio" name="wq1" value="a"/><span class="mcq-option__label">The distance to the food source</span></label>
+              <label class="mcq-option"><input type="radio" name="wq1" value="b"/><span class="mcq-option__label">The direction of the food source relative to the sun</span></label>
+              <label class="mcq-option"><input type="radio" name="wq1" value="c"/><span class="mcq-option__label">The quality of the food source</span></label>
+              <label class="mcq-option"><input type="radio" name="wq1" value="d"/><span class="mcq-option__label">The number of flowers at the food source</span></label>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-q" data-correct="c">
+              <p class="quiz-q__text"><strong>2.</strong> How does a foraging bee indicate that a food source is far away?</p>
+              <label class="mcq-option"><input type="radio" name="wq2" value="a"/><span class="mcq-option__label">She dances more slowly</span></label>
+              <label class="mcq-option"><input type="radio" name="wq2" value="b"/><span class="mcq-option__label">She makes the waggle run angle steeper</span></label>
+              <label class="mcq-option"><input type="radio" name="wq2" value="c"/><span class="mcq-option__label">She performs a longer waggle run</span></label>
+              <label class="mcq-option"><input type="radio" name="wq2" value="d"/><span class="mcq-option__label">She buzzes louder during the dance</span></label>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-q" data-correct="a">
+              <p class="quiz-q__text"><strong>3.</strong> Who decoded the honey bee waggle dance?</p>
+              <label class="mcq-option"><input type="radio" name="wq3" value="a"/><span class="mcq-option__label">Karl von Frisch</span></label>
+              <label class="mcq-option"><input type="radio" name="wq3" value="b"/><span class="mcq-option__label">Charles Darwin</span></label>
+              <label class="mcq-option"><input type="radio" name="wq3" value="c"/><span class="mcq-option__label">Konrad Lorenz</span></label>
+              <label class="mcq-option"><input type="radio" name="wq3" value="d"/><span class="mcq-option__label">Jane Goodall</span></label>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-q" data-correct="d">
+              <p class="quiz-q__text"><strong>4.</strong> What reference does the bee use on the vertical comb to represent the sun's direction?</p>
+              <label class="mcq-option"><input type="radio" name="wq4" value="a"/><span class="mcq-option__label">Light entering the hive</span></label>
+              <label class="mcq-option"><input type="radio" name="wq4" value="b"/><span class="mcq-option__label">The Earth's magnetic field</span></label>
+              <label class="mcq-option"><input type="radio" name="wq4" value="c"/><span class="mcq-option__label">The position of the queen bee</span></label>
+              <label class="mcq-option"><input type="radio" name="wq4" value="d"/><span class="mcq-option__label">Gravity (upward = toward the sun)</span></label>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-q" data-correct="b">
+              <p class="quiz-q__text"><strong>5.</strong> A bee performs a waggle run pointing 90° to the left of vertical. If the sun is in the north, where is the food?</p>
+              <label class="mcq-option"><input type="radio" name="wq5" value="a"/><span class="mcq-option__label">East</span></label>
+              <label class="mcq-option"><input type="radio" name="wq5" value="b"/><span class="mcq-option__label">West</span></label>
+              <label class="mcq-option"><input type="radio" name="wq5" value="c"/><span class="mcq-option__label">South</span></label>
+              <label class="mcq-option"><input type="radio" name="wq5" value="d"/><span class="mcq-option__label">North</span></label>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-q" data-correct="c">
+              <p class="quiz-q__text"><strong>6.</strong> What type of dance does a bee perform when the food source is very close (less than ~50 metres)?</p>
+              <label class="mcq-option"><input type="radio" name="wq6" value="a"/><span class="mcq-option__label">A figure-8 dance</span></label>
+              <label class="mcq-option"><input type="radio" name="wq6" value="b"/><span class="mcq-option__label">A tremble dance</span></label>
+              <label class="mcq-option"><input type="radio" name="wq6" value="c"/><span class="mcq-option__label">A round dance</span></label>
+              <label class="mcq-option"><input type="radio" name="wq6" value="d"/><span class="mcq-option__label">No dance is performed</span></label>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-q" data-correct="a">
+              <p class="quiz-q__text"><strong>7.</strong> The waggle dance is best described as:</p>
+              <label class="mcq-option"><input type="radio" name="wq7" value="a"/><span class="mcq-option__label">An innate behaviour with a social learning component</span></label>
+              <label class="mcq-option"><input type="radio" name="wq7" value="b"/><span class="mcq-option__label">A fully learned behaviour passed from queen to worker</span></label>
+              <label class="mcq-option"><input type="radio" name="wq7" value="c"/><span class="mcq-option__label">A random behaviour with no adaptive significance</span></label>
+              <label class="mcq-option"><input type="radio" name="wq7" value="d"/><span class="mcq-option__label">A conditioned response to food rewards</span></label>
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-q" data-correct="d">
+              <p class="quiz-q__text"><strong>8.</strong> What is the adaptive advantage of the waggle dance for a honey bee colony?</p>
+              <label class="mcq-option"><input type="radio" name="wq8" value="a"/><span class="mcq-option__label">It helps the queen select the best workers</span></label>
+              <label class="mcq-option"><input type="radio" name="wq8" value="b"/><span class="mcq-option__label">It prevents bees from visiting the same flower twice</span></label>
+              <label class="mcq-option"><input type="radio" name="wq8" value="c"/><span class="mcq-option__label">It allows bees to attract mates more effectively</span></label>
+              <label class="mcq-option"><input type="radio" name="wq8" value="d"/><span class="mcq-option__label">It efficiently recruits foragers to the most profitable food sources</span></label>
+            </div>
+
+            <button class="quiz-check-btn" id="quiz-check-btn">Check Answers</button>
+            <div class="quiz-result" id="quiz-result" hidden></div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             NCEA Exam-Style Question (AI Marked)
+             —————————————————————————————————————————————————————————————— -->
+        <section id="exam-question" class="content-section fade-in-up">
+          <h2>NCEA Exam-Style Question</h2>
+          <p class="section-intro">
+            Write your answer in the box below, then click <strong>Get AI Feedback</strong> to
+            receive formative feedback from Dr Eliot's AI marker. You have up to 10 submissions
+            per day.
+          </p>
+
+          <div class="exam-card">
+            <div class="exam-card__header">
+              <span class="question-type-badge question-type-badge--long">Excellence opportunity</span>
+            </div>
+
+            <div class="question-context">
+              <p>
+                The honey bee (<em>Apis mellifera</em>) waggle dance is often described as the only
+                known symbolic "language" used by a non-human animal. A foraging bee that has found a
+                food source returns to the hive and performs a figure-8 dance on the vertical surface
+                of the honeycomb.
+              </p>
+            </div>
+
+            <p class="question-text">
+              <strong>Explain</strong> how the waggle dance allows honey bees to communicate the
+              location of a food source to other members of the colony. In your answer, discuss:
+            </p>
+            <ul class="exam-bullets">
+              <li>how direction is encoded in the dance</li>
+              <li>how distance is encoded in the dance</li>
+              <li>the adaptive advantage of this behaviour for the colony</li>
+              <li>why this behaviour is classified as innate</li>
+            </ul>
+
+            <textarea class="answer-input answer-input--long" id="exam-answer"
+              placeholder="Write your answer here (aim for 150–250 words)..." rows="10"></textarea>
+
+            <div class="exam-actions">
+              <span class="word-count" id="exam-word-count">0 words</span>
+              <button class="sim-btn sim-btn--primary" id="exam-submit-btn">Get AI Feedback</button>
+            </div>
+
+            <!-- AI feedback area -->
+            <div class="ai-feedback" id="ai-feedback" hidden>
+              <div class="ai-feedback__header">
+                <h4>AI Feedback</h4>
+                <span class="ai-grade" id="ai-grade"></span>
+              </div>
+              <p class="ai-summary" id="ai-summary"></p>
+              <div class="ai-section" id="ai-strengths-section">
+                <h5>Strengths</h5>
+                <ul id="ai-strengths"></ul>
+              </div>
+              <div class="ai-section" id="ai-improvements-section">
+                <h5>Areas for Improvement</h5>
+                <ul id="ai-improvements"></ul>
+              </div>
+              <div class="ai-section" id="ai-missing-section">
+                <h5>Missing Key Points</h5>
+                <ul id="ai-missing"></ul>
+              </div>
+              <p class="ai-tip" id="ai-tip"></p>
+            </div>
+
+            <!-- Loading state -->
+            <div class="ai-loading" id="ai-loading" hidden>
+              <div class="ai-loading__spinner"></div>
+              <p>Dr Eliot's AI is reading your answer...</p>
+            </div>
+
+            <!-- Error state -->
+            <div class="ai-error" id="ai-error" hidden>
+              <p id="ai-error-text"></p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe the waggle dance and its figure-8 pattern</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain how direction is encoded relative to the sun and gravity</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain how distance is encoded via waggle run duration</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Discuss the adaptive advantage of the waggle dance</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Classify the waggle dance as innate behaviour with a social learning component</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Connect the waggle dance to navigation concepts from Week 4</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Key Vocabulary</h3>
+          <div class="vocab-grid">
+            <div class="vocab-chip">waggle dance</div>
+            <div class="vocab-chip">waggle run</div>
+            <div class="vocab-chip">round dance</div>
+            <div class="vocab-chip">figure-8</div>
+            <div class="vocab-chip">forager</div>
+            <div class="vocab-chip">recruit</div>
+            <div class="vocab-chip">sun compass</div>
+            <div class="vocab-chip">innate behaviour</div>
+            <div class="vocab-chip">stereotypic</div>
+            <div class="vocab-chip">symbolic communication</div>
+            <div class="vocab-chip">Karl von Frisch</div>
+            <div class="vocab-chip">adaptive advantage</div>
+            <div class="vocab-chip">dialect</div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Quick Links</h3>
+          <div class="sidebar-links">
+            <a href="#simulation" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="4" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <path d="M13 11l8 5-8 5V11z" fill="var(--fluoro-cyan)" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Simulation</span>
+            </a>
+            <a href="#quiz" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="11" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <path d="M13 16.5l2.5 2.5L20 13" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Quiz</span>
+            </a>
+            <a href="#exam-question" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="6" y="4" width="20" height="24" rx="3" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <line x1="10" y1="10" x2="22" y2="10" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="15" x2="22" y2="15" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="20" x2="18" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Exam Question</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Connection to previous weeks -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 3:</strong> Taxis &amp; kinesis — simple innate responses
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 4:</strong> Pheromones &amp; navigation — chemical signals, sun compass
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>Week 5:</strong> The waggle dance combines navigation (sun compass) with
+            symbolic communication — a more complex innate behaviour.
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+  /* ==========================================================================
+     Week 5 Page Styles
+     ========================================================================== */
+
+  .week-page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  /* ==========================================================================
+     Week Header
+     ========================================================================== */
+  .week-header {
+    margin-bottom: var(--space-7);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .week-header__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .term-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    background: var(--surface-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .week-header__title-row { margin-bottom: var(--space-3); }
+
+  .week-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+  }
+
+  .week-title {
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+  }
+
+  .week-header__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-full);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .badge--standard {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--standard-3-colour, var(--accent));
+  }
+
+  .badge--desc {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0;
+    font-weight: var(--weight-normal);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+  }
+
+
+  /* ==========================================================================
+     Quick Navigation
+     ========================================================================== */
+  .week-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .week-nav__link {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+  .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+
+  /* ==========================================================================
+     Two-Column Layout
+     ========================================================================== */
+  .week-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .week-layout { grid-template-columns: 1fr; }
+  }
+
+
+  /* ==========================================================================
+     Main Content
+     ========================================================================== */
+  .week-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .content-section {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .content-section h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+    color: var(--accent);
+  }
+
+  .content-section h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-intro {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-5);
+    line-height: var(--leading-relaxed);
+  }
+
+  .content-section p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+
+  /* ==========================================================================
+     Feature Lists
+     ========================================================================== */
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+
+  /* ==========================================================================
+     Info Cards Row (Direction / Distance / Quality)
+     ========================================================================== */
+  .info-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
+  }
+
+  .info-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-align: center;
+  }
+
+  .info-card__icon {
+    margin-bottom: var(--space-3);
+  }
+
+  .info-card h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .info-card p {
+    font-size: var(--text-sm) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .info-card--direction { border-top: 3px solid var(--fluoro-cyan); }
+  .info-card--distance { border-top: 3px solid var(--green-vivid); }
+  .info-card--quality { border-top: 3px solid var(--fluoro-pink); }
+
+
+  /* ==========================================================================
+     Dance Diagram
+     ========================================================================== */
+  .dance-diagram {
+    max-width: 400px;
+    margin: var(--space-4) auto;
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .dance-svg {
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* ==========================================================================
+     Connection Box
+     ========================================================================== */
+  .connection-box {
+    background: var(--surface-2);
+    border: 1px solid var(--accent);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .connection-box h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .connection-box p {
+    margin-bottom: var(--space-3);
+  }
+
+
+  /* ==========================================================================
+     Activities
+     ========================================================================== */
+  .activity-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-4) 0;
+  }
+
+  .activity-card h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--fluoro-cyan);
+    margin-bottom: var(--space-3);
+  }
+
+  .activity-steps {
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-4);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .activity-steps li {
+    margin-bottom: var(--space-2);
+  }
+
+  .decode-diagrams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+
+  .decode-card {
+    text-align: center;
+  }
+
+  .decode-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .decode-svg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+  }
+
+  .think-prompt {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin: var(--space-3) 0;
+  }
+
+  .think-prompt p {
+    margin-bottom: var(--space-2) !important;
+    color: var(--text-primary) !important;
+  }
+
+
+  /* ==========================================================================
+     Reveal Buttons & Content
+     ========================================================================== */
+  .reveal-section {
+    margin-top: var(--space-4);
+  }
+
+  .reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--accent);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .reveal-btn:hover {
+    background: var(--surface-3);
+    border-color: var(--accent);
+  }
+
+  .reveal-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  .reveal-content {
+    margin-top: var(--space-3);
+  }
+
+  .answer-card {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .answer-card p {
+    font-size: var(--text-sm) !important;
+    margin-bottom: var(--space-2) !important;
+  }
+
+  .answer-card p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+
+  /* ==========================================================================
+     Videos
+     ========================================================================== */
+  #videos h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-2);
+  }
+
+  #videos h4 + p {
+    margin-bottom: var(--space-3);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-5);
+    background: var(--surface-2);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius-md);
+  }
+
+
+  /* ==========================================================================
+     Simulation
+     ========================================================================== */
+  .sim-container {
+    margin-top: var(--space-4);
+  }
+
+  .sim-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .sim-btn {
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .sim-btn:hover {
+    background: var(--surface-3);
+    border-color: var(--accent);
+  }
+
+  .sim-btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+    border-color: var(--accent);
+  }
+
+  .sim-btn--primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .sim-speed-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .sim-slider {
+    width: 80px;
+    accent-color: var(--accent);
+  }
+
+  .sim-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 700px) {
+    .sim-panels { grid-template-columns: 1fr; }
+  }
+
+  .sim-panel {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+  }
+
+  .sim-panel__title {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+    text-align: center;
+  }
+
+  .sim-panel__hint {
+    font-weight: var(--weight-normal);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .sim-panel canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-sm);
+  }
+
+  .sim-feedback {
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .sim-feedback p {
+    font-size: var(--text-sm) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .sim-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+    justify-content: center;
+  }
+
+  .sim-legend__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .sim-legend__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+
+  /* ==========================================================================
+     Inline Quiz
+     ========================================================================== */
+  .inline-quiz {
+    margin-top: var(--space-4);
+  }
+
+  .quiz-q {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    transition: border-color var(--transition-fast);
+  }
+
+  .quiz-q--correct { border-color: var(--green-vivid) !important; }
+  .quiz-q--incorrect { border-color: var(--fluoro-pink) !important; }
+
+  .quiz-q__text {
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-bottom: var(--space-2);
+  }
+
+  .mcq-option:hover {
+    border-color: var(--accent);
+    background: var(--surface-3);
+  }
+
+  .mcq-option__label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .quiz-check-btn {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-6);
+    background: var(--accent);
+    color: var(--surface-0);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: filter var(--transition-fast);
+  }
+
+  .quiz-check-btn:hover { filter: brightness(1.1); }
+
+  .quiz-result {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+
+  /* ==========================================================================
+     Exam Question & AI Feedback
+     ========================================================================== */
+  .exam-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-top: var(--space-4);
+  }
+
+  .exam-card__header {
+    margin-bottom: var(--space-3);
+  }
+
+  .question-context {
+    background: var(--surface-1);
+    border-left: 3px solid var(--fluoro-cyan);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .question-context p {
+    font-size: var(--text-sm) !important;
+    color: var(--text-secondary) !important;
+    line-height: var(--leading-relaxed) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .question-text {
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .question-type-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  .question-type-badge--long {
+    background: rgba(200, 100, 255, 0.1);
+    color: var(--purple-light);
+  }
+
+  .exam-bullets {
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-4);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .exam-bullets li {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .answer-input {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+    resize: vertical;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .answer-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+  }
+
+  .answer-input::placeholder { color: var(--text-muted); }
+  .answer-input--long { min-height: 180px; }
+
+  .exam-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-3);
+  }
+
+  .word-count {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* AI Feedback display */
+  .ai-feedback {
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+    background: var(--surface-1);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-lg);
+  }
+
+  .ai-feedback__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  .ai-feedback__header h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+  }
+
+  .ai-grade {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+  }
+
+  .ai-grade--na { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+  .ai-grade--a { background: rgba(0, 200, 255, 0.15); color: var(--fluoro-cyan); }
+  .ai-grade--m { background: rgba(0, 255, 136, 0.15); color: var(--green-vivid); }
+  .ai-grade--e { background: rgba(200, 100, 255, 0.15); color: var(--purple-light); }
+
+  .ai-summary {
+    font-size: var(--text-base) !important;
+    color: var(--text-primary) !important;
+    margin-bottom: var(--space-4) !important;
+  }
+
+  .ai-section {
+    margin-bottom: var(--space-3);
+  }
+
+  .ai-section h5 {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .ai-section ul {
+    padding-left: var(--space-5);
+  }
+
+  .ai-section li {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-1);
+  }
+
+  .ai-tip {
+    font-size: var(--text-sm) !important;
+    color: var(--accent) !important;
+    font-style: italic;
+    padding: var(--space-3);
+    background: var(--accent-muted);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-3) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .ai-loading {
+    margin-top: var(--space-4);
+    text-align: center;
+    padding: var(--space-5);
+  }
+
+  .ai-loading__spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border-subtle);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    margin: 0 auto var(--space-3);
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .ai-loading p {
+    font-size: var(--text-sm) !important;
+    color: var(--text-muted) !important;
+  }
+
+  .ai-error {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    background: rgba(255, 100, 150, 0.1);
+    border: 1px solid var(--fluoro-pink);
+    border-radius: var(--radius-md);
+  }
+
+  .ai-error p {
+    font-size: var(--text-sm) !important;
+    color: var(--fluoro-pink) !important;
+    margin-bottom: 0 !important;
+  }
+
+
+  /* ==========================================================================
+     Sidebar
+     ========================================================================== */
+  .week-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sidebar-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  .sidebar-card h3 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+  }
+
+  .sidebar-card--connection {
+    border-left: 3px solid var(--fluoro-cyan);
+  }
+
+  .sidebar-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-2);
+  }
+
+  .sidebar-text--highlight {
+    color: var(--accent);
+    font-weight: var(--weight-medium);
+  }
+
+  .objectives-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .objective-checkbox {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border: 1.5px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    transition: border-color var(--transition-fast);
+  }
+
+  .objective-item:hover .objective-checkbox { border-color: var(--accent); }
+
+  .vocab-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .vocab-chip {
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .vocab-chip:hover {
+    background: var(--accent-muted);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .sidebar-link:hover {
+    background: var(--surface-3);
+    transform: translateX(4px);
+  }
+
+  .sidebar-link__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Stagger sidebar animations */
+  .week-sidebar .sidebar-card:nth-child(1) { transition-delay: 0.1s; }
+  .week-sidebar .sidebar-card:nth-child(2) { transition-delay: 0.15s; }
+  .week-sidebar .sidebar-card:nth-child(3) { transition-delay: 0.2s; }
+  .week-sidebar .sidebar-card:nth-child(4) { transition-delay: 0.25s; }
+</style>
+
+
+<!-- ==========================================================================
+     Scripts
+     ========================================================================== -->
+
+<!-- IntersectionObserver for fade-in-up -->
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+</script>
+
+<!-- Reveal buttons -->
+<script>
+  document.querySelectorAll('.reveal-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const isHidden = target.hidden;
+      target.hidden = !isHidden;
+      btn.setAttribute('aria-expanded', String(isHidden));
+      btn.querySelector('.reveal-btn__text').textContent = isHidden ? 'Hide Answers' : 'Show Answers';
+    });
+  });
+</script>
+
+<!-- Inline Quiz Logic -->
+<script>
+  const checkBtn = document.getElementById('quiz-check-btn');
+  const resultEl = document.getElementById('quiz-result');
+
+  checkBtn?.addEventListener('click', () => {
+    const questions = document.querySelectorAll('.quiz-q');
+    let correct = 0;
+    let total = questions.length;
+
+    questions.forEach((q) => {
+      const correctAnswer = q.dataset.correct;
+      const selected = q.querySelector('input[type="radio"]:checked');
+      q.classList.remove('quiz-q--correct', 'quiz-q--incorrect');
+
+      if (selected && selected.value === correctAnswer) {
+        correct++;
+        q.classList.add('quiz-q--correct');
+      } else {
+        q.classList.add('quiz-q--incorrect');
+      }
+    });
+
+    resultEl.hidden = false;
+    resultEl.textContent = `You got ${correct} out of ${total} correct!`;
+
+    if (correct === total) {
+      resultEl.textContent += ' Perfect score!';
+      resultEl.style.borderLeft = '3px solid var(--green-vivid)';
+    } else if (correct >= total * 0.7) {
+      resultEl.textContent += ' Good work — review the ones you missed.';
+      resultEl.style.borderLeft = '3px solid var(--fluoro-cyan)';
+    } else {
+      resultEl.textContent += ' Re-read the content above and try again.';
+      resultEl.style.borderLeft = '3px solid var(--fluoro-pink)';
+    }
+  });
+</script>
+
+<!-- Word count for exam answer -->
+<script>
+  const examTextarea = document.getElementById('exam-answer');
+  const wordCountEl = document.getElementById('exam-word-count');
+
+  examTextarea?.addEventListener('input', () => {
+    const words = examTextarea.value.trim().split(/\s+/).filter(Boolean).length;
+    wordCountEl.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+  });
+</script>
+
+<!-- AI Marking -->
+<script>
+  const AI_MARKER_URL = 'https://psychology-ai-marker.deornorth.workers.dev';
+  const RATE_LIMIT_KEY = 'l3_bio_aimarker_rate';
+  const DAILY_LIMIT = 10;
+
+  const submitBtn = document.getElementById('exam-submit-btn');
+  const answerEl = document.getElementById('exam-answer');
+  const feedbackEl = document.getElementById('ai-feedback');
+  const loadingEl = document.getElementById('ai-loading');
+  const errorEl = document.getElementById('ai-error');
+  const errorTextEl = document.getElementById('ai-error-text');
+
+  function getTodayKey() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  function getRateCount() {
+    try {
+      const data = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '{}');
+      return data[getTodayKey()] || 0;
+    } catch { return 0; }
+  }
+
+  function incrementRate() {
+    const key = getTodayKey();
+    let data = {};
+    try { data = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '{}'); } catch {}
+    data[key] = (data[key] || 0) + 1;
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+  }
+
+  submitBtn?.addEventListener('click', async () => {
+    const answer = answerEl.value.trim();
+    const wordCount = answer.split(/\s+/).filter(Boolean).length;
+
+    // Validation
+    if (wordCount < 10) {
+      showError('Please write at least 10 words before submitting.');
+      return;
+    }
+    if (wordCount > 800) {
+      showError('Your answer is too long. Please keep it under 800 words.');
+      return;
+    }
+    if (getRateCount() >= DAILY_LIMIT) {
+      showError(`You've reached the daily limit of ${DAILY_LIMIT} submissions. Try again tomorrow.`);
+      return;
+    }
+
+    // Show loading
+    feedbackEl.hidden = true;
+    errorEl.hidden = true;
+    loadingEl.hidden = false;
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(AI_MARKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          answer: answer,
+          questionText: 'Explain how the waggle dance allows honey bees to communicate the location of a food source to other members of the colony. In your answer, discuss: how direction is encoded in the dance; how distance is encoded in the dance; the adaptive advantage of this behaviour for the colony; why this behaviour is classified as innate.',
+          keyPoints: `Key points for marking (Biology Level 3, AS 91603 — Animal Responses):
+
+ACHIEVED (A):
+- Describes the waggle dance as a figure-8 pattern performed on the vertical comb
+- States that the angle of the waggle run indicates direction relative to the sun
+- States that the duration of the waggle run indicates distance to the food source
+- Identifies the waggle dance as an innate behaviour
+
+MERIT (M):
+- Explains HOW direction is encoded: the angle of the waggle run relative to vertical on the comb represents the angle between the sun and the food source, using gravity as a proxy for the sun
+- Explains HOW distance is encoded: longer waggle run = greater distance (approximately 1 second per km)
+- Explains the adaptive advantage: efficient recruitment of foragers to the best food sources, conserving colony energy
+- Explains why it is innate: heritable, stereotypic (all workers perform it the same way), does not require learning from scratch
+
+EXCELLENCE (E):
+- Integrates direction and distance encoding into a coherent explanation of how the dance serves as a symbolic communication system
+- Discusses the transposition from horizontal landscape to vertical comb (using gravity for the sun)
+- Discusses how the returning forager also carries scent of the flowers (chemical cue) as an additional communication channel
+- Mentions the social learning component (Dong et al., 2023): young bees that miss observing experienced dancers produce less accurate dances, suggesting fine-tuning of the innate behaviour
+- Links to broader concepts: sun compass navigation, the parallel with other innate behaviours (taxis, kinesis) studied in AS 91603
+- Uses correct biological terminology throughout`,
+          level: 3,
+          approach: 'Biology',
+          skill: 'explain'
+        })
+      });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errData.error || `Server error (${res.status})`);
+      }
+
+      const data = await res.json();
+      incrementRate();
+      displayFeedback(data);
+
+    } catch (err) {
+      showError(err.message || 'Failed to connect to the AI marker. Please try again later.');
+    } finally {
+      loadingEl.hidden = true;
+      submitBtn.disabled = false;
+    }
+  });
+
+  function displayFeedback(data) {
+    feedbackEl.hidden = false;
+
+    // Grade
+    const gradeEl = document.getElementById('ai-grade');
+    const gradeMap = { NA: 'Not Achieved', A: 'Achieved', M: 'Merit', E: 'Excellence' };
+    gradeEl.textContent = gradeMap[data.grade] || data.grade;
+    gradeEl.className = 'ai-grade ai-grade--' + (data.grade || 'na').toLowerCase();
+
+    // Summary
+    document.getElementById('ai-summary').textContent = data.summary || '';
+
+    // Lists
+    populateList('ai-strengths', data.strengths);
+    populateList('ai-improvements', data.improvements);
+    populateList('ai-missing', data.missingPoints);
+
+    document.getElementById('ai-strengths-section').hidden = !data.strengths?.length;
+    document.getElementById('ai-improvements-section').hidden = !data.improvements?.length;
+    document.getElementById('ai-missing-section').hidden = !data.missingPoints?.length;
+
+    // Tip
+    const tipEl = document.getElementById('ai-tip');
+    if (data.tip) {
+      tipEl.textContent = data.tip;
+      tipEl.hidden = false;
+    } else {
+      tipEl.hidden = true;
+    }
+  }
+
+  function populateList(id, items) {
+    const ul = document.getElementById(id);
+    ul.innerHTML = '';
+    (items || []).forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+  }
+
+  function showError(msg) {
+    errorEl.hidden = false;
+    errorTextEl.textContent = msg;
+    feedbackEl.hidden = true;
+    loadingEl.hidden = true;
+  }
+</script>
+
+<!-- Waggle Dance Simulation -->
+<script>
+(function() {
+  const fieldCanvas = document.getElementById('field-canvas');
+  const combCanvas = document.getElementById('comb-canvas');
+  if (!fieldCanvas || !combCanvas) return;
+
+  const fCtx = fieldCanvas.getContext('2d');
+  const cCtx = combCanvas.getContext('2d');
+  const W = 400, H = 400;
+
+  // State
+  let foodAngle = Math.PI / 4; // angle from north (clockwise), radians
+  let foodDist = 150; // pixels from hive centre (max ~180)
+  let sunAngle = 0; // sun direction from hive (0 = north/up, clockwise)
+  let challengeMode = false;
+  let challengeFood = null; // hidden food in challenge mode
+  let speed = 1;
+  let animFrame = 0;
+
+  // Hive centre
+  const cx = W / 2, cy = H / 2;
+
+  // Controls
+  const modeBtn = document.getElementById('sim-mode-btn');
+  const modeLabel = document.getElementById('sim-mode-label');
+  const resetBtn = document.getElementById('sim-reset-btn');
+  const speedSlider = document.getElementById('sim-speed');
+  const speedVal = document.getElementById('sim-speed-val');
+  const fieldHint = document.getElementById('field-hint');
+  const feedbackDiv = document.getElementById('sim-feedback');
+  const feedbackText = document.getElementById('sim-feedback-text');
+
+  // Randomise sun angle on load
+  sunAngle = Math.random() * Math.PI * 2;
+
+  modeBtn?.addEventListener('click', () => {
+    challengeMode = !challengeMode;
+    modeLabel.textContent = challengeMode ? 'Switch to Explorer Mode' : 'Switch to Challenge Mode';
+    fieldHint.textContent = challengeMode ? '(click to guess food location)' : '(click to place food)';
+    if (challengeMode) {
+      // Generate random food position
+      challengeFood = {
+        angle: Math.random() * Math.PI * 2,
+        dist: 60 + Math.random() * 120
+      };
+      foodAngle = challengeFood.angle;
+      foodDist = challengeFood.dist;
+      feedbackDiv.hidden = true;
+    } else {
+      challengeFood = null;
+      feedbackDiv.hidden = true;
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    foodAngle = Math.PI / 4;
+    foodDist = 150;
+    sunAngle = Math.random() * Math.PI * 2;
+    challengeFood = null;
+    challengeMode = false;
+    modeLabel.textContent = 'Switch to Challenge Mode';
+    fieldHint.textContent = '(click to place food)';
+    feedbackDiv.hidden = true;
+  });
+
+  speedSlider?.addEventListener('input', () => {
+    speed = parseFloat(speedSlider.value);
+    speedVal.textContent = speed + '×';
+  });
+
+  // Field canvas click
+  fieldCanvas.addEventListener('click', (e) => {
+    const rect = fieldCanvas.getBoundingClientRect();
+    const scaleX = W / rect.width;
+    const scaleY = H / rect.height;
+    const mx = (e.clientX - rect.left) * scaleX;
+    const my = (e.clientY - rect.top) * scaleY;
+
+    if (challengeMode && challengeFood) {
+      // Check guess
+      const guessAngle = Math.atan2(mx - cx, cy - my); // angle from north
+      const guessDist = Math.hypot(mx - cx, my - cy);
+      const angleDiff = Math.abs(normaliseAngle(guessAngle - challengeFood.angle));
+      const distDiff = Math.abs(guessDist - challengeFood.dist);
+
+      let msg = '';
+      if (angleDiff < 0.3 && distDiff < 40) {
+        msg = 'Excellent! Your prediction is very close to the actual food source.';
+      } else if (angleDiff < 0.6 && distDiff < 80) {
+        msg = 'Good attempt! You are in the right area. Check the angle and distance more carefully.';
+      } else {
+        msg = 'Not quite. Remember: the waggle run angle (from vertical) = angle from the sun, and duration = distance.';
+      }
+      feedbackDiv.hidden = false;
+      feedbackText.textContent = msg;
+      // Reveal food
+      challengeMode = false;
+      foodAngle = challengeFood.angle;
+      foodDist = challengeFood.dist;
+      modeLabel.textContent = 'Switch to Challenge Mode';
+      fieldHint.textContent = '(click to place food)';
+    } else {
+      // Place food
+      foodAngle = Math.atan2(mx - cx, cy - my);
+      foodDist = Math.min(Math.hypot(mx - cx, my - cy), 180);
+      feedbackDiv.hidden = true;
+    }
+  });
+
+  function normaliseAngle(a) {
+    while (a > Math.PI) a -= 2 * Math.PI;
+    while (a < -Math.PI) a += 2 * Math.PI;
+    return a;
+  }
+
+  // ── Draw Field ──
+  function drawField() {
+    fCtx.clearRect(0, 0, W, H);
+
+    // Background (grass)
+    fCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--surface-0').trim() || '#0a0e17';
+    fCtx.fillRect(0, 0, W, H);
+
+    // Grid
+    fCtx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--border-subtle').trim() || '#1a2234';
+    fCtx.lineWidth = 0.5;
+    for (let i = 0; i <= W; i += 40) {
+      fCtx.beginPath(); fCtx.moveTo(i, 0); fCtx.lineTo(i, H); fCtx.stroke();
+      fCtx.beginPath(); fCtx.moveTo(0, i); fCtx.lineTo(W, i); fCtx.stroke();
+    }
+
+    // Distance rings
+    fCtx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#4a5568';
+    fCtx.lineWidth = 0.5;
+    fCtx.setLineDash([4, 4]);
+    [60, 120, 180].forEach((r) => {
+      fCtx.beginPath();
+      fCtx.arc(cx, cy, r, 0, Math.PI * 2);
+      fCtx.stroke();
+    });
+    fCtx.setLineDash([]);
+
+    // Compass labels
+    fCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#4a5568';
+    fCtx.font = '11px var(--font-mono, monospace)';
+    fCtx.textAlign = 'center';
+    fCtx.fillText('N', cx, 18);
+    fCtx.fillText('S', cx, H - 8);
+    fCtx.fillText('E', W - 10, cy + 4);
+    fCtx.fillText('W', 14, cy + 4);
+
+    // Sun direction indicator
+    const sunX = cx + Math.sin(sunAngle) * 190;
+    const sunY = cy - Math.cos(sunAngle) * 190;
+    fCtx.fillStyle = '#ff6ec7';
+    fCtx.beginPath();
+    fCtx.arc(sunX, sunY, 12, 0, Math.PI * 2);
+    fCtx.fill();
+    // Sun rays
+    fCtx.strokeStyle = '#ff6ec7';
+    fCtx.lineWidth = 1.5;
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      fCtx.beginPath();
+      fCtx.moveTo(sunX + Math.cos(a) * 15, sunY + Math.sin(a) * 15);
+      fCtx.lineTo(sunX + Math.cos(a) * 20, sunY + Math.sin(a) * 20);
+      fCtx.stroke();
+    }
+    fCtx.fillStyle = '#ff6ec7';
+    fCtx.font = '10px var(--font-mono, monospace)';
+    fCtx.fillText('SUN', sunX, sunY + 30);
+
+    // Hive
+    fCtx.fillStyle = '#00ff88';
+    drawHexagon(fCtx, cx, cy, 16);
+    fCtx.fillStyle = '#00ff88';
+    fCtx.font = 'bold 9px var(--font-mono, monospace)';
+    fCtx.fillText('HIVE', cx, cy + 30);
+
+    // Food source (hidden in challenge mode)
+    if (!challengeMode || !challengeFood) {
+      const fx = cx + Math.sin(foodAngle) * foodDist;
+      const fy = cy - Math.cos(foodAngle) * foodDist;
+
+      // Flower icon
+      fCtx.fillStyle = '#7df9ff';
+      for (let i = 0; i < 5; i++) {
+        const a = (i / 5) * Math.PI * 2;
+        fCtx.beginPath();
+        fCtx.arc(fx + Math.cos(a) * 8, fy + Math.sin(a) * 8, 5, 0, Math.PI * 2);
+        fCtx.fill();
+      }
+      fCtx.fillStyle = '#ffeb3b';
+      fCtx.beginPath();
+      fCtx.arc(fx, fy, 5, 0, Math.PI * 2);
+      fCtx.fill();
+
+      // Line from hive to food
+      fCtx.strokeStyle = 'rgba(125, 249, 255, 0.3)';
+      fCtx.lineWidth = 1;
+      fCtx.setLineDash([6, 4]);
+      fCtx.beginPath();
+      fCtx.moveTo(cx, cy);
+      fCtx.lineTo(fx, fy);
+      fCtx.stroke();
+      fCtx.setLineDash([]);
+    }
+
+    // Challenge mode label
+    if (challengeMode && challengeFood) {
+      fCtx.fillStyle = '#ff6ec7';
+      fCtx.font = 'bold 14px var(--font-display, sans-serif)';
+      fCtx.textAlign = 'center';
+      fCtx.fillText('Click where you think the food is!', cx, H - 20);
+    }
+  }
+
+  function drawHexagon(ctx, x, y, r) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2 - Math.PI / 6;
+      const px = x + Math.cos(a) * r;
+      const py = y + Math.sin(a) * r;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // ── Draw Comb ──
+  function drawComb() {
+    cCtx.clearRect(0, 0, W, H);
+
+    // Background
+    cCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--surface-0').trim() || '#0a0e17';
+    cCtx.fillRect(0, 0, W, H);
+
+    // Hexagonal comb pattern
+    const hexR = 18;
+    const hexW = hexR * 2;
+    const hexH = hexR * Math.sqrt(3);
+    cCtx.strokeStyle = 'rgba(255, 200, 50, 0.15)';
+    cCtx.lineWidth = 0.8;
+
+    for (let row = -1; row < H / hexH + 1; row++) {
+      for (let col = -1; col < W / hexW + 1; col++) {
+        const offset = row % 2 === 0 ? 0 : hexR;
+        const hx = col * hexW + offset + hexR;
+        const hy = row * hexH * 0.75 + hexR;
+        drawHexOutline(cCtx, hx, hy, hexR - 1);
+      }
+    }
+
+    // Vertical reference line
+    cCtx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#4a5568';
+    cCtx.lineWidth = 1;
+    cCtx.setLineDash([6, 4]);
+    cCtx.beginPath();
+    cCtx.moveTo(cx, 30);
+    cCtx.lineTo(cx, H - 30);
+    cCtx.stroke();
+    cCtx.setLineDash([]);
+
+    cCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#4a5568';
+    cCtx.font = '10px var(--font-mono, monospace)';
+    cCtx.textAlign = 'center';
+    cCtx.fillText('↑ UP (= toward sun)', cx, 25);
+
+    // Calculate dance angle on comb
+    // The angle of the waggle run relative to vertical = angle between food and sun
+    const danceAngle = normaliseAngle(foodAngle - sunAngle);
+
+    // Waggle run length proportional to distance
+    const waggleLength = Math.max(30, (foodDist / 180) * 120);
+
+    // Centre of dance
+    const dcx = cx, dcy = cy;
+
+    // Animate the figure-8
+    const t = (animFrame * speed * 0.03) % (Math.PI * 2);
+    const phase = t < Math.PI ? 'waggle' : 'return';
+    const phaseT = phase === 'waggle' ? t / Math.PI : (t - Math.PI) / Math.PI;
+
+    // Draw the figure-8 path (faded)
+    cCtx.strokeStyle = 'rgba(125, 249, 255, 0.2)';
+    cCtx.lineWidth = 2;
+    cCtx.beginPath();
+    // Waggle run
+    const wx1 = dcx - Math.sin(danceAngle) * waggleLength / 2;
+    const wy1 = dcy + Math.cos(danceAngle) * waggleLength / 2;
+    const wx2 = dcx + Math.sin(danceAngle) * waggleLength / 2;
+    const wy2 = dcy - Math.cos(danceAngle) * waggleLength / 2;
+    cCtx.moveTo(wx1, wy1);
+    cCtx.lineTo(wx2, wy2);
+    cCtx.stroke();
+
+    // Return loops (faded)
+    const loopR = waggleLength * 0.4;
+    const perpX = Math.cos(danceAngle);
+    const perpY = Math.sin(danceAngle);
+
+    // Right loop
+    cCtx.beginPath();
+    cCtx.arc(dcx + perpX * loopR, dcy + perpY * loopR, loopR, 0, Math.PI * 2);
+    cCtx.strokeStyle = 'rgba(125, 249, 255, 0.08)';
+    cCtx.stroke();
+
+    // Left loop
+    cCtx.beginPath();
+    cCtx.arc(dcx - perpX * loopR, dcy - perpY * loopR, loopR, 0, Math.PI * 2);
+    cCtx.stroke();
+
+    // Bee position along the figure-8
+    let beeX, beeY, beeRotation;
+
+    if (phase === 'waggle') {
+      // Moving along waggle run
+      beeX = wx1 + (wx2 - wx1) * phaseT;
+      beeY = wy1 + (wy2 - wy1) * phaseT;
+      beeRotation = danceAngle;
+
+      // Draw waggle trail
+      cCtx.strokeStyle = '#7df9ff';
+      cCtx.lineWidth = 3;
+      cCtx.beginPath();
+      cCtx.moveTo(wx1, wy1);
+      cCtx.lineTo(beeX, beeY);
+      cCtx.stroke();
+
+      // Waggle zig-zag
+      const waggleAmp = 4 * Math.sin(phaseT * waggleLength * 0.8);
+      beeX += perpX * waggleAmp;
+      beeY += perpY * waggleAmp;
+    } else {
+      // Return loop (alternating sides)
+      const side = Math.floor(animFrame * speed * 0.03 / (Math.PI * 2)) % 2 === 0 ? 1 : -1;
+      const loopCX = dcx + perpX * loopR * side;
+      const loopCY = dcy + perpY * loopR * side;
+      const returnAngle = -Math.PI + phaseT * Math.PI * 2;
+      beeX = loopCX + Math.cos(returnAngle + danceAngle) * loopR;
+      beeY = loopCY + Math.sin(returnAngle + danceAngle) * loopR;
+      beeRotation = returnAngle + danceAngle + Math.PI / 2;
+    }
+
+    // Draw bee
+    cCtx.save();
+    cCtx.translate(beeX, beeY);
+    cCtx.rotate(beeRotation);
+
+    // Body
+    cCtx.fillStyle = '#ffc107';
+    cCtx.beginPath();
+    cCtx.ellipse(0, 0, 6, 10, 0, 0, Math.PI * 2);
+    cCtx.fill();
+
+    // Stripes
+    cCtx.fillStyle = '#1a1a1a';
+    cCtx.fillRect(-6, -3, 12, 2);
+    cCtx.fillRect(-6, 1, 12, 2);
+
+    // Head
+    cCtx.fillStyle = '#1a1a1a';
+    cCtx.beginPath();
+    cCtx.arc(0, -12, 4, 0, Math.PI * 2);
+    cCtx.fill();
+
+    // Wings
+    cCtx.fillStyle = 'rgba(200, 230, 255, 0.3)';
+    cCtx.beginPath();
+    cCtx.ellipse(-8, -2, 5, 9, -0.3, 0, Math.PI * 2);
+    cCtx.fill();
+    cCtx.beginPath();
+    cCtx.ellipse(8, -2, 5, 9, 0.3, 0, Math.PI * 2);
+    cCtx.fill();
+
+    cCtx.restore();
+
+    // Info text
+    const angleDeg = Math.round(((danceAngle * 180 / Math.PI) % 360 + 360) % 360);
+    const distKm = (foodDist / 180 * 3).toFixed(1);
+    cCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#94a3b8';
+    cCtx.font = '11px var(--font-mono, monospace)';
+    cCtx.textAlign = 'center';
+    cCtx.fillText(`Angle: ${angleDeg}° from vertical`, cx, H - 40);
+    cCtx.fillText(`Distance: ~${distKm} km`, cx, H - 24);
+  }
+
+  function drawHexOutline(ctx, x, y, r) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2 - Math.PI / 6;
+      const px = x + Math.cos(a) * r;
+      const py = y + Math.sin(a) * r;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Animation loop
+  function animate() {
+    animFrame++;
+    drawField();
+    drawComb();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
