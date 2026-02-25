@@ -11,7 +11,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Week 5: The Waggle Dance — Dr Eliot's Level 3 Biology">
+<BaseLayout title="Week 5: Communication &amp; Navigation — Dr Eliot's Level 3 Biology">
 
   <div class="week-page">
 
@@ -50,6 +50,7 @@ const base = import.meta.env.BASE_URL;
       <a href="#videos" class="week-nav__link">Videos</a>
       <a href="#quiz" class="week-nav__link">Quiz</a>
       <a href="#exam-question" class="week-nav__link">Exam Question</a>
+      <a href="#lesson-2" class="week-nav__link">Lesson 2: Homing</a>
     </nav>
 
 
@@ -751,6 +752,979 @@ const base = import.meta.env.BASE_URL;
             </div>
           </div>
         </section>
+<section id="lesson-2" class="content-section fade-in-up">
+  <h2>Lesson 2: Homing</h2>
+
+  <p class="section-intro">
+    In Lesson 1 you explored the waggle dance — a behaviour that requires a forager bee to
+    navigate to a food source and then encode that directional information for her nestmates.
+    This lesson zooms out to ask a bigger question: how do animals navigate back to a specific
+    home location across hundreds or thousands of kilometres? This is <strong>homing</strong>,
+    and it is one of the most remarkable capabilities in the animal kingdom.
+  </p>
+
+
+  <!-- ── What is Homing? ── -->
+  <h3>What is Homing?</h3>
+
+  <p>
+    <strong>Homing</strong> is the ability of an animal to return to a specific home location
+    after being displaced or having travelled away. Unlike the simple orientation behaviours you
+    studied earlier (taxes and kineses), homing requires the animal to navigate to a
+    <em>remembered</em> goal — a nest, burrow, breeding colony, or territory — often across
+    unfamiliar terrain.
+  </p>
+
+  <div class="info-cards-row">
+    <div class="info-card info-card--direction">
+      <div class="info-card__icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 8 L20 20 L28 16" stroke="var(--fluoro-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="20" r="14" stroke="var(--fluoro-cyan)" stroke-width="1.2" fill="none" opacity="0.3"/>
+          <text x="20" y="36" font-size="7" fill="var(--fluoro-cyan)" text-anchor="middle" font-family="var(--font-mono)">N</text>
+        </svg>
+      </div>
+      <h4>Topographical</h4>
+      <p>Visual landmarks — mountains, coastlines, rivers, vegetation patterns — most useful close to home.</p>
+    </div>
+    <div class="info-card info-card--distance">
+      <div class="info-card__icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="12" r="5" fill="none" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.6"/>
+          <line x1="20" y1="8" x2="20" y2="4" stroke="var(--green-vivid)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="23" y1="9" x2="26" y2="6" stroke="var(--green-vivid)" stroke-width="1.2" opacity="0.5"/>
+          <line x1="24" y1="12" x2="28" y2="12" stroke="var(--green-vivid)" stroke-width="1.2" opacity="0.5"/>
+          <path d="M12 28 Q20 22 28 28" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <text x="20" y="38" font-size="7" fill="var(--green-vivid)" text-anchor="middle" font-family="var(--font-mono)">SUN / STARS</text>
+        </svg>
+      </div>
+      <h4>Celestial</h4>
+      <p>Sun compass (time-compensated) for daytime; star compass (rotation axis) for night. Both require clear skies.</p>
+    </div>
+    <div class="info-card info-card--quality">
+      <div class="info-card__icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="10" fill="none" stroke="var(--fluoro-pink)" stroke-width="1.2" opacity="0.4"/>
+          <path d="M20 10 L20 6 M20 30 L20 34 M10 20 L6 20 M30 20 L34 20" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+          <path d="M17 20 L23 20" stroke="var(--fluoro-pink)" stroke-width="2" stroke-linecap="round"/>
+          <text x="20" y="38" font-size="7" fill="var(--fluoro-pink)" text-anchor="middle" font-family="var(--font-mono)">MAGNETIC</text>
+        </svg>
+      </div>
+      <h4>Magnetic</h4>
+      <p>Earth's magnetic field — works in darkness and cloud cover. Uses inclination and field intensity gradients.</p>
+    </div>
+    <div class="info-card" style="border-top: 3px solid var(--accent);">
+      <div class="info-card__icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M10 20 Q15 14 20 20 Q25 26 30 20" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M10 26 Q15 20 20 26 Q25 32 30 26" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <text x="20" y="14" font-size="7" fill="var(--accent)" text-anchor="middle" font-family="var(--font-mono)">SCENT TRAIL</text>
+          <text x="20" y="38" font-size="7" fill="var(--accent)" text-anchor="middle" font-family="var(--font-mono)">OLFACTORY</text>
+        </svg>
+      </div>
+      <h4>Olfactory</h4>
+      <p>Scent signatures — e.g., salmon homing to birth streams via unique river chemistry; seabirds using colony scent.</p>
+    </div>
+  </div>
+
+  <div class="connection-box">
+    <h4>Connection to last lesson and Week 4</h4>
+    <p>
+      The waggle dance (Lesson 1) required the forager to use a <strong>sun compass</strong> to
+      navigate to the food source — then encode that bearing on the vertical comb. The same
+      celestial navigation system underlies long-distance homing in many species. This week you
+      will see how animals combine multiple navigation cues into a robust, redundant system —
+      and what happens when one cue is experimentally disrupted.
+    </p>
+  </div>
+
+
+  <!-- ── Student Name for PDF ── -->
+  <div class="student-name-row">
+    <label for="student-name-l2" class="student-name-label">Your name</label>
+    <input type="text" id="student-name-l2" class="text-input" placeholder="Enter your name for the PDF header" />
+  </div>
+
+
+  <!-- ============================================================
+       Section A — Homing & Navigation Fundamentals
+       ============================================================ -->
+  <div class="question-section">
+    <h3 class="question-section__title">Section A — Homing &amp; Navigation Fundamentals</h3>
+
+    <!-- Q1 -->
+    <div class="question-card" data-q="1">
+      <div class="question-card__header">
+        <span class="question-number">1</span>
+        <span class="question-type-badge question-type-badge--short">Short answer</span>
+      </div>
+      <p class="question-text">
+        Define the term <strong>'homing'</strong> and explain how it differs from a simple taxis
+        such as chemotaxis.
+      </p>
+      <textarea class="answer-input answer-input--med" data-answer="1"
+        placeholder="Type your answer..." rows="4"></textarea>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" data-q="2">
+      <div class="question-card__header">
+        <span class="question-number">2</span>
+        <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+      </div>
+      <p class="question-text">
+        For each of the following navigation types, give a brief explanation of the cue used
+        and name one species that uses it:
+      </p>
+
+      <div class="sub-question">
+        <span class="sub-label">(a) Celestial navigation (sun compass)</span>
+        <textarea class="answer-input answer-input--short" data-answer="2a"
+          placeholder="Cue used + species example..." rows="2"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(b) Magnetic navigation</span>
+        <textarea class="answer-input answer-input--short" data-answer="2b"
+          placeholder="Cue used + species example..." rows="2"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(c) Olfactory navigation</span>
+        <textarea class="answer-input answer-input--short" data-answer="2c"
+          placeholder="Cue used + species example..." rows="2"></textarea>
+      </div>
+    </div>
+
+  </div><!-- /Section A -->
+
+
+  <!-- ============================================================
+       Activity 3: Tītī Navigation Experiment
+       ============================================================ -->
+  <div class="question-section">
+    <h3 class="question-section__title">Activity 3 — Tītī Navigation: Data Interpretation</h3>
+
+    <!-- Experiment context -->
+    <div class="question-context">
+      <p>
+        Tītī (sooty shearwaters, <em>Puffinus griseus</em>) breed in burrows on the Muttonbird
+        Islands (Tīheke Island, Foveaux Strait), flying as far as the North Pacific Ocean each year
+        before returning to the exact same burrow — one of the longest migrations of any bird
+        (~74,000 km round trip).
+      </p>
+      <p style="margin-top: 0.75rem;">
+        A research team captured 24 adult tītī during the pre-fledging period.
+        <strong>Group A (Control):</strong> 12 birds with lightweight dummy wooden rods attached to
+        their heads.
+        <strong>Group B (Magnet):</strong> 12 birds with small neodymium bar magnets in a head
+        harness, generating a local magnetic field that disrupted the ambient field around the
+        bird's magnetoreceptors.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        All 24 birds were transported by boat to a release site <strong>400 km north-northwest</strong>
+        of the colony and released (one control, one magnet at a time). Half the releases
+        occurred under <strong>clear skies</strong>; half under <strong>overcast conditions</strong>
+        (thick cloud, no celestial cues). The initial bearing of each bird within 30 minutes of
+        release was recorded via GPS. Results are shown as compass rose diagrams below.
+      </p>
+      <p style="margin-top: 0.75rem; color: var(--accent);">
+        <strong>Home direction from release site: approximately 315° (NW)</strong>
+      </p>
+    </div>
+
+
+    <!-- ── Compass Rose Diagrams (2 × 2 grid) ── -->
+    <p class="question-text" style="margin-top: var(--space-4);">
+      Study the four compass rose diagrams below. Each dot represents the initial bearing
+      of one bird. The arrow shows the mean vector (length proportional to directional
+      consistency — a longer arrow = stronger agreement among birds).
+    </p>
+
+    <!-- Row 1: Control birds -->
+    <div class="diagram-row">
+
+      <!-- Panel 1: Control, Clear -->
+      <div class="diagram-container">
+        <span class="diagram-label">Group A (Control) — Clear conditions</span>
+        <svg viewBox="0 0 200 225" class="compass-svg"
+          aria-label="Compass rose: control birds on clear days. All 12 dots cluster tightly in the NW quadrant, near the home direction (315°). A long arrow points strongly toward 315°.">
+
+          <defs>
+            <marker id="l2-arr-c1" markerWidth="8" markerHeight="6" refX="7" refY="3"
+                    orient="auto" markerUnits="userSpaceOnUse">
+              <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <!-- Compass circle -->
+          <circle cx="100" cy="110" r="80" fill="none"
+                  stroke="var(--border-default)" stroke-width="1.5"/>
+          <!-- Compass labels -->
+          <text x="100" y="24" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">N</text>
+          <text x="100" y="200" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">S</text>
+          <text x="186" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">E</text>
+          <text x="14" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">W</text>
+          <!-- Minor tick marks -->
+          <line x1="100" y1="30" x2="100" y2="38" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="100" y1="182" x2="100" y2="190" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="20" y1="110" x2="28" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="172" y1="110" x2="180" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+
+          <!-- Home direction dashed line -->
+          <line x1="100" y1="110" x2="43" y2="53"
+                stroke="var(--fluoro-pink)" stroke-width="1.5"
+                stroke-dasharray="5 3" opacity="0.7"/>
+          <text x="28" y="46" fill="var(--fluoro-pink)" font-size="8"
+                text-anchor="middle" opacity="0.9" font-family="var(--font-mono)">Home</text>
+
+          <!-- Filled dots — clear, control (tight cluster NW) -->
+          <circle cx="36" cy="62" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="39" cy="59" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="41" cy="57" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="42" cy="55" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="43" cy="53" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="44" cy="53" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="45" cy="52" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="47" cy="51" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="49" cy="49" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="51" cy="47" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="53" cy="45" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="47" cy="54" r="3.5" fill="var(--fluoro-cyan)"/>
+
+          <!-- Mean vector arrow (strong, r ≈ 0.95) -->
+          <!-- Arrow tip at (46, 56); line ends 8px before tip -->
+          <line x1="100" y1="110" x2="52" y2="62"
+                stroke="var(--accent)" stroke-width="3"
+                stroke-linecap="round"
+                marker-end="url(#l2-arr-c1)"/>
+
+          <!-- R-value label -->
+          <text x="100" y="215" fill="var(--text-muted)" font-size="9"
+                text-anchor="middle" font-family="var(--font-mono)">r = 0.95 (strong)</text>
+        </svg>
+      </div>
+
+      <!-- Panel 2: Control, Overcast -->
+      <div class="diagram-container">
+        <span class="diagram-label">Group A (Control) — Overcast conditions</span>
+        <svg viewBox="0 0 200 225" class="compass-svg"
+          aria-label="Compass rose: control birds on overcast days. 12 dots cluster in the NW quadrant with slightly more spread than the clear-day panel. Arrow points toward 315° with moderate length.">
+
+          <defs>
+            <marker id="l2-arr-c2" markerWidth="8" markerHeight="6" refX="7" refY="3"
+                    orient="auto" markerUnits="userSpaceOnUse">
+              <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <circle cx="100" cy="110" r="80" fill="none"
+                  stroke="var(--border-default)" stroke-width="1.5"/>
+          <text x="100" y="24" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">N</text>
+          <text x="100" y="200" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">S</text>
+          <text x="186" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">E</text>
+          <text x="14" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">W</text>
+          <line x1="100" y1="30" x2="100" y2="38" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="100" y1="182" x2="100" y2="190" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="20" y1="110" x2="28" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="172" y1="110" x2="180" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+
+          <line x1="100" y1="110" x2="43" y2="53"
+                stroke="var(--fluoro-pink)" stroke-width="1.5"
+                stroke-dasharray="5 3" opacity="0.7"/>
+          <text x="28" y="46" fill="var(--fluoro-pink)" font-size="8"
+                text-anchor="middle" opacity="0.9" font-family="var(--font-mono)">Home</text>
+
+          <!-- Open circles — overcast, control (moderate spread, still NW) -->
+          <circle cx="28" cy="76" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="32" cy="68" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="36" cy="62" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="39" cy="59" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="43" cy="53" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="47" cy="51" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="51" cy="47" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="58" cy="42" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="31" cy="70" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="48" cy="50" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="38" cy="60" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="64" cy="39" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+
+          <!-- Mean vector (medium, r ≈ 0.80) tip at (55,65) -->
+          <line x1="100" y1="110" x2="61" y2="71"
+                stroke="var(--accent)" stroke-width="2.2"
+                stroke-linecap="round"
+                marker-end="url(#l2-arr-c2)"/>
+
+          <text x="100" y="215" fill="var(--text-muted)" font-size="9"
+                text-anchor="middle" font-family="var(--font-mono)">r = 0.80 (moderate)</text>
+        </svg>
+      </div>
+    </div><!-- /Row 1 -->
+
+    <!-- Row 2: Magnet birds -->
+    <div class="diagram-row" style="margin-top: var(--space-3);">
+
+      <!-- Panel 3: Magnet, Clear -->
+      <div class="diagram-container">
+        <span class="diagram-label">Group B (Magnet) — Clear conditions</span>
+        <svg viewBox="0 0 200 225" class="compass-svg"
+          aria-label="Compass rose: magnet birds on clear days. Dots cluster in NW quadrant with moderate spread, similar to the control overcast panel. Arrow points toward 315°.">
+
+          <defs>
+            <marker id="l2-arr-m1" markerWidth="8" markerHeight="6" refX="7" refY="3"
+                    orient="auto" markerUnits="userSpaceOnUse">
+              <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <circle cx="100" cy="110" r="80" fill="none"
+                  stroke="var(--border-default)" stroke-width="1.5"/>
+          <text x="100" y="24" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">N</text>
+          <text x="100" y="200" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">S</text>
+          <text x="186" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">E</text>
+          <text x="14" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">W</text>
+          <line x1="100" y1="30" x2="100" y2="38" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="100" y1="182" x2="100" y2="190" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="20" y1="110" x2="28" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="172" y1="110" x2="180" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+
+          <line x1="100" y1="110" x2="43" y2="53"
+                stroke="var(--fluoro-pink)" stroke-width="1.5"
+                stroke-dasharray="5 3" opacity="0.7"/>
+          <text x="28" y="46" fill="var(--fluoro-pink)" font-size="8"
+                text-anchor="middle" opacity="0.9" font-family="var(--font-mono)">Home</text>
+
+          <!-- Filled dots — clear, magnet (moderate spread, still NW) -->
+          <circle cx="31" cy="70" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="35" cy="64" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="39" cy="59" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="43" cy="54" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="45" cy="52" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="47" cy="51" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="51" cy="47" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="54" cy="45" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="60" cy="41" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="38" cy="60" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="44" cy="53" r="3.5" fill="var(--fluoro-cyan)"/>
+          <circle cx="56" cy="43" r="3.5" fill="var(--fluoro-cyan)"/>
+
+          <!-- Mean vector (medium, r ≈ 0.82) tip at (54,64) -->
+          <line x1="100" y1="110" x2="60" y2="70"
+                stroke="var(--accent)" stroke-width="2.2"
+                stroke-linecap="round"
+                marker-end="url(#l2-arr-m1)"/>
+
+          <text x="100" y="215" fill="var(--text-muted)" font-size="9"
+                text-anchor="middle" font-family="var(--font-mono)">r = 0.82 (moderate)</text>
+        </svg>
+      </div>
+
+      <!-- Panel 4: Magnet, Overcast -->
+      <div class="diagram-container">
+        <span class="diagram-label">Group B (Magnet) — Overcast conditions</span>
+        <svg viewBox="0 0 200 225" class="compass-svg"
+          aria-label="Compass rose: magnet birds on overcast days. 12 dots are scattered randomly around the full compass circle with no directional clustering. The mean vector is very short, indicating no significant directional agreement.">
+
+          <circle cx="100" cy="110" r="80" fill="none"
+                  stroke="var(--border-default)" stroke-width="1.5"/>
+          <text x="100" y="24" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">N</text>
+          <text x="100" y="200" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">S</text>
+          <text x="186" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">E</text>
+          <text x="14" y="114" fill="var(--text-muted)" font-size="11"
+                text-anchor="middle" font-family="var(--font-mono)">W</text>
+          <line x1="100" y1="30" x2="100" y2="38" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="100" y1="182" x2="100" y2="190" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="20" y1="110" x2="28" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+          <line x1="172" y1="110" x2="180" y2="110" stroke="var(--border-subtle)" stroke-width="1"/>
+
+          <line x1="100" y1="110" x2="43" y2="53"
+                stroke="var(--fluoro-pink)" stroke-width="1.5"
+                stroke-dasharray="5 3" opacity="0.4"/>
+          <text x="28" y="46" fill="var(--fluoro-pink)" font-size="8"
+                text-anchor="middle" opacity="0.5" font-family="var(--font-mono)">Home</text>
+
+          <!-- Open circles — overcast, magnet (random scatter) -->
+          <circle cx="100" cy="30"  r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="127" cy="35"  r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="166" cy="64"  r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="180" cy="117" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="151" cy="171" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="107" cy="190" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="66"  cy="183" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="28"  cy="144" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="20"  cy="110" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="31"  cy="70"  r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="73"  cy="35"  r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+          <circle cx="173" cy="144" r="3.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.8"/>
+
+          <!-- Mean vector — effectively zero; show as tiny central indicator -->
+          <circle cx="100" cy="110" r="4" fill="none"
+                  stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.6"/>
+          <!-- Tiny stub line indicating ~random direction -->
+          <line x1="100" y1="110" x2="100" y2="107"
+                stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+          <text x="100" y="215" fill="var(--fluoro-pink)" font-size="9"
+                text-anchor="middle" font-family="var(--font-mono)">r ≈ 0.05 (random)</text>
+        </svg>
+      </div>
+    </div><!-- /Row 2 -->
+
+
+    <!-- Diagram key -->
+    <div class="diagram-key">
+      <div class="diagram-key__item">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <circle cx="7" cy="7" r="5.5" fill="var(--fluoro-cyan)"/>
+        </svg>
+        <span>Individual bird bearing — <strong>clear</strong> conditions</span>
+      </div>
+      <div class="diagram-key__item">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <circle cx="7" cy="7" r="5.5" fill="none" stroke="var(--fluoro-cyan)" stroke-width="2"/>
+        </svg>
+        <span>Individual bird bearing — <strong>overcast</strong> conditions</span>
+      </div>
+      <div class="diagram-key__item">
+        <svg width="24" height="10" viewBox="0 0 24 10" aria-hidden="true">
+          <line x1="0" y1="5" x2="18" y2="5" stroke="var(--accent)" stroke-width="2.5"/>
+          <polygon points="16,2 24,5 16,8" fill="var(--accent)"/>
+        </svg>
+        <span>Mean vector (arrow length ∝ directional consistency)</span>
+      </div>
+      <div class="diagram-key__item">
+        <svg width="24" height="10" viewBox="0 0 24 10" aria-hidden="true">
+          <line x1="0" y1="5" x2="24" y2="5" stroke="var(--fluoro-pink)"
+                stroke-width="1.5" stroke-dasharray="5 3"/>
+        </svg>
+        <span>Direction to home colony (~315° NW)</span>
+      </div>
+    </div>
+
+
+    <!-- ── Questions for Activity 3 ── -->
+
+    <!-- Q3 -->
+    <div class="question-card" data-q="3">
+      <div class="question-card__header">
+        <span class="question-number">3</span>
+        <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+      </div>
+      <p class="question-text">
+        Describe the results for <strong>Group A (Control)</strong>:
+      </p>
+
+      <div class="sub-question">
+        <span class="sub-label">(a) Under clear conditions (Panel 1)</span>
+        <textarea class="answer-input answer-input--short" data-answer="3a"
+          placeholder="Describe the dot clustering and arrow..." rows="3"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(b) Under overcast conditions (Panel 2)</span>
+        <textarea class="answer-input answer-input--short" data-answer="3b"
+          placeholder="Describe the dot clustering and arrow..." rows="3"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(c) Comparing Panels 1 and 2 — what does this tell you about the cue(s) used by the control group?</span>
+        <textarea class="answer-input answer-input--med" data-answer="3c"
+          placeholder="What does the comparison suggest about navigation cues?" rows="4"></textarea>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" data-q="4">
+      <div class="question-card__header">
+        <span class="question-number">4</span>
+        <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+      </div>
+      <p class="question-text">
+        Describe and explain the results for <strong>Group B (Magnet)</strong>:
+      </p>
+
+      <div class="sub-question">
+        <span class="sub-label">(a) Under clear conditions (Panel 3) — describe the result</span>
+        <textarea class="answer-input answer-input--short" data-answer="4a"
+          placeholder="Describe the dot clustering and arrow..." rows="3"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(b) Under overcast conditions (Panel 4) — describe the result</span>
+        <textarea class="answer-input answer-input--short" data-answer="4b"
+          placeholder="Describe the dot clustering and arrow..." rows="3"></textarea>
+      </div>
+
+      <div class="sub-question">
+        <span class="sub-label">(c) Explain the difference between Panels 3 and 4 in terms of navigation mechanisms</span>
+        <textarea class="answer-input answer-input--med" data-answer="4c"
+          placeholder="Why were magnet birds still oriented under clear conditions but not overcast?" rows="5"></textarea>
+      </div>
+    </div>
+
+    <!-- Q5 — Excellence -->
+    <div class="question-card" data-q="5">
+      <div class="question-card__header">
+        <span class="question-number">5</span>
+        <span class="question-type-badge question-type-badge--long">Extended — Excellence</span>
+      </div>
+      <p class="question-text">
+        Using <em>all four</em> compass rose diagrams, explain what the results tell us about
+        the navigation systems used by tītī. In your answer, explain why neither the magnet
+        manipulation alone nor overcast conditions alone was sufficient to fully disrupt
+        homing — and what this tells us about how the two navigation systems interact.
+      </p>
+      <textarea class="answer-input answer-input--long" data-answer="5"
+        placeholder="Integrate evidence from all four panels. Aim for 80–120 words." rows="7"></textarea>
+    </div>
+
+    <!-- Q6 — Scholarship -->
+    <div class="question-card question-card--scholarship" data-q="6">
+      <div class="question-card__header">
+        <span class="question-number">6</span>
+        <span class="question-type-badge question-type-badge--schol">Scholarship</span>
+      </div>
+      <p class="question-text">
+        Evaluate the experimental design. Identify <strong>two assumptions</strong> the
+        experiment makes. Then propose <strong>two alternative explanations</strong> for the
+        disorientation seen in Panel 4 (magnet + overcast), and for each suggest a follow-up
+        experiment that could test between your alternative explanation and the magnetic
+        navigation hypothesis.
+      </p>
+      <textarea class="answer-input answer-input--xl" data-answer="6"
+        placeholder="Identify assumptions → propose alternatives → suggest follow-up experiments. Aim for 120–180 words." rows="9"></textarea>
+    </div>
+
+  </div><!-- /Activity 3 -->
+
+
+  <!-- ============================================================
+       Activity 4: Multi-Cue Navigation in NZ Species
+       ============================================================ -->
+  <div class="question-section">
+    <h3 class="question-section__title">Activity 4 — Multi-Cue Navigation in Aotearoa Species</h3>
+
+    <p class="section-intro" style="margin-bottom: var(--space-4);">
+      Study the table below, which summarises the navigation cues used by four New Zealand
+      species and the evidence supporting each cue. Use this information to answer the
+      questions that follow.
+    </p>
+
+    <!-- Comparison table -->
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <caption class="table-caption">
+          Navigation cues used by selected NZ species.<br>
+          <span class="table-key">
+            <span class="key-chip key-primary">✓✓ primary/strong evidence</span>
+            <span class="key-chip key-secondary">✓ secondary/some evidence</span>
+            <span class="key-chip key-unknown">? suspected / untested</span>
+            <span class="key-chip key-none">✗ not evidenced</span>
+          </span>
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Species</th>
+            <th scope="col">Topo&shy;graphical</th>
+            <th scope="col">Celestial (sun/stars)</th>
+            <th scope="col">Magnetic</th>
+            <th scope="col">Olfactory</th>
+            <th scope="col">Max homing distance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="species-cell">
+              <em>Puffinus griseus</em><br>
+              <span class="species-common">Tītī / Sooty shearwater</span>
+            </td>
+            <td><span class="nav-secondary">✓</span> <span class="nav-note">(near colony)</span></td>
+            <td><span class="nav-primary">✓✓</span></td>
+            <td><span class="nav-primary">✓✓</span></td>
+            <td><span class="nav-primary">✓✓</span> <span class="nav-note">(colony + burrow scent)</span></td>
+            <td>~37,000 km <span class="nav-note">(one way)</span></td>
+          </tr>
+          <tr>
+            <td class="species-cell">
+              <em>Diomedea antipodensis</em><br>
+              <span class="species-common">Toroa / Antipodean albatross</span>
+            </td>
+            <td><span class="nav-primary">✓✓</span> <span class="nav-note">(near island)</span></td>
+            <td><span class="nav-primary">✓✓</span></td>
+            <td><span class="nav-secondary">✓</span> <span class="nav-note">(Bonadonna et al. 2005)</span></td>
+            <td><span class="nav-secondary">✓</span> <span class="nav-note">(musky colony odour)</span></td>
+            <td>10,000s km</td>
+          </tr>
+          <tr>
+            <td class="species-cell">
+              <em>Anguilla dieffenbachii</em><br>
+              <span class="species-common">Longfin eel / Tuna</span>
+            </td>
+            <td><span class="nav-none">✗</span> <span class="nav-note">(ocean); </span><span class="nav-secondary">✓</span> <span class="nav-note">(river)</span></td>
+            <td><span class="nav-unknown">?</span></td>
+            <td><span class="nav-primary">✓✓</span> <span class="nav-note">(oceanic larval phase)</span></td>
+            <td><span class="nav-primary">✓✓</span> <span class="nav-note">(river homing phase)</span></td>
+            <td>~3,500 km <span class="nav-note">(ocean phase)</span></td>
+          </tr>
+          <tr>
+            <td class="species-cell">
+              <em>Hemiphaga novaeseelandiae</em><br>
+              <span class="species-common">Kererū / NZ pigeon</span>
+            </td>
+            <td><span class="nav-primary">✓✓</span> <span class="nav-note">(primary)</span></td>
+            <td><span class="nav-secondary">✓</span> <span class="nav-note">(suspected)</span></td>
+            <td><span class="nav-unknown">?</span></td>
+            <td><span class="nav-none">✗</span></td>
+            <td>&lt;50 km <span class="nav-note">(seasonal movements)</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-sources">Sources: Bonadonna et al. (2005); Padget et al. (2021); Jellyman (2012).</p>
+    </div>
+
+
+    <!-- Q7 -->
+    <div class="question-card" data-q="7">
+      <div class="question-card__header">
+        <span class="question-number">7</span>
+        <span class="question-type-badge question-type-badge--short">Short answer</span>
+      </div>
+      <p class="question-text">
+        Compare the navigation cues used by tītī and longfin eels. Identify <strong>one
+        similarity</strong> and <strong>one key difference</strong>. Suggest why this
+        difference exists given each species' ecology and life history.
+      </p>
+      <textarea class="answer-input answer-input--med" data-answer="7"
+        placeholder="Similarity / difference / ecological reason..." rows="5"></textarea>
+    </div>
+
+    <!-- Q8 — Merit/Excellence -->
+    <div class="question-card" data-q="8">
+      <div class="question-card__header">
+        <span class="question-number">8</span>
+        <span class="question-type-badge question-type-badge--long">Extended — Merit/Excellence</span>
+      </div>
+      <p class="question-text">
+        Using evidence from <em>both</em> the comparison table and the tītī experiment
+        (Activity 3), explain why having <strong>multiple independent navigation cues</strong>
+        is an adaptive advantage for long-distance homing species. In your answer, refer
+        to the concept of <em>redundancy</em>.
+      </p>
+      <textarea class="answer-input answer-input--long" data-answer="8"
+        placeholder="Link table data and experimental evidence to the adaptive advantage of redundancy. 80–120 words." rows="7"></textarea>
+    </div>
+
+    <!-- Q9 — Scholarship -->
+    <div class="question-card question-card--scholarship" data-q="9">
+      <div class="question-card__header">
+        <span class="question-number">9</span>
+        <span class="question-type-badge question-type-badge--schol">Scholarship</span>
+      </div>
+      <p class="question-text">
+        The table shows that kererū rely primarily on <strong>topographical memory</strong>
+        for homing, with limited evidence of celestial or magnetic navigation. Using the
+        principles of natural selection, explain why long-distance migratory seabirds would
+        not be able to rely primarily on topographical memory. Then identify <strong>two
+        selective pressures</strong> that may have driven the evolution of magnetic and/or
+        celestial navigation in long-distance migrants, and explain how each pressure would
+        act on variation in the population.
+      </p>
+      <textarea class="answer-input answer-input--xl" data-answer="9"
+        placeholder="Explain why topographical memory fails at long distance → two selection pressures → how each acts on variation. 120–160 words." rows="9"></textarea>
+    </div>
+
+  </div><!-- /Activity 4 -->
+
+
+  <!-- ── Export Actions ── -->
+  <div class="export-actions fade-in-up">
+    <button id="download-pdf-l2" class="export-btn export-btn--primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Download as PDF
+    </button>
+    <button id="copy-all-l2" class="export-btn export-btn--secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      Copy All Answers
+    </button>
+    <span id="copy-feedback-l2" class="copy-feedback" hidden>Copied to clipboard</span>
+  </div>
+
+
+  <!-- ============================================================
+       Activity 5: Scholarship Challenge — AI Marked
+       ============================================================ -->
+  <div class="question-section">
+    <h3 class="question-section__title" style="border-color: var(--fluoro-pink); color: var(--fluoro-pink);">
+      Activity 5 — Scholarship Challenge
+    </h3>
+
+    <p class="section-intro">
+      This question targets Scholarship level. Write a sustained, integrated response —
+      aim for 300–400 words. Submit using the button below to receive AI feedback from
+      Dr Eliot's marker. You have up to 10 submissions per day.
+    </p>
+
+    <div class="exam-card">
+      <div class="exam-card__header">
+        <span class="question-type-badge question-type-badge--schol">Scholarship — Extended response</span>
+      </div>
+
+      <div class="question-context">
+        <p>
+          Many long-distance homing animals, including tītī and toroa, navigate using the
+          Earth's magnetic field as one of several cues. The mechanisms by which animals detect
+          magnetic fields — <em>magnetoreception</em> — remain an active area of research, with
+          two competing hypotheses supported by different lines of evidence.
+        </p>
+      </div>
+
+      <p class="question-text">
+        <strong>Evaluate</strong> the adaptive significance of homing behaviour in long-lived
+        seabirds such as tītī or toroa. In your answer:
+      </p>
+      <ul class="exam-bullets">
+        <li>
+          Explain <strong>two proposed cellular mechanisms</strong> of magnetoreception (the
+          magnetite hypothesis and the cryptochrome/radical pair hypothesis), and evaluate
+          the evidence for each
+        </li>
+        <li>
+          Using a <strong>cost-benefit framework</strong>, analyse why homing to a specific
+          breeding site — rather than dispersing to a new site — is adaptive for these species
+        </li>
+        <li>
+          Explain how <strong>redundancy in navigation systems</strong> could have evolved
+          through natural selection, linking to the concept of heritable variation in
+          navigation ability
+        </li>
+      </ul>
+
+      <textarea class="answer-input answer-input--long" id="homing-exam-answer"
+        placeholder="Write your extended response here (aim for 300–400 words)..." rows="14"
+        style="min-height: 280px;"></textarea>
+
+      <div class="exam-actions">
+        <span class="word-count" id="homing-word-count">0 words</span>
+        <button class="sim-btn sim-btn--primary" id="homing-submit-btn">Get AI Feedback</button>
+      </div>
+
+      <!-- AI Feedback display -->
+      <div class="ai-feedback" id="homing-ai-feedback" hidden>
+        <div class="ai-feedback__header">
+          <h4>AI Feedback</h4>
+          <span class="ai-grade" id="homing-ai-grade"></span>
+        </div>
+        <p class="ai-summary" id="homing-ai-summary"></p>
+        <div class="ai-section" id="homing-ai-strengths-section">
+          <h5>Strengths</h5>
+          <ul id="homing-ai-strengths"></ul>
+        </div>
+        <div class="ai-section" id="homing-ai-improvements-section">
+          <h5>Areas for Improvement</h5>
+          <ul id="homing-ai-improvements"></ul>
+        </div>
+        <div class="ai-section" id="homing-ai-missing-section">
+          <h5>Missing Key Points</h5>
+          <ul id="homing-ai-missing"></ul>
+        </div>
+        <p class="ai-tip" id="homing-ai-tip"></p>
+      </div>
+
+      <div class="ai-loading" id="homing-ai-loading" hidden>
+        <div class="ai-loading__spinner"></div>
+        <p>Dr Eliot's AI is reading your answer...</p>
+      </div>
+
+      <div class="ai-error" id="homing-ai-error" hidden>
+        <p id="homing-ai-error-text"></p>
+      </div>
+    </div>
+  </div><!-- /Activity 5 -->
+
+
+  <!-- ============================================================
+       Model Answers (Reveal)
+       ============================================================ -->
+  <div class="activity-card" style="margin-top: var(--space-5);">
+    <h4>Model Answers</h4>
+    <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-3);">
+      Attempt all questions before revealing. These are exemplar answers — your own wording
+      does not need to match exactly; focus on whether the biological ideas are present and
+      correctly explained.
+    </p>
+
+    <div class="reveal-section">
+      <button class="reveal-btn" data-target="homing-model-answers">
+        <span class="reveal-btn__text">Show Model Answers</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="reveal-content" id="homing-model-answers" hidden>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--achieved">Q1 — Achieved</h5>
+          <div class="answer-card">
+            Homing is the ability of an animal to return to a specific home location after
+            being displaced or having travelled away. It differs from chemotaxis in that
+            chemotaxis is a <em>directed</em> movement along a current chemical gradient —
+            the animal simply moves toward or away from a chemical source present in its
+            immediate environment. Homing, by contrast, requires the animal to navigate to
+            a goal that may be hundreds of kilometres away, using stored spatial information
+            and multiple environmental cues, not just a local gradient.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--achieved">Q3(a–b) — Achieved</h5>
+          <div class="answer-card">
+            <strong>(a)</strong> Under clear conditions, all 12 control birds oriented strongly
+            toward home (NW, ~315°). The dots cluster tightly in the upper-left NW quadrant
+            of the compass, and the mean vector arrow is long (r = 0.95), pointing directly
+            toward the home colony. This shows very strong directional agreement.
+            <br><br>
+            <strong>(b)</strong> Under overcast conditions, the control birds still oriented
+            toward home, though with slightly greater spread among individuals (dots range
+            roughly 295°–335°). The mean vector arrow is shorter (r = 0.80) but still clearly
+            directional, pointing toward ~315°.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--merit">Q3(c) / Q4(c) — Merit</h5>
+          <div class="answer-card">
+            The control group's ability to orient under <em>both</em> clear and overcast
+            conditions (Q3c) shows they do not rely solely on celestial cues — they have at
+            least one other navigation system (most likely the magnetic field) that functions
+            under cloud. The slight reduction in precision under overcast suggests that
+            celestial cues contribute additional accuracy when available, but are not essential.
+            <br><br>
+            The magnet group's ability to orient under clear but not overcast conditions (Q4c)
+            shows that when the magnetic field is disrupted, birds can compensate using the sun
+            compass under clear skies, but when <em>both</em> the magnetic field and celestial
+            cues are unavailable simultaneously, navigation fails entirely.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--excellence">Q5 — Excellence</h5>
+          <div class="answer-card">
+            The results show tītī use at least two independent navigation systems — celestial
+            and magnetic — that are functionally redundant. Panel 2 (control, overcast) shows
+            the magnetic compass alone is sufficient for homing. Panel 3 (magnet, clear) shows
+            the celestial compass alone is also sufficient. These systems do not simply add to
+            each other — they can substitute for each other. Only when both fail simultaneously
+            (Panel 4: magnet + overcast) is orientation completely lost. The comparison between
+            Panel 1 (both systems available, r = 0.95) and Panels 2 and 3 (one system, r ≈ 0.80–0.82)
+            suggests that using both systems simultaneously gives slightly greater precision —
+            they may be integrated to reduce each other's errors, in a manner analogous to
+            sensor fusion in engineered navigation systems.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--scholarship">Q6 — Scholarship</h5>
+          <div class="answer-card">
+            <strong>Assumptions:</strong>
+            (1) The neodymium magnets affect only magnetoreception, not other physiological
+            processes (e.g., vestibular balance, stress physiology). A stronger magnet could
+            conceivably cause tissue heating or mechanical stress on the inner ear, independently
+            causing disorientation.
+            (2) "Initial bearing" within 30 minutes reliably reflects navigational intent rather
+            than local meteorological factors (e.g., wind direction under overcast conditions
+            influencing flight departure angle).
+            <br><br>
+            <strong>Alternative 1 — Stress hypothesis:</strong> Magnet birds may experience
+            greater discomfort/stress under overcast conditions (additional unfamiliarity, less
+            visual context), producing random exploratory behaviour unrelated to magnetic disruption.
+            <em>Follow-up:</em> Measure plasma corticosterone immediately post-release in all four
+            groups. If stress drives disorientation in Panel 4, magnet overcast birds should show
+            significantly higher corticosterone than magnet clear birds.
+            <br><br>
+            <strong>Alternative 2 — Olfactory dependency:</strong> Tītī may use colony scent
+            as a third cue. Under overcast conditions, wind patterns may differ and scent gradients
+            may be disrupted. Without magnetic map information, birds may be unable to get close
+            enough to detect colony scent. <em>Follow-up:</em> Test a third group — magnet birds
+            with nares occluded (olfaction blocked) — under both conditions. If olfaction
+            compensates in Panel 3, blocking it should reduce orientation under clear skies too.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--excellence">Q8 — Excellence</h5>
+          <div class="answer-card">
+            Redundancy means that if one navigation system fails, another can compensate —
+            reducing the probability of total navigational failure. This is directly shown in
+            the tītī experiment: magnetic disruption alone (Panel 3) did not prevent homing
+            because the sun compass remained functional; overcast alone (Panel 2) did not
+            prevent homing because the magnetic compass remained functional.
+            <br><br>
+            The comparison table shows that long-distance migrants (tītī: 37,000 km; toroa:
+            10,000s km; longfin eel: 3,500 km oceanic phase) consistently use more cue types
+            than short-distance species (kererū: &lt;50 km), consistent with the hypothesis
+            that selection for redundancy scales with the cost of navigational failure. For a
+            long-lived seabird that breeds once per year at a specific island, complete
+            navigational failure would result in zero reproductive output for that season —
+            potentially a catastrophic fitness loss. Any heritable variation providing a
+            backup navigation system would be strongly favoured by natural selection.
+          </div>
+        </div>
+
+        <div class="model-grade-section">
+          <h5 class="model-grade-label model-grade-label--scholarship">Q9 — Scholarship</h5>
+          <div class="answer-card">
+            Topographical memory requires prior experience of landmarks along a route and at
+            the destination. This fails for long-distance migrants in two ways: (1) naive
+            first-year birds must undertake their first migration before they have the opportunity
+            to memorise the route; (2) seabirds travel over featureless open ocean where no
+            landmarks exist. A purely topographical system therefore cannot explain how naïve
+            juvenile tītī reach the North Pacific on their first migration.
+            <br><br>
+            <strong>Selective pressure 1 — First-migration mortality:</strong> Individuals
+            lacking any heritable navigational ability independent of learned landmarks would
+            be lost on their first migration, contributing zero offspring to the next generation.
+            Any heritable variation in genetically-encoded navigation ability (e.g., a magnetic
+            compass direction inherited from parents — as shown in the white-crowned sparrow)
+            would increase survival and reproductive success. Over generations, the population
+            would become enriched for individuals with innate navigation mechanisms.
+            <br><br>
+            <strong>Selective pressure 2 — Habitat specificity of breeding sites:</strong>
+            Seabird colonies are restricted to small, predator-free islands. Arriving at the
+            wrong island — even one nearby — could mean reproductive failure (no mate, wrong
+            burrow type, different predator pressure). This intense directional selection on
+            homing precision would favour individuals with multiple, complementary navigation
+            systems that reduce the probability of arriving at the wrong location.
+          </div>
+        </div>
+
+      </div><!-- /reveal-content -->
+    </div><!-- /reveal-section -->
+  </div><!-- /activity-card model answers -->
+
+</section><!-- /lesson-2 -->
 
       </main>
 
@@ -862,12 +1836,336 @@ const base = import.meta.env.BASE_URL;
           </p>
         </div>
 
+<div class="sidebar-card fade-in-up">
+  <h3>Lesson 2 Objectives</h3>
+  <ul class="objectives-list">
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Define homing and explain why it differs from simple taxis/kinesis</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Describe four types of navigation cue: topographical, celestial, magnetic, olfactory</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Interpret compass rose data to identify directional vs random orientation</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Explain why disrupting one navigation cue does not always disrupt homing</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Evaluate the adaptive advantage of navigation redundancy</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Discuss magnetoreception mechanisms at a cellular level (Scholarship)</span>
+    </li>
+  </ul>
+</div>
+
+<div class="sidebar-card fade-in-up">
+  <h3>Homing Vocabulary</h3>
+  <div class="vocab-grid">
+    <div class="vocab-chip">homing</div>
+    <div class="vocab-chip">topographical navigation</div>
+    <div class="vocab-chip">sun compass</div>
+    <div class="vocab-chip">star compass</div>
+    <div class="vocab-chip">magnetic compass</div>
+    <div class="vocab-chip">olfactory navigation</div>
+    <div class="vocab-chip">inclination compass</div>
+    <div class="vocab-chip">mean vector</div>
+    <div class="vocab-chip">r-value</div>
+    <div class="vocab-chip">redundancy</div>
+    <div class="vocab-chip">cryptochrome</div>
+    <div class="vocab-chip">radical pair</div>
+    <div class="vocab-chip">magnetite</div>
+    <div class="vocab-chip">local adaptation</div>
+    <div class="vocab-chip">tītī</div>
+    <div class="vocab-chip">toroa</div>
+    <div class="vocab-chip">Bonadonna et al.</div>
+  </div>
+</div>
       </aside>
+<div class="sidebar-card fade-in-up">
+  <h3>Lesson 2 Objectives</h3>
+  <ul class="objectives-list">
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Define homing and explain why it differs from simple taxis/kinesis</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Describe four types of navigation cue: topographical, celestial, magnetic, olfactory</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Interpret compass rose data to identify directional vs random orientation</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Explain why disrupting one navigation cue does not always disrupt homing</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Evaluate the adaptive advantage of navigation redundancy</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Discuss magnetoreception mechanisms at a cellular level (Scholarship)</span>
+    </li>
+  </ul>
+</div>
+
+<div class="sidebar-card fade-in-up">
+  <h3>Homing Vocabulary</h3>
+  <div class="vocab-grid">
+    <div class="vocab-chip">homing</div>
+    <div class="vocab-chip">topographical navigation</div>
+    <div class="vocab-chip">sun compass</div>
+    <div class="vocab-chip">star compass</div>
+    <div class="vocab-chip">magnetic compass</div>
+    <div class="vocab-chip">olfactory navigation</div>
+    <div class="vocab-chip">inclination compass</div>
+    <div class="vocab-chip">mean vector</div>
+    <div class="vocab-chip">r-value</div>
+    <div class="vocab-chip">redundancy</div>
+    <div class="vocab-chip">cryptochrome</div>
+    <div class="vocab-chip">radical pair</div>
+    <div class="vocab-chip">magnetite</div>
+    <div class="vocab-chip">local adaptation</div>
+    <div class="vocab-chip">tītī</div>
+    <div class="vocab-chip">toroa</div>
+    <div class="vocab-chip">Bonadonna et al.</div>
+  </div>
+</div>
 
     </div>
 
   </div>
 
+<script>
+  /* --------------------------------------------------------------------------
+     PDF Download for Lesson 2
+     -------------------------------------------------------------------------- */
+  const dlBtnL2 = document.getElementById('download-pdf-l2');
+  dlBtnL2?.addEventListener('click', () => { window.print(); });
+
+
+  /* --------------------------------------------------------------------------
+     Copy All Answers for Lesson 2
+     -------------------------------------------------------------------------- */
+  const copyBtnL2   = document.getElementById('copy-all-l2');
+  const copyFbL2    = document.getElementById('copy-feedback-l2');
+
+  copyBtnL2?.addEventListener('click', async () => {
+    const nameEl  = document.getElementById('student-name-l2') as HTMLInputElement;
+    const name    = nameEl?.value || 'Not provided';
+
+    let text = `HOMING — NAVIGATION (Week 5, Lesson 2)\n`;
+    text += `Name: ${name}\n`;
+    text += `Date: ${new Date().toLocaleDateString('en-NZ')}\n`;
+    text += `${'='.repeat(50)}\n\n`;
+
+    /* Collect all data-answer inputs within #lesson-2 */
+    const lesson2 = document.getElementById('lesson-2');
+    if (!lesson2) return;
+
+    const inputs = lesson2.querySelectorAll('[data-answer]');
+
+    inputs.forEach((input) => {
+      const id = input.getAttribute('data-answer') || '';
+      const subLabel = input.closest('.sub-question')?.querySelector('.sub-label')?.textContent?.trim() || '';
+      const qText    = input.closest('.question-card')?.querySelector('.question-text')?.textContent?.trim() || '';
+      const label    = subLabel || `Q${id}`;
+
+      let value = '';
+      if (input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) {
+        value = input.value;
+      }
+
+      text += `${label}${qText ? ' — ' + qText.substring(0, 70) + (qText.length > 70 ? '…' : '') : ''}\n`;
+      text += `Answer: ${value || '(not answered)'}\n\n`;
+    });
+
+    try {
+      await navigator.clipboard.writeText(text);
+      if (copyFbL2) {
+        copyFbL2.hidden = false;
+        setTimeout(() => { copyFbL2.hidden = true; }, 2200);
+      }
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (copyFbL2) {
+        copyFbL2.hidden = false;
+        setTimeout(() => { copyFbL2.hidden = true; }, 2200);
+      }
+    }
+  });
+</script>
+
+<!-- Word count for Scholarship exam textarea -->
+<script>
+  const homingTA    = document.getElementById('homing-exam-answer');
+  const homingWC    = document.getElementById('homing-word-count');
+
+  homingTA?.addEventListener('input', () => {
+    const n = (homingTA as HTMLTextAreaElement).value.trim().split(/\s+/).filter(Boolean).length;
+    if (homingWC) homingWC.textContent = `${n} word${n !== 1 ? 's' : ''}`;
+  });
+</script>
+
+<!-- AI Marking for Activity 5 (Scholarship) -->
+<script>
+  (function initHomingAI() {
+    const AI_URL    = 'https://psychology-ai-marker.deornorth.workers.dev';
+    const RL_KEY    = 'l3_bio_homing_ai_rate';
+    const LIMIT     = 10;
+
+    const submitBtn  = document.getElementById('homing-submit-btn');
+    const answerEl   = document.getElementById('homing-exam-answer') as HTMLTextAreaElement;
+    const feedbackEl = document.getElementById('homing-ai-feedback');
+    const loadingEl  = document.getElementById('homing-ai-loading');
+    const errorEl    = document.getElementById('homing-ai-error');
+    const errorTxtEl = document.getElementById('homing-ai-error-text');
+
+    function todayKey() { return new Date().toISOString().slice(0, 10); }
+    function getCount() {
+      try { return (JSON.parse(localStorage.getItem(RL_KEY) || '{}'))[todayKey()] || 0; }
+      catch { return 0; }
+    }
+    function bump() {
+      const k = todayKey(); let d: Record<string,number> = {};
+      try { d = JSON.parse(localStorage.getItem(RL_KEY) || '{}'); } catch {}
+      d[k] = (d[k] || 0) + 1;
+      localStorage.setItem(RL_KEY, JSON.stringify(d));
+    }
+
+    function showError(msg: string) {
+      if (errorEl)    errorEl.hidden = false;
+      if (errorTxtEl) errorTxtEl.textContent = msg;
+      if (feedbackEl) feedbackEl.hidden = true;
+      if (loadingEl)  loadingEl.hidden = true;
+    }
+
+    function populateList(id: string, items: string[] | undefined) {
+      const ul = document.getElementById(id);
+      if (!ul) return;
+      ul.innerHTML = '';
+      (items || []).forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+
+    function displayFeedback(data: any) {
+      if (!feedbackEl) return;
+      feedbackEl.hidden = false;
+      const gradeEl = document.getElementById('homing-ai-grade');
+      const gradeMap: Record<string,string> = { NA: 'Not Achieved', A: 'Achieved', M: 'Merit', E: 'Excellence', S: 'Scholarship' };
+      if (gradeEl) {
+        gradeEl.textContent = gradeMap[data.grade] || data.grade;
+        gradeEl.className = 'ai-grade ai-grade--' + (data.grade || 'na').toLowerCase();
+      }
+      const sumEl = document.getElementById('homing-ai-summary');
+      if (sumEl) sumEl.textContent = data.summary || '';
+      populateList('homing-ai-strengths',    data.strengths);
+      populateList('homing-ai-improvements', data.improvements);
+      populateList('homing-ai-missing',      data.missingPoints);
+
+      const sStr  = document.getElementById('homing-ai-strengths-section');
+      const sImp  = document.getElementById('homing-ai-improvements-section');
+      const sMiss = document.getElementById('homing-ai-missing-section');
+      if (sStr)  sStr.hidden  = !data.strengths?.length;
+      if (sImp)  sImp.hidden  = !data.improvements?.length;
+      if (sMiss) sMiss.hidden = !data.missingPoints?.length;
+
+      const tipEl = document.getElementById('homing-ai-tip');
+      if (tipEl) {
+        tipEl.textContent = data.tip || '';
+        tipEl.hidden = !data.tip;
+      }
+    }
+
+    submitBtn?.addEventListener('click', async () => {
+      if (!answerEl) return;
+      const answer = answerEl.value.trim();
+      const wc = answer.split(/\s+/).filter(Boolean).length;
+
+      if (wc < 20)   { showError('Please write at least 20 words before submitting.'); return; }
+      if (wc > 1000) { showError('Your answer is over 1000 words. Please shorten it.'); return; }
+      if (getCount() >= LIMIT) { showError(`Daily limit of ${LIMIT} submissions reached. Try again tomorrow.`); return; }
+
+      if (feedbackEl) feedbackEl.hidden = true;
+      if (errorEl)    errorEl.hidden = true;
+      if (loadingEl)  loadingEl.hidden = false;
+      (submitBtn as HTMLButtonElement).disabled = true;
+
+      try {
+        const res = await fetch(AI_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            answer,
+            questionText: `Evaluate the adaptive significance of homing behaviour in long-lived seabirds (tītī or toroa). Explain two proposed cellular mechanisms of magnetoreception (magnetite hypothesis and cryptochrome/radical pair hypothesis) and evaluate the evidence for each. Using a cost-benefit framework, analyse why homing to a specific breeding site is adaptive. Explain how redundancy in navigation systems could have evolved through natural selection.`,
+            keyPoints: `Biology Level 3 AS 91603 — Homing & Navigation. Scholarship-level marking.
+
+ACHIEVED (A):
+- Defines homing as return to a specific home location
+- Names at least two navigation cues (magnetic + one other)
+- States an adaptive advantage of homing (e.g., familiarity, local adaptation, mate fidelity)
+- Mentions that birds use magnetoreception
+
+MERIT (M):
+- Explains HOW at least one magnetoreception mechanism works (magnetite OR cryptochrome)
+- Explains the cost-benefit framework: identifies specific costs of homing (energy, risk) and benefits (breeding success, familiarity) and concludes why benefits outweigh costs for long-lived species
+- Explains why multiple navigation cues are advantageous (redundancy concept applied)
+
+EXCELLENCE (E):
+- Explains BOTH magnetite and radical pair/cryptochrome mechanisms in mechanistic detail
+- Evaluates evidence for each: magnetite (found in pigeon beaks, trout olfactory tissue; disruption of beak magnetite impairs navigation; limitation: saturating magnet should affect both compass and map functions equally) vs cryptochrome (light-dependent compass, robins lose compass in RF fields, CRY4 expressed in retina asymmetrically; limitation: CRY also involved in circadian rhythm, hard to isolate compass function)
+- Links redundancy to evolutionary logic: reduction in probability of total navigational failure; each backup system increases survival in adverse conditions
+
+SCHOLARSHIP (S):
+- Integrates molecular biology, evolutionary biology, and ecological cost-benefit analysis into a coherent argument
+- Critically evaluates the evidence for BOTH mechanisms, noting the limitations and contradictions
+- Discusses natural selection acting on heritable variation in navigation: individuals with backup navigation systems survive adverse conditions (magnetic anomalies, cloud cover) at higher rates; this variation is heritable; over generations, redundant systems accumulate in the population
+- Discusses homing vs dispersal as a genuine trade-off (not just 'homing is better') — dispersal is adaptive when habitat quality is declining; homing is adaptive for long-lived species at stable, proven sites
+- Uses NZ-specific examples (tītī, toroa, Bonadonna et al. 2005) appropriately
+- Demonstrates independent thinking, linking across topics`,
+            level: 3,
+            approach: 'Biology',
+            skill: 'evaluate'
+          })
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: 'Unknown error' }));
+          throw new Error(err.error || `Server error (${res.status})`);
+        }
+
+        const data = await res.json();
+        bump();
+        displayFeedback(data);
+
+      } catch (e: any) {
+        showError(e.message || 'Failed to connect to the AI marker. Please try again later.');
+      } finally {
+        if (loadingEl) loadingEl.hidden = true;
+        (submitBtn as HTMLButtonElement).disabled = false;
+      }
+    });
+  })();
+</script>
 </BaseLayout>
 
 
@@ -1906,6 +3204,388 @@ const base = import.meta.env.BASE_URL;
   .week-sidebar .sidebar-card:nth-child(2) { transition-delay: 0.15s; }
   .week-sidebar .sidebar-card:nth-child(3) { transition-delay: 0.2s; }
   .week-sidebar .sidebar-card:nth-child(4) { transition-delay: 0.25s; }
+  /* ── Lesson 2: Question Cards (Week 4 pattern) ──────────────────────────── */
+
+  .student-name-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .student-name-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .text-input {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .text-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+  }
+
+  /* Question sections */
+  .question-section {
+    margin-top: var(--space-7);
+  }
+
+  .question-section__title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    color: var(--accent);
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--accent);
+    opacity: 0.9;
+  }
+
+  /* Question cards */
+  .question-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+    transition: border-color var(--transition-fast);
+  }
+
+  .question-card:focus-within {
+    border-color: var(--accent);
+  }
+
+  .question-card--scholarship {
+    border-left: 3px solid var(--fluoro-pink);
+  }
+
+  .question-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .question-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    color: var(--surface-0);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-display);
+    flex-shrink: 0;
+  }
+
+  /* Additional badge types */
+  .question-type-badge--short {
+    background: rgba(0, 200, 255, 0.1);
+    color: var(--fluoro-cyan);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  .question-type-badge--multi {
+    background: rgba(255, 100, 150, 0.1);
+    color: var(--fluoro-pink);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  .question-type-badge--schol {
+    background: rgba(255, 180, 0, 0.12);
+    color: #fbbf24;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+
+  /* Sub-questions */
+  .sub-question {
+    margin-top: var(--space-4);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--border-subtle);
+  }
+
+  .sub-label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+    font-family: var(--font-display);
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+  /* Answer textarea size variants */
+  .answer-input--short  { min-height: 70px;  }
+  .answer-input--med    { min-height: 100px; }
+  .answer-input--xl     { min-height: 180px; }
+
+  /* Export actions */
+  .export-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+  }
+
+  .export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .export-btn--primary {
+    background: var(--accent);
+    color: var(--surface-0);
+  }
+
+  .export-btn--primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .export-btn--secondary {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .export-btn--secondary:hover {
+    background: var(--surface-3);
+    border-color: var(--border-default);
+  }
+
+  .copy-feedback {
+    font-size: var(--text-sm);
+    color: var(--accent);
+    font-weight: var(--weight-medium);
+    animation: fadeInOut 2s ease;
+  }
+
+  /* ── Compass Rose Diagrams ──────────────────────────────────────────────── */
+
+  .compass-svg {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .diagram-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+
+  .diagram-container {
+    text-align: center;
+  }
+
+  .diagram-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+    line-height: var(--leading-snug);
+  }
+
+  .diagram-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    margin: var(--space-3) 0 var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .diagram-key__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  /* ── Comparison Table ───────────────────────────────────────────────────── */
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin: var(--space-4) 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    background: var(--surface-0);
+  }
+
+  .table-caption {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--border-subtle);
+    caption-side: top;
+  }
+
+  .table-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .key-chip {
+    padding: 1px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: 10px;
+    font-family: var(--font-mono);
+  }
+
+  .key-primary   { background: rgba(0,255,136,0.1);  color: var(--green-vivid); }
+  .key-secondary { background: rgba(0,200,255,0.1);  color: var(--fluoro-cyan); }
+  .key-unknown   { background: rgba(251,191,36,0.1); color: #fbbf24; }
+  .key-none      { background: rgba(148,163,184,0.1); color: var(--text-muted); }
+
+  .comparison-table th {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+
+  .comparison-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+    line-height: var(--leading-relaxed);
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table tr:hover td {
+    background: var(--surface-1);
+  }
+
+  .species-cell {
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    min-width: 160px;
+  }
+
+  .species-common {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-weight: var(--weight-normal);
+    margin-top: 2px;
+  }
+
+  .nav-primary   { color: var(--green-vivid); font-weight: var(--weight-bold); }
+  .nav-secondary { color: var(--fluoro-cyan); }
+  .nav-unknown   { color: #fbbf24; }
+  .nav-none      { color: var(--text-muted); }
+  .nav-note      { color: var(--text-muted); font-size: var(--text-xs); }
+
+  .table-sources {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    padding: var(--space-2) var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+    background: var(--surface-1);
+    font-style: italic;
+  }
+
+  /* ── Model Answers ──────────────────────────────────────────────────────── */
+
+  .model-grade-section {
+    margin-bottom: var(--space-4);
+  }
+
+  .model-grade-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
+    padding: 2px var(--space-3);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+  }
+
+  .model-grade-label--achieved    { background: rgba(0,200,255,0.12);  color: var(--fluoro-cyan); }
+  .model-grade-label--merit       { background: rgba(0,255,136,0.12);  color: var(--green-vivid); }
+  .model-grade-label--excellence  { background: rgba(200,100,255,0.12); color: var(--purple-light, #c084fc); }
+  .model-grade-label--scholarship { background: rgba(255,180,0,0.12);  color: #fbbf24; }
+
+  /* Print styles for lesson 2 */
+  @media print {
+    .question-card--scholarship { border-left: 2px solid #333 !important; }
+    .comparison-table-wrap { border: 1px solid #ccc !important; }
+    .comparison-table th { background: #f0f0f0 !important; color: #111 !important; }
+    .nav-primary, .nav-secondary, .nav-unknown, .nav-none { color: #111 !important; }
+    #lesson-2 .export-actions { display: none !important; }
+  }
 </style>
 
 
