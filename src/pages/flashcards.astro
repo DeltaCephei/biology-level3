@@ -6,7 +6,7 @@
    ========================================================================== */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Flashcards — Dr Eliot's Level 3 Biology">
@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
     <!-- Header -->
     <header class="fc-header fade-in-up">
       <div class="fc-header__meta">
-        <a href={base} class="back-link" id="fc-back-link">
+        <a href={base || "/"} class="back-link" id="fc-back-link">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>

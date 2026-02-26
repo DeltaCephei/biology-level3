@@ -5,7 +5,7 @@
    ========================================================================== */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Quiz — Dr Eliot's Level 3 Biology">
@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL;
     <!-- Header -->
     <header class="quiz-header fade-in-up">
       <div class="quiz-header__meta">
-        <a href={base} class="back-link">
+        <a href={base || "/"} class="back-link">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -166,7 +166,7 @@ const base = import.meta.env.BASE_URL;
 
       <div class="results-actions fade-in-up">
         <button class="nav-btn nav-btn--primary" id="btn-retry">Try Again</button>
-        <a href={base} class="nav-btn">Back to Dashboard</a>
+        <a href={base || "/"} class="nav-btn">Back to Dashboard</a>
       </div>
     </div>
 

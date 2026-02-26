@@ -21,7 +21,7 @@
  * All HTML, CSS, and JS in one file — no external dependencies.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout

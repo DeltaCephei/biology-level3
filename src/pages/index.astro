@@ -61,7 +61,7 @@ const standards = [
 ];
 
 /* Base URL for prefixing internal links */
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /* Week numbers 1–40 for the browse grid */
 const totalWeeks = 40;

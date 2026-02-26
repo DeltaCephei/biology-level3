@@ -63,7 +63,7 @@ const standardData = {
   },
 };
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { code } = Astro.params;
 const data = standardData[code!];
 ---

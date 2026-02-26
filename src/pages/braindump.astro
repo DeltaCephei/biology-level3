@@ -4,7 +4,7 @@
    ========================================================================== */
 
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Brain Dump — Dr Eliot's Level 3 Biology">
@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
     </div>
     <h1>Brain Dump</h1>
     <p>Free-form retrieval practice with guided prompts for each topic is coming soon.</p>
-    <a href={base} class="coming-soon__link">
+    <a href={base || "/"} class="coming-soon__link">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>

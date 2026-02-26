@@ -9,7 +9,7 @@
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /* --------------------------------------------------------------------------
    Static Path Generation
@@ -107,7 +107,7 @@ const term = data.term;
          ==================================================================== -->
     <header class="week-header fade-in-up">
       <div class="week-header__meta">
-        <a href={base} class="back-link">
+        <a href={base || "/"} class="back-link">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -252,7 +252,7 @@ const term = data.term;
         </div>
         <h2>Content Coming Soon</h2>
         <p>Week {weekNum} content is being prepared. Check back later.</p>
-        <a href={base} class="coming-soon__link">
+        <a href={base || "/"} class="coming-soon__link">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>

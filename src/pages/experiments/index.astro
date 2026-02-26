@@ -5,7 +5,7 @@
  * more experiments will be added over time.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
 
     <!-- Page header -->
     <header class="page-header">
-      <a href={base} class="back-link">← Back to Dashboard</a>
+      <a href={base || "/"} class="back-link">← Back to Dashboard</a>
       <h1 class="page-title">Experiments</h1>
       <p class="page-desc">
         Interactive simulations that let you run virtual versions of real biology practicals.
