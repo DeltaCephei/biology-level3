@@ -2019,6 +2019,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <!-- Kuaka -->
             <div class="showcase-card fade-in-up">
+              <div class="showcase-card__image-wrap">
+                <img src={`${base}/images/species/kuaka.jpg`} alt="Bar-tailed godwit (kuaka) in New Zealand" class="showcase-card__img" loading="lazy" />
+                <a href="https://www.inaturalist.org/observations/214329657" target="_blank" rel="noopener" class="showcase-card__attribution">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v1M12 12v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Photo: caiden_b · iNaturalist (CC BY-NC)
+                </a>
+              </div>
               <div class="showcase-card__header">
                 <div class="showcase-card__titles">
                   <h4>Kuaka <span class="showcase-card__latin">(Bar-tailed Godwit)</span></h4>
@@ -2057,6 +2064,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <!-- Tuna / Longfin eel -->
             <div class="showcase-card fade-in-up">
+              <div class="showcase-card__image-wrap">
+                <img src={`${base}/images/species/longfin-eel-inaturalist.jpg`} alt="Longfin eel (tuna) in a New Zealand stream" class="showcase-card__img" loading="lazy" />
+                <a href="https://www.inaturalist.org/observations/47815027" target="_blank" rel="noopener" class="showcase-card__attribution">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v1M12 12v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Photo: bryan-maltais · iNaturalist (CC BY-NC)
+                </a>
+              </div>
               <div class="showcase-card__header">
                 <div class="showcase-card__titles">
                   <h4>Tuna <span class="showcase-card__latin">(Longfin Eel)</span></h4>
@@ -2096,6 +2110,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <!-- Tītī -->
             <div class="showcase-card fade-in-up">
+              <div class="showcase-card__image-wrap">
+                <img src={`${base}/images/species/titi.jpg`} alt="Sooty shearwater (tītī) in flight, New Zealand" class="showcase-card__img" loading="lazy" />
+                <a href="https://www.inaturalist.org/observations/163277937" target="_blank" rel="noopener" class="showcase-card__attribution">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v1M12 12v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Photo: lloyd_esler · iNaturalist (CC BY-NC)
+                </a>
+              </div>
               <div class="showcase-card__header">
                 <div class="showcase-card__titles">
                   <h4>Tītī <span class="showcase-card__latin">(Sooty Shearwater)</span></h4>
@@ -2134,6 +2155,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <!-- Tohorā / Humpback whale -->
             <div class="showcase-card fade-in-up">
+              <div class="showcase-card__image-wrap">
+                <img src={`${base}/images/species/humpback-whale.jpg`} alt="Humpback whale (tohorā) breaching off New Zealand coast" class="showcase-card__img" loading="lazy" />
+                <a href="https://www.inaturalist.org/observations/323560486" target="_blank" rel="noopener" class="showcase-card__attribution">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v1M12 12v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Photo: lbennett-jones · iNaturalist (CC BY-NC)
+                </a>
+              </div>
               <div class="showcase-card__header">
                 <div class="showcase-card__titles">
                   <h4>Tohorā <span class="showcase-card__latin">(Humpback Whale)</span></h4>
@@ -2173,6 +2201,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <!-- Pekapeka -->
             <div class="showcase-card fade-in-up">
+              <div class="showcase-card__image-wrap">
+                <img src={`${base}/images/species/short-tailed-bat.jpg`} alt="Short-tailed bat (pekapeka) in a New Zealand forest" class="showcase-card__img" loading="lazy" />
+                <a href="https://www.inaturalist.org/observations/102521672" target="_blank" rel="noopener" class="showcase-card__attribution">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v1M12 12v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Photo: chrise · iNaturalist (CC BY-NC)
+                </a>
+              </div>
               <div class="showcase-card__header">
                 <div class="showcase-card__titles">
                   <h4>Pekapeka <span class="showcase-card__latin">(Short-tailed Bat)</span></h4>
@@ -4387,6 +4422,41 @@ SCHOLARSHIP (S):
     border-radius: var(--radius-lg);
     overflow: hidden;
   }
+  /* Showcase card image */
+  .showcase-card__image-wrap {
+    position: relative;
+    overflow: hidden;
+    max-height: 260px;
+  }
+  .showcase-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .showcase-card__attribution {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    background: rgba(0, 0, 0, 0.65);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.7rem;
+    text-decoration: none;
+    border-top-left-radius: var(--radius-md);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .showcase-card__attribution:hover {
+    background: rgba(0, 0, 0, 0.85);
+    color: var(--fluoro-cyan);
+  }
+  .showcase-card__attribution svg {
+    flex-shrink: 0;
+  }
+
   .showcase-card__header {
     display: flex;
     align-items: center;
