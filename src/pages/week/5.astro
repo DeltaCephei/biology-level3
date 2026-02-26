@@ -51,6 +51,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <a href="#quiz" class="week-nav__link">Quiz</a>
       <a href="#exam-question" class="week-nav__link">Exam Question</a>
       <a href="#lesson-2" class="week-nav__link">Lesson 2: Homing</a>
+      <a href="#lesson-3" class="week-nav__link">Lesson 3: Migration</a>
     </nav>
 
 
@@ -1726,6 +1727,635 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 </section><!-- /lesson-2 -->
 
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 3: Introduction to Migration
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up">
+          <h2>Lesson 3: Introduction to Migration</h2>
+
+          <p class="section-intro">
+            In Lessons 1 and 2 you explored how animals communicate information (the waggle dance)
+            and navigate back to a home location (homing). Now we zoom out to the biggest journeys
+            in the animal kingdom: <strong>migration</strong> — the large-scale, periodic movement
+            of animals between distinct habitats.
+          </p>
+
+
+          <!-- ── What is Migration? ── -->
+          <h3>What is Migration?</h3>
+
+          <p>
+            <strong>Migration</strong> is a <strong>seasonal or periodic movement</strong> of animals
+            from one habitat to another and back again. It typically involves:
+          </p>
+
+          <ul class="feature-list">
+            <li><strong>Large-scale movement</strong> — distances of hundreds to thousands of kilometres</li>
+            <li><strong>Predictable timing</strong> — usually linked to seasons, day length, or resource availability</li>
+            <li><strong>Return journey</strong> — the animal moves to a new area and later returns to the original one</li>
+            <li><strong>Population-level pattern</strong> — most or all individuals of a population migrate, not just a few</li>
+          </ul>
+
+          <div class="key-concept">
+            <h4>Migration vs Dispersal vs Nomadism</h4>
+            <p>
+              Students often confuse migration with other types of animal movement. Here are the
+              key distinctions:
+            </p>
+            <div class="migration-compare-grid">
+              <div class="migration-compare-card">
+                <h5>Migration</h5>
+                <p>
+                  <strong>Periodic, return</strong> movement between two defined areas. The same
+                  individuals (or their offspring) travel back and forth on a predictable schedule.
+                </p>
+                <div class="concept-example">
+                  <span class="example-label">Example</span>
+                  Kuaka (bar-tailed godwit) fly from NZ to Alaska each year to breed, then return.
+                </div>
+              </div>
+              <div class="migration-compare-card">
+                <h5>Dispersal</h5>
+                <p>
+                  <strong>One-way</strong> movement away from the birthplace. The animal does not
+                  return. This spreads individuals across the landscape and reduces inbreeding.
+                </p>
+                <div class="concept-example">
+                  <span class="example-label">Example</span>
+                  Juvenile kākā leaving their natal forest to establish territories elsewhere.
+                </div>
+              </div>
+              <div class="migration-compare-card">
+                <h5>Nomadism</h5>
+                <p>
+                  <strong>Irregular, unpredictable</strong> movement following patchy resources.
+                  No fixed route or schedule — the animal goes wherever conditions are best.
+                </p>
+                <div class="concept-example">
+                  <span class="example-label">Example</span>
+                  Tauhou (silvereye/waxeye) flocks shifting between areas in response to seasonal fruit and nectar availability.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              A common error is describing any long-distance movement as "migration". In your exam
+              answers, always specify: <em>periodic return movement between two defined habitats</em>.
+              Dispersal is one-way; nomadism is unpredictable. Migration is both <strong>predictable</strong>
+              and <strong>cyclical</strong>.
+            </p>
+          </div>
+
+
+          <!-- ── Why Migrate? Cost–Benefit ── -->
+          <h3>Why Migrate? A Cost–Benefit Framework</h3>
+
+          <p>
+            Migration is <strong>energetically expensive and dangerous</strong>. An animal that
+            migrates must burn enormous energy reserves, face predators along the route, and risk
+            navigation errors. So why do it?
+          </p>
+
+          <p>
+            The answer lies in a <strong>cost–benefit analysis</strong>. Migration evolves when
+            the benefits of moving outweigh the costs of staying:
+          </p>
+
+          <div class="cost-benefit-grid">
+            <div class="cb-card cb-card--benefit">
+              <div class="cb-card__icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.3"/>
+                  <path d="M10 16l4 4 8-8" stroke="var(--green-vivid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Benefits</h4>
+              <ul>
+                <li><strong>Access to food</strong> — exploit seasonal abundance (e.g. Arctic summer insect blooms)</li>
+                <li><strong>Breeding habitat</strong> — reach sites with fewer predators or competitors</li>
+                <li><strong>Favourable climate</strong> — avoid harsh winters or droughts</li>
+                <li><strong>Reduced parasite load</strong> — leaving an area can break host–parasite cycles</li>
+              </ul>
+            </div>
+            <div class="cb-card cb-card--cost">
+              <div class="cb-card__icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.3"/>
+                  <path d="M11 11l10 10M21 11l-10 10" stroke="var(--fluoro-pink)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Costs</h4>
+              <ul>
+                <li><strong>Energy expenditure</strong> — massive fat reserves needed; risk of starvation en route</li>
+                <li><strong>Predation risk</strong> — exposed during transit, unfamiliar stopover sites</li>
+                <li><strong>Navigation errors</strong> — storms, wind drift, or disrupted cues can be fatal</li>
+                <li><strong>Missed reproduction</strong> — late arrival at breeding grounds reduces mating success</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="summary-box">
+            <h4>The Key Principle</h4>
+            <p>
+              Migration is maintained by natural selection because, <strong>on average</strong>,
+              individuals that migrate leave more offspring than those that don't. We'll explore the
+              physiological triggers and evolutionary pressures driving migration in more detail in
+              <strong>Week 6</strong>.
+            </p>
+          </div>
+
+
+          <!-- ── Types of Migration ── -->
+          <h3>Types of Migration</h3>
+
+          <p>
+            Not all migration looks the same. Animals migrate across different spatial scales,
+            timescales, and in response to different cues. Here are the main categories you need
+            to know:
+          </p>
+
+          <div class="migration-types-grid">
+
+            <!-- Seasonal / Latitudinal -->
+            <div class="migration-type-card">
+              <div class="migration-type-card__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="18" stroke="var(--fluoro-cyan)" stroke-width="1" fill="none" opacity="0.2"/>
+                  <path d="M24 6v36" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-dasharray="2 2" opacity="0.3"/>
+                  <path d="M12 14l12-2 12 2" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.3"/>
+                  <path d="M12 34l12 2 12-2" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.3"/>
+                  <path d="M24 12l-1 4 2 0z" fill="var(--fluoro-cyan)" opacity="0.6"/>
+                  <path d="M24 36l-1-4 2 0z" fill="var(--fluoro-cyan)" opacity="0.6"/>
+                </svg>
+              </div>
+              <h4>Seasonal / Latitudinal</h4>
+              <p>
+                North–south (or south–north) movements tracking the seasons. Animals breed at high
+                latitudes in summer and overwinter at lower latitudes.
+              </p>
+              <div class="concept-example">
+                <span class="example-label">NZ Example</span>
+                <strong>Kuaka</strong> (bar-tailed godwit) — breeds in Alaska, non-breeding season in NZ.
+                The longest non-stop flight of any bird: ~12,000 km.
+              </div>
+            </div>
+
+            <!-- Breeding / Reproductive -->
+            <div class="migration-type-card">
+              <div class="migration-type-card__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="18" stroke="var(--green-vivid)" stroke-width="1" fill="none" opacity="0.2"/>
+                  <circle cx="24" cy="18" r="5" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                  <circle cx="18" cy="30" r="3" stroke="var(--green-vivid)" stroke-width="1" fill="none" opacity="0.4"/>
+                  <circle cx="30" cy="30" r="3" stroke="var(--green-vivid)" stroke-width="1" fill="none" opacity="0.4"/>
+                  <path d="M21 22l-3 5M27 22l3 5" stroke="var(--green-vivid)" stroke-width="1" opacity="0.3"/>
+                </svg>
+              </div>
+              <h4>Breeding / Reproductive</h4>
+              <p>
+                Movement to a specific site purely for reproduction. The animal feeds in one habitat
+                but must travel — sometimes vast distances — to a separate breeding ground.
+              </p>
+              <div class="concept-example">
+                <span class="example-label">NZ Example</span>
+                <strong>Tuna</strong> (longfin eel) — you met this species in
+                <a href="#" class="inline-link" onclick="event.preventDefault()">Week 3</a>.
+                Adults migrate thousands of km to the tropical Pacific to spawn — a one-way journey.
+                This is <strong>catadromous</strong> migration (freshwater → sea to breed).
+              </div>
+            </div>
+
+            <!-- Altitudinal -->
+            <div class="migration-type-card">
+              <div class="migration-type-card__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <path d="M8 40l16-28 16 28z" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" opacity="0.2"/>
+                  <path d="M14 34l10-18 10 18" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" opacity="0.15"/>
+                  <circle cx="20" cy="22" r="2" fill="var(--fluoro-pink)" opacity="0.5"/>
+                  <path d="M20 22l-6 10" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.4"/>
+                  <circle cx="14" cy="32" r="2" fill="var(--fluoro-pink)" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Altitudinal</h4>
+              <p>
+                Up and down mountains with the seasons. Animals move to higher elevations in summer
+                (more food, fewer parasites) and descend to sheltered valleys in winter.
+              </p>
+              <div class="concept-example">
+                <span class="example-label">NZ Example</span>
+                <strong>Kea</strong> (<em>Nestor notabilis</em>) — NZ's alpine parrot moves between
+                high-altitude beech forest and subalpine zones in summer, then descends to lower
+                valleys and even coastal areas in harsh winters.
+              </div>
+            </div>
+
+            <!-- Diel Vertical -->
+            <div class="migration-type-card">
+              <div class="migration-type-card__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <rect x="8" y="8" width="32" height="32" rx="4" stroke="var(--accent)" stroke-width="1" fill="none" opacity="0.2"/>
+                  <line x1="8" y1="24" x2="40" y2="24" stroke="var(--accent)" stroke-width="0.5" opacity="0.2"/>
+                  <circle cx="34" cy="12" r="4" fill="none" stroke="rgba(255,200,50,0.5)" stroke-width="1"/>
+                  <circle cx="14" cy="36" r="3" fill="none" stroke="var(--text-muted)" stroke-width="1" opacity="0.3"/>
+                  <path d="M24 14v20" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.4"/>
+                  <path d="M22 32l2 4 2-4" fill="var(--accent)" opacity="0.4"/>
+                  <path d="M22 18l2-4 2 4" fill="var(--accent)" opacity="0.4"/>
+                </svg>
+              </div>
+              <h4>Diel Vertical Migration</h4>
+              <p>
+                A daily cycle: organisms rise toward the surface at night (to feed in safety) and
+                sink to deeper, darker water during the day (to avoid visual predators). This is
+                the <strong>largest mass movement of animals on Earth</strong> — every single day.
+              </p>
+              <div class="concept-example">
+                <span class="example-label">NZ Example</span>
+                <strong>Lanternfish</strong> (Myctophidae) and krill in NZ's sub-Antarctic waters
+                migrate 200–1000 m vertically each day. They are a critical food source for
+                hoki, squid, and seabirds.
+              </div>
+            </div>
+
+            <!-- Irruptive -->
+            <div class="migration-type-card">
+              <div class="migration-type-card__icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="18" stroke="var(--fluoro-cyan)" stroke-width="1" fill="none" opacity="0.2"/>
+                  <path d="M24 24l-8-12M24 24l10-8M24 24l8 10M24 24l-12 6M24 24l-2 14M24 24l14-2" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+                  <circle cx="24" cy="24" r="3" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                </svg>
+              </div>
+              <h4>Irruptive</h4>
+              <p>
+                <strong>Irregular, unpredictable</strong> mass movements triggered by resource
+                failure (e.g. mast year followed by a crash). Not every year — only when conditions
+                force it.
+              </p>
+              <div class="concept-example">
+                <span class="example-label">NZ Example</span>
+                <strong>Tauhou</strong> (silvereye/waxeye) — large flocks move unpredictably
+                between regions when nectar and fruit become scarce. Irruptions across Cook Strait
+                from the South Island to the North Island were first recorded in the 1850s.
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ── NZ Migration Showcase ── -->
+          <h3>Aotearoa Migration Showcase</h3>
+
+          <p>
+            New Zealand's geographic isolation in the South Pacific, surrounded by vast oceans, makes
+            it a remarkable case study for migration. Many of our most iconic species undertake epic
+            journeys. Here are five you should know:
+          </p>
+
+          <div class="migration-showcase">
+
+            <!-- Kuaka -->
+            <div class="showcase-card fade-in-up">
+              <div class="showcase-card__header">
+                <div class="showcase-card__titles">
+                  <h4>Kuaka <span class="showcase-card__latin">(Bar-tailed Godwit)</span></h4>
+                  <span class="showcase-card__scientific"><em>Limosa lapponica baueri</em></span>
+                </div>
+                <span class="migration-badge migration-badge--seasonal">Seasonal</span>
+              </div>
+              <div class="showcase-card__body">
+                <p>
+                  The undisputed champion of non-stop flight. Each autumn, kuaka leave NZ estuaries
+                  and fly <strong>~12,000 km non-stop to Alaska</strong> — crossing the Pacific
+                  without food, water, or rest. The return journey in spring takes a different route
+                  via the Yellow Sea (China/Korea) to refuel.
+                </p>
+                <div class="showcase-card__stats">
+                  <div class="stat">
+                    <span class="stat__value">~12,000 km</span>
+                    <span class="stat__label">Non-stop flight</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">8–9 days</span>
+                    <span class="stat__label">Airborne</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Sun + magnetic</span>
+                    <span class="stat__label">Navigation cues</span>
+                  </div>
+                </div>
+                <div class="showcase-card__detail">
+                  <strong>Did you know?</strong> Satellite-tracked godwit "E7" flew 11,690 km
+                  from Alaska to NZ in 2007 — the longest recorded non-stop flight of any land bird.
+                  She lost half her body mass during the journey.
+                </div>
+              </div>
+            </div>
+
+            <!-- Tuna / Longfin eel -->
+            <div class="showcase-card fade-in-up">
+              <div class="showcase-card__header">
+                <div class="showcase-card__titles">
+                  <h4>Tuna <span class="showcase-card__latin">(Longfin Eel)</span></h4>
+                  <span class="showcase-card__scientific"><em>Anguilla dieffenbachii</em></span>
+                </div>
+                <span class="migration-badge migration-badge--breeding">Breeding</span>
+              </div>
+              <div class="showcase-card__body">
+                <p>
+                  You first met the longfin eel in <strong>Week 3</strong>, where we studied its
+                  positive rheotaxis as a glass eel migrating upstream. The full life cycle is
+                  extraordinary: after <strong>20–100+ years</strong> in freshwater, adults undergo
+                  dramatic physical changes (enlarged eyes, silvered skin) and migrate thousands of
+                  kilometres to deep oceanic trenches near Tonga to spawn — and die.
+                </p>
+                <div class="showcase-card__stats">
+                  <div class="stat">
+                    <span class="stat__value">~3,000 km</span>
+                    <span class="stat__label">To spawning grounds</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">One-way trip</span>
+                    <span class="stat__label">Adults die after spawning</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Olfactory + rheotaxis</span>
+                    <span class="stat__label">Navigation cues</span>
+                  </div>
+                </div>
+                <div class="showcase-card__detail">
+                  <strong>Catadromous migration:</strong> freshwater → ocean to breed. The reverse
+                  of salmon, which are <strong>anadromous</strong> (ocean → freshwater to breed).
+                  The longfin eel is endemic to NZ and classified as <strong>At Risk — Declining</strong>.
+                </div>
+              </div>
+            </div>
+
+            <!-- Tītī -->
+            <div class="showcase-card fade-in-up">
+              <div class="showcase-card__header">
+                <div class="showcase-card__titles">
+                  <h4>Tītī <span class="showcase-card__latin">(Sooty Shearwater)</span></h4>
+                  <span class="showcase-card__scientific"><em>Ardenna grisea</em></span>
+                </div>
+                <span class="migration-badge migration-badge--seasonal">Seasonal</span>
+              </div>
+              <div class="showcase-card__body">
+                <p>
+                  In <strong>Lesson 2</strong> you studied the tītī's navigation systems — celestial,
+                  magnetic, and olfactory cues working together. Their annual migration is one of the
+                  longest of any bird: a <strong>figure-8 loop around the entire Pacific Ocean</strong>,
+                  from NZ breeding colonies to the North Pacific (Japan, Alaska, California) and back.
+                </p>
+                <div class="showcase-card__stats">
+                  <div class="stat">
+                    <span class="stat__value">~65,000 km</span>
+                    <span class="stat__label">Annual circuit</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">200 days</span>
+                    <span class="stat__label">At sea</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Multi-cue</span>
+                    <span class="stat__label">Celestial + magnetic + olfactory</span>
+                  </div>
+                </div>
+                <div class="showcase-card__detail">
+                  <strong>Mātauranga Māori:</strong> Tītī are of immense cultural significance to
+                  Ngāi Tahu. The muttonbirding season (April–May) on the Tītī Islands near Rakiura
+                  has been practised for centuries, governed by tikanga that ensures sustainable harvest.
+                </div>
+              </div>
+            </div>
+
+            <!-- Tohorā / Humpback whale -->
+            <div class="showcase-card fade-in-up">
+              <div class="showcase-card__header">
+                <div class="showcase-card__titles">
+                  <h4>Tohorā <span class="showcase-card__latin">(Humpback Whale)</span></h4>
+                  <span class="showcase-card__scientific"><em>Megaptera novaeangliae</em></span>
+                </div>
+                <span class="migration-badge migration-badge--seasonal">Seasonal</span>
+              </div>
+              <div class="showcase-card__body">
+                <p>
+                  Humpback whales make one of the longest migrations of any mammal. The Oceania
+                  population feeds in Antarctic waters during the austral summer, then migrates
+                  north to tropical breeding grounds near Tonga, New Caledonia, and the Cook Islands.
+                  They pass through NZ waters — Kaikōura is a key observation point.
+                </p>
+                <div class="showcase-card__stats">
+                  <div class="stat">
+                    <span class="stat__value">~5,000 km</span>
+                    <span class="stat__label">Each way</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Fasts during migration</span>
+                    <span class="stat__label">Lives off blubber reserves</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Magnetic + acoustic</span>
+                    <span class="stat__label">Navigation cues</span>
+                  </div>
+                </div>
+                <div class="showcase-card__detail">
+                  <strong>Why fast?</strong> Humpbacks feed almost exclusively on Antarctic krill
+                  and small fish. The tropical breeding grounds have almost no food — but the warm,
+                  calm waters are safer for calves. The cost of not eating for months is outweighed
+                  by calf survival.
+                </div>
+              </div>
+            </div>
+
+            <!-- Pekapeka -->
+            <div class="showcase-card fade-in-up">
+              <div class="showcase-card__header">
+                <div class="showcase-card__titles">
+                  <h4>Pekapeka <span class="showcase-card__latin">(Short-tailed Bat)</span></h4>
+                  <span class="showcase-card__scientific"><em>Mystacina tuberculata</em></span>
+                </div>
+                <span class="migration-badge migration-badge--altitudinal">Altitudinal</span>
+              </div>
+              <div class="showcase-card__body">
+                <p>
+                  NZ's only surviving native land mammal. Pekapeka are unusual among bats —
+                  they spend significant time foraging on the forest floor. In the Eglinton Valley
+                  (Fiordland), populations show <strong>seasonal altitudinal movements</strong>,
+                  roosting at higher elevations in summer and retreating to lower, warmer valleys
+                  and using torpor to survive winter.
+                </p>
+                <div class="showcase-card__stats">
+                  <div class="stat">
+                    <span class="stat__value">Short range</span>
+                    <span class="stat__label">~10–50 km</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Torpor in winter</span>
+                    <span class="stat__label">Energy conservation</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat__value">Echolocation + olfactory</span>
+                    <span class="stat__label">Navigation cues</span>
+                  </div>
+                </div>
+                <div class="showcase-card__detail">
+                  <strong>Conservation:</strong> Pekapeka are classified as <strong>Nationally
+                  Vulnerable</strong>. Predation by introduced mammals (rats, stoats) is the main
+                  threat. DOC's predator control programmes in Fiordland and Pureora are critical
+                  to their survival.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ── Linking Back: Navigation in Migrants ── -->
+          <h3>Linking Back: Navigation Mechanisms in Migrants</h3>
+
+          <p>
+            In Weeks 4 and 5 you studied the navigation tools animals use: piloting, sun compass,
+            magnetic navigation, star compass, and olfactory cues. Migration is where all of these
+            systems come together. The table below links each NZ migrant to the navigation
+            mechanisms it relies on — notice how <strong>long-distance migrants use multiple,
+            redundant systems</strong> (a pattern you explored in the tītī experiment in Lesson 2).
+          </p>
+
+          <div class="table-wrapper">
+            <table class="nav-table">
+              <caption class="nav-table__caption">
+                Navigation mechanisms used by NZ migratory species
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Species</th>
+                  <th scope="col">Migration type</th>
+                  <th scope="col">Piloting</th>
+                  <th scope="col">Sun compass</th>
+                  <th scope="col">Magnetic</th>
+                  <th scope="col">Olfactory</th>
+                  <th scope="col">Other</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Kuaka</strong></td>
+                  <td>Seasonal</td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-note">Wind patterns</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tuna</strong></td>
+                  <td>Breeding</td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-unknown">?</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-note">Rheotaxis (Week 3)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tītī</strong></td>
+                  <td>Seasonal</td>
+                  <td><span class="nav-secondary">&#10003;</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-note">Star compass</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tohorā</strong></td>
+                  <td>Seasonal</td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-unknown">?</span></td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-note">Acoustic (song)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Pekapeka</strong></td>
+                  <td>Altitudinal</td>
+                  <td><span class="nav-primary">&#10003;&#10003;</span></td>
+                  <td><span class="nav-secondary">—</span></td>
+                  <td><span class="nav-unknown">?</span></td>
+                  <td><span class="nav-secondary">&#10003;</span></td>
+                  <td><span class="nav-note">Echolocation</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="summary-box">
+            <h4>Pattern to Notice</h4>
+            <p>
+              The longer the migration distance, the more navigation systems the animal tends to use.
+              Short-range migrants (pekapeka) rely mainly on piloting — familiar landmarks. Long-range
+              migrants (kuaka, tītī) use <strong>multiple independent compass systems</strong> as
+              backup. This redundancy is an <strong>adaptive advantage</strong> — if one cue is
+              unavailable (e.g. clouds blocking the sun), the animal can fall back on another.
+            </p>
+          </div>
+
+
+          <!-- ── Migration Quiz ── -->
+          <h3 id="migration-quiz-heading">Test Yourself: Migration</h3>
+
+          <div class="quiz-container" id="migration-quiz">
+            <div class="quiz-start" id="mig-quiz-start">
+              <p>6 questions on migration types, NZ examples, and navigation links.</p>
+              <button class="btn btn--primary" id="mig-quiz-start-btn">Start Quiz</button>
+            </div>
+
+            <div id="mig-quiz-active" hidden>
+              <div class="quiz-progress">
+                <span class="quiz-progress__text">Question <span id="mig-q-current">1</span> of <span id="mig-q-total">6</span></span>
+                <div class="quiz-progress__bar"><div class="quiz-progress__fill" id="mig-q-fill"></div></div>
+              </div>
+              <div id="mig-q-container"></div>
+              <button class="btn btn--primary" id="mig-q-next" hidden>Next Question</button>
+            </div>
+
+            <div id="mig-quiz-results" hidden>
+              <div class="quiz-results">
+                <div class="quiz-score-ring">
+                  <svg viewBox="0 0 100 100" class="score-svg">
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-subtle)" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--fluoro-cyan)" stroke-width="6"
+                      stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" id="mig-score-circle"
+                      transform="rotate(-90 50 50)"/>
+                  </svg>
+                  <span class="score-text" id="mig-score-text">0%</span>
+                </div>
+                <p class="score-label" id="mig-score-label"></p>
+                <button class="btn btn--primary" id="mig-quiz-restart-btn">Try Again</button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Looking Ahead ── -->
+          <div class="looking-ahead-box fade-in-up">
+            <h3>Looking Ahead: Week 6</h3>
+            <p>
+              This lesson gave you a broad overview of migration — what it is, why animals do it,
+              and the different types. In <strong>Week 6</strong> we'll go deeper:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Physiological triggers</strong> — how do animals "know" when to migrate? Hormones, photoperiod, and the role of the hypothalamus</li>
+              <li><strong>Preparation for migration</strong> — hyperphagia (pre-migratory fattening), flight muscle hypertrophy, and organ shrinkage</li>
+              <li><strong>Evolution of migration</strong> — how did migratory behaviour evolve? Partial migration as a window into the process</li>
+              <li><strong>Threats to migrants</strong> — climate change, habitat loss at stopover sites, and light pollution disrupting navigation</li>
+            </ul>
+          </div>
+
+        </section><!-- /lesson-3 -->
+
       </main>
 
 
@@ -1939,6 +2569,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="vocab-chip">tītī</div>
     <div class="vocab-chip">toroa</div>
     <div class="vocab-chip">Bonadonna et al.</div>
+  </div>
+</div>
+
+<div class="sidebar-card fade-in-up">
+  <h3>Lesson 3 Objectives</h3>
+  <ul class="objectives-list">
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Define migration and distinguish it from dispersal and nomadism</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Explain why migration evolves using a cost–benefit framework</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Classify migrations as seasonal, breeding, altitudinal, diel vertical, or irruptive</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Describe the migration patterns of at least four NZ species</span>
+    </li>
+    <li class="objective-item">
+      <span class="objective-checkbox" aria-hidden="true"></span>
+      <span>Link migration types to navigation mechanisms studied in Weeks 4–5</span>
+    </li>
+  </ul>
+</div>
+
+<div class="sidebar-card fade-in-up">
+  <h3>Migration Vocabulary</h3>
+  <div class="vocab-grid">
+    <div class="vocab-chip">migration</div>
+    <div class="vocab-chip">dispersal</div>
+    <div class="vocab-chip">nomadism</div>
+    <div class="vocab-chip">seasonal migration</div>
+    <div class="vocab-chip">latitudinal</div>
+    <div class="vocab-chip">altitudinal</div>
+    <div class="vocab-chip">diel vertical</div>
+    <div class="vocab-chip">irruptive</div>
+    <div class="vocab-chip">catadromous</div>
+    <div class="vocab-chip">anadromous</div>
+    <div class="vocab-chip">kuaka</div>
+    <div class="vocab-chip">tohorā</div>
+    <div class="vocab-chip">pekapeka</div>
+    <div class="vocab-chip">cost–benefit</div>
+    <div class="vocab-chip">redundancy</div>
   </div>
 </div>
 
@@ -3586,6 +4263,400 @@ SCHOLARSHIP (S):
     .nav-primary, .nav-secondary, .nav-unknown, .nav-none { color: #111 !important; }
     #lesson-2 .export-actions { display: none !important; }
   }
+
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     Lesson 3: Migration — Styles
+     ══════════════════════════════════════════════════════════════════════════ */
+
+  /* ── Migration vs Dispersal vs Nomadism comparison grid ── */
+  .migration-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  .migration-compare-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+  .migration-compare-card h5 {
+    color: var(--fluoro-cyan);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+  }
+  @media (max-width: 700px) {
+    .migration-compare-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Cost–Benefit grid ── */
+  .cost-benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
+  }
+  .cb-card {
+    background: var(--surface-raised);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    border: 1px solid var(--border-subtle);
+  }
+  .cb-card__icon {
+    margin-bottom: var(--space-3);
+  }
+  .cb-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-3);
+  }
+  .cb-card--benefit h4 { color: var(--green-vivid); }
+  .cb-card--cost h4 { color: var(--fluoro-pink); }
+  .cb-card--benefit { border-left: 3px solid var(--green-vivid); }
+  .cb-card--cost { border-left: 3px solid var(--fluoro-pink); }
+  .cb-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .cb-card li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .cb-card li:last-child { border-bottom: none; }
+  @media (max-width: 700px) {
+    .cost-benefit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Migration types grid ── */
+  .migration-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
+  }
+  .migration-type-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .migration-type-card:hover {
+    border-color: var(--fluoro-cyan);
+    transform: translateY(-2px);
+  }
+  .migration-type-card__icon {
+    margin-bottom: var(--space-3);
+  }
+  .migration-type-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+  .migration-type-card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+  }
+  .migration-type-card .concept-example {
+    font-size: 0.88rem;
+  }
+
+  /* ── NZ Migration Showcase cards ── */
+  .migration-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+  .showcase-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .showcase-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-overlay);
+  }
+  .showcase-card__titles h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .showcase-card__latin {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+  .showcase-card__scientific {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .showcase-card__body {
+    padding: var(--space-5);
+  }
+  .showcase-card__body > p {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+
+  /* Stats row */
+  .showcase-card__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .stat {
+    text-align: center;
+    padding: var(--space-3);
+    background: var(--surface-overlay);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+  .stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--fluoro-cyan);
+    margin-bottom: var(--space-1);
+  }
+  .stat__label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+  @media (max-width: 500px) {
+    .showcase-card__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Detail / Did you know */
+  .showcase-card__detail {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(0, 255, 136, 0.04);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  /* Migration type badges */
+  .migration-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .migration-badge--seasonal {
+    background: rgba(0, 200, 255, 0.12);
+    color: var(--fluoro-cyan);
+    border: 1px solid rgba(0, 200, 255, 0.25);
+  }
+  .migration-badge--breeding {
+    background: rgba(0, 255, 136, 0.12);
+    color: var(--green-vivid);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+  }
+  .migration-badge--altitudinal {
+    background: rgba(255, 100, 150, 0.12);
+    color: var(--fluoro-pink);
+    border: 1px solid rgba(255, 100, 150, 0.25);
+  }
+
+  /* ── Navigation summary table (Lesson 3) ── */
+  .nav-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .nav-table__caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding-bottom: var(--space-3);
+    text-align: left;
+  }
+  .nav-table th {
+    background: var(--surface-overlay);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: var(--space-3) var(--space-3);
+    text-align: left;
+    border-bottom: 2px solid var(--border-default);
+  }
+  .nav-table td {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .nav-table tbody tr:hover {
+    background: var(--surface-overlay);
+  }
+
+  /* ── Looking Ahead box ── */
+  .looking-ahead-box {
+    background: linear-gradient(135deg, rgba(0, 200, 255, 0.06), rgba(0, 255, 136, 0.04));
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .looking-ahead-box h3 {
+    font-family: var(--font-display);
+    color: var(--fluoro-cyan);
+    margin-bottom: var(--space-3);
+  }
+  .looking-ahead-box .feature-list li {
+    font-size: 0.92rem;
+  }
+
+  /* ── Inline link styling ── */
+  .inline-link {
+    color: var(--fluoro-cyan);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 200, 255, 0.3);
+    text-underline-offset: 2px;
+  }
+  .inline-link:hover {
+    text-decoration-color: var(--fluoro-cyan);
+  }
+
+  /* ── Migration quiz reuses existing quiz styles but scoped IDs ── */
+  #migration-quiz .quiz-start {
+    text-align: center;
+    padding: var(--space-6);
+  }
+  #migration-quiz .quiz-start p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+  }
+  #migration-quiz .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  #migration-quiz .quiz-progress__text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  #migration-quiz .quiz-progress__bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border-subtle);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  #migration-quiz .quiz-progress__fill {
+    height: 100%;
+    background: var(--fluoro-cyan);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  #migration-quiz .quiz-question {
+    margin-bottom: var(--space-4);
+  }
+  #migration-quiz .quiz-q-text {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+  #migration-quiz .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  #migration-quiz .quiz-opt {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  #migration-quiz .quiz-opt:hover:not(:disabled) {
+    border-color: var(--fluoro-cyan);
+    background: var(--surface-overlay);
+  }
+  #migration-quiz .quiz-opt--correct {
+    border-color: var(--green-vivid) !important;
+    background: rgba(0, 255, 136, 0.08) !important;
+  }
+  #migration-quiz .quiz-opt--wrong {
+    border-color: var(--fluoro-pink) !important;
+    background: rgba(255, 100, 150, 0.08) !important;
+  }
+  #migration-quiz .quiz-explanation {
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-overlay);
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  #migration-quiz .quiz-results {
+    text-align: center;
+    padding: var(--space-6);
+  }
+  #migration-quiz .quiz-score-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-4);
+  }
+  #migration-quiz .score-svg {
+    width: 100%;
+    height: 100%;
+  }
+  #migration-quiz .score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--fluoro-cyan);
+  }
+  #migration-quiz .score-label {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+  }
 </style>
 
 
@@ -4241,5 +5312,172 @@ EXCELLENCE (E):
   }
 
   animate();
+})();
+</script>
+
+<!-- Migration Quiz (Lesson 3) -->
+<script>
+(function () {
+  const questions = [
+    {
+      q: 'What distinguishes migration from dispersal?',
+      options: [
+        'Migration covers longer distances',
+        'Migration is a periodic return journey; dispersal is one-way',
+        'Dispersal involves more energy expenditure',
+        'Dispersal follows a predictable seasonal pattern'
+      ],
+      answer: 1,
+      explanation: 'Migration involves periodic, cyclical movement between two areas with a return journey. Dispersal is a one-way movement away from the birthplace — the animal does not return.'
+    },
+    {
+      q: 'Kuaka (bar-tailed godwit) fly non-stop from NZ to Alaska. What type of migration is this?',
+      options: [
+        'Breeding migration',
+        'Altitudinal migration',
+        'Diel vertical migration',
+        'Seasonal (latitudinal) migration'
+      ],
+      answer: 3,
+      explanation: 'Kuaka undertake seasonal/latitudinal migration — north–south movement tracking the seasons. They breed in Alaska during the Northern Hemisphere summer and spend the non-breeding season in NZ.'
+    },
+    {
+      q: 'Longfin eels (tuna) migrate from freshwater to the ocean to spawn. This is described as:',
+      options: [
+        'Anadromous migration',
+        'Catadromous migration',
+        'Altitudinal migration',
+        'Irruptive migration'
+      ],
+      answer: 1,
+      explanation: 'Catadromous migration = freshwater → ocean to breed. Anadromous is the reverse (ocean → freshwater), as seen in salmon. The longfin eel is catadromous.'
+    },
+    {
+      q: 'Which of the following is the BEST example of diel vertical migration?',
+      options: [
+        'Kea moving to lower valleys in winter',
+        'Humpback whales travelling from Antarctica to Tonga',
+        'Lanternfish rising to the surface at night and sinking at dawn',
+        'Silvereyes moving between islands in response to food scarcity'
+      ],
+      answer: 2,
+      explanation: 'Diel vertical migration is a daily cycle — organisms move up in the water column at night to feed and sink during the day to avoid predators. Lanternfish are a classic example of this, the largest mass movement of animals on Earth.'
+    },
+    {
+      q: 'Long-distance migrants like tītī and kuaka use multiple navigation systems. Why is this redundancy advantageous?',
+      options: [
+        'It allows them to migrate faster',
+        'If one cue is unavailable (e.g. clouds blocking the sun), they can use another',
+        'Each navigation system covers a different distance range',
+        'It reduces their energy expenditure during flight'
+      ],
+      answer: 1,
+      explanation: 'Redundancy in navigation systems is an adaptive advantage because environmental conditions vary — clouds block celestial cues, magnetic anomalies distort the field. Having multiple independent systems means the animal can still navigate when one cue fails.'
+    },
+    {
+      q: 'In a cost–benefit framework, which of the following is a COST of migration?',
+      options: [
+        'Access to seasonal food abundance',
+        'Reaching breeding sites with fewer predators',
+        'Massive energy expenditure and risk of starvation en route',
+        'Avoiding harsh winter conditions'
+      ],
+      answer: 2,
+      explanation: 'Energy expenditure, predation risk, navigation errors, and risk of starvation are all costs of migration. The other options — food access, safe breeding sites, and avoiding harsh conditions — are benefits.'
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  const startEl = document.getElementById('mig-quiz-start');
+  const startBtn = document.getElementById('mig-quiz-start-btn');
+  const activeEl = document.getElementById('mig-quiz-active');
+  const resultsEl = document.getElementById('mig-quiz-results');
+  const container = document.getElementById('mig-q-container');
+  const nextBtn = document.getElementById('mig-q-next');
+  const currentEl = document.getElementById('mig-q-current');
+  const totalEl = document.getElementById('mig-q-total');
+  const fillEl = document.getElementById('mig-q-fill');
+  const scoreCircle = document.getElementById('mig-score-circle');
+  const scoreText = document.getElementById('mig-score-text');
+  const scoreLabel = document.getElementById('mig-score-label');
+  const restartBtn = document.getElementById('mig-quiz-restart-btn');
+
+  if (!startBtn || !totalEl) return;
+  totalEl.textContent = questions.length;
+
+  function startQuiz() {
+    current = 0;
+    score = 0;
+    answered = false;
+    startEl.hidden = true;
+    resultsEl.hidden = true;
+    activeEl.hidden = false;
+    showQuestion();
+  }
+
+  function showQuestion() {
+    answered = false;
+    nextBtn.hidden = true;
+    currentEl.textContent = current + 1;
+    fillEl.style.width = ((current / questions.length) * 100) + '%';
+
+    const q = questions[current];
+    let html = `<div class="quiz-question"><p class="quiz-q-text">${q.q}</p><div class="quiz-options">`;
+    q.options.forEach((opt, i) => {
+      html += `<button class="quiz-opt" data-idx="${i}">${opt}</button>`;
+    });
+    html += '</div><div class="quiz-explanation" hidden></div></div>';
+    container.innerHTML = html;
+
+    container.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => selectAnswer(btn, q));
+    });
+  }
+
+  function selectAnswer(btn, q) {
+    if (answered) return;
+    answered = true;
+    const idx = parseInt(btn.dataset.idx, 10);
+    const correct = idx === q.answer;
+    if (correct) score++;
+
+    container.querySelectorAll('.quiz-opt').forEach((b, i) => {
+      b.disabled = true;
+      if (i === q.answer) b.classList.add('quiz-opt--correct');
+      if (i === idx && !correct) b.classList.add('quiz-opt--wrong');
+    });
+
+    const explEl = container.querySelector('.quiz-explanation');
+    explEl.innerHTML = `<p>${correct ? '✓ Correct!' : '✗ Not quite.'} ${q.explanation}</p>`;
+    explEl.hidden = false;
+
+    if (current < questions.length - 1) {
+      nextBtn.hidden = false;
+    } else {
+      setTimeout(showResults, 1200);
+    }
+  }
+
+  function showResults() {
+    activeEl.hidden = true;
+    resultsEl.hidden = false;
+    const pct = Math.round((score / questions.length) * 100);
+    const circumference = 264;
+    const offset = circumference - (circumference * pct / 100);
+    scoreCircle.style.strokeDashoffset = offset;
+    scoreText.textContent = pct + '%';
+
+    if (pct === 100) scoreLabel.textContent = 'Perfect — you\'ve nailed migration!';
+    else if (pct >= 80) scoreLabel.textContent = 'Excellent — strong understanding of migration types and concepts.';
+    else if (pct >= 50) scoreLabel.textContent = 'Good start — review the migration types and NZ examples above.';
+    else scoreLabel.textContent = 'Keep going — re-read the lesson and try again.';
+  }
+
+  startBtn.addEventListener('click', startQuiz);
+  if (restartBtn) restartBtn.addEventListener('click', startQuiz);
+  if (nextBtn) nextBtn.addEventListener('click', () => { current++; showQuestion(); });
 })();
 </script>
