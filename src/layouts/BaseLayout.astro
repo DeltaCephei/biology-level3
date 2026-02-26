@@ -56,6 +56,12 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
       rel="stylesheet"
     />
 
+    <!-- Firebase SDK (compat) -->
+    <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script is:inline src="/firebase-config.js"></script>
+
     <!-- Astro View Transitions for smooth page navigation -->
     <ViewTransitions />
   </head>
@@ -112,7 +118,27 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           >
             Progress
           </a>
+          <a
+            href={`${base}/dashboard`}
+            class:list={['nav-link nav-link--teacher', { active: currentPath.startsWith('/dashboard') }]}
+            id="nav-dashboard"
+            style="display: none;"
+          >
+            Dashboard
+          </a>
         </nav>
+
+        <!-- Auth status (avatar + sign out) -->
+        <div class="auth-status" id="auth-status" style="display: none;" transition:persist>
+          <img class="auth-avatar" id="auth-avatar" alt="" width="28" height="28" />
+          <button class="auth-signout" id="auth-signout" type="button" aria-label="Sign out" title="Sign out">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
 
         <!-- Theme toggle (sun/moon) — transition:persist keeps the same
              DOM element (and its click handler) across View Transitions -->
@@ -225,6 +251,116 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
         }
       });
     </script>
+
+    <!-- Firebase init + auth utilities -->
+    <script is:inline>
+      /* Firebase init — guarded to prevent re-init across ViewTransitions */
+      (function () {
+        if (!window._bioFirebaseApp && window.FIREBASE_CONFIG) {
+          window._bioFirebaseApp = firebase.initializeApp(window.FIREBASE_CONFIG);
+          window._bioAuth = firebase.auth();
+          window._bioDb = firebase.firestore();
+        }
+      })();
+
+      /* Teacher email for dashboard access */
+      window._bioTeacherEmail = 'deornorth@gmail.com';
+
+      /* Update auth UI elements */
+      function _bioUpdateAuthUI(user) {
+        var status = document.getElementById('auth-status');
+        var avatar = document.getElementById('auth-avatar');
+        var signout = document.getElementById('auth-signout');
+        var dashLink = document.getElementById('nav-dashboard');
+
+        if (user) {
+          if (status) status.style.display = 'flex';
+          if (avatar && user.photoURL) {
+            avatar.src = user.photoURL;
+            avatar.alt = user.displayName || '';
+          }
+          if (dashLink && user.email === window._bioTeacherEmail) {
+            dashLink.style.display = '';
+          }
+        } else {
+          if (status) status.style.display = 'none';
+          if (dashLink) dashLink.style.display = 'none';
+        }
+      }
+
+      /* Sign-out handler — guarded for persist */
+      (function () {
+        var btn = document.getElementById('auth-signout');
+        if (btn && !btn._authInit) {
+          btn._authInit = true;
+          btn.addEventListener('click', function () {
+            if (window._bioAuth) {
+              window._bioAuth.signOut().then(function () {
+                window.location.href = '/login';
+              });
+            }
+          });
+        }
+      })();
+
+      /* Auth state listener — update UI on auth change */
+      if (window._bioAuth && !window._bioAuthListenerSet) {
+        window._bioAuthListenerSet = true;
+        window._bioAuth.onAuthStateChanged(function (user) {
+          window._bioCurrentUser = user;
+          _bioUpdateAuthUI(user);
+        });
+      }
+
+      /* Update UI immediately if user already resolved */
+      if (window._bioCurrentUser) {
+        _bioUpdateAuthUI(window._bioCurrentUser);
+      }
+
+      /**
+       * Auth gate — call from protected pages.
+       * Waits for auth state, redirects to /login if not signed in.
+       * Calls callback(user) when authenticated.
+       */
+      window.bioRequireAuth = function (callback) {
+        if (!window._bioAuth) {
+          window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+          return;
+        }
+
+        /* If user already resolved, use it immediately */
+        if (window._bioCurrentUser !== undefined && window._bioCurrentUser !== null) {
+          window._bioDb.collection('biology_students').doc(window._bioCurrentUser.uid).set({
+            lastActive: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+          callback(window._bioCurrentUser);
+          return;
+        }
+
+        /* Otherwise wait for the auth state listener */
+        var unsubscribe = window._bioAuth.onAuthStateChanged(function (user) {
+          unsubscribe();
+          if (!user) {
+            window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+          } else {
+            window._bioDb.collection('biology_students').doc(user.uid).set({
+              lastActive: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            callback(user);
+          }
+        });
+      };
+    </script>
+
+    <script>
+      /* Re-update auth UI after ViewTransition swap */
+      document.addEventListener('astro:after-swap', () => {
+        if (window._bioCurrentUser) {
+          // @ts-ignore
+          _bioUpdateAuthUI(window._bioCurrentUser);
+        }
+      });
+    </script>
   </body>
 </html>
 
@@ -306,6 +442,54 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     height: 2px;
     background: var(--accent-green, #4ade80);
     border-radius: 1px;
+  }
+
+  /* Auth status */
+  .auth-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .auth-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-green, #4ade80);
+    object-fit: cover;
+  }
+
+  .auth-signout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: var(--text-muted, #64748b);
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .auth-signout:hover {
+    color: var(--error, #ff5252);
+    background: var(--surface-2, rgba(255, 255, 255, 0.06));
+  }
+
+  /* Teacher-only nav link */
+  .nav-link--teacher {
+    color: var(--purple-deep, #a78bfa);
+  }
+
+  .nav-link--teacher.active {
+    color: var(--purple-deep, #a78bfa);
+  }
+
+  .nav-link--teacher.active::after {
+    background: var(--purple-deep, #a78bfa);
   }
 
   /* Theme toggle button */

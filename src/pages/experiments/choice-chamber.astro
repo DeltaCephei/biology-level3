@@ -1202,10 +1202,18 @@ const base = import.meta.env.BASE_URL;
   /* ═══════════════════════════════════════════════════════════════════════
      Change 2: astro:page-load — initialise on every page load/navigation
      ═══════════════════════════════════════════════════════════════════════ */
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('astro:page-load', function () {
     /* Guard: only run if we're on the choice chamber page */
     if (!document.getElementById('chamber-canvas')) return;
-    initChoiceChamber();
+
+    /* Auth gate — require sign-in */
+    if (window.bioRequireAuth) {
+      window.bioRequireAuth(function () {
+        initChoiceChamber();
+      });
+    } else {
+      initChoiceChamber();
+    }
   });
 
   /**

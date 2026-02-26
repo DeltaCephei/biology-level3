@@ -76,3 +76,9 @@ const base = import.meta.env.BASE_URL;
     border-color: var(--border-default);
   }
 </style>
+
+<script is:inline>
+  if (window.bioRequireAuth) {
+    window.bioRequireAuth(function () {});
+  }
+</script>

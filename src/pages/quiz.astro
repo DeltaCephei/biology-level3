@@ -823,7 +823,7 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 
-<script>
+<script is:inline>
   /* ==========================================================================
      Quiz Data — Week 3 & Week 4
      ========================================================================== */
@@ -1701,24 +1701,36 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* --------------------------------------------------------------------------
-     localStorage
+     localStorage + Firestore
      -------------------------------------------------------------------------- */
+  var _quizUser = null;
+
   function saveAttempt(correct, total, pct) {
+    var entry = {
+      date: new Date().toISOString(),
+      week: quizState.scope,
+      mode: quizState.mode,
+      score: correct,
+      total: total,
+      pct: pct
+    };
+
+    // localStorage
     try {
-      const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      history.push({
-        date: new Date().toISOString(),
-        week: quizState.scope,
-        mode: quizState.mode,
-        score: correct,
-        total: total,
-        pct: pct
-      });
-      // Keep last MAX_HISTORY
+      var history = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      history.push(entry);
       while (history.length > MAX_HISTORY) history.shift();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
-    } catch (e) {
-      // localStorage unavailable — silently fail
+    } catch (e) {}
+
+    // Firestore
+    if (window._bioDb && _quizUser) {
+      var docRef = window._bioDb.collection('biology_students').doc(_quizUser.uid);
+      docRef.update({
+        quizHistory: firebase.firestore.FieldValue.arrayUnion(entry)
+      }).catch(function () {
+        docRef.set({ quizHistory: [entry] }, { merge: true });
+      });
     }
   }
 
@@ -1734,12 +1746,12 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* --------------------------------------------------------------------------
-     Init
+     Init — requires auth
      -------------------------------------------------------------------------- */
   // Fade in visible elements
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
@@ -1749,7 +1761,15 @@ const base = import.meta.env.BASE_URL;
     { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
   );
 
-  document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.fade-in-up').forEach(function (el) { observer.observe(el); });
 
-  initSetup();
+  /* Auth gate — quiz only runs when signed in */
+  if (window.bioRequireAuth) {
+    window.bioRequireAuth(function (user) {
+      _quizUser = user;
+      initSetup();
+    });
+  } else {
+    initSetup();
+  }
 </script>

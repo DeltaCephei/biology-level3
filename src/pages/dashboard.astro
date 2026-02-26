@@ -1,0 +1,434 @@
+---
+/* ==========================================================================
+   Teacher Dashboard — view student progress
+   Protected: only accessible to the teacher (deornorth@gmail.com)
+   ========================================================================== */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Dashboard — Dr Eliot's Level 3 Biology">
+
+  <div class="dashboard-page">
+
+    <header class="dash-header fade-in-up">
+      <h1 class="dash-title">Class Dashboard</h1>
+      <p class="dash-subtitle" id="dash-subtitle">Loading students...</p>
+    </header>
+
+    <!-- Student overview table -->
+    <div class="dash-table-wrap fade-in-up" id="dash-table-wrap" style="display: none;">
+      <table class="dash-table" id="dash-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Email</th>
+            <th>Last Active</th>
+            <th>Quizzes</th>
+            <th>Avg Score</th>
+            <th>Cards Reviewed</th>
+          </tr>
+        </thead>
+        <tbody id="dash-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Student detail panel (shown on row click) -->
+    <div class="dash-detail" id="dash-detail" style="display: none;">
+      <button class="dash-back-btn" id="dash-back-btn" type="button">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to class list
+      </button>
+      <h2 class="detail-name" id="detail-name"></h2>
+      <div class="detail-sections" id="detail-sections"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="dash-empty" id="dash-empty" style="display: none;">
+      <p>No students have signed in yet.</p>
+    </div>
+
+  </div>
+
+</BaseLayout>
+
+
+<style>
+  .dashboard-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: dashFadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes dashFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dash-header { margin-bottom: var(--space-6); }
+
+  .dash-title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    color: var(--purple-deep, #a78bfa);
+    margin-bottom: var(--space-2);
+  }
+
+  .dash-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+  }
+
+  /* Table */
+  .dash-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .dash-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    font-weight: var(--weight-semibold);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dash-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+  }
+
+  .dash-table tbody tr {
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .dash-table tbody tr:hover {
+    background: var(--surface-2);
+  }
+
+  .dash-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .student-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .student-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Detail panel */
+  .dash-detail {
+    animation: dashFadeIn 0.4s ease forwards;
+  }
+
+  .dash-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-bottom: var(--space-4);
+  }
+
+  .dash-back-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .detail-name {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-5);
+  }
+
+  .detail-section {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+  }
+
+  .detail-section h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--purple-deep, #a78bfa);
+    margin-bottom: var(--space-3);
+  }
+
+  .quiz-entry {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--text-sm);
+  }
+
+  .quiz-entry:last-child { border-bottom: none; }
+
+  .quiz-score { font-weight: var(--weight-semibold); }
+  .quiz-score.high { color: var(--green-vivid); }
+  .quiz-score.mid { color: var(--fluoro-cyan); }
+  .quiz-score.low { color: var(--error); }
+
+  .fc-mastery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-2);
+  }
+
+  .fc-mastery-item {
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface-1);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+
+  .fc-mastery-item strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+  }
+
+  .dash-empty {
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+  }
+
+  @media (max-width: 640px) {
+    .dash-table { font-size: var(--text-xs); }
+    .dash-table th, .dash-table td { padding: var(--space-2) var(--space-3); }
+  }
+</style>
+
+
+<script is:inline>
+  (function () {
+    if (!window.bioRequireAuth) return;
+
+    window.bioRequireAuth(function (user) {
+      /* Teacher-only gate */
+      if (user.email !== window._bioTeacherEmail) {
+        window.location.href = '/';
+        return;
+      }
+
+      loadDashboard();
+    });
+
+    var allStudents = [];
+
+    function loadDashboard() {
+      window._bioDb.collection('biology_students').get()
+        .then(function (snapshot) {
+          allStudents = [];
+          snapshot.forEach(function (doc) {
+            allStudents.push({ uid: doc.id, data: doc.data() });
+          });
+
+          var subtitle = document.getElementById('dash-subtitle');
+          if (allStudents.length === 0) {
+            if (subtitle) subtitle.textContent = 'No students yet';
+            var empty = document.getElementById('dash-empty');
+            if (empty) empty.style.display = 'block';
+            return;
+          }
+
+          if (subtitle) subtitle.textContent = allStudents.length + ' student' + (allStudents.length !== 1 ? 's' : '');
+          renderTable();
+        })
+        .catch(function (err) {
+          var subtitle = document.getElementById('dash-subtitle');
+          if (subtitle) subtitle.textContent = 'Error loading: ' + err.message;
+        });
+    }
+
+    function renderTable() {
+      var wrap = document.getElementById('dash-table-wrap');
+      var tbody = document.getElementById('dash-tbody');
+      if (!wrap || !tbody) return;
+
+      tbody.innerHTML = '';
+      allStudents.forEach(function (student, idx) {
+        var d = student.data;
+        var quizCount = (d.quizHistory || []).length;
+        var avgScore = 0;
+        if (quizCount > 0) {
+          var total = 0;
+          d.quizHistory.forEach(function (q) { total += q.pct; });
+          avgScore = Math.round(total / quizCount);
+        }
+        var cardsReviewed = d.flashcardData ? Object.keys(d.flashcardData).filter(function (k) {
+          return d.flashcardData[k] && d.flashcardData[k].lastReviewed;
+        }).length : 0;
+
+        var lastActive = d.lastActive ? formatDate(d.lastActive) : 'Never';
+
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="student-name">' +
+            (d.photoURL ? '<img class="student-avatar" src="' + escapeHtml(d.photoURL) + '" alt="" />' : '') +
+            escapeHtml(d.displayName || 'Unknown') +
+          '</div></td>' +
+          '<td>' + escapeHtml(d.email || '') + '</td>' +
+          '<td>' + lastActive + '</td>' +
+          '<td>' + quizCount + '</td>' +
+          '<td>' + (quizCount > 0 ? avgScore + '%' : '-') + '</td>' +
+          '<td>' + cardsReviewed + '</td>';
+
+        tr.addEventListener('click', function () { showDetail(idx); });
+        tbody.appendChild(tr);
+      });
+
+      wrap.style.display = 'block';
+    }
+
+    function showDetail(idx) {
+      var student = allStudents[idx];
+      var d = student.data;
+
+      document.getElementById('dash-table-wrap').style.display = 'none';
+      var detail = document.getElementById('dash-detail');
+      detail.style.display = 'block';
+
+      document.getElementById('detail-name').textContent = d.displayName || 'Unknown Student';
+
+      var sections = document.getElementById('detail-sections');
+      sections.innerHTML = '';
+
+      /* Quiz history */
+      var quizSection = document.createElement('div');
+      quizSection.className = 'detail-section';
+      quizSection.innerHTML = '<h3>Quiz History</h3>';
+
+      var quizHistory = (d.quizHistory || []).slice().reverse();
+      if (quizHistory.length === 0) {
+        quizSection.innerHTML += '<p style="color:var(--text-muted);font-size:var(--text-sm)">No quizzes taken yet</p>';
+      } else {
+        quizHistory.forEach(function (q) {
+          var cls = q.pct >= 75 ? 'high' : q.pct >= 50 ? 'mid' : 'low';
+          var div = document.createElement('div');
+          div.className = 'quiz-entry';
+          div.innerHTML =
+            '<span>' + formatISODate(q.date) + ' — ' + escapeHtml(q.week) + ' (' + q.mode + ')</span>' +
+            '<span class="quiz-score ' + cls + '">' + q.score + '/' + q.total + ' (' + q.pct + '%)</span>';
+          quizSection.appendChild(div);
+        });
+      }
+      sections.appendChild(quizSection);
+
+      /* Flashcard mastery */
+      var fcSection = document.createElement('div');
+      fcSection.className = 'detail-section';
+      fcSection.innerHTML = '<h3>Flashcard Progress</h3>';
+
+      var fcData = d.flashcardData || {};
+      var reviewed = Object.keys(fcData).filter(function (k) { return fcData[k] && fcData[k].lastReviewed; });
+
+      if (reviewed.length === 0) {
+        fcSection.innerHTML += '<p style="color:var(--text-muted);font-size:var(--text-sm)">No flashcards reviewed yet</p>';
+      } else {
+        var grid = document.createElement('div');
+        grid.className = 'fc-mastery-grid';
+
+        /* Summarise by mastery level */
+        var levels = { new: 0, learning: 0, reviewing: 0, mastered: 0 };
+        reviewed.forEach(function (k) {
+          var interval = fcData[k].interval || 0;
+          if (interval === 0) levels.new++;
+          else if (interval <= 3) levels.learning++;
+          else if (interval <= 14) levels.reviewing++;
+          else levels.mastered++;
+        });
+
+        var summaries = [
+          { label: 'New / Hard', count: levels.new, colour: 'var(--error)' },
+          { label: 'Learning', count: levels.learning, colour: 'var(--warning)' },
+          { label: 'Reviewing', count: levels.reviewing, colour: 'var(--fluoro-cyan)' },
+          { label: 'Mastered', count: levels.mastered, colour: 'var(--green-vivid)' },
+        ];
+
+        summaries.forEach(function (s) {
+          var item = document.createElement('div');
+          item.className = 'fc-mastery-item';
+          item.innerHTML = '<strong style="color:' + s.colour + '">' + s.count + '</strong>' + s.label;
+          grid.appendChild(item);
+        });
+
+        fcSection.appendChild(grid);
+      }
+      sections.appendChild(fcSection);
+    }
+
+    /* Back button */
+    var backBtn = document.getElementById('dash-back-btn');
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        document.getElementById('dash-detail').style.display = 'none';
+        document.getElementById('dash-table-wrap').style.display = 'block';
+      });
+    }
+
+    /* Helpers */
+    function formatDate(ts) {
+      if (!ts) return 'Never';
+      var d = ts.toDate ? ts.toDate() : new Date(ts);
+      return d.toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
+    }
+
+    function formatISODate(iso) {
+      if (!iso) return '';
+      var d = new Date(iso);
+      return d.toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  })();
+</script>

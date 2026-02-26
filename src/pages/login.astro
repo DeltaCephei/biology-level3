@@ -1,0 +1,256 @@
+---
+/* ==========================================================================
+   Login — Google sign-in page
+   ========================================================================== */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Sign In — Dr Eliot's Level 3 Biology">
+
+  <div class="login-page">
+    <div class="login-card fade-in-up">
+      <div class="login-icon" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="var(--accent)" stroke-width="2" fill="none" />
+          <circle cx="24" cy="18" r="6" stroke="var(--accent)" stroke-width="2" fill="none" />
+          <path d="M12 40c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <h1 class="login-title"><span class="login-accent">Dr Eliot's</span> Level 3 Biology</h1>
+      <p class="login-subtitle">Sign in to access quizzes, flashcards, and track your progress</p>
+
+      <button class="google-signin-btn" id="google-signin" type="button">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <path d="M17.64 9.205c0-.639-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+          <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+          <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.997 8.997 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+          <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+        </svg>
+        Sign in with Google
+      </button>
+
+      <p class="login-hint">Use your school Google account</p>
+
+      <div class="login-error" id="login-error" style="display: none;">
+        <p id="login-error-text"></p>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+
+<style>
+  .login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 300px);
+    padding: var(--space-6);
+  }
+
+  .login-card {
+    max-width: 420px;
+    width: 100%;
+    padding: var(--space-8) var(--space-6);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: loginFadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes loginFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .login-icon {
+    margin-bottom: var(--space-4);
+  }
+
+  .login-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+  }
+
+  .login-accent {
+    color: var(--accent);
+  }
+
+  .login-subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: var(--leading-relaxed);
+  }
+
+  .google-signin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-6);
+    background: white;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    border-radius: var(--radius-md);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 240px;
+  }
+
+  .google-signin-btn:hover {
+    background: #f7f8f8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .google-signin-btn:active {
+    background: #eee;
+    transform: translateY(0);
+  }
+
+  .login-hint {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-3);
+  }
+
+  .login-error {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(255, 82, 82, 0.08);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    border-radius: var(--radius-md);
+  }
+
+  .login-error p {
+    color: var(--error);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+</style>
+
+
+<script is:inline>
+  (function () {
+    /* If already signed in, redirect immediately */
+    if (window._bioAuth) {
+      var currentUser = window._bioAuth.currentUser;
+      if (currentUser) {
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect') || '/';
+        window.location.href = redirect;
+        return;
+      }
+    }
+
+    var btn = document.getElementById('google-signin');
+    var errorEl = document.getElementById('login-error');
+    var errorText = document.getElementById('login-error-text');
+
+    if (!btn || btn._loginInit) return;
+    btn._loginInit = true;
+
+    btn.addEventListener('click', function () {
+      if (!window._bioAuth) {
+        showError('Firebase not loaded. Please refresh the page.');
+        return;
+      }
+
+      var provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
+
+      /* Try popup first, fall back to redirect for school Chromebooks */
+      window._bioAuth.signInWithPopup(provider)
+        .then(handleSignIn)
+        .catch(function (error) {
+          if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
+            /* Fallback to redirect */
+            window._bioAuth.signInWithRedirect(provider);
+          } else {
+            showError(error.message);
+          }
+        });
+    });
+
+    /* Handle redirect result (for when popup was blocked) */
+    if (window._bioAuth) {
+      window._bioAuth.getRedirectResult()
+        .then(function (result) {
+          if (result && result.user) {
+            handleSignIn(result);
+          }
+        })
+        .catch(function (error) {
+          if (error.code !== 'auth/credential-already-in-use') {
+            showError(error.message);
+          }
+        });
+    }
+
+    function handleSignIn(result) {
+      var user = result.user;
+      if (!user || !window._bioDb) return;
+
+      var params = new URLSearchParams(window.location.search);
+      var redirect = params.get('redirect') || '/';
+
+      /* Create/update student profile in Firestore */
+      var profileData = {
+        displayName: user.displayName || '',
+        email: user.email || '',
+        photoURL: user.photoURL || '',
+        lastActive: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      /* Check for existing localStorage data to migrate */
+      var quizHistory = [];
+      var flashcardData = {};
+      var confidenceData = {};
+      try {
+        quizHistory = JSON.parse(localStorage.getItem('bio_l3_quiz_history') || '[]');
+        flashcardData = JSON.parse(localStorage.getItem('bio_l3_flashcard_data') || '{}');
+        confidenceData = JSON.parse(localStorage.getItem('bio_l3_confidence_data') || '{}');
+      } catch (e) {}
+
+      var writeData = profileData;
+      if (quizHistory.length > 0 || Object.keys(flashcardData).length > 0 || Object.keys(confidenceData).length > 0) {
+        writeData.quizHistory = quizHistory;
+        writeData.flashcardData = flashcardData;
+        writeData.confidenceData = confidenceData;
+        writeData.migratedFromLocalStorage = true;
+      }
+
+      window._bioDb.collection('biology_students').doc(user.uid)
+        .set(writeData, { merge: true })
+        .then(function () {
+          window.location.href = redirect;
+        })
+        .catch(function () {
+          /* Profile write failed — still redirect, data will sync later */
+          window.location.href = redirect;
+        });
+    }
+
+    function showError(message) {
+      if (errorEl) errorEl.style.display = 'block';
+      if (errorText) errorText.textContent = message;
+    }
+  })();
+</script>
