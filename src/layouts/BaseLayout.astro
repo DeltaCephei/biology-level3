@@ -64,11 +64,6 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     <script is:inline src="/firebase-config.js"></script>
 
-    <!-- Prevent content flash before auth resolves on protected pages -->
-    <style is:inline>
-      html:not(.authed) .site-main { opacity: 0; transition: opacity 0.2s ease; }
-      html.authed .site-main { opacity: 1; }
-    </style>
 
     <!-- Astro View Transitions for smooth page navigation -->
     <ViewTransitions />
@@ -414,41 +409,32 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
       });
     </script>
 
-    <!-- Centralised auth gate — MUST be is:inline with code directly embedded
-         (not src=) because Astro strips is:inline from external src scripts,
-         which means they won't re-run on ViewTransition navigation.
-         Placed after Firebase init so _bioAuth is available immediately. -->
+    <!-- Centralised auth gate — redirects unauthenticated users to /login
+         on protected pages. MUST be is:inline (not src=) so it re-runs on
+         every ViewTransition navigation. -->
     <script is:inline>
       (function () {
-        var root = document.documentElement;
         var path = window.location.pathname.replace(/\/$/, '') || '/';
         var publicPaths = ['/', '/login'];
 
-        if (publicPaths.indexOf(path) !== -1) {
-          root.classList.add('authed');
-          return;
-        }
+        /* Public pages — no auth needed */
+        if (publicPaths.indexOf(path) !== -1) return;
 
-        /* Protected page — hide content until auth confirmed.
-           Remove authed class (may linger from a previous public page). */
-        root.classList.remove('authed');
-
+        /* Protected page — check auth and redirect if needed */
         function checkAuth() {
           if (!window._bioAuth) {
             setTimeout(checkAuth, 100);
             return;
           }
-          if (window._bioCurrentUser) {
-            root.classList.add('authed');
-            return;
-          }
+
+          /* If user already resolved from a previous page, allow */
+          if (window._bioCurrentUser) return;
+
           var unsubscribe = window._bioAuth.onAuthStateChanged(function (user) {
             unsubscribe();
             if (!user) {
               window.location.href = '/login?redirect=' +
                 encodeURIComponent(window.location.pathname + window.location.search);
-            } else {
-              root.classList.add('authed');
             }
           });
         }
