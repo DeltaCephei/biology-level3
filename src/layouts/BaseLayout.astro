@@ -381,12 +381,41 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           return;
         }
 
+        function checkUserStatus(user) {
+          /* Teacher always passes */
+          if (user.email === window._bioTeacherEmail) {
+            window._bioDb.collection('biology_students').doc(user.uid).set({
+              lastActive: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            callback(user);
+            return;
+          }
+
+          /* Check Firestore status — missing status = approved (backwards compat) */
+          window._bioDb.collection('biology_students').doc(user.uid).get()
+            .then(function (doc) {
+              var status = doc.exists ? doc.data().status : null;
+              if (status === 'pending') {
+                window._bioAuth.signOut().then(function () {
+                  window.location.href = '/login?pending=1';
+                });
+              } else {
+                /* approved or no status (legacy) — allow through */
+                window._bioDb.collection('biology_students').doc(user.uid).set({
+                  lastActive: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+                callback(user);
+              }
+            })
+            .catch(function () {
+              /* Firestore read failed — allow through to avoid locking out */
+              callback(user);
+            });
+        }
+
         /* If user already resolved, use it immediately */
         if (window._bioCurrentUser !== undefined && window._bioCurrentUser !== null) {
-          window._bioDb.collection('biology_students').doc(window._bioCurrentUser.uid).set({
-            lastActive: firebase.firestore.FieldValue.serverTimestamp()
-          }, { merge: true });
-          callback(window._bioCurrentUser);
+          checkUserStatus(window._bioCurrentUser);
           return;
         }
 
@@ -396,10 +425,7 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           if (!user) {
             window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
           } else {
-            window._bioDb.collection('biology_students').doc(user.uid).set({
-              lastActive: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
-            callback(user);
+            checkUserStatus(user);
           }
         });
       };
@@ -425,7 +451,7 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
 
         if (publicPaths.includes(path)) return;
 
-        /* Protected page — check auth and redirect if needed */
+        /* Protected page — check auth + approval status */
         function checkAuth() {
           // @ts-ignore
           if (!window._bioAuth) {
@@ -433,15 +459,38 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
             return;
           }
 
-          // @ts-ignore — user already resolved, allow access
-          if (window._bioCurrentUser) return;
+          function verifyStatus(user: any) {
+            // @ts-ignore — teacher always passes
+            if (user.email === window._bioTeacherEmail) return;
+            // @ts-ignore
+            window._bioDb.collection('biology_students').doc(user.uid).get()
+              .then(function (doc: any) {
+                var status = doc.exists ? doc.data().status : null;
+                if (status === 'pending') {
+                  // @ts-ignore
+                  window._bioAuth.signOut().then(function () {
+                    window.location.replace('/login?pending=1');
+                  });
+                }
+                /* approved or no status (legacy) — allow through */
+              })
+              .catch(function () { /* Firestore error — allow through */ });
+          }
+
+          // @ts-ignore — user already resolved
+          if (window._bioCurrentUser) {
+            // @ts-ignore
+            verifyStatus(window._bioCurrentUser);
+            return;
+          }
 
           // @ts-ignore
           window._bioAuth.onAuthStateChanged(function (user: any) {
             if (!user) {
-              /* Hard navigation — bypasses ViewTransitions entirely */
               window.location.replace('/login?redirect=' +
                 encodeURIComponent(window.location.pathname + window.location.search));
+            } else {
+              verifyStatus(user);
             }
           });
         }

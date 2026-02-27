@@ -37,6 +37,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="login-error" id="login-error" style="display: none;">
         <p id="login-error-text"></p>
       </div>
+
+      <div class="login-pending" id="login-pending" style="display: none;">
+        <div class="pending-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="var(--warning, #f59e0b)" stroke-width="2" fill="none"/>
+            <path d="M16 10v8M16 22h.01" stroke="var(--warning, #f59e0b)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2 class="pending-title">Awaiting approval</h2>
+        <p class="pending-text">Your account (<strong id="pending-email"></strong>) needs to be approved by Dr Eliot before you can access the site. Check back soon!</p>
+      </div>
     </div>
   </div>
 
@@ -144,6 +155,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     font-size: var(--text-sm);
     margin: 0;
   }
+
+  .login-pending {
+    margin-top: var(--space-5);
+    padding: var(--space-5) var(--space-4);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-md);
+  }
+
+  .pending-icon {
+    margin-bottom: var(--space-2);
+  }
+
+  .pending-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--warning, #f59e0b);
+    margin-bottom: var(--space-2);
+  }
+
+  .pending-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
 </style>
 
 
@@ -163,6 +201,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     var btn = document.getElementById('google-signin');
     var errorEl = document.getElementById('login-error');
     var errorText = document.getElementById('login-error-text');
+
+    /* Show pending message if redirected with ?pending=1 */
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('pending') === '1') {
+      var pendingEl = document.getElementById('login-pending');
+      var pendingText = document.querySelector('.pending-text');
+      if (pendingEl) pendingEl.style.display = 'block';
+      if (pendingText) pendingText.innerHTML = 'Your account needs to be approved by Dr Eliot before you can access the site. Check back soon!';
+    }
 
     if (!btn || btn._loginInit) return;
     btn._loginInit = true;
@@ -208,6 +255,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       var user = result.user;
       if (!user || !window._bioDb) return;
 
+      var email = (user.email || '').toLowerCase();
+      var isAutoApproved = email.endsWith('@mbc.school.nz') || email === 'deornorth@gmail.com';
+
       var params = new URLSearchParams(window.location.search);
       var redirect = params.get('redirect') || '/';
 
@@ -237,15 +287,61 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         writeData.migratedFromLocalStorage = true;
       }
 
-      window._bioDb.collection('biology_students').doc(user.uid)
-        .set(writeData, { merge: true })
+      /* Check if user already has an approved status in Firestore */
+      window._bioDb.collection('biology_students').doc(user.uid).get()
+        .then(function (doc) {
+          var existingStatus = doc.exists && doc.data().status;
+
+          if (isAutoApproved) {
+            writeData.status = 'approved';
+          } else if (!existingStatus) {
+            /* New non-MBC user — set to pending */
+            writeData.status = 'pending';
+          }
+          /* If they already have a status (approved/pending), don't overwrite it */
+
+          return window._bioDb.collection('biology_students').doc(user.uid)
+            .set(writeData, { merge: true });
+        })
         .then(function () {
-          window.location.href = redirect;
+          if (isAutoApproved) {
+            window.location.href = redirect;
+          } else {
+            /* Check their actual status (might have been approved previously) */
+            return window._bioDb.collection('biology_students').doc(user.uid).get()
+              .then(function (doc) {
+                if (doc.exists && doc.data().status === 'approved') {
+                  window.location.href = redirect;
+                } else {
+                  /* Pending — show message and sign out */
+                  showPending(user.email);
+                  window._bioAuth.signOut();
+                }
+              });
+          }
         })
         .catch(function () {
-          /* Profile write failed — still redirect, data will sync later */
-          window.location.href = redirect;
+          /* Profile write failed — still redirect if auto-approved */
+          if (isAutoApproved) {
+            window.location.href = redirect;
+          } else {
+            showPending(user.email);
+            window._bioAuth.signOut();
+          }
         });
+    }
+
+    function showPending(email) {
+      var pendingEl = document.getElementById('login-pending');
+      var pendingEmail = document.getElementById('pending-email');
+      var card = document.querySelector('.login-card');
+      if (pendingEl) pendingEl.style.display = 'block';
+      if (pendingEmail) pendingEmail.textContent = email;
+      /* Hide the sign-in button and subtitle */
+      var btn = document.getElementById('google-signin');
+      var hint = document.querySelector('.login-hint');
+      if (btn) btn.style.display = 'none';
+      if (hint) hint.style.display = 'none';
     }
 
     function showError(message) {

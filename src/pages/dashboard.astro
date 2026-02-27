@@ -17,6 +17,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="dash-subtitle" id="dash-subtitle">Loading students...</p>
     </header>
 
+    <!-- Pending approvals -->
+    <div class="dash-pending-section fade-in-up" id="dash-pending-section" style="display: none;">
+      <h2 class="pending-section-title">Pending Approvals</h2>
+      <div id="dash-pending-list"></div>
+    </div>
+
     <!-- Student overview table -->
     <div class="dash-table-wrap fade-in-up" id="dash-table-wrap" style="display: none;">
       <table class="dash-table" id="dash-table">
@@ -238,9 +244,97 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     font-size: var(--text-lg);
   }
 
+  /* Pending approvals */
+  .dash-pending-section {
+    margin-bottom: var(--space-6);
+  }
+
+  .pending-section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--warning, #f59e0b);
+    margin-bottom: var(--space-3);
+  }
+
+  .pending-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .pending-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+
+  .pending-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .pending-name {
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+  }
+
+  .pending-email {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+
+  .pending-actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .pending-btn {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .pending-btn.approve {
+    background: var(--green-vivid, #22c55e);
+    color: white;
+  }
+
+  .pending-btn.approve:hover {
+    opacity: 0.85;
+  }
+
+  .pending-btn.reject {
+    background: transparent;
+    border-color: var(--error, #ef4444);
+    color: var(--error, #ef4444);
+  }
+
+  .pending-btn.reject:hover {
+    background: rgba(239, 68, 68, 0.1);
+  }
+
   @media (max-width: 640px) {
     .dash-table { font-size: var(--text-xs); }
     .dash-table th, .dash-table td { padding: var(--space-2) var(--space-3); }
+    .pending-card { flex-direction: column; align-items: flex-start; }
+    .pending-actions { align-self: flex-end; }
   }
 </style>
 
@@ -260,29 +354,98 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     });
 
     var allStudents = [];
+    var pendingStudents = [];
 
     function loadDashboard() {
       window._bioDb.collection('biology_students').get()
         .then(function (snapshot) {
           allStudents = [];
+          pendingStudents = [];
           snapshot.forEach(function (doc) {
-            allStudents.push({ uid: doc.id, data: doc.data() });
+            var entry = { uid: doc.id, data: doc.data() };
+            if (doc.data().status === 'pending') {
+              pendingStudents.push(entry);
+            } else {
+              /* approved or no status (legacy) — treat as approved */
+              allStudents.push(entry);
+            }
           });
 
           var subtitle = document.getElementById('dash-subtitle');
-          if (allStudents.length === 0) {
+          var totalCount = allStudents.length + pendingStudents.length;
+          if (totalCount === 0) {
             if (subtitle) subtitle.textContent = 'No students yet';
             var empty = document.getElementById('dash-empty');
             if (empty) empty.style.display = 'block';
             return;
           }
 
-          if (subtitle) subtitle.textContent = allStudents.length + ' student' + (allStudents.length !== 1 ? 's' : '');
+          var parts = [];
+          if (allStudents.length > 0) parts.push(allStudents.length + ' student' + (allStudents.length !== 1 ? 's' : ''));
+          if (pendingStudents.length > 0) parts.push(pendingStudents.length + ' pending');
+          if (subtitle) subtitle.textContent = parts.join(', ');
+
+          renderPending();
           renderTable();
         })
         .catch(function (err) {
           var subtitle = document.getElementById('dash-subtitle');
           if (subtitle) subtitle.textContent = 'Error loading: ' + err.message;
+        });
+    }
+
+    function renderPending() {
+      var section = document.getElementById('dash-pending-section');
+      var list = document.getElementById('dash-pending-list');
+      if (!section || !list || pendingStudents.length === 0) return;
+
+      list.innerHTML = '';
+      section.style.display = 'block';
+
+      pendingStudents.forEach(function (student) {
+        var d = student.data;
+        var card = document.createElement('div');
+        card.className = 'pending-card';
+        card.innerHTML =
+          '<div class="pending-info">' +
+            (d.photoURL ? '<img class="pending-avatar" src="' + escapeHtml(d.photoURL) + '" alt="" />' : '') +
+            '<div><div class="pending-name">' + escapeHtml(d.displayName || 'Unknown') + '</div>' +
+            '<div class="pending-email">' + escapeHtml(d.email || '') + '</div></div>' +
+          '</div>' +
+          '<div class="pending-actions">' +
+            '<button class="pending-btn approve" data-uid="' + student.uid + '">Approve</button>' +
+            '<button class="pending-btn reject" data-uid="' + student.uid + '">Reject</button>' +
+          '</div>';
+
+        card.querySelector('.pending-btn.approve').addEventListener('click', function () {
+          approveStudent(student.uid, card);
+        });
+        card.querySelector('.pending-btn.reject').addEventListener('click', function () {
+          rejectStudent(student.uid, card, d.displayName || d.email);
+        });
+
+        list.appendChild(card);
+      });
+    }
+
+    function approveStudent(uid, card) {
+      window._bioDb.collection('biology_students').doc(uid)
+        .update({ status: 'approved' })
+        .then(function () {
+          card.style.opacity = '0.5';
+          card.innerHTML = '<div class="pending-info"><div class="pending-name" style="color:var(--green-vivid)">Approved ✓</div></div>';
+          setTimeout(function () { loadDashboard(); }, 1000);
+        });
+    }
+
+    function rejectStudent(uid, card, name) {
+      if (!confirm('Remove ' + name + '? They can request access again later.')) return;
+      window._bioDb.collection('biology_students').doc(uid)
+        .delete()
+        .then(function () {
+          card.style.opacity = '0.5';
+          card.innerHTML = '<div class="pending-info"><div class="pending-name" style="color:var(--error)">Removed</div></div>';
+          setTimeout(function () { loadDashboard(); }, 1000);
         });
     }
 
