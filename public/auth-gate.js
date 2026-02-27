@@ -6,11 +6,12 @@
  * Client-side only — this is for tracking engagement, not protecting secrets.
  */
 (function () {
+  var root = document.documentElement;
   var path = window.location.pathname.replace(/\/$/, '') || '/';
   var publicPaths = ['/', '/login'];
 
   if (publicPaths.indexOf(path) !== -1) {
-    document.body.classList.add('authed');
+    root.classList.add('authed');
     return;
   }
 
@@ -22,7 +23,7 @@
 
     /* If user already resolved, use cached value */
     if (window._bioCurrentUser) {
-      document.body.classList.add('authed');
+      root.classList.add('authed');
       return;
     }
 
@@ -32,7 +33,7 @@
         window.location.href = '/login?redirect=' +
           encodeURIComponent(window.location.pathname + window.location.search);
       } else {
-        document.body.classList.add('authed');
+        root.classList.add('authed');
       }
     });
   }

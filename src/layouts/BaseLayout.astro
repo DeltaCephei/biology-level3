@@ -67,10 +67,12 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <!-- Centralised auth gate — redirects unauthenticated users on protected pages -->
     <script is:inline src="/auth-gate.js"></script>
 
-    <!-- Prevent content flash before auth resolves on protected pages -->
-    <style>
-      body:not(.authed) .site-main { opacity: 0; transition: opacity 0.2s ease; }
-      body.authed .site-main { opacity: 1; }
+    <!-- Prevent content flash before auth resolves on protected pages.
+         Uses html element (not body) because this script runs in <head>
+         where document.body doesn't exist yet. -->
+    <style is:inline>
+      html:not(.authed) .site-main { opacity: 0; transition: opacity 0.2s ease; }
+      html.authed .site-main { opacity: 1; }
     </style>
 
     <!-- Astro View Transitions for smooth page navigation -->
