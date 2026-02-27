@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0e17"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#glow)" opacity="0.6"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15"/>
+      <stop offset="60%" stop-color="#0a0e17" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- DNA helix decorative element -->
+  <g opacity="0.15" transform="translate(900, 100)">
+    <path d="M0 0 C30 40 -30 80 0 120 C30 160 -30 200 0 240 C30 280 -30 320 0 360 C30 400 -30 440 0 480" fill="none" stroke="#00ff88" stroke-width="2"/>
+    <path d="M60 0 C30 40 90 80 60 120 C30 160 90 200 60 240 C30 280 90 320 60 360 C30 400 90 440 60 480" fill="none" stroke="#7df9ff" stroke-width="2"/>
+    <!-- Rungs -->
+    <line x1="10" y1="30" x2="50" y2="30" stroke="#ff6ec7" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="90" x2="50" y2="90" stroke="#6c5ce7" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="150" x2="50" y2="150" stroke="#74b9ff" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="210" x2="50" y2="210" stroke="#ff6ec7" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="270" x2="50" y2="270" stroke="#6c5ce7" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="330" x2="50" y2="330" stroke="#74b9ff" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="390" x2="50" y2="390" stroke="#ff6ec7" stroke-width="1" opacity="0.5"/>
+    <line x1="10" y1="450" x2="50" y2="450" stroke="#6c5ce7" stroke-width="1" opacity="0.5"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#4ade80" font-weight="600">Dr Eliot's</text>
+  <text x="100" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="64" fill="#f0f4f8" font-weight="700">Level 3 Biology</text>
+  <!-- Tagline -->
+  <text x="100" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#94a3b8">Week-by-week NCEA course companion</text>
+  <!-- Bottom accent line -->
+  <rect x="100" y="430" width="200" height="3" rx="1.5" fill="#00ff88" opacity="0.6"/>
+  <!-- Standard colour dots -->
+  <circle cx="120" cy="480" r="8" fill="#00ff88" opacity="0.7"/>
+  <circle cx="150" cy="480" r="8" fill="#7df9ff" opacity="0.7"/>
+  <circle cx="180" cy="480" r="8" fill="#ff6ec7" opacity="0.7"/>
+  <circle cx="210" cy="480" r="8" fill="#6c5ce7" opacity="0.7"/>
+  <circle cx="240" cy="480" r="8" fill="#74b9ff" opacity="0.7"/>
+  <!-- Pursue Learning -->
+  <text x="100" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#4a5568">Pursue Learning</text>
+</svg>

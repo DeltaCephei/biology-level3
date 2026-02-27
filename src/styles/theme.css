@@ -11,27 +11,19 @@
    Smooth colour shifts when toggling between dark and light modes.
    Applied to all elements that reference surface/text/border tokens.
    -------------------------------------------------------------------------- */
-*,
-*::before,
-*::after {
+/* Theme transitions only apply during the brief toggle window.
+   The .theme-transitioning class is added/removed by the toggle script
+   in BaseLayout.astro, preventing interference with quiz/flashcard
+   animations and other dynamic content. */
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
   transition:
     background-color 200ms ease,
     color 200ms ease,
     border-color 200ms ease,
     box-shadow 200ms ease,
     outline-color 200ms ease;
-}
-
-/* Opt out of theme transitions for animations and transforms —
-   prevents janky movement when switching themes */
-[class*="fade-"],
-[class*="scale-"],
-[class*="stagger-"] {
-  transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    border-color 200ms ease,
-    box-shadow 200ms ease;
 }
 
 /* ==========================================================================

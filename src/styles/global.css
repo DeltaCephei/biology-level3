@@ -4,11 +4,8 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Google Fonts
-   Space Grotesk (display): 400, 500, 600, 700
-   Inter (body): 400, 500, 600
+   Google Fonts — loaded via <link> tags in BaseLayout.astro (non-render-blocking)
    -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* --------------------------------------------------------------------------
    Design Tokens — CSS Custom Properties

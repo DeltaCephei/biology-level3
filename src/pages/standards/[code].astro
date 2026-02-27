@@ -5,67 +5,15 @@
    ========================================================================== */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { standards, getStandard } from '../../data/standards';
 
 export function getStaticPaths() {
-  return [
-    { params: { code: '91601' } },
-    { params: { code: '91602' } },
-    { params: { code: '91603' } },
-    { params: { code: '91604' } },
-    { params: { code: '91605' } },
-  ];
+  return standards.map((s) => ({ params: { code: s.code } }));
 }
-
-/* Standard metadata */
-const standardData = {
-  '91601': {
-    title: 'Practical Investigation',
-    fullTitle: 'Carry out a practical investigation in a biological context, with guidance',
-    credits: 4,
-    type: 'Internal',
-    colour: 'var(--standard-1-colour)',
-    weeks: [],
-  },
-  '91602': {
-    title: 'Socio-Scientific Issue',
-    fullTitle: 'Integrate biological knowledge to develop an informed response to a socio-scientific issue',
-    credits: 3,
-    type: 'Internal',
-    colour: 'var(--standard-2-colour)',
-    weeks: [],
-  },
-  '91603': {
-    title: 'Animal & Plant Responses',
-    fullTitle: 'Demonstrate understanding of the responses of plants and animals to their external environment',
-    credits: 5,
-    type: 'External',
-    colour: 'var(--standard-3-colour)',
-    weeks: [
-      { num: 2, title: 'Introduction to the Course & Structure', hasContent: false },
-      { num: 3, title: 'Simple Animal Responses', hasContent: true },
-    ],
-  },
-  '91604': {
-    title: 'Homeostasis',
-    fullTitle: 'Demonstrate understanding of how an animal maintains a stable internal environment',
-    credits: 3,
-    type: 'External',
-    colour: 'var(--standard-4-colour)',
-    weeks: [],
-  },
-  '91605': {
-    title: 'Evolution & Speciation',
-    fullTitle: 'Demonstrate understanding of evolutionary processes leading to speciation',
-    credits: 4,
-    type: 'External',
-    colour: 'var(--standard-5-colour)',
-    weeks: [],
-  },
-};
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { code } = Astro.params;
-const data = standardData[code!];
+const data = getStandard(code!)!;
 ---
 
 <BaseLayout title={`AS ${code}: ${data.title} — Dr Eliot's Level 3 Biology`}>

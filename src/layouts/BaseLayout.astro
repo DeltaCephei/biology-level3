@@ -43,6 +43,8 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://biology-level3.vercel.app/images/og-card.svg" />
+    <meta property="og:url" content="https://biology-level3.vercel.app" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
@@ -62,6 +64,15 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     <script is:inline src="/firebase-config.js"></script>
 
+    <!-- Centralised auth gate — redirects unauthenticated users on protected pages -->
+    <script is:inline src="/auth-gate.js"></script>
+
+    <!-- Prevent content flash before auth resolves on protected pages -->
+    <style>
+      body:not(.authed) .site-main { opacity: 0; transition: opacity 0.2s ease; }
+      body.authed .site-main { opacity: 1; }
+    </style>
+
     <!-- Astro View Transitions for smooth page navigation -->
     <ViewTransitions />
   </head>
@@ -77,8 +88,22 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           <span class="title-accent">Dr Eliot's</span> Level 3 Biology
         </a>
 
+        <!-- Hamburger toggle (mobile only) -->
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
         <!-- Primary navigation -->
-        <nav class="site-nav" aria-label="Primary navigation">
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
           <a href={base || "/"} class:list={['nav-link', { active: currentPath === '/' }]}>
             Home
           </a>
@@ -235,8 +260,13 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
             var root = document.documentElement;
             var current = root.getAttribute('data-theme') || 'dark';
             var next = current === 'dark' ? 'light' : 'dark';
+            /* Add transitioning class so theme.css applies smooth colour shifts */
+            root.classList.add('theme-transitioning');
             root.setAttribute('data-theme', next);
             localStorage.setItem('bio-theme', next);
+            setTimeout(function () {
+              root.classList.remove('theme-transitioning');
+            }, 300);
           });
         }
       })();
@@ -250,6 +280,31 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           document.documentElement.setAttribute('data-theme', stored);
         }
       });
+    </script>
+
+    <!-- Mobile nav toggle -->
+    <script is:inline>
+      (function () {
+        var toggle = document.getElementById('nav-toggle');
+        var nav = document.getElementById('site-nav');
+        if (toggle && nav && !toggle._navInit) {
+          toggle._navInit = true;
+          toggle.addEventListener('click', function () {
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!expanded));
+            nav.classList.toggle('site-nav--open');
+            toggle.classList.toggle('nav-toggle--open');
+          });
+          /* Close mobile nav when a link is clicked */
+          nav.querySelectorAll('.nav-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+              toggle.setAttribute('aria-expanded', 'false');
+              nav.classList.remove('site-nav--open');
+              toggle.classList.remove('nav-toggle--open');
+            });
+          });
+        }
+      })();
     </script>
 
     <!-- Firebase init + auth utilities -->
@@ -406,6 +461,41 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     color: var(--accent-green, #4ade80);
   }
 
+  /* Hamburger toggle — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .nav-toggle__bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-secondary, #94a3b8);
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Animate to X when open */
+  .nav-toggle--open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle--open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle--open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   /* Navigation — horizontal flex */
   .site-nav {
     display: flex;
@@ -442,6 +532,53 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     height: 2px;
     background: var(--accent-green, #4ade80);
     border-radius: 1px;
+  }
+
+  /* =============================================
+     Mobile Navigation — below 768px
+     ============================================= */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+      order: -1;
+    }
+
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--surface-1, #111827);
+      border-bottom: 1px solid var(--surface-2, rgba(255, 255, 255, 0.06));
+      padding: 0.5rem 0;
+      z-index: 99;
+      box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.4));
+    }
+
+    .site-nav--open {
+      display: flex;
+    }
+
+    .site-nav .nav-link {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    .site-nav .nav-link.active::after {
+      display: none;
+    }
+
+    .site-nav .nav-link.active {
+      background: var(--surface-2, rgba(255, 255, 255, 0.06));
+    }
+
+    .site-title {
+      font-size: 1rem;
+    }
   }
 
   /* Auth status */
