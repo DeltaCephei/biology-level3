@@ -64,12 +64,7 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     <script is:inline src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     <script is:inline src="/firebase-config.js"></script>
 
-    <!-- Centralised auth gate — redirects unauthenticated users on protected pages -->
-    <script is:inline src="/auth-gate.js"></script>
-
-    <!-- Prevent content flash before auth resolves on protected pages.
-         Uses html element (not body) because this script runs in <head>
-         where document.body doesn't exist yet. -->
+    <!-- Prevent content flash before auth resolves on protected pages -->
     <style is:inline>
       html:not(.authed) .site-main { opacity: 0; transition: opacity 0.2s ease; }
       html.authed .site-main { opacity: 1; }
@@ -233,6 +228,10 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
       <p class="footer-brand">&copy; Pursue Learning Limited 2026</p>
       <p class="footer-tagline">Built for NCEA Level 3 Biology</p>
     </footer>
+
+    <!-- Centralised auth gate — in body so it re-runs on every
+         ViewTransition navigation (head scripts only run once) -->
+    <script is:inline src="/auth-gate.js"></script>
 
     <!-- ============================
          Theme toggle + active nav

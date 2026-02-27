@@ -1,8 +1,8 @@
 /**
  * auth-gate.js — Centralised authentication gate
  *
- * Included in BaseLayout after Firebase init. Automatically redirects
- * unauthenticated users to /login on all pages except public ones.
+ * Loaded as is:inline in <body> so it re-runs on every ViewTransition
+ * navigation. Redirects unauthenticated users to /login on protected pages.
  * Client-side only — this is for tracking engagement, not protecting secrets.
  */
 (function () {
@@ -10,10 +10,15 @@
   var path = window.location.pathname.replace(/\/$/, '') || '/';
   var publicPaths = ['/', '/login'];
 
+  /* Public pages — show content immediately, no auth needed */
   if (publicPaths.indexOf(path) !== -1) {
     root.classList.add('authed');
     return;
   }
+
+  /* Protected page — hide content until auth is confirmed.
+     Remove authed class first (may linger from a previous public page). */
+  root.classList.remove('authed');
 
   function checkAuth() {
     if (!window._bioAuth) {
@@ -21,7 +26,7 @@
       return;
     }
 
-    /* If user already resolved, use cached value */
+    /* If user already resolved from a previous page, use cached value */
     if (window._bioCurrentUser) {
       root.classList.add('authed');
       return;
