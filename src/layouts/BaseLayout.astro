@@ -145,7 +145,10 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           </a>
         </nav>
 
-        <!-- Auth status (avatar + sign out) -->
+        <!-- Sign In link (visible when NOT logged in) -->
+        <a href="/login" class="nav-signin" id="nav-signin" transition:persist>Sign In</a>
+
+        <!-- Auth status (avatar + sign out — visible when logged in) -->
         <div class="auth-status" id="auth-status" style="display: none;" transition:persist>
           <img class="auth-avatar" id="auth-avatar" alt="" width="28" height="28" />
           <button class="auth-signout" id="auth-signout" type="button" aria-label="Sign out" title="Sign out">
@@ -319,9 +322,11 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
         var avatar = document.getElementById('auth-avatar');
         var signout = document.getElementById('auth-signout');
         var dashLink = document.getElementById('nav-dashboard');
+        var signinLink = document.getElementById('nav-signin');
 
         if (user) {
           if (status) status.style.display = 'flex';
+          if (signinLink) signinLink.style.display = 'none';
           if (avatar && user.photoURL) {
             avatar.src = user.photoURL;
             avatar.alt = user.displayName || '';
@@ -331,6 +336,7 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           }
         } else {
           if (status) status.style.display = 'none';
+          if (signinLink) signinLink.style.display = '';
           if (dashLink) dashLink.style.display = 'none';
         }
       }
@@ -409,38 +415,39 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
       });
     </script>
 
-    <!-- Centralised auth gate — redirects unauthenticated users to /login
-         on protected pages. MUST be is:inline (not src=) so it re-runs on
-         every ViewTransition navigation. -->
-    <script is:inline>
-      (function () {
-        var path = window.location.pathname.replace(/\/$/, '') || '/';
-        var publicPaths = ['/', '/login'];
+    <!-- Auth gate — uses astro:page-load which fires on every navigation
+         (initial load AND ViewTransition navigations). Module script so it
+         only registers once, but the event fires every time. -->
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        const path = window.location.pathname.replace(/\/$/, '') || '/';
+        const publicPaths = ['/', '/login'];
 
-        /* Public pages — no auth needed */
-        if (publicPaths.indexOf(path) !== -1) return;
+        if (publicPaths.includes(path)) return;
 
         /* Protected page — check auth and redirect if needed */
         function checkAuth() {
+          // @ts-ignore
           if (!window._bioAuth) {
             setTimeout(checkAuth, 100);
             return;
           }
 
-          /* If user already resolved from a previous page, allow */
+          // @ts-ignore — user already resolved, allow access
           if (window._bioCurrentUser) return;
 
-          var unsubscribe = window._bioAuth.onAuthStateChanged(function (user) {
-            unsubscribe();
+          // @ts-ignore
+          window._bioAuth.onAuthStateChanged(function (user: any) {
             if (!user) {
-              window.location.href = '/login?redirect=' +
-                encodeURIComponent(window.location.pathname + window.location.search);
+              /* Hard navigation — bypasses ViewTransitions entirely */
+              window.location.replace('/login?redirect=' +
+                encodeURIComponent(window.location.pathname + window.location.search));
             }
           });
         }
 
         checkAuth();
-      })();
+      });
     </script>
   </body>
 </html>
@@ -605,6 +612,25 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
     .site-title {
       font-size: 1rem;
     }
+  }
+
+  /* Sign In link */
+  .nav-signin {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--surface-0, #0f172a);
+    background: var(--accent-green, #4ade80);
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-signin:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
   }
 
   /* Auth status */
