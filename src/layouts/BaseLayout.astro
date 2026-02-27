@@ -229,10 +229,6 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
       <p class="footer-tagline">Built for NCEA Level 3 Biology</p>
     </footer>
 
-    <!-- Centralised auth gate — in body so it re-runs on every
-         ViewTransition navigation (head scripts only run once) -->
-    <script is:inline src="/auth-gate.js"></script>
-
     <!-- ============================
          Theme toggle + active nav
          ============================ -->
@@ -416,6 +412,49 @@ const currentPath = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '
           _bioUpdateAuthUI(window._bioCurrentUser);
         }
       });
+    </script>
+
+    <!-- Centralised auth gate — MUST be is:inline with code directly embedded
+         (not src=) because Astro strips is:inline from external src scripts,
+         which means they won't re-run on ViewTransition navigation.
+         Placed after Firebase init so _bioAuth is available immediately. -->
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var path = window.location.pathname.replace(/\/$/, '') || '/';
+        var publicPaths = ['/', '/login'];
+
+        if (publicPaths.indexOf(path) !== -1) {
+          root.classList.add('authed');
+          return;
+        }
+
+        /* Protected page — hide content until auth confirmed.
+           Remove authed class (may linger from a previous public page). */
+        root.classList.remove('authed');
+
+        function checkAuth() {
+          if (!window._bioAuth) {
+            setTimeout(checkAuth, 100);
+            return;
+          }
+          if (window._bioCurrentUser) {
+            root.classList.add('authed');
+            return;
+          }
+          var unsubscribe = window._bioAuth.onAuthStateChanged(function (user) {
+            unsubscribe();
+            if (!user) {
+              window.location.href = '/login?redirect=' +
+                encodeURIComponent(window.location.pathname + window.location.search);
+            } else {
+              root.classList.add('authed');
+            }
+          });
+        }
+
+        checkAuth();
+      })();
     </script>
   </body>
 </html>
