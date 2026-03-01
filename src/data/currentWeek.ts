@@ -7,21 +7,21 @@
 
 export const currentWeek = {
   /** Week number (matches /week/:num route) */
-  number: 5,
+  number: 6,
   /** Term display string */
   term: 'Term 1',
   /** Main topic title for the large card */
-  topicTitle: 'The Waggle Dance',
+  topicTitle: 'Physiological Triggers of Migration',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91603 — Communication Behaviour in Honey Bees',
+  topicSubtitle: 'AS 91603 — How Animals "Know" When to Migrate',
   /** Standard accent colour variable */
   accentColour: 'var(--standard-3-colour)',
   /** Description paragraph for the large card */
   description:
-    'Discover how honey bees use the waggle dance to communicate the direction ' +
-    'and distance of food sources. Explore an interactive simulation, decode ' +
-    'dances yourself, and test your understanding with a quiz and AI-marked ' +
-    'exam question.',
+    'How do animals "know" when to migrate? Explore the cascade from photoperiod ' +
+    'detection through the hypothalamus and hormonal triggers to Zugunruhe — ' +
+    'migratory restlessness. NZ case studies, interactive quiz, and graded exam ' +
+    'questions with model answers.',
   /** Standard badge info */
   standardCode: 'AS 91603',
   credits: 5,
