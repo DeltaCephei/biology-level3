@@ -1,0 +1,1653 @@
+---
+/* ==========================================================================
+   Week 6 — Physiological Triggers of Migration
+   AS 91603: Responses of plants and animals to their external environment
+
+   Lesson 1: Physiological Triggers — How Animals "Know" When to Migrate
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 6: Physiological Triggers of Migration — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 6</span>
+        <h1 class="week-title">Physiological Triggers of Migration</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91603</span>
+        <span class="badge badge--desc">Responses of plants and animals to their external environment</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Physiological Triggers</a>
+      <a href="#photoperiod" class="week-nav__link">Photoperiod</a>
+      <a href="#hormones" class="week-nav__link">Hormones</a>
+      <a href="#zugunruhe" class="week-nav__link">Zugunruhe</a>
+      <a href="#nz-case-studies" class="week-nav__link">NZ Case Studies</a>
+      <a href="#quiz" class="week-nav__link">Quiz</a>
+      <a href="#exam-questions" class="week-nav__link">Exam Questions</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: Physiological Triggers
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <h2>Lesson 1: How Animals "Know" When to Migrate</h2>
+
+          <p class="section-intro">
+            In Week 5 you learned <em>what</em> migration is and <em>why</em> it evolves. But how does
+            an individual animal "decide" when to start? The answer isn't conscious decision-making —
+            it's a cascade of <strong>physiological triggers</strong> that link environmental cues to
+            internal hormonal changes, ultimately producing the urge to move. Understanding this
+            cascade is where Level 3 Biology gets genuinely exciting — and it's the kind of
+            mechanistic explanation that distinguishes Excellence from Merit.
+          </p>
+
+          <div class="key-concept">
+            <h4>The Big Picture</h4>
+            <p>
+              Migration timing is controlled by an interaction between <strong>external cues</strong>
+              (photoperiod, temperature) and an <strong>internal biological clock</strong> (circannual
+              rhythm). The external cue acts as a <em>Zeitgeber</em> — a "time-giver" — that
+              calibrates the internal clock. The clock then triggers a <strong>hormonal cascade</strong>
+              that produces physiological and behavioural changes: fat deposition, muscle growth,
+              organ remodelling, and ultimately <strong>Zugunruhe</strong> — migratory restlessness.
+            </p>
+          </div>
+
+
+          <!-- ── Photoperiod: The Master Cue ── -->
+          <h3 id="photoperiod">Photoperiod: The Master Cue</h3>
+
+          <p>
+            Of all the environmental signals that could trigger migration — temperature, rainfall,
+            food availability — <strong>photoperiod</strong> (day length) is the most reliable.
+            Unlike temperature, which fluctuates unpredictably, day length changes with mathematical
+            precision every year. It is the one environmental variable that is guaranteed to be the
+            same on the same date, year after year. Evolution has exploited this reliability.
+          </p>
+
+          <div class="exam-tip">
+            <h4>Exam Tip</h4>
+            <p>
+              A common error is stating that "animals migrate because it gets cold". Temperature is
+              unreliable — a warm spell in autumn wouldn't delay migration indefinitely. Always
+              identify <strong>photoperiod</strong> as the primary trigger and explain <em>why</em>
+              it is more reliable than temperature: it is <strong>predictable</strong> and
+              <strong>consistent between years</strong>.
+            </p>
+          </div>
+
+          <h4>How is photoperiod detected?</h4>
+
+          <p>
+            The pathway from light detection to hormonal response is a multi-step signalling
+            cascade. In birds (the best-studied migratory group), it works like this:
+          </p>
+
+          <div class="pathway-diagram fade-in-up">
+            <svg viewBox="0 0 800 520" class="pathway-svg" role="img" aria-label="Photoperiod signalling pathway diagram showing the cascade from light detection in the retina through the hypothalamus to hormonal changes">
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="var(--fluoro-cyan)" opacity="0.8"/>
+                </marker>
+                <marker id="arrowhead-pink" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="var(--fluoro-pink)" opacity="0.8"/>
+                </marker>
+                <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="var(--green-vivid)" opacity="0.8"/>
+                </marker>
+              </defs>
+
+              <!-- Title -->
+              <text x="400" y="30" text-anchor="middle" fill="var(--text-primary)" font-size="16" font-weight="600" font-family="'Space Grotesk', sans-serif">Photoperiodic Signalling Cascade</text>
+
+              <!-- Step 1: Light -->
+              <rect x="30" y="55" width="160" height="75" rx="10" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.6"/>
+              <text x="110" y="80" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">LIGHT</text>
+              <text x="110" y="98" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">Changing photoperiod</text>
+              <text x="110" y="114" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">detected by retina</text>
+
+              <!-- Arrow 1 -->
+              <line x1="190" y1="92" x2="240" y2="92" stroke="var(--fluoro-cyan)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+
+              <!-- Step 2: SCN -->
+              <rect x="250" y="55" width="180" height="75" rx="10" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.6"/>
+              <text x="340" y="77" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">SCN</text>
+              <text x="340" y="95" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">Suprachiasmatic nucleus</text>
+              <text x="340" y="111" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">(hypothalamus "clock")</text>
+
+              <!-- Arrow 2 -->
+              <line x1="430" y1="92" x2="480" y2="92" stroke="var(--fluoro-cyan)" stroke-width="1.5" marker-end="url(#arrowhead)" opacity="0.6"/>
+
+              <!-- Step 3: Pineal -->
+              <rect x="490" y="55" width="160" height="75" rx="10" fill="none" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.6"/>
+              <text x="570" y="77" text-anchor="middle" fill="var(--fluoro-pink)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">PINEAL GLAND</text>
+              <text x="570" y="95" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">Melatonin secretion</text>
+              <text x="570" y="111" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">(high in dark, low in light)</text>
+
+              <!-- Arrow down from Pineal -->
+              <line x1="570" y1="130" x2="570" y2="170" stroke="var(--fluoro-pink)" stroke-width="1.5" marker-end="url(#arrowhead-pink)" opacity="0.6"/>
+
+              <!-- Step 4: Hypothalamus GnRH -->
+              <rect x="440" y="180" width="260" height="75" rx="10" fill="none" stroke="var(--fluoro-pink)" stroke-width="1.5" opacity="0.6"/>
+              <text x="570" y="202" text-anchor="middle" fill="var(--fluoro-pink)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">HYPOTHALAMUS</text>
+              <text x="570" y="220" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">GnRH release → pituitary</text>
+              <text x="570" y="236" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">(melatonin pattern decoded)</text>
+
+              <!-- Arrow down to pituitary -->
+              <line x1="570" y1="255" x2="570" y2="295" stroke="var(--fluoro-pink)" stroke-width="1.5" marker-end="url(#arrowhead-pink)" opacity="0.6"/>
+
+              <!-- Step 5: Anterior Pituitary -->
+              <rect x="440" y="305" width="260" height="75" rx="10" fill="none" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.6"/>
+              <text x="570" y="327" text-anchor="middle" fill="var(--green-vivid)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">ANTERIOR PITUITARY</text>
+              <text x="570" y="345" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">LH + FSH secretion</text>
+              <text x="570" y="361" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">(gonadotropins)</text>
+
+              <!-- Arrows branching to gonads and adrenal -->
+              <line x1="490" y1="380" x2="300" y2="420" stroke="var(--green-vivid)" stroke-width="1.5" marker-end="url(#arrowhead-green)" opacity="0.6"/>
+              <line x1="650" y1="380" x2="700" y2="420" stroke="var(--green-vivid)" stroke-width="1.5" marker-end="url(#arrowhead-green)" opacity="0.6"/>
+
+              <!-- Step 6a: Gonads -->
+              <rect x="160" y="425" width="260" height="80" rx="10" fill="none" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.6"/>
+              <text x="290" y="447" text-anchor="middle" fill="var(--green-vivid)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">GONADS</text>
+              <text x="290" y="465" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">Testosterone / oestrogen</text>
+              <text x="290" y="481" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">→ gonadal growth, breeding readiness</text>
+              <text x="290" y="497" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">→ Zugunruhe (migratory restlessness)</text>
+
+              <!-- Step 6b: Adrenal / CORT -->
+              <rect x="610" y="425" width="180" height="80" rx="10" fill="none" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.6"/>
+              <text x="700" y="447" text-anchor="middle" fill="var(--green-vivid)" font-size="13" font-weight="600" font-family="'Space Grotesk', sans-serif">ADRENAL CORTEX</text>
+              <text x="700" y="465" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">Corticosterone</text>
+              <text x="700" y="481" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">→ fat mobilisation</text>
+              <text x="700" y="497" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="'Inter', sans-serif">→ hyperphagia</text>
+
+              <!-- Side annotation: Deep brain photoreceptors -->
+              <rect x="30" y="170" width="220" height="90" rx="10" fill="var(--surface-3)" stroke="var(--border-subtle)" stroke-width="1" opacity="0.8"/>
+              <text x="140" y="192" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="600" font-family="'Space Grotesk', sans-serif">BIRDS ALSO HAVE:</text>
+              <text x="140" y="210" text-anchor="middle" fill="var(--text-secondary)" font-size="10.5" font-family="'Inter', sans-serif">Deep brain photoreceptors</text>
+              <text x="140" y="226" text-anchor="middle" fill="var(--text-secondary)" font-size="10.5" font-family="'Inter', sans-serif">(light passes through thin skull</text>
+              <text x="140" y="242" text-anchor="middle" fill="var(--text-secondary)" font-size="10.5" font-family="'Inter', sans-serif">directly to hypothalamus)</text>
+
+              <!-- Dashed line from annotation to hypothalamus -->
+              <line x1="250" y1="215" x2="440" y2="215" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 3" opacity="0.4"/>
+            </svg>
+          </div>
+
+          <p>
+            This cascade has a beautiful logic: a <strong>predictable external signal</strong>
+            (photoperiod) is transduced into an <strong>internal hormonal signal</strong> (melatonin
+            pattern) that the hypothalamus "reads" to determine the time of year. The hypothalamus
+            then activates the <strong>HPG axis</strong> (hypothalamic–pituitary–gonadal axis),
+            which triggers the physiological changes needed for migration.
+          </p>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--direction">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="14" r="8" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M12 14h16" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.3"/>
+                  <path d="M16 30v-12M24 30v-12" stroke="var(--fluoro-cyan)" stroke-width="1.5" opacity="0.5"/>
+                  <path d="M14 26h12" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.3"/>
+                </svg>
+              </div>
+              <h4>Melatonin</h4>
+              <p>
+                Secreted by the pineal gland during <strong>darkness</strong>. Long nights = long
+                melatonin signal. The <em>duration</em> of the melatonin pulse tells the hypothalamus
+                what season it is.
+              </p>
+            </div>
+            <div class="info-card info-card--distance">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="14" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.3"/>
+                  <path d="M20 10v20M10 20h20" stroke="var(--green-vivid)" stroke-width="1" opacity="0.3"/>
+                  <circle cx="20" cy="20" r="4" fill="var(--green-vivid)" opacity="0.3"/>
+                </svg>
+              </div>
+              <h4>GnRH</h4>
+              <p>
+                Gonadotropin-releasing hormone. Released in <strong>pulses</strong> from the
+                hypothalamus. Pulse frequency and amplitude increase as day length reaches the
+                <strong>critical photoperiod</strong>.
+              </p>
+            </div>
+            <div class="info-card info-card--quality">
+              <div class="info-card__icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <rect x="8" y="12" width="24" height="16" rx="4" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M14 18v4M20 16v6M26 20v2" stroke="var(--fluoro-pink)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+              </div>
+              <h4>Corticosterone</h4>
+              <p>
+                The main glucocorticoid stress hormone in birds. Elevated corticosterone
+                <strong>mobilises fat reserves</strong>, increases foraging intensity, and triggers
+                hyperphagia (excessive eating) in the pre-migratory period.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="key-concept">
+            <h4>Critical Photoperiod</h4>
+            <p>
+              Each species has a <strong>critical daylength</strong> — a specific number of
+              hours of light per day that triggers the migratory cascade. This is not a gradual
+              response; it's more like a <strong>threshold switch</strong>. When photoperiod crosses
+              the threshold, the hormonal programme activates. This is why birds in the same
+              population tend to depart within a tight window — they all hit the same photoperiodic
+              threshold at the same time.
+            </p>
+            <p>
+              <strong>Excellence link:</strong> The critical photoperiod is <em>genetically
+              determined</em> and <em>locally adapted</em>. Populations of the same species at
+              different latitudes may have different critical photoperiods — because the "correct"
+              departure date depends on local conditions.
+            </p>
+          </div>
+
+
+          <!-- ── The Hormonal Cascade ── -->
+          <h3 id="hormones">The Hormonal Cascade: From Signal to Action</h3>
+
+          <p>
+            Once the photoperiodic threshold is crossed, the hypothalamus orchestrates a suite of
+            hormonal changes that prepare the animal's body for the enormous physiological demands
+            of migration. Think of it as a <strong>coordinated remodelling programme</strong> —
+            the body literally rebuilds itself for a different mode of operation.
+          </p>
+
+          <div class="hormone-timeline fade-in-up">
+            <div class="timeline-phase">
+              <div class="timeline-marker timeline-marker--1"></div>
+              <div class="timeline-content">
+                <h4>Phase 1: Photoperiodic Activation</h4>
+                <p class="timeline-timing">Weeks to months before departure</p>
+                <p>
+                  Decreasing melatonin duration (longer days) triggers hypothalamic GnRH release.
+                  The HPG axis activates. Gonads begin to enlarge — in some species, testes increase
+                  <strong>300–500×</strong> in mass. Testosterone and oestrogen levels rise.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-marker timeline-marker--2"></div>
+              <div class="timeline-content">
+                <h4>Phase 2: Hyperphagia</h4>
+                <p class="timeline-timing">2–4 weeks before departure</p>
+                <p>
+                  Rising corticosterone and prolactin trigger <strong>hyperphagia</strong> —
+                  a dramatic increase in food intake. Birds may eat <strong>2–3× their normal daily
+                  intake</strong>, rapidly depositing subcutaneous fat. The kuaka doubles its body
+                  mass before departure, with fat comprising up to <strong>55% of total body mass</strong>.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-marker timeline-marker--3"></div>
+              <div class="timeline-content">
+                <h4>Phase 3: Body Remodelling</h4>
+                <p class="timeline-timing">Days to weeks before departure</p>
+                <p>
+                  The body undergoes remarkable structural changes:
+                </p>
+                <ul class="feature-list">
+                  <li><strong>Pectoral muscle hypertrophy</strong> — flight muscles enlarge by 20–40% to power sustained flight</li>
+                  <li><strong>Organ shrinkage</strong> — the gut, liver, and kidneys <em>atrophy</em> (shrink), reducing dead weight that isn't needed during non-stop flight</li>
+                  <li><strong>Heart enlargement</strong> — cardiac output increases to meet the demands of sustained aerobic exercise</li>
+                  <li><strong>Haemoglobin changes</strong> — some species shift to haemoglobin variants with higher oxygen affinity for high-altitude flight</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="timeline-marker timeline-marker--4"></div>
+              <div class="timeline-content">
+                <h4>Phase 4: Zugunruhe</h4>
+                <p class="timeline-timing">Immediately before departure</p>
+                <p>
+                  The final behavioural signal: <strong>Zugunruhe</strong> (German: "migration
+                  restlessness"). The bird becomes intensely agitated, oriented in the migratory
+                  direction, and attempts to fly — even in captivity. This marks the transition
+                  from preparation to action.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="think-prompt fade-in-up">
+            <h4>Think About It</h4>
+            <p>
+              Why would it be adaptive for an animal to <em>shrink</em> its digestive organs before
+              migration? Consider the kuaka, which flies 12,000 km non-stop without eating. What is
+              the cost of carrying a full-sized gut and intestines during that flight?
+            </p>
+          </div>
+
+
+          <!-- ── Zugunruhe ── -->
+          <h3 id="zugunruhe">Zugunruhe: Migratory Restlessness</h3>
+
+          <p>
+            <strong>Zugunruhe</strong> (pronounced <em>TSOOG-oon-roo-uh</em>) is one of the most
+            fascinating phenomena in animal behaviour. It was first systematically studied using
+            the <strong>Emlen funnel</strong> — a simple but elegant experimental apparatus.
+          </p>
+
+          <div class="experiment-card fade-in-up">
+            <h4>The Emlen Funnel Experiment</h4>
+            <div class="experiment-setup">
+              <div class="experiment-desc">
+                <p>
+                  <strong>Stephen Emlen</strong> (1967) placed migratory birds in funnel-shaped
+                  cages lined with ink-sensitive paper. As the bird hopped and fluttered, its inky
+                  footprints recorded the <strong>direction</strong> of its attempted movement.
+                </p>
+                <h5>Key findings:</h5>
+                <ul class="feature-list">
+                  <li>During the migratory season, birds showed <strong>directional restlessness</strong> — footprints clustered in the compass direction of their normal migration route</li>
+                  <li>Outside the migratory season, footprints were <strong>randomly distributed</strong> — no preferred direction</li>
+                  <li>The duration of restlessness approximately matched the <strong>normal duration of migration</strong> for that species</li>
+                  <li>Birds kept in <strong>constant conditions</strong> (artificial light cycle) still showed restlessness at the right time of year — evidence of an endogenous programme</li>
+                </ul>
+              </div>
+              <div class="funnel-diagram">
+                <svg viewBox="0 0 240 260" class="funnel-svg" role="img" aria-label="Diagram of an Emlen funnel showing directional footprint clustering">
+                  <!-- Funnel shape -->
+                  <ellipse cx="120" cy="220" rx="100" ry="20" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+                  <ellipse cx="120" cy="60" rx="40" ry="10" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+                  <line x1="20" y1="220" x2="80" y2="60" stroke="var(--text-muted)" stroke-width="1.5"/>
+                  <line x1="220" y1="220" x2="160" y2="60" stroke="var(--text-muted)" stroke-width="1.5"/>
+
+                  <!-- Ink pad at bottom -->
+                  <ellipse cx="120" cy="220" rx="30" ry="6" fill="var(--surface-3)" stroke="var(--text-muted)" stroke-width="1"/>
+                  <text x="120" y="248" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="'Inter', sans-serif">Ink pad</text>
+
+                  <!-- Bird silhouette -->
+                  <circle cx="120" cy="150" r="8" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <path d="M112 150c-8-4-16 0-20 2M128 150c8-4 16 0 20 2" stroke="var(--fluoro-cyan)" stroke-width="1" opacity="0.3"/>
+
+                  <!-- Footprints clustered north -->
+                  <circle cx="110" cy="85" r="2" fill="var(--fluoro-pink)" opacity="0.7"/>
+                  <circle cx="120" cy="78" r="2" fill="var(--fluoro-pink)" opacity="0.8"/>
+                  <circle cx="130" cy="82" r="2" fill="var(--fluoro-pink)" opacity="0.6"/>
+                  <circle cx="115" cy="90" r="2" fill="var(--fluoro-pink)" opacity="0.7"/>
+                  <circle cx="125" cy="88" r="2" fill="var(--fluoro-pink)" opacity="0.5"/>
+                  <circle cx="118" cy="75" r="2" fill="var(--fluoro-pink)" opacity="0.9"/>
+                  <circle cx="122" cy="70" r="2" fill="var(--fluoro-pink)" opacity="0.6"/>
+
+                  <!-- Sparse footprints elsewhere -->
+                  <circle cx="90" cy="140" r="1.5" fill="var(--text-muted)" opacity="0.3"/>
+                  <circle cx="150" cy="160" r="1.5" fill="var(--text-muted)" opacity="0.3"/>
+
+                  <!-- Direction labels -->
+                  <text x="120" y="45" text-anchor="middle" fill="var(--fluoro-pink)" font-size="12" font-weight="600" font-family="'Space Grotesk', sans-serif">N</text>
+                  <text x="120" y="15" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="'Inter', sans-serif">Migratory direction</text>
+
+                  <!-- Paper lining label -->
+                  <text x="38" y="140" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="'Inter', sans-serif" transform="rotate(-55 38 140)">Ink-sensitive paper</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-box">
+            <h4>What Zugunruhe Proves</h4>
+            <p>
+              Zugunruhe demonstrates that migration is <strong>not simply a response to immediate
+              environmental conditions</strong> (like cold weather or food shortage). It is driven
+              by an <strong>endogenous programme</strong> — an internal biological clock that
+              activates at the appropriate time of year, even in the absence of external cues.
+              The programme encodes both the <strong>direction</strong> and approximate
+              <strong>duration</strong> of migration.
+            </p>
+          </div>
+
+
+          <!-- ── Endogenous Clock vs External Cues ── -->
+          <h3>The Endogenous Clock: Gwinner's Warblers</h3>
+
+          <p>
+            The most compelling evidence for an internal migratory clock comes from
+            <strong>Eberhard Gwinner's</strong> classic experiments with European garden warblers
+            (<em>Sylvia borin</em>) in the 1960s–1980s.
+          </p>
+
+          <div class="experiment-card fade-in-up">
+            <h4>Gwinner's Constant-Condition Experiment</h4>
+            <div class="experiment-desc">
+              <p>
+                Gwinner hand-raised garden warblers from the egg and kept them in
+                <strong>completely constant conditions</strong> — 12 hours light : 12 hours dark,
+                constant temperature, constant food availability. No seasonal cues at all.
+              </p>
+              <h5>Results:</h5>
+              <ul class="feature-list">
+                <li>The birds still showed <strong>annual cycles</strong> of fat deposition, moult, and Zugunruhe — on roughly the right schedule</li>
+                <li>The cycles were not exactly 12 months — they "free-ran" at about <strong>10–11 months</strong>, gradually drifting out of phase with the real seasons</li>
+                <li>This proves the clock is <strong>endogenous</strong> (internal) — but it needs photoperiod as a <em>Zeitgeber</em> to stay calibrated to the real calendar</li>
+              </ul>
+              <p>
+                <strong>Conclusion:</strong> Migration timing is controlled by a
+                <strong>circannual rhythm</strong> — an approximately year-long internal clock.
+                Photoperiod fine-tunes the clock to prevent it drifting. This is analogous to how
+                a circadian rhythm (daily clock) free-runs at ~25 hours but is entrained to
+                24 hours by the light–dark cycle.
+              </p>
+            </div>
+          </div>
+
+          <div class="connection-box fade-in-up">
+            <h4>Linking to Earlier Weeks</h4>
+            <p>
+              In <strong>Week 4</strong> you learned about the <strong>sun compass</strong> and how
+              animals use a time-compensated internal clock to navigate. The circannual clock for
+              migration timing and the circadian clock for sun-compass navigation are
+              <strong>related systems</strong> — both involve the suprachiasmatic nucleus (SCN) in
+              the hypothalamus. This is why disrupting the SCN can simultaneously disrupt both
+              navigation ability and migration timing.
+            </p>
+          </div>
+
+          <div class="key-concept">
+            <h4>Zeitgeber Concept — Excellence Level</h4>
+            <p>
+              A <strong>Zeitgeber</strong> (German: "time-giver") is an environmental cue that
+              <em>synchronises</em> (entrains) a biological clock to the external world. For
+              migration:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Primary Zeitgeber:</strong> Photoperiod — most reliable, used to calibrate the circannual clock</li>
+              <li><strong>Secondary Zeitgebers:</strong> Temperature, food availability, social cues — can fine-tune departure date within the window set by photoperiod</li>
+            </ul>
+            <p>
+              An excellent exam answer distinguishes between the <strong>endogenous timer</strong>
+              (the circannual clock) and the <strong>Zeitgeber</strong> (photoperiod) that calibrates
+              it. The clock generates the approximate timing; the Zeitgeber makes it precise.
+            </p>
+          </div>
+
+
+          <!-- ── NZ Case Studies ── -->
+          <h3 id="nz-case-studies">Aotearoa Case Studies: Physiological Triggers in Action</h3>
+
+          <p>
+            Let's apply this hormonal framework to the NZ species you met in Week 5. Each case
+            illustrates different aspects of the photoperiod → hormone → behaviour cascade.
+          </p>
+
+          <!-- Kuaka case study -->
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Kuaka <span class="showcase-card__latin">(Bar-tailed Godwit)</span></h4>
+                <span class="showcase-card__scientific"><em>Limosa lapponica baueri</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Seasonal</span>
+            </div>
+            <div class="case-study-card__body">
+              <h5>Pre-migratory physiology</h5>
+              <p>
+                Kuaka undergo the most extreme pre-migratory body remodelling of any bird. In the
+                weeks before their 12,000 km non-stop flight from NZ to Alaska:
+              </p>
+              <ul class="feature-list">
+                <li><strong>Hyperphagia:</strong> Body mass nearly doubles — from ~250 g to ~450 g. Fat reserves reach 55% of body mass</li>
+                <li><strong>Pectoral muscles:</strong> Enlarge by ~30% — hypertrophy of flight muscle fibres</li>
+                <li><strong>Gut atrophy:</strong> The digestive tract shrinks by up to 25%. The bird won't eat for 8–9 days, so digestive organs become dead weight</li>
+                <li><strong>Kidney and liver shrinkage:</strong> Non-essential metabolic organs reduced</li>
+                <li><strong>Heart enlargement:</strong> Cardiac muscle increases to support sustained aerobic output</li>
+              </ul>
+
+              <div class="case-study-card__highlight">
+                <h5>The Hormonal Picture</h5>
+                <p>
+                  Plasma <strong>corticosterone</strong> rises sharply 2–3 weeks before departure,
+                  driving hyperphagia and fat mobilisation. <strong>Prolactin</strong> levels change
+                  in concert. Gonadal hormones are suppressed during the southward (non-breeding)
+                  migration but elevated during the northward (breeding) migration — a neat example
+                  of how the same species can have different hormonal profiles for different
+                  migratory legs.
+                </p>
+              </div>
+
+              <div class="exam-tip">
+                <h4>Excellence Tip</h4>
+                <p>
+                  At Excellence level, you need to <strong>link physiological changes to adaptive
+                  advantage</strong>. Don't just describe what changes — explain <em>why</em> each
+                  change improves survival. Gut shrinkage reduces mass → reduces energy cost of
+                  flight → increases range. Muscle hypertrophy increases thrust → enables sustained
+                  flight. Frame each change in terms of the cost–benefit analysis from Week 5.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tuna case study -->
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Tuna <span class="showcase-card__latin">(Longfin Eel)</span></h4>
+                <span class="showcase-card__scientific"><em>Anguilla dieffenbachii</em></span>
+              </div>
+              <span class="migration-badge migration-badge--breeding">Breeding</span>
+            </div>
+            <div class="case-study-card__body">
+              <h5>The silver eel transformation</h5>
+              <p>
+                The longfin eel's pre-migratory transformation is arguably the most dramatic of
+                any NZ species. After 20–100+ years as a sedentary freshwater animal, the eel
+                undergoes a complete <strong>metamorphosis</strong> driven by hormonal changes:
+              </p>
+              <ul class="feature-list">
+                <li><strong>Eye enlargement:</strong> Eyes increase in diameter by 2–3× and shift to deep-sea visual pigments — adapting from freshwater murk to the open ocean</li>
+                <li><strong>Skin silvering:</strong> Melanophores and guanine crystals produce a silver belly and dark back — <strong>countershading</strong> for camouflage in open water</li>
+                <li><strong>Pectoral fin broadening:</strong> Fins enlarge for oceanic swimming</li>
+                <li><strong>Gut degeneration:</strong> The entire digestive tract atrophies — the eel will never eat again. All energy for the 3,000 km swim comes from stored fat</li>
+                <li><strong>Gonad maturation:</strong> Gonads enlarge enormously, filling much of the body cavity with developing eggs or sperm</li>
+              </ul>
+
+              <div class="case-study-card__highlight">
+                <h5>Hormonal Control</h5>
+                <p>
+                  The "silvering" transformation is triggered by a surge in <strong>gonadotropins
+                  (LH and FSH)</strong> from the pituitary, which in turn is controlled by
+                  <strong>GnRH</strong> from the hypothalamus. The process also involves
+                  <strong>thyroid hormones</strong> (T3/T4) and <strong>cortisol</strong> (the
+                  mammalian/fish equivalent of corticosterone). Interestingly, in captive eels,
+                  silvering can be artificially induced by injecting GnRH or LH — confirming
+                  the hormonal control mechanism.
+                </p>
+              </div>
+
+              <div class="connection-box">
+                <h4>Link to Week 3</h4>
+                <p>
+                  In Week 3 you studied the glass eel's <strong>positive rheotaxis</strong> —
+                  swimming against the current to reach freshwater. The silver eel's downstream
+                  migration represents a complete <strong>reversal</strong> of this behaviour.
+                  The switch from positive to negative rheotaxis is hormonally mediated —
+                  another example of how hormones can fundamentally alter an animal's behavioural
+                  response to the same stimulus.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tītī case study -->
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Tītī <span class="showcase-card__latin">(Sooty Shearwater)</span></h4>
+                <span class="showcase-card__scientific"><em>Ardenna grisea</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Seasonal</span>
+            </div>
+            <div class="case-study-card__body">
+              <h5>Circannual clock precision</h5>
+              <p>
+                Tītī breed on islands around southern NZ (particularly the Tītī Islands near
+                Rakiura/Stewart Island), then undertake a <strong>65,000 km figure-8 loop</strong>
+                around the Pacific. The timing of departure is remarkably precise — most birds
+                leave their breeding colonies within a <strong>2-week window</strong> each year.
+              </p>
+              <p>
+                This precision points to a strong <strong>circannual clock</strong> entrained by
+                photoperiod. Tītī experience dramatic changes in day length between their NZ
+                breeding colonies (46°S) and their non-breeding range in the North Pacific (40–60°N).
+                The shift from long southern-hemisphere summer days to the approaching equinox
+                appears to trigger pre-migratory physiological changes including increased
+                <strong>corticosterone</strong> and fat deposition.
+              </p>
+
+              <div class="case-study-card__highlight">
+                <h5>Mātauranga Māori</h5>
+                <p>
+                  Ngāi Tahu muttonbirders have observed tītī migration timing for centuries.
+                  Traditional knowledge records that tītī depart around <strong>late April–May</strong>
+                  and return in <strong>September–October</strong>. This traditional ecological
+                  knowledge aligns precisely with modern satellite-tracking data — a powerful example
+                  of how long-term cultural observation can generate accurate biological knowledge
+                  independent of Western scientific methodology.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Extension: Scholarship Level ── -->
+          <h3>Scholarship Extension: Epigenetics and Migratory Flexibility</h3>
+
+          <div class="scholarship-extension fade-in-up">
+            <p>
+              The framework above — photoperiod → hormones → migration — explains the core
+              mechanism well. But it raises a deeper question: if migration timing is genetically
+              programmed, how can populations <strong>adapt rapidly</strong> to changing conditions
+              (e.g. climate change shifting the optimal departure date)?
+            </p>
+            <p>
+              Recent research has revealed that <strong>epigenetic mechanisms</strong> may play
+              a crucial role. Epigenetic modifications — changes to gene expression that don't
+              alter the DNA sequence itself — can be influenced by environmental conditions and,
+              in some cases, transmitted across generations.
+            </p>
+
+            <h4>Key evidence:</h4>
+            <ul class="feature-list">
+              <li>
+                <strong>DNA methylation patterns</strong> in migratory bird populations differ
+                from those in resident (non-migratory) populations of the same species — even when
+                the underlying DNA sequences are identical. This suggests epigenetic "switches"
+                that can activate or suppress the migratory programme.
+              </li>
+              <li>
+                <strong>Blackcap warblers</strong> (<em>Sylvia atricapilla</em>) in central Europe
+                have evolved a new migratory direction (northwest to Britain instead of southwest to
+                Africa) in just ~50 years — far too fast for conventional genetic change. Epigenetic
+                regulation of clock genes may facilitate this rapid behavioural shift.
+              </li>
+              <li>
+                <strong>Partial migration</strong> — where some individuals in a population migrate
+                and others don't — may be regulated epigenetically. The "decision" to migrate could
+                depend on early-life conditions (maternal stress, nutrition) that set epigenetic
+                marks on migration-related genes.
+              </li>
+            </ul>
+
+            <div class="exam-tip">
+              <h4>Scholarship Tip</h4>
+              <p>
+                At Scholarship level, you're expected to <strong>integrate across biological
+                levels</strong>. A top answer would link molecular mechanisms (DNA methylation,
+                histone modification) → gene expression (clock genes, hormone receptor genes) →
+                physiological changes (HPG axis activation) → behaviour (Zugunruhe, departure
+                timing) → ecological consequences (population-level migration patterns) →
+                evolutionary implications (rapid adaptation to climate change).
+              </p>
+            </div>
+          </div>
+
+        </section><!-- /lesson-1 -->
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Quiz
+             —————————————————————————————————————————————————————————————— -->
+        <section id="quiz" class="content-section fade-in-up">
+          <h2>Test Yourself: Physiological Triggers</h2>
+
+          <div class="quiz-container" id="triggers-quiz">
+            <div class="quiz-start" id="trig-quiz-start">
+              <p>8 questions on photoperiod, hormones, Zugunruhe, and physiological preparation for migration.</p>
+              <button class="btn btn--primary" id="trig-quiz-start-btn">Start Quiz</button>
+            </div>
+
+            <div id="trig-quiz-active" hidden>
+              <div class="quiz-progress">
+                <span class="quiz-progress__text">Question <span id="trig-q-current">1</span> of <span id="trig-q-total">8</span></span>
+                <div class="quiz-progress__bar"><div class="quiz-progress__fill" id="trig-q-fill"></div></div>
+              </div>
+              <div id="trig-q-container"></div>
+              <button class="btn btn--primary" id="trig-q-next" hidden>Next Question</button>
+            </div>
+
+            <div id="trig-quiz-results" hidden>
+              <div class="quiz-results">
+                <div class="quiz-score-ring">
+                  <svg viewBox="0 0 100 100" class="score-svg">
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-subtle)" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--fluoro-cyan)" stroke-width="6"
+                      stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" id="trig-score-circle"
+                      transform="rotate(-90 50 50)"/>
+                  </svg>
+                  <span class="score-text" id="trig-score-text">0%</span>
+                </div>
+                <p class="score-label" id="trig-score-label"></p>
+                <button class="btn btn--primary" id="trig-quiz-restart-btn">Try Again</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Exam Questions
+             —————————————————————————————————————————————————————————————— -->
+        <section id="exam-questions" class="content-section fade-in-up">
+          <h2>Exam Practice: Physiological Triggers</h2>
+
+          <p class="section-intro">
+            Work through these questions in order — they progress from Achieved through to
+            Scholarship. Write your answers in the text areas, then reveal the model answers
+            to compare. For the AI-marked question, submit your response for instant feedback.
+          </p>
+
+          <div class="question-section">
+            <h3 class="question-section__title">Short Answer (Achieved)</h3>
+
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q1</span>
+                <span class="question-type-badge question-type-badge--short">Achieved</span>
+              </div>
+              <p class="question-text">
+                Identify the primary environmental cue that triggers migration in most bird species
+                and explain why this cue is more reliable than temperature.
+              </p>
+              <textarea class="answer-input answer-input--med" data-answer="1" placeholder="Write your answer here..."></textarea>
+            </div>
+
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q2</span>
+                <span class="question-type-badge question-type-badge--short">Achieved</span>
+              </div>
+              <p class="question-text">
+                Name the hormone secreted by the pineal gland and explain how its secretion pattern
+                differs between long days and short days.
+              </p>
+              <textarea class="answer-input answer-input--med" data-answer="2" placeholder="Write your answer here..."></textarea>
+            </div>
+
+            <h3 class="question-section__title">Multi-Part (Merit)</h3>
+
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q3</span>
+                <span class="question-type-badge question-type-badge--multi">Merit</span>
+              </div>
+              <p class="question-text">
+                Describe the physiological changes that kuaka (bar-tailed godwit) undergo before
+                their 12,000 km non-stop migration. For each change, explain how it is adaptive
+                — that is, how it improves the bird's chance of surviving the journey.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="3" placeholder="Write your answer here..."></textarea>
+            </div>
+
+            <h3 class="question-section__title">Extended Response (Excellence)</h3>
+
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q4</span>
+                <span class="question-type-badge question-type-badge--long">Excellence</span>
+              </div>
+              <p class="question-text">
+                Gwinner (1986) kept garden warblers in constant conditions (12L:12D, constant
+                temperature) from hatching. The birds still showed annual cycles of fat
+                deposition and migratory restlessness, but these cycles were approximately
+                10–11 months long rather than exactly 12 months.
+                <br><br>
+                (a) Explain what these results demonstrate about the control of migration timing.
+                <br>
+                (b) Explain the role of photoperiod in the context of these results.
+                <br>
+                (c) Discuss the adaptive advantage of having both an endogenous clock and an
+                external Zeitgeber, rather than relying on only one system.
+              </p>
+              <textarea class="answer-input answer-input--xl" data-answer="4" placeholder="Write your answer here..."></textarea>
+            </div>
+          </div>
+
+          <!-- Model Answers -->
+          <div class="reveal-section fade-in-up">
+            <button class="reveal-btn" id="reveal-answers-btn">Show Model Answers</button>
+            <div class="reveal-content" id="model-answers" hidden>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--achieved">Q1 — Achieved</h5>
+                <div class="answer-card">
+                  <p>
+                    The primary environmental cue is <strong>photoperiod</strong> (day length).
+                    Photoperiod is more reliable than temperature because it changes with
+                    mathematical precision each year — the number of daylight hours on any given
+                    date is identical year after year. Temperature, by contrast, fluctuates
+                    unpredictably (e.g. warm spells in autumn, cold snaps in spring). An animal
+                    that relied on temperature alone might migrate too early or too late in
+                    unusual years.
+                  </p>
+                </div>
+              </div>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--achieved">Q2 — Achieved</h5>
+                <div class="answer-card">
+                  <p>
+                    The pineal gland secretes <strong>melatonin</strong>. Melatonin is secreted
+                    during <strong>darkness</strong> (scotophase). On long days (short nights),
+                    the duration of the melatonin pulse is short. On short days (long nights),
+                    the duration of the melatonin pulse is long. The hypothalamus "reads" the
+                    duration of the melatonin pulse to determine the time of year.
+                  </p>
+                </div>
+              </div>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--merit">Q3 — Merit</h5>
+                <div class="answer-card">
+                  <p>
+                    Kuaka undergo several pre-migratory physiological changes:
+                  </p>
+                  <ul class="feature-list">
+                    <li><strong>Hyperphagia and fat deposition</strong> — body mass nearly doubles, with fat reaching 55% of body mass. Adaptive because fat is the sole energy source for the 8–9 day non-stop flight; without sufficient reserves, the bird would starve en route.</li>
+                    <li><strong>Pectoral muscle hypertrophy</strong> — flight muscles enlarge by ~30%. Adaptive because larger flight muscles produce more thrust, enabling sustained powered flight over 12,000 km.</li>
+                    <li><strong>Gut, liver, and kidney atrophy</strong> — digestive organs shrink by up to 25%. Adaptive because the bird does not eat during migration, so these organs are dead weight. Reducing mass lowers the energy cost of flight and increases range.</li>
+                    <li><strong>Heart enlargement</strong> — cardiac muscle increases. Adaptive because sustained aerobic exercise requires high cardiac output to deliver oxygen to flight muscles.</li>
+                  </ul>
+                  <p>
+                    <em>For full Merit:</em> Each change must be <strong>linked to an adaptive
+                    explanation</strong> using biological terminology. Simply listing the changes
+                    without explaining their function would be Achieved level.
+                  </p>
+                </div>
+              </div>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--excellence">Q4 — Excellence</h5>
+                <div class="answer-card">
+                  <p><strong>(a)</strong> The results demonstrate that migration timing is controlled
+                  by an <strong>endogenous circannual rhythm</strong> — an internal biological clock
+                  with a period of approximately one year. Because the birds showed cyclical patterns
+                  of fat deposition and Zugunruhe even in the absence of any seasonal environmental
+                  cues, the timing programme must be <strong>internally generated</strong>, not
+                  simply a response to external conditions.</p>
+
+                  <p><strong>(b)</strong> The fact that the free-running period was ~10–11 months
+                  (not exactly 12) shows that the endogenous clock is <strong>imprecise</strong>.
+                  In nature, <strong>photoperiod acts as a Zeitgeber</strong> — an external
+                  time-giver that <em>entrains</em> (synchronises) the circannual clock to the
+                  real 12-month calendar. Without this calibration, the clock gradually drifts
+                  out of phase with the seasons. Photoperiod corrects this drift each year,
+                  ensuring the animal migrates at the biologically optimal time.</p>
+
+                  <p><strong>(c)</strong> Having both systems provides a <strong>robust, flexible
+                  timing mechanism</strong>:</p>
+                  <ul class="feature-list">
+                    <li>The <strong>endogenous clock</strong> ensures the animal begins preparing for migration even before environmental conditions change noticeably. This is critical because physiological preparation (hyperphagia, muscle growth) takes weeks — waiting for obvious environmental signals would leave insufficient time to prepare.</li>
+                    <li>The <strong>Zeitgeber</strong> prevents the clock from drifting, which would cause migration timing to shift progressively earlier each year (by ~1–2 months per cycle). Mismatched timing — arriving at breeding grounds before food is available, or departing too late and encountering storms — would reduce fitness.</li>
+                    <li>The dual system also provides <strong>flexibility</strong>: secondary Zeitgebers (temperature, food availability) can fine-tune departure date within the window set by photoperiod, allowing some adjustment to local conditions. This is adaptive in the context of year-to-year variation and long-term climate change.</li>
+                  </ul>
+                  <p>
+                    <em>For Excellence:</em> The answer integrates endogenous and exogenous
+                    control, explains the adaptive advantage of each, and discusses how they
+                    interact. It goes beyond description to <strong>evaluate</strong> the system.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- AI-Marked Scholarship Question -->
+          <div class="question-section" style="margin-top: 2.5rem;">
+            <h3 class="question-section__title">Scholarship Challenge</h3>
+
+            <div class="question-card question-card--scholarship">
+              <div class="question-card__header">
+                <span class="question-number">Q5</span>
+                <span class="question-type-badge question-type-badge--schol">Scholarship</span>
+              </div>
+              <p class="question-text">
+                Some populations of blackcap warbler (<em>Sylvia atricapilla</em>) in central
+                Europe have shifted their migratory direction from southwest (towards Africa) to
+                northwest (towards Britain) in approximately 50 years — far fewer generations than
+                would be expected for a change driven by conventional natural selection on DNA
+                sequence variation.
+                <br><br>
+                Propose a biological explanation for how this rapid change in migratory behaviour
+                could occur. Your answer should integrate physiological, genetic, and epigenetic
+                mechanisms, and should address the role of natural selection in maintaining the
+                new behaviour.
+              </p>
+
+              <div class="exam-card">
+                <div class="exam-bullets">
+                  <p><strong>Your answer should address:</strong></p>
+                  <ul>
+                    <li>The genetic basis of migratory direction</li>
+                    <li>How epigenetic mechanisms could accelerate phenotypic change</li>
+                    <li>The role of the HPG axis and clock genes</li>
+                    <li>How natural selection acts on the new migratory phenotype</li>
+                  </ul>
+                </div>
+
+                <textarea class="answer-input answer-input--xl" id="schol-answer" placeholder="Write your scholarship-level answer here..."></textarea>
+
+                <div class="exam-actions">
+                  <span class="word-count" id="schol-wc">0 words</span>
+                  <button class="btn btn--primary" id="schol-submit-btn">Submit for AI Feedback</button>
+                </div>
+
+                <div class="ai-loading" id="schol-loading" hidden>
+                  <div class="loading-spinner"></div>
+                  <span>Analysing your response...</span>
+                </div>
+                <div class="ai-feedback" id="schol-feedback" hidden></div>
+                <div class="ai-error" id="schol-error" hidden></div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Export Actions -->
+          <div class="export-actions fade-in-up">
+            <div class="export-actions__row">
+              <label for="student-name" class="export-actions__label">Your Name:</label>
+              <input type="text" id="student-name" class="export-actions__input" placeholder="Enter your name"/>
+            </div>
+            <div class="export-actions__row">
+              <button class="export-btn export-btn--primary" id="download-pdf">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Print / Save as PDF
+              </button>
+              <button class="export-btn export-btn--secondary" id="copy-all">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Copy All Answers
+              </button>
+              <span class="export-feedback" id="copy-feedback" hidden>Copied!</span>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Looking Ahead
+             —————————————————————————————————————————————————————————————— -->
+        <div class="looking-ahead-box fade-in-up">
+          <h3>Looking Ahead: Lesson 2</h3>
+          <p>
+            Now that you understand <em>how</em> migration is triggered, the next lesson explores
+            <strong>preparation for migration</strong> in more detail — hyperphagia, fuel selection
+            (lipids vs carbohydrates vs protein), flight muscle physiology, and the extraordinary
+            metabolic adaptations that allow non-stop flights of thousands of kilometres.
+          </p>
+        </div>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain why photoperiod is the primary trigger for migration</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe the photoperiod → SCN → pineal → melatonin signalling pathway</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Outline the HPG axis and its role in activating migration physiology</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe the four phases of pre-migratory preparation</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain Zugunruhe and what the Emlen funnel experiment demonstrates</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Distinguish between endogenous circannual clocks and Zeitgebers</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Apply the hormonal framework to NZ case studies (kuaka, tuna, tītī)</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Discuss epigenetic regulation of migratory behaviour (Scholarship)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Key Vocabulary</h3>
+          <div class="vocab-grid">
+            <div class="vocab-chip">photoperiod</div>
+            <div class="vocab-chip">critical daylength</div>
+            <div class="vocab-chip">Zeitgeber</div>
+            <div class="vocab-chip">circannual rhythm</div>
+            <div class="vocab-chip">melatonin</div>
+            <div class="vocab-chip">pineal gland</div>
+            <div class="vocab-chip">SCN</div>
+            <div class="vocab-chip">hypothalamus</div>
+            <div class="vocab-chip">HPG axis</div>
+            <div class="vocab-chip">GnRH</div>
+            <div class="vocab-chip">gonadotropins</div>
+            <div class="vocab-chip">LH / FSH</div>
+            <div class="vocab-chip">corticosterone</div>
+            <div class="vocab-chip">prolactin</div>
+            <div class="vocab-chip">hyperphagia</div>
+            <div class="vocab-chip">Zugunruhe</div>
+            <div class="vocab-chip">Emlen funnel</div>
+            <div class="vocab-chip">Gwinner</div>
+            <div class="vocab-chip">endogenous clock</div>
+            <div class="vocab-chip">entrainment</div>
+            <div class="vocab-chip">epigenetics</div>
+            <div class="vocab-chip">DNA methylation</div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Quick Links</h3>
+          <div class="sidebar-links">
+            <a href="#quiz" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="11" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <path d="M13 16.5l2.5 2.5L20 13" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Quiz</span>
+            </a>
+            <a href="#exam-questions" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="6" y="4" width="20" height="24" rx="3" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <line x1="10" y1="10" x2="22" y2="10" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="15" x2="22" y2="15" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="20" x2="18" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Exam Questions</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Connection to previous weeks -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 3:</strong> Taxis &amp; kinesis — simple innate responses
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 5:</strong> Migration types, NZ species, cost–benefit framework
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>Week 6:</strong> The physiological mechanisms that trigger and prepare
+            animals for migration — linking environmental cues to hormonal cascades.
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+
+  <!-- ====================================================================
+       Page-Specific Styles
+       ==================================================================== -->
+  <style>
+    /* ── Pathway Diagram ── */
+    .pathway-diagram {
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+    .pathway-svg {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ── Hormone Timeline ── */
+    .hormone-timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2.5rem;
+    }
+    .hormone-timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        var(--fluoro-cyan),
+        var(--green-vivid),
+        var(--fluoro-pink),
+        var(--accent)
+      );
+      opacity: 0.4;
+    }
+    .timeline-phase {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    .timeline-marker {
+      position: absolute;
+      left: -2.5rem;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid;
+      background: var(--surface-2);
+      z-index: 1;
+    }
+    .timeline-marker--1 { border-color: var(--fluoro-cyan); }
+    .timeline-marker--2 { border-color: var(--green-vivid); }
+    .timeline-marker--3 { border-color: var(--fluoro-pink); }
+    .timeline-marker--4 { border-color: var(--accent); }
+    .timeline-marker::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .timeline-marker--1::after { background: var(--fluoro-cyan); }
+    .timeline-marker--2::after { background: var(--green-vivid); }
+    .timeline-marker--3::after { background: var(--fluoro-pink); }
+    .timeline-marker--4::after { background: var(--accent); }
+    .timeline-content h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin: 0 0 0.25rem;
+    }
+    .timeline-timing {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0 0 0.75rem;
+    }
+
+    /* ── Experiment Card ── */
+    .experiment-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .experiment-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      color: var(--fluoro-cyan);
+      margin: 0 0 1rem;
+    }
+    .experiment-card h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin: 1rem 0 0.5rem;
+    }
+    .experiment-setup {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 2rem;
+      align-items: start;
+    }
+    .funnel-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .experiment-setup {
+        grid-template-columns: 1fr;
+      }
+      .funnel-diagram {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ── Case Study Cards ── */
+    .case-study-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+    .case-study-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .case-study-card__species h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .case-study-card__body {
+      padding: 1.5rem;
+    }
+    .case-study-card__body h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin: 1.25rem 0 0.75rem;
+    }
+    .case-study-card__body h5:first-child {
+      margin-top: 0;
+    }
+    .case-study-card__highlight {
+      background: var(--surface-3);
+      border-left: 3px solid var(--fluoro-cyan);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .case-study-card__highlight h5 {
+      color: var(--fluoro-cyan);
+      margin-top: 0;
+    }
+
+    /* ── Scholarship Extension ── */
+    .scholarship-extension {
+      background: var(--surface-2);
+      border: 1px solid var(--purple-deep);
+      border-left: 4px solid var(--purple-deep);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .scholarship-extension h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--purple-light);
+      margin: 1.25rem 0 0.75rem;
+    }
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+
+  <!-- Fade-in observer -->
+  <script is:inline>
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Reveal buttons -->
+  <script is:inline>
+    document.querySelectorAll('.reveal-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        if (!content) return;
+        const isHidden = content.hidden;
+        content.hidden = !isHidden;
+        btn.textContent = isHidden ? 'Hide Model Answers' : 'Show Model Answers';
+      });
+    });
+  </script>
+
+  <!-- Quiz Engine -->
+  <script is:inline>
+  (function() {
+    const questions = [
+      {
+        q: 'What is the primary environmental cue that triggers migration in most bird species?',
+        opts: ['Temperature drop', 'Photoperiod (day length)', 'Rainfall pattern', 'Food scarcity'],
+        correct: 1,
+        explanation: 'Photoperiod is the most reliable environmental cue because it changes predictably each year, unlike temperature which fluctuates unpredictably.'
+      },
+      {
+        q: 'Which gland secretes melatonin?',
+        opts: ['Pituitary gland', 'Adrenal gland', 'Pineal gland', 'Thyroid gland'],
+        correct: 2,
+        explanation: 'The pineal gland secretes melatonin during darkness. The duration of the melatonin pulse encodes day length information.'
+      },
+      {
+        q: 'What does "Zugunruhe" refer to?',
+        opts: ['Pre-migratory fat deposition', 'Migratory restlessness', 'Post-migratory recovery', 'Navigation calibration'],
+        correct: 1,
+        explanation: 'Zugunruhe is the German term for migratory restlessness — the intense agitation and directional orientation shown by birds immediately before departure.'
+      },
+      {
+        q: 'In Gwinner\'s constant-condition experiment, warblers showed circannual cycles of approximately:',
+        opts: ['Exactly 12 months', '10–11 months', '14–15 months', '6 months'],
+        correct: 1,
+        explanation: 'The free-running circannual rhythm was ~10–11 months, demonstrating an endogenous clock that needs photoperiod as a Zeitgeber to stay calibrated to 12 months.'
+      },
+      {
+        q: 'What is "hyperphagia"?',
+        opts: ['Excessive sleeping before migration', 'Dramatic increase in food intake before migration', 'Shrinkage of digestive organs', 'Increase in flight muscle mass'],
+        correct: 1,
+        explanation: 'Hyperphagia is the period of dramatically increased food intake that allows migrants to rapidly deposit fat reserves before departure.'
+      },
+      {
+        q: 'Why do kuaka shrink their digestive organs before migration?',
+        opts: ['To make room for larger flight muscles', 'To reduce dead weight during non-stop flight', 'Because hormones damage the organs', 'To conserve water during the journey'],
+        correct: 1,
+        explanation: 'Since kuaka don\'t eat during their 12,000 km non-stop flight, digestive organs are unnecessary weight. Reducing mass lowers the energy cost of flight and increases range.'
+      },
+      {
+        q: 'What is the role of corticosterone in pre-migratory physiology?',
+        opts: ['It triggers gonadal growth', 'It produces melatonin', 'It mobilises fat reserves and drives hyperphagia', 'It controls the direction of migration'],
+        correct: 2,
+        explanation: 'Corticosterone is the main glucocorticoid in birds. It mobilises fat reserves, increases foraging intensity, and triggers hyperphagia during the pre-migratory period.'
+      },
+      {
+        q: 'A "Zeitgeber" is best described as:',
+        opts: ['An internal biological clock', 'An external cue that synchronises a biological clock', 'A hormone that triggers migration', 'A genetic mutation affecting migration timing'],
+        correct: 1,
+        explanation: 'Zeitgeber (German: "time-giver") is an environmental cue — primarily photoperiod — that entrains (synchronises) an endogenous biological clock to the external calendar.'
+      }
+    ];
+
+    let currentQ = 0, score = 0, answered = false;
+
+    const startEl    = document.getElementById('trig-quiz-start');
+    const startBtn   = document.getElementById('trig-quiz-start-btn');
+    const activeEl   = document.getElementById('trig-quiz-active');
+    const resultsEl  = document.getElementById('trig-quiz-results');
+    const container  = document.getElementById('trig-q-container');
+    const nextBtn    = document.getElementById('trig-q-next');
+    const currentSpan= document.getElementById('trig-q-current');
+    const totalSpan  = document.getElementById('trig-q-total');
+    const fillBar    = document.getElementById('trig-q-fill');
+    const scoreCircle= document.getElementById('trig-score-circle');
+    const scoreText  = document.getElementById('trig-score-text');
+    const scoreLabel = document.getElementById('trig-score-label');
+    const restartBtn = document.getElementById('trig-quiz-restart-btn');
+
+    if (!startBtn) return;
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      answered = false;
+      nextBtn.hidden = true;
+      currentSpan.textContent = currentQ + 1;
+      totalSpan.textContent = questions.length;
+      fillBar.style.width = ((currentQ) / questions.length * 100) + '%';
+
+      let html = '<div class="quiz-q"><p class="quiz-q__text">' + q.q + '</p><div class="quiz-q__options">';
+      q.opts.forEach((opt, i) => {
+        html += '<label class="mcq-option"><input type="radio" name="trig-q" value="' + i + '"><span class="mcq-option__text">' + opt + '</span></label>';
+      });
+      html += '</div><div class="quiz-q__feedback" hidden></div></div>';
+      container.innerHTML = html;
+
+      container.querySelectorAll('input[name="trig-q"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (answered) return;
+          answered = true;
+          const selected = parseInt(radio.value);
+          const correct = q.correct;
+          const labels = container.querySelectorAll('.mcq-option');
+          labels.forEach((label, j) => {
+            if (j === correct) label.classList.add('mcq-option--correct');
+            if (j === selected && selected !== correct) label.classList.add('mcq-option--incorrect');
+            label.querySelector('input').disabled = true;
+          });
+          if (selected === correct) score++;
+          const fb = container.querySelector('.quiz-q__feedback');
+          fb.hidden = false;
+          fb.innerHTML = (selected === correct ? '<strong>Correct!</strong> ' : '<strong>Not quite.</strong> ') + q.explanation;
+          fb.className = 'quiz-q__feedback quiz-q__feedback--' + (selected === correct ? 'correct' : 'incorrect');
+          nextBtn.hidden = false;
+        });
+      });
+    }
+
+    startBtn.addEventListener('click', () => {
+      startEl.hidden = true;
+      activeEl.hidden = false;
+      currentQ = 0;
+      score = 0;
+      renderQuestion();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        activeEl.hidden = true;
+        resultsEl.hidden = false;
+        const pct = Math.round(score / questions.length * 100);
+        const offset = 264 - (264 * pct / 100);
+        scoreCircle.style.transition = 'stroke-dashoffset 1s ease';
+        scoreCircle.style.strokeDashoffset = offset;
+        scoreText.textContent = pct + '%';
+        scoreLabel.textContent = score + ' / ' + questions.length + ' correct';
+        fillBar.style.width = '100%';
+      }
+    });
+
+    restartBtn.addEventListener('click', () => {
+      resultsEl.hidden = true;
+      startEl.hidden = false;
+      currentQ = 0;
+      score = 0;
+      fillBar.style.width = '0%';
+      scoreCircle.style.strokeDashoffset = 264;
+    });
+  })();
+  </script>
+
+  <!-- Word count for Scholarship textarea -->
+  <script is:inline>
+  (function() {
+    const ta = document.getElementById('schol-answer');
+    const wc = document.getElementById('schol-wc');
+    if (!ta || !wc) return;
+    ta.addEventListener('input', () => {
+      const words = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+      wc.textContent = words + ' word' + (words !== 1 ? 's' : '');
+    });
+  })();
+  </script>
+
+  <!-- AI Marking for Scholarship question -->
+  <script is:inline>
+  (function() {
+    const submitBtn = document.getElementById('schol-submit-btn');
+    const textarea  = document.getElementById('schol-answer');
+    const loading   = document.getElementById('schol-loading');
+    const feedback  = document.getElementById('schol-feedback');
+    const errorEl   = document.getElementById('schol-error');
+    if (!submitBtn || !textarea) return;
+
+    const RATE_KEY = 'bio_ai_mark_count';
+    const RATE_DATE = 'bio_ai_mark_date';
+    const MAX_PER_DAY = 10;
+
+    function checkRate() {
+      const today = new Date().toDateString();
+      const stored = localStorage.getItem(RATE_DATE);
+      if (stored !== today) {
+        localStorage.setItem(RATE_DATE, today);
+        localStorage.setItem(RATE_KEY, '0');
+        return true;
+      }
+      const count = parseInt(localStorage.getItem(RATE_KEY) || '0');
+      return count < MAX_PER_DAY;
+    }
+
+    function incrementRate() {
+      const count = parseInt(localStorage.getItem(RATE_KEY) || '0');
+      localStorage.setItem(RATE_KEY, String(count + 1));
+    }
+
+    submitBtn.addEventListener('click', async () => {
+      const answer = textarea.value.trim();
+      if (!answer || answer.split(/\s+/).length < 30) {
+        errorEl.hidden = false;
+        errorEl.textContent = 'Please write at least 30 words before submitting.';
+        return;
+      }
+      if (!checkRate()) {
+        errorEl.hidden = false;
+        errorEl.textContent = 'Daily limit reached (10 submissions per day). Try again tomorrow.';
+        return;
+      }
+
+      loading.hidden = false;
+      feedback.hidden = true;
+      errorEl.hidden = true;
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('https://psychology-ai-marker.deornorth.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            subject: 'biology',
+            level: 'scholarship',
+            question: 'Some populations of blackcap warbler (Sylvia atricapilla) in central Europe have shifted their migratory direction from southwest (towards Africa) to northwest (towards Britain) in approximately 50 years. Propose a biological explanation for how this rapid change in migratory behaviour could occur, integrating physiological, genetic, and epigenetic mechanisms, and addressing the role of natural selection.',
+            answer: answer,
+            markSchedule: 'Scholarship Biology — Migratory behaviour: physiological triggers, HPG axis, clock genes, epigenetic mechanisms, natural selection'
+          })
+        });
+
+        if (!res.ok) throw new Error('Server error: ' + res.status);
+        const data = await res.json();
+        feedback.hidden = false;
+        feedback.innerHTML = data.feedback || data.response || 'Feedback received.';
+        incrementRate();
+      } catch (e) {
+        errorEl.hidden = false;
+        errorEl.textContent = 'Could not connect to the marking service. Please try again later.';
+      } finally {
+        loading.hidden = true;
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+  </script>
+
+  <!-- PDF Download -->
+  <script is:inline>
+    const dlBtn = document.getElementById('download-pdf');
+    dlBtn?.addEventListener('click', () => { window.print(); });
+  </script>
+
+  <!-- Copy All Answers -->
+  <script is:inline>
+  (function() {
+    const copyBtn = document.getElementById('copy-all');
+    const copyFb  = document.getElementById('copy-feedback');
+    if (!copyBtn) return;
+
+    copyBtn.addEventListener('click', async () => {
+      const nameEl = document.getElementById('student-name');
+      const name = nameEl?.value || 'Not provided';
+
+      let text = 'PHYSIOLOGICAL TRIGGERS OF MIGRATION (Week 6, Lesson 1)\n';
+      text += 'Name: ' + name + '\n';
+      text += 'Date: ' + new Date().toLocaleDateString('en-NZ') + '\n';
+      text += '==================================================\n\n';
+
+      document.querySelectorAll('[data-answer]').forEach(input => {
+        const id = input.getAttribute('data-answer') || '';
+        const qText = input.closest('.question-card')?.querySelector('.question-text')?.textContent?.trim() || '';
+        const label = 'Q' + id;
+        let value = '';
+        if (input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) {
+          value = input.value;
+        }
+        text += label + (qText ? ' — ' + qText.substring(0, 80) + (qText.length > 80 ? '…' : '') : '') + '\n';
+        text += 'Answer: ' + (value || '(not answered)') + '\n\n';
+      });
+
+      // Also grab scholarship answer
+      const scholTa = document.getElementById('schol-answer');
+      if (scholTa && scholTa.value.trim()) {
+        text += 'Q5 (Scholarship)\n';
+        text += 'Answer: ' + scholTa.value + '\n\n';
+      }
+
+      try {
+        await navigator.clipboard.writeText(text);
+        if (copyFb) { copyFb.hidden = false; setTimeout(() => { copyFb.hidden = true; }, 2200); }
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (copyFb) { copyFb.hidden = false; setTimeout(() => { copyFb.hidden = true; }, 2200); }
+      }
+    });
+  })();
+  </script>
+
+</BaseLayout>
