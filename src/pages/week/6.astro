@@ -76,6 +76,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
              Lesson 1: Physiological Triggers
              —————————————————————————————————————————————————————————————— -->
         <section id="lesson-1" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 1 of 2</span>
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 2: Preparing the Body
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </nav>
           <h2>Lesson 1: How Animals "Know" When to Migrate</h2>
 
           <p class="section-intro">
@@ -721,6 +728,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
              Lesson 2: Preparing the Body for Migration
              —————————————————————————————————————————————————————————————— -->
         <section id="lesson-2" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Lesson 1: Physiological Triggers
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 2 of 2</span>
+          </nav>
           <h2>Lesson 2: Preparing the Body for Migration</h2>
 
           <p class="section-intro">
@@ -1349,6 +1363,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               a GPS? That's next.
             </p>
           </div>
+
+          <nav class="lesson-inline-nav lesson-inline-nav--bottom" aria-label="Lesson navigation">
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Back to Lesson 1
+            </a>
+            <a href="#quiz" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Quiz &amp; Exam Practice
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </nav>
 
         </section><!-- /lesson-2 -->
 
@@ -2754,6 +2779,52 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     /* ==========================================================================
        Week 6 Custom Components — Lesson 2
        ========================================================================== */
+
+    /* ── Inline Lesson Navigation ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-5);
+    }
+    .lesson-inline-nav--bottom {
+      margin-bottom: 0;
+      margin-top: var(--space-6);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+    .lesson-inline-nav__link:hover {
+      color: var(--green-vivid);
+    }
+    .lesson-inline-nav__link--prev:hover {
+      transform: translateX(-3px);
+    }
+    .lesson-inline-nav__link--next:hover {
+      transform: translateX(3px);
+    }
+    @media (max-width: 560px) {
+      .lesson-inline-nav { flex-direction: column; gap: var(--space-2); text-align: center; }
+    }
 
     /* ── Support Box (extra scaffolding for students who need it) ── */
     .support-box {
