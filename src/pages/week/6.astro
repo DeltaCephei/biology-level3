@@ -4,6 +4,7 @@
    AS 91603: Responses of plants and animals to their external environment
 
    Lesson 1: Physiological Triggers — How Animals "Know" When to Migrate
+   Lesson 2: Preparing the Body for Migration — Hyperphagia, Fuel, Muscles
    ========================================================================== */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -50,6 +51,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <a href="#hormones" class="week-nav__link">Hormones</a>
       <a href="#zugunruhe" class="week-nav__link">Zugunruhe</a>
       <a href="#nz-case-studies" class="week-nav__link">NZ Case Studies</a>
+      <a href="#lesson-2" class="week-nav__link">Lesson 2: Preparing the Body</a>
+      <a href="#hyperphagia" class="week-nav__link">Hyperphagia</a>
+      <a href="#fuel-selection" class="week-nav__link">Fuel Selection</a>
+      <a href="#muscle-remodelling" class="week-nav__link">Muscle &amp; Organs</a>
+      <a href="#kuaka-case-study" class="week-nav__link">Kuaka Case Study</a>
       <a href="#quiz" class="week-nav__link">Quiz</a>
       <a href="#exam-questions" class="week-nav__link">Exam Questions</a>
     </nav>
@@ -712,20 +718,656 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 
         <!-- ——————————————————————————————————————————————————————————————
+             Lesson 2: Preparing the Body for Migration
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-2" class="content-section fade-in-up">
+          <h2>Lesson 2: Preparing the Body for Migration</h2>
+
+          <p class="section-intro">
+            Lesson 1 explained how animals <em>know</em> when to migrate — the hormonal cascade
+            from photoperiod to Zugunruhe. But knowing <em>when</em> to go is only half the story.
+            Before departure, migratory animals undergo <strong>extraordinary physiological
+            remodelling</strong> — fundamentally rebuilding their bodies to survive journeys that
+            would kill an unprepared individual. This lesson explores how they do it.
+          </p>
+
+          <div class="key-concept">
+            <h4>The Engineering Problem</h4>
+            <p>
+              Imagine you needed to run from Auckland to Invercargill — <strong>non-stop</strong>, no
+              food, no water, no sleep. You'd need to carry all your fuel, have muscles powerful
+              enough to sustain continuous effort, and somehow not overheat or dehydrate. Now scale
+              that up: a kuaka (bar-tailed godwit) flies <strong>12,200 km from Alaska to New Zealand
+              in 8–9 days without stopping</strong>. Every gram matters. Every metabolic pathway
+              must be optimised. The preparation for this journey is one of the most remarkable
+              feats in all of biology.
+            </p>
+          </div>
+
+          <div class="support-box fade-in-up">
+            <h4>Need a Recap?</h4>
+            <p>
+              This lesson builds directly on Lesson 1. You'll need to understand: <strong>photoperiod</strong>
+              (changing day length as a trigger), <strong>HPG axis</strong> (the hormone signalling chain),
+              and <strong>corticosterone</strong> (the stress hormone that drives pre-migratory changes).
+              If these terms aren't familiar, scroll back up to Lesson 1 before continuing.
+            </p>
+          </div>
+
+
+          <!-- ── Hyperphagia ── -->
+          <h3 id="hyperphagia">Hyperphagia: Eating Like Your Life Depends On It</h3>
+
+          <p>
+            The first visible sign that a bird is preparing to migrate is a dramatic increase in
+            food intake called <strong>hyperphagia</strong> (from Greek: <em>hyper</em> = excessive,
+            <em>phagia</em> = eating). This isn't just eating a bit more — some species
+            <strong>double or even triple their body mass</strong> in the weeks before departure.
+          </p>
+
+          <div class="support-box fade-in-up">
+            <h4>Putting It Simply</h4>
+            <p>
+              Hyperphagia is like a car filling up its fuel tank before a long road trip — except
+              the bird doesn't just fill the tank, it <em>builds a bigger tank</em>. The extra
+              food is converted to fat and stored throughout the body, including under the skin
+              and around internal organs. A bird that normally weighs 250 g might weigh 500 g
+              by departure day.
+            </p>
+          </div>
+
+          <h4>What triggers hyperphagia?</h4>
+          <p>
+            Remember the hormonal cascade from Lesson 1? Hyperphagia is triggered by rising levels
+            of <strong>corticosterone</strong> (the bird equivalent of cortisol). As day length
+            changes, the HPG axis activates, and corticosterone levels rise. This hormone:
+          </p>
+          <ul class="feature-list">
+            <li>
+              <strong>Increases appetite</strong> by acting on the hypothalamus — the same brain
+              region that controls hunger in humans
+            </li>
+            <li>
+              <strong>Shifts metabolism toward fat storage</strong> — the liver converts excess
+              carbohydrates and proteins into triglycerides (fat molecules) and exports them for
+              storage throughout the body
+            </li>
+            <li>
+              <strong>Extends foraging time</strong> — hyperphagic birds feed for longer hours each
+              day, sometimes foraging almost continuously during daylight
+            </li>
+          </ul>
+
+          <div class="stat-comparison fade-in-up">
+            <h4>Hyperphagia by the Numbers</h4>
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span class="stat-card__value">2–3×</span>
+                <span class="stat-card__label">Body mass increase in some species</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-card__value">2–6 weeks</span>
+                <span class="stat-card__label">Typical hyperphagia duration</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-card__value">50%+</span>
+                <span class="stat-card__label">of departure body mass can be fat</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-card__value">10% /day</span>
+                <span class="stat-card__label">Mass gain rate in peak hyperphagia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip: Linking Hormones to Behaviour</h4>
+            <p>
+              A common Merit-level mistake is describing hyperphagia as "the bird eats more."
+              For Merit and Excellence, you need to explain the <strong>mechanism</strong>:
+              corticosterone acts on the hypothalamus to increase appetite AND shifts liver
+              metabolism toward lipogenesis (fat synthesis). Always link the hormone to the
+              specific physiological change it causes.
+            </p>
+          </div>
+
+
+          <!-- ── Fuel Selection ── -->
+          <h3 id="fuel-selection">Fuel Selection: Why Fat is the Ultimate Migration Fuel</h3>
+
+          <p>
+            Your muscles can burn three types of fuel: <strong>carbohydrates</strong> (glucose and
+            glycogen), <strong>lipids</strong> (fats), and <strong>proteins</strong> (amino acids
+            from muscle). Humans doing endurance exercise mainly burn carbohydrates. But migratory
+            birds have evolved to do something quite different — they burn <strong>almost entirely
+            fat</strong>. Why?
+          </p>
+
+          <h4>The energy density advantage</h4>
+          <p>
+            The answer comes down to one critical number: <strong>energy per gram</strong>.
+          </p>
+
+          <!-- Fuel Comparison SVG Diagram -->
+          <div class="fuel-comparison fade-in-up">
+            <svg viewBox="0 0 700 340" class="fuel-svg" aria-label="Energy density comparison of metabolic fuels">
+              <!-- Title -->
+              <text x="350" y="30" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="16" font-weight="600">Energy Density of Metabolic Fuels</text>
+
+              <!-- Y axis label -->
+              <text x="50" y="180" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-body)" transform="rotate(-90 50 180)">Energy (kJ per gram)</text>
+
+              <!-- Baseline -->
+              <line x1="100" y1="280" x2="620" y2="280" stroke="var(--border-subtle)" stroke-width="1"/>
+
+              <!-- Grid lines -->
+              <line x1="100" y1="240" x2="620" y2="240" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+              <line x1="100" y1="200" x2="620" y2="200" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+              <line x1="100" y1="160" x2="620" y2="160" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+              <line x1="100" y1="120" x2="620" y2="120" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+              <line x1="100" y1="80" x2="620" y2="80" stroke="var(--border-subtle)" stroke-width="0.5" opacity="0.3"/>
+
+              <!-- Y axis values -->
+              <text x="90" y="284" text-anchor="end" fill="var(--text-muted)" font-size="11">0</text>
+              <text x="90" y="244" text-anchor="end" fill="var(--text-muted)" font-size="11">10</text>
+              <text x="90" y="204" text-anchor="end" fill="var(--text-muted)" font-size="11">20</text>
+              <text x="90" y="164" text-anchor="end" fill="var(--text-muted)" font-size="11">30</text>
+              <text x="90" y="124" text-anchor="end" fill="var(--text-muted)" font-size="11">40</text>
+
+              <!-- Carbohydrate bar -->
+              <rect x="140" y="212" width="100" height="68" rx="4" fill="var(--fluoro-cyan)" opacity="0.7"/>
+              <text x="190" y="200" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="14" font-weight="700">17 kJ/g</text>
+              <text x="190" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="13" font-weight="500">Carbohydrate</text>
+
+              <!-- Protein bar -->
+              <rect x="300" y="212" width="100" height="68" rx="4" fill="var(--fluoro-pink)" opacity="0.7"/>
+              <text x="350" y="200" text-anchor="middle" fill="var(--fluoro-pink)" font-size="14" font-weight="700">17 kJ/g</text>
+              <text x="350" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="13" font-weight="500">Protein</text>
+
+              <!-- Fat bar -->
+              <rect x="460" y="124" width="100" height="156" rx="4" fill="var(--green-vivid)" opacity="0.7"/>
+              <text x="510" y="112" text-anchor="middle" fill="var(--green-vivid)" font-size="14" font-weight="700">39 kJ/g</text>
+              <text x="510" y="308" text-anchor="middle" fill="var(--green-vivid)" font-size="13" font-weight="500">Fat (lipid)</text>
+
+              <!-- Annotation -->
+              <text x="510" y="335" text-anchor="middle" fill="var(--green-vivid)" font-size="11" font-weight="600">2.3× more energy per gram!</text>
+            </svg>
+          </div>
+
+          <div class="support-box fade-in-up">
+            <h4>Why Does This Matter?</h4>
+            <p>
+              Think of it like choosing fuel for a backpacking trip. If you could only carry
+              10 kg of food, would you rather carry rice (lots of carbohydrate, ~17 kJ/g)
+              or butter (almost pure fat, ~39 kJ/g)? The butter gives you <strong>more than
+              twice the energy for the same weight</strong>. For a bird that has to carry all
+              its fuel while flying, this difference is literally the difference between making
+              it to New Zealand or falling into the ocean.
+            </p>
+          </div>
+
+          <h4>Three reasons fat dominates migration fuel</h4>
+          <ol class="numbered-reasons">
+            <li>
+              <strong>Energy density:</strong> Fat provides <strong>39 kJ per gram</strong> —
+              more than double the 17 kJ/g from carbohydrates or protein. When you're carrying
+              all your fuel, this matters enormously.
+            </li>
+            <li>
+              <strong>No water needed for storage:</strong> Glycogen (the stored form of
+              carbohydrate) requires <strong>3–4 g of water per gram stored</strong>. Fat is
+              stored almost anhydrously (without water). If a kuaka tried to store its
+              migratory energy as glycogen instead of fat, it would need to be
+              <strong>5–8 times heavier</strong> — far too heavy to fly.
+            </li>
+            <li>
+              <strong>Metabolic water production:</strong> When fat is oxidised (burned for energy),
+              it produces <strong>1.07 g of water per gram of fat</strong>. This is critical for
+              birds on non-stop oceanic flights with no access to fresh water. Fat literally
+              keeps them hydrated while fuelling their muscles.
+            </li>
+          </ol>
+
+          <div class="key-concept">
+            <h4>The Fat Equation</h4>
+            <p>
+              Triglyceride oxidation:
+              <strong>C<sub>57</sub>H<sub>110</sub>O<sub>6</sub> + 80 O<sub>2</sub> →
+              57 CO<sub>2</sub> + 55 H<sub>2</sub>O + energy</strong>
+            </p>
+            <p>
+              Notice the <strong>55 molecules of water</strong> produced. This metabolic water
+              is essential for survival during non-stop flights — without it, birds would
+              dehydrate and die long before running out of energy.
+            </p>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip: The Three Reasons</h4>
+            <p>
+              When asked "Why do migratory birds use fat as their primary fuel?", an
+              <strong>Excellence answer</strong> includes all three reasons: (1) energy density,
+              (2) anhydrous storage, and (3) metabolic water production. Most students only
+              remember the first one. The water advantage is what separates Excellence from Merit.
+            </p>
+          </div>
+
+          <h4>What about protein?</h4>
+          <p>
+            During extremely long flights, birds do eventually begin breaking down protein —
+            but not primarily for energy. <strong>Protein catabolism</strong> (breakdown) during
+            flight serves a different purpose: it allows the bird to <strong>recycle amino acids</strong>
+            and further reduce the mass of organs it no longer needs mid-flight (more on this below).
+            Some researchers describe this as the bird "burning the furniture to heat the house" — using
+            structural proteins from now-unnecessary tissues as a supplementary fuel source and water
+            source in the final stages of an epic journey.
+          </p>
+
+
+          <!-- ── Flight Muscle Physiology ── -->
+          <h3 id="muscle-remodelling">Flight Muscle and Organ Remodelling</h3>
+
+          <p>
+            Storing fuel is only part of the preparation. Migratory birds also <strong>fundamentally
+            rebuild their musculature and internal organs</strong> before departure — a process so
+            dramatic that biologists sometimes describe it as the bird essentially becoming a
+            <strong>different animal</strong>.
+          </p>
+
+          <h4>Flight muscles: the engine upgrade</h4>
+          <p>
+            The <strong>pectoralis major</strong> (the large breast muscle that powers the downstroke)
+            is the single most important muscle for sustained flight. Before migration, this muscle
+            undergoes several key changes:
+          </p>
+
+          <div class="remodelling-grid fade-in-up">
+            <div class="remodel-card">
+              <div class="remodel-card__icon" style="color: var(--fluoro-cyan);">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 20l4-8 4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h5>Hypertrophy</h5>
+              <p>
+                Flight muscles increase in mass by <strong>15–40%</strong>. More muscle fibres are recruited,
+                and existing fibres grow thicker. This increases the raw power available for sustained flapping.
+              </p>
+            </div>
+
+            <div class="remodel-card">
+              <div class="remodel-card__icon" style="color: var(--green-vivid);">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="16" cy="16" r="2" fill="currentColor"/>
+                  <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h5>Mitochondrial Density</h5>
+              <p>
+                The number of <strong>mitochondria</strong> per muscle fibre increases dramatically.
+                More mitochondria = more capacity for aerobic respiration = more sustained energy production
+                from fat oxidation.
+              </p>
+            </div>
+
+            <div class="remodel-card">
+              <div class="remodel-card__icon" style="color: var(--fluoro-pink);">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect x="6" y="8" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 16h20" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h5>Myoglobin Increase</h5>
+              <p>
+                <strong>Myoglobin</strong> concentration rises — the oxygen-binding protein in muscle
+                (similar to haemoglobin in blood). More myoglobin means the muscle can store and deliver
+                more O<sub>2</sub> to mitochondria, sustaining aerobic metabolism during continuous flight.
+              </p>
+            </div>
+
+            <div class="remodel-card">
+              <div class="remodel-card__icon" style="color: var(--accent);">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M8 22c0-6 8-14 8-14s8 8 8 14c0 3.3-3.6 6-8 6s-8-2.7-8-6z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M16 18v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M13 21h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h5>Fat-Burning Enzymes</h5>
+              <p>
+                Enzymes involved in <strong>β-oxidation</strong> (the pathway that breaks down fatty acids)
+                are upregulated. The muscle becomes a <strong>specialised fat-burning machine</strong>,
+                maximising the amount of energy extracted from each gram of stored fat.
+              </p>
+            </div>
+          </div>
+
+          <div class="support-box fade-in-up">
+            <h4>Understanding Muscle Changes</h4>
+            <p>
+              Think of it like upgrading a car engine for a long race: you'd want a
+              <strong>bigger engine</strong> (hypertrophy), <strong>more fuel injectors</strong>
+              (mitochondria), a <strong>bigger air intake</strong> (myoglobin for oxygen), and
+              <strong>better fuel processing</strong> (β-oxidation enzymes). The bird does all
+              four simultaneously.
+            </p>
+          </div>
+
+          <h4>Organ remodelling: the radical trade-off</h4>
+          <p>
+            Here's where migration physiology gets truly extraordinary. While flight muscles
+            <em>grow</em>, other organs <strong>shrink</strong>. This isn't damage or disease —
+            it's a <strong>controlled, hormonally-mediated remodelling</strong> that reduces
+            unnecessary weight.
+          </p>
+
+          <!-- Organ Remodelling SVG -->
+          <div class="organ-diagram fade-in-up">
+            <svg viewBox="0 0 700 300" class="organ-svg" aria-label="Organ size changes before migration">
+              <text x="350" y="28" text-anchor="middle" fill="var(--text-primary)" font-family="var(--font-display)" font-size="15" font-weight="600">Organ Remodelling Before Migration</text>
+              <text x="350" y="48" text-anchor="middle" fill="var(--text-muted)" font-size="11">Size change relative to non-migratory state</text>
+
+              <!-- Centre line (no change) -->
+              <line x1="350" y1="70" x2="350" y2="260" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="4"/>
+              <text x="350" y="275" text-anchor="middle" fill="var(--text-muted)" font-size="10">No change</text>
+
+              <!-- Labels -->
+              <text x="180" y="275" text-anchor="middle" fill="var(--fluoro-pink)" font-size="10" font-weight="600">← SHRINKS</text>
+              <text x="530" y="275" text-anchor="middle" fill="var(--green-vivid)" font-size="10" font-weight="600">GROWS →</text>
+
+              <!-- Stomach/Intestines - shrinks a lot -->
+              <rect x="170" y="75" width="180" height="28" rx="4" fill="var(--fluoro-pink)" opacity="0.6"/>
+              <text x="165" y="94" text-anchor="end" fill="var(--text-secondary)" font-size="12" font-weight="500">Stomach &amp; intestines</text>
+              <text x="175" y="94" text-anchor="start" fill="var(--surface-1)" font-size="11" font-weight="700">−40 to −50%</text>
+
+              <!-- Liver - shrinks moderately -->
+              <rect x="230" y="115" width="120" height="28" rx="4" fill="var(--fluoro-pink)" opacity="0.5"/>
+              <text x="225" y="134" text-anchor="end" fill="var(--text-secondary)" font-size="12" font-weight="500">Liver</text>
+              <text x="235" y="134" text-anchor="start" fill="var(--surface-1)" font-size="11" font-weight="700">−25%</text>
+
+              <!-- Kidneys - shrinks moderately -->
+              <rect x="250" y="155" width="100" height="28" rx="4" fill="var(--fluoro-pink)" opacity="0.45"/>
+              <text x="245" y="174" text-anchor="end" fill="var(--text-secondary)" font-size="12" font-weight="500">Kidneys</text>
+              <text x="255" y="174" text-anchor="start" fill="var(--surface-1)" font-size="11" font-weight="700">−20%</text>
+
+              <!-- Heart - grows -->
+              <rect x="350" y="195" width="120" height="28" rx="4" fill="var(--green-vivid)" opacity="0.6"/>
+              <text x="475" y="214" text-anchor="start" fill="var(--text-secondary)" font-size="12" font-weight="500">Heart</text>
+              <text x="355" y="214" text-anchor="start" fill="var(--surface-1)" font-size="11" font-weight="700">+20 to +30%</text>
+
+              <!-- Flight muscles - grows a lot -->
+              <rect x="350" y="235" width="200" height="28" rx="4" fill="var(--green-vivid)" opacity="0.7"/>
+              <text x="555" y="254" text-anchor="start" fill="var(--text-secondary)" font-size="12" font-weight="500">Flight muscles</text>
+              <text x="355" y="254" text-anchor="start" fill="var(--surface-1)" font-size="11" font-weight="700">+15 to +40%</text>
+            </svg>
+          </div>
+
+          <p>
+            Why shrink digestive organs? Because during a non-stop transoceanic flight, the bird
+            <strong>isn't eating</strong>. Carrying a full-sized stomach, intestines, and liver
+            is dead weight — metabolically expensive to maintain and adding mass that has to be
+            kept airborne. By shrinking these organs, the bird:
+          </p>
+          <ul class="feature-list">
+            <li><strong>Reduces total body mass</strong>, lowering the energy cost of flight</li>
+            <li><strong>Frees up space</strong> in the body cavity for fat storage</li>
+            <li><strong>Redirects resources</strong> to the organs that matter during flight — heart, lungs, and flight muscles</li>
+            <li><strong>Recycles proteins</strong> from shrinking organs as a supplementary fuel source</li>
+          </ul>
+
+          <div class="key-concept">
+            <h4>The Mass Budget</h4>
+            <p>
+              At departure, a kuaka's body is roughly: <strong>55% fat</strong> (fuel),
+              <strong>30% flight muscles + skeleton</strong> (engine and frame),
+              <strong>8% heart, lungs, and blood</strong> (oxygen delivery), and only
+              <strong>~7% everything else</strong> (brain, reduced digestive organs, kidneys).
+              The bird has essentially been redesigned as a <strong>flying fuel tank</strong>.
+            </p>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Exam Tip: Explain the Trade-off</h4>
+            <p>
+              When discussing organ remodelling, always frame it as a <strong>trade-off</strong>
+              with <strong>biological significance</strong>. Don't just say "organs shrink."
+              Explain: "The digestive organs shrink because they are non-functional during non-stop
+              flight, and the mass saved reduces the energy cost of flight, which increases the
+              bird's range. This represents a trade-off between digestive capacity and flight
+              efficiency that is adaptive in the context of long-distance migration."
+              This trade-off language is what examiners look for at Merit and Excellence.
+            </p>
+          </div>
+
+
+          <!-- ── Kuaka Case Study ── -->
+          <h3 id="kuaka-case-study">Kuaka: The Ultimate Endurance Athlete</h3>
+
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Kuaka <span class="showcase-card__latin">(Bar-tailed Godwit)</span></h4>
+                <span class="showcase-card__scientific"><em>Limosa lapponica baueri</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Non-stop Migrant</span>
+            </div>
+            <div class="case-study-card__body">
+              <h5>The longest non-stop flight in the animal kingdom</h5>
+              <p>
+                The kuaka holds the record for the <strong>longest known non-stop flight</strong> of
+                any bird. In 2007, satellite tracking confirmed a female kuaka (designated "E7")
+                flew <strong>11,690 km from Alaska to the Miranda coast near Thames, New Zealand,
+                in 8.1 days</strong> — without stopping to eat, drink, or rest. Since then, even
+                longer flights have been recorded: in 2020, a male godwit flew
+                <strong>12,200 km non-stop</strong>.
+              </p>
+
+              <h5>Pre-migratory preparation</h5>
+              <p>
+                Before departure from their staging grounds in Alaska, kuaka undergo the most extreme
+                pre-migratory remodelling documented in any bird:
+              </p>
+              <ul class="feature-list">
+                <li>
+                  <strong>Body mass nearly doubles</strong> — from ~250 g to ~450–500 g through
+                  hyperphagia over 2–3 weeks
+                </li>
+                <li>
+                  <strong>Fat content reaches 55% of total body mass</strong> — proportionally
+                  higher than almost any other bird species
+                </li>
+                <li>
+                  <strong>Digestive organs shrink by 40–50%</strong> — stomach, intestines, liver,
+                  and kidneys all reduced
+                </li>
+                <li>
+                  <strong>Pectoral muscles enlarge by ~30%</strong> — with increased mitochondrial
+                  density and myoglobin concentration
+                </li>
+                <li>
+                  <strong>Heart enlarges by ~20%</strong> — increased cardiac output sustains the
+                  continuous aerobic demands of non-stop flight
+                </li>
+              </ul>
+
+              <h5>The flight itself</h5>
+              <p>
+                During the 8–9 day flight, the kuaka:
+              </p>
+              <ul class="feature-list">
+                <li>
+                  Maintains continuous flapping flight at <strong>~56 km/h</strong> (ground speed
+                  varies with wind assistance)
+                </li>
+                <li>
+                  Burns fat at approximately <strong>0.6–0.8% of body mass per hour</strong>,
+                  producing metabolic water to stay hydrated
+                </li>
+                <li>
+                  Engages <strong>unihemispheric slow-wave sleep</strong> — resting one brain
+                  hemisphere at a time while the other maintains flight control (this is still
+                  being researched, but evidence is growing)
+                </li>
+                <li>
+                  Arrives in New Zealand having lost <strong>~50% of its departure mass</strong>,
+                  with virtually zero fat remaining
+                </li>
+              </ul>
+
+              <div class="case-study-card__highlight">
+                <h5>Mātauranga Māori</h5>
+                <p>
+                  Kuaka hold deep significance in te ao Māori. The proverb
+                  <strong>"Kua kite mai te kuaka ki tōna whenua"</strong> ("The kuaka has seen
+                  its own land") speaks to the godwit's extraordinary ability to navigate home.
+                  Māori observed the arrival and departure of kuaka for centuries, and their
+                  traditional knowledge of migratory timing aligns precisely with modern
+                  satellite-tracking data. The bird's annual return symbolises homecoming, resilience,
+                  and the connection between distant places.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h4>How does the kuaka navigate?</h4>
+          <p>
+            Juvenile kuaka make their first migration to New Zealand <strong>without parental
+            guidance</strong> — the adults depart weeks earlier. This means the navigational
+            programme must be at least partly <strong>genetically encoded</strong> (innate),
+            not learned. Research suggests kuaka use a combination of:
+          </p>
+          <ul class="feature-list">
+            <li>
+              <strong>Magnetic compass</strong> — magnetite crystals in the beak and/or
+              cryptochrome proteins in the retina allow detection of Earth's magnetic field
+            </li>
+            <li>
+              <strong>Star compass</strong> — calibrated during development by observing the
+              rotation of the night sky around the celestial pole
+            </li>
+            <li>
+              <strong>Sun compass</strong> — using the sun's position and an internal clock
+              to determine direction
+            </li>
+            <li>
+              <strong>Olfactory map</strong> — some evidence suggests wind-borne odour gradients
+              may help with large-scale orientation over the Pacific
+            </li>
+          </ul>
+
+          <div class="support-box fade-in-up">
+            <h4>Linking It All Together</h4>
+            <p>
+              The kuaka example brings together everything from Lessons 1 and 2:
+              <strong>photoperiod</strong> triggers the hormonal cascade →
+              <strong>corticosterone</strong> drives hyperphagia →
+              <strong>fat deposition</strong> provides the fuel →
+              <strong>organ remodelling</strong> optimises the body for flight →
+              <strong>Zugunruhe</strong> drives the departure →
+              an <strong>innate navigational programme</strong> guides the bird 12,000 km to New Zealand.
+              In an exam, weaving these steps into a coherent narrative is what earns top marks.
+            </p>
+          </div>
+
+
+          <!-- ── Scholarship Extension ── -->
+          <h3>Scholarship Extension: Metabolic Water and the Oxygen Paradox</h3>
+
+          <div class="scholarship-extension fade-in-up">
+            <p>
+              Fat is the ideal fuel for energy density — but it comes with a hidden cost.
+              Oxidising fat requires <strong>more oxygen per unit of energy</strong> than
+              oxidising carbohydrate. The <strong>respiratory quotient</strong> (RQ) tells us
+              this:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Carbohydrate:</strong> RQ = 1.0 (6 CO<sub>2</sub> produced per 6 O<sub>2</sub> consumed)</li>
+              <li><strong>Fat:</strong> RQ = 0.7 (57 CO<sub>2</sub> per 80 O<sub>2</sub>)</li>
+            </ul>
+            <p>
+              This means for every unit of energy extracted from fat, the bird needs
+              <strong>~15% more oxygen</strong> than if it were burning carbohydrate. This is
+              the "oxygen paradox" of migration: the most mass-efficient fuel is the least
+              oxygen-efficient.
+            </p>
+            <p>
+              Birds solve this through multiple adaptations:
+            </p>
+            <ul class="feature-list">
+              <li>
+                <strong>Cross-current gas exchange</strong> in avian lungs — far more efficient
+                than mammalian alveolar lungs, extracting ~90% of inhaled O<sub>2</sub> (vs ~25%
+                in mammals)
+              </li>
+              <li>
+                <strong>Air sac system</strong> — providing continuous unidirectional airflow
+                through the lungs, unlike the tidal ventilation of mammalian lungs
+              </li>
+              <li>
+                <strong>Elevated haematocrit</strong> — increased red blood cell concentration
+                pre-migration, boosting oxygen-carrying capacity of the blood
+              </li>
+              <li>
+                <strong>Enhanced cardiac output</strong> — the enlarged heart pumps more
+                oxygenated blood per minute to working flight muscles
+              </li>
+            </ul>
+            <p>
+              At Scholarship level, linking the oxygen paradox to these respiratory adaptations
+              demonstrates the kind of <strong>integrated, multi-system thinking</strong> that
+              examiners reward. The bird's preparation for migration isn't just about storing fat —
+              it's about upgrading every system in the body to sustain the metabolic demands of
+              burning that fat continuously for a week or more.
+            </p>
+
+            <div class="exam-tip">
+              <h4>Scholarship Tip</h4>
+              <p>
+                A top Scholarship answer would integrate: molecular level (β-oxidation enzymes,
+                myoglobin upregulation) → cellular level (mitochondrial density increase) →
+                organ level (heart enlargement, lung efficiency, digestive organ reduction) →
+                whole-organism level (mass budget optimisation) → ecological level (the flight itself
+                and its adaptive significance). This multi-level integration is the hallmark of
+                Scholarship-quality biology.
+              </p>
+            </div>
+          </div>
+
+          <!-- Looking Ahead -->
+          <div class="looking-ahead-box fade-in-up">
+            <h3>Looking Ahead</h3>
+            <p>
+              You now understand both <em>how</em> migration is triggered and <em>how</em> the body
+              prepares for it. In the next lesson, we shift focus to <strong>navigation</strong> —
+              the astonishing suite of sensory mechanisms that allow birds to find their way across
+              featureless oceans, at night, through storms, to a specific beach in New Zealand.
+              How does a kuaka with a brain the size of a grape navigate more accurately than
+              a GPS? That's next.
+            </p>
+          </div>
+
+        </section><!-- /lesson-2 -->
+
+
+        <!-- ——————————————————————————————————————————————————————————————
              Quiz
              —————————————————————————————————————————————————————————————— -->
         <section id="quiz" class="content-section fade-in-up">
-          <h2>Test Yourself: Physiological Triggers</h2>
+          <h2>Test Yourself: Migration Physiology</h2>
 
           <div class="quiz-container" id="triggers-quiz">
             <div class="quiz-start" id="trig-quiz-start">
-              <p>8 questions on photoperiod, hormones, Zugunruhe, and physiological preparation for migration.</p>
+              <p>12 questions covering physiological triggers, hyperphagia, fuel selection, flight muscle adaptations, and organ remodelling.</p>
               <button class="btn btn--primary" id="trig-quiz-start-btn">Start Quiz</button>
             </div>
 
             <div id="trig-quiz-active" hidden>
               <div class="quiz-progress">
-                <span class="quiz-progress__text">Question <span id="trig-q-current">1</span> of <span id="trig-q-total">8</span></span>
+                <span class="quiz-progress__text">Question <span id="trig-q-current">1</span> of <span id="trig-q-total">12</span></span>
                 <div class="quiz-progress__bar"><div class="quiz-progress__fill" id="trig-q-fill"></div></div>
               </div>
               <div id="trig-q-container"></div>
@@ -755,7 +1397,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
              Exam Questions
              —————————————————————————————————————————————————————————————— -->
         <section id="exam-questions" class="content-section fade-in-up">
-          <h2>Exam Practice: Physiological Triggers</h2>
+          <h2>Exam Practice: Migration Physiology</h2>
 
           <p class="section-intro">
             Work through these questions in order — they progress from Achieved through to
@@ -790,11 +1432,41 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <textarea class="answer-input answer-input--med" data-answer="2" placeholder="Write your answer here..."></textarea>
             </div>
 
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q3</span>
+                <span class="question-type-badge question-type-badge--short">Achieved</span>
+              </div>
+              <p class="question-text">
+                Explain three reasons why lipids (fats) are a more suitable fuel than carbohydrates
+                for long-distance non-stop migration.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="3" placeholder="Write your answer here..."></textarea>
+            </div>
+
             <h3 class="question-section__title">Multi-Part (Merit)</h3>
 
             <div class="question-card">
               <div class="question-card__header">
-                <span class="question-number">Q3</span>
+                <span class="question-number">Q4</span>
+                <span class="question-type-badge question-type-badge--multi">Merit</span>
+              </div>
+              <p class="question-text">
+                Before migration, kuaka (bar-tailed godwit) digestive organs shrink by 40–50%
+                while flight muscles enlarge by 30%.
+                <br><br>
+                (a) Explain the biological significance of this organ remodelling for long-distance
+                non-stop flight.
+                <br>
+                (b) Describe two specific changes that occur in the flight muscles (beyond simply
+                increasing in size) and explain how each change supports sustained aerobic flight.
+              </p>
+              <textarea class="answer-input answer-input--xl" data-answer="4" placeholder="Write your answer here..."></textarea>
+            </div>
+
+            <div class="question-card">
+              <div class="question-card__header">
+                <span class="question-number">Q5</span>
                 <span class="question-type-badge question-type-badge--multi">Merit</span>
               </div>
               <p class="question-text">
@@ -802,14 +1474,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 their 12,000 km non-stop migration. For each change, explain how it is adaptive
                 — that is, how it improves the bird's chance of surviving the journey.
               </p>
-              <textarea class="answer-input answer-input--long" data-answer="3" placeholder="Write your answer here..."></textarea>
+              <textarea class="answer-input answer-input--long" data-answer="5" placeholder="Write your answer here..."></textarea>
             </div>
 
             <h3 class="question-section__title">Extended Response (Excellence)</h3>
 
             <div class="question-card">
               <div class="question-card__header">
-                <span class="question-number">Q4</span>
+                <span class="question-number">Q6</span>
                 <span class="question-type-badge question-type-badge--long">Excellence</span>
               </div>
               <p class="question-text">
@@ -825,7 +1497,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 (c) Discuss the adaptive advantage of having both an endogenous clock and an
                 external Zeitgeber, rather than relying on only one system.
               </p>
-              <textarea class="answer-input answer-input--xl" data-answer="4" placeholder="Write your answer here..."></textarea>
+              <textarea class="answer-input answer-input--xl" data-answer="6" placeholder="Write your answer here..."></textarea>
             </div>
           </div>
 
@@ -863,7 +1535,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               </div>
 
               <div class="model-grade-section">
-                <h5 class="model-grade-label model-grade-label--merit">Q3 — Merit</h5>
+                <h5 class="model-grade-label model-grade-label--achieved">Q3 — Achieved</h5>
+                <div class="answer-card">
+                  <p>Three reasons lipids are more suitable than carbohydrates for non-stop migration:</p>
+                  <ol class="numbered-reasons">
+                    <li><strong>Higher energy density:</strong> Lipids provide 39 kJ per gram, compared to 17 kJ/g for carbohydrates — more than twice the energy for the same mass. For a bird carrying all its fuel, this dramatically extends range.</li>
+                    <li><strong>Anhydrous storage:</strong> Fat is stored without water, whereas glycogen (stored carbohydrate) requires 3–4 g of water per gram stored. If a kuaka stored its fuel as glycogen, its departure mass would be 5–8× greater — too heavy to fly.</li>
+                    <li><strong>Metabolic water production:</strong> Fat oxidation produces 1.07 g of water per gram of fat burned. During non-stop oceanic flights with no access to fresh water, this metabolic water prevents dehydration.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--merit">Q4 — Merit</h5>
+                <div class="answer-card">
+                  <p><strong>(a)</strong> The digestive organs (stomach, intestines, liver) shrink because the kuaka does not eat during its 8–9 day non-stop flight. Carrying these organs at full size would add unnecessary mass, increasing the energy cost of flight and reducing the bird's range. The mass saved can be redirected to fuel (fat) and flight muscle. Proteins from the shrinking organs can also be recycled as a supplementary fuel source during the final stages of flight. Meanwhile, flight muscles grow because they must sustain continuous powered flight over 12,000 km — larger muscles produce more thrust and have greater endurance capacity.</p>
+                  <p><strong>(b)</strong> Two specific flight muscle changes:</p>
+                  <ul class="feature-list">
+                    <li><strong>Increased mitochondrial density:</strong> More mitochondria per muscle fibre means greater capacity for aerobic respiration, specifically β-oxidation of fatty acids. This allows the muscle to extract energy from fat at a faster rate, supporting the sustained power output needed for continuous flight.</li>
+                    <li><strong>Increased myoglobin concentration:</strong> Myoglobin is an oxygen-binding protein in muscle tissue that acts as an oxygen store and facilitates oxygen delivery from blood to mitochondria. Higher myoglobin concentration ensures adequate O₂ supply to sustain aerobic fat metabolism even at high metabolic rates during flight.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="model-grade-section">
+                <h5 class="model-grade-label model-grade-label--merit">Q5 — Merit</h5>
                 <div class="answer-card">
                   <p>
                     Kuaka undergo several pre-migratory physiological changes:
@@ -883,7 +1579,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               </div>
 
               <div class="model-grade-section">
-                <h5 class="model-grade-label model-grade-label--excellence">Q4 — Excellence</h5>
+                <h5 class="model-grade-label model-grade-label--excellence">Q6 — Excellence</h5>
                 <div class="answer-card">
                   <p><strong>(a)</strong> The results demonstrate that migration timing is controlled
                   by an <strong>endogenous circannual rhythm</strong> — an internal biological clock
@@ -925,7 +1621,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
             <div class="question-card question-card--scholarship">
               <div class="question-card__header">
-                <span class="question-number">Q5</span>
+                <span class="question-number">Q7</span>
                 <span class="question-type-badge question-type-badge--schol">Scholarship</span>
               </div>
               <p class="question-text">
@@ -1050,6 +1746,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <span>Discuss epigenetic regulation of migratory behaviour (Scholarship)</span>
             </li>
           </ul>
+          <h3 style="margin-top: var(--space-5);">Lesson 2 Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain hyperphagia and its hormonal control</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Compare energy density of lipids vs carbohydrates vs protein</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain three advantages of fat as a migration fuel</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe flight muscle adaptations (hypertrophy, mitochondria, myoglobin, enzymes)</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain organ remodelling as a mass-saving trade-off</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe kuaka pre-migratory preparation in detail</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Discuss the oxygen paradox and respiratory adaptations (Scholarship)</span>
+            </li>
+          </ul>
         </div>
 
         <!-- Key Vocabulary -->
@@ -1078,6 +1805,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="vocab-chip">entrainment</div>
             <div class="vocab-chip">epigenetics</div>
             <div class="vocab-chip">DNA methylation</div>
+            <div class="vocab-chip">lipogenesis</div>
+            <div class="vocab-chip">β-oxidation</div>
+            <div class="vocab-chip">triglyceride</div>
+            <div class="vocab-chip">pectoralis major</div>
+            <div class="vocab-chip">myoglobin</div>
+            <div class="vocab-chip">mitochondria</div>
+            <div class="vocab-chip">hypertrophy</div>
+            <div class="vocab-chip">atrophy</div>
+            <div class="vocab-chip">metabolic water</div>
+            <div class="vocab-chip">respiratory quotient</div>
+            <div class="vocab-chip">anhydrous</div>
           </div>
         </div>
 
@@ -1921,7 +2659,178 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
 
     /* ==========================================================================
-       Week 6 Custom Components
+       Week 6 Custom Components — Lesson 2
+       ========================================================================== */
+
+    /* ── Support Box (extra scaffolding for students who need it) ── */
+    .support-box {
+      background: linear-gradient(135deg, rgba(0, 200, 255, 0.05), rgba(0, 255, 136, 0.03));
+      border: 1px solid rgba(0, 200, 255, 0.15);
+      border-left: 4px solid var(--fluoro-cyan);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .support-box h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--fluoro-cyan);
+      margin: 0 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .support-box h4::before {
+      content: '💡';
+      font-size: 1.1rem;
+    }
+    .support-box p {
+      margin: 0;
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ── Stat Comparison Grid ── */
+    .stat-comparison {
+      margin: var(--space-5) 0;
+    }
+    .stat-comparison h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+    @media (max-width: 768px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .stat-card__value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green-vivid);
+    }
+    .stat-card__label {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ── Fuel Comparison Diagram ── */
+    .fuel-comparison {
+      margin: var(--space-5) 0;
+      overflow-x: auto;
+    }
+    .fuel-svg {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ── Numbered Reasons ── */
+    .numbered-reasons {
+      counter-reset: reason;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .numbered-reasons li {
+      position: relative;
+      padding-left: 2.5rem;
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-secondary);
+    }
+    .numbered-reasons li::before {
+      counter-increment: reason;
+      content: counter(reason);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--surface-3);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ── Remodelling Grid (flight muscle cards) ── */
+    .remodelling-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 768px) {
+      .remodelling-grid { grid-template-columns: 1fr; }
+    }
+    .remodel-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+    .remodel-card:hover {
+      border-color: var(--border-default);
+      transform: translateY(-2px);
+    }
+    .remodel-card__icon {
+      margin-bottom: var(--space-3);
+    }
+    .remodel-card h5 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin: 0 0 var(--space-2);
+    }
+    .remodel-card p {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* ── Organ Remodelling Diagram ── */
+    .organ-diagram {
+      margin: var(--space-5) 0;
+      overflow-x: auto;
+    }
+    .organ-svg {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       Week 6 Custom Components — Lesson 1
        ========================================================================== */
 
     /* ── Pathway Diagram ── */
@@ -2174,6 +3083,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         opts: ['An internal biological clock', 'An external cue that synchronises a biological clock', 'A hormone that triggers migration', 'A genetic mutation affecting migration timing'],
         correct: 1,
         explanation: 'Zeitgeber (German: "time-giver") is an environmental cue — primarily photoperiod — that entrains (synchronises) an endogenous biological clock to the external calendar.'
+      },
+      {
+        q: 'Fat provides approximately how much more energy per gram than carbohydrate?',
+        opts: ['1.5 times more', '2.3 times more', '3.5 times more', '5 times more'],
+        correct: 1,
+        explanation: 'Fat provides 39 kJ/g compared to carbohydrate\'s 17 kJ/g — approximately 2.3 times more energy per gram. This makes fat far superior as a fuel for weight-critical endurance flight.'
+      },
+      {
+        q: 'Which of the following is NOT a reason why migratory birds primarily burn fat during flight?',
+        opts: ['Fat has higher energy density than carbohydrate', 'Fat produces metabolic water when oxidised', 'Fat requires less oxygen to burn than carbohydrate', 'Fat is stored without water (anhydrously)'],
+        correct: 2,
+        explanation: 'Fat actually requires MORE oxygen per unit of energy than carbohydrate (RQ of 0.7 vs 1.0). This is the "oxygen paradox" of migration. The other three statements are correct advantages of fat as a migration fuel.'
+      },
+      {
+        q: 'Before migration, kuaka digestive organs shrink by approximately:',
+        opts: ['10–15%', '20–25%', '40–50%', '70–80%'],
+        correct: 2,
+        explanation: 'Kuaka digestive organs (stomach, intestines, liver) shrink by 40–50%. Since the bird doesn\'t eat during non-stop transoceanic flight, these organs are dead weight. The mass saved reduces the energy cost of flight.'
+      },
+      {
+        q: 'What is the primary role of increased myoglobin in pre-migratory flight muscles?',
+        opts: ['Store more fat within the muscle', 'Increase oxygen storage and delivery to mitochondria', 'Protect against lactic acid build-up', 'Increase muscle fibre thickness'],
+        correct: 1,
+        explanation: 'Myoglobin is an oxygen-binding protein in muscle tissue (similar to haemoglobin in blood). Increased myoglobin allows flight muscles to store and deliver more oxygen to mitochondria, sustaining the aerobic fat metabolism needed for continuous flight.'
       }
     ];
 
@@ -2376,7 +3309,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const nameEl = document.getElementById('student-name');
       const name = nameEl?.value || 'Not provided';
 
-      let text = 'PHYSIOLOGICAL TRIGGERS OF MIGRATION (Week 6, Lesson 1)\n';
+      let text = 'MIGRATION PHYSIOLOGY (Week 6, Lessons 1 & 2)\n';
       text += 'Name: ' + name + '\n';
       text += 'Date: ' + new Date().toLocaleDateString('en-NZ') + '\n';
       text += '==================================================\n\n';
@@ -2396,7 +3329,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       // Also grab scholarship answer
       const scholTa = document.getElementById('schol-answer');
       if (scholTa && scholTa.value.trim()) {
-        text += 'Q5 (Scholarship)\n';
+        text += 'Q7 (Scholarship)\n';
         text += 'Answer: ' + scholTa.value + '\n\n';
       }
 
