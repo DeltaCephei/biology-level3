@@ -1709,9 +1709,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
            ================================================================ -->
       <aside class="week-sidebar">
 
-        <!-- Learning Objectives -->
+        <!-- Lesson Navigator -->
+        <div class="sidebar-card sidebar-card--nav fade-in-up">
+          <h3>This Week's Lessons</h3>
+          <div class="lesson-nav">
+            <a href="#lesson-1" class="lesson-nav__item lesson-nav__item--1">
+              <span class="lesson-nav__number">1</span>
+              <span class="lesson-nav__info">
+                <span class="lesson-nav__title">Physiological Triggers</span>
+                <span class="lesson-nav__desc">How animals "know" when to migrate</span>
+              </span>
+            </a>
+            <a href="#lesson-2" class="lesson-nav__item lesson-nav__item--2">
+              <span class="lesson-nav__number">2</span>
+              <span class="lesson-nav__info">
+                <span class="lesson-nav__title">Preparing the Body</span>
+                <span class="lesson-nav__desc">Hyperphagia, fuel, muscles &amp; organs</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Lesson 1: Learning Objectives -->
         <div class="sidebar-card fade-in-up">
-          <h3>Learning Objectives</h3>
+          <h3>Lesson 1 Objectives</h3>
           <ul class="objectives-list">
             <li class="objective-item">
               <span class="objective-checkbox" aria-hidden="true"></span>
@@ -1746,7 +1767,54 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <span>Discuss epigenetic regulation of migratory behaviour (Scholarship)</span>
             </li>
           </ul>
-          <h3 style="margin-top: var(--space-5);">Lesson 2 Objectives</h3>
+        </div>
+
+        <!-- Lesson 1: Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Lesson 1 Vocabulary</h3>
+          <div class="vocab-grid">
+            <div class="vocab-chip">photoperiod</div>
+            <div class="vocab-chip">critical daylength</div>
+            <div class="vocab-chip">Zeitgeber</div>
+            <div class="vocab-chip">circannual rhythm</div>
+            <div class="vocab-chip">melatonin</div>
+            <div class="vocab-chip">pineal gland</div>
+            <div class="vocab-chip">SCN</div>
+            <div class="vocab-chip">hypothalamus</div>
+            <div class="vocab-chip">HPG axis</div>
+            <div class="vocab-chip">GnRH</div>
+            <div class="vocab-chip">gonadotropins</div>
+            <div class="vocab-chip">LH / FSH</div>
+            <div class="vocab-chip">corticosterone</div>
+            <div class="vocab-chip">prolactin</div>
+            <div class="vocab-chip">Zugunruhe</div>
+            <div class="vocab-chip">Emlen funnel</div>
+            <div class="vocab-chip">Gwinner</div>
+            <div class="vocab-chip">endogenous clock</div>
+            <div class="vocab-chip">entrainment</div>
+            <div class="vocab-chip">epigenetics</div>
+            <div class="vocab-chip">DNA methylation</div>
+          </div>
+        </div>
+
+        <!-- Connection to previous weeks -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 3:</strong> Taxis &amp; kinesis — simple innate responses
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 5:</strong> Migration types, NZ species, cost–benefit framework
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>Week 6:</strong> The physiological mechanisms that trigger and prepare
+            animals for migration — linking environmental cues to hormonal cascades.
+          </p>
+        </div>
+
+        <!-- Lesson 2: Learning Objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Lesson 2 Objectives</h3>
           <ul class="objectives-list">
             <li class="objective-item">
               <span class="objective-checkbox" aria-hidden="true"></span>
@@ -1779,43 +1847,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </ul>
         </div>
 
-        <!-- Key Vocabulary -->
+        <!-- Lesson 2: Key Vocabulary -->
         <div class="sidebar-card fade-in-up">
-          <h3>Key Vocabulary</h3>
+          <h3>Lesson 2 Vocabulary</h3>
           <div class="vocab-grid">
-            <div class="vocab-chip">photoperiod</div>
-            <div class="vocab-chip">critical daylength</div>
-            <div class="vocab-chip">Zeitgeber</div>
-            <div class="vocab-chip">circannual rhythm</div>
-            <div class="vocab-chip">melatonin</div>
-            <div class="vocab-chip">pineal gland</div>
-            <div class="vocab-chip">SCN</div>
-            <div class="vocab-chip">hypothalamus</div>
-            <div class="vocab-chip">HPG axis</div>
-            <div class="vocab-chip">GnRH</div>
-            <div class="vocab-chip">gonadotropins</div>
-            <div class="vocab-chip">LH / FSH</div>
-            <div class="vocab-chip">corticosterone</div>
-            <div class="vocab-chip">prolactin</div>
             <div class="vocab-chip">hyperphagia</div>
-            <div class="vocab-chip">Zugunruhe</div>
-            <div class="vocab-chip">Emlen funnel</div>
-            <div class="vocab-chip">Gwinner</div>
-            <div class="vocab-chip">endogenous clock</div>
-            <div class="vocab-chip">entrainment</div>
-            <div class="vocab-chip">epigenetics</div>
-            <div class="vocab-chip">DNA methylation</div>
             <div class="vocab-chip">lipogenesis</div>
             <div class="vocab-chip">β-oxidation</div>
             <div class="vocab-chip">triglyceride</div>
+            <div class="vocab-chip">anhydrous</div>
+            <div class="vocab-chip">metabolic water</div>
             <div class="vocab-chip">pectoralis major</div>
             <div class="vocab-chip">myoglobin</div>
             <div class="vocab-chip">mitochondria</div>
             <div class="vocab-chip">hypertrophy</div>
             <div class="vocab-chip">atrophy</div>
-            <div class="vocab-chip">metabolic water</div>
             <div class="vocab-chip">respiratory quotient</div>
-            <div class="vocab-chip">anhydrous</div>
+            <div class="vocab-chip">energy density</div>
           </div>
         </div>
 
@@ -1844,21 +1892,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <span>Exam Questions</span>
             </a>
           </div>
-        </div>
-
-        <!-- Connection to previous weeks -->
-        <div class="sidebar-card sidebar-card--connection fade-in-up">
-          <h3>Building On</h3>
-          <p class="sidebar-text">
-            <strong>Week 3:</strong> Taxis &amp; kinesis — simple innate responses
-          </p>
-          <p class="sidebar-text">
-            <strong>Week 5:</strong> Migration types, NZ species, cost–benefit framework
-          </p>
-          <p class="sidebar-text sidebar-text--highlight">
-            <strong>Week 6:</strong> The physiological mechanisms that trigger and prepare
-            animals for migration — linking environmental cues to hormonal cascades.
-          </p>
         </div>
 
       </aside>
@@ -2561,6 +2594,63 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       color: var(--text-primary);
     }
     .sidebar-card--connection { border-left: 3px solid var(--fluoro-cyan); }
+    .sidebar-card--nav { border: 1px solid var(--accent); background: var(--surface-2); }
+
+    /* ── Lesson Navigator ── */
+    .lesson-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .lesson-nav__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    .lesson-nav__item:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .lesson-nav__item:link, .lesson-nav__item:visited { color: inherit; }
+    .lesson-nav__number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .lesson-nav__item--1 .lesson-nav__number {
+      background: rgba(0, 200, 255, 0.15);
+      color: var(--fluoro-cyan);
+      border: 1px solid rgba(0, 200, 255, 0.3);
+    }
+    .lesson-nav__item--2 .lesson-nav__number {
+      background: rgba(0, 255, 136, 0.15);
+      color: var(--green-vivid);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+    }
+    .lesson-nav__info { display: flex; flex-direction: column; gap: 2px; }
+    .lesson-nav__title {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+    }
+    .lesson-nav__desc {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
     .sidebar-text {
       font-size: var(--text-sm);
       color: var(--text-secondary);
@@ -2625,6 +2715,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     .week-sidebar .sidebar-card:nth-child(2) { transition-delay: 0.15s; }
     .week-sidebar .sidebar-card:nth-child(3) { transition-delay: 0.2s; }
     .week-sidebar .sidebar-card:nth-child(4) { transition-delay: 0.25s; }
+    .week-sidebar .sidebar-card:nth-child(5) { transition-delay: 0.3s; }
+    .week-sidebar .sidebar-card:nth-child(6) { transition-delay: 0.35s; }
+    .week-sidebar .sidebar-card:nth-child(7) { transition-delay: 0.4s; }
 
     /* ── Migration Badge (reused from Week 5) ── */
     .migration-badge {
