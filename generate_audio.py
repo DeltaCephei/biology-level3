@@ -142,6 +142,156 @@ Here's what I want you to take away for the exam. The kuaka's flight isn't just 
 
 If you can tell that story — from light hitting the eye all the way through to the bird arriving in New Zealand — and explain the biological significance at each step, you're writing an Excellence answer. That's the narrative arc the examiners are looking for.
 """,
+
+    # ── Week 3: Simple Animal Responses ───────────────────────────────────
+
+    # 1. Taxis vs Kinesis — the core concept
+    "week3_taxis_kinesis": """
+Right, taxis and kinesis. These are the two types of simple innate response, and the distinction between them is one of the most common exam questions you'll face. So let's get it absolutely clear.
+
+Both taxis and kinesis are about an animal moving in response to a stimulus. The crucial difference is whether the animal knows which direction the stimulus is coming from.
+
+Taxis is directional. The animal detects where the stimulus is and moves towards it or away from it. A moth flying towards a light — that's positive phototaxis. The moth knows where the light is and heads straight for it. There are two ways animals do this. Klinotaxis is where the animal has one receptor and swings its body side to side to compare — like a maggot waving its head left and right to figure out which side is brighter. Tropotaxis is where the animal has paired receptors, one on each side, and compares both sides simultaneously — like a barnacle larva detecting chemical concentration on its left and right at the same time.
+
+Kinesis is non-directional. The animal can't tell where the stimulus is coming from. Instead, it changes how it moves. There are two types. Orthokinesis is a change in speed — woodlice move faster in dry conditions and slow down in humid ones. They don't know which way the moisture is, they just keep moving until they stumble into somewhere damp and then stop. Klinokinesis is a change in turning rate — a flatworm turns more often in bright light and moves in straighter lines in the dark. The result is the same — it ends up in a dark area — but not because it aimed there.
+
+Here's the exam key. Both taxis and kinesis get the animal to a better place. But they do it through completely different mechanisms. Always explain the mechanism, not just the outcome.
+""",
+
+    # 2. The Eight Stimuli — vocabulary
+    "week3_stimuli": """
+OK, quick vocabulary lesson. There are eight stimulus types you need to know, and each one has a prefix. You combine the prefix with "taxis" or "kinesis" to name the response.
+
+Photo means light. Thermo means temperature. Gravi or geo means gravity. Chemo means chemicals. Thigmo means touch. Hydro means water or moisture. Rheo means water current. And tropho means food or nutrients.
+
+So if you see a moth flying towards a light, that's positive phototaxis — photo for light, taxis because it's directional, positive because it's moving towards. If a woodlouse speeds up in dry air, that's hydrokinesis — hydro for moisture, kinesis because it's non-directional.
+
+The trick for the exam is to always use the correct terminology. Don't just say "the eel swims against the current." Say "the eel exhibits positive rheotaxis" — rheo for current, taxis because it's directional, positive because it moves into the current. That precise language is what gets you marks.
+""",
+
+    # 3. NZ Examples — bringing species to life
+    "week3_nz_examples": """
+Let me walk you through the New Zealand examples because these are the ones that could appear in your exam.
+
+First, the glow-worm — Arachnocampa luminosa. This is a brilliant example of how one organism exploits another's innate response. The glow-worm larva produces light in caves, and its prey — midges and moths — exhibit positive phototaxis. They fly straight towards the glow and get trapped in sticky silk threads. The glow-worm is essentially hacking its prey's hardwired behaviour.
+
+Second, tree weta. These are nocturnal and show strong negative phototaxis — they actively avoid light. Research at Maungatautari found an eighty-seven point five percent reduction in weta activity in areas with artificial lighting. Males were particularly affected. This has real conservation implications for light pollution near native bush.
+
+Third, paua larvae. These tiny larvae swim towards chemicals released by coralline algae on rocks — positive chemotaxis. More than eighty-eight percent of larvae settled within one day when exposed to the right algal chemicals. This ensures they land on suitable habitat near adult feeding grounds. It's a critical step in paua population sustainability.
+
+And fourth, the longfin eel — tuna. As glass eels returning from the ocean, they swim against the river current — positive rheotaxis. But later in life, the adults reverse this completely and head downstream to the sea. Same stimulus, opposite response — and that switch is driven by hormones, which you'll learn about in later weeks.
+""",
+
+    # ── Week 4: Pheromones & Navigation ───────────────────────────────────
+
+    # 4. Pheromones — what they are
+    "week4_pheromones": """
+Pheromones. In Week 3 you learned about chemotaxis — movement towards or away from chemicals. Pheromones are one of the most important chemical signals in nature, and they take that concept to a whole new level.
+
+A pheromone is a chemical secreted by one animal that triggers a specific response in another member of the same species. That's the key distinction from hormones — hormones work inside the body, pheromones work between individuals, through the external environment.
+
+Now here's the exam-critical distinction. There are two types of pheromone, and they work in completely different ways.
+
+Releaser pheromones trigger an immediate behavioural response. They act on the nervous system — fast and stereotypic. An ant releases an alarm pheromone and other ants scatter instantly. A female moth releases a sex pheromone and males fly towards her within seconds. These are rapid, short-term behavioural changes.
+
+Primer pheromones trigger a slow physiological change over days or weeks. They act on the endocrine system, altering hormone levels. The classic example is honeybee queen substance. The queen produces a pheromone that suppresses ovary development in all the worker bees. It doesn't make them do anything immediately — it gradually changes their physiology.
+
+And here's the exam favourite: honeybee queen mandibular pheromone is both. It immediately attracts workers to groom the queen — that's a releaser effect. And it suppresses their ovary development over weeks — that's a primer effect. Same chemical, two different mechanisms. If you can explain that in an exam, you're showing real understanding.
+""",
+
+    # 5. Sun Compass — the elegant mechanism
+    "week4_sun_compass": """
+Sun compass navigation. This is one of those topics where the biology is genuinely elegant.
+
+Many animals use the sun's position to navigate. But here's the problem — the sun moves across the sky. It's in the east in the morning, overhead at midday, in the west in the evening. So if you're using the sun as a compass, it's only useful if you also know what time it is. Otherwise a bee trained to find food to the east in the morning would search to the south at midday.
+
+The solution is a time-compensated sun compass. The animal has an internal circadian clock that tracks the time of day, and it uses that clock to adjust for the sun's apparent movement. The sun is here at nine AM, there at noon, over there at three PM — and the animal's clock compensates automatically.
+
+The proof comes from a beautiful experiment. Scientists kept homing pigeons in artificial light cycles shifted by six hours. When released, the clock-shifted pigeons flew ninety degrees off course — exactly the error you'd predict if their internal clock was six hours wrong. The sun was in one place, but the pigeons' clocks said it should be somewhere else, so they miscalculated the direction.
+
+That experiment is exam gold. It proves two things at once: that the animals are using the sun for direction, and that they're using an internal clock to compensate for the sun's movement. If either piece is missing — no sun or no clock — the navigation breaks.
+""",
+
+    # 6. Magnetic Navigation — cutting-edge science
+    "week4_magnetic_nav": """
+Magnetic navigation is probably the most mind-blowing topic in this whole course. Animals can detect Earth's magnetic field — and they use it for both compass direction and position.
+
+Let me explain what information the magnetic field actually provides. Earth's field lines emerge vertically at the poles and run horizontally at the equator. The angle of these field lines — called the inclination or dip angle — tells an animal whether it's heading poleward or equatorward. That's a magnetic compass.
+
+But it gets better. Both the total field strength and the inclination angle vary in predictable patterns across the globe. If an animal can detect both, it can estimate its latitude and longitude — a magnetic map. Sea turtles have been shown to do exactly this.
+
+Now, how do they detect it? There are two proposed mechanisms, and knowing both is important for Excellence answers.
+
+First, magnetite crystals. Tiny crystals of naturally magnetic iron oxide have been found in the beaks and nasal tissues of birds. These crystals physically rotate in response to the magnetic field and stimulate nearby nerve cells.
+
+Second, cryptochrome proteins. These are molecules in the retina of birds that are activated by blue light and form what are called radical pairs. The chemistry of these radical pairs is influenced by the magnetic field. This might mean birds can literally see the magnetic field — as a visual pattern overlaid on their normal vision.
+
+For the exam, don't just say animals sense the magnetic field. Explain what information it provides — inclination for direction, intensity plus inclination for position — and how it's detected. That level of mechanism is what separates Excellence from Merit.
+""",
+
+    # ── Week 5: Waggle Dance, Homing & Migration ─────────────────────────
+
+    # 7. Waggle Dance — how it works
+    "week5_waggle_dance": """
+The waggle dance. This is genuinely one of the most remarkable behaviours in the animal kingdom — a tiny insect communicating the location of food using a symbolic language.
+
+When a forager bee finds a good food source, she returns to the hive and dances on the vertical surface of the honeycomb. The dance encodes three pieces of information: direction, distance, and quality.
+
+Here's how direction works — and this is the clever bit. The bee can't point and say "that way." She's dancing on a vertical comb inside a dark hive. So she uses gravity as a stand-in for the sun. If she runs straight up the comb during the waggle phase, that means the food is in the direction of the sun. Straight down means directly away from the sun. Sixty degrees to the right of vertical means sixty degrees to the right of the sun's direction from the hive.
+
+She's transposing a horizontal outdoor map onto a vertical surface using gravity. That's extraordinary for a brain the size of a pinhead.
+
+Distance is simpler. The longer the waggle run lasts, the further away the food is. About one second of waggling equals roughly one kilometre. And quality? The more vigorously she dances and the more circuits she does, the richer the food source.
+
+The other bees can't see the dance — it's dark in the hive. They follow the dancer with their antennae, feeling the movements, and they pick up the scent of the flowers from the dancer's body.
+
+Karl von Frisch decoded all of this using glass-walled observation hives and numbered bees. He won the Nobel Prize for it in 1973 — the first and only Nobel awarded for animal behaviour research.
+""",
+
+    # 8. Homing — the four navigation systems
+    "week5_homing": """
+Homing. This is different from the simple orientation behaviours you learned in Week 3. Taxis gets a woodlouse to a damp area. Homing gets a seabird back to its specific nest on a specific island after months at sea and thousands of kilometres of ocean. It requires navigating to a remembered goal, often across unfamiliar terrain.
+
+Animals use four main types of navigation cue, and most long-distance navigators use several of them together.
+
+First, topographical cues — visual landmarks like mountains, coastlines, rivers. These are most useful close to home. A pigeon recognises the landscape near its loft.
+
+Second, celestial cues — the sun compass you learned about in Week 4, and the star compass for night navigation. Both need clear skies.
+
+Third, magnetic cues — Earth's magnetic field. This one works in darkness, cloud, fog, even underwater. It provides both compass direction and positional information.
+
+Fourth, olfactory cues — scent. Salmon find their birth stream by its unique chemical signature. Seabirds may use their colony's smell to home in from the ocean.
+
+Here's the key insight for the exam. Most long-distance navigators don't rely on just one system — they use redundant, overlapping navigation cues. If one fails, another takes over. You saw this in the titi experiment: block the magnetic sense alone and the birds still home using celestial cues. Block celestial cues alone and they still home using magnetic. But block both together and they're lost. That redundancy is adaptive — it's been favoured by natural selection because navigation failure during migration means death.
+""",
+
+    # 9. Migration — what it is and why it happens
+    "week5_migration_intro": """
+Migration. Let's make sure you've got the definition rock solid, because students lose marks here every year.
+
+Migration is a seasonal or periodic movement between two distinct habitats, with a return journey. It's large-scale — hundreds to thousands of kilometres. It's predictable — usually tied to seasons. And it's a population-level pattern — most or all individuals migrate, not just a few.
+
+Here's what migration is NOT. Dispersal is one-way — a juvenile bird leaving its parents' territory and never coming back. That's not migration. Nomadism is unpredictable wandering following patchy resources. That's not migration either. Migration requires a regular, return journey between defined areas.
+
+Now, why would an animal do something so dangerous and expensive? Think of it as a cost-benefit analysis. The benefits include access to seasonal food abundance — like the Arctic summer insect bloom — better breeding habitat with fewer predators, favourable climate, and reduced parasite loads. The costs are enormous: massive energy expenditure, predation risk during transit, navigation errors that can be fatal, and missed reproduction if you arrive late.
+
+Migration is maintained by natural selection because, on average, individuals that migrate leave more offspring than those that don't. The benefits outweigh the costs — but only just. That's why migration is always a finely balanced equation, and why even small environmental changes can tip the balance.
+""",
+
+    # 10. NZ Migration Showcase — the five species
+    "week5_nz_showcase": """
+Let me bring the five New Zealand migratory species to life for you.
+
+Kuaka — the bar-tailed godwit. The undisputed champion of endurance flight. Every autumn these birds leave New Zealand estuaries and fly approximately twelve thousand kilometres non-stop to Alaska. Eight to nine days in the air. No food, no water, no rest. They navigate using sun and magnetic compasses. In 2007, a tracked female called E7 flew eleven thousand six hundred and ninety kilometres and arrived having lost half her body mass. You'll learn the physiology behind this in Week 6.
+
+Tuna — the longfin eel. After twenty to a hundred years quietly living in a New Zealand river, adults undergo a dramatic metamorphosis — enlarged eyes, silvered skin — and migrate roughly three thousand kilometres to deep ocean trenches near Tonga to spawn and die. It's a one-way trip. This is catadromous migration — freshwater to sea to breed. The opposite of salmon, which are anadromous.
+
+Titi — the sooty shearwater. These birds fly a sixty-five thousand kilometre figure-eight loop around the entire Pacific every year. Two hundred days at sea. They use celestial, magnetic, and olfactory navigation together — the multi-cue system you studied in Lesson 2. And Ngai Tahu muttonbirders have been recording their arrival and departure times for centuries, with observations that match modern satellite data almost exactly.
+
+Tohora — the humpback whale. About five thousand kilometres each way between Antarctic feeding grounds and tropical breeding waters near Tonga. They fast the entire migration, living off blubber reserves. The warm tropical waters have almost no food — but they're safer for newborn calves.
+
+And pekapeka — the short-tailed bat. New Zealand's only surviving native land mammal. These do short altitudinal migration — maybe ten to fifty kilometres — between higher elevations in summer and lower valleys in winter. They use torpor to survive the cold. They're nationally vulnerable, mainly threatened by introduced predators like rats and stoats.
+""",
 }
 
 

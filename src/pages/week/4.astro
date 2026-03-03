@@ -921,7 +921,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
              Lesson 2: Pheromones
              —————————————————————————————————————————————————————————————— -->
         <section id="lesson-2" class="content-section fade-in-up">
-          <h2>Lesson 2: Pheromones</h2>
+          <div class="section-header-with-audio">
+            <h2>Lesson 2: Pheromones</h2>
+            <button class="audio-btn" id="pheromones-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
 
           <p>
             In Week 3 you learned about <strong>chemotaxis</strong> — directional movement towards
@@ -1700,7 +1703,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 
           <!-- ── Sun Compass ── -->
-          <h3>Sun Compass Navigation</h3>
+          <div class="section-header-with-audio">
+            <h3>Sun Compass Navigation</h3>
+            <button class="audio-btn" id="sun-compass-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
 
           <p>
             Many animals use the <strong>position of the sun</strong> relative to the horizon as a
@@ -1781,7 +1787,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 
           <!-- ── Magnetic Navigation ── -->
-          <h3>Magnetic Navigation</h3>
+          <div class="section-header-with-audio">
+            <h3>Magnetic Navigation</h3>
+            <button class="audio-btn" id="magnetic-nav-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
 
           <p>
             Earth's magnetic field provides a <strong>globally available</strong> directional cue
@@ -4755,47 +4764,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 
   /* --------------------------------------------------------------------------
-     Audio Playback — "Why are we writing?" narration
+     Audio Playback — AI Me narrations
      -------------------------------------------------------------------------- */
-  (function initAudio() {
-    const btn = document.getElementById('why-writing-audio');
-    if (!btn) return;
+  (function initWeek4Audio() {
+    var audioMap = {
+      'why-writing-audio': '/audio/week4_why_writing.mp3',
+      'pheromones-audio': '/audio/week4_pheromones.mp3',
+      'sun-compass-audio': '/audio/week4_sun_compass.mp3',
+      'magnetic-nav-audio': '/audio/week4_magnetic_nav.mp3'
+    };
 
-    let audio = null;
+    var currentAudio = null;
+    var currentBtn = null;
 
-    btn.addEventListener('click', () => {
-      // If already playing, pause
-      if (audio && !audio.paused) {
-        audio.pause();
-        btn.textContent = '\u25B6';
-        btn.classList.remove('playing');
-        return;
-      }
+    function stopCurrent() {
+      if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+      if (currentBtn) { currentBtn.textContent = '\u25B6'; currentBtn.classList.remove('playing'); currentBtn = null; }
+    }
 
-      // If paused mid-way, resume
-      if (audio && audio.paused && audio.currentTime > 0) {
-        audio.play();
-        btn.textContent = '\u23F8\uFE0E';
-        btn.classList.add('playing');
-        return;
-      }
-
-      // Start fresh — base path is /biology-level3/
-      audio = new Audio('/biology-level3/audio/week4_why_writing.mp3');
-      btn.textContent = '\u23F8\uFE0E';
-      btn.classList.add('playing');
-      audio.play();
-
-      audio.addEventListener('ended', () => {
-        btn.textContent = '\u25B6';
-        btn.classList.remove('playing');
-        audio = null;
-      });
-
-      audio.addEventListener('error', () => {
-        btn.textContent = '\u25B6';
-        btn.classList.remove('playing');
-        audio = null;
+    Object.keys(audioMap).forEach(function(id) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        if (currentBtn === btn && currentAudio && !currentAudio.paused) {
+          currentAudio.pause(); btn.textContent = '\u25B6'; btn.classList.remove('playing'); return;
+        }
+        if (currentBtn === btn && currentAudio && currentAudio.paused && currentAudio.currentTime > 0) {
+          currentAudio.play(); btn.textContent = '\u23F8\uFE0E'; btn.classList.add('playing'); return;
+        }
+        stopCurrent();
+        var audio = new Audio(audioMap[id]);
+        currentAudio = audio; currentBtn = btn;
+        btn.textContent = '\u23F8\uFE0E'; btn.classList.add('playing'); audio.play();
+        audio.addEventListener('ended', function() { btn.textContent = '\u25B6'; btn.classList.remove('playing'); if (currentAudio === audio) { currentAudio = null; currentBtn = null; } });
+        audio.addEventListener('error', function() { btn.textContent = '\u25B6'; btn.classList.remove('playing'); if (currentAudio === audio) { currentAudio = null; currentBtn = null; } });
       });
     });
   })();
