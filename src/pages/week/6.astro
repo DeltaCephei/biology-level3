@@ -5,6 +5,7 @@
 
    Lesson 1: Physiological Triggers — How Animals "Know" When to Migrate
    Lesson 2: Preparing the Body for Migration — Hyperphagia, Fuel, Muscles
+   Lesson 3: Evolution of Migration — How Did Migratory Behaviour Evolve?
    ========================================================================== */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -56,6 +57,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <a href="#fuel-selection" class="week-nav__link">Fuel Selection</a>
       <a href="#muscle-remodelling" class="week-nav__link">Muscle &amp; Organs</a>
       <a href="#kuaka-case-study" class="week-nav__link">Kuaka Case Study</a>
+      <a href="#lesson-3" class="week-nav__link">Lesson 3: Evolution of Migration</a>
+      <a href="#partial-migration" class="week-nav__link">Partial Migration</a>
+      <a href="#blackcap-experiments" class="week-nav__link">Blackcap Experiments</a>
+      <a href="#migration-genes" class="week-nav__link">Migration Genes</a>
+      <a href="#nz-evolution" class="week-nav__link">NZ Evolution</a>
       <a href="#quiz" class="week-nav__link">Quiz</a>
       <a href="#exam-questions" class="week-nav__link">Exam Questions</a>
     </nav>
@@ -77,7 +83,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
              —————————————————————————————————————————————————————————————— -->
         <section id="lesson-1" class="content-section fade-in-up">
           <nav class="lesson-inline-nav" aria-label="Lesson navigation">
-            <span class="lesson-inline-nav__current">Lesson 1 of 2</span>
+            <span class="lesson-inline-nav__current">Lesson 1 of 3</span>
             <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--next">
               Lesson 2: Preparing the Body
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -745,7 +751,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Lesson 1: Physiological Triggers
             </a>
-            <span class="lesson-inline-nav__current">Lesson 2 of 2</span>
+            <span class="lesson-inline-nav__current">Lesson 2 of 3</span>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 3: Evolution of Migration
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </nav>
           <h2>Lesson 2: Preparing the Body for Migration</h2>
 
@@ -1374,14 +1384,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Looking Ahead -->
           <div class="looking-ahead-box fade-in-up">
-            <h3>Looking Ahead</h3>
+            <h3>Looking Ahead: Lesson 3</h3>
             <p>
               You now understand both <em>how</em> migration is triggered and <em>how</em> the body
-              prepares for it. In the next lesson, we shift focus to <strong>navigation</strong> —
-              the astonishing suite of sensory mechanisms that allow birds to find their way across
-              featureless oceans, at night, through storms, to a specific beach in New Zealand.
-              How does a kuaka with a brain the size of a grape navigate more accurately than
-              a GPS? That's next.
+              prepares for it. But where did all of this come from? In Lesson 3, we tackle the
+              <strong>evolution of migration</strong> — how did something this complex evolve? We'll
+              explore partial migration as a window into the process, revisit genetics concepts
+              from Level 2, and look at how scientists have demonstrated that migratory behaviour
+              is heritable through some of the most elegant experiments in biology.
             </p>
           </div>
 
@@ -1390,13 +1400,769 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Back to Lesson 1
             </a>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 3: Evolution of Migration
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </nav>
+
+        </section><!-- /lesson-2 -->
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 3: Evolution of Migration
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Lesson 2: Preparing the Body
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 3 of 3</span>
+          </nav>
+
+          <div class="section-header-with-audio">
+            <h2>Lesson 3: How Did Migration Evolve?</h2>
+            <button class="audio-btn" id="lesson3-intro-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
+
+          <p class="section-intro">
+            In Lessons 1 and 2 you learned <em>how</em> migration is triggered and <em>how</em> the body
+            prepares for it. But that raises a deeper question: <strong>how did something this complex
+            evolve in the first place?</strong> A kuaka doesn't just fly 12,000 km — it rebuilds its
+            entire body first, navigates with pinpoint accuracy, and arrives at a specific estuary in
+            New Zealand. How does evolution produce a behaviour this elaborate?
+          </p>
+
+          <p>
+            The answer lies in understanding that migration didn't appear overnight. It evolved
+            <strong>gradually</strong>, through small changes over millions of years — and we can see
+            that evolutionary process still happening today in species where <strong>some individuals
+            migrate and others don't</strong>. These "partial migrants" give us a living window into
+            how migration evolves.
+          </p>
+
+          <div class="connection-box fade-in-up">
+            <h4>Building on Level 2 Biology</h4>
+            <p>
+              This lesson connects directly to concepts you learned in Level 2. In
+              <strong>AS 91157 (Genetic Variation and Change)</strong> you studied natural selection,
+              allele frequency, gene pools, genetic drift, and gene flow. In
+              <strong>AS 91159 (Gene Expression)</strong> you learned how genes are expressed as
+              proteins and how environment influences phenotype. We're now applying all of that
+              to a real-world question: how does natural selection shape a complex behaviour
+              like migration?
+            </p>
+          </div>
+
+
+          <!-- ── The Big Question ── -->
+          <h3>Where Did Migration Come From?</h3>
+
+          <p>
+            There are two competing hypotheses about how bird migration originated, and the answer
+            matters because it tells us whether migration was always "built in" to birds or whether
+            it evolved from scratch.
+          </p>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--direction">
+              <h4>Northern Home Hypothesis</h4>
+              <p>
+                Birds originally lived year-round in <strong>temperate regions</strong>. As ice ages
+                made winters harsher, some individuals began moving south in autumn to survive —
+                and those that did had higher fitness. Over time, natural selection extended these
+                seasonal movements into full migration.
+              </p>
+              <p class="info-card__evidence">
+                <strong>Evidence:</strong> Recent genomic analysis of the largest radiation of
+                migratory songbirds in the Americas (emberizoid passerines) supports this —
+                migration evolved primarily through shifts of <em>winter</em> ranges toward the
+                tropics from ancestral temperate breeding grounds (Winger et al. 2014).
+              </p>
+            </div>
+            <div class="info-card info-card--distance">
+              <h4>Southern Home Hypothesis</h4>
+              <p>
+                Birds originally lived in the <strong>tropics</strong>. As some individuals ventured
+                north to breed — where food was abundant and competition lower during summer — they
+                returned south for winter. Natural selection favoured this pattern because tropical
+                "home" populations faced intense competition, while temperate summers offered
+                a breeding bonanza.
+              </p>
+              <p class="info-card__evidence">
+                <strong>Evidence:</strong> Some lineages (e.g. New World orioles) do appear to
+                have followed this path, but recent evidence suggests it's less common than
+                previously thought.
+              </p>
+            </div>
+          </div>
+
+          <div class="key-concept">
+            <h4>The Gradualist Theory</h4>
+            <p>
+              Both hypotheses share a core insight: migration evolved through
+              <strong>gradual extension of smaller annual movements</strong>. A bird that moved
+              50 km to find food in winter had slightly higher survival than one that didn't.
+              Its offspring inherited the tendency. Over thousands of generations, that 50 km
+              became 500, then 5,000, then 12,000.
+            </p>
+            <p>
+              This is natural selection acting on <strong>heritable variation in movement
+              behaviour</strong> — exactly the mechanism you learned in Level 2 AS 91157.
+              The key difference is that instead of acting on a visible trait like colour,
+              selection is acting on a <em>behavioural</em> trait encoded by multiple genes.
+            </p>
+          </div>
+
+
+          <div class="experiment-card fade-in-up">
+            <h4>Evidence: The Northern Wheatear's Fossil Route</h4>
+            <div class="experiment-desc">
+              <p>
+                The <strong>northern wheatear</strong> (<em>Oenanthe oenanthe</em>) provides
+                striking evidence that migratory routes persist long after the conditions that
+                created them have changed.
+              </p>
+              <p>
+                Originally a Eurasian species, wheatears colonised North America as ice sheets
+                retreated around <strong>20,000 years ago</strong>. But here's the remarkable thing —
+                none of these North American wheatears winter in the Americas. They <em>all</em>
+                still retrace their ancestral migratory paths back to wintering grounds in
+                <strong>Africa</strong>, flying either east across the Atlantic or west across Asia.
+              </p>
+              <p>
+                This demonstrates <strong>evolutionary inertia</strong> — the migratory programme
+                is so deeply encoded in their genes that it persists even when the geographical
+                context has completely changed.
+              </p>
+            </div>
+          </div>
+
+          <div class="think-prompt fade-in-up">
+            <h4>Think About It</h4>
+            <p>
+              Over the last 2.5 million years, Earth has experienced more than
+              <strong>20 glacial cycles</strong> — ice sheets advancing and retreating. How might
+              these repeated cycles have acted as a "pump" that reinforced migratory behaviour?
+              Think about what happens to bird populations when ice sheets push them south, then
+              retreat and allow recolonisation northward.
+            </p>
+          </div>
+
+
+          <!-- ── Partial Migration ── -->
+          <div class="section-header-with-audio">
+            <h3 id="partial-migration">Partial Migration: A Window Into Evolution</h3>
+            <button class="audio-btn" id="partial-migration-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
+
+          <p>
+            If migration evolves gradually, then we should be able to find species that are
+            "partway there" — populations where <strong>some individuals migrate and others don't</strong>.
+            And that's exactly what we find. It's called <strong>partial migration</strong>, and it's
+            arguably the most common form of migration in the animal kingdom.
+          </p>
+
+          <div class="key-concept">
+            <h4>What Is Partial Migration?</h4>
+            <p>
+              A partially migratory population contains <strong>both migratory and resident
+              individuals</strong>. Not all members migrate — some stay put year-round. This is
+              different from full migration (where everyone migrates) and residency (where nobody does).
+            </p>
+            <p>
+              In Australia, <strong>44% of non-passerine birds</strong> and <strong>32% of passerine
+              species</strong> are partially migratory. It's far more widespread than most people realise.
+            </p>
+          </div>
+
+          <p>
+            Why would partial migration be so common? Because it represents a
+            <strong>bet-hedging strategy</strong>. If the winter is mild, residents do well — they
+            don't waste energy migrating and they get first pick of territories in spring. But if
+            the winter is harsh, migrants survive because they've moved to better conditions. By
+            having both strategies in the same population, the species hedges its bets against
+            environmental unpredictability.
+          </p>
+
+          <h4>What determines whether an individual migrates?</h4>
+
+          <p>
+            Whether an individual in a partially migratory population migrates is influenced by
+            a combination of factors — and this is where your Level 2 genetics becomes important:
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <strong>Genetics</strong> — there is a heritable propensity to migrate. Some individuals
+              are genetically "programmed" to migrate more than others. This is the raw material
+              for natural selection.
+            </li>
+            <li>
+              <strong>Body condition</strong> — in some species, lighter juveniles are more likely
+              to migrate (they can't compete for winter food with heavier birds). Remember from
+              Level 2: <em>phenotype = genotype + environment</em>.
+            </li>
+            <li>
+              <strong>Age and sex</strong> — juveniles and females often migrate more frequently than
+              dominant adults and males.
+            </li>
+            <li>
+              <strong>Social status</strong> — dominant individuals may be able to remain resident
+              (holding the best territories year-round), while subordinates are "pushed out" into migration.
+            </li>
+          </ul>
+
+          <div class="exam-tip">
+            <h4>Exam Tip: Phenotype = Genotype + Environment</h4>
+            <p>
+              This is a perfect place to use the Level 2 equation. In partial migration,
+              the <strong>genotype</strong> determines the individual's threshold for migration
+              (some birds have a lower threshold, making them more likely to migrate). The
+              <strong>environment</strong> (food availability, winter severity, competition)
+              determines whether that threshold is crossed. Two birds with the same genotype
+              might show different behaviours in different years. This interaction between
+              genes and environment is exactly what AS 91159 prepared you for.
+            </p>
+          </div>
+
+
+          <!-- ── Berthold's Blackcap Experiments ── -->
+          <div class="section-header-with-audio">
+            <h3 id="blackcap-experiments">Berthold's Blackcap Experiments: Proof That Migration Is Genetic</h3>
+            <button class="audio-btn" id="blackcap-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
+
+          <p>
+            The most important experiments on the genetics of migration were conducted by
+            <strong>Peter Berthold</strong> and colleagues at the Max Planck Institute for
+            Ornithology, using the <strong>European blackcap</strong> (<em>Sylvia atricapilla</em>).
+            These experiments are exam favourites because they demonstrate, with elegant simplicity,
+            that migratory behaviour has a strong genetic basis.
+          </p>
+
+          <div class="experiment-card fade-in-up">
+            <h4>Experiment 1: Selective Breeding — Can You Breed Migration In and Out?</h4>
+            <div class="experiment-desc">
+              <p>
+                Berthold started with a <strong>partially migratory population</strong> from
+                southern France — approximately <strong>75% migrants, 25% residents</strong>.
+              </p>
+              <p>
+                He then conducted a two-way selective breeding experiment with
+                <strong>458 birds</strong>:
+              </p>
+              <ul class="feature-list">
+                <li>One line was selectively bred for <strong>migratoriness</strong> — only the most migratory birds were allowed to breed</li>
+                <li>The other line was selectively bred for <strong>sedentariness</strong> — only the most sedentary birds bred</li>
+              </ul>
+              <h5>Results:</h5>
+              <p>
+                Within <strong>3–6 generations</strong>, Berthold achieved populations that were
+                <strong>almost completely migratory or almost completely sedentary</strong>.
+              </p>
+              <p>
+                The <strong>heritability</strong> of migratory activity was estimated at
+                <strong>0.37–0.46</strong> (where 0 means entirely environmental and 1 means
+                entirely genetic). This is a strong heritability — comparable to human height.
+              </p>
+            </div>
+          </div>
+
+          <div class="connection-box fade-in-up">
+            <h4>Connecting to Level 2: Allele Frequency</h4>
+            <p>
+              What Berthold did is exactly what you studied in AS 91157 — <strong>directional
+              selection</strong> changing <strong>allele frequencies</strong> in a population.
+              By only allowing migratory birds to breed, he increased the frequency of
+              "migration alleles" in the gene pool. By only allowing sedentary birds to breed,
+              he decreased them. The fact that this worked so quickly tells us that the genetic
+              variation was already present in the population — selection just shifted which
+              alleles were most common.
+            </p>
+          </div>
+
+          <div class="experiment-card fade-in-up">
+            <h4>Experiment 2: Cross-Breeding — Is Direction Genetic Too?</h4>
+            <div class="experiment-desc">
+              <p>
+                German blackcaps migrate <strong>south-west</strong> to Spain and North Africa.
+                Austrian blackcaps migrate <strong>south-east</strong> to the eastern Mediterranean.
+              </p>
+              <p>
+                Berthold crossed them. The <strong>F1 hybrid offspring showed an intermediate
+                migratory direction</strong> — south, splitting the difference between south-west
+                and south-east.
+              </p>
+              <p>
+                This proved that <strong>migratory direction is also genetically controlled</strong>
+                — not learned from parents, not determined by experience, but encoded in the
+                bird's DNA.
+              </p>
+            </div>
+          </div>
+
+          <div class="experiment-card fade-in-up">
+            <h4>Experiment 3: Cross-Breeding Migrants with Non-Migrants</h4>
+            <div class="experiment-desc">
+              <p>
+                Migratory German blackcaps were crossed with <strong>non-migratory Cape Verde
+                Islands blackcaps</strong> (an island population that never migrates).
+              </p>
+              <p>
+                Result: about <strong>40% of F1 hybrids developed migratory activity</strong>.
+                This tells us migration is not controlled by a single gene — it's a
+                <strong>polygenic trait</strong> (controlled by multiple genes). This is consistent
+                with Berthold's <strong>threshold model</strong>: many genes each contribute a small
+                amount, and whether an individual migrates depends on whether the total genetic
+                "score" crosses a threshold.
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive: Berthold's Threshold Model -->
+          <div class="threshold-model fade-in-up">
+            <h4>Berthold's Threshold Model</h4>
+            <div class="threshold-diagram">
+              <svg viewBox="0 0 700 240" class="threshold-svg" role="img" aria-label="Diagram showing Berthold's polygenic threshold model for migration. A bell curve of genetic scores, with a threshold line separating migrants from residents.">
+                <defs>
+                  <linearGradient id="bellGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="var(--fluoro-cyan)" stop-opacity="0.2"/>
+                    <stop offset="50%" stop-color="var(--fluoro-cyan)" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="var(--green-vivid)" stop-opacity="0.5"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Axes -->
+                <line x1="60" y1="190" x2="640" y2="190" stroke="var(--text-muted)" stroke-width="1.5"/>
+                <line x1="60" y1="30" x2="60" y2="190" stroke="var(--text-muted)" stroke-width="1.5"/>
+
+                <!-- X-axis label -->
+                <text x="350" y="225" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="'Inter', sans-serif">Genetic "migration score" (sum of many gene effects)</text>
+
+                <!-- Y-axis label -->
+                <text x="20" y="110" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="'Inter', sans-serif" transform="rotate(-90 20 110)">Frequency</text>
+
+                <!-- Bell curve (approximate normal distribution) -->
+                <path d="M80,188 C120,186 160,175 200,150 C240,120 280,70 330,45 C360,35 390,35 420,55 C460,80 500,130 540,160 C570,175 600,185 620,188"
+                      fill="url(#bellGrad)" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.8"/>
+
+                <!-- Threshold line -->
+                <line x1="420" y1="25" x2="420" y2="195" stroke="var(--fluoro-pink)" stroke-width="2" stroke-dasharray="6 3"/>
+                <text x="420" y="18" text-anchor="middle" fill="var(--fluoro-pink)" font-size="12" font-weight="600" font-family="'Space Grotesk', sans-serif">THRESHOLD</text>
+
+                <!-- Labels for regions -->
+                <text x="230" y="205" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-weight="600" font-family="'Space Grotesk', sans-serif">RESIDENTS</text>
+                <text x="230" y="218" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="'Inter', sans-serif">(below threshold)</text>
+
+                <text x="540" y="205" text-anchor="middle" fill="var(--green-vivid)" font-size="11" font-weight="600" font-family="'Space Grotesk', sans-serif">MIGRANTS</text>
+                <text x="540" y="218" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="'Inter', sans-serif">(above threshold)</text>
+              </svg>
+            </div>
+            <p>
+              Think of it like exam marks: each gene contributes a few "points" to a migration
+              score. If your total score crosses the threshold, you migrate. If not, you stay.
+              This explains why a partially migratory population has some migrants and some
+              residents — individuals near the threshold can go either way depending on
+              environmental conditions. <strong>Selection can shift the whole curve</strong>
+              left (more residents) or right (more migrants) by changing allele frequencies
+              — which is exactly what Berthold demonstrated.
+            </p>
+          </div>
+
+
+          <!-- ── Evolution in Real Time ── -->
+          <h3>Evolution in Real Time: The Blackcap's New Migration Route</h3>
+
+          <p>
+            Here's where the blackcap story gets truly extraordinary — it provides evidence of
+            <strong>evolution happening right now, in a timescale we can observe</strong>.
+          </p>
+
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>The British-Wintering Blackcaps</h4>
+                <span class="showcase-card__scientific"><em>Sylvia atricapilla</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Evolving Now</span>
+            </div>
+            <div class="case-study-card__body">
+              <p>
+                Traditionally, Central European blackcaps wintered in <strong>Spain and North
+                Africa</strong> (south-west). But starting in the 1960s — when backyard bird
+                feeding became popular in Britain — some blackcaps began wintering in
+                <strong>Britain</strong> instead (north-west).
+              </p>
+
+              <h5>What's happened in ~30 generations:</h5>
+              <ul class="feature-list">
+                <li>
+                  Approximately <strong>10%</strong> of the Central European population now
+                  winters in Britain
+                </li>
+                <li>
+                  British-wintering blackcaps have evolved <strong>rounder wings</strong>
+                  (better manoeuvrability for shorter flights) compared to the
+                  <strong>pointier wings</strong> of Spanish-winterers (more efficient for
+                  long-distance flight)
+                </li>
+                <li>
+                  They've evolved <strong>narrower, longer beaks</strong> — suited to seeds
+                  and suet from feeders — vs. the <strong>broader beaks</strong> of
+                  Mediterranean-winterers, suited to fruit
+                </li>
+                <li>
+                  <strong>Reproductive isolation is developing:</strong> British-winterers arrive
+                  at breeding grounds earlier (shorter journey), so they tend to mate with each
+                  other rather than with later-arriving Spanish-winterers. This positive feedback
+                  loop is increasing genetic divergence between the two groups
+                </li>
+              </ul>
+
+              <div class="exam-tip">
+                <h4>Exam Tip: Potential Speciation</h4>
+                <p>
+                  This is a textbook example of <strong>incipient speciation</strong> —
+                  the early stages of one species splitting into two. Different selection
+                  pressures (British vs. Mediterranean winters) + assortative mating (early
+                  arrivals mate with early arrivals) = increasing genetic divergence. If you're
+                  asked about how migration can drive speciation, this is your go-to example.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Migration Genes ── -->
+          <div class="section-header-with-audio">
+            <h3 id="migration-genes">The Genetics of Migration: Candidate Genes</h3>
+            <button class="audio-btn" id="migration-genes-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
+
+          <p>
+            If migration is genetic, which genes are involved? This is cutting-edge research —
+            scientists are still mapping the full genetic architecture. But several candidate
+            genes have been identified, and they connect beautifully to what you learned about
+            gene expression in Level 2 (AS 91159).
+          </p>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--direction">
+              <h4>CLOCK Gene</h4>
+              <p>
+                Controls <strong>circadian rhythms</strong> — the daily internal clock. Variation
+                in the number of poly-Q repeats (a short DNA sequence repeated different numbers
+                of times) is associated with <strong>migration timing</strong>. More repeats =
+                later spring migration in some species.
+              </p>
+              <p class="info-card__evidence">
+                In the NZ <strong>silvereye (tauhou)</strong>, migrant individuals had longer
+                CLOCK alleles than resident individuals in the same partially migratory population.
+              </p>
+            </div>
+            <div class="info-card info-card--distance">
+              <h4>ADCYAP1 Gene</h4>
+              <p>
+                Codes for a <strong>neuropeptide</strong> involved in stress response and activity
+                levels. Variation in this gene's regulatory region is associated with
+                <strong>migratory restlessness</strong> (Zugunruhe). This single gene explains
+                about <strong>3%</strong> of phenotypic variation in migratoriness.
+              </p>
+              <p class="info-card__evidence">
+                That 3% may sound small, but remember — migration is <em>polygenic</em>.
+                Many genes each contribute a small effect.
+              </p>
+            </div>
+            <div class="info-card info-card--quality">
+              <h4>Willow Warbler: 2 Loci = 74%</h4>
+              <p>
+                A 2023 study found that in the willow warbler, just <strong>two genetic loci</strong>
+                explain <strong>74%</strong> of the variation in migration direction. One involves
+                a chromosome inversion; the other involves a transposable element cluster.
+              </p>
+              <p class="info-card__evidence">
+                Most hybrids migrate like one parent (not intermediate) — so they don't suffer
+                the cost of an inferior route.
+              </p>
+            </div>
+          </div>
+
+          <div class="connection-box fade-in-up">
+            <h4>Connecting to Level 2: Gene → Protein → Phenotype</h4>
+            <p>
+              In AS 91159 you learned the pathway: <strong>DNA → mRNA → protein →
+              phenotype</strong>. The CLOCK gene produces a protein that regulates circadian
+              rhythm. A change in the DNA sequence (a mutation — remember those from AS 91157?)
+              changes the protein, which changes the circadian rhythm, which changes when the
+              bird migrates. This is gene expression producing a <em>behavioural</em> phenotype
+              — exactly the same mechanism as sickle cell producing a <em>structural</em>
+              phenotype, just applied to the nervous system rather than haemoglobin.
+            </p>
+          </div>
+
+          <div class="key-concept">
+            <h4>The "Migratory Gene Package" Hypothesis</h4>
+            <p>
+              Some researchers argue that <strong>the genetic framework for migration exists
+              in nearly all bird species</strong> — even sedentary ones. The genes for
+              navigation, fat storage, muscle remodelling, and Zugunruhe are all present;
+              they just need to be "switched on" by the right combination of alleles and
+              environmental conditions.
+            </p>
+            <p>
+              This would explain why migratory behaviour can appear remarkably quickly in
+              evolutionary terms — as it did after the last ice age, around 15,000 years ago.
+              The genes were already there; natural selection simply shifted which alleles were
+              most common, crossing the threshold from resident to migrant.
+            </p>
+          </div>
+
+
+          <!-- ── NZ Evolutionary Case Studies ── -->
+          <div class="section-header-with-audio">
+            <h3 id="nz-evolution">Aotearoa Evolutionary Case Studies</h3>
+            <button class="audio-btn" id="nz-evolution-audio" title="Listen to Dr Eliot explain this">&#9654;</button>
+          </div>
+
+          <p>
+            Let's bring this back to New Zealand with three species that illustrate different
+            aspects of migration's evolution.
+          </p>
+
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Tauhou <span class="showcase-card__latin">(Silvereye)</span></h4>
+                <span class="showcase-card__scientific"><em>Zosterops lateralis</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Partial Migrant</span>
+            </div>
+            <div class="case-study-card__body">
+              <p>
+                The silvereye self-introduced to New Zealand around <strong>1856</strong> — it flew
+                across the Tasman from Australia and established itself without any human help.
+                The Tasmanian subspecies is a <strong>partial migrant</strong>: most of the
+                Tasmanian population crosses Bass Strait to mainland Australia each winter, but
+                more northerly populations are resident year-round.
+              </p>
+              <p>
+                Research across <strong>20 South Pacific silvereye populations</strong> found
+                that in the partially migratory population, <strong>migrants had longer
+                microsatellite alleles at the CLOCK gene</strong> than residents from the
+                same population. This is direct evidence linking a specific gene to migratory
+                behaviour within a partially migratory population — exactly the kind of
+                variation that natural selection could act on.
+              </p>
+              <div class="exam-tip">
+                <h4>Excellence Link</h4>
+                <p>
+                  The silvereye beautifully illustrates the connection between
+                  <strong>gene → protein → behaviour → fitness → allele frequency change</strong>.
+                  CLOCK gene variation produces different circadian proteins → different migration
+                  timing → different survival in different environments → natural selection shifts
+                  allele frequencies. That's the full Level 2 → Level 3 chain.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Pīpīwharauroa <span class="showcase-card__latin">(Shining Cuckoo)</span></h4>
+                <span class="showcase-card__scientific"><em>Chrysococcyx lucidus</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Full Migrant</span>
+            </div>
+            <div class="case-study-card__body">
+              <p>
+                This summer migrant breeds in New Zealand and winters in the Bismarck
+                Archipelago and Solomon Islands. What makes it extraordinary for understanding
+                the genetics of migration is this: young cuckoos are <strong>raised by grey
+                warbler foster parents</strong> (the shining cuckoo is a brood parasite).
+              </p>
+              <p>
+                Adults migrate north in February–March. The juveniles, raised by non-migratory
+                warblers, migrate <strong>several months later</strong> — in April–May — having
+                <em>never seen an adult of their own species migrate</em>. They navigate to
+                the correct wintering grounds entirely on their own.
+              </p>
+              <p>
+                This proves that the migratory route is <strong>genetically encoded, not
+                learned</strong>. The cuckoo's migration programme — direction, distance, timing —
+                is hardwired into its DNA. No learning. No cultural transmission. Pure genetics.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-card__header">
+              <div class="case-study-card__species">
+                <h4>Kuaka <span class="showcase-card__latin">(Bar-tailed Godwit)</span></h4>
+                <span class="showcase-card__scientific"><em>Limosa lapponica baueri</em></span>
+              </div>
+              <span class="migration-badge migration-badge--seasonal">Full Migrant</span>
+            </div>
+            <div class="case-study-card__body">
+              <p>
+                In 2022, a five-month-old juvenile kuaka (designated "B6") flew
+                <strong>over 13,500 km</strong> from Alaska to Tasmania in 11 days — a new
+                distance record. This was its very first migration. It had never made the
+                journey before.
+              </p>
+              <p>
+                Like the cuckoo, this demonstrates that the navigation programme, the
+                physiological preparation, and the migratory restlessness are all
+                <strong>genetically inherited</strong>. But unlike a cuckoo, the juvenile
+                kuaka did have adults around it — so there may be some social facilitation
+                in timing, even if the route itself is innate.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- ── Video Resources ── -->
+          <h3>Video Resources</h3>
+
+          <h4>Bird Migration: A Perilous Journey — TED-Ed</h4>
+          <p>
+            An animated overview of the dangers and challenges of migration. Good starting point
+            for thinking about the selection pressures that shaped migratory behaviour.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/gKCWnSabXFE"
+              title="Bird migration, a perilous journey — TED-Ed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h4>The Spear-Wielding Stork Who Revolutionised Science — TED-Ed</h4>
+          <p>
+            How did humans first discover that birds migrate? This tells the story of the
+            famous Pfeilstorch — a stork found in Germany in 1822 with an African spear
+            through its neck, proving that storks went to Africa. Before this, leading
+            theories included "they hibernate underwater" and "they fly to the moon."
+            A fun piece of the history of science.
+          </p>
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/k3FU1PT8WIk"
+              title="The spear-wielding stork who revolutionised science — TED-Ed"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+
+          <!-- ── Activity: Concept Synthesis ── -->
+          <h3>Activity: Evolution of Migration — Concept Map</h3>
+
+          <div class="activity-card fade-in-up">
+            <h4>Building the Story: From Gene to Migration</h4>
+            <p>
+              Using what you've learned in this lesson, construct a concept map (on paper or
+              digitally) that connects these terms. Draw arrows between linked concepts and
+              label each arrow with the relationship. The challenge is to build a chain from
+              the molecular level to the population level.
+            </p>
+            <div class="concept-map-terms">
+              <div class="vocab-grid">
+                <div class="vocab-chip">DNA mutation</div>
+                <div class="vocab-chip">allele</div>
+                <div class="vocab-chip">gene pool</div>
+                <div class="vocab-chip">allele frequency</div>
+                <div class="vocab-chip">natural selection</div>
+                <div class="vocab-chip">CLOCK gene</div>
+                <div class="vocab-chip">circadian rhythm</div>
+                <div class="vocab-chip">photoperiod</div>
+                <div class="vocab-chip">Zugunruhe</div>
+                <div class="vocab-chip">partial migration</div>
+                <div class="vocab-chip">threshold model</div>
+                <div class="vocab-chip">directional selection</div>
+                <div class="vocab-chip">heritability</div>
+                <div class="vocab-chip">phenotype</div>
+                <div class="vocab-chip">fitness</div>
+                <div class="vocab-chip">speciation</div>
+              </div>
+            </div>
+            <p>
+              <strong>Example chain:</strong> DNA mutation → new allele → changes CLOCK protein →
+              altered circadian rhythm → different Zugunruhe timing → different migration date →
+              higher survival (fitness) → allele increases in frequency (natural selection) →
+              population-level shift from partial to full migration.
+            </p>
+          </div>
+
+
+          <!-- ── Summary ── -->
+          <div class="summary-box fade-in-up">
+            <h4>Lesson 3 Summary</h4>
+            <ul class="feature-list">
+              <li>
+                Migration evolved <strong>gradually</strong> through small extensions of
+                seasonal movements, driven by natural selection acting on heritable variation
+              </li>
+              <li>
+                <strong>Partial migration</strong> — where both migrants and residents coexist
+                in one population — is a living window into the evolutionary process
+              </li>
+              <li>
+                Berthold's blackcap experiments proved migration is <strong>heritable</strong>
+                (h² ≈ 0.4), <strong>polygenic</strong>, and can be altered by selection in
+                just <strong>3–6 generations</strong>
+              </li>
+              <li>
+                Both migratory <strong>propensity</strong> and <strong>direction</strong> are
+                genetically controlled
+              </li>
+              <li>
+                Candidate genes (CLOCK, ADCYAP1) link to circadian rhythm and migratory
+                restlessness — connecting <strong>DNA → protein → behaviour</strong>
+              </li>
+              <li>
+                NZ examples: the silvereye (CLOCK gene variation in partial migrants), the
+                shining cuckoo (innate navigation without parental guidance), and juvenile
+                kuaka (first-time navigation over 13,500 km)
+              </li>
+              <li>
+                The blackcap's new British migration route shows evolution and potential
+                <strong>speciation happening in real time</strong>
+              </li>
+            </ul>
+          </div>
+
+
+          <!-- Looking Ahead -->
+          <div class="looking-ahead-box fade-in-up">
+            <h3>Looking Ahead</h3>
+            <p>
+              You've now covered the complete migration story: <em>how</em> it's triggered
+              (Lesson 1), <em>how</em> the body prepares (Lesson 2), and <em>how</em> it
+              evolved (Lesson 3). In Week 7, we'll move to a completely different topic —
+              <strong>plant responses to their environment</strong>. You'll see that many of
+              the same principles (hormonal control, environmental triggers, adaptive
+              significance) apply to plants as well as animals.
+            </p>
+          </div>
+
+          <nav class="lesson-inline-nav lesson-inline-nav--bottom" aria-label="Lesson navigation">
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Back to Lesson 2
+            </a>
             <a href="#quiz" class="lesson-inline-nav__link lesson-inline-nav__link--next">
               Quiz &amp; Exam Practice
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </nav>
 
-        </section><!-- /lesson-2 -->
+        </section><!-- /lesson-3 -->
 
 
         <!-- ——————————————————————————————————————————————————————————————
@@ -1773,6 +2539,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <span class="lesson-nav__desc">Hyperphagia, fuel, muscles &amp; organs</span>
               </span>
             </a>
+            <a href="#lesson-3" class="lesson-nav__item lesson-nav__item--3">
+              <span class="lesson-nav__number">3</span>
+              <span class="lesson-nav__info">
+                <span class="lesson-nav__title">Evolution of Migration</span>
+                <span class="lesson-nav__desc">Genetics, partial migration &amp; speciation</span>
+              </span>
+            </a>
           </div>
         </div>
 
@@ -1910,6 +2683,68 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="vocab-chip">atrophy</div>
             <div class="vocab-chip">respiratory quotient</div>
             <div class="vocab-chip">energy density</div>
+          </div>
+        </div>
+
+        <!-- Lesson 3: Learning Objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Lesson 3 Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain the two hypotheses for the origin of bird migration</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Define partial migration and explain its evolutionary significance</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe Berthold's selective breeding experiments and their conclusions</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain the threshold model for migratory behaviour</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Link candidate genes (CLOCK, ADCYAP1) to migratory phenotypes</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Connect Level 2 genetics (allele frequency, gene expression) to migration evolution</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Discuss NZ examples: silvereye (CLOCK gene), shining cuckoo (innate navigation)</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain how the blackcap illustrates incipient speciation (Scholarship)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lesson 3: Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Lesson 3 Vocabulary</h3>
+          <div class="vocab-grid">
+            <div class="vocab-chip">partial migration</div>
+            <div class="vocab-chip">heritable</div>
+            <div class="vocab-chip">heritability</div>
+            <div class="vocab-chip">polygenic</div>
+            <div class="vocab-chip">threshold trait</div>
+            <div class="vocab-chip">selective breeding</div>
+            <div class="vocab-chip">directional selection</div>
+            <div class="vocab-chip">allele frequency</div>
+            <div class="vocab-chip">gene pool</div>
+            <div class="vocab-chip">CLOCK gene</div>
+            <div class="vocab-chip">ADCYAP1</div>
+            <div class="vocab-chip">bet-hedging</div>
+            <div class="vocab-chip">incipient speciation</div>
+            <div class="vocab-chip">assortative mating</div>
+            <div class="vocab-chip">evolutionary inertia</div>
+            <div class="vocab-chip">brood parasite</div>
           </div>
         </div>
 
@@ -3222,6 +4057,73 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
       50% { box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
     }
+
+    /* ── Video Embed ── */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin: var(--space-4) 0 var(--space-6);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface-2);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── Threshold Model Diagram ── */
+    .threshold-model {
+      background: var(--surface-2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+    }
+    .threshold-model h4 {
+      margin-bottom: var(--space-3);
+      color: var(--text-primary);
+    }
+    .threshold-diagram {
+      margin-bottom: var(--space-4);
+    }
+    .threshold-svg {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* ── Activity Card ── */
+    .activity-card {
+      background: var(--surface-2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--fluoro-cyan);
+    }
+    .activity-card h4 {
+      margin-bottom: var(--space-3);
+      color: var(--fluoro-cyan);
+    }
+    .concept-map-terms {
+      margin: var(--space-4) 0;
+    }
+
+    /* ── Info Card Evidence Text ── */
+    .info-card__evidence {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: var(--space-3);
+      margin-top: var(--space-3);
+    }
   </style>
 
 
@@ -3586,6 +4488,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       'nz-cases-audio': '/audio/week6_nz_cases.mp3',
       'hyperphagia-audio': '/audio/week6_hyperphagia_fuel.mp3',
       'remodelling-audio': '/audio/week6_body_remodel.mp3',
+      'lesson3-intro-audio': '/audio/week6_evolution_intro.mp3',
+      'partial-migration-audio': '/audio/week6_partial_migration.mp3',
+      'blackcap-audio': '/audio/week6_blackcap_experiments.mp3',
+      'migration-genes-audio': '/audio/week6_migration_genes.mp3',
+      'nz-evolution-audio': '/audio/week6_nz_evolution.mp3',
       'kuaka-flight-audio': '/audio/week6_kuaka_flight.mp3'
     };
 

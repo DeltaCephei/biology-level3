@@ -143,6 +143,75 @@ Here's what I want you to take away for the exam. The kuaka's flight isn't just 
 If you can tell that story — from light hitting the eye all the way through to the bird arriving in New Zealand — and explain the biological significance at each step, you're writing an Excellence answer. That's the narrative arc the examiners are looking for.
 """,
 
+    # ── Week 6 Lesson 3: Evolution of Migration ──────────────────────────
+
+    # 1. Lesson 3 intro — how did migration evolve?
+    "week6_evolution_intro": """
+Right, we've spent two lessons learning how migration is triggered and how the body prepares for it. But that raises an obvious question — where did all of this come from? How does evolution produce something as complex as a kuaka flying twelve thousand kilometres non-stop?
+
+The answer is that migration didn't appear overnight. It evolved gradually, over millions of years, through small changes at each generation. Think about it from a Level 2 genetics perspective. Natural selection acts on heritable variation. If some individuals in a population moved fifty kilometres south in winter, and that gave them slightly better survival than individuals that stayed put, those movers would pass their movement genes to more offspring. Over thousands of generations, fifty kilometres becomes five hundred, becomes five thousand, becomes twelve thousand.
+
+There are two main hypotheses about which direction this happened. The Northern Home hypothesis says birds originally lived in temperate regions and started moving south to survive harsh winters. The Southern Home hypothesis says birds started in the tropics and expanded northward to breed where there was less competition. Recent genomic evidence actually favours the Northern Home hypothesis for most bird lineages — but both have supporting evidence.
+
+The key insight is that this is gradual extension of seasonal movement, driven by natural selection — exactly the same mechanism you learned at Level 2, just applied to behaviour instead of to physical traits.
+""",
+
+    # 2. Partial migration — the evolutionary window
+    "week6_partial_migration": """
+OK, if migration evolves gradually, we should be able to find species that are partway through the process — where some individuals migrate and some don't. And that's exactly what we find. It's called partial migration, and it's actually the most common form of migration.
+
+Here's how it works. Imagine a population of birds. Some carry more "migration alleles" than others — remember, this is a polygenic trait, controlled by many genes. Individuals above a certain genetic threshold migrate. Individuals below it stay resident. And the threshold can be shifted by environmental conditions — so a bird near the threshold might migrate in a harsh year but stay put in a mild one.
+
+This is basically the Level 2 equation in action: phenotype equals genotype plus environment. The genotype sets your propensity. The environment determines whether it gets expressed.
+
+Why would partial migration be common? Because it's a bet-hedging strategy. If winter is mild, residents win — they didn't waste energy migrating. If winter is harsh, migrants win — they survived by leaving. By having both strategies in one population, the species hedges its bets against unpredictable conditions.
+
+In Australia, forty-four percent of non-passerine bird species are partially migratory. In New Zealand, the silvereye — tauhou — is a beautiful example. Research found that in the partially migratory Tasmanian population, migrant individuals had different CLOCK gene alleles from residents in the same population. That's a direct genetic link between a specific gene and migratory behaviour.
+""",
+
+    # 3. Berthold's blackcap experiments
+    "week6_blackcap_experiments": """
+Peter Berthold's blackcap experiments are some of the most important in the history of migration research. They proved — definitively — that migratory behaviour is genetic.
+
+Here's what he did. He started with a partially migratory population of European blackcaps from southern France — about seventy-five percent migrants, twenty-five percent residents. Then he ran a selective breeding experiment. One line was bred only from the most migratory birds. The other line was bred only from the most sedentary birds.
+
+The result? Within three to six generations, he had populations that were almost entirely migratory or almost entirely sedentary. The heritability — that's the proportion of variation explained by genetics — was about zero point four. That's strong. That's comparable to human height.
+
+Now think about what that means in terms of Level 2 genetics. What Berthold did is textbook directional selection changing allele frequencies. By only allowing migratory birds to breed, he increased the frequency of migration alleles in the gene pool. The variation was already there — selection just shifted which alleles were most common.
+
+He also did something brilliant with direction. German blackcaps fly south-west to Spain. Austrian blackcaps fly south-east to Greece. He crossed them, and the hybrid offspring flew due south — intermediate direction. That proves migratory direction is genetic too.
+
+And here's the real kicker — this evolution is happening right now. Since the 1960s, some Central European blackcaps have started wintering in Britain instead of Spain. Within about thirty generations, the British winterers have evolved rounder wings, narrower beaks, and they're starting to mate preferentially with each other. That's incipient speciation — the early stages of one species becoming two — happening in real time.
+""",
+
+    # 4. Migration genes — CLOCK, ADCYAP1, and the genetic architecture
+    "week6_migration_genes": """
+If migration is genetic, which genes are involved? This is cutting-edge science, and a few candidate genes have been identified.
+
+The CLOCK gene controls circadian rhythms — your daily internal clock. Variation in this gene is associated with migration timing. In silvereyes, migrant individuals had longer CLOCK alleles than residents from the same population. Think about the Level 2 pathway: DNA codes for mRNA, mRNA codes for protein. A change in CLOCK DNA changes the CLOCK protein, which changes the circadian rhythm, which changes when the bird feels the urge to migrate.
+
+ADCYAP1 codes for a neuropeptide involved in stress and activity. Variation in this gene is linked to Zugunruhe — migratory restlessness. It explains about three percent of the variation. That might sound tiny, but remember — migration is polygenic, meaning many genes each contribute a small effect.
+
+The most dramatic finding came in 2023. In willow warblers, researchers found that just two genetic loci explain seventy-four percent of the variation in migration direction. Two genes. That's extraordinary for a complex behaviour.
+
+Berthold proposed what he called the threshold model. Imagine many genes, each contributing a small amount to a migration score. If your total score crosses a threshold, you migrate. If not, you stay. Environmental conditions can shift where the threshold sits — so in a harsh year, more birds cross it. Natural selection can shift the whole distribution by changing allele frequencies, which is exactly what his breeding experiments demonstrated.
+
+Some researchers even argue that the genetic framework for migration exists in nearly all bird species — even sedentary ones. The genes for navigation, fat storage, and muscle remodelling are all there, just waiting to be switched on by the right combination of alleles.
+""",
+
+    # 5. NZ evolutionary case studies
+    "week6_nz_evolution": """
+Let me bring this evolution story home with three New Zealand examples.
+
+First, the silvereye — tauhou. This little bird self-introduced to New Zealand around 1856, flying across the Tasman from Australia with no human help. The Tasmanian population is a partial migrant — most individuals cross Bass Strait to mainland Australia each winter. Research across twenty South Pacific populations found that migrant silvereyes had different CLOCK gene alleles than residents from the same population. This is a perfect demonstration of the genetic link between a specific gene and migratory behaviour, within a partially migratory species. It's exactly the kind of variation natural selection can act on.
+
+Second, the shining cuckoo — pee-pee-wharauroa. This is a brood parasite — it lays its eggs in grey warbler nests, so the chicks are raised by non-migratory foster parents. The adult cuckoos migrate north in February and March. The juveniles, raised entirely by grey warblers, migrate several months later — in April or May. They've never seen an adult of their own species migrate. They navigate to the correct wintering grounds in the Bismarck Archipelago entirely on their own. This is powerful evidence that the migratory programme — direction, distance, timing — is genetically encoded, not learned.
+
+Third, kuaka — the bar-tailed godwit. In 2022, a five-month-old juvenile designated B6 flew over thirteen thousand five hundred kilometres from Alaska to Tasmania in eleven days. First-ever migration. Never done it before. The navigation programme, the physiological preparation, the migratory restlessness — all genetically inherited.
+
+These three species together tell the whole story: partial migration with genetic variation in the silvereye, innate programming without parental guidance in the cuckoo, and inherited endurance capability in the kuaka. That's evolution producing complex behaviour through natural selection acting on heritable genetic variation.
+""",
+
     # ── Week 3: Simple Animal Responses ───────────────────────────────────
 
     # 1. Taxis vs Kinesis — the core concept
