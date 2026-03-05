@@ -39,7 +39,7 @@ public/
 | AS 91601 | Practical investigation in a biological context | 4 | Internal |
 | AS 91602 | Informed response to a socio-scientific issue | 3 | Internal |
 | AS 91603 | Responses of plants and animals to external environment | 5 | External |
-| AS 91604 | How an animal maintains stable internal environment | 3 | External |
+| AS 91604 | How an animal maintains stable internal environment | 3 | Internal |
 | AS 91605 | Evolutionary processes leading to speciation | 4 | External |
 
 ## Design Direction

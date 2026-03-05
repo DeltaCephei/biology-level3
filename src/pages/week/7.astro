@@ -1,0 +1,3404 @@
+---
+/* ==========================================================================
+   Week 7 — Introduction to Homeostasis
+   AS 91604: Demonstrate understanding of how an animal maintains a stable
+   internal environment (3 credits, Internal)
+
+   Lesson 1: What Is Homeostasis?
+   Lesson 2: Examples of Homeostasis at Level 3
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 7: Introduction to Homeostasis — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 2</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 7</span>
+        <h1 class="week-title">Introduction to Homeostasis</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91604</span>
+        <span class="badge badge--internal">Internal</span>
+        <span class="badge badge--desc">How an animal maintains a stable internal environment</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1"         class="week-nav__link week-nav__link--active">Lesson 1: What Is Homeostasis?</a>
+      <a href="#negative-feedback" class="week-nav__link">Negative Feedback</a>
+      <a href="#set-point-vis"    class="week-nav__link">Set Point Visualiser</a>
+      <a href="#lesson-2"         class="week-nav__link">Lesson 2: Examples</a>
+      <a href="#matching"         class="week-nav__link">Matching Activity</a>
+      <a href="#check-understanding" class="week-nav__link">Check Understanding</a>
+      <a href="#assessment-task"  class="week-nav__link">Assessment Practice</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: What Is Homeostasis?
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 1 of 2</span>
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 2: Examples of Homeostasis
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 1: What Is Homeostasis?</h2>
+
+          <p class="section-intro">
+            You are about to begin a new standard — <strong>AS 91604</strong>, one of the most
+            conceptually elegant topics in Level 3 Biology. The central question is deceptively
+            simple: how does an animal keep its internal conditions stable, even when the
+            outside world is constantly changing? The answer to that question — homeostasis —
+            underlies almost every organ system you will study for the rest of the year.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Internal Assessment:</strong> AS 91604 is assessed internally — through a
+              written report you submit to your teacher, not a timed exam. The practice tasks in
+              this unit are designed to build the explanatory writing skills your assessor will
+              be looking for.
+            </div>
+          </div>
+
+
+          <!-- ── Definition ── -->
+          <h3>Defining Homeostasis</h3>
+
+          <p>
+            <strong>Homeostasis</strong> is the process by which an organism maintains a
+            <strong>stable internal environment</strong> despite changes in external conditions.
+            The word comes from the Greek <em>homeo</em> (similar/same) and <em>stasis</em>
+            (standing still). It was coined by American physiologist <strong>Walter Bradford
+            Cannon</strong> in 1926.
+          </p>
+
+          <div class="definition-box">
+            <div class="definition-box__label">Core Definition</div>
+            <p>
+              Homeostasis is the <strong>maintenance of a relatively constant internal
+              environment</strong> through physiological mechanisms that detect and correct
+              deviations from a <strong>set point</strong>.
+            </p>
+          </div>
+
+          <p>
+            The key word here is <em>relatively</em> constant. The body does not maintain
+            perfectly fixed conditions — it allows small fluctuations around a target value
+            (the set point) and responds when deviations become too large. Think of a
+            thermostat: it does not maintain a perfectly constant room temperature, but
+            triggers the heater when the room drops below a threshold and turns it off when
+            the target is reached.
+          </p>
+
+
+          <!-- ── Why It Matters ── -->
+          <h3>Why Does Homeostasis Matter?</h3>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--enzyme">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <ellipse cx="21" cy="21" rx="14" ry="9" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M14 21 Q21 12 28 21" stroke="var(--fluoro-cyan)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="21" cy="21" r="3" fill="var(--fluoro-cyan)" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Enzyme Function</h4>
+              <p>
+                Enzymes have optimal temperatures and pH ranges. Even small deviations cause
+                conformational changes that reduce reaction rates — large deviations cause
+                irreversible denaturation.
+              </p>
+            </div>
+            <div class="info-card info-card--cell">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <circle cx="21" cy="21" r="14" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" opacity="0.35"/>
+                  <circle cx="21" cy="21" r="6" stroke="var(--green-vivid)" stroke-width="1" fill="none" opacity="0.5"/>
+                  <circle cx="21" cy="21" r="2" fill="var(--green-vivid)" opacity="0.5"/>
+                </svg>
+              </div>
+              <h4>Cell Health</h4>
+              <p>
+                Cells require precise osmotic conditions. Too much water and they lyse;
+                too little and they crenate. Stable ion concentrations maintain resting
+                membrane potential and signal transmission.
+              </p>
+            </div>
+            <div class="info-card info-card--survival">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <path d="M21 8 L34 34 L8 34 Z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.35"/>
+                  <path d="M21 14 L29 30 L13 30 Z" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" opacity="0.4"/>
+                  <circle cx="21" cy="26" r="2" fill="var(--fluoro-pink)" opacity="0.6"/>
+                </svg>
+              </div>
+              <h4>Survival</h4>
+              <p>
+                Unchecked deviations from set points lead to physiological failure.
+                Hyperthermia, hypoglycaemia, acidosis — these are conditions where
+                homeostatic mechanisms have been overwhelmed.
+              </p>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Assessment Tip</h4>
+            <p>
+              In your internal assessment report, every homeostatic explanation should link
+              the regulated variable back to a biological consequence. Don't just say "body
+              temperature is maintained at 37°C" — explain <em>why</em> that matters: enzyme
+              function, metabolic rate, and cell survival all depend on it.
+            </p>
+          </div>
+
+
+          <!-- ── Set Points and Normal Ranges ── -->
+          <h3>Set Points and Normal Ranges</h3>
+
+          <p>
+            A <strong>set point</strong> is the target value for a regulated variable — the
+            value the body "aims for". However, the body does not maintain variables at a
+            perfectly single value. Instead, it maintains them within a <strong>normal
+            range</strong> around the set point. When the variable moves outside this range,
+            corrective responses are triggered.
+          </p>
+
+          <div class="set-point-table-wrap">
+            <table class="set-point-table">
+              <caption>Normal ranges for key regulated variables in humans</caption>
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Set Point</th>
+                  <th>Normal Range</th>
+                  <th>Condition if too low</th>
+                  <th>Condition if too high</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core body temperature</strong></td>
+                  <td>37.0°C</td>
+                  <td>36.1 – 37.2°C</td>
+                  <td>Hypothermia</td>
+                  <td>Hyperthermia / heat stroke</td>
+                </tr>
+                <tr>
+                  <td><strong>Blood glucose</strong></td>
+                  <td>~5 mmol/L</td>
+                  <td>3.9 – 6.1 mmol/L (fasting)</td>
+                  <td>Hypoglycaemia</td>
+                  <td>Hyperglycaemia (diabetes)</td>
+                </tr>
+                <tr>
+                  <td><strong>Blood pH</strong></td>
+                  <td>7.40</td>
+                  <td>7.35 – 7.45</td>
+                  <td>Acidosis</td>
+                  <td>Alkalosis</td>
+                </tr>
+                <tr>
+                  <td><strong>Plasma osmolarity</strong></td>
+                  <td>290 mOsm/kg</td>
+                  <td>285 – 295 mOsm/kg</td>
+                  <td>Hypo-osmolarity (cell swelling)</td>
+                  <td>Hyper-osmolarity (cell shrinkage)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <!-- ── Key Terminology ── -->
+          <h3>Key Terminology: The Components of Homeostasis</h3>
+
+          <p>
+            Every homeostatic mechanism involves the same set of functional components.
+            You must be able to identify each component and explain its role for any
+            homeostatic system.
+          </p>
+
+          <div class="terminology-grid">
+            <div class="term-card term-card--stimulus">
+              <div class="term-card__number">1</div>
+              <h4>Stimulus</h4>
+              <p>
+                A change in a regulated variable that triggers the system. The stimulus
+                is a <strong>deviation from the set point</strong> — it may be an increase
+                or a decrease.
+              </p>
+              <div class="term-example">
+                <span class="term-example__label">Example</span>
+                Core body temperature rises above 37°C after exercise.
+              </div>
+            </div>
+
+            <div class="term-card term-card--receptor">
+              <div class="term-card__number">2</div>
+              <h4>Receptor (Sensor)</h4>
+              <p>
+                A structure that detects the stimulus and generates a signal proportional
+                to the deviation. Receptors are <strong>specific</strong> — they respond
+                to one type of change (e.g. temperature, not glucose).
+              </p>
+              <div class="term-example">
+                <span class="term-example__label">Example</span>
+                Thermoreceptors in the hypothalamus detect blood temperature directly.
+                Peripheral thermoreceptors in the skin detect surface temperature.
+              </div>
+            </div>
+
+            <div class="term-card term-card--control">
+              <div class="term-card__number">3</div>
+              <h4>Control Centre (Integration Centre)</h4>
+              <p>
+                Receives the signal from the receptor, compares it to the set point, and
+                determines the appropriate response. Often a region of the brain
+                (hypothalamus) or a specialised organ.
+              </p>
+              <div class="term-example">
+                <span class="term-example__label">Example</span>
+                The hypothalamus integrates temperature signals and co-ordinates the
+                body's cooling or warming responses.
+              </div>
+            </div>
+
+            <div class="term-card term-card--effector">
+              <div class="term-card__number">4</div>
+              <h4>Effector</h4>
+              <p>
+                The organ, gland, or muscle that carries out the corrective response.
+                There may be <strong>multiple effectors</strong> acting in parallel to
+                return the variable to the set point.
+              </p>
+              <div class="term-example">
+                <span class="term-example__label">Example</span>
+                Sweat glands (secrete sweat for evaporative cooling), blood vessels
+                (vasodilation to increase heat loss at the skin surface).
+              </div>
+            </div>
+
+            <div class="term-card term-card--response">
+              <div class="term-card__number">5</div>
+              <h4>Response</h4>
+              <p>
+                The physiological change produced by the effector. The response
+                <strong>opposes the original deviation</strong> — this is the defining
+                feature of negative feedback.
+              </p>
+              <div class="term-example">
+                <span class="term-example__label">Example</span>
+                Sweating and vasodilation increase heat loss, returning core
+                temperature toward 37°C.
+              </div>
+            </div>
+          </div>
+
+          <div class="connection-box">
+            <h4>Negative vs Positive Feedback</h4>
+            <p>
+              <strong>Negative feedback</strong> opposes the change that triggered it —
+              it returns the variable toward the set point. This is the basis of
+              homeostasis. <strong>Positive feedback</strong> amplifies the change — it
+              is used for specific biological events that need to proceed to completion
+              quickly (e.g. blood clotting, childbirth contractions, action potentials),
+              but it does <em>not</em> maintain stable conditions. Almost all homeostatic
+              mechanisms use negative feedback.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 1: Negative Feedback Loop Animation
+             —————————————————————————————————————————————————————————————— -->
+        <section id="negative-feedback" class="content-section fade-in-up">
+          <h2>Interactive: Negative Feedback Loop</h2>
+          <p class="section-intro">
+            Step through the negative feedback loop to see how each component connects.
+            Click <strong>Next Step</strong> to advance, or jump to any component directly.
+          </p>
+
+          <div class="feedback-anim" id="feedback-anim" aria-live="polite">
+
+            <!-- SVG Diagram -->
+            <div class="feedback-anim__diagram">
+              <svg viewBox="0 0 700 420" class="feedback-svg" role="img" aria-label="Negative feedback loop diagram showing stimulus, receptor, control centre, effector, and response">
+                <defs>
+                  <marker id="fb-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="var(--fluoro-cyan)" opacity="0.7"/>
+                  </marker>
+                  <marker id="fb-arrow-return" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="var(--green-vivid)" opacity="0.7"/>
+                  </marker>
+                  <filter id="glow-filter">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                  </filter>
+                </defs>
+
+                <!-- Background boxes -->
+                <!-- 1: Stimulus -->
+                <rect id="fb-box-0" x="20" y="170" width="120" height="70" rx="10"
+                  fill="var(--surface-2)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                <text x="80" y="195" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">STIMULUS</text>
+                <text x="80" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Deviation from</text>
+                <text x="80" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">set point</text>
+
+                <!-- Arrow 0→1 -->
+                <line id="fb-arrow-01" x1="140" y1="205" x2="185" y2="205"
+                  stroke="var(--border-subtle)" stroke-width="2" marker-end="url(#fb-arrow)" opacity="0.3"/>
+
+                <!-- 2: Receptor -->
+                <rect id="fb-box-1" x="195" y="170" width="120" height="70" rx="10"
+                  fill="var(--surface-2)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                <text x="255" y="195" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">RECEPTOR</text>
+                <text x="255" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Detects change,</text>
+                <text x="255" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">sends signal</text>
+
+                <!-- Arrow 1→2 -->
+                <line id="fb-arrow-12" x1="315" y1="205" x2="360" y2="205"
+                  stroke="var(--border-subtle)" stroke-width="2" marker-end="url(#fb-arrow)" opacity="0.3"/>
+
+                <!-- 3: Control Centre -->
+                <rect id="fb-box-2" x="370" y="155" width="120" height="100" rx="10"
+                  fill="var(--surface-2)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                <text x="430" y="178" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">CONTROL CENTRE</text>
+                <text x="430" y="198" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Compares to</text>
+                <text x="430" y="213" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">set point,</text>
+                <text x="430" y="228" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">determines response</text>
+                <text x="430" y="245" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">(e.g. hypothalamus)</text>
+
+                <!-- Arrow 2→3 -->
+                <line id="fb-arrow-23" x1="490" y1="205" x2="535" y2="205"
+                  stroke="var(--border-subtle)" stroke-width="2" marker-end="url(#fb-arrow)" opacity="0.3"/>
+
+                <!-- 4: Effector -->
+                <rect id="fb-box-3" x="545" y="170" width="120" height="70" rx="10"
+                  fill="var(--surface-2)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                <text x="605" y="195" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">EFFECTOR</text>
+                <text x="605" y="215" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Carries out</text>
+                <text x="605" y="230" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">correction</text>
+
+                <!-- Arrow 3→Response (curve down and back) -->
+                <path id="fb-arrow-34" d="M605 240 Q605 310 430 340 Q255 370 80 310 Q60 290 80 270"
+                  fill="none" stroke="var(--border-subtle)" stroke-width="2"
+                  marker-end="url(#fb-arrow-return)" opacity="0.3"/>
+
+                <!-- 5: Response / Back to Normal label -->
+                <rect id="fb-box-4" x="20" y="320" width="120" height="60" rx="10"
+                  fill="var(--surface-2)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                <text x="80" y="342" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="var(--font-mono)">RESPONSE</text>
+                <text x="80" y="360" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Opposes change</text>
+                <text x="80" y="375" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font-display)">(negative feedback)</text>
+
+                <!-- "Back to normal" label at top -->
+                <text id="fb-normal-label" x="350" y="40" text-anchor="middle"
+                  fill="var(--green-vivid)" font-size="13" font-family="var(--font-display)" font-weight="700" opacity="0">
+                  Variable returns to set point
+                </text>
+                <line id="fb-normal-line" x1="200" y1="50" x2="500" y2="50"
+                  stroke="var(--green-vivid)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0"/>
+
+                <!-- Step label (dynamic) -->
+                <text id="fb-step-label" x="350" y="135" text-anchor="middle"
+                  fill="var(--accent)" font-size="14" font-family="var(--font-display)" font-weight="700">
+                  Click "Next Step" to begin
+                </text>
+              </svg>
+            </div>
+
+            <!-- Description panel -->
+            <div class="feedback-anim__desc" id="fb-desc">
+              <div class="fb-step-indicator">
+                <span class="fb-step-dot" data-step="0"></span>
+                <span class="fb-step-dot" data-step="1"></span>
+                <span class="fb-step-dot" data-step="2"></span>
+                <span class="fb-step-dot" data-step="3"></span>
+                <span class="fb-step-dot" data-step="4"></span>
+              </div>
+              <p id="fb-desc-text" class="fb-desc-text">
+                The negative feedback loop has five key components. Step through each one
+                to see how they connect in a real homeostatic system.
+              </p>
+              <p id="fb-example-text" class="fb-example-text"></p>
+            </div>
+
+            <!-- Controls -->
+            <div class="feedback-anim__controls">
+              <button class="btn btn--secondary" id="fb-prev-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Previous
+              </button>
+              <button class="btn btn--primary" id="fb-next-btn">
+                Next Step
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="btn btn--ghost" id="fb-reset-btn">
+                Reset
+              </button>
+            </div>
+
+            <!-- System selector -->
+            <div class="feedback-anim__selector">
+              <label class="fb-selector-label">Show example for:</label>
+              <div class="fb-system-btns">
+                <button class="fb-system-btn fb-system-btn--active" data-system="temperature">Temperature</button>
+                <button class="fb-system-btn" data-system="glucose">Blood Glucose</button>
+                <button class="fb-system-btn" data-system="osmoregulation">Osmoregulation</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 2: Set Point Visualiser
+             —————————————————————————————————————————————————————————————— -->
+        <section id="set-point-vis" class="content-section fade-in-up">
+          <h2>Interactive: Set Point Visualiser</h2>
+          <p class="section-intro">
+            Use the slider to change the <strong>external temperature</strong>. Watch how
+            the body responds to maintain its core temperature set point of 37°C. Push
+            the slider to the extremes to see what happens when the system is overwhelmed.
+          </p>
+
+          <div class="setpoint-vis" id="setpoint-vis">
+
+            <!-- Slider control -->
+            <div class="setpoint-vis__slider-row">
+              <label class="setpoint-vis__label">External Temperature:</label>
+              <div class="setpoint-vis__slider-wrap">
+                <span class="setpoint-vis__min">−20°C</span>
+                <input type="range" id="sp-slider" min="-20" max="60" value="20"
+                  class="setpoint-vis__slider" aria-label="External temperature"/>
+                <span class="setpoint-vis__max">60°C</span>
+              </div>
+              <span class="setpoint-vis__current-val" id="sp-ext-temp">20°C</span>
+            </div>
+
+            <!-- Main display -->
+            <div class="setpoint-vis__display">
+
+              <!-- Thermometer gauge -->
+              <div class="setpoint-vis__gauge-wrap">
+                <div class="gauge-label">Core Body Temperature</div>
+                <div class="gauge-container" aria-live="polite">
+                  <div class="gauge-track">
+                    <div class="gauge-fill" id="sp-gauge-fill"></div>
+                    <div class="gauge-setpoint" title="Set point: 37°C"></div>
+                    <div class="gauge-zone gauge-zone--low" title="Danger: below 35°C"></div>
+                    <div class="gauge-zone gauge-zone--high" title="Danger: above 40°C"></div>
+                  </div>
+                  <div class="gauge-scale">
+                    <span>34°C</span>
+                    <span>35°C</span>
+                    <span>36°C</span>
+                    <span>37°C</span>
+                    <span>38°C</span>
+                    <span>39°C</span>
+                    <span>40°C</span>
+                    <span>41°C</span>
+                  </div>
+                </div>
+                <div class="gauge-readout" id="sp-core-temp-readout">37.0°C</div>
+                <div class="gauge-status" id="sp-status">Normal</div>
+              </div>
+
+              <!-- Response panel -->
+              <div class="setpoint-vis__responses">
+                <div class="response-panel-title">Active Responses</div>
+                <div class="response-list" id="sp-response-list">
+                  <div class="response-item response-item--inactive" id="resp-sweat">
+                    <div class="response-item__indicator"></div>
+                    <div class="response-item__text">
+                      <strong>Sweating</strong>
+                      <span>Evaporative cooling at skin surface</span>
+                    </div>
+                  </div>
+                  <div class="response-item response-item--inactive" id="resp-vasodilation">
+                    <div class="response-item__indicator"></div>
+                    <div class="response-item__text">
+                      <strong>Vasodilation</strong>
+                      <span>Increased blood flow to skin; heat loss</span>
+                    </div>
+                  </div>
+                  <div class="response-item response-item--inactive" id="resp-shivering">
+                    <div class="response-item__indicator"></div>
+                    <div class="response-item__text">
+                      <strong>Shivering</strong>
+                      <span>Rapid muscle contractions; heat production</span>
+                    </div>
+                  </div>
+                  <div class="response-item response-item--inactive" id="resp-vasoconstriction">
+                    <div class="response-item__indicator"></div>
+                    <div class="response-item__text">
+                      <strong>Vasoconstriction</strong>
+                      <span>Reduced blood flow to skin; heat conservation</span>
+                    </div>
+                  </div>
+                  <div class="response-item response-item--inactive" id="resp-piloerection">
+                    <div class="response-item__indicator"></div>
+                    <div class="response-item__text">
+                      <strong>Piloerection</strong>
+                      <span>Hair standing on end; insulating air layer</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Warning when overwhelmed -->
+                <div class="sp-warning" id="sp-warning" hidden>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <p id="sp-warning-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Explanation -->
+            <div class="setpoint-vis__explanation" id="sp-explanation">
+              Move the slider to see how the body responds.
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 2: Examples of Homeostasis at Level 3
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-2" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Lesson 1: What Is Homeostasis?
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 2 of 2</span>
+          </nav>
+
+          <h2>Lesson 2: Examples of Homeostasis at Level 3</h2>
+
+          <p class="section-intro">
+            AS 91604 asks you to demonstrate understanding of how an animal maintains a
+            stable internal environment. At Level 3, four systems are studied in depth.
+            This lesson gives you an overview of each — the what, why, and how — before
+            you dive into each one in detail in the coming weeks.
+          </p>
+
+          <div class="systems-overview-grid">
+
+            <!-- Thermoregulation -->
+            <div class="system-card system-card--thermo" id="sys-thermo">
+              <div class="system-card__header">
+                <div class="system-card__icon" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <rect x="15" y="4" width="6" height="20" rx="3" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    <circle cx="18" cy="28" r="5" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    <rect x="16.5" y="14" width="3" height="14" rx="1.5" fill="var(--fluoro-pink)" opacity="0.5"/>
+                    <circle cx="18" cy="28" r="3" fill="var(--fluoro-pink)" opacity="0.6"/>
+                    <line x1="21" y1="9" x2="24" y2="9" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.4"/>
+                    <line x1="21" y1="13" x2="24" y2="13" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.4"/>
+                    <line x1="21" y1="17" x2="24" y2="17" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.4"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Thermoregulation</h3>
+                  <span class="system-card__week">Weeks 8–9</span>
+                </div>
+              </div>
+              <div class="system-card__body">
+                <div class="system-detail-row">
+                  <span class="system-detail-label">What is regulated?</span>
+                  <span class="system-detail-value">Core body temperature</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Set point</span>
+                  <span class="system-detail-value sp-highlight">37°C</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Normal range</span>
+                  <span class="system-detail-value">36.1 – 37.2°C</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Why it matters</span>
+                  <span class="system-detail-value">Enzyme function; metabolic rate</span>
+                </div>
+                <div class="system-card__organisms">
+                  <span class="org-label">NCEA organisms:</span>
+                  <span class="org-chips">
+                    <span class="org-chip">Humans</span>
+                    <span class="org-chip">Endotherms vs ectotherms</span>
+                  </span>
+                </div>
+              </div>
+              <div class="system-card__exam-relevance">
+                <h4>What you need to explain</h4>
+                <ul class="feature-list">
+                  <li>Role of the hypothalamus as thermostat</li>
+                  <li>Warming responses: shivering, vasoconstriction, piloerection</li>
+                  <li>Cooling responses: sweating, vasodilation</li>
+                  <li>Differences between endotherms and ectotherms</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Osmoregulation -->
+            <div class="system-card system-card--osmo" id="sys-osmo">
+              <div class="system-card__header">
+                <div class="system-card__icon" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="12" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                    <path d="M12 22 Q18 10 24 22" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.6"/>
+                    <path d="M14 25 Q18 18 22 25" stroke="var(--fluoro-cyan)" stroke-width="1" fill="none" opacity="0.4"/>
+                    <circle cx="18" cy="26" r="2" fill="var(--fluoro-cyan)" opacity="0.5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Osmoregulation</h3>
+                  <span class="system-card__week">Week 10</span>
+                </div>
+              </div>
+              <div class="system-card__body">
+                <div class="system-detail-row">
+                  <span class="system-detail-label">What is regulated?</span>
+                  <span class="system-detail-value">Water and salt balance; plasma osmolarity</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Set point</span>
+                  <span class="system-detail-value sp-highlight">~290 mOsm/kg</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Normal range</span>
+                  <span class="system-detail-value">285 – 295 mOsm/kg</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Why it matters</span>
+                  <span class="system-detail-value">Cell volume; ion concentrations; nerve function</span>
+                </div>
+                <div class="system-card__organisms">
+                  <span class="org-label">NCEA organisms:</span>
+                  <span class="org-chips">
+                    <span class="org-chip">Freshwater fish</span>
+                    <span class="org-chip">Marine fish</span>
+                    <span class="org-chip">Humans (kidneys)</span>
+                  </span>
+                </div>
+              </div>
+              <div class="system-card__exam-relevance">
+                <h4>What you need to explain</h4>
+                <ul class="feature-list">
+                  <li>Role of the kidney: filtration, reabsorption, excretion</li>
+                  <li>ADH and its role in water reabsorption</li>
+                  <li>Osmoregulatory challenges: freshwater vs marine environments</li>
+                  <li>Countercurrent multiplier in the loop of Henle</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Blood glucose -->
+            <div class="system-card system-card--glucose" id="sys-glucose">
+              <div class="system-card__header">
+                <div class="system-card__icon" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M6 18 Q12 8 18 18 Q24 28 30 18" stroke="var(--green-vivid)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle cx="18" cy="18" r="3" fill="var(--green-vivid)" opacity="0.5"/>
+                    <line x1="18" y1="6" x2="18" y2="8" stroke="var(--green-vivid)" stroke-width="1" opacity="0.4"/>
+                    <line x1="18" y1="28" x2="18" y2="30" stroke="var(--green-vivid)" stroke-width="1" opacity="0.4"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Blood Glucose Regulation</h3>
+                  <span class="system-card__week">Week 11</span>
+                </div>
+              </div>
+              <div class="system-card__body">
+                <div class="system-detail-row">
+                  <span class="system-detail-label">What is regulated?</span>
+                  <span class="system-detail-value">Blood glucose concentration</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Set point</span>
+                  <span class="system-detail-value sp-highlight">~5 mmol/L</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Normal range</span>
+                  <span class="system-detail-value">3.9 – 6.1 mmol/L (fasting)</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Why it matters</span>
+                  <span class="system-detail-value">Cellular respiration; brain function; osmolarity</span>
+                </div>
+                <div class="system-card__organisms">
+                  <span class="org-label">NCEA organisms:</span>
+                  <span class="org-chips">
+                    <span class="org-chip">Humans</span>
+                    <span class="org-chip">Type 1 vs Type 2 diabetes</span>
+                  </span>
+                </div>
+              </div>
+              <div class="system-card__exam-relevance">
+                <h4>What you need to explain</h4>
+                <ul class="feature-list">
+                  <li>Insulin lowers blood glucose: promotes uptake and glycogen synthesis</li>
+                  <li>Glucagon raises blood glucose: promotes glycogenolysis and gluconeogenesis</li>
+                  <li>Role of the pancreas (islets of Langerhans: alpha and beta cells)</li>
+                  <li>What goes wrong in diabetes mellitus</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Blood pH / CO2 -->
+            <div class="system-card system-card--ph" id="sys-ph">
+              <div class="system-card__header">
+                <div class="system-card__icon" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <text x="8" y="22" fill="var(--accent)" font-size="14" font-weight="700" font-family="var(--font-display)">pH</text>
+                    <path d="M4 28 Q18 6 32 28" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                    <circle cx="18" cy="18" r="2" fill="var(--accent)" opacity="0.6"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Blood pH / CO₂ Regulation</h3>
+                  <span class="system-card__week">Week 12</span>
+                </div>
+              </div>
+              <div class="system-card__body">
+                <div class="system-detail-row">
+                  <span class="system-detail-label">What is regulated?</span>
+                  <span class="system-detail-value">Blood pH; CO₂ and bicarbonate levels</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Set point</span>
+                  <span class="system-detail-value sp-highlight">pH 7.40</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Normal range</span>
+                  <span class="system-detail-value">7.35 – 7.45</span>
+                </div>
+                <div class="system-detail-row">
+                  <span class="system-detail-label">Why it matters</span>
+                  <span class="system-detail-value">Enzyme function; protein structure; haemoglobin binding</span>
+                </div>
+                <div class="system-card__organisms">
+                  <span class="org-label">NCEA organisms:</span>
+                  <span class="org-chips">
+                    <span class="org-chip">Humans</span>
+                    <span class="org-chip">Exercise physiology</span>
+                  </span>
+                </div>
+              </div>
+              <div class="system-card__exam-relevance">
+                <h4>What you need to explain</h4>
+                <ul class="feature-list">
+                  <li>The carbonic acid–bicarbonate buffer system</li>
+                  <li>Respiratory regulation: increased ventilation rate removes CO₂</li>
+                  <li>Renal regulation: kidneys adjust H⁺ and HCO₃⁻ excretion</li>
+                  <li>Acidosis and alkalosis: causes and consequences</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="summary-box">
+            <h4>Pattern to Recognise</h4>
+            <p>
+              All four systems follow the <strong>same underlying logic</strong>: a regulated
+              variable, a set point, a receptor, a control centre, and effectors acting via
+              negative feedback. When you understand this general model deeply, learning each
+              specific system becomes a matter of filling in the biological details — not
+              memorising entirely new frameworks.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 3: Homeostasis Matching Activity
+             —————————————————————————————————————————————————————————————— -->
+        <section id="matching" class="content-section fade-in-up">
+          <h2>Matching Activity: Homeostatic Systems</h2>
+          <p class="section-intro">
+            Match each homeostatic system with the correct set point, what it regulates,
+            and why it matters. Click a card on the left, then click its match on the right.
+            Correct matches are locked in green; incorrect matches flash red and reset.
+          </p>
+
+          <div class="matching-activity" id="matching-activity" aria-live="polite">
+
+            <div class="matching-cols">
+              <!-- Left column: system names -->
+              <div class="matching-col matching-col--left">
+                <h4 class="matching-col__title">System</h4>
+                <button class="match-card" data-match-id="thermo" data-side="left">
+                  Thermoregulation
+                </button>
+                <button class="match-card" data-match-id="osmo" data-side="left">
+                  Osmoregulation
+                </button>
+                <button class="match-card" data-match-id="glucose" data-side="left">
+                  Blood Glucose Regulation
+                </button>
+                <button class="match-card" data-match-id="ph" data-side="left">
+                  Blood pH / CO₂ Regulation
+                </button>
+              </div>
+
+              <!-- Right column: shuffled descriptions -->
+              <div class="matching-col matching-col--right">
+                <h4 class="matching-col__title">Set Point &amp; Importance</h4>
+                <button class="match-card" data-match-id="glucose" data-side="right">
+                  ~5 mmol/L · Ensures glucose supply for cellular respiration and brain function
+                </button>
+                <button class="match-card" data-match-id="thermo" data-side="right">
+                  37°C · Maintains optimal enzyme activity and metabolic rate
+                </button>
+                <button class="match-card" data-match-id="ph" data-side="right">
+                  pH 7.40 · Prevents protein denaturation and maintains haemoglobin function
+                </button>
+                <button class="match-card" data-match-id="osmo" data-side="right">
+                  ~290 mOsm/kg · Prevents cell crenation or lysis; maintains membrane potential
+                </button>
+              </div>
+            </div>
+
+            <div class="matching-score" id="matching-score">
+              Matches: <span id="match-count">0</span> / 4
+            </div>
+
+            <div class="matching-complete" id="matching-complete" hidden>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="var(--green-vivid)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              All matched! You have connected each system to its set point and biological importance.
+            </div>
+
+            <button class="btn btn--secondary" id="matching-reset-btn" style="margin-top: var(--space-4);">
+              Reset Activity
+            </button>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Check Your Understanding
+             —————————————————————————————————————————————————————————————— -->
+        <section id="check-understanding" class="content-section fade-in-up">
+          <h2>Check Your Understanding</h2>
+          <p class="section-intro">
+            Answer these questions in your own words to consolidate your understanding
+            of homeostasis. These are formative — no marks, no pressure, just thinking.
+          </p>
+
+          <div class="question-section">
+
+            <!-- Q1 -->
+            <div class="question-card" data-q="1">
+              <div class="question-card__header">
+                <span class="question-number">1</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">
+                Define homeostasis in your own words. Why is it important that the internal
+                environment is maintained within a <em>range</em> rather than at a single
+                fixed value?
+              </p>
+              <textarea class="answer-input answer-input--med" data-answer="q1"
+                placeholder="Write your answer here..." rows="4"></textarea>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card" data-q="2">
+              <div class="question-card__header">
+                <span class="question-number">2</span>
+                <span class="question-type-badge question-type-badge--short">Short answer</span>
+              </div>
+              <p class="question-text">
+                Using the five-component model (stimulus → receptor → control centre →
+                effector → response), describe what happens when your blood glucose
+                concentration rises above the set point after eating a meal.
+              </p>
+              <textarea class="answer-input answer-input--med" data-answer="q2"
+                placeholder="Identify each component for blood glucose regulation..." rows="5"></textarea>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card" data-q="3">
+              <div class="question-card__header">
+                <span class="question-number">3</span>
+                <span class="question-type-badge question-type-badge--multi">Multi-part</span>
+              </div>
+              <p class="question-text">
+                Explain why <strong>negative feedback</strong> — not positive feedback —
+                is used in homeostatic mechanisms.
+              </p>
+              <div class="sub-question">
+                <span class="sub-label">(a) What does negative feedback do?</span>
+                <textarea class="answer-input answer-input--short" data-answer="q3a"
+                  placeholder="Describe how negative feedback acts on a deviation..." rows="3"></textarea>
+              </div>
+              <div class="sub-question">
+                <span class="sub-label">(b) Give ONE example of positive feedback in the human body and explain why it is not used for homeostasis.</span>
+                <textarea class="answer-input answer-input--short" data-answer="q3b"
+                  placeholder="Example + why it cannot maintain stable conditions..." rows="3"></textarea>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-card" data-q="4">
+              <div class="question-card__header">
+                <span class="question-number">4</span>
+                <span class="question-type-badge question-type-badge--long">Extended</span>
+              </div>
+              <p class="question-text">
+                A student says: "Homeostasis only matters for body temperature — if you
+                get too hot or cold, you die. Blood pH doesn't matter as much because a
+                small change from 7.4 to 7.3 isn't really different."
+              </p>
+              <p class="question-text">
+                Evaluate this claim. Use specific biological reasoning to explain why
+                even small deviations in pH are physiologically significant.
+              </p>
+              <textarea class="answer-input answer-input--long" data-answer="q4"
+                placeholder="Evaluate the claim, then explain pH consequences with biological detail... (aim 80–120 words)" rows="7"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Reveal model answers -->
+          <div class="activity-card" style="margin-top: var(--space-5);">
+            <h4>Model Answers</h4>
+            <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-3);">
+              Attempt all questions before revealing.
+            </p>
+            <div class="reveal-section">
+              <button class="reveal-btn" data-target="homeostasis-model-answers">
+                <span class="reveal-btn__text">Show Model Answers</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="reveal-content" id="homeostasis-model-answers" hidden>
+
+                <div class="model-grade-section">
+                  <h5 class="model-grade-label model-grade-label--achieved">Q1 — Achieved</h5>
+                  <div class="answer-card">
+                    Homeostasis is the process by which an organism maintains a relatively
+                    stable internal environment despite changes in external conditions.
+                    Physiological variables are kept within a normal range around a set point.
+                    <br><br>
+                    A <em>range</em> rather than a single value is maintained because it is
+                    physiologically impossible to hold any variable at an absolutely fixed
+                    point — the control mechanisms themselves take time to respond and overshoot
+                    is inevitable. A range also allows the body to tolerate transient perturbations
+                    (e.g. a meal, brief exercise) without triggering constant corrective responses.
+                    The range defines the limits within which normal function is possible; deviations
+                    beyond these limits trigger stronger corrective mechanisms.
+                  </div>
+                </div>
+
+                <div class="model-grade-section">
+                  <h5 class="model-grade-label model-grade-label--merit">Q2 — Merit</h5>
+                  <div class="answer-card">
+                    <strong>Stimulus:</strong> Blood glucose rises above ~6 mmol/L after eating
+                    (detected because glucose concentration in portal blood reaching the liver and
+                    pancreas is elevated). <br>
+                    <strong>Receptor:</strong> Beta cells of the islets of Langerhans in the
+                    pancreas detect the elevated blood glucose directly. <br>
+                    <strong>Control centre:</strong> Beta cells also act as the control centre —
+                    they integrate the signal and secrete insulin. <br>
+                    <strong>Effector:</strong> Body cells (liver, muscle, adipose tissue) respond
+                    to insulin; liver and muscle cells in particular increase glucose uptake and
+                    convert glucose to glycogen (glycogenesis). <br>
+                    <strong>Response:</strong> Blood glucose concentration falls back toward the
+                    set point (~5 mmol/L). As glucose falls, insulin secretion decreases —
+                    this is the negative feedback loop.
+                  </div>
+                </div>
+
+                <div class="model-grade-section">
+                  <h5 class="model-grade-label model-grade-label--merit">Q3 — Merit</h5>
+                  <div class="answer-card">
+                    <strong>(a)</strong> Negative feedback opposes the change that triggered it.
+                    When a variable rises above the set point, the response acts to lower it;
+                    when it falls below, the response acts to raise it. This restores the variable
+                    to the set point, completing the feedback loop. It is "negative" because the
+                    response is in the opposite direction to the deviation.
+                    <br><br>
+                    <strong>(b)</strong> Blood clotting (coagulation cascade) is a positive
+                    feedback example: clotting factors activate more clotting factors, rapidly
+                    amplifying the response until a clot forms. This cannot maintain stable
+                    conditions because it does not oppose the change — it amplifies it. If used
+                    for homeostasis, a small deviation would spiral into an uncontrolled extreme
+                    rather than returning to the set point.
+                  </div>
+                </div>
+
+                <div class="model-grade-section">
+                  <h5 class="model-grade-label model-grade-label--excellence">Q4 — Excellence</h5>
+                  <div class="answer-card">
+                    The student's claim underestimates the significance of pH regulation. While
+                    it is true that extreme temperature deviations are immediately life-threatening,
+                    a drop in blood pH from 7.4 to 7.3 (acidosis) has serious physiological
+                    consequences. Hydrogen ions compete with calcium ions at troponin binding sites
+                    in cardiac muscle, reducing contractility. Changes in H⁺ concentration alter
+                    the charge distribution on proteins, causing conformational changes that reduce
+                    enzyme activity — the same mechanism by which temperature deviation disrupts
+                    enzymes. Acidosis also shifts the oxygen–haemoglobin dissociation curve (the
+                    Bohr effect), impairing O₂ delivery to tissues. A pH of 7.3 represents a
+                    more-than-doubled H⁺ concentration compared to pH 7.5 (logarithmic scale),
+                    so even "small" numerical changes are biochemically large. Life-threatening
+                    acidosis (pH below 7.2) can cause cardiac arrhythmias and coma.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Assessment Practice Task
+             —————————————————————————————————————————————————————————————— -->
+        <section id="assessment-task" class="content-section fade-in-up">
+          <h2>Assessment Practice Task</h2>
+          <p class="section-intro">
+            AS 91604 is an <strong>internal assessment</strong> — you will submit a written
+            report to your teacher, not sit a timed exam. Use this practice task to develop
+            the explanatory writing style that assessors reward. Focus on linking mechanisms
+            to biological consequences and using precise terminology.
+          </p>
+
+          <div class="internal-note" style="margin-bottom: var(--space-5);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              This is formative practice — it helps you prepare for the actual internal
+              assessment task your teacher will set. The style of writing required here
+              mirrors what you will need to produce in your report.
+            </div>
+          </div>
+
+          <div class="exam-card">
+            <div class="exam-card__header">
+              <span class="question-type-badge question-type-badge--long">Internal Assessment Practice — Merit/Excellence level</span>
+            </div>
+
+            <div class="question-context">
+              <p>
+                On a warm day, Priya goes for a 5 km run. During and after the run, her
+                core body temperature rises, her blood glucose falls as muscles consume
+                glucose for respiration, and the CO₂ concentration in her blood increases
+                due to increased metabolic activity.
+              </p>
+            </div>
+
+            <p class="question-text">
+              <strong>Explain</strong> how Priya's body maintains a stable internal environment
+              during and after her run. In your answer:
+            </p>
+            <ul class="exam-bullets">
+              <li>
+                describe the negative feedback loop for <strong>at least two</strong> of the
+                homeostatic systems affected (temperature, blood glucose, or blood pH/CO₂)
+              </li>
+              <li>
+                for each system, identify the receptor, control centre, effector(s), and
+                nature of the response
+              </li>
+              <li>
+                explain why the responses oppose the original deviation (negative feedback)
+              </li>
+              <li>
+                link each regulated variable back to a specific biological consequence of
+                failing to maintain it
+              </li>
+            </ul>
+
+            <textarea class="answer-input answer-input--long" id="assessment-answer"
+              placeholder="Write your response here (aim for 200–300 words)..." rows="12"
+              style="min-height: 220px;"></textarea>
+
+            <div class="exam-actions">
+              <span class="word-count" id="assessment-word-count">0 words</span>
+              <button class="sim-btn sim-btn--primary" id="assessment-submit-btn">Get AI Feedback</button>
+            </div>
+
+            <!-- AI feedback area -->
+            <div class="ai-feedback" id="ai-feedback" hidden>
+              <div class="ai-feedback__header">
+                <h4>AI Feedback</h4>
+                <span class="ai-grade" id="ai-grade"></span>
+              </div>
+              <p class="ai-summary" id="ai-summary"></p>
+              <div class="ai-section" id="ai-strengths-section">
+                <h5>Strengths</h5>
+                <ul id="ai-strengths"></ul>
+              </div>
+              <div class="ai-section" id="ai-improvements-section">
+                <h5>Areas for Improvement</h5>
+                <ul id="ai-improvements"></ul>
+              </div>
+              <div class="ai-section" id="ai-missing-section">
+                <h5>Missing Key Points</h5>
+                <ul id="ai-missing"></ul>
+              </div>
+              <p class="ai-tip" id="ai-tip"></p>
+            </div>
+
+            <div class="ai-loading" id="ai-loading" hidden>
+              <div class="loading-spinner"></div>
+              <span>Dr Eliot's AI is reading your answer...</span>
+            </div>
+
+            <div class="ai-error" id="ai-error" hidden>
+              <p id="ai-error-text"></p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Define homeostasis and explain why it is necessary for survival</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain the role of set points and normal ranges</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Identify and explain the five components of a homeostatic mechanism</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Explain negative feedback and distinguish it from positive feedback</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Describe the four homeostatic systems studied in AS 91604</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>State the set point and consequences of deviation for each system</span>
+            </li>
+            <li class="objective-item">
+              <span class="objective-checkbox" aria-hidden="true"></span>
+              <span>Write explanatory paragraphs linking mechanism to biological consequence</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Key Vocabulary</h3>
+          <div class="vocab-grid">
+            <div class="vocab-chip">homeostasis</div>
+            <div class="vocab-chip">set point</div>
+            <div class="vocab-chip">normal range</div>
+            <div class="vocab-chip">stimulus</div>
+            <div class="vocab-chip">receptor</div>
+            <div class="vocab-chip">control centre</div>
+            <div class="vocab-chip">effector</div>
+            <div class="vocab-chip">response</div>
+            <div class="vocab-chip">negative feedback</div>
+            <div class="vocab-chip">positive feedback</div>
+            <div class="vocab-chip">thermoregulation</div>
+            <div class="vocab-chip">osmoregulation</div>
+            <div class="vocab-chip">blood glucose</div>
+            <div class="vocab-chip">blood pH</div>
+            <div class="vocab-chip">hypothalamus</div>
+            <div class="vocab-chip">insulin</div>
+            <div class="vocab-chip">glucagon</div>
+            <div class="vocab-chip">vasodilation</div>
+            <div class="vocab-chip">vasoconstriction</div>
+            <div class="vocab-chip">Walter Cannon</div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Quick Links</h3>
+          <div class="sidebar-links">
+            <a href="#negative-feedback" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="11" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <path d="M10 16 Q16 8 22 16 Q16 24 10 16Z" stroke="var(--fluoro-cyan)" stroke-width="1" fill="none" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Feedback Loop Animation</span>
+            </a>
+            <a href="#set-point-vis" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="12" y="4" width="8" height="20" rx="4" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <circle cx="16" cy="28" r="4" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                </svg>
+              </span>
+              <span>Set Point Visualiser</span>
+            </a>
+            <a href="#matching" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="8" width="10" height="7" rx="2" stroke="var(--green-vivid)" stroke-width="1.5" fill="none"/>
+                  <rect x="18" y="8" width="10" height="7" rx="2" stroke="var(--green-vivid)" stroke-width="1.5" fill="none"/>
+                  <line x1="14" y1="11.5" x2="18" y2="11.5" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.5"/>
+                  <rect x="4" y="20" width="10" height="7" rx="2" stroke="var(--green-vivid)" stroke-width="1.5" fill="none"/>
+                  <rect x="18" y="20" width="10" height="7" rx="2" stroke="var(--green-vivid)" stroke-width="1.5" fill="none"/>
+                  <line x1="14" y1="23.5" x2="18" y2="23.5" stroke="var(--green-vivid)" stroke-width="1.5" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Matching Activity</span>
+            </a>
+            <a href="#assessment-task" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <rect x="6" y="4" width="20" height="24" rx="3" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <line x1="10" y1="10" x2="22" y2="10" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="15" x2="22" y2="15" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                  <line x1="10" y1="20" x2="18" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>Assessment Practice</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Assessment Info -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>About AS 91604</h3>
+          <p class="sidebar-text"><strong>Credits:</strong> 3</p>
+          <p class="sidebar-text"><strong>Assessment type:</strong> Internal</p>
+          <p class="sidebar-text"><strong>How assessed:</strong> Written report submitted to your teacher</p>
+          <p class="sidebar-text sidebar-text--highlight">
+            You are not sitting an exam for this standard — you will write a report
+            demonstrating your understanding of how an animal maintains a stable internal
+            environment. Practice explaining mechanisms clearly and linking structure to function.
+          </p>
+        </div>
+
+        <!-- Building On -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Level 2 Bio:</strong> Cell biology — membranes, enzymes, diffusion, osmosis
+          </p>
+          <p class="sidebar-text">
+            <strong>Level 2 Bio:</strong> Animal responses — nervous system basics
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>This week:</strong> Homeostasis overview — the conceptual framework
+            for all the specific mechanisms you will study in Weeks 8–12.
+          </p>
+        </div>
+
+      </aside>
+
+    </div><!-- /week-layout -->
+
+  </div><!-- /week-page -->
+
+
+  <!-- ====================================================================
+       Styles
+       ==================================================================== -->
+  <style>
+    /* ==========================================================================
+       Week 7 Page Styles — Introduction to Homeostasis
+       ========================================================================== */
+
+    .week-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-8);
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Week Header ── */
+    .week-header {
+      margin-bottom: var(--space-7);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .week-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover { color: var(--accent); }
+    .term-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+    .week-header__title-row { margin-bottom: var(--space-3); }
+    .week-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .week-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+    }
+    .week-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border-radius: var(--radius-full);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .badge--standard {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--accent);
+    }
+    .badge--internal {
+      background: rgba(255, 180, 0, 0.12);
+      color: #fbbf24;
+    }
+    .badge--desc {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0;
+      font-weight: var(--weight-normal);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Quick Navigation ── */
+    .week-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .week-nav__link {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+    /* ── Two-Column Layout ── */
+    .week-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .week-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Main Content ── */
+    .week-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .content-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .content-section h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--accent);
+    }
+    .content-section h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .content-section h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+    .section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-relaxed);
+    }
+    .content-section p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ── Internal Note ── */
+    .internal-note {
+      display: flex;
+      gap: var(--space-3);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-left: 4px solid #fbbf24;
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-5) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .internal-note svg { flex-shrink: 0; margin-top: 2px; color: #fbbf24; }
+    .internal-note strong { color: #fbbf24; }
+
+    /* ── Lesson Inline Nav ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+    .lesson-inline-nav__link:hover { opacity: 0.8; }
+
+    /* ── Definition Box ── */
+    .definition-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .definition-box__label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-3);
+    }
+    .definition-box p {
+      font-size: var(--text-base) !important;
+      color: var(--text-primary) !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── Feature Lists ── */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ── Info Cards Row ── */
+    .info-cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .info-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+    }
+    .info-card__icon { margin-bottom: var(--space-3); }
+    .info-card h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+      margin-top: 0;
+    }
+    .info-card p { font-size: var(--text-sm) !important; margin-bottom: 0 !important; }
+    .info-card--enzyme  { border-top: 3px solid var(--fluoro-cyan); }
+    .info-card--cell    { border-top: 3px solid var(--green-vivid); }
+    .info-card--survival{ border-top: 3px solid var(--fluoro-pink); }
+
+    /* ── Exam Tip ── */
+    .exam-tip {
+      background: rgba(255, 110, 199, 0.06);
+      border: 1px solid rgba(255, 110, 199, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-4) 0;
+    }
+    .exam-tip h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--fluoro-pink);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+    .exam-tip p { font-size: var(--text-sm); }
+
+    /* ── Set Point Table ── */
+    .set-point-table-wrap {
+      overflow-x: auto;
+      margin: var(--space-5) 0;
+    }
+    .set-point-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+    }
+    .set-point-table caption {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-align: left;
+      margin-bottom: var(--space-3);
+      font-family: var(--font-mono);
+    }
+    .set-point-table th {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      border-bottom: 2px solid var(--border-default);
+    }
+    .set-point-table td {
+      padding: var(--space-3) var(--space-4);
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .set-point-table tr:hover td { background: var(--surface-2); }
+
+    /* ── Terminology Grid ── */
+    .terminology-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .term-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      position: relative;
+    }
+    .term-card__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      color: var(--surface-0);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-3);
+    }
+    .term-card h4 { margin-top: 0; margin-bottom: var(--space-2); }
+    .term-card p { font-size: var(--text-sm) !important; margin-bottom: var(--space-3) !important; }
+    .term-example {
+      background: var(--surface-0);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: var(--leading-relaxed);
+    }
+    .term-example__label {
+      display: block;
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-mono);
+      color: var(--accent);
+      margin-bottom: var(--space-1);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .term-card--stimulus    { border-left: 3px solid var(--fluoro-pink); }
+    .term-card--receptor    { border-left: 3px solid var(--fluoro-cyan); }
+    .term-card--control     { border-left: 3px solid var(--accent); }
+    .term-card--effector    { border-left: 3px solid var(--green-vivid); }
+    .term-card--response    { border-left: 3px solid var(--purple-light, #c084fc); }
+
+    /* ── Connection Box ── */
+    .connection-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .connection-box h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+    /* ── Summary Box ── */
+    .summary-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin-top: var(--space-5);
+    }
+    .summary-box h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 1 — Negative Feedback Loop Animation
+       ───────────────────────────────────────────────────────────────────── */
+
+    .feedback-anim {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .feedback-anim__diagram {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .feedback-svg {
+      width: 100%;
+      max-width: 700px;
+      display: block;
+      margin: 0 auto;
+    }
+    .feedback-anim__desc {
+      margin: var(--space-4) 0;
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      min-height: 80px;
+    }
+    .fb-step-indicator {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    .fb-step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-full);
+      background: var(--border-subtle);
+      transition: background var(--transition-fast);
+    }
+    .fb-step-dot.is-active { background: var(--accent); }
+    .fb-step-dot.is-done   { background: var(--green-vivid); opacity: 0.7; }
+    .fb-desc-text {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      font-weight: var(--weight-medium);
+      margin-bottom: var(--space-2) !important;
+    }
+    .fb-example-text {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: 0 !important;
+      font-style: italic;
+    }
+    .feedback-anim__controls {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+    .feedback-anim__selector {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .fb-selector-label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+    .fb-system-btns { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .fb-system-btn {
+      padding: var(--space-2) var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .fb-system-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .fb-system-btn--active {
+      background: rgba(0, 255, 136, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 2 — Set Point Visualiser
+       ───────────────────────────────────────────────────────────────────── */
+
+    .setpoint-vis {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .setpoint-vis__slider-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+    .setpoint-vis__label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .setpoint-vis__slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex: 1;
+      min-width: 200px;
+    }
+    .setpoint-vis__min,
+    .setpoint-vis__max {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .setpoint-vis__slider {
+      flex: 1;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .setpoint-vis__current-val {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      color: var(--fluoro-cyan);
+      min-width: 4ch;
+      text-align: right;
+    }
+    .setpoint-vis__display {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+    @media (max-width: 600px) {
+      .setpoint-vis__display { grid-template-columns: 1fr; }
+    }
+    .setpoint-vis__gauge-wrap { display: flex; flex-direction: column; align-items: center; }
+    .gauge-label {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+    .gauge-container { width: 100%; }
+    .gauge-track {
+      position: relative;
+      width: 36px;
+      height: 220px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      margin: 0 auto var(--space-2);
+      overflow: visible;
+    }
+    .gauge-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent);
+      border-radius: 0 0 18px 18px;
+      transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1), background 0.5s;
+    }
+    .gauge-setpoint {
+      position: absolute;
+      left: -8px;
+      right: -8px;
+      height: 2px;
+      background: var(--fluoro-pink);
+      opacity: 0.8;
+    }
+    .gauge-zone {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+    .gauge-zone--low {
+      bottom: 0;
+      height: 10%;
+      background: rgba(0, 150, 255, 0.15);
+      border-radius: 0 0 18px 18px;
+    }
+    .gauge-zone--high {
+      top: 0;
+      height: 10%;
+      background: rgba(255, 50, 50, 0.15);
+      border-radius: 18px 18px 0 0;
+    }
+    .gauge-scale {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      height: 220px;
+      font-size: 9px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      padding: 2px 0;
+    }
+    .gauge-scale { display: none; } /* replaced by readout below */
+    .gauge-readout {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-align: center;
+      margin-top: var(--space-2);
+      transition: color 0.4s;
+    }
+    .gauge-status {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: var(--space-1);
+      transition: color 0.4s;
+    }
+    .gauge-status--normal  { color: var(--green-vivid); }
+    .gauge-status--warn    { color: #fbbf24; }
+    .gauge-status--danger  { color: var(--fluoro-pink); }
+
+    .setpoint-vis__responses {}
+    .response-panel-title {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+    .response-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .response-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .response-item--inactive { opacity: 0.4; }
+    .response-item--active {
+      opacity: 1;
+      border-color: var(--accent);
+      background: rgba(0, 255, 136, 0.06);
+    }
+    .response-item--active-cold {
+      opacity: 1;
+      border-color: var(--fluoro-cyan);
+      background: rgba(0, 200, 255, 0.06);
+    }
+    .response-item__indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-full);
+      background: var(--border-subtle);
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: background var(--transition-fast);
+    }
+    .response-item--active .response-item__indicator { background: var(--accent); }
+    .response-item--active-cold .response-item__indicator { background: var(--fluoro-cyan); }
+    .response-item__text strong {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .response-item__text span {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+    .sp-warning {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-start;
+      padding: var(--space-3) var(--space-4);
+      background: rgba(255, 110, 199, 0.1);
+      border: 1px solid var(--fluoro-pink);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--fluoro-pink);
+    }
+    .sp-warning svg { flex-shrink: 0; margin-top: 2px; color: var(--fluoro-pink); }
+    .sp-warning p { margin: 0 !important; color: var(--fluoro-pink) !important; font-size: var(--text-sm) !important; }
+    .setpoint-vis__explanation {
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      min-height: 48px;
+      transition: background 0.4s;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       System Overview Cards (Lesson 2)
+       ───────────────────────────────────────────────────────────────────── */
+
+    .systems-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .system-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      transition: border-color var(--transition-fast);
+    }
+    .system-card:hover { border-color: var(--accent); }
+    .system-card--thermo { border-top: 3px solid var(--fluoro-pink); }
+    .system-card--osmo   { border-top: 3px solid var(--fluoro-cyan); }
+    .system-card--glucose{ border-top: 3px solid var(--green-vivid); }
+    .system-card--ph     { border-top: 3px solid var(--accent); }
+    .system-card__header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .system-card__icon { flex-shrink: 0; margin-top: 2px; }
+    .system-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-1) !important;
+    }
+    .system-card__week {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .system-card__body { margin-bottom: var(--space-4); }
+    .system-detail-row {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: var(--text-sm);
+    }
+    .system-detail-row:last-child { border-bottom: none; }
+    .system-detail-label {
+      color: var(--text-muted);
+      width: 130px;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+    .system-detail-value { color: var(--text-secondary); flex: 1; font-size: var(--text-sm); line-height: 1.5; }
+    .sp-highlight {
+      color: var(--accent);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-mono);
+    }
+    .system-card__organisms {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+    }
+    .org-label {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .org-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .org-chip {
+      font-size: var(--text-xs);
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 2px var(--space-3);
+      color: var(--text-muted);
+    }
+    .system-card__exam-relevance {
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .system-card__exam-relevance h4 {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      font-weight: var(--weight-semibold);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 var(--space-3) !important;
+    }
+    .system-card__exam-relevance .feature-list { margin-bottom: 0; }
+    .system-card__exam-relevance .feature-list li { font-size: var(--text-sm); }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 3 — Matching Activity
+       ───────────────────────────────────────────────────────────────────── */
+
+    .matching-activity {
+      margin-top: var(--space-4);
+    }
+    .matching-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    @media (max-width: 640px) {
+      .matching-cols { grid-template-columns: 1fr; }
+    }
+    .matching-col__title {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      font-weight: var(--weight-semibold);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-3);
+    }
+    .match-card {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      line-height: var(--leading-relaxed);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-bottom: var(--space-2);
+    }
+    .match-card:last-child { margin-bottom: 0; }
+    .match-card:hover { border-color: var(--accent); background: var(--surface-3); }
+    .match-card.is-selected {
+      border-color: var(--fluoro-cyan);
+      background: rgba(0, 200, 255, 0.08);
+      color: var(--fluoro-cyan);
+    }
+    .match-card.is-matched {
+      border-color: var(--green-vivid);
+      background: rgba(0, 255, 136, 0.08);
+      color: var(--green-vivid);
+      cursor: default;
+      pointer-events: none;
+    }
+    .match-card.is-wrong {
+      border-color: var(--fluoro-pink);
+      background: rgba(255, 110, 199, 0.08);
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%  { transform: translateX(-6px); }
+      75%  { transform: translateX(6px); }
+    }
+    .matching-score {
+      font-size: var(--text-sm);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .matching-complete {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid var(--green-vivid);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--green-vivid);
+      margin-bottom: var(--space-3);
+    }
+
+
+    /* ── Question Cards ── */
+    .question-section { margin-top: var(--space-5); }
+    .question-card {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+      transition: border-color var(--transition-fast);
+    }
+    .question-card:focus-within { border-color: var(--accent); }
+    .question-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .question-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      color: var(--surface-0);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+    .question-text {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+    .question-type-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      padding: 2px var(--space-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+    }
+    .question-type-badge--short { background: rgba(0, 200, 255, 0.1); color: var(--fluoro-cyan); }
+    .question-type-badge--multi { background: rgba(255, 100, 150, 0.1); color: var(--fluoro-pink); }
+    .question-type-badge--long  { background: rgba(200, 100, 255, 0.1); color: var(--purple-light, #c084fc); }
+    .sub-question { margin-bottom: var(--space-3); }
+    .sub-label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    /* ── Answer Inputs ── */
+    .answer-input {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      line-height: var(--leading-relaxed);
+      resize: vertical;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .answer-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+    }
+    .answer-input::placeholder { color: var(--text-muted); }
+    .answer-input--short { min-height: 70px; }
+    .answer-input--med   { min-height: 100px; }
+    .answer-input--long  { min-height: 180px; }
+    .answer-input--xl    { min-height: 220px; }
+
+    /* ── Activity Card (model answers container) ── */
+    .activity-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .activity-card h4 { margin-top: 0; }
+
+    /* ── Reveal Buttons & Content ── */
+    .reveal-section { margin-top: var(--space-3); }
+    .reveal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--accent);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .reveal-btn:hover { background: var(--surface-3); border-color: var(--accent); }
+    .reveal-content { margin-top: var(--space-3); }
+    .answer-card {
+      background: var(--surface-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--space-4);
+      margin-bottom: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .answer-card p { font-size: var(--text-sm) !important; margin-bottom: var(--space-2) !important; }
+    .answer-card p:last-child { margin-bottom: 0 !important; }
+
+    /* ── Model Grade Labels ── */
+    .model-grade-section { margin-bottom: var(--space-4); }
+    .model-grade-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+      padding: 2px var(--space-3);
+      border-radius: var(--radius-sm);
+      display: inline-block;
+    }
+    .model-grade-label--achieved   { background: rgba(0,200,255,0.12); color: var(--fluoro-cyan); }
+    .model-grade-label--merit      { background: rgba(0,255,136,0.12); color: var(--green-vivid); }
+    .model-grade-label--excellence { background: rgba(200,100,255,0.12); color: var(--purple-light, #c084fc); }
+
+    /* ── Exam / Assessment Card ── */
+    .exam-card {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .exam-card__header { margin-bottom: var(--space-4); }
+    .question-context {
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .question-context p { font-size: var(--text-sm) !important; margin-bottom: var(--space-3) !important; }
+    .question-context p:last-child { margin-bottom: 0 !important; }
+    .exam-bullets {
+      padding-left: var(--space-5);
+      margin-bottom: var(--space-4);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .exam-bullets li { margin-bottom: var(--space-2); font-size: var(--text-base); }
+    .exam-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-3);
+    }
+    .word-count {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .sim-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-sm);
+      padding: var(--space-3) var(--space-5);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sim-btn:hover { transform: translateY(-1px); }
+    .sim-btn--primary { background: var(--accent); color: var(--surface-0); }
+    .sim-btn--primary:hover { box-shadow: var(--shadow-glow); }
+
+    /* ── AI Feedback ── */
+    .ai-feedback {
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+      background: var(--surface-1);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-lg);
+    }
+    .ai-feedback__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .ai-feedback__header h4 { margin: 0; font-size: var(--text-base); }
+    .ai-grade {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      padding: 2px var(--space-3);
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      color: var(--text-muted);
+    }
+    .ai-grade--a { background: rgba(0,200,255,0.12); color: var(--fluoro-cyan); }
+    .ai-grade--m { background: rgba(0,255,136,0.12); color: var(--green-vivid); }
+    .ai-grade--e { background: rgba(200,100,255,0.12); color: var(--purple-light, #c084fc); }
+    .ai-grade--na { background: rgba(255,110,199,0.1); color: var(--fluoro-pink); }
+    .ai-summary { font-size: var(--text-sm); color: var(--text-primary); margin-bottom: var(--space-3) !important; }
+    .ai-section { margin-bottom: var(--space-3); }
+    .ai-section h5 {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      font-weight: var(--weight-semibold);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+    .ai-section ul {
+      padding-left: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .ai-section li { margin-bottom: var(--space-2); }
+    .ai-tip {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: var(--space-3) !important;
+      margin-bottom: 0 !important;
+    }
+    .ai-loading {
+      margin-top: var(--space-4);
+      text-align: center;
+      padding: var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+    .loading-spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--border-subtle);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .ai-loading span { font-size: var(--text-sm); color: var(--text-muted); }
+    .ai-error {
+      margin-top: var(--space-4);
+      padding: var(--space-4);
+      background: rgba(255, 100, 150, 0.1);
+      border: 1px solid var(--fluoro-pink);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--fluoro-pink);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-base);
+      padding: var(--space-3) var(--space-5);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--primary   { background: var(--accent); color: var(--surface-0); }
+    .btn--primary:hover { box-shadow: var(--shadow-glow); }
+    .btn--secondary {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .btn--secondary:hover { background: var(--surface-3); }
+    .btn--ghost {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+    .btn--ghost:hover { background: var(--surface-2); }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── Sidebar ── */
+    .week-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .sidebar-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .sidebar-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+    .sidebar-card--connection { border-left: 3px solid var(--accent); }
+
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .objective-item {
+      display: flex;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .objective-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--border-default);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .vocab-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .vocab-chip {
+      font-size: var(--text-xs);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 3px var(--space-3);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover { border-color: var(--accent); color: var(--accent); }
+    .sidebar-link__icon { flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2) !important;
+      line-height: var(--leading-relaxed);
+    }
+    .sidebar-text--highlight {
+      color: var(--accent);
+      font-weight: var(--weight-medium);
+    }
+
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script>
+    /* ======================================================================
+       Fade-in observer
+       ====================================================================== */
+    (function () {
+      const obs = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }),
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade-in-up').forEach((el) => obs.observe(el));
+    })();
+
+
+    /* ======================================================================
+       Reveal buttons
+       ====================================================================== */
+    document.querySelectorAll('.reveal-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = (btn as HTMLElement).dataset.target;
+        if (!targetId) return;
+        const content = document.getElementById(targetId);
+        if (!content) return;
+        const isHidden = content.hidden;
+        content.hidden = !isHidden;
+        const label = btn.querySelector('.reveal-btn__text');
+        if (label) label.textContent = isHidden ? 'Hide Answers' : 'Show Model Answers';
+        const arrow = btn.querySelector('svg');
+        if (arrow) arrow.style.transform = isHidden ? 'rotate(180deg)' : '';
+      });
+    });
+
+
+    /* ======================================================================
+       INTERACTIVE 1 — Negative Feedback Loop Animation
+       ====================================================================== */
+    (function initFeedbackAnim() {
+
+      const SYSTEMS: Record<string, { steps: { label: string; example: string }[] }> = {
+        temperature: {
+          steps: [
+            {
+              label: 'Stimulus: Core body temperature rises above 37°C (e.g. during exercise or in a hot environment).',
+              example: 'Example: After a run, core temp climbs to 38.5°C — above the normal range.'
+            },
+            {
+              label: 'Receptor: Thermoreceptors in the hypothalamus detect the rise in blood temperature. Peripheral skin thermoreceptors also send signals.',
+              example: 'Example: The hypothalamic thermostat registers a deviation from the 37°C set point.'
+            },
+            {
+              label: 'Control Centre: The hypothalamus compares the signal to the set point (37°C) and activates cooling pathways via the nervous system and hormones.',
+              example: 'Example: The hypothalamus sends nerve signals to sweat glands and blood vessels in the skin.'
+            },
+            {
+              label: 'Effector: Sweat glands secrete sweat; arterioles in the skin dilate (vasodilation); muscles reduce heat production.',
+              example: 'Example: Sweat glands across the body surface produce watery secretion; skin arterioles widen to bring more blood to the surface.'
+            },
+            {
+              label: 'Response: Evaporation of sweat and increased heat loss via radiation from dilated skin vessels cools the blood. Temperature returns to ~37°C — negative feedback complete.',
+              example: 'Example: As core temp falls back to 37°C, the hypothalamus reduces its cooling signals — the response stops (negative feedback loop closed).'
+            }
+          ]
+        },
+        glucose: {
+          steps: [
+            {
+              label: 'Stimulus: Blood glucose concentration rises above ~6 mmol/L after a meal.',
+              example: 'Example: After eating a bowl of rice, blood glucose climbs to 8 mmol/L — above the normal range.'
+            },
+            {
+              label: 'Receptor: Beta cells in the islets of Langerhans (pancreas) detect elevated blood glucose directly as blood flows through the pancreas.',
+              example: 'Example: Beta cells have glucose transporters (GLUT2) that allow glucose to enter in proportion to blood glucose concentration — this triggers insulin secretion.'
+            },
+            {
+              label: 'Control Centre: Beta cells also act as the integration centre — they secrete insulin into the bloodstream in response to the elevated glucose signal.',
+              example: 'Example: Insulin is released into the portal circulation and reaches the liver and muscle cells within minutes.'
+            },
+            {
+              label: 'Effector: Liver cells (hepatocytes) and muscle cells respond to insulin — they increase glucose uptake and convert glucose to glycogen (glycogenesis). Adipose tissue increases glucose uptake and lipid synthesis.',
+              example: 'Example: Liver converts glucose → glycogen (stored); muscle uses glucose for contraction or converts it to glycogen.'
+            },
+            {
+              label: 'Response: Blood glucose falls back toward ~5 mmol/L. As glucose drops, beta cells reduce insulin secretion — the feedback loop is closed. (If glucose falls too far, alpha cells secrete glucagon, which raises it back — the opposing arm of regulation.)',
+              example: 'Example: 1–2 hours after the meal, blood glucose has returned to the fasting set point. Insulin levels fall, reducing further glucose uptake.'
+            }
+          ]
+        },
+        osmoregulation: {
+          steps: [
+            {
+              label: 'Stimulus: Plasma osmolarity rises above ~290 mOsm/kg — e.g. due to dehydration or eating salty food.',
+              example: 'Example: After a salty meal without drinking water, plasma osmolarity rises to 296 mOsm/kg.'
+            },
+            {
+              label: 'Receptor: Osmoreceptors in the hypothalamus (supraoptic and paraventricular nuclei) detect the increased osmolarity as water moves out of these specialised neurons by osmosis.',
+              example: 'Example: Osmoreceptor neurons shrink slightly as their water moves into the hypertonic blood — this triggers a nerve impulse.'
+            },
+            {
+              label: 'Control Centre: The hypothalamus signals the posterior pituitary gland to release ADH (antidiuretic hormone, also called vasopressin) into the bloodstream.',
+              example: 'Example: ADH is synthesised in the hypothalamus but stored and released from the posterior pituitary.'
+            },
+            {
+              label: 'Effector: Collecting ducts and distal tubules of the kidney nephrons respond to ADH — aquaporin-2 (water channel) proteins are inserted into the tubule membrane, dramatically increasing water permeability.',
+              example: 'Example: With high ADH, up to 99% of the filtered water is reabsorbed, producing a small volume of highly concentrated urine.'
+            },
+            {
+              label: 'Response: More water is reabsorbed into the blood, diluting the plasma and returning osmolarity toward 290 mOsm/kg. As osmolarity falls, ADH secretion decreases — negative feedback complete.',
+              example: 'Example: Urine becomes dark yellow and low-volume. Blood osmolarity returns to ~290 mOsm/kg, osmoreceptors stop firing, ADH release decreases.'
+            }
+          ]
+        }
+      };
+
+      let currentSystem = 'temperature';
+      let currentStep = -1; // -1 = not started
+
+      const STEP_BOXES = ['fb-box-0', 'fb-box-1', 'fb-box-2', 'fb-box-3', 'fb-box-4'];
+      const STEP_ARROWS = ['fb-arrow-01', 'fb-arrow-12', 'fb-arrow-23', 'fb-arrow-34'];
+      const STEP_COLORS = [
+        'var(--fluoro-pink)',
+        'var(--fluoro-cyan)',
+        'var(--accent)',
+        'var(--green-vivid)',
+        'var(--purple-light, #c084fc)'
+      ];
+
+      function getEl(id: string): SVGElement | null {
+        return document.getElementById(id) as SVGElement | null;
+      }
+
+      function reset() {
+        currentStep = -1;
+        STEP_BOXES.forEach((id) => {
+          const el = getEl(id);
+          if (el) {
+            el.setAttribute('stroke', 'var(--border-subtle)');
+            el.setAttribute('fill', 'var(--surface-2)');
+            el.setAttribute('stroke-width', '1.5');
+          }
+        });
+        STEP_ARROWS.forEach((id) => {
+          const el = getEl(id);
+          if (el) el.setAttribute('opacity', '0.3');
+        });
+        const normalLabel = getEl('fb-normal-label');
+        const normalLine  = getEl('fb-normal-line');
+        if (normalLabel) normalLabel.setAttribute('opacity', '0');
+        if (normalLine)  normalLine.setAttribute('opacity', '0');
+
+        const stepLabel = getEl('fb-step-label');
+        if (stepLabel) stepLabel.textContent = 'Click "Next Step" to begin';
+
+        const desc = document.getElementById('fb-desc-text');
+        const ex   = document.getElementById('fb-example-text');
+        if (desc) desc.textContent = 'The negative feedback loop has five key components. Step through each one to see how they connect in a real homeostatic system.';
+        if (ex)   ex.textContent = '';
+
+        document.querySelectorAll('.fb-step-dot').forEach((dot) => {
+          dot.classList.remove('is-active', 'is-done');
+        });
+
+        const prevBtn = document.getElementById('fb-prev-btn') as HTMLButtonElement | null;
+        const nextBtn = document.getElementById('fb-next-btn') as HTMLButtonElement | null;
+        if (prevBtn) prevBtn.disabled = true;
+        if (nextBtn) { nextBtn.disabled = false; nextBtn.textContent = 'Next Step'; }
+      }
+
+      function renderStep(step: number) {
+        const system = SYSTEMS[currentSystem];
+        if (!system) return;
+
+        // Highlight boxes 0..step, grey rest
+        STEP_BOXES.forEach((id, i) => {
+          const el = getEl(id);
+          if (!el) return;
+          if (i <= step) {
+            el.setAttribute('stroke', STEP_COLORS[i]);
+            el.setAttribute('stroke-width', i === step ? '2.5' : '1.5');
+            el.setAttribute('filter', i === step ? 'url(#glow-filter)' : '');
+          } else {
+            el.setAttribute('stroke', 'var(--border-subtle)');
+            el.setAttribute('stroke-width', '1.5');
+            el.setAttribute('filter', '');
+          }
+        });
+
+        // Arrows 0..step-1
+        STEP_ARROWS.forEach((id, i) => {
+          const el = getEl(id);
+          if (!el) return;
+          el.setAttribute('opacity', i < step ? '0.8' : '0.3');
+          if (i < step) {
+            el.setAttribute('stroke', STEP_COLORS[i]);
+          }
+        });
+
+        // Show "return to normal" if on final step
+        const normalLabel = getEl('fb-normal-label');
+        const normalLine  = getEl('fb-normal-line');
+        if (step === 4) {
+          if (normalLabel) normalLabel.setAttribute('opacity', '1');
+          if (normalLine)  normalLine.setAttribute('opacity', '0.5');
+        } else {
+          if (normalLabel) normalLabel.setAttribute('opacity', '0');
+          if (normalLine)  normalLine.setAttribute('opacity', '0');
+        }
+
+        // Step label
+        const names = ['Stimulus', 'Receptor', 'Control Centre', 'Effector', 'Response'];
+        const stepLabel = getEl('fb-step-label');
+        if (stepLabel) stepLabel.textContent = `Step ${step + 1} of 5: ${names[step]}`;
+
+        // Description
+        const data = system.steps[step];
+        const desc = document.getElementById('fb-desc-text');
+        const ex   = document.getElementById('fb-example-text');
+        if (desc && data) desc.textContent = data.label;
+        if (ex  && data) ex.textContent   = data.example;
+
+        // Dots
+        document.querySelectorAll('.fb-step-dot').forEach((dot, i) => {
+          dot.classList.toggle('is-active', i === step);
+          dot.classList.toggle('is-done', i < step);
+        });
+
+        // Buttons
+        const prevBtn = document.getElementById('fb-prev-btn') as HTMLButtonElement | null;
+        const nextBtn = document.getElementById('fb-next-btn') as HTMLButtonElement | null;
+        if (prevBtn) prevBtn.disabled = step === 0;
+        if (nextBtn) {
+          nextBtn.disabled = false;
+          nextBtn.innerHTML = step === 4
+            ? 'Restart <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+            : 'Next Step <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        }
+      }
+
+      document.getElementById('fb-next-btn')?.addEventListener('click', () => {
+        if (currentStep === 4) { reset(); return; }
+        currentStep++;
+        renderStep(currentStep);
+      });
+
+      document.getElementById('fb-prev-btn')?.addEventListener('click', () => {
+        if (currentStep <= 0) return;
+        currentStep--;
+        renderStep(currentStep);
+      });
+
+      document.getElementById('fb-reset-btn')?.addEventListener('click', reset);
+
+      document.querySelectorAll('.fb-system-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const sys = (btn as HTMLElement).dataset.system;
+          if (!sys) return;
+          currentSystem = sys;
+          document.querySelectorAll('.fb-system-btn').forEach((b) => b.classList.remove('fb-system-btn--active'));
+          btn.classList.add('fb-system-btn--active');
+          reset();
+        });
+      });
+
+      reset();
+    })();
+
+
+    /* ======================================================================
+       INTERACTIVE 2 — Set Point Visualiser
+       ====================================================================== */
+    (function initSetPointVis() {
+
+      const slider = document.getElementById('sp-slider') as HTMLInputElement | null;
+      if (!slider) return;
+
+      const SET_POINT = 37.0;
+      const TEMP_MIN  = 34.0;   // gauge bottom
+      const TEMP_MAX  = 41.0;   // gauge top
+      const CORE_MIN  = 34.5;   // below this = hypothermia danger
+      const CORE_MAX  = 40.5;   // above this = hyperthermia danger
+
+      function calcCoreTemp(extTemp: number): number {
+        // Model: body maintains 37°C through a range of ext temps
+        // Below -5°C: body struggles; above 45°C: body struggles
+        if (extTemp < -15) {
+          return Math.max(CORE_MIN - 0.2, 37 - (Math.abs(extTemp + 15) * 0.18));
+        } else if (extTemp < 5) {
+          return 37 - (5 - extTemp) * 0.04;  // slight dip, well-controlled
+        } else if (extTemp <= 35) {
+          return 37.0 + (extTemp - 20) * 0.005; // essentially stable
+        } else if (extTemp <= 50) {
+          return 37 + (extTemp - 35) * 0.12;    // warming
+        } else {
+          return 37 + (50 - 35) * 0.12 + (extTemp - 50) * 0.25; // overwhelmed
+        }
+      }
+
+      function getGaugeFill(coreTemp: number): number {
+        // Returns 0..100 for gauge fill
+        return Math.min(100, Math.max(0,
+          ((coreTemp - TEMP_MIN) / (TEMP_MAX - TEMP_MIN)) * 100
+        ));
+      }
+
+      function getGaugeColor(coreTemp: number): string {
+        if (coreTemp < 35.5) return 'var(--fluoro-cyan)';
+        if (coreTemp > 39.5) return 'var(--fluoro-pink)';
+        if (coreTemp < 36.1 || coreTemp > 37.5) return '#fbbf24';
+        return 'var(--green-vivid)';
+      }
+
+      function update() {
+        const extTemp = Number(slider!.value);
+        const coreTemp = calcCoreTemp(extTemp);
+        const coreTempRounded = Math.round(coreTemp * 10) / 10;
+
+        // Update display values
+        const extTempEl = document.getElementById('sp-ext-temp');
+        const readoutEl = document.getElementById('sp-core-temp-readout');
+        const statusEl  = document.getElementById('sp-status');
+        const gaugeFill = document.getElementById('sp-gauge-fill');
+        const warningEl = document.getElementById('sp-warning') as HTMLElement | null;
+        const warningTxt = document.getElementById('sp-warning-text');
+        const explanEl  = document.getElementById('sp-explanation');
+
+        if (extTempEl) extTempEl.textContent = `${extTemp}°C`;
+        if (readoutEl) {
+          readoutEl.textContent = `${coreTempRounded.toFixed(1)}°C`;
+          readoutEl.style.color = getGaugeColor(coreTemp);
+        }
+
+        // Gauge fill
+        if (gaugeFill) {
+          const pct = getGaugeFill(coreTemp);
+          gaugeFill.style.height = `${pct}%`;
+          gaugeFill.style.background = getGaugeColor(coreTemp);
+        }
+
+        // Set point marker position
+        const setPointMarker = document.querySelector('.gauge-setpoint') as HTMLElement | null;
+        if (setPointMarker) {
+          const pct = ((SET_POINT - TEMP_MIN) / (TEMP_MAX - TEMP_MIN)) * 100;
+          setPointMarker.style.bottom = `${pct}%`;
+        }
+
+        // Status
+        if (statusEl) {
+          statusEl.className = 'gauge-status';
+          if (coreTemp < 35.0) {
+            statusEl.textContent = 'Danger: Hypothermia';
+            statusEl.classList.add('gauge-status--danger');
+          } else if (coreTemp < 36.1) {
+            statusEl.textContent = 'Warning: Below range';
+            statusEl.classList.add('gauge-status--warn');
+          } else if (coreTemp > 40.0) {
+            statusEl.textContent = 'Danger: Hyperthermia';
+            statusEl.classList.add('gauge-status--danger');
+          } else if (coreTemp > 37.5) {
+            statusEl.textContent = 'Warning: Above range';
+            statusEl.classList.add('gauge-status--warn');
+          } else {
+            statusEl.textContent = 'Normal';
+            statusEl.classList.add('gauge-status--normal');
+          }
+        }
+
+        // Active responses
+        const isHot  = extTemp > 25;
+        const isCold = extTemp < 15;
+        const isVeryHot  = extTemp > 45;
+        const isVeryCold = extTemp < -10;
+
+        const respSweat = document.getElementById('resp-sweat');
+        const respVaso  = document.getElementById('resp-vasodilation');
+        const respShiv  = document.getElementById('resp-shivering');
+        const respVC    = document.getElementById('resp-vasoconstriction');
+        const respPilo  = document.getElementById('resp-piloerection');
+
+        [respSweat, respVaso, respShiv, respVC, respPilo].forEach((el) => {
+          if (!el) return;
+          el.className = 'response-item response-item--inactive';
+        });
+
+        if (isHot) {
+          respSweat?.classList.replace('response-item--inactive', 'response-item--active');
+          respVaso?.classList.replace('response-item--inactive', 'response-item--active');
+        }
+        if (isCold) {
+          respShiv?.classList.replace('response-item--inactive', 'response-item--active-cold');
+          respVC?.classList.replace('response-item--inactive', 'response-item--active-cold');
+          respPilo?.classList.replace('response-item--inactive', 'response-item--active-cold');
+        }
+
+        // Warning
+        if (warningEl && warningTxt) {
+          if (isVeryHot) {
+            warningEl.hidden = false;
+            warningTxt.textContent = 'Homeostatic mechanisms overwhelmed. At external temperatures above 45°C, the body cannot lose heat fast enough. Core temperature rises dangerously — heat stroke can occur above 40°C core temp.';
+          } else if (isVeryCold) {
+            warningEl.hidden = false;
+            warningTxt.textContent = 'Homeostatic mechanisms overwhelmed. In severe cold, heat production cannot keep pace with heat loss. Core temperature falls — hypothermia begins below 35°C core temp and becomes life-threatening below 32°C.';
+          } else {
+            warningEl.hidden = true;
+          }
+        }
+
+        // Explanation
+        if (explanEl) {
+          if (extTemp <= -10) {
+            explanEl.textContent = `Very cold environment (${extTemp}°C). The body is working hard to prevent heat loss: vasoconstriction reduces blood flow to extremities, shivering generates heat from muscle contractions, and piloerection traps an insulating air layer. At extreme cold, these mechanisms may be overwhelmed.`;
+          } else if (extTemp < 15) {
+            explanEl.textContent = `Cool environment (${extTemp}°C). Negative feedback is active — the body detects core temperature dropping slightly below 37°C. The hypothalamus triggers vasoconstriction and shivering to conserve and generate heat, returning temperature toward the set point.`;
+          } else if (extTemp <= 25) {
+            explanEl.textContent = `Comfortable range (${extTemp}°C). The body is close to thermal neutrality — minimal physiological effort required to maintain 37°C. Very slight vasodilation may occur to fine-tune heat exchange.`;
+          } else if (extTemp <= 40) {
+            explanEl.textContent = `Warm environment (${extTemp}°C). The body detects rising core temperature and activates cooling responses: sweating produces water for evaporative cooling, and vasodilation brings warm blood to the skin surface to radiate heat. These negative feedback responses return temperature to ~37°C.`;
+          } else {
+            explanEl.textContent = `Extreme heat (${extTemp}°C). Homeostatic mechanisms are under severe strain. Sweating can remove large volumes of fluid, risking dehydration. Above ~45°C external, the body struggles to maintain its set point — core temperature begins to rise despite maximum cooling effort.`;
+          }
+        }
+      }
+
+      slider.addEventListener('input', update);
+      update(); // Initial render
+    })();
+
+
+    /* ======================================================================
+       INTERACTIVE 3 — Matching Activity
+       ====================================================================== */
+    (function initMatching() {
+
+      let selectedLeft: HTMLElement | null  = null;
+      let selectedRight: HTMLElement | null = null;
+      let matchCount = 0;
+
+      function resetSelection() {
+        selectedLeft  = null;
+        selectedRight = null;
+        document.querySelectorAll('.match-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
+      }
+
+      function tryMatch() {
+        if (!selectedLeft || !selectedRight) return;
+        const leftId  = selectedLeft.dataset.matchId;
+        const rightId = selectedRight.dataset.matchId;
+
+        if (leftId === rightId) {
+          // Correct match
+          selectedLeft.classList.remove('is-selected');
+          selectedRight.classList.remove('is-selected');
+          selectedLeft.classList.add('is-matched');
+          selectedRight.classList.add('is-matched');
+          matchCount++;
+          const countEl = document.getElementById('match-count');
+          if (countEl) countEl.textContent = String(matchCount);
+          if (matchCount === 4) {
+            const complete = document.getElementById('matching-complete');
+            if (complete) complete.hidden = false;
+          }
+          selectedLeft  = null;
+          selectedRight = null;
+        } else {
+          // Wrong match — flash red then reset
+          selectedLeft.classList.add('is-wrong');
+          selectedRight.classList.add('is-wrong');
+          const lCopy  = selectedLeft;
+          const rCopy  = selectedRight;
+          setTimeout(() => {
+            lCopy.classList.remove('is-wrong', 'is-selected');
+            rCopy.classList.remove('is-wrong', 'is-selected');
+          }, 600);
+          selectedLeft  = null;
+          selectedRight = null;
+        }
+      }
+
+      document.querySelectorAll('.match-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          const el   = card as HTMLElement;
+          const side = el.dataset.side;
+          if (el.classList.contains('is-matched')) return;
+
+          if (side === 'left') {
+            document.querySelectorAll('.match-card[data-side="left"]').forEach((c) => c.classList.remove('is-selected'));
+            selectedLeft = el;
+            el.classList.add('is-selected');
+          } else {
+            document.querySelectorAll('.match-card[data-side="right"]').forEach((c) => c.classList.remove('is-selected'));
+            selectedRight = el;
+            el.classList.add('is-selected');
+          }
+
+          if (selectedLeft && selectedRight) tryMatch();
+        });
+      });
+
+      document.getElementById('matching-reset-btn')?.addEventListener('click', () => {
+        matchCount = 0;
+        selectedLeft  = null;
+        selectedRight = null;
+        document.querySelectorAll('.match-card').forEach((card) => {
+          card.classList.remove('is-selected', 'is-matched', 'is-wrong');
+        });
+        const countEl   = document.getElementById('match-count');
+        const completeEl = document.getElementById('matching-complete');
+        if (countEl)    countEl.textContent = '0';
+        if (completeEl) completeEl.hidden = true;
+      });
+    })();
+
+
+    /* ======================================================================
+       Word count for assessment textarea
+       ====================================================================== */
+    (function initWordCount() {
+      const ta = document.getElementById('assessment-answer') as HTMLTextAreaElement | null;
+      const wc = document.getElementById('assessment-word-count');
+      if (!ta || !wc) return;
+      ta.addEventListener('input', () => {
+        const n = ta.value.trim().split(/\s+/).filter(Boolean).length;
+        wc.textContent = `${n} word${n !== 1 ? 's' : ''}`;
+      });
+    })();
+
+
+    /* ======================================================================
+       AI Feedback for Assessment Practice Task
+       ====================================================================== */
+    (function initAIFeedback() {
+      const AI_URL  = 'https://psychology-ai-marker.deornorth.workers.dev';
+      const RL_KEY  = 'l3_bio_homeostasis_ai_rate';
+      const LIMIT   = 10;
+
+      const submitBtn  = document.getElementById('assessment-submit-btn');
+      const answerEl   = document.getElementById('assessment-answer') as HTMLTextAreaElement | null;
+      const feedbackEl = document.getElementById('ai-feedback');
+      const loadingEl  = document.getElementById('ai-loading');
+      const errorEl    = document.getElementById('ai-error');
+      const errorTxtEl = document.getElementById('ai-error-text');
+
+      function todayKey() { return new Date().toISOString().slice(0, 10); }
+      function getCount(): number {
+        try { return (JSON.parse(localStorage.getItem(RL_KEY) || '{}'))[todayKey()] || 0; }
+        catch { return 0; }
+      }
+      function bump() {
+        const k = todayKey();
+        let d: Record<string, number> = {};
+        try { d = JSON.parse(localStorage.getItem(RL_KEY) || '{}'); } catch { /* noop */ }
+        d[k] = (d[k] || 0) + 1;
+        localStorage.setItem(RL_KEY, JSON.stringify(d));
+      }
+
+      function showError(msg: string) {
+        if (errorEl)    errorEl.hidden    = false;
+        if (errorTxtEl) errorTxtEl.textContent = msg;
+        if (feedbackEl) feedbackEl.hidden = true;
+        if (loadingEl)  loadingEl.hidden  = true;
+      }
+
+      function populateList(id: string, items: string[] | undefined) {
+        const ul = document.getElementById(id);
+        if (!ul) return;
+        ul.innerHTML = '';
+        (items || []).forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+      }
+
+      function displayFeedback(data: any) {
+        if (!feedbackEl) return;
+        feedbackEl.hidden = false;
+        const gradeEl = document.getElementById('ai-grade');
+        const gradeMap: Record<string, string> = {
+          NA: 'Not Achieved', A: 'Achieved', M: 'Merit', E: 'Excellence'
+        };
+        if (gradeEl) {
+          gradeEl.textContent = gradeMap[data.grade] || data.grade;
+          gradeEl.className   = 'ai-grade ai-grade--' + (data.grade || 'na').toLowerCase();
+        }
+        const sumEl = document.getElementById('ai-summary');
+        if (sumEl) sumEl.textContent = data.summary || '';
+        populateList('ai-strengths',    data.strengths);
+        populateList('ai-improvements', data.improvements);
+        populateList('ai-missing',      data.missingPoints);
+
+        const sStr  = document.getElementById('ai-strengths-section');
+        const sImp  = document.getElementById('ai-improvements-section');
+        const sMiss = document.getElementById('ai-missing-section');
+        if (sStr)  sStr.hidden  = !data.strengths?.length;
+        if (sImp)  sImp.hidden  = !data.improvements?.length;
+        if (sMiss) sMiss.hidden = !data.missingPoints?.length;
+
+        const tipEl = document.getElementById('ai-tip');
+        if (tipEl) { tipEl.textContent = data.tip || ''; tipEl.hidden = !data.tip; }
+      }
+
+      submitBtn?.addEventListener('click', async () => {
+        if (!answerEl) return;
+        const answer = answerEl.value.trim();
+        if (answer.length < 30) {
+          showError('Please write a more complete answer before submitting (aim for at least 80 words).');
+          return;
+        }
+        if (getCount() >= LIMIT) {
+          showError(`You have used your ${LIMIT} daily AI feedback submissions. Try again tomorrow.`);
+          return;
+        }
+
+        if (loadingEl) loadingEl.hidden = false;
+        if (feedbackEl) feedbackEl.hidden = true;
+        if (errorEl)   errorEl.hidden   = true;
+
+        bump();
+
+        const PROMPT = `You are Dr Eliot's AI assessment marker for Year 13 (Level 3) Biology — AS 91604 (Internal assessment).
+
+The student was asked to explain how Priya's body maintains homeostasis during and after a 5 km run on a warm day, covering at least two of: thermoregulation, blood glucose regulation, or blood pH/CO₂ regulation. For each system, they should identify receptor, control centre, effector(s), and response, explain negative feedback, and link the regulated variable to a biological consequence of failure.
+
+Assess using NCEA Achievement Standard criteria:
+- Not Achieved: Missing core components or no explanation of negative feedback
+- Achieved: Describes at least two complete negative feedback loops with correct components
+- Merit: Explains how negative feedback opposes the deviation in both systems; links to set point
+- Excellence: Integrates biological consequences; links mechanism to cell/enzyme function; shows depth
+
+Student answer: "${answer}"
+
+Return a JSON object with:
+{
+  "grade": "NA" | "A" | "M" | "E",
+  "summary": "2–3 sentence overall assessment",
+  "strengths": ["strength 1", "strength 2"],
+  "improvements": ["improvement 1", "improvement 2"],
+  "missingPoints": ["key point not covered..."],
+  "tip": "one specific writing tip for this student"
+}`;
+
+        try {
+          const res = await fetch(AI_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: PROMPT })
+          });
+
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+
+          const text = await res.text();
+          let data: any;
+          try {
+            const jsonMatch = text.match(/\{[\s\S]*\}/);
+            data = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(text);
+          } catch {
+            throw new Error('Could not parse AI response. Please try again.');
+          }
+
+          if (loadingEl) loadingEl.hidden = true;
+          displayFeedback(data);
+
+        } catch (err: any) {
+          showError(err?.message || 'Something went wrong. Please try again in a moment.');
+        }
+      });
+    })();
+
+  </script>
+
+</BaseLayout>
