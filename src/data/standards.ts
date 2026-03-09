@@ -59,7 +59,9 @@ export const standards: Standard[] = [
     credits: 3,
     type: 'External',
     colour: 'var(--standard-4-colour)',
-    weeks: [],
+    weeks: [
+      { num: 7, title: 'Introduction to Homeostasis', hasContent: true },
+    ],
   },
   {
     code: '91605',
