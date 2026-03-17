@@ -1,0 +1,3112 @@
+---
+/* ==========================================================================
+   Week 8 — Glucose Homeostasis
+   AS 91604: Demonstrate understanding of how an animal maintains a stable
+   internal environment (3 credits, Internal)
+
+   Lesson 1: Why Glucose Matters
+   Lesson 2: The Mechanism — Insulin & Glucagon
+   Lesson 3: When It Goes Wrong — Diabetes
+   Lesson 4: Thermoregulation — A Second Homeostatic System
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 8: Glucose Homeostasis — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 8</span>
+        <h1 class="week-title">Glucose Homeostasis</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91604</span>
+        <span class="badge badge--internal">Internal</span>
+        <span class="badge badge--desc">How an animal maintains a stable internal environment</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1"         class="week-nav__link week-nav__link--active">Lesson 1: Why Glucose Matters</a>
+      <a href="#glucose-graph"    class="week-nav__link">Blood Glucose Graph</a>
+      <a href="#lesson-2"         class="week-nav__link">Lesson 2: The Mechanism</a>
+      <a href="#insulin-signal"   class="week-nav__link">Insulin Signalling</a>
+      <a href="#lesson-3"         class="week-nav__link">Lesson 3: Diabetes</a>
+      <a href="#ogtt"             class="week-nav__link">OGTT Interactive</a>
+      <a href="#check-understanding" class="week-nav__link">Check Understanding</a>
+      <a href="#lesson-4"         class="week-nav__link">Lesson 4: Thermoregulation</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: Why Glucose Matters
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 1 of 4</span>
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 2: The Mechanism
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 1: Why Glucose Matters</h2>
+
+          <p class="section-intro">
+            Last week you learned the general framework of homeostasis — set points, receptors,
+            effectors, and negative feedback. This week we apply that framework to a specific
+            system: <strong>blood glucose regulation</strong>. This is arguably the most important
+            homeostatic mechanism you will study for AS 91604, because its disruption
+            (diabetes) affects millions of people worldwide.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Slides Reference:</strong> This lesson draws from Peter Shepherd's
+              <em>Glucose Homeostasis</em> presentation (University of Auckland). The
+              interactive elements below bring the key diagrams and concepts to life.
+            </div>
+          </div>
+
+
+          <!-- ── Glucose as biofuel ── -->
+          <h3>Glucose: The Ultimate Biofuel</h3>
+
+          <p>
+            Glucose (C₆H₁₂O₆) is a monosaccharide — the primary fuel molecule used by cells
+            for aerobic respiration. It is the <strong>predominant carbohydrate</strong> used
+            in the body and the starting point for both glycolysis and the Krebs cycle.
+          </p>
+
+          <div class="info-cards-row">
+            <div class="info-card info-card--brain">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <ellipse cx="21" cy="20" rx="12" ry="10" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M15 20 Q18 14 21 20 Q24 26 27 20" stroke="var(--fluoro-cyan)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <line x1="21" y1="30" x2="21" y2="36" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Brain &amp; Nervous System</h4>
+              <p>
+                The brain relies <strong>almost exclusively</strong> on glucose. Below ~2.5 mmol/L,
+                seizures and coma can occur because neurons cannot function without it.
+              </p>
+            </div>
+            <div class="info-card info-card--blood">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <circle cx="21" cy="21" r="10" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" opacity="0.35"/>
+                  <circle cx="21" cy="21" r="5" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" opacity="0.5"/>
+                  <ellipse cx="21" cy="21" rx="6" ry="2" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" opacity="0.3"/>
+                </svg>
+              </div>
+              <h4>Red Blood Cells &amp; Immune Cells</h4>
+              <p>
+                RBCs have no mitochondria — they depend entirely on glucose via anaerobic
+                glycolysis. Immune cells also have a high glucose demand during infection.
+              </p>
+            </div>
+            <div class="info-card info-card--muscle">
+              <div class="info-card__icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <path d="M10 26 Q14 14 21 21 Q28 28 32 16" stroke="var(--green-vivid)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <line x1="10" y1="26" x2="10" y2="30" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="32" y1="16" x2="32" y2="12" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Muscle Cells</h4>
+              <p>
+                Muscles can use fats and amino acids too, but glucose is the preferred fuel
+                during intense activity. Muscle stores glucose as glycogen for quick access.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- ── Too low vs too high ── -->
+          <h3>The Danger Zone: Too Low and Too High</h3>
+
+          <p>
+            Maintaining blood glucose is literally a matter of <strong>life and death</strong>.
+            Both extremes are dangerous, but for different reasons:
+          </p>
+
+          <div class="danger-comparison">
+            <div class="danger-card danger-card--low">
+              <div class="danger-card__header">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3L2 21h20L12 3z" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <path d="M12 10v4M12 17v.5" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h4>Too Low (Hypoglycaemia)</h4>
+                <span class="danger-card__threshold">&lt; 3.9 mmol/L</span>
+              </div>
+              <ul>
+                <li>Brain cells starve — confusion, seizures, coma</li>
+                <li>Symptoms: tremors, sweating, irritability, dizziness</li>
+                <li>Adrenaline released as emergency response</li>
+                <li><strong>Immediate danger</strong> — can be fatal within hours</li>
+              </ul>
+            </div>
+            <div class="danger-card danger-card--high">
+              <div class="danger-card__header">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3L2 21h20L12 3z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <path d="M12 10v4M12 17v.5" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h4>Too High (Hyperglycaemia)</h4>
+                <span class="danger-card__threshold">&gt; 7.0 mmol/L fasting</span>
+              </div>
+              <ul>
+                <li>Glucose binds to proteins (glycation) — damages them</li>
+                <li>Above 20 mmol/L: glucose spills into urine, causing water loss</li>
+                <li>Long-term damage: retinopathy, nephropathy, neuropathy</li>
+                <li><strong>Slow-burn danger</strong> — damage accumulates over years</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="definition-box">
+            <div class="definition-box__label">The Set Point</div>
+            <p>
+              Normal fasting blood glucose is approximately <strong>5 mmol/L</strong>
+              (range: 3.9–6.1 mmol/L). This is the value the body "aims for" — the
+              homeostatic set point measured after an overnight fast.
+            </p>
+          </div>
+
+
+          <!-- ── The liver as battery ── -->
+          <h3>The Liver: A Rechargeable Glucose Battery</h3>
+
+          <p>
+            We can't eat constantly, but the brain needs glucose 24/7. The solution is
+            <strong>glycogen storage in the liver</strong>. After a meal, excess glucose is
+            converted to glycogen (glycogenesis) and stored. Between meals, glycogen is
+            broken back down to glucose (glycogenolysis) and released into the blood.
+          </p>
+
+          <div class="battery-diagram">
+            <div class="battery-state battery-state--charging">
+              <div class="battery-icon">
+                <div class="battery-body">
+                  <div class="battery-level" id="battery-charge" style="width: 85%"></div>
+                </div>
+                <div class="battery-tip"></div>
+              </div>
+              <div class="battery-label">
+                <strong>After a meal</strong>
+                <span>Insulin stimulates glycogenesis</span>
+                <span class="battery-arrow">Glucose → Glycogen</span>
+              </div>
+            </div>
+            <div class="battery-state battery-state--discharging">
+              <div class="battery-icon">
+                <div class="battery-body">
+                  <div class="battery-level battery-level--low" style="width: 30%"></div>
+                </div>
+                <div class="battery-tip"></div>
+              </div>
+              <div class="battery-label">
+                <strong>Between meals</strong>
+                <span>Glucagon stimulates glycogenolysis</span>
+                <span class="battery-arrow">Glycogen → Glucose</span>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            The liver stores enough glycogen for <strong>2–3 days</strong>. After that,
+            during prolonged starvation, the liver switches to <strong>gluconeogenesis</strong>
+            — making new glucose from fats and amino acids. This explains why muscle wasting
+            and fat loss occur during starvation.
+          </p>
+
+          <div class="exam-tip">
+            <h4>Assessment Tip</h4>
+            <p>
+              In your report, always explain <em>why</em> glucose regulation matters before
+              describing <em>how</em> it works. Linking the mechanism to biological
+              consequences (brain function, cell damage) is what lifts your response from
+              Achieved to Merit and Excellence.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 1: Blood Glucose After a Meal
+             —————————————————————————————————————————————————————————————— -->
+        <section id="glucose-graph" class="content-section fade-in-up">
+          <h2>Interactive: Blood Glucose After a Meal</h2>
+          <p class="section-intro">
+            Watch what happens to blood glucose after eating. Press <strong>Play</strong>
+            to animate the graph, or step through each phase manually. Based on slides
+            22–32 of the presentation.
+          </p>
+
+          <div class="glucose-graph-interactive" id="glucose-graph-viz">
+            <!-- SVG Graph -->
+            <div class="gg-chart-wrap">
+              <svg viewBox="0 0 660 380" class="gg-svg" role="img" aria-label="Blood glucose concentration over time after a meal">
+                <defs>
+                  <linearGradient id="gg-fill-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.02"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Axes -->
+                <line x1="70" y1="30" x2="70" y2="320" stroke="var(--border-default)" stroke-width="1.5"/>
+                <line x1="70" y1="320" x2="640" y2="320" stroke="var(--border-default)" stroke-width="1.5"/>
+
+                <!-- Y-axis labels -->
+                <text x="60" y="35" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">9</text>
+                <text x="60" y="73" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">8</text>
+                <text x="60" y="111" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">7</text>
+                <text x="60" y="149" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">6</text>
+                <text x="60" y="187" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">5</text>
+                <text x="60" y="225" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">4</text>
+                <text x="60" y="263" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">3</text>
+                <text x="60" y="301" text-anchor="end" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">2</text>
+
+                <!-- Y-axis title -->
+                <text x="18" y="175" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-display)" font-weight="600" transform="rotate(-90, 18, 175)">Blood Glucose (mmol/L)</text>
+
+                <!-- Gridlines -->
+                <line x1="70" y1="187" x2="640" y2="187" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 3" opacity="0.3"/>
+                <text x="644" y="191" fill="var(--accent)" font-size="10" font-family="var(--font-mono)" opacity="0.6">set point ≈ 5</text>
+
+                <!-- X-axis labels -->
+                <text x="70" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">0</text>
+                <text x="165" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">30</text>
+                <text x="260" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">60</text>
+                <text x="355" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">90</text>
+                <text x="450" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">120</text>
+                <text x="545" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">150</text>
+                <text x="640" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">180</text>
+
+                <!-- X-axis title -->
+                <text x="355" y="365" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-display)" font-weight="600">Time after a meal (minutes)</text>
+
+                <!-- Glucose curve (animated via clipRect) -->
+                <clipPath id="gg-clip">
+                  <rect id="gg-clip-rect" x="70" y="0" width="0" height="380"/>
+                </clipPath>
+
+                <!-- Area fill under curve -->
+                <path id="gg-area" d="M70,187 Q120,187 165,73 Q210,30 260,111 Q310,149 355,168 Q400,178 450,183 Q500,185 545,186 Q590,187 640,187 L640,320 L70,320 Z"
+                  fill="url(#gg-fill-grad)" clip-path="url(#gg-clip)" opacity="0.6"/>
+
+                <!-- The curve itself -->
+                <path id="gg-curve" d="M70,187 Q120,187 165,73 Q210,30 260,111 Q310,149 355,168 Q400,178 450,183 Q500,185 545,186 Q590,187 640,187"
+                  fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" clip-path="url(#gg-clip)"/>
+
+                <!-- Phase markers (hidden initially, shown by JS) -->
+                <g id="gg-markers" opacity="0">
+                  <!-- Meal marker -->
+                  <line x1="70" y1="30" x2="70" y2="320" stroke="var(--fluoro-pink)" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+                  <text x="74" y="26" fill="var(--fluoro-pink)" font-size="10" font-family="var(--font-mono)">Meal</text>
+
+                  <!-- Peak -->
+                  <circle id="gg-peak-dot" cx="210" cy="30" r="5" fill="var(--fluoro-pink)" opacity="0"/>
+                  <text id="gg-peak-label" x="210" y="20" text-anchor="middle" fill="var(--fluoro-pink)" font-size="10" font-family="var(--font-mono)" opacity="0">Peak ~8.5</text>
+
+                  <!-- Insulin start -->
+                  <line id="gg-insulin-line" x1="130" y1="30" x2="130" y2="320" stroke="var(--fluoro-cyan)" stroke-width="1" stroke-dasharray="4 3" opacity="0"/>
+                  <text id="gg-insulin-label" x="134" y="50" fill="var(--fluoro-cyan)" font-size="9" font-family="var(--font-mono)" opacity="0">Insulin secretion starts</text>
+
+                  <!-- Return to set point -->
+                  <circle id="gg-return-dot" cx="545" cy="186" r="5" fill="var(--green-vivid)" opacity="0"/>
+                  <text id="gg-return-label" x="545" y="202" text-anchor="middle" fill="var(--green-vivid)" font-size="10" font-family="var(--font-mono)" opacity="0">Back to ~5 mmol/L</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Description panel -->
+            <div class="gg-desc" id="gg-desc">
+              <p id="gg-desc-text" class="gg-desc-text">
+                Press Play to see how blood glucose changes after a meal, and how insulin
+                brings it back to the set point through negative feedback.
+              </p>
+            </div>
+
+            <!-- Controls -->
+            <div class="gg-controls">
+              <button class="btn btn--primary" id="gg-play-btn">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <polygon points="4,2 14,8 4,14" fill="currentColor"/>
+                </svg>
+                Play
+              </button>
+              <button class="btn btn--secondary" id="gg-step-btn">
+                Step →
+              </button>
+              <button class="btn btn--ghost" id="gg-reset-btn">
+                Reset
+              </button>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 2: The Mechanism — Insulin & Glucagon
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-2" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 2 of 4</span>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 3: Diabetes
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 2: The Mechanism — Insulin &amp; Glucagon</h2>
+
+          <p class="section-intro">
+            Blood glucose regulation is controlled by two opposing hormones —
+            <strong>insulin</strong> (lowers glucose) and <strong>glucagon</strong>
+            (raises glucose) — produced by specialised cells in the pancreas. This is
+            a textbook example of <strong>antagonistic hormone control</strong>.
+          </p>
+
+
+          <!-- ── Islets of Langerhans ── -->
+          <h3>The Islets of Langerhans</h3>
+
+          <p>
+            The pancreas sits adjacent to the gut, on the portal vein that drains nutrients
+            from the intestine to the liver. Within the pancreas are clusters of endocrine
+            cells called the <strong>islets of Langerhans</strong>. Two cell types are critical:
+          </p>
+
+          <div class="cell-comparison">
+            <div class="cell-card cell-card--beta">
+              <div class="cell-card__badge">β-cells</div>
+              <h4>Beta Cells</h4>
+              <p>
+                Detect when blood glucose <strong>rises above ~5 mmol/L</strong>.
+                Respond by secreting <strong>insulin</strong> into the bloodstream.
+              </p>
+              <div class="cell-card__detail">
+                <strong>Target tissues:</strong> Liver, muscle, fat cells
+              </div>
+            </div>
+            <div class="cell-card cell-card--alpha">
+              <div class="cell-card__badge">α-cells</div>
+              <h4>Alpha Cells</h4>
+              <p>
+                Detect when blood glucose <strong>falls below ~5 mmol/L</strong>.
+                Respond by secreting <strong>glucagon</strong> into the bloodstream.
+              </p>
+              <div class="cell-card__detail">
+                <strong>Target tissue:</strong> Liver (mainly)
+              </div>
+            </div>
+          </div>
+
+          <div class="connection-box">
+            <h4>Why Are Islets So Well Placed?</h4>
+            <p>
+              The pancreas is positioned on the <strong>portal vein</strong> between the gut
+              and the liver. This means islet cells are among the first to detect a rise in
+              blood glucose after a meal — and the hormones they release reach the liver
+              (the main glucose storage organ) almost immediately.
+            </p>
+          </div>
+
+
+          <!-- ── Hormones ── -->
+          <h3>What Is a Hormone?</h3>
+
+          <p>
+            Hormones are chemical messengers made in one part of the body that regulate
+            processes in another part. Key properties:
+          </p>
+
+          <ul class="feature-list">
+            <li>Circulate in the bloodstream at <strong>very low concentrations</strong> (picomolar range for insulin) but achieve large effects (millimolar changes in glucose)</li>
+            <li>Each hormone has a <strong>specific receptor protein</strong> — insulin only affects cells with insulin receptors (liver, muscle, fat)</li>
+            <li>Glucagon receptors are mainly found in the <strong>liver</strong>, so glucagon primarily acts on liver cells</li>
+          </ul>
+
+
+          <!-- ── Insulin action ── -->
+          <h3>How Insulin Works: Signal Transduction</h3>
+
+          <p>
+            When beta cells detect high glucose, they release pre-packaged insulin from
+            vesicles (the insulin was made in advance — gene expression takes too long for
+            the rapid response needed). Here's the cascade:
+          </p>
+
+          <div class="step-flow">
+            <div class="step-flow__item">
+              <div class="step-flow__number">1</div>
+              <div class="step-flow__content">
+                <strong>Insulin binds to receptor</strong>
+                <p>Insulin receptor is a transmembrane protein on liver, muscle, and fat cells. Binding causes an <strong>allosteric shape change</strong> in the intracellular domain.</p>
+              </div>
+            </div>
+            <div class="step-flow__item">
+              <div class="step-flow__number">2</div>
+              <div class="step-flow__content">
+                <strong>Receptor activates intracellular signalling</strong>
+                <p>The shape change activates an enzymatic cascade — phosphorylation of proteins inside the cell. The hormone never enters the cell; the signal is <strong>transduced</strong> across the membrane.</p>
+              </div>
+            </div>
+            <div class="step-flow__item">
+              <div class="step-flow__number">3</div>
+              <div class="step-flow__content">
+                <strong>GLUT4 vesicles move to membrane</strong>
+                <p>In muscle and fat cells, the cascade causes vesicles containing GLUT4 glucose transporters to fuse with the plasma membrane. Now glucose can enter the cell.</p>
+              </div>
+            </div>
+            <div class="step-flow__item">
+              <div class="step-flow__number">4</div>
+              <div class="step-flow__content">
+                <strong>Glucose is stored</strong>
+                <p>In liver: glucose → glycogen (glycogenesis via glycogen synthase). In fat cells: glucose → glycerol for triglyceride synthesis. In muscle: glucose used for energy or stored as glycogen.</p>
+              </div>
+            </div>
+            <div class="step-flow__item">
+              <div class="step-flow__number">5</div>
+              <div class="step-flow__content">
+                <strong>Signal shut-off</strong>
+                <p>The insulin receptor is internalised into a vesicle (~1 minute). The vesicle acidifies, changing protein shape so insulin can no longer bind. Insulin is degraded by <strong>insulin-degrading enzyme</strong>. The signal stops — ensuring glucose doesn't drop too far.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Common mistake:</strong> Students often call glucose transporters
+              "receptors". GLUT proteins are <strong>transporters</strong> (they move
+              glucose across the membrane). The <strong>insulin receptor</strong> is a
+              separate protein that detects insulin — don't confuse the two!
+            </div>
+          </div>
+
+
+          <!-- ── GLUT4 key point ── -->
+          <h3>GLUT4: The Insulin-Dependent Transporter</h3>
+
+          <p>
+            Most tissues (brain, liver) have glucose transporters <strong>always present</strong>
+            in their membrane — they take up glucose continuously. But muscle and fat cells
+            are different: their glucose transporter (GLUT4) is kept <strong>inside the cell
+            in vesicles</strong> until insulin signals it to move to the surface.
+          </p>
+
+          <div class="key-distinction">
+            <div class="key-distinction__item">
+              <span class="key-distinction__label">Brain &amp; Liver</span>
+              <span class="key-distinction__desc">Glucose transporters always in membrane → constant glucose uptake</span>
+            </div>
+            <div class="key-distinction__item key-distinction__item--highlight">
+              <span class="key-distinction__label">Muscle &amp; Fat</span>
+              <span class="key-distinction__desc">GLUT4 in vesicles → only moves to membrane when insulin is present</span>
+            </div>
+          </div>
+
+          <p>
+            This is why insulin is so important for lowering blood glucose — without it,
+            muscle and fat cells <strong>cannot take up glucose</strong>, even if blood
+            glucose is dangerously high.
+          </p>
+
+
+          <!-- ── Glucagon ── -->
+          <h3>Glucagon: The Opposing Arm</h3>
+
+          <p>
+            When blood glucose falls below ~5 mmol/L (e.g. between meals), alpha cells
+            secrete <strong>glucagon</strong>. Glucagon binds to receptors on liver cells
+            and activates <strong>glycogen phosphorylase</strong>, which breaks down
+            glycogen into glucose. This glucose is released into the bloodstream.
+          </p>
+
+          <div class="summary-box">
+            <h4>The Antagonistic Pair</h4>
+            <p>
+              <strong>Insulin</strong> (from β-cells) — lowers blood glucose by promoting
+              uptake and storage. Activates <strong>glycogen synthase</strong>.<br/>
+              <strong>Glucagon</strong> (from α-cells) — raises blood glucose by promoting
+              glycogen breakdown. Activates <strong>glycogen phosphorylase</strong>.<br/>
+              Together, they form a classic <strong>negative feedback loop</strong>: as
+              glucose rises, insulin dominates; as glucose falls, glucagon dominates.
+              The variable oscillates around the 5 mmol/L set point.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 2: Insulin Signalling Step-Through
+             —————————————————————————————————————————————————————————————— -->
+        <section id="insulin-signal" class="content-section fade-in-up">
+          <h2>Interactive: Insulin Signalling in Muscle/Fat Cells</h2>
+          <p class="section-intro">
+            Step through the insulin signalling cascade to see how a hormone on the
+            <strong>outside</strong> of a cell causes glucose uptake on the <strong>inside</strong>.
+          </p>
+
+          <div class="signal-anim" id="signal-anim" aria-live="polite">
+            <!-- Cell diagram - SVG -->
+            <div class="signal-anim__diagram">
+              <svg viewBox="0 0 600 400" class="signal-svg" role="img" aria-label="Insulin signal transduction in a muscle or fat cell">
+                <defs>
+                  <filter id="sig-glow">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                  </filter>
+                </defs>
+
+                <!-- Membrane -->
+                <rect x="0" y="160" width="600" height="12" fill="var(--surface-2)" stroke="var(--border-default)" stroke-width="1" rx="2"/>
+                <text x="10" y="150" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">OUTSIDE CELL (blood)</text>
+                <text x="10" y="190" fill="var(--text-secondary)" font-size="11" font-family="var(--font-mono)">INSIDE CELL (cytoplasm)</text>
+
+                <!-- Insulin molecule (outside) -->
+                <g id="sig-insulin">
+                  <circle cx="150" cy="80" r="18" fill="none" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.5"/>
+                  <circle cx="150" cy="80" r="8" fill="var(--fluoro-cyan)" opacity="0.4"/>
+                  <text x="150" y="55" text-anchor="middle" fill="var(--fluoro-cyan)" font-size="11" font-family="var(--font-display)" font-weight="600">Insulin</text>
+                </g>
+
+                <!-- Receptor (transmembrane) -->
+                <g id="sig-receptor">
+                  <rect x="195" y="120" width="30" height="72" rx="5" fill="var(--surface-3)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+                  <text x="210" y="115" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="var(--font-mono)">RECEPTOR</text>
+                </g>
+
+                <!-- GLUT4 vesicle (inside cell, initially) -->
+                <g id="sig-vesicle">
+                  <circle cx="400" cy="310" r="30" fill="none" stroke="var(--green-vivid)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+                  <text x="400" y="307" text-anchor="middle" fill="var(--green-vivid)" font-size="10" font-family="var(--font-display)" font-weight="600">GLUT4</text>
+                  <text x="400" y="320" text-anchor="middle" fill="var(--green-vivid)" font-size="9" font-family="var(--font-mono)">vesicle</text>
+                </g>
+
+                <!-- Signalling cascade (phosphorylation) -->
+                <g id="sig-cascade" opacity="0">
+                  <circle cx="210" cy="230" r="6" fill="var(--fluoro-pink)" opacity="0.7"/>
+                  <text x="225" y="233" fill="var(--fluoro-pink)" font-size="9" font-family="var(--font-mono)">P</text>
+                  <line x1="220" y1="236" x2="270" y2="260" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+                  <circle cx="280" cy="265" r="6" fill="var(--fluoro-pink)" opacity="0.7"/>
+                  <text x="295" y="268" fill="var(--fluoro-pink)" font-size="9" font-family="var(--font-mono)">P</text>
+                  <line x1="290" y1="271" x2="340" y2="290" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+                  <circle cx="350" cy="295" r="6" fill="var(--fluoro-pink)" opacity="0.7"/>
+                  <text x="365" y="298" fill="var(--fluoro-pink)" font-size="9" font-family="var(--font-mono)">P</text>
+                </g>
+
+                <!-- Glucose molecules (outside, waiting) -->
+                <g id="sig-glucose" opacity="0.3">
+                  <circle cx="420" cy="70" r="8" fill="var(--accent)" opacity="0.5"/>
+                  <text x="420" y="74" text-anchor="middle" fill="var(--surface-0)" font-size="8" font-weight="bold">G</text>
+                  <circle cx="460" cy="90" r="8" fill="var(--accent)" opacity="0.5"/>
+                  <text x="460" y="94" text-anchor="middle" fill="var(--surface-0)" font-size="8" font-weight="bold">G</text>
+                  <circle cx="500" cy="60" r="8" fill="var(--accent)" opacity="0.5"/>
+                  <text x="500" y="64" text-anchor="middle" fill="var(--surface-0)" font-size="8" font-weight="bold">G</text>
+                </g>
+
+                <!-- GLUT4 in membrane (shown at step 3+) -->
+                <g id="sig-glut4-membrane" opacity="0">
+                  <rect x="420" y="148" width="60" height="36" rx="5" fill="var(--surface-3)" stroke="var(--green-vivid)" stroke-width="2"/>
+                  <text x="450" y="170" text-anchor="middle" fill="var(--green-vivid)" font-size="10" font-family="var(--font-display)" font-weight="600">GLUT4</text>
+                </g>
+
+                <!-- Glucose entering (step 4) -->
+                <g id="sig-glucose-entering" opacity="0">
+                  <circle cx="450" cy="130" r="8" fill="var(--accent)" opacity="0.7"/>
+                  <text x="450" y="134" text-anchor="middle" fill="var(--surface-0)" font-size="8" font-weight="bold">G</text>
+                  <path d="M450,140 L450,200" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+                  <circle cx="450" cy="220" r="8" fill="var(--accent)" opacity="0.7"/>
+                  <text x="450" y="224" text-anchor="middle" fill="var(--surface-0)" font-size="8" font-weight="bold">G</text>
+                </g>
+
+                <!-- Step label -->
+                <text id="sig-step-label" x="300" y="385" text-anchor="middle" fill="var(--accent)" font-size="13" font-family="var(--font-display)" font-weight="700">
+                  Click "Next Step" to begin
+                </text>
+              </svg>
+            </div>
+
+            <!-- Description panel -->
+            <div class="signal-anim__desc" id="sig-desc">
+              <div class="sig-step-indicator">
+                <span class="sig-step-dot" data-step="0"></span>
+                <span class="sig-step-dot" data-step="1"></span>
+                <span class="sig-step-dot" data-step="2"></span>
+                <span class="sig-step-dot" data-step="3"></span>
+                <span class="sig-step-dot" data-step="4"></span>
+              </div>
+              <p id="sig-desc-text" class="sig-desc-text">
+                This animation shows how insulin triggers glucose uptake in muscle and fat cells
+                through signal transduction and GLUT4 vesicle translocation.
+              </p>
+            </div>
+
+            <!-- Controls -->
+            <div class="signal-anim__controls">
+              <button class="btn btn--secondary" id="sig-prev-btn" disabled>Previous</button>
+              <button class="btn btn--primary" id="sig-next-btn">Next Step</button>
+              <button class="btn btn--ghost" id="sig-reset-btn">Reset</button>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 3: When Glucose Homeostasis Goes Wrong — Diabetes
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 3 of 4</span>
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 1
+            </a>
+          </nav>
+
+          <h2>Lesson 3: When It Goes Wrong — Diabetes</h2>
+
+          <p class="section-intro">
+            <strong>Diabetes mellitus</strong> is the primary disease of disrupted glucose
+            homeostasis. The name comes from the Greek <em>diabetes</em> (siphon — referring
+            to excessive urination) and <em>mellitus</em> (honey — the urine contains
+            glucose). There are two main types, and understanding the difference is essential
+            for your assessment.
+          </p>
+
+
+          <!-- ── Type 1 vs Type 2 ── -->
+          <h3>Type 1 vs Type 2 Diabetes</h3>
+
+          <div class="diabetes-comparison">
+            <div class="diabetes-card diabetes-card--type1">
+              <div class="diabetes-card__header">
+                <h4>Type 1 Diabetes</h4>
+                <span class="diabetes-card__tag">No insulin produced</span>
+              </div>
+              <div class="diabetes-card__body">
+                <div class="diabetes-card__row">
+                  <strong>Cause:</strong>
+                  <span>Autoimmune destruction of β-cells</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Onset:</strong>
+                  <span>Usually young people (~12 years), rapid onset</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Prevalence:</strong>
+                  <span>~1 in 300 in New Zealand</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Treatment:</strong>
+                  <span>Insulin injections (now genetically engineered)</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Key problem:</strong>
+                  <span>Zero insulin → no GLUT4 translocation → muscle/fat can't take up glucose → blood glucose rises unchecked</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="diabetes-card diabetes-card--type2">
+              <div class="diabetes-card__header">
+                <h4>Type 2 Diabetes</h4>
+                <span class="diabetes-card__tag">Insulin resistance</span>
+              </div>
+              <div class="diabetes-card__body">
+                <div class="diabetes-card__row">
+                  <strong>Cause:</strong>
+                  <span>Insulin receptors stop responding properly + β-cell decline</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Onset:</strong>
+                  <span>Usually older adults, slow onset over years</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Prevalence:</strong>
+                  <span>Rising dramatically worldwide — linked to diet and inactivity</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Treatment:</strong>
+                  <span>Diet &amp; exercise → drugs (metformin) → insulin injections</span>
+                </div>
+                <div class="diabetes-card__row">
+                  <strong>Key problem:</strong>
+                  <span>Insulin present but ineffective → partial glucose uptake → blood glucose still elevated above safe levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ── Complications ── -->
+          <h3>Diabetic Complications: Why High Glucose Damages the Body</h3>
+
+          <p>
+            High blood glucose causes a process called <strong>glycation</strong> — glucose
+            molecules bind directly to proteins in the bloodstream (non-enzymatic, no enzyme
+            required). The higher the glucose, the more glycation occurs, and the more damage
+            accumulates over time.
+          </p>
+
+          <div class="complications-grid">
+            <div class="complication-card">
+              <h5>Retinopathy</h5>
+              <p>Damage to small blood vessels in the retina → blindness</p>
+            </div>
+            <div class="complication-card">
+              <h5>Nephropathy</h5>
+              <p>Kidney damage → diabetes is the leading cause of dialysis</p>
+            </div>
+            <div class="complication-card">
+              <h5>Neuropathy</h5>
+              <p>Nerve damage, partly from loss of blood supply</p>
+            </div>
+            <div class="complication-card">
+              <h5>Cardiovascular Disease</h5>
+              <p>Accelerated atherosclerosis → heart attacks are a major cause of death in diabetics</p>
+            </div>
+            <div class="complication-card">
+              <h5>Peripheral Circulation</h5>
+              <p>Poor blood flow to extremities → infections, foot ulcers, gangrene</p>
+            </div>
+          </div>
+
+          <div class="connection-box">
+            <h4>HbA1c — Measuring Long-Term Glucose Exposure</h4>
+            <p>
+              <strong>Glycated haemoglobin (HbA1c)</strong> is the clinical measure of how
+              much glucose has been in the blood over time. Since haemoglobin has a half-life
+              of ~14 days, HbA1c reflects average blood glucose over 2–4 weeks. If more than
+              5% of haemoglobin is glycated, it's concerning. The DCCT trial showed that
+              keeping HbA1c low significantly reduces the risk of all diabetic complications.
+            </p>
+          </div>
+
+
+          <!-- ── Exercise ── -->
+          <h3>Why Exercise Helps: An Alternative GLUT4 Pathway</h3>
+
+          <p>
+            There's a powerful insight from the presentation: exercise stimulates GLUT4
+            translocation to the membrane <strong>independently of insulin</strong>. Muscle
+            contraction uses a different signalling pathway that is <strong>not affected by
+            insulin resistance</strong>. This means exercise can lower blood glucose even
+            in Type 2 diabetics whose insulin signalling is impaired.
+          </p>
+
+          <div class="exam-tip">
+            <h4>Excellence-Level Insight</h4>
+            <p>
+              In your assessment, linking exercise to the GLUT4 pathway as an insulin-independent
+              mechanism for glucose uptake demonstrates the kind of biochemical depth that
+              characterises an Excellence response. It shows you understand the mechanism, not
+              just the outcome.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Interactive 3: OGTT Comparison
+             —————————————————————————————————————————————————————————————— -->
+        <section id="ogtt" class="content-section fade-in-up">
+          <h2>Interactive: Oral Glucose Tolerance Test (OGTT)</h2>
+          <p class="section-intro">
+            The OGTT is the standard diagnostic test for diabetes. A patient fasts overnight,
+            drinks 75g of glucose, and blood glucose is measured over 3 hours. Toggle each
+            condition to compare the curves.
+          </p>
+
+          <div class="ogtt-interactive" id="ogtt-viz">
+            <div class="ogtt-chart-wrap">
+              <svg viewBox="0 0 600 350" class="ogtt-svg" role="img" aria-label="OGTT curves comparing normal, insulin resistant, type 2, and type 1 diabetes">
+                <!-- Axes -->
+                <line x1="70" y1="20" x2="70" y2="290" stroke="var(--border-default)" stroke-width="1.5"/>
+                <line x1="70" y1="290" x2="580" y2="290" stroke="var(--border-default)" stroke-width="1.5"/>
+
+                <!-- Y-axis -->
+                <text x="18" y="160" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600" transform="rotate(-90, 18, 160)">Blood Glucose (mmol/L)</text>
+                <text x="60" y="25" text-anchor="end" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">12.5</text>
+                <text x="60" y="70" text-anchor="end" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">10</text>
+                <text x="60" y="120" text-anchor="end" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">7.5</text>
+                <text x="60" y="170" text-anchor="end" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">5.0</text>
+
+                <!-- Set point line -->
+                <line x1="70" y1="170" x2="580" y2="170" stroke="var(--accent)" stroke-width="1" stroke-dasharray="6 3" opacity="0.25"/>
+
+                <!-- X-axis -->
+                <text x="325" y="330" text-anchor="middle" fill="var(--text-secondary)" font-size="11" font-family="var(--font-display)" font-weight="600">Time (minutes)</text>
+                <text x="70" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">0</text>
+                <text x="240" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">60</text>
+                <text x="410" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">120</text>
+                <text x="580" y="308" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">180</text>
+
+                <!-- Curves (toggled by JS) -->
+                <!-- Normal -->
+                <path id="ogtt-normal" d="M70,170 Q130,170 180,120 Q220,90 260,130 Q320,155 380,163 Q440,168 500,170 Q540,170 580,170"
+                  fill="none" stroke="var(--green-vivid)" stroke-width="2.5" stroke-linecap="round" opacity="1"/>
+                <!-- Insulin Resistant -->
+                <path id="ogtt-resistant" d="M70,158 Q130,155 180,100 Q220,70 260,95 Q320,120 380,138 Q440,150 500,155 Q540,158 580,158"
+                  fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+                <!-- Type 2 -->
+                <path id="ogtt-type2" d="M70,140 Q130,135 180,75 Q220,50 260,70 Q320,95 380,110 Q440,125 500,132 Q540,138 580,140"
+                  fill="none" stroke="var(--fluoro-pink)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+                <!-- Type 1 -->
+                <path id="ogtt-type1" d="M70,60 Q130,55 180,30 Q220,22 260,24 Q320,26 380,28 Q440,32 500,38 Q540,44 580,50"
+                  fill="none" stroke="var(--fluoro-cyan)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+              </svg>
+            </div>
+
+            <!-- Toggle buttons -->
+            <div class="ogtt-toggles">
+              <button class="ogtt-toggle ogtt-toggle--active" data-curve="normal" style="--toggle-color: var(--green-vivid)">
+                <span class="ogtt-toggle__swatch"></span> Normal
+              </button>
+              <button class="ogtt-toggle" data-curve="resistant" style="--toggle-color: #fbbf24">
+                <span class="ogtt-toggle__swatch"></span> Insulin Resistant
+              </button>
+              <button class="ogtt-toggle" data-curve="type2" style="--toggle-color: var(--fluoro-pink)">
+                <span class="ogtt-toggle__swatch"></span> Type 2 Diabetic
+              </button>
+              <button class="ogtt-toggle" data-curve="type1" style="--toggle-color: var(--fluoro-cyan)">
+                <span class="ogtt-toggle__swatch"></span> Type 1 Diabetic
+              </button>
+            </div>
+
+            <!-- Description -->
+            <div class="ogtt-desc" id="ogtt-desc">
+              <p id="ogtt-desc-text">
+                <strong>Normal:</strong> Blood glucose peaks at ~8 mmol/L around 30 minutes,
+                then returns to ~5 mmol/L within 2 hours as insulin drives uptake into liver,
+                muscle, and fat.
+              </p>
+            </div>
+
+            <!-- Diagnosis criteria -->
+            <div class="ogtt-criteria">
+              <h4>Diagnostic Thresholds</h4>
+              <div class="ogtt-criteria__grid">
+                <div class="ogtt-criteria__item">
+                  <strong>Normal:</strong> Fasting &lt; 6.1 mmol/L, 2hr &lt; 7.8 mmol/L
+                </div>
+                <div class="ogtt-criteria__item">
+                  <strong>Diabetes:</strong> Fasting ≥ 7.0 mmol/L, or 2hr ≥ 11.1 mmol/L
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Check Your Understanding
+             —————————————————————————————————————————————————————————————— -->
+        <section id="check-understanding" class="content-section fade-in-up">
+          <h2>Check Your Understanding</h2>
+          <p class="section-intro">
+            Test your knowledge of glucose homeostasis. Try to answer each question before
+            revealing the model answer.
+          </p>
+
+          <div class="question-card" id="q1">
+            <div class="question-card__badge">Q1 — Achieved</div>
+            <p class="question-card__prompt">
+              Name the two hormones involved in blood glucose regulation and state where
+              each is produced.
+            </p>
+            <button class="btn btn--secondary reveal-btn" data-target="q1-answer">Reveal Answer</button>
+            <div class="question-card__answer" id="q1-answer" hidden>
+              <p>
+                <strong>Insulin</strong> — produced by <strong>beta (β) cells</strong> in
+                the islets of Langerhans in the pancreas. Lowers blood glucose.<br/>
+                <strong>Glucagon</strong> — produced by <strong>alpha (α) cells</strong> in
+                the islets of Langerhans in the pancreas. Raises blood glucose.
+              </p>
+            </div>
+          </div>
+
+          <div class="question-card" id="q2">
+            <div class="question-card__badge">Q2 — Achieved</div>
+            <p class="question-card__prompt">
+              Explain why glucose is important for the brain and what happens if blood
+              glucose falls too low.
+            </p>
+            <button class="btn btn--secondary reveal-btn" data-target="q2-answer">Reveal Answer</button>
+            <div class="question-card__answer" id="q2-answer" hidden>
+              <p>
+                The brain relies almost exclusively on glucose as its energy source — unlike
+                muscle, it cannot easily use fats or amino acids. If blood glucose falls
+                below ~2.5 mmol/L (hypoglycaemia), neurons cannot produce enough ATP to
+                function, leading to confusion, seizures, and potentially coma or death.
+              </p>
+            </div>
+          </div>
+
+          <div class="question-card" id="q3">
+            <div class="question-card__badge">Q3 — Merit</div>
+            <p class="question-card__prompt">
+              Explain how insulin causes glucose to be taken up by muscle cells, using the
+              terms: receptor, signal transduction, GLUT4, vesicle.
+            </p>
+            <button class="btn btn--secondary reveal-btn" data-target="q3-answer">Reveal Answer</button>
+            <div class="question-card__answer" id="q3-answer" hidden>
+              <p>
+                Insulin binds to the <strong>insulin receptor</strong> on the surface of
+                muscle cells, causing an allosteric shape change in the intracellular domain.
+                This activates a <strong>signal transduction</strong> cascade — a chain of
+                phosphorylation reactions inside the cell. The cascade causes <strong>vesicles</strong>
+                containing <strong>GLUT4</strong> glucose transporters to move to and fuse
+                with the plasma membrane. With GLUT4 now in the membrane, glucose can enter
+                the cell down its concentration gradient. Without insulin, GLUT4 stays inside
+                the cell and glucose cannot enter.
+              </p>
+            </div>
+          </div>
+
+          <div class="question-card" id="q4">
+            <div class="question-card__badge">Q4 — Excellence</div>
+            <p class="question-card__prompt">
+              Compare and contrast Type 1 and Type 2 diabetes in terms of their cause,
+              the state of insulin in the body, and why exercise is particularly beneficial
+              for Type 2 but not sufficient for Type 1.
+            </p>
+            <button class="btn btn--secondary reveal-btn" data-target="q4-answer">Reveal Answer</button>
+            <div class="question-card__answer" id="q4-answer" hidden>
+              <p>
+                <strong>Type 1:</strong> Caused by autoimmune destruction of β-cells → no
+                insulin is produced. Without insulin, GLUT4 cannot move to the membrane in
+                muscle/fat cells, so blood glucose rises unchecked. Exercise alone cannot
+                replace insulin because, while exercise does stimulate GLUT4 translocation
+                via a separate (insulin-independent) pathway, the glucose-lowering effect is
+                temporary and cannot regulate glucose long-term without insulin.<br/><br/>
+                <strong>Type 2:</strong> Insulin is still produced but insulin receptors
+                become resistant — the signal transduction cascade is impaired. Exercise is
+                particularly beneficial because muscle contraction stimulates GLUT4
+                translocation through an <strong>insulin-independent pathway</strong> that
+                is <em>not</em> affected by insulin resistance. This allows glucose to enter
+                muscle cells even when insulin signalling is impaired, directly lowering
+                blood glucose. Combined with dietary changes, this can significantly improve
+                or even reverse the condition.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 4: Thermoregulation — A Second Homeostatic System
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-4" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 4 of 4</span>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 3
+            </a>
+          </nav>
+
+          <h2>Lesson 4: Thermoregulation — A Second Homeostatic System</h2>
+
+          <p class="section-intro">
+            In Lessons 1–3 you studied glucose homeostasis in detail. Now we look at a second homeostatic system:
+            <strong>thermoregulation</strong> — the control of body temperature. The same principles
+            apply (set point, negative feedback, receptors, effectors), but the components and mechanisms
+            are different. Understanding both systems strengthens your ability to write about homeostasis
+            at Level 8 for AS 91604.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Reading Lesson:</strong> This lesson is information to read and process.
+              Work through each section carefully, studying the diagrams and reading the
+              simplified explanations. These concepts from Campbell Biology Chapter 40
+              are simplified to NZ Curriculum Level 8.
+            </div>
+          </div>
+
+
+          <!-- ── Section 1: Regulators vs Conformers ── -->
+          <h3>Regulators vs Conformers</h3>
+
+          <p>
+            Animals manage their internal environment in two fundamentally different ways.
+            A <strong>regulator</strong> uses internal mechanisms to control a variable regardless of
+            the external environment — for example, a river otter maintains ~37°C body temperature
+            whether the water is 5°C or 25°C. A <strong>conformer</strong> allows its internal
+            conditions to match the environment — a largemouth bass's body temperature changes with
+            the water temperature.
+          </p>
+          <p>
+            The graph below (Fig. 40.7) shows this clearly: the otter's line is flat (regulated),
+            while the bass's line follows the ambient temperature (conforming). Humans are thermoregulators
+            — we maintain approximately 37°C regardless of external conditions, which requires
+            significant energy expenditure.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/regulators-conformers.png`} alt="Figure 40.7: Graph comparing body temperature of a river otter (regulator) and largemouth bass (conformer) across different ambient temperatures" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.7</strong> — The river otter maintains a constant body temperature
+              (regulator), while the bass's temperature tracks the environment (conformer).
+              Note that an animal can regulate some variables while conforming for others.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 2: Feedback Control ── -->
+          <h3>Feedback Control in Homeostasis</h3>
+
+          <p>
+            Homeostasis uses <strong>negative feedback</strong> — the same principle you learned for
+            glucose regulation. The thermostat analogy (Fig. 40.8) illustrates this perfectly:
+          </p>
+          <ol>
+            <li>A <strong>sensor</strong> detects a change from the set point (thermometer detects room temperature drop)</li>
+            <li>A <strong>control centre</strong> processes the signal (thermostat compares current vs set temperature)</li>
+            <li>An <strong>effector</strong> produces a response (heater turns on)</li>
+            <li>The response <strong>reduces the stimulus</strong> — this is what makes it "negative" feedback</li>
+          </ol>
+          <p>
+            The critical point: the response opposes the change. Temperature too low → heating mechanisms
+            activate. Temperature too high → cooling mechanisms activate. The system oscillates around
+            the <strong>set point</strong> (~37°C in humans), never perfectly stable but always correcting.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/feedback-thermostat.png`} alt="Figure 40.8: Thermostat negative feedback loop diagram showing how room temperature is maintained at a set point" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.8</strong> — A household thermostat demonstrates negative feedback.
+              The heater turns on when temperature drops below the set point and off when it rises above.
+              Note also <strong>positive feedback</strong> (bottom of page) — which amplifies a stimulus
+              rather than reducing it (e.g. oxytocin during childbirth). Positive feedback is rare in
+              homeostasis.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 3: Circadian Rhythms & Acclimatisation ── -->
+          <h3>Set Points Are Not Fixed</h3>
+
+          <p>
+            The set point for body temperature is not a single fixed number — it fluctuates in a
+            <strong>circadian rhythm</strong> (Fig. 40.9). Body temperature is lowest in the early morning
+            (~36.7°C) and highest in the late afternoon (~37.3°C). This rhythm is coordinated with
+            melatonin secretion and the sleep-wake cycle.
+          </p>
+          <p>
+            <strong>Acclimatisation</strong> is another form of set-point adjustment — a physiological
+            change in response to sustained environmental change. Mountain climbers (Fig. 40.10) spend
+            time at intermediate altitudes so their circulatory and respiratory systems can adjust to
+            lower oxygen levels. This is different from adaptation (which occurs over generations
+            through natural selection).
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/circadian-acclimatization.png`} alt="Figure 40.9: Circadian rhythm of body temperature and melatonin, and Figure 40.10: Mountain climbers acclimatising" loading="lazy" />
+            <figcaption>
+              <strong>Figs. 40.9 &amp; 40.10</strong> — Left: body temperature follows a circadian
+              rhythm, peaking in late afternoon. Right: acclimatisation at altitude allows the body
+              to adjust its respiratory and circulatory responses to lower oxygen.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 4: Endothermy vs Ectothermy ── -->
+          <h3>Endotherms and Ectotherms</h3>
+
+          <p>
+            Animals are classified by their primary heat source:
+          </p>
+          <ul>
+            <li><strong>Endotherms</strong> (mammals, birds) — generate heat internally through metabolism.
+            They are "warm-blooded" but the more accurate term refers to the heat <em>source</em>,
+            not the temperature itself. Endotherms maintain a stable body temperature but at a high
+            metabolic cost.</li>
+            <li><strong>Ectotherms</strong> (reptiles, amphibians, most fish, invertebrates) — gain most
+            of their heat from the external environment. They use less energy on thermoregulation but
+            their body temperature varies with the environment.</li>
+          </ul>
+          <p>
+            Note: the terms "cold-blooded" and "warm-blooded" are misleading. A lizard basking in the
+            sun can have a higher body temperature than a mammal. The key difference is <em>where the
+            heat comes from</em>, not the temperature itself.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/endothermy-ectothermy.png`} alt="Figure 40.11: A walrus (endotherm) and a lizard (ectotherm) showing different thermoregulation strategies" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.11 &amp; Concept 40.3</strong> — Endotherms generate internal
+              metabolic heat; ectotherms rely on external heat sources. Both strategies are
+              successful — ectotherms dominate in terms of species numbers.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 5: Heat Exchange Mechanisms ── -->
+          <h3>Four Mechanisms of Heat Exchange</h3>
+
+          <p>
+            All heat exchange between an animal and its environment occurs through four physical
+            processes. Understanding these is essential for explaining <em>how</em> thermoregulatory
+            responses work:
+          </p>
+          <ol>
+            <li><strong>Radiation</strong> — emission of electromagnetic waves. A lizard absorbs radiation
+            from the sun; all warm objects radiate heat to cooler surroundings</li>
+            <li><strong>Evaporation</strong> — liquid water absorbs heat as it converts to gas. This is
+            why sweating cools you — the phase change removes heat from the skin</li>
+            <li><strong>Convection</strong> — heat transfer by movement of air or liquid past a surface.
+            A breeze cools you by carrying away the warm air layer next to your skin</li>
+            <li><strong>Conduction</strong> — direct heat transfer between objects in contact. Sitting on
+            a cold rock transfers heat from your body to the rock</li>
+          </ol>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/heat-exchange.png`} alt="Figure 40.12: Diagram showing radiation, evaporation, convection, and conduction on an iguana" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.12</strong> — The four mechanisms of heat exchange demonstrated on an
+              iguana. The <strong>integumentary system</strong> (skin, hair, nails) is the primary
+              interface for heat exchange.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 6: Countercurrent Exchange ── -->
+          <h3>Countercurrent Heat Exchange</h3>
+
+          <p>
+            Many endotherms have a remarkable adaptation in their extremities: <strong>countercurrent
+            heat exchange</strong>. Arteries carrying warm blood from the core run alongside veins
+            carrying cool blood back from the extremities. Heat transfers from the warmer arterial
+            blood to the cooler venous blood along the entire length of the vessels.
+          </p>
+          <p>
+            The result: blood arriving at the extremities (feet, flippers) is already cooled, reducing
+            heat loss. Blood returning to the core is pre-warmed, conserving body heat. This is why a
+            Canada goose can stand on ice without losing dangerous amounts of heat, and why a dolphin's
+            flippers don't drain heat from its core.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/countercurrent-exchange.png`} alt="Figure 40.13: Countercurrent heat exchange in a goose leg and dolphin flipper, showing warm arterial blood transferring heat to cool venous blood" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.13</strong> — Countercurrent heat exchange in a goose leg (left) and
+              dolphin flipper (right). Warm arterial blood transfers heat to cooler venous blood
+              flowing in the opposite direction, minimising heat loss from extremities.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 7: Cooling, Behavioural, and Metabolic Responses ── -->
+          <h3>Cooling Mechanisms and Metabolic Heat</h3>
+
+          <p>
+            When body temperature rises above the set point, endotherms activate <strong>cooling
+            mechanisms</strong>:
+          </p>
+          <ul>
+            <li><strong>Vasodilation</strong> — blood vessels near the skin surface dilate, increasing
+            blood flow to the skin and radiating more heat to the environment</li>
+            <li><strong>Sweating</strong> — eccrine sweat glands secrete water onto the skin; evaporation
+            removes heat (humans and horses are particularly effective sweaters)</li>
+            <li><strong>Panting</strong> — rapid shallow breathing increases evaporative cooling from
+            respiratory surfaces (dogs, birds)</li>
+          </ul>
+          <p>
+            When body temperature drops, warming mechanisms include <strong>vasoconstriction</strong>
+            (reducing blood flow to the skin), <strong>shivering</strong> (involuntary muscle
+            contractions producing heat), and activation of <strong>brown adipose tissue</strong>
+            (brown fat) — specialised tissue that produces heat through <strong>non-shivering
+            thermogenesis</strong>. Brown fat contains many mitochondria and uncouples the electron
+            transport chain, producing heat instead of ATP.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Level 8 note:</strong> Behavioural responses (putting on a jacket, seeking shade)
+              are NOT part of the thermoregulatory <em>system</em> and are not valid evidence for
+              AS 91604. Only internal physiological mechanisms count. The moderator specifically
+              flagged this in MBC's 2022 moderation.
+            </div>
+          </div>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/evaporative-cooling-brownfat.png`} alt="Behavioural thermoregulation in a dragonfly, evaporative cooling mechanisms, and brown fat PET scan showing metabolically active tissue" loading="lazy" />
+            <figcaption>
+              <strong>Figs. 40.14–40.16</strong> — Evaporative cooling (sweating, panting), behavioural
+              thermoregulation (ectotherms only), and brown fat activity during cold stress (PET scan
+              showing metabolically active brown fat around the neck).
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 8: Metabolic Heat Production ── -->
+          <h3>Generating Heat: From Pythons to Fever</h3>
+
+          <p>
+            Even some ectotherms can generate metabolic heat. Female Burmese pythons (Fig. 40.17)
+            raise their body temperature by rhythmic muscle contractions while incubating eggs —
+            shivering thermogenesis, just like mammals.
+          </p>
+          <p>
+            <strong>Fever</strong> is an important disruption to thermoregulation. During bacterial
+            or viral infection, the hypothalamus raises the set point (e.g. from 37°C to 39°C).
+            The body then activates heating mechanisms (shivering, vasoconstriction) to reach this
+            new, higher set point. The raised temperature enhances immune function and inhibits
+            pathogen reproduction. When the infection clears, the set point returns to normal and
+            cooling mechanisms (sweating) activate — this is why fevers "break" with sweating.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/python-inquiry-fever.png`} alt="Figure 40.17: Burmese python inquiry showing oxygen consumption correlating with muscle contractions during egg incubation, and text about fever mechanisms" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.17</strong> — Inquiry: a Burmese python generates heat through muscle
+              contractions (shivering) while incubating eggs, as shown by the correlation between
+              oxygen consumption and contraction rate.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 9: The Hypothalamus — KEY DIAGRAM ── -->
+          <h3>The Hypothalamus: Central Thermostat</h3>
+
+          <p>
+            The <strong>hypothalamus</strong> is the control centre for thermoregulation — the
+            equivalent of the pancreas in glucose regulation. It contains thermosensitive neurons
+            that detect changes in blood temperature, and it also receives input from
+            <strong>peripheral thermoreceptors</strong> in the skin (including transient receptor
+            potential, or TRP, ion channels).
+          </p>
+          <p>
+            Study this diagram carefully — it shows the complete negative feedback loop for
+            thermoregulation in humans:
+          </p>
+
+          <figure class="textbook-figure textbook-figure--hero">
+            <img src={`${base}/images/thermo/hypothalamus-feedback.png`} alt="Figure 40.18: Complete thermoregulatory feedback loop showing the hypothalamus detecting temperature changes and activating heating or cooling mechanisms" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.18 — KEY DIAGRAM</strong> — The hypothalamic thermostat. When body
+              temperature rises: the hypothalamus activates cooling (vasodilation, sweating).
+              When body temperature falls: it activates warming (vasoconstriction, shivering).
+              Both responses bring temperature back toward the set point of 36–38°C. This is
+              the same negative feedback loop structure as glucose regulation — different
+              components, same principle.
+            </figcaption>
+          </figure>
+
+          <div class="key-comparison">
+            <h4>Comparing the Two Systems</h4>
+            <div class="comparison-grid">
+              <div class="comparison-grid__header">Feature</div>
+              <div class="comparison-grid__header">Glucose Regulation</div>
+              <div class="comparison-grid__header">Thermoregulation</div>
+
+              <div>Set point</div>
+              <div>~5 mmol/L blood glucose</div>
+              <div>~37°C core temperature</div>
+
+              <div>Sensor/receptor</div>
+              <div>Beta &amp; alpha cells in pancreas</div>
+              <div>Hypothalamus + peripheral thermoreceptors (TRP channels)</div>
+
+              <div>Control centre</div>
+              <div>Pancreas (islets of Langerhans)</div>
+              <div>Hypothalamus</div>
+
+              <div>Effectors (too high)</div>
+              <div>Liver, muscle, adipose tissue (insulin-driven)</div>
+              <div>Sweat glands, skin blood vessels (vasodilation)</div>
+
+              <div>Effectors (too low)</div>
+              <div>Liver (glucagon-driven glycogenolysis)</div>
+              <div>Skeletal muscle (shivering), skin blood vessels (vasoconstriction), brown fat</div>
+
+              <div>Feedback type</div>
+              <div>Negative feedback</div>
+              <div>Negative feedback</div>
+
+              <div>Example of breakdown</div>
+              <div>Type 1 diabetes (DKA), hypoglycaemic shock</div>
+              <div>Hyperthermia (heat stroke), hypothermia</div>
+            </div>
+          </div>
+
+
+          <!-- ── Section 10: Bioenergetics ── -->
+          <h3>Bioenergetics: Energy and Temperature</h3>
+
+          <p>
+            Thermoregulation is energetically expensive. The diagram below (Fig. 40.19) shows
+            how animals process energy: food is digested and absorbed, nutrients enter cells for
+            cellular respiration, and the ATP produced powers biosynthesis, movement, and
+            reproduction. At every step, heat is released as a byproduct — this metabolic heat
+            is what endotherms use to maintain body temperature.
+          </p>
+          <p>
+            The total energy used per unit time is the <strong>metabolic rate</strong>. For endotherms
+            at rest, this is the <strong>basal metabolic rate (BMR)</strong>. For ectotherms at rest
+            at a given temperature, it is the <strong>standard metabolic rate (SMR)</strong>. BMR for
+            adult humans is approximately 1,600–1,800 kcal per day for males and 1,300–1,500 kcal for
+            females — roughly equivalent to the energy output of a 75-watt light bulb.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/bioenergetics-overview.png`} alt="Figure 40.19: Overview of bioenergetics showing energy flow from food through digestion, cellular respiration, ATP production, and heat release" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.19</strong> — Bioenergetics overview. Note how heat is lost at every
+              stage — this "waste" heat is actually what endotherms rely on for thermoregulation.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 11: Metabolic Rate & Body Size ── -->
+          <h3>Metabolic Rate and Body Size</h3>
+
+          <p>
+            There is a consistent relationship between body size and metabolic rate across all
+            animals. Larger animals have higher total metabolic rates (an elephant uses more energy
+            than a mouse), but smaller animals have higher <strong>mass-specific metabolic rates</strong>
+            (a mouse uses more energy <em>per gram of body mass</em> than an elephant).
+          </p>
+          <p>
+            This has direct consequences for thermoregulation: small endotherms lose heat faster
+            (higher surface-area-to-volume ratio) and must eat proportionally more to maintain body
+            temperature. A shrew must eat almost constantly; an elephant can go much longer between meals.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/metabolic-rate-body-size.png`} alt="Figure 40.21: Two graphs showing (a) total metabolic rate increasing with body size and (b) mass-specific metabolic rate decreasing with body size" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.21</strong> — (a) Total BMR increases with body mass.
+              (b) BMR per kilogram <em>decreases</em> with body mass. Small animals burn more
+              energy per gram — they must eat more frequently relative to their size.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 12: Energy Budgets ── -->
+          <h3>Energy Budgets</h3>
+
+          <p>
+            Different animals allocate their energy differently depending on their thermoregulatory
+            strategy, size, and lifestyle. The pie charts below compare three vertebrates: an Ad&eacute;lie
+            penguin, a deer mouse, and a ball python.
+          </p>
+          <p>
+            Notice how the endotherms (penguin and mouse) spend a much larger proportion of their
+            energy on thermoregulation compared to the ectothermic python. The python spends almost
+            nothing on temperature regulation — freeing energy for growth and reproduction. This
+            is the trade-off between endothermy and ectothermy.
+          </p>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/energy-budgets.png`} alt="Scientific Skills Exercise: Pie charts comparing energy budgets of an Adélie penguin, deer mouse, and ball python across metabolism, reproduction, thermoregulation, activity, and growth" loading="lazy" />
+            <figcaption>
+              <strong>Energy Budgets</strong> — Compare how each animal allocates its energy.
+              Endotherms dedicate significant energy to thermoregulation; the ectothermic python
+              allocates almost none, investing more in growth and reproduction.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Section 13: Torpor & Hibernation ── -->
+          <h3>Torpor and Hibernation</h3>
+
+          <p>
+            When food is scarce or temperatures are extreme, some endotherms reduce their metabolic
+            rate dramatically in a state called <strong>torpor</strong>. This saves enormous amounts
+            of energy:
+          </p>
+          <ul>
+            <li><strong>Daily torpor</strong> — short periods (hours), seen in hummingbirds and some
+            bats. Body temperature drops significantly at night to conserve energy</li>
+            <li><strong>Hibernation</strong> — extended torpor (weeks to months) during winter.
+            Mammals like ground squirrels can drop their body temperature to near 0°C, with metabolic
+            rates 1/20th of normal. They periodically rewarm using brown fat before returning to torpor</li>
+            <li><strong>Aestivation</strong> — summer torpor in response to heat and drought, seen in
+            some amphibians and reptiles</li>
+          </ul>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/hibernation-torpor.png`} alt="Figure 40.22: Circadian clock inquiry during hibernation in European hamsters, and text about torpor, hibernation, and aestivation" loading="lazy" />
+            <figcaption>
+              <strong>Fig. 40.22</strong> — Inquiry: the circadian clock during hibernation. During deep
+              hibernation, the hamster's biological clock stops cycling — an example of how thermoregulatory
+              states interact with other physiological rhythms.
+            </figcaption>
+          </figure>
+
+
+          <!-- ── Summary Box ── -->
+          <h3>Concept Summary</h3>
+
+          <figure class="textbook-figure">
+            <img src={`${base}/images/thermo/concept-summary.png`} alt="Concept 40.3 summary: key points about thermoregulation including endothermy, ectothermy, heat exchange, insulation, countercurrent exchange, and hypothalamic control" loading="lazy" />
+            <figcaption>
+              <strong>Concept 40.3 Summary</strong> — Review this summary box. Make sure you can
+              explain each bullet point using biological terminology at Level 8 depth.
+            </figcaption>
+          </figure>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>For your internal:</strong> You will choose ONE homeostatic system for your
+              real assessment (not glucose — that's what the practice is for). Thermoregulation
+              is a strong option, but remember the 2022 moderation feedback: you must name specific
+              components (hypothalamus, sympathetic nervous system, peripheral thermoreceptors,
+              TRP ion channels, eccrine sweat glands, skeletal muscle, brown adipose tissue) and
+              explain how they interact through negative feedback. Do not include behavioural responses
+              (clothing, shade-seeking) as evidence.
+            </div>
+          </div>
+
+        </section>
+
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card sidebar-card--objectives fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li>Explain why blood glucose regulation is essential for survival</li>
+            <li>Describe the roles of insulin and glucagon as antagonistic hormones</li>
+            <li>Identify the islets of Langerhans and the roles of α- and β-cells</li>
+            <li>Explain insulin signal transduction and GLUT4 translocation</li>
+            <li>Describe the role of the liver in glycogenesis and glycogenolysis</li>
+            <li>Compare Type 1 and Type 2 diabetes — cause, mechanism, treatment</li>
+            <li>Interpret an OGTT graph and explain what each curve shows</li>
+            <li>Explain why exercise helps Type 2 diabetes via the GLUT4 pathway</li>
+          </ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Key Vocabulary</h3>
+          <div class="vocab-chips">
+            <span class="vocab-chip">insulin</span>
+            <span class="vocab-chip">glucagon</span>
+            <span class="vocab-chip">islets of Langerhans</span>
+            <span class="vocab-chip">β-cells</span>
+            <span class="vocab-chip">α-cells</span>
+            <span class="vocab-chip">GLUT4</span>
+            <span class="vocab-chip">glycogenesis</span>
+            <span class="vocab-chip">glycogenolysis</span>
+            <span class="vocab-chip">gluconeogenesis</span>
+            <span class="vocab-chip">glycogen synthase</span>
+            <span class="vocab-chip">glycogen phosphorylase</span>
+            <span class="vocab-chip">signal transduction</span>
+            <span class="vocab-chip">glycation</span>
+            <span class="vocab-chip">HbA1c</span>
+            <span class="vocab-chip">hypoglycaemia</span>
+            <span class="vocab-chip">hyperglycaemia</span>
+            <span class="vocab-chip">OGTT</span>
+            <span class="vocab-chip">insulin resistance</span>
+            <span class="vocab-chip">Type 1 diabetes</span>
+            <span class="vocab-chip">Type 2 diabetes</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Interactive Activities</h3>
+          <div class="sidebar-links">
+            <a href="#glucose-graph" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <polyline points="4,24 10,16 16,20 22,8 28,12" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Blood Glucose Graph</span>
+            </a>
+            <a href="#insulin-signal" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <circle cx="8" cy="16" r="4" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <line x1="12" y1="16" x2="20" y2="16" stroke="var(--fluoro-pink)" stroke-width="1.5"/>
+                  <circle cx="24" cy="16" r="4" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                </svg>
+              </span>
+              <span>Insulin Signalling</span>
+            </a>
+            <a href="#ogtt" class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                  <polyline points="4,24 10,10 16,18 22,6 28,14" stroke="var(--green-vivid)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="4,20 10,14 16,22 22,12 28,18" stroke="var(--fluoro-pink)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+                </svg>
+              </span>
+              <span>OGTT Comparison</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Assessment Info -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>About AS 91604</h3>
+          <p class="sidebar-text"><strong>Credits:</strong> 3</p>
+          <p class="sidebar-text"><strong>Assessment type:</strong> Internal</p>
+          <p class="sidebar-text"><strong>How assessed:</strong> Written report submitted to your teacher</p>
+          <p class="sidebar-text sidebar-text--highlight">
+            Glucose homeostasis is one of the most common systems chosen for the internal
+            report. Understanding the full feedback loop — from β-cell detection to GLUT4
+            translocation — is essential for Merit and Excellence.
+          </p>
+        </div>
+
+        <!-- Building On -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 7:</strong> Introduction to homeostasis — set points, feedback loops,
+            the five components
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>This week:</strong> Glucose homeostasis — the mechanism in detail, and
+            what happens when it fails (diabetes).
+          </p>
+        </div>
+
+      </aside>
+
+    </div><!-- /week-layout -->
+
+  </div><!-- /week-page -->
+
+
+  <!-- ====================================================================
+       Styles
+       ==================================================================== -->
+  <style>
+    /* ==========================================================================
+       Week 8 Page Styles — Glucose Homeostasis
+       ========================================================================== */
+
+    .week-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-8);
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Week Header ── */
+    .week-header {
+      margin-bottom: var(--space-7);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .week-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover { color: var(--accent); }
+    .term-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+    .week-header__title-row { margin-bottom: var(--space-3); }
+    .week-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .week-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+    }
+    .week-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border-radius: var(--radius-full);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .badge--standard { background: rgba(0, 255, 136, 0.1); color: var(--accent); }
+    .badge--internal { background: rgba(255, 180, 0, 0.12); color: #fbbf24; }
+    .badge--desc {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0;
+      font-weight: var(--weight-normal);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Quick Navigation ── */
+    .week-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .week-nav__link {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+    /* ── Two-Column Layout ── */
+    .week-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .week-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Main Content ── */
+    .week-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .content-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .content-section h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--accent);
+    }
+    .content-section h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .content-section h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+    .section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-relaxed);
+    }
+    .content-section p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ── Lesson Inline Nav ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+    .lesson-inline-nav__link:hover { opacity: 0.8; }
+
+    /* ── Internal Note ── */
+    .internal-note {
+      display: flex;
+      gap: var(--space-3);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-left: 4px solid #fbbf24;
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-5) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .internal-note svg { flex-shrink: 0; margin-top: 2px; color: #fbbf24; }
+    .internal-note strong { color: #fbbf24; }
+
+    /* ── Definition Box ── */
+    .definition-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .definition-box__label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-3);
+    }
+    .definition-box p { font-size: var(--text-base) !important; color: var(--text-primary) !important; margin-bottom: 0 !important; }
+
+    /* ── Info Cards Row ── */
+    .info-cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .info-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+    }
+    .info-card__icon { margin-bottom: var(--space-3); }
+    .info-card h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+      margin-top: 0;
+    }
+    .info-card p { font-size: var(--text-sm) !important; margin-bottom: 0 !important; }
+    .info-card--brain  { border-top: 3px solid var(--fluoro-cyan); }
+    .info-card--blood  { border-top: 3px solid var(--fluoro-pink); }
+    .info-card--muscle { border-top: 3px solid var(--green-vivid); }
+
+    /* ── Exam Tip ── */
+    .exam-tip {
+      background: rgba(255, 110, 199, 0.06);
+      border: 1px solid rgba(255, 110, 199, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-4) 0;
+    }
+    .exam-tip h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--fluoro-pink);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+    .exam-tip p { font-size: var(--text-sm); }
+
+    /* ── Feature List ── */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ── Connection Box ── */
+    .connection-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .connection-box h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+    /* ── Summary Box ── */
+    .summary-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin-top: var(--space-5);
+    }
+    .summary-box h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       DANGER COMPARISON — Too Low vs Too High
+       ───────────────────────────────────────────────────────────────────── */
+    .danger-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .danger-comparison { grid-template-columns: 1fr; }
+    }
+    .danger-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .danger-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .danger-card__header h4 {
+      margin: 0;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+    }
+    .danger-card__threshold {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      background: var(--surface-0);
+    }
+    .danger-card--low { border-top: 3px solid var(--fluoro-cyan); }
+    .danger-card--low .danger-card__threshold { color: var(--fluoro-cyan); }
+    .danger-card--high { border-top: 3px solid var(--fluoro-pink); }
+    .danger-card--high .danger-card__threshold { color: var(--fluoro-pink); }
+    .danger-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .danger-card li {
+      position: relative;
+      padding-left: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .danger-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+    }
+    .danger-card--low li::before { background: var(--fluoro-cyan); opacity: 0.6; }
+    .danger-card--high li::before { background: var(--fluoro-pink); opacity: 0.6; }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       BATTERY DIAGRAM
+       ───────────────────────────────────────────────────────────────────── */
+    .battery-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 600px) {
+      .battery-diagram { grid-template-columns: 1fr; }
+    }
+    .battery-state {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+    .battery-icon {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .battery-body {
+      width: 48px;
+      height: 24px;
+      border: 2px solid var(--border-default);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .battery-tip {
+      width: 4px;
+      height: 10px;
+      background: var(--border-default);
+      border-radius: 0 2px 2px 0;
+    }
+    .battery-level {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--green-vivid);
+      transition: width 0.5s ease;
+    }
+    .battery-level--low { background: var(--fluoro-pink); }
+    .battery-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .battery-label strong {
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+    }
+    .battery-label span {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+    .battery-arrow {
+      font-family: var(--font-mono);
+      color: var(--accent) !important;
+      font-weight: var(--weight-semibold);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       CELL COMPARISON — Alpha vs Beta
+       ───────────────────────────────────────────────────────────────────── */
+    .cell-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .cell-comparison { grid-template-columns: 1fr; }
+    }
+    .cell-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .cell-card__badge {
+      display: inline-block;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-3);
+    }
+    .cell-card--beta { border-top: 3px solid var(--fluoro-cyan); }
+    .cell-card--beta .cell-card__badge { background: rgba(125, 249, 255, 0.15); color: var(--fluoro-cyan); }
+    .cell-card--alpha { border-top: 3px solid var(--fluoro-pink); }
+    .cell-card--alpha .cell-card__badge { background: rgba(255, 110, 199, 0.15); color: var(--fluoro-pink); }
+    .cell-card h4 { margin-top: 0; margin-bottom: var(--space-2); }
+    .cell-card p { font-size: var(--text-sm) !important; }
+    .cell-card__detail {
+      background: var(--surface-0);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--space-3);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       STEP FLOW — Signal Transduction
+       ───────────────────────────────────────────────────────────────────── */
+    .step-flow {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .step-flow__item {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .step-flow__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      color: var(--surface-0);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+    .step-flow__content {
+      flex: 1;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .step-flow__content strong {
+      display: block;
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .step-flow__content p {
+      font-size: var(--text-sm) !important;
+      margin-bottom: 0 !important;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       KEY DISTINCTION — GLUT4
+       ───────────────────────────────────────────────────────────────────── */
+    .key-distinction {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin: var(--space-5) 0;
+    }
+    .key-distinction__item {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+    }
+    .key-distinction__item--highlight {
+      border-color: var(--accent);
+      border-left: 3px solid var(--accent);
+    }
+    .key-distinction__label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      white-space: nowrap;
+      min-width: 100px;
+    }
+    .key-distinction__desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       DIABETES COMPARISON CARDS
+       ───────────────────────────────────────────────────────────────────── */
+    .diabetes-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .diabetes-comparison { grid-template-columns: 1fr; }
+    }
+    .diabetes-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .diabetes-card__header {
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+    .diabetes-card__header h4 { margin: 0; font-size: var(--text-base); }
+    .diabetes-card__tag {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+    }
+    .diabetes-card--type1 .diabetes-card__header { background: rgba(125, 249, 255, 0.08); border-bottom: 2px solid var(--fluoro-cyan); }
+    .diabetes-card--type1 .diabetes-card__tag { color: var(--fluoro-cyan); background: rgba(125, 249, 255, 0.12); }
+    .diabetes-card--type2 .diabetes-card__header { background: rgba(255, 110, 199, 0.08); border-bottom: 2px solid var(--fluoro-pink); }
+    .diabetes-card--type2 .diabetes-card__tag { color: var(--fluoro-pink); background: rgba(255, 110, 199, 0.12); }
+    .diabetes-card__body { padding: var(--space-4) var(--space-5); }
+    .diabetes-card__row {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .diabetes-card__row:last-child { border-bottom: none; }
+    .diabetes-card__row strong {
+      color: var(--text-primary);
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       COMPLICATIONS GRID
+       ───────────────────────────────────────────────────────────────────── */
+    .complications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-3);
+      margin: var(--space-5) 0;
+    }
+    .complication-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--fluoro-pink);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .complication-card h5 {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-2);
+    }
+    .complication-card p {
+      font-size: var(--text-xs) !important;
+      color: var(--text-muted) !important;
+      margin: 0 !important;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 1 — Blood Glucose Graph
+       ───────────────────────────────────────────────────────────────────── */
+    .glucose-graph-interactive {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .gg-chart-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .gg-svg {
+      width: 100%;
+      max-width: 660px;
+      display: block;
+      margin: 0 auto;
+    }
+    .gg-desc {
+      margin: var(--space-4) 0;
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      min-height: 60px;
+    }
+    .gg-desc-text {
+      font-size: var(--text-base) !important;
+      color: var(--text-primary) !important;
+      margin-bottom: 0 !important;
+    }
+    .gg-controls {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 2 — Insulin Signalling Animation
+       ───────────────────────────────────────────────────────────────────── */
+    .signal-anim {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .signal-anim__diagram {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .signal-svg {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 0 auto;
+    }
+    .signal-anim__desc {
+      margin: var(--space-4) 0;
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      min-height: 60px;
+    }
+    .sig-step-indicator {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    .sig-step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-full);
+      background: var(--border-subtle);
+      transition: background var(--transition-fast);
+    }
+    .sig-step-dot.is-active { background: var(--accent); }
+    .sig-step-dot.is-done { background: var(--green-vivid); opacity: 0.7; }
+    .sig-desc-text {
+      font-size: var(--text-base) !important;
+      color: var(--text-primary) !important;
+      margin-bottom: 0 !important;
+    }
+    .signal-anim__controls {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       INTERACTIVE 3 — OGTT
+       ───────────────────────────────────────────────────────────────────── */
+    .ogtt-interactive {
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-top: var(--space-4);
+    }
+    .ogtt-chart-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .ogtt-svg {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 0 auto;
+    }
+    .ogtt-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-4) 0;
+    }
+    .ogtt-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .ogtt-toggle:hover { border-color: var(--toggle-color); color: var(--toggle-color); }
+    .ogtt-toggle--active {
+      border-color: var(--toggle-color);
+      color: var(--toggle-color);
+      background: rgba(0,0,0,0.2);
+    }
+    .ogtt-toggle__swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--radius-full);
+      background: var(--toggle-color);
+    }
+    .ogtt-desc {
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-4);
+    }
+    .ogtt-desc p {
+      font-size: var(--text-sm) !important;
+      color: var(--text-secondary) !important;
+      margin-bottom: 0 !important;
+    }
+    .ogtt-criteria {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .ogtt-criteria h4 {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-3);
+    }
+    .ogtt-criteria__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+    @media (max-width: 500px) {
+      .ogtt-criteria__grid { grid-template-columns: 1fr; }
+    }
+    .ogtt-criteria__item {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    .ogtt-criteria__item strong { color: var(--text-primary); }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       CHECK YOUR UNDERSTANDING
+       ───────────────────────────────────────────────────────────────────── */
+    .question-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+    .question-card__badge {
+      display: inline-block;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-mono);
+      color: var(--accent);
+      background: rgba(0, 255, 136, 0.1);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-3);
+    }
+    .question-card__prompt {
+      font-size: var(--text-base) !important;
+      color: var(--text-primary) !important;
+      font-weight: var(--weight-medium);
+      margin-bottom: var(--space-4) !important;
+    }
+    .question-card__answer {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .question-card__answer p {
+      font-size: var(--text-sm) !important;
+      line-height: var(--leading-relaxed);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       BUTTONS (shared)
+       ───────────────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn--primary {
+      background: var(--accent);
+      color: var(--surface-0);
+      border-color: var(--accent);
+    }
+    .btn--primary:hover:not(:disabled) { filter: brightness(1.1); }
+    .btn--secondary {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+    }
+    .btn--secondary:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border-subtle);
+    }
+    .btn--ghost:hover:not(:disabled) { color: var(--text-secondary); border-color: var(--border-default); }
+    .reveal-btn { margin-bottom: var(--space-2); }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       SIDEBAR
+       ───────────────────────────────────────────────────────────────────── */
+    .week-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: sticky;
+      top: calc(var(--space-8) + 60px);
+    }
+    .sidebar-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .sidebar-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .sidebar-card--objectives { border-top: 3px solid var(--accent); }
+    .sidebar-card--connection { border-top: 3px solid var(--fluoro-cyan); }
+
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .objectives-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .objectives-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .vocab-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .vocab-chip {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sidebar-link__icon { flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    .sidebar-text--highlight {
+      background: var(--surface-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      margin-top: var(--space-3);
+    }
+
+    /* ── Lesson 4: Textbook Figures ── */
+    .textbook-figure {
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface-1);
+    }
+    .textbook-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .textbook-figure figcaption {
+      padding: var(--space-3) var(--space-4);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .textbook-figure figcaption strong {
+      color: var(--text-primary);
+    }
+    .textbook-figure--hero {
+      border-color: var(--fluoro-cyan, #00e5ff);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
+    }
+
+    /* ── Comparison Grid ── */
+    .key-comparison {
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .key-comparison h4 {
+      padding: var(--space-3) var(--space-4);
+      margin: 0;
+      background: var(--surface-2);
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.5fr 1.5fr;
+      font-size: 0.88rem;
+    }
+    .comparison-grid > div {
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      border-right: 1px solid var(--border-subtle);
+    }
+    .comparison-grid > div:nth-child(3n) {
+      border-right: none;
+    }
+    .comparison-grid > div:nth-last-child(-n+3) {
+      border-bottom: none;
+    }
+    .comparison-grid__header {
+      background: var(--surface-2);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script is:inline>
+
+    /* ======================================================================
+       IntersectionObserver — Fade-in-up animations
+       ====================================================================== */
+    (function initObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    })();
+
+
+    /* ======================================================================
+       Reveal Buttons — Check Your Understanding
+       ====================================================================== */
+    (function initRevealBtns() {
+      document.querySelectorAll('.reveal-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.target);
+          if (!target) return;
+          const isHidden = target.hidden;
+          target.hidden = !isHidden;
+          btn.textContent = isHidden ? 'Hide Answer' : 'Reveal Answer';
+        });
+      });
+    })();
+
+
+    /* ======================================================================
+       INTERACTIVE 1 — Blood Glucose After a Meal
+       ====================================================================== */
+    (function initGlucoseGraph() {
+      const clipRect = document.getElementById('gg-clip-rect');
+      const markers = document.getElementById('gg-markers');
+      const descText = document.getElementById('gg-desc-text');
+      const playBtn = document.getElementById('gg-play-btn');
+      const stepBtn = document.getElementById('gg-step-btn');
+      const resetBtn = document.getElementById('gg-reset-btn');
+
+      if (!clipRect || !markers || !descText) return;
+
+      const TOTAL_WIDTH = 570; // 640 - 70 (start x)
+      let currentPhase = -1; // -1 = reset
+      let animFrame = null;
+
+      const PHASES = [
+        {
+          clipWidth: 0,
+          desc: 'Fasting state: blood glucose is at the set point (~5 mmol/L). The person has not eaten yet.',
+          markers: {}
+        },
+        {
+          clipWidth: 160,
+          desc: 'After the meal, glucose is absorbed from the gut into the bloodstream. Blood glucose begins to rise. Beta cells in the islets of Langerhans detect the increase and begin secreting insulin.',
+          markers: { 'gg-insulin-line': '0.5', 'gg-insulin-label': '0.8' }
+        },
+        {
+          clipWidth: 280,
+          desc: 'Blood glucose peaks at ~8.5 mmol/L around 30 minutes. Insulin is now actively driving glucose into liver (glycogenesis), muscle (GLUT4 translocation), and fat cells.',
+          markers: { 'gg-peak-dot': '1', 'gg-peak-label': '1' }
+        },
+        {
+          clipWidth: 450,
+          desc: 'Insulin\'s negative feedback mechanisms are working — blood glucose is falling back toward the set point. As glucose drops, less insulin is secreted (feedback regulation).',
+          markers: {}
+        },
+        {
+          clipWidth: TOTAL_WIDTH,
+          desc: 'Blood glucose returns to ~5 mmol/L (fasting level). Insulin secretion has decreased. If glucose drops below 5 mmol/L, alpha cells release glucagon to release glucose from liver glycogen stores.',
+          markers: { 'gg-return-dot': '1', 'gg-return-label': '1' }
+        }
+      ];
+
+      function resetGraph() {
+        currentPhase = -1;
+        clipRect.setAttribute('width', '0');
+        markers.setAttribute('opacity', '0');
+        // Reset all marker elements
+        ['gg-peak-dot','gg-peak-label','gg-insulin-line','gg-insulin-label','gg-return-dot','gg-return-label'].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) el.setAttribute('opacity', '0');
+        });
+        descText.innerHTML = 'Press <strong>Play</strong> to see how blood glucose changes after a meal, and how insulin brings it back to the set point through negative feedback.';
+        if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+        playBtn.disabled = false;
+        stepBtn.disabled = false;
+      }
+
+      function showPhase(phase) {
+        if (phase < 0 || phase >= PHASES.length) return;
+        currentPhase = phase;
+        var p = PHASES[phase];
+
+        // Animate clip width
+        clipRect.setAttribute('width', String(p.clipWidth));
+
+        // Show markers
+        markers.setAttribute('opacity', '1');
+        // Show phase-specific markers
+        if (p.markers) {
+          Object.keys(p.markers).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.setAttribute('opacity', p.markers[id]);
+          });
+        }
+
+        descText.innerHTML = p.desc;
+
+        if (phase >= PHASES.length - 1) {
+          playBtn.disabled = true;
+          stepBtn.disabled = true;
+        }
+      }
+
+      // Play animation (auto-advance through phases)
+      function playAnimation() {
+        resetGraph();
+        var phase = 0;
+        function nextPhase() {
+          showPhase(phase);
+          phase++;
+          if (phase < PHASES.length) {
+            animFrame = setTimeout(nextPhase, 2000);
+          }
+        }
+        nextPhase();
+      }
+
+      // Step through phases manually
+      stepBtn.addEventListener('click', function() {
+        currentPhase++;
+        if (currentPhase >= PHASES.length) return;
+        showPhase(currentPhase);
+      });
+
+      playBtn.addEventListener('click', playAnimation);
+      resetBtn.addEventListener('click', resetGraph);
+
+      resetGraph();
+    })();
+
+
+    /* ======================================================================
+       INTERACTIVE 2 — Insulin Signalling Step-Through
+       ====================================================================== */
+    (function initSignalAnim() {
+      var currentStep = -1;
+      var descText = document.getElementById('sig-desc-text');
+      var stepLabel = document.getElementById('sig-step-label');
+      var prevBtn = document.getElementById('sig-prev-btn');
+      var nextBtn = document.getElementById('sig-next-btn');
+      var resetBtn = document.getElementById('sig-reset-btn');
+
+      if (!descText || !nextBtn) return;
+
+      var STEPS = [
+        {
+          label: 'Step 1: Insulin arrives',
+          desc: 'Insulin molecules (released from beta cells) travel through the bloodstream and reach the surface of a muscle or fat cell. The insulin receptor spans the plasma membrane.',
+          show: ['sig-insulin'],
+          highlight: 'sig-insulin'
+        },
+        {
+          label: 'Step 2: Receptor binding & activation',
+          desc: 'Insulin binds to the extracellular domain of the insulin receptor. This causes an allosteric shape change in the intracellular domain, activating its enzymatic (kinase) activity. The hormone signal is transduced across the membrane without insulin entering the cell.',
+          show: ['sig-insulin'],
+          highlight: 'sig-receptor'
+        },
+        {
+          label: 'Step 3: Phosphorylation cascade',
+          desc: 'The activated receptor phosphorylates intracellular proteins (adds phosphate groups), triggering a chain reaction — a signal transduction cascade. Each step amplifies the signal.',
+          show: ['sig-insulin', 'sig-cascade'],
+          highlight: 'sig-cascade'
+        },
+        {
+          label: 'Step 4: GLUT4 vesicles move to membrane',
+          desc: 'The cascade causes vesicles containing GLUT4 glucose transporters to move to and fuse with the plasma membrane. GLUT4 is now embedded in the cell surface, creating channels for glucose.',
+          show: ['sig-insulin', 'sig-cascade', 'sig-glut4-membrane'],
+          highlight: 'sig-glut4-membrane'
+        },
+        {
+          label: 'Step 5: Glucose enters the cell',
+          desc: 'With GLUT4 in the membrane, glucose flows into the cell down its concentration gradient (facilitated diffusion — no energy required). Blood glucose falls. The insulin receptor will soon be internalised and the signal shut off (~1 minute).',
+          show: ['sig-insulin', 'sig-cascade', 'sig-glut4-membrane', 'sig-glucose-entering'],
+          highlight: 'sig-glucose-entering'
+        }
+      ];
+
+      var ALL_IDS = ['sig-insulin', 'sig-cascade', 'sig-glut4-membrane', 'sig-glucose-entering'];
+
+      function reset() {
+        currentStep = -1;
+        ALL_IDS.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) { el.setAttribute('opacity', id === 'sig-insulin' ? '1' : '0'); el.removeAttribute('filter'); }
+        });
+        // Reset vesicle to original position
+        var vesicle = document.getElementById('sig-vesicle');
+        if (vesicle) vesicle.setAttribute('opacity', '1');
+
+        var glucose = document.getElementById('sig-glucose');
+        if (glucose) glucose.setAttribute('opacity', '0.3');
+
+        var receptor = document.getElementById('sig-receptor');
+        if (receptor) { receptor.querySelector('rect').setAttribute('stroke', 'var(--border-subtle)'); }
+
+        if (stepLabel) stepLabel.textContent = 'Click "Next Step" to begin';
+        descText.textContent = 'This animation shows how insulin triggers glucose uptake in muscle and fat cells through signal transduction and GLUT4 vesicle translocation.';
+
+        document.querySelectorAll('.sig-step-dot').forEach(function(dot) {
+          dot.classList.remove('is-active', 'is-done');
+        });
+
+        if (prevBtn) prevBtn.disabled = true;
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Next Step';
+      }
+
+      function renderStep(step) {
+        var data = STEPS[step];
+        if (!data) return;
+
+        // Show/hide elements
+        ALL_IDS.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var shouldShow = data.show.indexOf(id) !== -1;
+          el.setAttribute('opacity', shouldShow ? '1' : '0');
+          el.removeAttribute('filter');
+        });
+
+        // Highlight active element
+        if (data.highlight) {
+          var hl = document.getElementById(data.highlight);
+          if (hl) hl.setAttribute('filter', 'url(#sig-glow)');
+        }
+
+        // Hide vesicle when GLUT4 is in membrane
+        var vesicle = document.getElementById('sig-vesicle');
+        if (vesicle) vesicle.setAttribute('opacity', step >= 3 ? '0' : '1');
+
+        // Show glucose molecules brighter at step 4+
+        var glucose = document.getElementById('sig-glucose');
+        if (glucose) glucose.setAttribute('opacity', step >= 4 ? '0.8' : '0.3');
+
+        // Receptor highlight
+        var receptor = document.getElementById('sig-receptor');
+        if (receptor) {
+          var rect = receptor.querySelector('rect');
+          if (rect) rect.setAttribute('stroke', step >= 1 ? 'var(--fluoro-cyan)' : 'var(--border-subtle)');
+        }
+
+        // Update text
+        if (stepLabel) stepLabel.textContent = data.label;
+        descText.textContent = data.desc;
+
+        // Dots
+        document.querySelectorAll('.sig-step-dot').forEach(function(dot, i) {
+          dot.classList.toggle('is-active', i === step);
+          dot.classList.toggle('is-done', i < step);
+        });
+
+        // Buttons
+        if (prevBtn) prevBtn.disabled = step === 0;
+        nextBtn.disabled = false;
+        nextBtn.textContent = step === STEPS.length - 1 ? 'Restart' : 'Next Step';
+      }
+
+      nextBtn.addEventListener('click', function() {
+        if (currentStep >= STEPS.length - 1) { reset(); return; }
+        currentStep++;
+        renderStep(currentStep);
+      });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (currentStep <= 0) return;
+          currentStep--;
+          renderStep(currentStep);
+        });
+      }
+
+      resetBtn.addEventListener('click', reset);
+      reset();
+    })();
+
+
+    /* ======================================================================
+       INTERACTIVE 3 — OGTT Comparison
+       ====================================================================== */
+    (function initOGTT() {
+      var curves = {
+        normal:    { id: 'ogtt-normal',    active: true,  desc: '<strong>Normal:</strong> Blood glucose peaks at ~8 mmol/L around 30 minutes, then returns to ~5 mmol/L within 2 hours as insulin drives uptake into liver, muscle, and fat.' },
+        resistant: { id: 'ogtt-resistant',  active: false, desc: '<strong>Insulin Resistant:</strong> Fasting glucose is slightly elevated (~6 mmol/L). The peak is higher and it takes longer to return to baseline — insulin is present but receptors respond poorly.' },
+        type2:     { id: 'ogtt-type2',      active: false, desc: '<strong>Type 2 Diabetic:</strong> Fasting glucose elevated (~7.5 mmol/L). Peak reaches ~10 mmol/L and glucose remains elevated even at 3 hours. Some insulin function remains but is severely impaired.' },
+        type1:     { id: 'ogtt-type1',      active: false, desc: '<strong>Type 1 Diabetic:</strong> Fasting glucose very high (~12 mmol/L) because there is no insulin. After the glucose load, levels rise even further and barely fall — no insulin means no negative feedback mechanism.' }
+      };
+
+      var descEl = document.getElementById('ogtt-desc-text');
+
+      function updateCurves() {
+        var activeDescs = [];
+        Object.keys(curves).forEach(function(key) {
+          var c = curves[key];
+          var el = document.getElementById(c.id);
+          if (el) el.setAttribute('opacity', c.active ? '1' : '0');
+          if (c.active) activeDescs.push(c.desc);
+        });
+        if (descEl) descEl.innerHTML = activeDescs.join('<br/><br/>') || 'Toggle a condition to see its OGTT curve.';
+      }
+
+      document.querySelectorAll('.ogtt-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var curve = btn.dataset.curve;
+          if (!curve || !curves[curve]) return;
+          curves[curve].active = !curves[curve].active;
+          btn.classList.toggle('ogtt-toggle--active', curves[curve].active);
+          updateCurves();
+        });
+      });
+
+      updateCurves();
+    })();
+
+  </script>
+
+</BaseLayout>
