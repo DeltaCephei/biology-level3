@@ -61,6 +61,7 @@ export const standards: Standard[] = [
     colour: 'var(--standard-4-colour)',
     weeks: [
       { num: 7, title: 'Introduction to Homeostasis', hasContent: true },
+      { num: 8, title: 'Thermoregulation', hasContent: true },
     ],
   },
   {
