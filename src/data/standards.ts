@@ -50,6 +50,7 @@ export const standards: Standard[] = [
     weeks: [
       { num: 2, title: 'Introduction to the Course & Structure', hasContent: false },
       { num: 3, title: 'Simple Animal Responses', hasContent: true },
+      { num: 9, title: 'Our Planet — Animal Behaviours', hasContent: true },
     ],
   },
   {
@@ -62,6 +63,7 @@ export const standards: Standard[] = [
     weeks: [
       { num: 7, title: 'Introduction to Homeostasis', hasContent: true },
       { num: 8, title: 'Thermoregulation', hasContent: true },
+      { num: 9, title: 'Dry Run Submission', hasContent: true },
     ],
   },
   {

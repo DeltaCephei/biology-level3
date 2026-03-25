@@ -1,0 +1,1371 @@
+---
+/* ==========================================================================
+   Week 9 — Transition Week: Dry Run Submission + Our Planet
+   AS 91604: Demonstrate understanding of how an animal maintains a stable
+   internal environment (3 credits, Internal) — Lessons 1–2
+   AS 91603: Responses of plants and animals to their external environment
+   (5 credits, External) — Lesson 3
+
+   Lesson 1 & 2: Glucose Homeostasis Dry Run — Work & Submission
+   Lesson 3: Our Planet S1E3 — Animal Behaviour Observations
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 9: Dry Run Submission & Our Planet — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 9</span>
+        <h1 class="week-title">Dry Run Submission &amp; Our Planet</h1>
+      </div>
+
+      <!-- Both standards shown since this week bridges two assessments -->
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91604</span>
+        <span class="badge badge--internal">Internal</span>
+        <span class="badge badge--standard">AS 91603</span>
+        <span class="badge badge--external">External</span>
+        <span class="badge badge--desc">Transition week — finishing the internal, then back to animal responses</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1-2" class="week-nav__link week-nav__link--active">Lessons 1–2: Dry Run</a>
+      <a href="#checklist"  class="week-nav__link">Submission Checklist</a>
+      <a href="#merit-tips" class="week-nav__link">Merit/Excellence Tips</a>
+      <a href="#lesson-3"   class="week-nav__link">Lesson 3: Our Planet</a>
+      <a href="#observation" class="week-nav__link">Observation Sheet</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lessons 1 & 2: Glucose Homeostasis Dry Run
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1-2" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lessons 1–2 of 3</span>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 3: Our Planet
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lessons 1 &amp; 2: Glucose Homeostasis — Dry Run Submission</h2>
+
+          <p class="section-intro">
+            This is your time to <strong>finish and submit</strong> the dry run for your glucose
+            homeostasis report (AS 91604). These two lessons are dedicated work time — use them
+            wisely. You have been building the knowledge for this since Week 7, and you have
+            everything you need to write a strong response.
+          </p>
+
+          <!-- Motivational callout -->
+          <div class="encouragement-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>You can do this.</strong> This is a dry run — it is your chance to practise
+              before the real assessment. Treat it seriously, get detailed feedback, and your final
+              submission will be much stronger for it. Give it your best effort now so you know
+              exactly where to improve.
+            </div>
+          </div>
+
+
+          <!-- ── Deadline Reminder ── -->
+          <div class="deadline-box">
+            <div class="deadline-box__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Submission Deadline</strong>
+              <span class="deadline-box__date">Tuesday 25 March 2025, 23:59</span>
+              <p>Submit your dry run by the end of the day. Late submissions will not receive
+              feedback before the final assessment window opens.</p>
+            </div>
+          </div>
+
+
+          <!-- ── What to Do ── -->
+          <h3>What Should You Be Doing?</h3>
+
+          <p>
+            You should be writing (or finalising) your dry run report. This report should explain
+            how the body maintains a stable blood glucose concentration, using the homeostatic
+            framework you learned in Weeks 7 and 8. If you are stuck, review the reference
+            material from those weeks — links are in the sidebar.
+          </p>
+
+          <div class="action-steps">
+            <div class="action-step">
+              <div class="action-step__number">1</div>
+              <div class="action-step__content">
+                <strong>Review your notes</strong> — make sure you understand the full negative
+                feedback loop (stimulus, receptor, control centre, effector, response, feedback).
+              </div>
+            </div>
+            <div class="action-step">
+              <div class="action-step__number">2</div>
+              <div class="action-step__content">
+                <strong>Write or complete your draft</strong> — use the checklist below to make
+                sure you have not missed anything important.
+              </div>
+            </div>
+            <div class="action-step">
+              <div class="action-step__number">3</div>
+              <div class="action-step__content">
+                <strong>Proofread and submit</strong> — read it through once, check your
+                biological terminology, and submit before the deadline.
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Submission Checklist
+             —————————————————————————————————————————————————————————————— -->
+        <section id="checklist" class="content-section fade-in-up">
+          <h2>Dry Run Checklist</h2>
+
+          <p class="section-intro">
+            Use this checklist to make sure your report covers all the key components. Tick
+            each item off as you confirm it is addressed in your writing.
+          </p>
+
+          <div class="checklist-group">
+            <h3>Core Content (Achieved)</h3>
+            <ul class="checklist">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Normal blood glucose set point identified (~5 mmol/L fasting)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Role of insulin described (lowers blood glucose)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Role of glucagon described (raises blood glucose)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Pancreas identified as the control centre (islets of Langerhans)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Negative feedback loop described in general terms</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>At least one example of disruption mentioned (e.g. diabetes)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <h3>Depth &amp; Detail (Merit)</h3>
+            <ul class="checklist">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Beta cells and alpha cells distinguished clearly</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Glycogenesis and glycogenolysis explained (not just named)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Insulin signal transduction pathway described (receptor binding, cascade, GLUT4)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Both sides of the feedback loop covered (high glucose AND low glucose responses)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Type 1 vs Type 2 diabetes compared with biological reasoning</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <h3>Integration &amp; Insight (Excellence)</h3>
+            <ul class="checklist">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Biological consequences of failure explained (why hyperglycaemia/hypoglycaemia is dangerous)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Links between concepts made explicit (e.g. insulin resistance leads to elevated blood glucose because GLUT4 is not translocated)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Discussion of how the homeostatic mechanism maintains a stable internal environment overall (big picture)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+                <span>Clear, logical structure with accurate use of biological terminology throughout</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Merit / Excellence Tips
+             —————————————————————————————————————————————————————————————— -->
+        <section id="merit-tips" class="content-section fade-in-up">
+          <h2>Tips for Merit and Excellence</h2>
+
+          <p class="section-intro">
+            The difference between grade levels comes down to <strong>depth</strong> and
+            <strong>integration</strong>. Here is what the markers are looking for at each level.
+          </p>
+
+          <div class="grade-tips">
+            <!-- Merit tips -->
+            <div class="grade-card grade-card--merit">
+              <div class="grade-card__header">
+                <h3>Merit</h3>
+                <span class="grade-card__label">In-depth explanation</span>
+              </div>
+              <ul class="feature-list">
+                <li>
+                  Explain <em>how</em> and <em>why</em> at each step — do not just name the
+                  hormones, describe what they actually do at the cellular level
+                </li>
+                <li>
+                  Use correct terminology: say "beta cells in the islets of Langerhans detect
+                  elevated blood glucose" rather than "the pancreas senses sugar"
+                </li>
+                <li>
+                  Include the signal transduction pathway: insulin binds to receptor, triggers
+                  phosphorylation cascade, GLUT4 vesicles move to plasma membrane
+                </li>
+                <li>
+                  Describe the liver's role explicitly: glycogenesis (glucose to glycogen) and
+                  glycogenolysis (glycogen to glucose) — and when each occurs
+                </li>
+              </ul>
+            </div>
+
+            <!-- Excellence tips -->
+            <div class="grade-card grade-card--excellence">
+              <div class="grade-card__header">
+                <h3>Excellence</h3>
+                <span class="grade-card__label">Comprehensive, integrated discussion</span>
+              </div>
+              <ul class="feature-list">
+                <li>
+                  Connect the mechanism to its <strong>biological significance</strong> — explain
+                  why the brain's dependence on glucose makes hypoglycaemia immediately dangerous,
+                  while glycation explains the slow damage of chronic hyperglycaemia
+                </li>
+                <li>
+                  Show how the <strong>whole system works together</strong> — antagonistic hormones,
+                  multiple effectors (liver, muscle, fat cells), and feedback that adjusts
+                  continuously, not just "on" or "off"
+                </li>
+                <li>
+                  When discussing diabetes, explain the <strong>mechanism of disruption</strong> —
+                  not just "insulin does not work" but why (autoimmune destruction of beta cells
+                  for Type 1; insulin receptor down-regulation for Type 2)
+                </li>
+                <li>
+                  Write with a clear, logical flow — the reader should be able to follow your
+                  argument from stimulus to response to feedback without getting lost
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Common Mistakes to Avoid</h4>
+            <p>
+              <strong>Naming without explaining:</strong> Saying "insulin lowers blood glucose"
+              is Achieved-level. Explaining <em>how</em> insulin lowers blood glucose (receptor
+              binding, signal cascade, GLUT4 translocation, facilitated diffusion into cells)
+              is Merit-level. Explaining <em>why this matters</em> for the organism is Excellence.
+            </p>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Writing Tip</h4>
+            <p>
+              Use a diagram or flow chart if it helps you organise your ideas — but your written
+              explanation should stand on its own. The marker needs to see your understanding
+              in your words, not just in a labelled picture.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 3: Our Planet — Animal Behaviours
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-1-2" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Lessons 1–2: Dry Run
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 3 of 3</span>
+          </nav>
+
+          <h2>Lesson 3: Our Planet — Animal Behaviour Observations</h2>
+
+          <p class="section-intro">
+            Time for a change of pace. Today we are watching <strong>Our Planet</strong>,
+            Season 1, Episode 3 — narrated by Sir David Attenborough. But this is not just
+            passive viewing. Your task is to identify and classify the animal behaviours you
+            observe, linking them back to the concepts from <strong>AS 91603</strong> (responses
+            of plants and animals to their external environment).
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Netflix:</strong> Our Planet, Season 1, Episode 3 — <em>"Jungles"</em>.
+              If you want to rewatch at home, it is available on Netflix. The full series is
+              excellent revision material for animal behaviour and ecology.
+            </div>
+          </div>
+
+
+          <!-- ── What to Watch For ── -->
+          <h3>What to Watch For</h3>
+
+          <p>
+            As you watch, keep an eye out for examples of the following types of behaviour.
+            These are all concepts you will need for AS 91603, so start building your bank
+            of real-world examples now.
+          </p>
+
+          <div class="behaviour-categories">
+            <div class="behaviour-card">
+              <div class="behaviour-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                  <circle cx="12" cy="12" r="3" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none"/>
+                </svg>
+                <h4>Innate Behaviours</h4>
+              </div>
+              <p>
+                Genetically programmed, no learning required. Present from birth. Look for
+                instinctive responses — feeding patterns, reflexes, courtship displays that
+                are species-wide.
+              </p>
+            </div>
+
+            <div class="behaviour-card">
+              <div class="behaviour-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                </svg>
+                <h4>Learned Behaviours</h4>
+              </div>
+              <p>
+                Modified by experience. Includes habituation, classical conditioning, operant
+                conditioning, and imprinting. Watch for animals that adapt their behaviour
+                based on past experience.
+              </p>
+            </div>
+
+            <div class="behaviour-card">
+              <div class="behaviour-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h4>Taxis &amp; Kinesis</h4>
+              </div>
+              <p>
+                <strong>Taxis:</strong> directional movement toward or away from a stimulus
+                (phototaxis, chemotaxis). <strong>Kinesis:</strong> non-directional change in
+                speed or turning rate in response to a stimulus.
+              </p>
+            </div>
+
+            <div class="behaviour-card">
+              <div class="behaviour-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h4>Communication</h4>
+              </div>
+              <p>
+                Visual, auditory, chemical (pheromones), or tactile signals between organisms.
+                Watch for mating calls, warning displays, territorial markings, or cooperative
+                signalling.
+              </p>
+            </div>
+
+            <div class="behaviour-card">
+              <div class="behaviour-card__header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2L2 21h20L12 2z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none"/>
+                  <path d="M12 9v4M12 16v.5" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h4>Predator–Prey Responses</h4>
+              </div>
+              <p>
+                Predator strategies (ambush, pursuit, cooperative hunting) and prey defences
+                (camouflage, mimicry, alarm calls, flight responses, playing dead). These are
+                rich examples for AS 91603.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Observation Sheet
+             —————————————————————————————————————————————————————————————— -->
+        <section id="observation" class="content-section fade-in-up">
+          <h2>Observation Sheet: Animal Behaviour Log</h2>
+
+          <p class="section-intro">
+            Use this framework to record what you observe during the episode. You do not need
+            to fill every row — aim for <strong>at least 5 quality observations</strong> where
+            you identify the animal, describe the behaviour, classify it, and explain its
+            adaptive advantage. Quality over quantity.
+          </p>
+
+          <!-- Observation table -->
+          <div class="observation-table-wrap">
+            <table class="observation-table">
+              <thead>
+                <tr>
+                  <th>Animal / Organism</th>
+                  <th>Behaviour Observed</th>
+                  <th>Type of Behaviour</th>
+                  <th>Stimulus</th>
+                  <th>Adaptive Advantage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="obs-example">e.g. Wilson's bird-of-paradise</td>
+                  <td class="obs-example">Male clears a stage on the forest floor, performs elaborate dance display</td>
+                  <td class="obs-example">Innate (courtship display)</td>
+                  <td class="obs-example">Presence of female</td>
+                  <td class="obs-example">Increases mating success; genetically programmed display ensures species recognition</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Why This Matters for the Exam</h4>
+            <p>
+              In the AS 91603 external exam, you will need to describe and explain animal
+              behaviours using real examples. Building a bank of vivid, well-understood examples
+              from documentaries like Our Planet gives you concrete material to draw on. The
+              best exam answers use specific examples — not vague generalisations.
+            </p>
+          </div>
+
+          <div class="connection-box">
+            <h4>Connecting Back to Earlier Weeks</h4>
+            <p>
+              The behaviours you observe in this episode connect directly to the concepts you
+              studied in Weeks 3–6: taxis, kinesis, innate vs learned behaviour, orientation,
+              and navigation. As you watch, think about which category each behaviour fits
+              into. This is revision <em>and</em> new learning at the same time.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card sidebar-card--objectives fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li>Complete and submit a dry run report on glucose homeostasis (AS 91604)</li>
+            <li>Demonstrate understanding of the full negative feedback loop for blood glucose regulation</li>
+            <li>Identify and classify animal behaviours observed in a documentary context</li>
+            <li>Distinguish between innate and learned behaviours with real examples</li>
+            <li>Link observed behaviours to adaptive advantages and evolutionary significance</li>
+          </ul>
+        </div>
+
+        <!-- Key Reminders -->
+        <div class="sidebar-card sidebar-card--deadline fade-in-up">
+          <h3>Key Reminders</h3>
+          <div class="sidebar-reminder">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span><strong>Dry run due:</strong> 25 March, 23:59</span>
+          </div>
+          <div class="sidebar-reminder">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>This is a <strong>practice run</strong> — you will get feedback before the real assessment</span>
+          </div>
+          <div class="sidebar-reminder">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2V3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7V3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Use the checklist on this page to self-check before submitting</span>
+          </div>
+        </div>
+
+        <!-- Building On -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 7:</strong> Introduction to homeostasis — set points, receptors,
+            effectors, negative feedback
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 8:</strong> Glucose homeostasis in detail — insulin, glucagon,
+            signal transduction, diabetes
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>This week:</strong> Applying Weeks 7–8 knowledge in the dry run, then
+            returning to AS 91603 animal behaviours via Our Planet
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Reference Material</h3>
+          <div class="sidebar-links">
+            <a href={`${base}/week/7`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 7: Intro to Homeostasis</span>
+            </a>
+            <a href={`${base}/week/8`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 8: Glucose Homeostasis</span>
+            </a>
+            <a href={`${base}/week/3`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 3: Simple Animal Responses</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Standards Info -->
+        <div class="sidebar-card fade-in-up">
+          <h3>This Week's Standards</h3>
+          <p class="sidebar-text"><strong>AS 91604</strong> (Internal, 3 credits)</p>
+          <p class="sidebar-text">How an animal maintains a stable internal environment</p>
+          <p class="sidebar-text" style="margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle);">
+            <strong>AS 91603</strong> (External, 5 credits)
+          </p>
+          <p class="sidebar-text">Responses of plants and animals to their external environment</p>
+        </div>
+
+      </aside>
+
+    </div><!-- /week-layout -->
+
+  </div><!-- /week-page -->
+
+
+  <!-- ====================================================================
+       Styles
+       ==================================================================== -->
+  <style>
+    /* ==========================================================================
+       Week 9 Page Styles — Transition Week
+       ========================================================================== */
+
+    .week-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-8);
+    }
+
+    /* ── Fade-in animation ── */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Week Header ── */
+    .week-header {
+      margin-bottom: var(--space-7);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .week-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover { color: var(--accent); }
+    .term-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+    .week-header__title-row { margin-bottom: var(--space-3); }
+    .week-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .week-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+    }
+    .week-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border-radius: var(--radius-full);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .badge--standard { background: rgba(0, 255, 136, 0.1); color: var(--accent); }
+    .badge--internal { background: rgba(255, 180, 0, 0.12); color: #fbbf24; }
+    .badge--external { background: rgba(0, 229, 255, 0.12); color: var(--fluoro-cyan); }
+    .badge--desc {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0;
+      font-weight: var(--weight-normal);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Quick Navigation ── */
+    .week-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .week-nav__link {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+    /* ── Two-Column Layout ── */
+    .week-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .week-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Main Content ── */
+    .week-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .content-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .content-section h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--accent);
+    }
+    .content-section h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .content-section h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+    .section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-relaxed);
+    }
+    .content-section p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ── Lesson Inline Nav ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+    .lesson-inline-nav__link:hover { opacity: 0.8; }
+
+    /* ── Encouragement Box ── */
+    .encouragement-box {
+      display: flex;
+      gap: var(--space-3);
+      background: rgba(0, 255, 136, 0.06);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-5) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .encouragement-box svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+    .encouragement-box strong { color: var(--accent); }
+
+    /* ── Deadline Box ── */
+    .deadline-box {
+      display: flex;
+      gap: var(--space-4);
+      background: rgba(255, 180, 0, 0.07);
+      border: 1px solid rgba(255, 180, 0, 0.25);
+      border-left: 4px solid #fbbf24;
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .deadline-box__icon {
+      flex-shrink: 0;
+      color: #fbbf24;
+      margin-top: 2px;
+    }
+    .deadline-box strong {
+      display: block;
+      font-size: var(--text-base);
+      color: #fbbf24;
+      margin-bottom: var(--space-1);
+    }
+    .deadline-box__date {
+      display: block;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .deadline-box p {
+      font-size: var(--text-sm) !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── Internal Note ── */
+    .internal-note {
+      display: flex;
+      gap: var(--space-3);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-left: 4px solid #fbbf24;
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-5) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .internal-note svg { flex-shrink: 0; margin-top: 2px; color: #fbbf24; }
+    .internal-note strong { color: #fbbf24; }
+
+    /* ── Action Steps ── */
+    .action-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .action-step {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .action-step__number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--surface-0);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      border-radius: var(--radius-full);
+    }
+    .action-step__content {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      padding-top: 4px;
+    }
+    .action-step__content strong { color: var(--text-primary); }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       CHECKLIST
+       ───────────────────────────────────────────────────────────────────── */
+    .checklist-group {
+      margin-bottom: var(--space-5);
+    }
+    .checklist-group h3 {
+      margin-top: var(--space-4);
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .checklist li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--text-muted);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       GRADE TIPS
+       ───────────────────────────────────────────────────────────────────── */
+    .grade-tips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .grade-tips { grid-template-columns: 1fr; }
+    }
+    .grade-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .grade-card__header {
+      margin-bottom: var(--space-4);
+    }
+    .grade-card__header h3 {
+      margin-top: 0;
+      margin-bottom: var(--space-1);
+    }
+    .grade-card__label {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .grade-card--merit { border-top: 3px solid var(--fluoro-cyan); }
+    .grade-card--merit .grade-card__header h3 { color: var(--fluoro-cyan); }
+    .grade-card--excellence { border-top: 3px solid var(--accent); }
+    .grade-card--excellence .grade-card__header h3 { color: var(--accent); }
+
+    /* ── Feature List ── */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ── Exam Tip ── */
+    .exam-tip {
+      background: rgba(255, 110, 199, 0.06);
+      border: 1px solid rgba(255, 110, 199, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-4) 0;
+    }
+    .exam-tip h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--fluoro-pink);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+    .exam-tip p { font-size: var(--text-sm); }
+
+    /* ── Connection Box ── */
+    .connection-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .connection-box h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       BEHAVIOUR CATEGORIES
+       ───────────────────────────────────────────────────────────────────── */
+    .behaviour-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .behaviour-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .behaviour-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .behaviour-card__header svg { flex-shrink: 0; }
+    .behaviour-card__header h4 {
+      margin: 0;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+    .behaviour-card p {
+      font-size: var(--text-sm) !important;
+      margin-bottom: 0 !important;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       OBSERVATION TABLE
+       ───────────────────────────────────────────────────────────────────── */
+    .observation-table-wrap {
+      overflow-x: auto;
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+    .observation-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      min-width: 700px;
+    }
+    .observation-table th {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      border-bottom: 2px solid var(--border-default);
+    }
+    .observation-table td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      vertical-align: top;
+      min-height: 48px;
+    }
+    .observation-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .observation-table tbody tr:hover {
+      background: var(--surface-2);
+    }
+    .obs-example {
+      color: var(--text-muted) !important;
+      font-style: italic;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       SIDEBAR
+       ───────────────────────────────────────────────────────────────────── */
+    .week-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: sticky;
+      top: calc(var(--space-8) + 60px);
+    }
+    .sidebar-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .sidebar-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .sidebar-card--objectives { border-top: 3px solid var(--accent); }
+    .sidebar-card--connection { border-top: 3px solid var(--fluoro-cyan); }
+    .sidebar-card--deadline { border-top: 3px solid #fbbf24; }
+
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .objectives-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .objectives-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── Sidebar Reminders ── */
+    .sidebar-reminder {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-3);
+    }
+    .sidebar-reminder:last-child { margin-bottom: 0; }
+    .sidebar-reminder svg { flex-shrink: 0; margin-top: 2px; color: #fbbf24; }
+    .sidebar-reminder strong { color: var(--text-primary); }
+
+    /* ── Sidebar Links ── */
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sidebar-link__icon { flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    .sidebar-text--highlight {
+      background: var(--surface-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      margin-top: var(--space-3);
+    }
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script is:inline>
+
+    /* ======================================================================
+       IntersectionObserver — Fade-in-up animations
+       ====================================================================== */
+    (function initObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    })();
+
+  </script>
+
+</BaseLayout>
