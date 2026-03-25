@@ -7,23 +7,23 @@
 
 export const currentWeek = {
   /** Week number (matches /week/:num route) */
-  number: 6,
+  number: 9,
   /** Term display string */
   term: 'Term 1',
   /** Main topic title for the large card */
-  topicTitle: 'Physiological Triggers of Migration',
+  topicTitle: 'Dry Run Submission & Our Planet',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91603 — How Animals "Know" When to Migrate',
+  topicSubtitle: 'AS 91604 — Glucose Homeostasis Dry Run + AS 91603 — Animal Behaviours',
   /** Standard accent colour variable */
-  accentColour: 'var(--standard-3-colour)',
+  accentColour: 'var(--standard-4-colour)',
   /** Description paragraph for the large card */
   description:
-    'How do animals "know" when to migrate? Explore the cascade from photoperiod ' +
-    'detection through the hypothalamus and hormonal triggers to Zugunruhe — ' +
-    'migratory restlessness. NZ case studies, interactive quiz, and graded exam ' +
-    'questions with model answers.',
+    'Lessons 1–2: Complete and submit your glucose homeostasis dry run ' +
+    '(deadline 23:59, 25 March). Checklist, Merit/Excellence tips, and links ' +
+    'to Weeks 7–8 for reference. Lesson 3: Watch Our Planet S1E3 and identify ' +
+    'animal behaviours — innate, learned, taxis, kinesis, and more.',
   /** Standard badge info */
-  standardCode: 'AS 91603',
-  credits: 5,
-  type: 'External' as const,
+  standardCode: 'AS 91604',
+  credits: 3,
+  type: 'Internal' as const,
 };
