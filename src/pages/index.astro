@@ -85,35 +85,32 @@ const activeWeeks = [3, 4, 5, 6, 7, 8, 9];
           </p>
           <div class="card-illustration" aria-hidden="true">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Honeycomb cells -->
-              <path d="M40 30 L50 24 L60 30 L60 42 L50 48 L40 42 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M60 30 L70 24 L80 30 L80 42 L70 48 L60 42 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M50 48 L60 42 L70 48 L70 60 L60 66 L50 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M30 48 L40 42 L50 48 L50 60 L40 66 L30 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M70 48 L80 42 L90 48 L90 60 L80 66 L70 60 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M40 66 L50 60 L60 66 L60 78 L50 84 L40 78 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <path d="M60 66 L70 60 L80 66 L80 78 L70 84 L60 78 Z" fill="none" stroke="rgba(255,193,7,0.3)" stroke-width="0.8"/>
-              <!-- Figure-8 waggle dance path -->
-              <path d="M60 45 C75 45 78 58 60 65" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2" opacity="0.4" stroke-dasharray="3 2"/>
-              <path d="M60 45 C45 45 42 58 60 65" fill="none" stroke="var(--fluoro-cyan)" stroke-width="1.2" opacity="0.4" stroke-dasharray="3 2"/>
-              <!-- Waggle run -->
-              <line x1="60" y1="45" x2="60" y2="65" stroke="var(--fluoro-cyan)" stroke-width="2" opacity="0.7"/>
-              <polyline points="57,48 63,52 57,56 63,60 57,64" fill="none" stroke="var(--green-vivid)" stroke-width="1" opacity="0.5"/>
-              <!-- Bee -->
-              <ellipse cx="60" cy="50" rx="5" ry="8" fill="var(--standard-3-colour)" opacity="0.5"/>
-              <ellipse cx="60" cy="50" rx="3" ry="5" fill="var(--standard-3-colour)" opacity="0.3"/>
-              <!-- Wings -->
-              <ellipse cx="53" cy="49" rx="4" ry="7" fill="rgba(200,230,255,0.15)" transform="rotate(-15 53 49)"/>
-              <ellipse cx="67" cy="49" rx="4" ry="7" fill="rgba(200,230,255,0.15)" transform="rotate(15 67 49)"/>
-              <!-- Sun -->
-              <circle cx="90" cy="20" r="6" fill="none" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.4"/>
-              <line x1="90" y1="10" x2="90" y2="13" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
-              <line x1="90" y1="27" x2="90" y2="30" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
-              <line x1="80" y1="20" x2="83" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
-              <line x1="97" y1="20" x2="100" y2="20" stroke="var(--fluoro-pink)" stroke-width="1" opacity="0.3"/>
-              <!-- Direction arrow -->
-              <line x1="60" y1="85" x2="60" y2="100" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
-              <text x="60" y="112" font-size="7" fill="var(--accent)" opacity="0.5" font-family="var(--font-mono)" text-anchor="middle">direction</text>
+              <!-- Clipboard (dry run submission) -->
+              <rect x="20" y="18" width="36" height="48" rx="4" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.5"/>
+              <rect x="30" y="14" width="16" height="8" rx="3" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.5"/>
+              <!-- Checklist ticks -->
+              <line x1="28" y1="32" x2="48" y2="32" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
+              <path d="M26 32l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              <line x1="28" y1="40" x2="48" y2="40" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
+              <path d="M26 40l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              <line x1="28" y1="48" x2="48" y2="48" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
+              <path d="M26 48l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              <line x1="28" y1="56" x2="48" y2="56" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.2"/>
+              <!-- Globe (Our Planet) -->
+              <circle cx="80" cy="60" r="24" stroke="var(--fluoro-cyan)" stroke-width="1.2" fill="none" opacity="0.4"/>
+              <!-- Latitude lines -->
+              <ellipse cx="80" cy="60" rx="24" ry="8" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
+              <ellipse cx="80" cy="60" rx="24" ry="16" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
+              <!-- Longitude lines -->
+              <ellipse cx="80" cy="60" rx="10" ry="24" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
+              <!-- Landmass hints -->
+              <path d="M68 50 C72 46 78 48 80 52 C82 56 76 58 72 54 Z" fill="var(--fluoro-cyan)" opacity="0.15"/>
+              <path d="M84 62 C88 58 96 60 94 66 C92 72 86 70 84 66 Z" fill="var(--fluoro-cyan)" opacity="0.15"/>
+              <!-- Play button overlay -->
+              <circle cx="80" cy="60" r="10" fill="none" stroke="var(--green-vivid)" stroke-width="1.2" opacity="0.5"/>
+              <polygon points="77,54 77,66 88,60" fill="var(--green-vivid)" opacity="0.4"/>
+              <!-- Connecting dotted arc between clipboard and globe -->
+              <path d="M56 42 C64 30 72 35 74 42" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.3"/>
             </svg>
           </div>
           <div class="card-meta">
