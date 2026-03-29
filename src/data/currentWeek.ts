@@ -18,11 +18,11 @@ export const currentWeek = {
   accentColour: 'var(--standard-4-colour)',
   /** Description paragraph for the large card */
   description:
-    'Three more homeostatic systems to broaden your understanding before ' +
-    'choosing your internal topic. Lesson 1: Osmoregulation — how the kidneys ' +
-    'balance water and ions. Lesson 2: Blood calcium regulation via parathyroid ' +
-    'hormone and calcitonin. Lesson 3: Blood pH regulation through buffers, ' +
-    'lungs, and kidneys.',
+    'Four more homeostatic systems to broaden your understanding before ' +
+    'choosing your internal topic. Lesson 1: Osmoregulation. Lesson 2: Blood ' +
+    'calcium regulation. Lesson 3: Blood pH regulation. Lesson 4: Oxygen ' +
+    'homeostasis and iron regulation — the EPO feedback loop and the ' +
+    'hepcidin–ferroportin axis.',
   /** Standard badge info */
   standardCode: 'AS 91604',
   credits: 3,

@@ -1,0 +1,1713 @@
+---
+/* ==========================================================================
+   Week 10 — Homeostatic Systems Survey
+   AS 91604: Demonstrate understanding of how an animal maintains a stable
+   internal environment (3 credits, Internal)
+
+   Lesson 1: Osmoregulation — Water & Ion Balance
+   Lesson 2: Blood Calcium Regulation
+   Lesson 3: Blood pH Regulation
+   Lesson 4: Oxygen Homeostasis & Iron Regulation
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 10: Homeostatic Systems Survey — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge">Term 1</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 10</span>
+        <h1 class="week-title">Homeostatic Systems Survey</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91604</span>
+        <span class="badge badge--internal">Internal</span>
+        <span class="badge badge--desc">Four more homeostatic systems — overview for your internal topic choice</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Osmoregulation</a>
+      <a href="#lesson-2" class="week-nav__link">Lesson 2: Blood Calcium</a>
+      <a href="#lesson-3" class="week-nav__link">Lesson 3: Blood pH</a>
+      <a href="#lesson-4" class="week-nav__link">Lesson 4: Oxygen &amp; Iron</a>
+      <a href="#choosing"  class="week-nav__link">Choosing Your Topic</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: Osmoregulation — Water & Ion Balance
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 1 of 4</span>
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 2: Blood Calcium
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 1: Osmoregulation — Water &amp; Ion Balance</h2>
+
+          <p class="section-intro">
+            Osmoregulation is the control of water and dissolved solute concentrations in the
+            body fluids. It is one of the most popular choices for the AS 91604 internal because
+            of the clear, well-documented feedback mechanisms involving the kidneys.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Overview lesson:</strong> This is a survey, not a deep dive. You are
+              learning what osmoregulation involves so you can decide whether to choose it
+              for your internal. The independent research is yours to do.
+            </div>
+          </div>
+
+
+          <!-- ── What Is Being Regulated? ── -->
+          <h3>What Is Being Regulated?</h3>
+
+          <p>
+            The <strong>osmolarity</strong> (concentration of dissolved solutes) of blood and
+            tissue fluids must be kept within a narrow range — approximately
+            <strong>300 mOsm/L</strong> in humans. If blood becomes too dilute (hypotonic),
+            cells swell and can burst. If blood becomes too concentrated (hypertonic), cells
+            shrink and lose function. Either extreme is life-threatening.
+          </p>
+          <p>
+            Water balance is intimately linked to ion balance — particularly
+            <strong>sodium (Na⁺)</strong> and <strong>potassium (K⁺)</strong>. The kidneys
+            regulate both simultaneously.
+          </p>
+
+
+          <!-- ── The Feedback Loop ── -->
+          <h3>The Negative Feedback Loop</h3>
+
+          <div class="feedback-loop-summary">
+            <div class="loop-component">
+              <span class="loop-label">Stimulus</span>
+              <span class="loop-detail">Blood osmolarity rises (e.g. after eating salty food, sweating, or not drinking enough water)</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Receptor / Sensor</span>
+              <span class="loop-detail"><strong>Osmoreceptors</strong> in the <strong>hypothalamus</strong> detect the increase in blood solute concentration (they physically shrink as water leaves the cells by osmosis)</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Control Centre</span>
+              <span class="loop-detail"><strong>Hypothalamus</strong> signals the <strong>posterior pituitary gland</strong> to release <strong>antidiuretic hormone (ADH)</strong> — also called vasopressin</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Effectors</span>
+              <span class="loop-detail">
+                <strong>Kidneys</strong> — specifically the <strong>collecting ducts</strong> and <strong>distal convoluted tubules</strong> of the nephron. ADH causes insertion of <strong>aquaporin-2</strong> water channels into the collecting duct membranes, increasing water reabsorption back into the blood
+              </span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Response</span>
+              <span class="loop-detail">More water reabsorbed → blood osmolarity decreases back toward set point → small volume of concentrated urine produced. When osmolarity falls, ADH secretion decreases and more dilute urine is produced</span>
+            </div>
+          </div>
+
+
+          <!-- ── Additional Detail ── -->
+          <h3>Key Details for Depth</h3>
+
+          <p>
+            If you choose osmoregulation, these are the concepts you will need to research
+            independently for Merit and Excellence:
+          </p>
+          <ul>
+            <li><strong>The nephron:</strong> The functional unit of the kidney — understand glomerular filtration, selective reabsorption in the proximal convoluted tubule, the loop of Henle (countercurrent multiplier creating the medullary concentration gradient), and ADH-controlled reabsorption in the collecting duct</li>
+            <li><strong>Aquaporins:</strong> ADH triggers insertion of aquaporin-2 channels into collecting duct cell membranes via exocytosis of vesicles — this is the molecular mechanism</li>
+            <li><strong>Aldosterone:</strong> A second hormone from the adrenal cortex that increases Na⁺ reabsorption in the distal tubule, pulling water with it (the renin-angiotensin-aldosterone system, or RAAS)</li>
+            <li><strong>Thirst response:</strong> The hypothalamus also triggers the sensation of thirst when osmolarity rises — driving behavioural water intake</li>
+          </ul>
+
+
+          <!-- ── When It Goes Wrong ── -->
+          <h3>When Osmoregulation Fails</h3>
+
+          <ul>
+            <li><strong>Diabetes insipidus:</strong> Insufficient ADH production (central) or kidneys not responding to ADH (nephrogenic) — produces large volumes of very dilute urine and extreme thirst. Not related to blood glucose or diabetes mellitus</li>
+            <li><strong>Hyponatraemia:</strong> Blood sodium too low — often from drinking excessive water without electrolytes (e.g. during endurance sports). Cells swell, brain swells, can be fatal</li>
+            <li><strong>Dehydration:</strong> Insufficient water intake or excessive loss — blood osmolarity rises dangerously, organs fail as cells can no longer function</li>
+          </ul>
+
+
+          <!-- ── Assessment Box ── -->
+          <div class="topic-assessment">
+            <div class="topic-pros">
+              <h4>Strengths</h4>
+              <ul>
+                <li>Very well-resourced — covered extensively in Campbell Biology and all NZ textbooks</li>
+                <li>Clear, nameable components at every level (osmoreceptors, hypothalamus, posterior pituitary, ADH, aquaporin-2, nephron)</li>
+                <li>The ADH mechanism gives you molecular detail for Excellence (vesicle fusion, aquaporin insertion)</li>
+                <li>Strong examples of breakdown (diabetes insipidus, hyponatraemia)</li>
+                <li>Probably the most popular internal choice nationally</li>
+              </ul>
+            </div>
+            <div class="topic-considerations">
+              <h4>Things to Watch</h4>
+              <ul>
+                <li>You need to understand the nephron — this is more anatomy to learn than thermoregulation</li>
+                <li>Don't confuse diabetes insipidus with diabetes mellitus — they are completely different conditions</li>
+                <li>The RAAS (aldosterone) pathway adds depth but also complexity — decide whether to include it based on your confidence level</li>
+                <li>Make sure you explain <em>how</em> aquaporins work, not just that they exist</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 2: Blood Calcium Regulation
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-2" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 1
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 2 of 4</span>
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 3: Blood pH
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 2: Blood Calcium Regulation</h2>
+
+          <p class="section-intro">
+            Blood calcium (Ca²⁺) is maintained at approximately <strong>2.2–2.6 mmol/L</strong>.
+            This is a beautifully clean example of homeostasis — two antagonistic hormones from
+            the thyroid and parathyroid glands, working in opposition, just like insulin and
+            glucagon. If you liked the elegance of glucose regulation, calcium may appeal to you.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Parallel structure:</strong> Notice the similarities to glucose homeostasis —
+              two antagonistic hormones, a set point, and negative feedback. This makes it
+              easier to write about because the structure mirrors what you already know.
+            </div>
+          </div>
+
+
+          <!-- ── What Is Being Regulated? ── -->
+          <h3>What Is Being Regulated?</h3>
+
+          <p>
+            The concentration of <strong>ionised calcium (Ca²⁺)</strong> in the blood. Calcium
+            is not just about bones — it is essential for:
+          </p>
+          <ul>
+            <li><strong>Muscle contraction:</strong> Ca²⁺ triggers the sliding filament mechanism in both skeletal and cardiac muscle</li>
+            <li><strong>Nerve impulse transmission:</strong> Required for neurotransmitter release at synapses</li>
+            <li><strong>Blood clotting:</strong> Ca²⁺ is a cofactor in the clotting cascade</li>
+            <li><strong>Cell signalling:</strong> Acts as a second messenger in many intracellular pathways</li>
+            <li><strong>Bone structure:</strong> 99% of body calcium is stored in bones as calcium phosphate (hydroxyapatite)</li>
+          </ul>
+
+
+          <!-- ── The Feedback Loop ── -->
+          <h3>The Negative Feedback Loop</h3>
+
+          <div class="feedback-loop-summary">
+            <div class="loop-component loop-component--split">
+              <span class="loop-label">Stimulus — Too Low</span>
+              <span class="loop-detail">Blood Ca²⁺ falls below ~2.2 mmol/L</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Receptor &amp; Control Centre</span>
+              <span class="loop-detail"><strong>Parathyroid glands</strong> (four small glands on the posterior surface of the thyroid) detect low blood Ca²⁺ via <strong>calcium-sensing receptors (CaSR)</strong> on their cell surfaces</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Hormone Released</span>
+              <span class="loop-detail"><strong>Parathyroid hormone (PTH)</strong> is secreted into the blood</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Effectors (three targets)</span>
+              <span class="loop-detail">
+                <strong>1. Bones:</strong> PTH stimulates <strong>osteoclasts</strong> to break down bone matrix, releasing Ca²⁺ into the blood<br/>
+                <strong>2. Kidneys:</strong> PTH increases Ca²⁺ reabsorption in the distal tubule (less calcium lost in urine) and activates vitamin D<br/>
+                <strong>3. Intestine:</strong> Active vitamin D (calcitriol, activated by PTH in the kidneys) increases Ca²⁺ absorption from food in the small intestine
+              </span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Response</span>
+              <span class="loop-detail">Blood Ca²⁺ rises back toward set point → parathyroid glands detect the increase → PTH secretion decreases (negative feedback)</span>
+            </div>
+          </div>
+
+          <h4>The Antagonistic Hormone: Calcitonin</h4>
+
+          <p>
+            When blood Ca²⁺ is <strong>too high</strong>, the <strong>thyroid gland</strong>
+            (specifically the <strong>parafollicular C cells</strong>) releases
+            <strong>calcitonin</strong>. Calcitonin opposes PTH:
+          </p>
+          <ul>
+            <li>Inhibits osteoclast activity → less calcium released from bone</li>
+            <li>Reduces Ca²⁺ reabsorption in the kidneys → more calcium lost in urine</li>
+            <li>The net effect: blood Ca²⁺ decreases back toward the set point</li>
+          </ul>
+          <p>
+            This is the same antagonistic pattern as insulin/glucagon — two hormones pulling
+            in opposite directions to maintain balance.
+          </p>
+
+
+          <!-- ── When It Goes Wrong ── -->
+          <h3>When Calcium Regulation Fails</h3>
+
+          <ul>
+            <li><strong>Hypocalcaemia</strong> (Ca²⁺ too low) — muscle cramps, tingling, cardiac arrhythmias, tetany (uncontrolled muscle contractions). Often caused by vitamin D deficiency or parathyroid removal during thyroid surgery</li>
+            <li><strong>Hypercalcaemia</strong> (Ca²⁺ too high) — kidney stones, bone pain, fatigue, confusion, cardiac arrest in extreme cases. Often caused by overactive parathyroid glands (hyperparathyroidism) or certain cancers</li>
+            <li><strong>Osteoporosis:</strong> Chronic calcium imbalance where bone resorption exceeds bone formation — bones become porous and fragile. Related to long-term PTH/calcitonin balance and declining oestrogen after menopause</li>
+          </ul>
+
+
+          <!-- ── Assessment Box ── -->
+          <div class="topic-assessment">
+            <div class="topic-pros">
+              <h4>Strengths</h4>
+              <ul>
+                <li>Clean antagonistic hormone pair (PTH vs calcitonin) — mirrors glucose regulation structure</li>
+                <li>Three distinct effector targets (bone, kidney, intestine) give you plenty to write about</li>
+                <li>The vitamin D activation pathway adds molecular depth for Excellence</li>
+                <li>Excellent real-world relevance (osteoporosis, vitamin D deficiency)</li>
+                <li>Less commonly chosen — stands out if well-written</li>
+              </ul>
+            </div>
+            <div class="topic-considerations">
+              <h4>Things to Watch</h4>
+              <ul>
+                <li>Fewer NZ-specific teaching resources than osmoregulation or thermoregulation</li>
+                <li>The vitamin D activation pathway (skin → liver → kidney) adds complexity</li>
+                <li>Make sure you clearly distinguish the parathyroid glands (PTH) from the thyroid gland (calcitonin) — they are separate structures</li>
+                <li>Name the specific cell types: osteoclasts (break down bone), osteoblasts (build bone), parafollicular C cells (release calcitonin)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 3: Blood pH Regulation
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-3" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-2" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 2
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 3 of 4</span>
+            <a href="#lesson-4" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lesson 4: Oxygen &amp; Iron
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 3: Blood pH Regulation</h2>
+
+          <p class="section-intro">
+            Blood pH is maintained at <strong>7.35–7.45</strong> — slightly alkaline. Even small
+            deviations are dangerous. This is arguably the most complex homeostatic system to
+            write about because it involves three simultaneous mechanisms (chemical buffers,
+            respiratory compensation, and renal compensation). It is a strong choice for
+            confident students aiming at Excellence.
+          </p>
+
+
+          <!-- ── What Is Being Regulated? ── -->
+          <h3>What Is Being Regulated?</h3>
+
+          <p>
+            The <strong>hydrogen ion concentration [H⁺]</strong> of the blood, expressed as pH.
+            Normal arterial blood pH is <strong>7.4</strong> (range 7.35–7.45). Below 7.35 is
+            <strong>acidosis</strong>; above 7.45 is <strong>alkalosis</strong>. Death typically
+            occurs below pH 6.8 or above pH 7.8.
+          </p>
+          <p>
+            Why is this so tightly controlled? Proteins — including enzymes, haemoglobin, and
+            membrane transporters — change shape when pH changes. Even 0.1 pH unit makes a
+            significant difference to enzyme activity. Haemoglobin's oxygen-carrying capacity
+            is directly affected by pH (the <strong>Bohr effect</strong>).
+          </p>
+
+
+          <!-- ── The Three Lines of Defence ── -->
+          <h3>Three Lines of Defence</h3>
+
+          <p>
+            Blood pH regulation is unique among homeostatic systems because it uses three
+            different mechanisms simultaneously, operating at different speeds:
+          </p>
+
+          <div class="defence-cards">
+            <div class="defence-card">
+              <div class="defence-card__header">
+                <span class="defence-number">1</span>
+                <div>
+                  <h4>Chemical Buffer Systems</h4>
+                  <span class="defence-speed">Instant (seconds)</span>
+                </div>
+              </div>
+              <p>
+                The <strong>bicarbonate buffer system</strong> is the most important. Carbon
+                dioxide (CO₂) produced by cellular respiration reacts with water to form
+                carbonic acid (H₂CO₃), which dissociates into bicarbonate (HCO₃⁻) and H⁺:
+              </p>
+              <div class="equation">
+                CO₂ + H₂O ⇌ H₂CO₃ ⇌ HCO₃⁻ + H⁺
+              </div>
+              <p>
+                This equilibrium shifts to absorb or release H⁺ as needed. If blood becomes
+                too acidic (too much H⁺), the reaction shifts left — H⁺ combines with HCO₃⁻
+                to form CO₂, which is exhaled. If blood becomes too alkaline, the reaction
+                shifts right, releasing more H⁺.
+              </p>
+              <p>
+                Other buffers include <strong>phosphate buffers</strong> (important inside cells)
+                and <strong>protein buffers</strong> (haemoglobin is a major one).
+              </p>
+            </div>
+
+            <div class="defence-card">
+              <div class="defence-card__header">
+                <span class="defence-number">2</span>
+                <div>
+                  <h4>Respiratory Compensation</h4>
+                  <span class="defence-speed">Fast (minutes)</span>
+                </div>
+              </div>
+              <p>
+                <strong>Peripheral chemoreceptors</strong> in the <strong>carotid bodies</strong>
+                and <strong>aortic bodies</strong> detect changes in blood CO₂ and pH.
+                <strong>Central chemoreceptors</strong> in the <strong>medulla oblongata</strong>
+                of the brainstem detect CO₂ in the cerebrospinal fluid.
+              </p>
+              <p>
+                When blood pH drops (too acidic, meaning too much CO₂):
+              </p>
+              <ul>
+                <li>The <strong>medulla oblongata</strong> (respiratory centre) increases breathing rate and depth</li>
+                <li>More CO₂ is exhaled → the equilibrium shifts left → H⁺ decreases → pH rises</li>
+              </ul>
+              <p>
+                When blood pH rises (too alkaline, too little CO₂):
+              </p>
+              <ul>
+                <li>Breathing rate decreases → CO₂ is retained → equilibrium shifts right → more H⁺ released → pH falls</li>
+              </ul>
+            </div>
+
+            <div class="defence-card">
+              <div class="defence-card__header">
+                <span class="defence-number">3</span>
+                <div>
+                  <h4>Renal Compensation</h4>
+                  <span class="defence-speed">Slow (hours to days)</span>
+                </div>
+              </div>
+              <p>
+                The <strong>kidneys</strong> provide the most powerful but slowest correction.
+                The <strong>proximal convoluted tubule</strong> and <strong>collecting duct</strong>
+                cells can:
+              </p>
+              <ul>
+                <li><strong>Excrete H⁺</strong> into the urine (using H⁺-ATPase pumps) when blood is too acidic</li>
+                <li><strong>Reabsorb HCO₃⁻</strong> back into the blood to replenish the buffer supply</li>
+                <li><strong>Produce new HCO₃⁻</strong> from glutamine metabolism in the proximal tubule cells</li>
+                <li>Conversely, excrete HCO₃⁻ and retain H⁺ when blood is too alkaline</li>
+              </ul>
+              <p>
+                The kidneys are the only mechanism that can actually <em>eliminate</em> excess
+                acid from the body (rather than just buffering or shifting it). This is why
+                kidney failure causes severe acidosis.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- ── The Feedback Loop (Respiratory) ── -->
+          <h3>The Respiratory Feedback Loop</h3>
+
+          <div class="feedback-loop-summary">
+            <div class="loop-component">
+              <span class="loop-label">Stimulus</span>
+              <span class="loop-detail">Blood pH drops below 7.35 (acidosis) — often due to increased CO₂ from exercise or metabolic processes</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Receptors</span>
+              <span class="loop-detail"><strong>Peripheral chemoreceptors</strong> (carotid bodies, aortic bodies) and <strong>central chemoreceptors</strong> (medulla oblongata) detect elevated CO₂ / lowered pH</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Control Centre</span>
+              <span class="loop-detail"><strong>Medulla oblongata</strong> (respiratory centre in the brainstem) — sends increased nerve impulses to the diaphragm and intercostal muscles</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Effectors</span>
+              <span class="loop-detail"><strong>Diaphragm</strong> and <strong>intercostal muscles</strong> — increase breathing rate and tidal volume → more CO₂ exhaled per minute</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Response</span>
+              <span class="loop-detail">Blood CO₂ decreases → equilibrium shifts left → H⁺ consumed → pH rises back toward 7.4 → chemoreceptors detect normalisation → breathing rate returns to normal (negative feedback)</span>
+            </div>
+          </div>
+
+
+          <!-- ── When It Goes Wrong ── -->
+          <h3>When pH Regulation Fails</h3>
+
+          <ul>
+            <li><strong>Respiratory acidosis:</strong> CO₂ builds up because the lungs cannot expel it fast enough (e.g. COPD, pneumonia, asthma attack). Blood pH drops. Kidneys compensate slowly by excreting more H⁺</li>
+            <li><strong>Metabolic acidosis:</strong> Excess acid from metabolism (e.g. lactic acid during intense exercise, ketoacids in uncontrolled Type 1 diabetes — diabetic ketoacidosis). The respiratory system compensates by hyperventilation (Kussmaul breathing)</li>
+            <li><strong>Respiratory alkalosis:</strong> Too much CO₂ exhaled — typically from hyperventilation (anxiety, altitude). Blood pH rises. Classic treatment: breathe into a paper bag to retain CO₂</li>
+            <li><strong>Metabolic alkalosis:</strong> Loss of H⁺ (e.g. excessive vomiting) or excess bicarbonate intake. Respiratory compensation: breathing rate decreases</li>
+          </ul>
+
+          <div class="connection-box">
+            <h4>Cross-Topic Link: Diabetes &amp; pH</h4>
+            <p>
+              Notice how Type 1 diabetes connects glucose homeostasis failure to pH failure.
+              Without insulin, cells cannot take up glucose → switch to fat metabolism →
+              ketone bodies produced → blood becomes acidic (diabetic ketoacidosis, DKA).
+              This is where two homeostatic systems interact — excellent material for an
+              Excellence-level discussion if you choose either glucose or pH regulation.
+            </p>
+          </div>
+
+
+          <!-- ── Assessment Box ── -->
+          <div class="topic-assessment">
+            <div class="topic-pros">
+              <h4>Strengths</h4>
+              <ul>
+                <li>Three interconnected mechanisms give you a lot to write about</li>
+                <li>Clear, nameable receptors (carotid bodies, medulla oblongata, central and peripheral chemoreceptors)</li>
+                <li>The bicarbonate buffer equation is elegant and easy to explain</li>
+                <li>Strong links to other topics (exercise physiology, diabetes, respiratory disease)</li>
+                <li>Rarely chosen — a well-written report on this topic would impress</li>
+              </ul>
+            </div>
+            <div class="topic-considerations">
+              <h4>Things to Watch</h4>
+              <ul>
+                <li>Most complex of the four options — requires confidence with chemistry (equilibrium, buffers)</li>
+                <li>Fewer visual diagrams available in standard textbooks</li>
+                <li>The renal mechanism is difficult to explain clearly at Level 8</li>
+                <li>You need to decide whether to focus on the respiratory feedback loop (simpler) or cover all three mechanisms (more ambitious)</li>
+                <li>Best suited for students confident in both biology and chemistry</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 4: Oxygen Homeostasis & Iron Regulation
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-4" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 3
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 4 of 4</span>
+          </nav>
+
+          <h2>Lesson 4: Oxygen Homeostasis &amp; Iron Regulation</h2>
+
+          <p class="section-intro">
+            Your body needs a steady supply of oxygen to every cell. When oxygen delivery drops
+            — at altitude, after blood loss, or in anaemia — the body responds by making more
+            red blood cells. This is <strong>erythropoiesis</strong>, and it is controlled by a
+            clean negative feedback loop centred on the hormone <strong>erythropoietin (EPO)</strong>.
+            Iron regulation is the linked system that makes erythropoiesis possible — you cannot
+            build haemoglobin without iron.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Two systems, one lesson:</strong> Oxygen homeostasis (the EPO loop) is the
+              main feedback mechanism. Iron homeostasis (the hepcidin pathway) is a supporting
+              system that modulates the EPO response. For your internal, you would frame this
+              as oxygen homeostasis with iron as a linked mechanism — not two separate topics.
+            </div>
+          </div>
+
+
+          <!-- ── What Is Being Regulated? ── -->
+          <h3>What Is Being Regulated?</h3>
+
+          <p>
+            The <strong>oxygen-carrying capacity</strong> of the blood — specifically, the number
+            of circulating <strong>red blood cells (erythrocytes)</strong> and the amount of
+            <strong>haemoglobin</strong> they contain. Normal haemoglobin concentration is
+            approximately <strong>130–170 g/L</strong> in males and <strong>120–150 g/L</strong>
+            in females.
+          </p>
+          <p>
+            Each haemoglobin molecule contains four <strong>haem groups</strong>, and each haem
+            group contains one <strong>iron (Fe²⁺) ion</strong> that reversibly binds one O₂
+            molecule. This is why iron is essential — without it, haemoglobin cannot be
+            assembled and oxygen cannot be transported.
+          </p>
+
+
+          <!-- ── The EPO Feedback Loop ── -->
+          <h3>The Negative Feedback Loop: Erythropoiesis</h3>
+
+          <div class="feedback-loop-summary">
+            <div class="loop-component">
+              <span class="loop-label">Stimulus</span>
+              <span class="loop-detail">Blood oxygen levels fall — for example, after moving to high altitude, blood loss (haemorrhage or donation), or during chronic lung disease</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Receptor / Sensor</span>
+              <span class="loop-detail"><strong>Peritubular interstitial cells</strong> in the <strong>kidneys</strong> detect reduced oxygen delivery (hypoxia) using <strong>hypoxia-inducible factor (HIF)</strong> — a transcription factor that accumulates when oxygen is low</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Control Centre &amp; Hormone</span>
+              <span class="loop-detail">The kidneys (primarily — the liver produces ~10%) secrete <strong>erythropoietin (EPO)</strong> into the blood. EPO is a glycoprotein hormone</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Effector</span>
+              <span class="loop-detail"><strong>Red bone marrow</strong> — EPO stimulates the proliferation and differentiation of <strong>erythrocyte precursor cells</strong> (proerythroblasts → reticulocytes → mature red blood cells). The rate of red blood cell production increases</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Response</span>
+              <span class="loop-detail">More red blood cells in circulation → increased oxygen-carrying capacity → oxygen delivery to tissues returns toward normal → kidneys detect adequate O₂ → EPO secretion decreases (negative feedback)</span>
+            </div>
+          </div>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Time lag:</strong> Unlike respiratory pH compensation (minutes) or thermoregulation
+              (seconds), erythropoiesis is slow. It takes <strong>3–5 days</strong> for new red blood cells
+              to appear in circulation after EPO release, and full adaptation to altitude takes
+              <strong>weeks</strong>. This time lag is important to mention in an assessment.
+            </div>
+          </div>
+
+
+          <!-- ── Iron Homeostasis ── -->
+          <h3>The Linked System: Iron Regulation</h3>
+
+          <p>
+            Erythropoiesis requires a reliable supply of iron. Each new red blood cell needs
+            iron for its haemoglobin, so when EPO ramps up production, iron demand surges. The
+            body regulates iron through a separate but interconnected pathway centred on the
+            liver hormone <strong>hepcidin</strong>.
+          </p>
+
+          <div class="defence-cards">
+            <div class="defence-card">
+              <div class="defence-card__header">
+                <span class="defence-number">Fe</span>
+                <div>
+                  <h4>The Hepcidin–Ferroportin Axis</h4>
+                  <span class="defence-speed">Regulated by liver</span>
+                </div>
+              </div>
+              <p>
+                <strong>Hepcidin</strong> is a peptide hormone produced by the <strong>liver</strong>.
+                It controls how much iron enters the blood by acting on <strong>ferroportin</strong>
+                — the only known iron export channel on cell surfaces.
+              </p>
+              <ul>
+                <li><strong>High iron stores / adequate oxygen:</strong> Hepcidin levels rise → hepcidin binds to ferroportin on intestinal cells and macrophages → ferroportin is degraded → less iron enters the blood (iron is trapped inside cells)</li>
+                <li><strong>Low iron stores / hypoxia / increased erythropoiesis:</strong> Hepcidin levels fall → ferroportin remains active → more iron is absorbed from food in the duodenum and more is released from macrophages that recycle old red blood cells</li>
+              </ul>
+              <p>
+                This is how the two systems connect: when EPO drives increased red blood cell
+                production, <strong>erythroferrone</strong> (a hormone released by developing
+                erythroblasts in the bone marrow) suppresses hepcidin, unlocking iron stores
+                to meet the demand.
+              </p>
+            </div>
+
+            <div class="defence-card">
+              <div class="defence-card__header">
+                <span class="defence-number">&#x267B;</span>
+                <div>
+                  <h4>Iron Recycling</h4>
+                  <span class="defence-speed">The body's primary iron source</span>
+                </div>
+              </div>
+              <p>
+                Humans have <strong>no regulated mechanism for excreting iron</strong> — this is
+                unusual compared with other ions. Instead, the body is remarkably efficient at
+                recycling:
+              </p>
+              <ul>
+                <li>Old red blood cells (lifespan ~120 days) are engulfed by <strong>macrophages</strong> in the spleen and liver</li>
+                <li>The iron from haemoglobin is extracted and either stored as <strong>ferritin</strong> or released via ferroportin back into the blood</li>
+                <li>Released iron binds to <strong>transferrin</strong> (a transport protein) and is carried to the bone marrow to make new haemoglobin</li>
+                <li>Only about <strong>1–2 mg/day</strong> of iron is absorbed from the diet — replacing small losses from skin shedding and minor bleeding</li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!-- ── Key Details for Depth ── -->
+          <h3>Key Details for Depth</h3>
+
+          <p>
+            If you choose oxygen homeostasis, these concepts will strengthen your response
+            for Merit and Excellence:
+          </p>
+          <ul>
+            <li><strong>HIF pathway:</strong> Under normal oxygen, HIF is constantly broken down (hydroxylated then ubiquitinated). In hypoxia, HIF accumulates and activates the EPO gene — this is the molecular switch. The 2019 Nobel Prize in Physiology or Medicine was awarded for this discovery</li>
+            <li><strong>Erythroferrone:</strong> The recently discovered hormone that links erythropoiesis to iron supply by suppressing hepcidin — shows how the two systems communicate</li>
+            <li><strong>2,3-BPG:</strong> At altitude, red blood cells increase production of 2,3-bisphosphoglycerate, which reduces haemoglobin's affinity for oxygen → more O₂ released to tissues. This is a short-term compensatory mechanism that acts before new red blood cells are produced</li>
+            <li><strong>Transferrin saturation:</strong> The percentage of transferrin bound to iron — a clinical measure that reflects the balance between iron supply and demand</li>
+          </ul>
+
+
+          <!-- ── When It Goes Wrong ── -->
+          <h3>When Oxygen / Iron Homeostasis Fails</h3>
+
+          <ul>
+            <li><strong>Iron-deficiency anaemia:</strong> The most common nutritional deficiency worldwide. Insufficient iron → insufficient haemoglobin → reduced oxygen delivery → fatigue, pallor, breathlessness. EPO rises but cannot fully compensate because the building material is missing</li>
+            <li><strong>Polycythaemia:</strong> Too many red blood cells — blood becomes viscous, increasing risk of clots. Can result from chronic hypoxia (e.g. living at high altitude, chronic lung disease) or from EPO-producing tumours</li>
+            <li><strong>Haemochromatosis:</strong> A genetic condition where hepcidin is underproduced or non-functional → uncontrolled iron absorption → iron overload damages the liver, heart, and pancreas</li>
+            <li><strong>Chronic kidney disease:</strong> Damaged kidneys produce less EPO → severe anaemia. Treated with synthetic EPO injections (the same molecule misused in doping)</li>
+          </ul>
+
+          <div class="connection-box">
+            <h4>Real-World Link: EPO &amp; Doping in Sport</h4>
+            <p>
+              Synthetic EPO (epoetin alfa) was developed to treat anaemia in kidney disease
+              patients. Athletes discovered that injecting EPO dramatically increased red blood
+              cell count and endurance performance — most infamously in professional cycling
+              (the Lance Armstrong scandal). EPO doping is now detectable through blood passport
+              testing, which monitors an athlete's haematocrit and reticulocyte levels over time
+              for suspicious changes. This is a powerful example of what happens when a
+              homeostatic set point is artificially overridden.
+            </p>
+          </div>
+
+
+          <!-- ── Assessment Box ── -->
+          <div class="topic-assessment">
+            <div class="topic-pros">
+              <h4>Strengths</h4>
+              <ul>
+                <li>Clean, well-defined negative feedback loop (EPO) with nameable components at every step</li>
+                <li>The linked iron/hepcidin system adds depth and shows interacting homeostatic mechanisms — impressive for Excellence</li>
+                <li>Compelling real-world examples (altitude training, blood doping, anaemia, kidney disease)</li>
+                <li>The HIF/Nobel Prize connection provides strong molecular detail</li>
+                <li>Rarely chosen — a well-written response on this topic would stand out</li>
+              </ul>
+            </div>
+            <div class="topic-considerations">
+              <h4>Things to Watch</h4>
+              <ul>
+                <li>Fewer NZ textbook resources than thermoregulation or osmoregulation — you will need to use university-level sources</li>
+                <li>The hepcidin pathway is relatively recently characterised — some older textbooks do not cover it</li>
+                <li>You need to clearly frame this as oxygen homeostasis with iron as a linked mechanism — not two disconnected topics</li>
+                <li>The time lag (days to weeks) means the feedback loop operates differently from the rapid responses in thermoregulation or pH regulation — explain why</li>
+                <li>Best suited for students comfortable with molecular detail and reading beyond the textbook</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Choosing Your Topic
+             —————————————————————————————————————————————————————————————— -->
+        <section id="choosing" class="content-section fade-in-up">
+          <h2>Choosing Your Internal Topic</h2>
+
+          <p class="section-intro">
+            You have now been introduced to five homeostatic systems. It is time to start
+            thinking about which one you will choose for your AS 91604 internal assessment.
+            Here is a summary to help you compare.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Thermoregulation</th>
+                  <th>Osmoregulation</th>
+                  <th>Blood Calcium</th>
+                  <th>Blood pH</th>
+                  <th>Oxygen / Iron</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>What is regulated</strong></td>
+                  <td>Core body temp (~37 °C)</td>
+                  <td>Blood osmolarity (~300 mOsm/L)</td>
+                  <td>Blood Ca²⁺ (~2.4 mmol/L)</td>
+                  <td>Blood pH (7.35–7.45)</td>
+                  <td>Blood O₂ capacity (Hb ~130–170 g/L)</td>
+                </tr>
+                <tr>
+                  <td><strong>Control centre</strong></td>
+                  <td>Hypothalamus</td>
+                  <td>Hypothalamus → posterior pituitary</td>
+                  <td>Parathyroid &amp; thyroid glands</td>
+                  <td>Medulla oblongata (respiratory); kidneys (renal)</td>
+                  <td>Kidneys (EPO); liver (hepcidin)</td>
+                </tr>
+                <tr>
+                  <td><strong>Key hormones / signals</strong></td>
+                  <td>Nerve signals via autonomic NS</td>
+                  <td>ADH (vasopressin), aldosterone</td>
+                  <td>PTH, calcitonin, vitamin D</td>
+                  <td>Nerve signals to diaphragm; H⁺/HCO₃⁻ exchange in kidneys</td>
+                  <td>EPO, erythroferrone, hepcidin, HIF</td>
+                </tr>
+                <tr>
+                  <td><strong>Main effectors</strong></td>
+                  <td>Sweat glands, blood vessels, skeletal muscle, brown fat</td>
+                  <td>Kidney nephrons (collecting duct + distal tubule)</td>
+                  <td>Bones (osteoclasts/osteoblasts), kidneys, intestine</td>
+                  <td>Lungs (diaphragm, intercostals), kidneys (tubule cells)</td>
+                  <td>Red bone marrow (erythroblasts); intestine &amp; macrophages (iron)</td>
+                </tr>
+                <tr>
+                  <td><strong>Breakdown example</strong></td>
+                  <td>Hypothermia, heat stroke</td>
+                  <td>Diabetes insipidus, hyponatraemia</td>
+                  <td>Osteoporosis, hypocalcaemia</td>
+                  <td>DKA, respiratory acidosis</td>
+                  <td>Iron-deficiency anaemia, polycythaemia, haemochromatosis</td>
+                </tr>
+                <tr>
+                  <td><strong>Complexity</strong></td>
+                  <td>Moderate</td>
+                  <td>Moderate–High</td>
+                  <td>Moderate</td>
+                  <td>High</td>
+                  <td>Moderate–High</td>
+                </tr>
+                <tr>
+                  <td><strong>Resource availability</strong></td>
+                  <td>Excellent</td>
+                  <td>Excellent</td>
+                  <td>Good</td>
+                  <td>Good (but fewer NZ-specific)</td>
+                  <td>Moderate (university-level sources needed)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Your choice, your work:</strong> These lessons have given you a broad
+              overview so you know what each system involves. The in-depth research,
+              explanation, and report writing is your independent work for the assessment.
+              Choose the topic you find most interesting and where you are confident you
+              can find good resources. Talk to Dr Eliot if you are unsure.
+            </div>
+          </div>
+
+          <div class="exam-tip">
+            <h4>Remember the Dry Run Feedback</h4>
+            <p>
+              You will receive feedback on your glucose homeostasis dry run soon. That feedback
+              tells you what you need to improve in your writing — apply those same improvements
+              to whichever system you choose. The writing skills transfer directly: naming
+              specific components, explaining mechanisms (not just naming them), and linking
+              back to biological significance.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Learning Objectives -->
+        <div class="sidebar-card sidebar-card--objectives fade-in-up">
+          <h3>Learning Objectives</h3>
+          <ul class="objectives-list">
+            <li>Describe the key components of osmoregulation, including ADH and the nephron</li>
+            <li>Explain the antagonistic roles of PTH and calcitonin in blood calcium regulation</li>
+            <li>Outline the three mechanisms of blood pH regulation (buffers, respiratory, renal)</li>
+            <li>Describe the EPO feedback loop and explain how iron regulation supports erythropoiesis</li>
+            <li>Compare five homeostatic systems using the five-component framework</li>
+            <li>Make an informed choice of topic for the AS 91604 internal assessment</li>
+          </ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Key Vocabulary</h3>
+          <div class="vocab-chips">
+            <span class="vocab-chip">osmolarity</span>
+            <span class="vocab-chip">osmoreceptors</span>
+            <span class="vocab-chip">ADH / vasopressin</span>
+            <span class="vocab-chip">aquaporin-2</span>
+            <span class="vocab-chip">nephron</span>
+            <span class="vocab-chip">collecting duct</span>
+            <span class="vocab-chip">aldosterone</span>
+            <span class="vocab-chip">PTH</span>
+            <span class="vocab-chip">calcitonin</span>
+            <span class="vocab-chip">osteoclasts</span>
+            <span class="vocab-chip">osteoblasts</span>
+            <span class="vocab-chip">parafollicular C cells</span>
+            <span class="vocab-chip">calcium-sensing receptor</span>
+            <span class="vocab-chip">chemoreceptors</span>
+            <span class="vocab-chip">medulla oblongata</span>
+            <span class="vocab-chip">bicarbonate buffer</span>
+            <span class="vocab-chip">acidosis</span>
+            <span class="vocab-chip">alkalosis</span>
+            <span class="vocab-chip">erythropoietin (EPO)</span>
+            <span class="vocab-chip">erythropoiesis</span>
+            <span class="vocab-chip">hypoxia-inducible factor (HIF)</span>
+            <span class="vocab-chip">hepcidin</span>
+            <span class="vocab-chip">ferroportin</span>
+            <span class="vocab-chip">erythroferrone</span>
+            <span class="vocab-chip">transferrin</span>
+            <span class="vocab-chip">ferritin</span>
+            <span class="vocab-chip">haemoglobin</span>
+            <span class="vocab-chip">polycythaemia</span>
+          </div>
+        </div>
+
+        <!-- Building On -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>Building On</h3>
+          <p class="sidebar-text">
+            <strong>Week 7:</strong> Introduction to homeostasis — set points, feedback loops,
+            the five components
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 8:</strong> Glucose homeostasis in detail + thermoregulation introduction
+          </p>
+          <p class="sidebar-text">
+            <strong>Week 9:</strong> Dry run submission + thermoregulation as internal option
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            <strong>This week:</strong> Survey of four more homeostatic systems —
+            osmoregulation, blood calcium, blood pH, and oxygen/iron
+          </p>
+        </div>
+
+        <!-- Assessment Info -->
+        <div class="sidebar-card fade-in-up">
+          <h3>About AS 91604</h3>
+          <p class="sidebar-text"><strong>Credits:</strong> 3</p>
+          <p class="sidebar-text"><strong>Assessment type:</strong> Internal</p>
+          <p class="sidebar-text"><strong>How assessed:</strong> Written report submitted to your teacher</p>
+          <p class="sidebar-text sidebar-text--highlight">
+            Choose one homeostatic system (not glucose — that was your practice).
+            Your report must demonstrate understanding of the complete negative feedback
+            loop with specific, named biological components.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Reference Material</h3>
+          <div class="sidebar-links">
+            <a href={`${base}/week/7`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 7: Intro to Homeostasis</span>
+            </a>
+            <a href={`${base}/week/8`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--fluoro-pink)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--fluoro-pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 8: Glucose Homeostasis</span>
+            </a>
+            <a href={`${base}/week/9#lesson-4`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="var(--fluoro-cyan)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13 2v7h7" stroke="var(--fluoro-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Week 9: Thermoregulation Overview</span>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div><!-- /week-layout -->
+
+  </div><!-- /week-page -->
+
+
+  <!-- ====================================================================
+       Styles
+       ==================================================================== -->
+  <style>
+    /* ==========================================================================
+       Week 10 Page Styles — Homeostatic Systems Survey
+       ========================================================================== */
+
+    .week-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-8);
+    }
+
+    /* ── Fade-in animation ── */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Week Header ── */
+    .week-header {
+      margin-bottom: var(--space-7);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .week-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover { color: var(--accent); }
+    .term-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+    .week-header__title-row { margin-bottom: var(--space-3); }
+    .week-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .week-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+    }
+    .week-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border-radius: var(--radius-full);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .badge--standard { background: rgba(0, 255, 136, 0.1); color: var(--accent); }
+    .badge--internal { background: rgba(255, 180, 0, 0.12); color: #fbbf24; }
+    .badge--desc {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0;
+      font-weight: var(--weight-normal);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Quick Navigation ── */
+    .week-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .week-nav__link {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+    /* ── Two-Column Layout ── */
+    .week-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .week-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Main Content ── */
+    .week-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .content-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .content-section h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--accent);
+    }
+    .content-section h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .content-section h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+    .section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-relaxed);
+    }
+    .content-section p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+    .content-section ul,
+    .content-section ol {
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+      padding-left: var(--space-5);
+    }
+    .content-section li {
+      margin-bottom: var(--space-2);
+    }
+
+    /* ── Lesson Inline Nav ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+    .lesson-inline-nav__link:hover { opacity: 0.8; }
+
+    /* ── Internal Note ── */
+    .internal-note {
+      display: flex;
+      gap: var(--space-3);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-left: 4px solid #fbbf24;
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin: var(--space-5) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .internal-note svg { flex-shrink: 0; margin-top: 2px; color: #fbbf24; }
+    .internal-note strong { color: #fbbf24; }
+
+    /* ── Exam Tip ── */
+    .exam-tip {
+      background: rgba(255, 110, 199, 0.06);
+      border: 1px solid rgba(255, 110, 199, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin: var(--space-4) 0;
+    }
+    .exam-tip h4 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--fluoro-pink);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+    .exam-tip p { font-size: var(--text-sm); }
+
+    /* ── Connection Box ── */
+    .connection-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .connection-box h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       FEEDBACK LOOP SUMMARY
+       ───────────────────────────────────────────────────────────────────── */
+    .feedback-loop-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: var(--space-5) 0;
+    }
+    .loop-component {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .loop-component--split {
+      border-left: 4px solid var(--fluoro-cyan);
+    }
+    .loop-label {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-sm);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .loop-detail {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .loop-arrow {
+      display: flex;
+      justify-content: center;
+      padding: var(--space-1) 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       TOPIC ASSESSMENT (pros / considerations)
+       ───────────────────────────────────────────────────────────────────── */
+    .topic-assessment {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .topic-assessment { grid-template-columns: 1fr; }
+    }
+    .topic-pros,
+    .topic-considerations {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .topic-pros { border-top: 3px solid var(--accent); }
+    .topic-considerations { border-top: 3px solid var(--fluoro-pink); }
+    .topic-pros h4 { color: var(--accent); margin-top: 0; }
+    .topic-considerations h4 { color: var(--fluoro-pink); margin-top: 0; }
+    .topic-pros ul,
+    .topic-considerations ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .topic-pros li,
+    .topic-considerations li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .topic-pros li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      opacity: 0.6;
+    }
+    .topic-considerations li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--fluoro-pink);
+      opacity: 0.6;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       DEFENCE CARDS (pH three lines)
+       ───────────────────────────────────────────────────────────────────── */
+    .defence-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .defence-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .defence-card__header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .defence-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--surface-0);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      border-radius: var(--radius-full);
+    }
+    .defence-card__header h4 {
+      margin: 0;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+    .defence-speed {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--accent);
+    }
+    .defence-card p {
+      font-size: var(--text-sm) !important;
+    }
+    .defence-card ul {
+      font-size: var(--text-sm);
+    }
+
+    /* ── Chemical Equation ── */
+    .equation {
+      font-family: var(--font-mono);
+      font-size: var(--text-base);
+      color: var(--fluoro-cyan);
+      text-align: center;
+      padding: var(--space-4);
+      background: var(--surface-0);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin: var(--space-4) 0;
+      letter-spacing: 0.02em;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       COMPARISON TABLE
+       ───────────────────────────────────────────────────────────────────── */
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: var(--space-5) 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      min-width: 700px;
+    }
+    .comparison-table th {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      border-bottom: 2px solid var(--border-default);
+    }
+    .comparison-table td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .comparison-table tbody tr:last-child td { border-bottom: none; }
+    .comparison-table tbody tr:hover { background: var(--surface-2); }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       SIDEBAR
+       ───────────────────────────────────────────────────────────────────── */
+    .week-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: sticky;
+      top: calc(var(--space-8) + 60px);
+    }
+    .sidebar-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .sidebar-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .sidebar-card--objectives { border-top: 3px solid var(--accent); }
+    .sidebar-card--connection { border-top: 3px solid var(--fluoro-cyan); }
+
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .objectives-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .objectives-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── Vocab Chips ── */
+    .vocab-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .vocab-chip {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+    }
+
+    /* ── Sidebar Links ── */
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sidebar-link__icon { flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    .sidebar-text--highlight {
+      background: var(--surface-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      margin-top: var(--space-3);
+    }
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script is:inline>
+
+    /* ======================================================================
+       IntersectionObserver — Fade-in-up animations
+       ====================================================================== */
+    (function initObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    })();
+
+  </script>
+
+</BaseLayout>
