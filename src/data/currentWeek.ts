@@ -13,7 +13,7 @@ export const currentWeek = {
   /** Main topic title for the large card */
   topicTitle: 'Homeostatic Systems Survey',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91604 — Osmoregulation, Blood Calcium & Blood pH',
+  topicSubtitle: 'AS 91604 — Osmoregulation, Blood Calcium, Blood pH & Oxygen/Iron',
   /** Standard accent colour variable */
   accentColour: 'var(--standard-4-colour)',
   /** Description paragraph for the large card */
