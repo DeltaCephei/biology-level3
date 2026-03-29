@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* Week numbers 1–40 for the browse grid */
 const totalWeeks = 40;
 /* Weeks with dedicated content pages — add week numbers here as they're built */
-const activeWeeks = [3, 4, 5, 6, 7, 8, 9];
+const activeWeeks = [3, 4, 5, 6, 7, 8, 9, 10];
 ---
 
 <BaseLayout title="Level 3 Biology — Course Platform">
@@ -85,32 +85,32 @@ const activeWeeks = [3, 4, 5, 6, 7, 8, 9];
           </p>
           <div class="card-illustration" aria-hidden="true">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Clipboard (dry run submission) -->
-              <rect x="20" y="18" width="36" height="48" rx="4" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.5"/>
-              <rect x="30" y="14" width="16" height="8" rx="3" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.5"/>
-              <!-- Checklist ticks -->
-              <line x1="28" y1="32" x2="48" y2="32" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
-              <path d="M26 32l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-              <line x1="28" y1="40" x2="48" y2="40" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
-              <path d="M26 40l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-              <line x1="28" y1="48" x2="48" y2="48" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.3"/>
-              <path d="M26 48l2 2 4-4" stroke="var(--green-vivid)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-              <line x1="28" y1="56" x2="48" y2="56" stroke="var(--standard-4-colour)" stroke-width="1" opacity="0.2"/>
-              <!-- Globe (Our Planet) -->
-              <circle cx="80" cy="60" r="24" stroke="var(--fluoro-cyan)" stroke-width="1.2" fill="none" opacity="0.4"/>
-              <!-- Latitude lines -->
-              <ellipse cx="80" cy="60" rx="24" ry="8" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
-              <ellipse cx="80" cy="60" rx="24" ry="16" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
-              <!-- Longitude lines -->
-              <ellipse cx="80" cy="60" rx="10" ry="24" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
-              <!-- Landmass hints -->
-              <path d="M68 50 C72 46 78 48 80 52 C82 56 76 58 72 54 Z" fill="var(--fluoro-cyan)" opacity="0.15"/>
-              <path d="M84 62 C88 58 96 60 94 66 C92 72 86 70 84 66 Z" fill="var(--fluoro-cyan)" opacity="0.15"/>
-              <!-- Play button overlay -->
-              <circle cx="80" cy="60" r="10" fill="none" stroke="var(--green-vivid)" stroke-width="1.2" opacity="0.5"/>
-              <polygon points="77,54 77,66 88,60" fill="var(--green-vivid)" opacity="0.4"/>
-              <!-- Connecting dotted arc between clipboard and globe -->
-              <path d="M56 42 C64 30 72 35 74 42" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.3"/>
+              <!-- Kidney (osmoregulation) -->
+              <path d="M22 40 C22 28 30 22 36 22 C42 22 46 28 44 36 C42 44 46 52 44 60 C42 68 36 72 30 68 C24 64 22 52 22 40Z" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.5"/>
+              <!-- Nephron tubule inside kidney -->
+              <path d="M32 32 C34 36 38 38 36 44 C34 50 30 48 32 54" stroke="var(--standard-4-colour)" stroke-width="0.8" fill="none" opacity="0.35" stroke-dasharray="2 1.5"/>
+              <!-- Water droplets near kidney -->
+              <path d="M18 36 L16 32 L14 36 C14 38 18 38 18 36Z" fill="var(--fluoro-cyan)" opacity="0.3"/>
+              <path d="M50 48 L48 44 L46 48 C46 50 50 50 50 48Z" fill="var(--fluoro-cyan)" opacity="0.25"/>
+              <!-- Bone (calcium regulation) — stylised femur -->
+              <path d="M62 20 C58 20 56 24 58 26 L58 28 C56 28 54 30 56 32 L60 32 L60 56 L56 56 C54 58 56 62 58 62 L60 62 C60 64 62 66 64 66 C66 66 68 64 68 62 L70 62 C72 62 74 58 72 56 L68 56 L68 32 L72 32 C74 30 72 28 70 28 L70 26 C72 24 70 20 66 20 Z" stroke="var(--standard-4-colour)" stroke-width="1.2" fill="none" opacity="0.45"/>
+              <!-- Ca²⁺ ions floating near bone -->
+              <text x="76" y="30" font-size="8" fill="var(--green-vivid)" opacity="0.5" font-family="var(--font-display)">Ca²⁺</text>
+              <text x="52" y="70" font-size="7" fill="var(--green-vivid)" opacity="0.35" font-family="var(--font-display)">Ca²⁺</text>
+              <!-- Lungs (pH regulation) -->
+              <path d="M94 46 C94 42 98 38 102 40 C106 42 108 50 108 58 C108 66 104 70 100 68 C96 66 94 58 94 50Z" stroke="var(--fluoro-cyan)" stroke-width="1.2" fill="none" opacity="0.4"/>
+              <path d="M94 46 C94 42 90 38 86 40 C82 42 80 50 80 58 C80 66 84 70 88 68 C92 66 94 58 94 50Z" stroke="var(--fluoro-cyan)" stroke-width="1.2" fill="none" opacity="0.4"/>
+              <!-- Trachea -->
+              <line x1="94" y1="32" x2="94" y2="46" stroke="var(--fluoro-cyan)" stroke-width="1.2" opacity="0.4"/>
+              <!-- CO₂ bubbles leaving lungs -->
+              <circle cx="86" cy="30" r="2.5" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.3"/>
+              <circle cx="102" cy="28" r="2" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.25"/>
+              <circle cx="96" cy="24" r="1.5" stroke="var(--fluoro-cyan)" stroke-width="0.8" fill="none" opacity="0.2"/>
+              <!-- pH label -->
+              <text x="84" y="80" font-size="9" fill="var(--fluoro-cyan)" opacity="0.4" font-family="var(--font-display)">pH 7.4</text>
+              <!-- Connecting dotted arcs — homeostatic balance theme -->
+              <path d="M44 45 C52 35 58 36 60 40" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.25"/>
+              <path d="M70 45 C76 38 82 40 84 46" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.25"/>
             </svg>
           </div>
           <div class="card-meta">
