@@ -8,6 +8,7 @@
 
    Lesson 1 & 2: Glucose Homeostasis Dry Run — Work & Submission
    Lesson 3: Our Planet S1E3 — Animal Behaviour Observations
+   Lesson 4: Thermoregulation — Your First Internal Option
    ========================================================================== */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -58,6 +59,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <a href="#merit-tips" class="week-nav__link">Merit/Excellence Tips</a>
       <a href="#lesson-3"   class="week-nav__link">Lesson 3: Our Planet</a>
       <a href="#observation" class="week-nav__link">Observation Sheet</a>
+      <a href="#lesson-4"   class="week-nav__link">Lesson 4: Thermoregulation</a>
     </nav>
 
 
@@ -383,7 +385,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               </svg>
               Lessons 1–2: Dry Run
             </a>
-            <span class="lesson-inline-nav__current">Lesson 3 of 3</span>
+            <span class="lesson-inline-nav__current">Lesson 3 of 4</span>
           </nav>
 
           <h2>Lesson 3: Our Planet — Animal Behaviour Observations</h2>
@@ -602,6 +604,178 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
         </section>
 
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 4: Thermoregulation — Your First Internal Option
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-4" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-3" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Lesson 3
+            </a>
+            <span class="lesson-inline-nav__current">Lesson 4 of 4</span>
+          </nav>
+
+          <h2>Lesson 4: Thermoregulation — Your First Internal Option</h2>
+
+          <p class="section-intro">
+            You studied thermoregulation in detail in
+            <a href={`${base}/week/8#lesson-4`}>Week 8, Lesson 4</a>. This lesson pulls that
+            knowledge together and frames it as a potential choice for your AS 91604 internal
+            assessment. Remember: glucose homeostasis is off-limits because we studied it
+            as a class. Thermoregulation is your first alternative.
+          </p>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Choosing your topic:</strong> Over the next four lessons (this one plus
+              three in Week 10) you will get an overview of four homeostatic systems. Each could
+              be your internal topic. Pay attention to which one interests you and where you can
+              find good resources.
+            </div>
+          </div>
+
+
+          <!-- ── Overview ── -->
+          <h3>What Is Being Regulated?</h3>
+
+          <p>
+            <strong>Core body temperature</strong> in humans is maintained at approximately
+            <strong>37 °C</strong> (range 36–38 °C). This is the set point. Enzymes throughout
+            the body are optimised for this temperature range — too far above or below and
+            metabolic reactions slow or stop, proteins denature, and cells die.
+          </p>
+
+
+          <!-- ── The Feedback Loop ── -->
+          <h3>The Negative Feedback Loop</h3>
+
+          <p>
+            Here is the complete thermoregulatory feedback loop, using the five components
+            you learned in Week 7:
+          </p>
+
+          <div class="feedback-loop-summary">
+            <div class="loop-component">
+              <span class="loop-label">Stimulus</span>
+              <span class="loop-detail">Body temperature rises above or falls below ~37 °C</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Receptor / Sensor</span>
+              <span class="loop-detail">Thermosensitive neurons in the <strong>hypothalamus</strong> detect blood temperature changes; <strong>peripheral thermoreceptors</strong> (TRP ion channels) in the skin detect external temperature</span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Control Centre</span>
+              <span class="loop-detail"><strong>Hypothalamus</strong> — compares current temperature with the set point and sends nerve signals via the <strong>autonomic nervous system</strong></span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Effectors</span>
+              <span class="loop-detail">
+                <strong>Too hot:</strong> skin blood vessels (vasodilation), eccrine sweat glands (sweating)<br/>
+                <strong>Too cold:</strong> skin blood vessels (vasoconstriction), skeletal muscles (shivering), brown adipose tissue (non-shivering thermogenesis)
+              </span>
+            </div>
+            <div class="loop-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4v12M6 12l4 4 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="loop-component">
+              <span class="loop-label">Response</span>
+              <span class="loop-detail">Body temperature returns toward the set point — the response <strong>opposes</strong> the original change (negative feedback)</span>
+            </div>
+          </div>
+
+
+          <!-- ── Why It Matters ── -->
+          <h3>Why Thermoregulation Matters (Biological Significance)</h3>
+
+          <p>
+            For Excellence, you need to explain <em>why</em> this matters at the cellular and
+            organism level:
+          </p>
+          <ul>
+            <li><strong>Enzyme function:</strong> Enzymes have optimal temperature ranges. Deviation reduces reaction rates (Q₁₀ effect) or causes denaturation</li>
+            <li><strong>Membrane fluidity:</strong> Cell membranes become too rigid when cold, too fluid when hot — affecting transport and signalling</li>
+            <li><strong>ATP production:</strong> Mitochondrial enzymes in the electron transport chain are temperature-sensitive — thermoregulation ensures consistent cellular respiration</li>
+            <li><strong>Nervous system:</strong> Action potentials are temperature-dependent — nerve conduction slows significantly below 35 °C</li>
+          </ul>
+
+
+          <!-- ── When It Goes Wrong ── -->
+          <h3>When Thermoregulation Fails</h3>
+
+          <p>
+            Two key examples of breakdown:
+          </p>
+          <ul>
+            <li><strong>Hypothermia</strong> (core temperature &lt; 35 °C) — shivering stops below ~30 °C as muscles lose function, heart rate drops, confusion sets in. Fatal below ~28 °C without intervention</li>
+            <li><strong>Hyperthermia / heat stroke</strong> (core temperature &gt; 40 °C) — sweating mechanisms overwhelmed, proteins begin to denature, organ damage occurs. The hypothalamus itself can be damaged, creating a dangerous positive feedback spiral</li>
+            <li><strong>Fever</strong> — a deliberate raising of the set point by the hypothalamus in response to infection (pyrogens). This is a controlled disruption that enhances immune function, not a failure of the system</li>
+          </ul>
+
+
+          <!-- ── Strengths as Internal Topic ── -->
+          <h3>Thermoregulation as an Internal Topic</h3>
+
+          <div class="topic-assessment">
+            <div class="topic-pros">
+              <h4>Strengths</h4>
+              <ul>
+                <li>Well-resourced — covered in all major biology textbooks</li>
+                <li>Clear, identifiable components (hypothalamus, sweat glands, blood vessels, brown fat)</li>
+                <li>You already have detailed notes from Week 8</li>
+                <li>Excellent real-world examples (fever, hypothermia, heat stroke)</li>
+                <li>Easy to draw a clear negative feedback diagram</li>
+              </ul>
+            </div>
+            <div class="topic-considerations">
+              <h4>Things to Watch</h4>
+              <ul>
+                <li>Do NOT include behavioural responses (putting on clothes, seeking shade) — 2022 moderation flagged this</li>
+                <li>Name the specific receptors (TRP channels, thermosensitive neurons in hypothalamus)</li>
+                <li>Distinguish between the two warming mechanisms: shivering (skeletal muscle) vs non-shivering thermogenesis (brown fat)</li>
+                <li>Explain countercurrent heat exchange if discussing how extremities are protected</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="internal-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v1M12 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <strong>Next week:</strong> In Week 10, we will overview three more homeostatic
+              systems — osmoregulation, blood calcium regulation, and blood pH regulation.
+              You will then choose which system to write about for your real internal.
+            </div>
+          </div>
+        </section>
+
+
       </main>
 
 
@@ -619,6 +793,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <li>Identify and classify animal behaviours observed in a documentary context</li>
             <li>Distinguish between innate and learned behaviours with real examples</li>
             <li>Link observed behaviours to adaptive advantages and evolutionary significance</li>
+            <li>Summarise the thermoregulatory feedback loop and evaluate it as an internal topic</li>
           </ul>
         </div>
 
@@ -1341,6 +1516,110 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
       margin-top: var(--space-3);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       FEEDBACK LOOP SUMMARY
+       ───────────────────────────────────────────────────────────────────── */
+    .feedback-loop-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: var(--space-5) 0;
+    }
+    .loop-component {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .loop-label {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-sm);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .loop-detail {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .loop-arrow {
+      display: flex;
+      justify-content: center;
+      padding: var(--space-1) 0;
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       TOPIC ASSESSMENT (pros / considerations)
+       ───────────────────────────────────────────────────────────────────── */
+    .topic-assessment {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 700px) {
+      .topic-assessment { grid-template-columns: 1fr; }
+    }
+    .topic-pros,
+    .topic-considerations {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .topic-pros { border-top: 3px solid var(--accent); }
+    .topic-considerations { border-top: 3px solid var(--fluoro-pink); }
+    .topic-pros h4 { color: var(--accent); margin-top: 0; }
+    .topic-considerations h4 { color: var(--fluoro-pink); margin-top: 0; }
+    .topic-pros ul,
+    .topic-considerations ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .topic-pros li,
+    .topic-considerations li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .topic-pros li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent);
+      opacity: 0.6;
+    }
+    .topic-considerations li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--fluoro-pink);
+      opacity: 0.6;
     }
   </style>
 

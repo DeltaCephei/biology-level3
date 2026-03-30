@@ -63,7 +63,8 @@ export const standards: Standard[] = [
     weeks: [
       { num: 7, title: 'Introduction to Homeostasis', hasContent: true },
       { num: 8, title: 'Thermoregulation', hasContent: true },
-      { num: 9, title: 'Dry Run Submission', hasContent: true },
+      { num: 9, title: 'Dry Run Submission & Thermoregulation Overview', hasContent: true },
+      { num: 10, title: 'Homeostatic Systems Survey', hasContent: true },
     ],
   },
   {
