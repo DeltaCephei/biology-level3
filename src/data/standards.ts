@@ -65,6 +65,7 @@ export const standards: Standard[] = [
       { num: 8, title: 'Thermoregulation', hasContent: true },
       { num: 9, title: 'Dry Run Submission & Thermoregulation Overview', hasContent: true },
       { num: 10, title: 'Homeostatic Systems Survey', hasContent: true },
+      { num: 11, title: 'Your Internal — Writing Time', hasContent: true },
     ],
   },
   {
