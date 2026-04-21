@@ -19,6 +19,8 @@ export interface Standard {
   type: 'Internal' | 'External';
   colour: string;
   weeks: StandardWeek[];
+  /** Optional submission deadline, shown on the standard page (internal assessments) */
+  dueDate?: string;
 }
 
 export const standards: Standard[] = [
@@ -58,8 +60,9 @@ export const standards: Standard[] = [
     title: 'Homeostasis',
     fullTitle: 'Demonstrate understanding of how an animal maintains a stable internal environment',
     credits: 3,
-    type: 'External',
+    type: 'Internal',
     colour: 'var(--standard-4-colour)',
+    dueDate: 'Due Fri 8 May 2026 · 23:59',
     weeks: [
       { num: 7, title: 'Introduction to Homeostasis', hasContent: true },
       { num: 8, title: 'Thermoregulation', hasContent: true },
