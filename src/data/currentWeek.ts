@@ -7,22 +7,22 @@
 
 export const currentWeek = {
   /** Week number (matches /week/:num route) */
-  number: 10,
+  number: 11,
   /** Term display string */
   term: 'Term 1',
   /** Main topic title for the large card */
-  topicTitle: 'Homeostatic Systems Survey',
+  topicTitle: 'Your Internal — Writing Time',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91604 — Osmoregulation, Blood Calcium, Blood pH & Oxygen/Iron',
+  topicSubtitle: 'AS 91604 — "Keeping it Steady" • due Fri 8 May, 23:59',
   /** Standard accent colour variable */
   accentColour: 'var(--standard-4-colour)',
   /** Description paragraph for the large card */
   description:
-    'Four more homeostatic systems to broaden your understanding before ' +
-    'choosing your internal topic. Lesson 1: Osmoregulation. Lesson 2: Blood ' +
-    'calcium regulation. Lesson 3: Blood pH regulation. Lesson 4: Oxygen ' +
-    'homeostasis and iron regulation — the EPO feedback loop and the ' +
-    'hepcidin–ferroportin axis.',
+    'The AS 91604 internal is live. Lesson 1: introduction to the standard, ' +
+    'the four-part report, the AI Use policy, and where support lives. ' +
+    'Lessons 2 & 3 (double): textbook site access via a personal email, ' +
+    'dry-run feedback, Milestone 1 sign-off, then supervised writing time ' +
+    'on Parts A and B. Due Friday 8 May, 23:59 via Teams.',
   /** Standard badge info */
   standardCode: 'AS 91604',
   credits: 3,
