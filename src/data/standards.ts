@@ -80,6 +80,24 @@ export const standards: Standard[] = [
     colour: 'var(--standard-5-colour)',
     weeks: [],
   },
+  {
+    code: '91606',
+    title: 'Human Evolution',
+    fullTitle: 'Demonstrate understanding of trends in human evolution',
+    credits: 4,
+    type: 'External',
+    colour: 'var(--standard-6-colour)',
+    weeks: [],
+  },
+  {
+    code: '91607',
+    title: 'Genetic Transfer',
+    fullTitle: 'Demonstrate understanding of human manipulations of genetic transfer and its biological implications',
+    credits: 3,
+    type: 'Internal',
+    colour: 'var(--standard-7-colour)',
+    weeks: [],
+  },
 ];
 
 /** Lookup a single standard by its code (e.g. '91603') */

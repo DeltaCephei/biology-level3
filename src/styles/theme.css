@@ -61,6 +61,8 @@
   --standard-3-colour: #ff6ec7;
   --standard-4-colour: #6c5ce7;
   --standard-5-colour: #74b9ff;
+  --standard-6-colour: #fbbf24;   /* Amber — fossil / anthropology */
+  --standard-7-colour: #f43f5e;   /* Crimson — lab / biotech */
 
   /* Semantic */
   --success: #00e676;
@@ -121,6 +123,8 @@
   --standard-3-colour: #db2777;   /* Pink, enriched                       */
   --standard-4-colour: #6c5ce7;   /* Purple holds well on light           */
   --standard-5-colour: #2563eb;   /* Blue, stronger                       */
+  --standard-6-colour: #b45309;   /* Amber, deeper for light              */
+  --standard-7-colour: #be123c;   /* Crimson, deeper for light            */
 
   /* Semantic — slightly darker for contrast */
   --success: #16a34a;
@@ -221,6 +225,8 @@
     --standard-3-colour: #db2777;
     --standard-4-colour: #6c5ce7;
     --standard-5-colour: #2563eb;
+    --standard-6-colour: #b45309;
+    --standard-7-colour: #be123c;
 
     /* Semantic */
     --success: #16a34a;

@@ -42,6 +42,8 @@
   --standard-3-colour: #ff6ec7;   /* AS 3.3 — Fluorescence pink             */
   --standard-4-colour: #6c5ce7;   /* AS 3.4 — Deep purple                   */
   --standard-5-colour: #74b9ff;   /* AS 3.5 — Cellular blue                 */
+  --standard-6-colour: #fbbf24;   /* AS 3.6 — Amber (fossil / anthropology) */
+  --standard-7-colour: #f43f5e;   /* AS 3.7 — Crimson (lab / biotech)       */
 
   /* --- Surface Colours (Dark Mode Default) ------------------------------ */
   --surface-0: #0a0e17;          /* Deepest background — near-black navy    */
