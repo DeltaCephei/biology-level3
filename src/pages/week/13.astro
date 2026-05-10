@@ -1,0 +1,879 @@
+---
+/* ==========================================================================
+   Week 13 — Why Paper Beats Browser: A Retrieval-Practice Lesson
+   Term 2 (Wks 11–21)
+
+   Lesson 1 (only one fully written this week): whole-class paper-based
+   free recall on the pre-homeostasis topics from Weeks 3–6 (animal
+   responses, taxes/kineses, waggle dance, migration). The page also
+   explains the science behind the activity so students see the reasoning.
+
+   Lessons 2–4: placeholder. Will be set later in the week.
+   ========================================================================== */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Week 13: Why Paper Beats Browser — Dr Eliot's Level 3 Biology">
+
+  <div class="week-page">
+
+    <!-- ====================================================================
+         Week Header
+         ==================================================================== -->
+    <header class="week-header fade-in-up">
+      <div class="week-header__meta">
+        <a href={base || "/"} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <span class="term-badge term-badge--t2">Term 2</span>
+      </div>
+
+      <div class="week-header__title-row">
+        <span class="week-number">Week 13</span>
+        <h1 class="week-title">Why Paper Beats Browser</h1>
+      </div>
+
+      <div class="week-header__badges">
+        <span class="badge badge--standard">AS 91603 prep</span>
+        <span class="badge badge--method">Retrieval Practice</span>
+        <span class="badge badge--desc">Lesson 1 only &mdash; rest of the week TBC</span>
+      </div>
+    </header>
+
+
+    <!-- ====================================================================
+         Quick Navigation
+         ==================================================================== -->
+    <nav class="week-nav fade-in-up" aria-label="Page sections">
+      <a href="#lesson-1" class="week-nav__link week-nav__link--active">Lesson 1: Paper Recall</a>
+      <a href="#science" class="week-nav__link">The Science Behind the Lesson</a>
+      <a href="#lessons-rest" class="week-nav__link">Lessons 2&ndash;4: TBC</a>
+    </nav>
+
+
+    <!-- ====================================================================
+         Two-Column Layout
+         ==================================================================== -->
+    <div class="week-layout">
+
+      <!-- ================================================================
+           Main Content
+           ================================================================ -->
+      <main class="week-main">
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lesson 1: Paper-based free recall
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lesson-1" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <span class="lesson-inline-nav__current">Lesson 1 of 4</span>
+            <a href="#science" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              The science behind it
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>Lesson 1: Paper Recall on the Pre-Homeostasis Topics</h2>
+
+          <p class="section-intro">
+            Today we go off-screen. Laptops shut, paper out. The activity is a free-recall
+            sweep across everything we covered in Weeks 3 to 6 &mdash; the animal-responses
+            content that feeds AS 91603. The point is not just to revise. It's for you to
+            <em>feel</em> why paper-based recall is the most efficient revision tool you
+            have, before I ask you to use it again on your own.
+          </p>
+
+
+          <h3>What You Need</h3>
+
+          <ul>
+            <li>A blank piece of paper (or a fresh page in your exercise book).</li>
+            <li>A pen.</li>
+            <li>A green pen or highlighter for the marking pass at the end.</li>
+            <li>That's it. No laptop. No notes. No textbook. No phone.</li>
+          </ul>
+
+
+          <h3>The Activity</h3>
+
+          <p>
+            Four prompts. <strong>Five to seven minutes per prompt.</strong> When the timer
+            starts, you write everything you can remember about that topic. Bullet points,
+            sentences, sketches, arrows, any format that helps you. After each prompt, pens
+            down, and we share out two or three answers as a class before moving on. Notes
+            stay closed between prompts &mdash; the gaps are doing the work.
+          </p>
+
+          <ol class="step-list">
+            <li>
+              <strong>Simple animal responses (Wk 3).</strong> What counts as a stimulus?
+              What counts as a response? What are the categories of simple response we
+              looked at? Examples in named species. How does this differ from a learned
+              response?
+            </li>
+            <li>
+              <strong>Taxes, kineses and pheromones (Wk 4).</strong> All the types of taxes
+              you can name (positive / negative; phototaxis, chemotaxis, geotaxis, and the
+              rest). What is a kinesis and how does it differ from a taxis? What do
+              pheromones do? Examples in named species.
+            </li>
+            <li>
+              <strong>The waggle dance and homing (Wk 5).</strong> What information does the
+              waggle dance encode? How is the dance decoded by other bees? How do homing
+              animals navigate &mdash; sun compass, magnetic, landmarks, olfactory? Pick a
+              named species for each.
+            </li>
+            <li>
+              <strong>Migration (Wks 5&ndash;6).</strong> What triggers migration
+              physiologically &mdash; photoperiod, hormones, fat loading? How does the body
+              prepare? What is the evolutionary advantage? What human impacts are
+              disrupting migration today?
+            </li>
+          </ol>
+
+          <h3>The Marking Pass (Last 10 Minutes)</h3>
+
+          <p>
+            When the four prompts are done, <em>now</em> open your notes. Mark your own
+            paper in green pen.
+          </p>
+
+          <ul>
+            <li><strong>Underline</strong> things you got right.</li>
+            <li><strong>Circle</strong> things you got wrong.</li>
+            <li><strong>Star</strong> things you missed entirely.</li>
+          </ul>
+
+          <p>
+            Hand the marked paper in at the end of the lesson, or photograph it for your
+            study folder. The starred and circled items are your revision priority list for
+            the rest of Term 2. The underlined items are what you actually own.
+          </p>
+
+          <div class="connection-box">
+            <h4>The Honest Bit</h4>
+            <p>
+              You will write less than you'd expect. That's normal. The gap between what
+              you think you know and what you can pull out cold is the most useful
+              information you'll get this week. It is far more useful than re-reading
+              everything and feeling fine.
+            </p>
+          </div>
+
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             The Science Behind the Lesson
+             —————————————————————————————————————————————————————————————— -->
+        <section id="science" class="content-section fade-in-up">
+          <nav class="lesson-inline-nav" aria-label="Lesson navigation">
+            <a href="#lesson-1" class="lesson-inline-nav__link lesson-inline-nav__link--prev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to the activity
+            </a>
+            <a href="#lessons-rest" class="lesson-inline-nav__link lesson-inline-nav__link--next">
+              Lessons 2&ndash;4
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </nav>
+
+          <h2>The Science Behind the Lesson</h2>
+
+          <p class="section-intro">
+            I'm running the lesson this way because the cognitive-science evidence for it is
+            unusually strong &mdash; and because the most-quoted version of the argument
+            (&ldquo;handwriting is biologically better for memory than typing&rdquo;) is
+            actually weaker than people say. Here is the honest version.
+          </p>
+
+
+          <!-- ── Idea 1 ── -->
+          <h3>1. Generation Beats Re-Reading by 30 to 50 percent</h3>
+
+          <p>
+            Closing the textbook (or the laptop) and <em>generating</em> an answer from
+            memory is the highest-yield study move you have. The classic estimate from the
+            generation-effect literature, going back to Slamecka and Graf (1978), is that
+            generation beats passive re-reading by roughly 30 to 50 percent on a delayed
+            test. Karpicke and Blunt (2011) in <em>Science</em> showed retrieval practice
+            outperformed concept-mapping by about 50 percent one week later. Carpenter, Pan
+            and Butler (2022) synthesised around 200 studies in <em>Nature Reviews
+            Psychology</em> and reported pooled effect sizes (Hedges <em>g</em>) between
+            0.50 and 0.63 for retention.
+          </p>
+
+          <p>
+            Translation for revision: <strong>swap re-reading for closed-book recall and you
+            are running 1.3 to 1.5 times more efficiently per minute</strong>. This is not
+            a small effect.
+          </p>
+
+
+          <!-- ── Idea 2 ── -->
+          <h3>2. Difficulty Is the Feature, Not the Bug</h3>
+
+          <p>
+            Robert Bjork's umbrella term for this is &ldquo;desirable difficulties&rdquo;.
+            The effort of pulling something out of your head strengthens the memory trace
+            more than putting it in does. The retrieval has to feel a bit hard for it to be
+            doing the work.
+          </p>
+
+          <p>
+            One consequence is uncomfortable: students who re-read material feel
+            <em>more</em> confident than students who self-test, but they routinely learn
+            less. The discomfort during retrieval is not a sign you're studying badly. It
+            is the data. If you can pull it out smoothly, you didn't need the practice. If
+            you can't, you just identified the gap that was going to cost you marks in the
+            external.
+          </p>
+
+
+          <!-- ── Idea 3 ── -->
+          <h3>3. Why Paper, Specifically</h3>
+
+          <p>
+            Honest version, since this is the bit people overstretch:
+          </p>
+
+          <p>
+            The headline study you might have heard of &mdash; Mueller and Oppenheimer
+            (2014), <em>The Pen Is Mightier Than the Keyboard</em> &mdash; <strong>did not
+            replicate cleanly</strong>. Morehead, Dunlosky and Rawson (2019) and Urry et al.
+            (2021) ran direct replications and the headline effect (handwriting beats laptop
+            for conceptual learning) didn't hold up. So the strong claim that handwriting
+            is biologically better than typing is not well supported. I'm not pretending
+            otherwise.
+          </p>
+
+          <p>
+            The argument for paper in this room is different and stronger:
+          </p>
+
+          <div class="reason-grid">
+
+            <div class="reason-card">
+              <h4>Paper is a commitment device</h4>
+              <p>
+                A laptop tempts you to alt-tab into your notes, search the unit page,
+                transcribe a definition you half-remember, or quietly ask an LLM. Paper
+                makes the closed-book frame physically unavoidable. The mechanism doing the
+                work is <em>generation</em>. Paper just stops you cheating yourself out of
+                the generation.
+              </p>
+            </div>
+
+            <div class="reason-card">
+              <h4>Paper bypasses the transcription trap</h4>
+              <p>
+                The one part of Mueller and Oppenheimer that <em>has</em> held up: laptop
+                note-takers transcribe more, and verbatim transcription correlates
+                <em>negatively</em> with conceptual understanding. Capturing exact phrasing
+                feels like learning. It isn't.
+              </p>
+            </div>
+
+            <div class="reason-card">
+              <h4>Paper lets you draw</h4>
+              <p>
+                Diagrams and arrows are how a feedback loop, a migration map, or a waggle
+                dance angle actually live in your head. Sketching one is fast. Typing one
+                is slow and ugly. For biology in particular, this matters.
+              </p>
+            </div>
+
+          </div>
+
+          <h3>Production Effect Bonus</h3>
+
+          <p>
+            MacLeod and Bodner's work on the <strong>production effect</strong> shows that
+            saying material aloud during study adds an encoding pathway you don't get from
+            silent reading. After you finish each prompt today, pair up with the person
+            next to you and explain your answer out loud. The teaching is the learning. As
+            Heinlein put it: when one teaches, two learn.
+          </p>
+
+
+          <h3>Sources</h3>
+
+          <ul class="sources-list">
+            <li>Karpicke, J. D. &amp; Blunt, J. R. (2011). Retrieval practice produces more learning than elaborative studying with concept mapping. <em>Science</em>.</li>
+            <li>Carpenter, S. K., Pan, S. C. &amp; Butler, A. C. (2022). The science of effective learning with spacing and retrieval practice. <em>Nature Reviews Psychology</em>, 1(9), 496&ndash;511.</li>
+            <li>Slamecka, N. J. &amp; Graf, P. (1978). The generation effect.</li>
+            <li>Mueller, P. A. &amp; Oppenheimer, D. M. (2014). The pen is mightier than the keyboard. <em>Psychological Science</em>, 25(6), 1159&ndash;1168.</li>
+            <li>Morehead, K., Dunlosky, J. &amp; Rawson, K. A. (2019). How much mightier is the pen than the keyboard for note-taking? <em>Educational Psychology Review</em>, 31, 753&ndash;780.</li>
+            <li>Urry, H. L. et al. (2021). Don't ditch the laptop just yet: a direct replication of Mueller and Oppenheimer (2014) Study 1. <em>Psychological Science</em>, 32(3), 326&ndash;339.</li>
+            <li>MacLeod, C. M. &amp; Bodner, G. E. (2017). The production effect in memory. <em>Current Directions in Psychological Science</em>, 26, 390&ndash;395.</li>
+            <li>Shimamura, A. (2018). <em>MARGE: A Whole-Brain Learning Approach for Students and Teachers</em>, Ch 5.</li>
+          </ul>
+
+        </section>
+
+
+        <!-- ——————————————————————————————————————————————————————————————
+             Lessons 2–4 placeholder
+             —————————————————————————————————————————————————————————————— -->
+        <section id="lessons-rest" class="content-section fade-in-up">
+          <h2>Lessons 2 to 4: Coming Later This Week</h2>
+
+          <p class="section-intro">
+            I'll set the rest of the week's lessons after I see how the recall in Lesson 1
+            goes &mdash; what's solid, what needs revisiting. Watch this page; I'll update
+            it before each lesson.
+          </p>
+
+          <p>
+            In the meantime: keep your marked paper from Lesson 1 somewhere you'll see it.
+            That is your personal revision priority list for AS 91603.
+          </p>
+        </section>
+
+      </main>
+
+
+      <!-- ================================================================
+           Sidebar
+           ================================================================ -->
+      <aside class="week-sidebar">
+
+        <!-- Top objectives card -->
+        <div class="sidebar-card sidebar-card--objectives fade-in-up">
+          <h3>This Lesson You Will</h3>
+          <ul class="objectives-list">
+            <li>Free-recall everything you remember on four pre-homeostasis topics, on paper</li>
+            <li>Mark your own work and identify your weakest areas</li>
+            <li>Understand <em>why</em> closed-book paper recall outperforms re-reading</li>
+            <li>Pair up and use the production effect by explaining one answer aloud</li>
+          </ul>
+        </div>
+
+        <!-- The pitch card -->
+        <div class="sidebar-card sidebar-card--connection fade-in-up">
+          <h3>The One-Line Version</h3>
+          <p class="sidebar-text">
+            <strong>Closed-book generation beats re-reading by 30 to 50 percent.</strong>
+          </p>
+          <p class="sidebar-text">
+            Paper isn't magic. It's just the cleanest way to enforce the closed-book frame
+            on yourself when no one is watching.
+          </p>
+          <p class="sidebar-text sidebar-text--highlight">
+            If you only change one revision habit this term, change <em>this</em> one.
+          </p>
+        </div>
+
+        <!-- Topic links — what we're recalling -->
+        <div class="sidebar-card fade-in-up">
+          <h3>Topics In Today's Recall</h3>
+          <div class="sidebar-links">
+            <a href={`${base}/week/3`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" stroke="var(--text-muted)" stroke-width="1.5"/>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>Wk 3 &mdash; Simple animal responses</span>
+            </a>
+            <a href={`${base}/week/4`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Wk 4 &mdash; Taxes, kineses, pheromones</span>
+            </a>
+            <a href={`${base}/week/5`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 4v16M4 12h16" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="8" stroke="var(--text-muted)" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>Wk 5 &mdash; Waggle dance, homing</span>
+            </a>
+            <a href={`${base}/week/6`} class="sidebar-link">
+              <span class="sidebar-link__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 18l6-12 6 6 6-9" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Wk 6 &mdash; Migration physiology</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- How to revise card -->
+        <div class="sidebar-card fade-in-up">
+          <h3>How To Revise From Here</h3>
+          <ol class="how-to-list">
+            <li>Pick the topic with the most stars and circles on your marked paper.</li>
+            <li>Set a 10-minute timer. Write everything you can on that topic, again, on a fresh page.</li>
+            <li>Mark in green. Re-do tomorrow. Spacing the practice multiplies the effect.</li>
+            <li>Pair up at lunch and quiz each other. Saying it aloud is the production effect.</li>
+          </ol>
+        </div>
+
+      </aside>
+
+    </div><!-- /week-layout -->
+
+  </div><!-- /week-page -->
+
+
+  <!-- ====================================================================
+       Styles
+       ==================================================================== -->
+  <style>
+    /* ==========================================================================
+       Week 13 Page Styles — Why Paper Beats Browser
+       Shares the conventions of Weeks 7–12.
+       ========================================================================== */
+
+    .week-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-8);
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Week Header ── */
+    .week-header {
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .week-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover { color: var(--accent); }
+    .term-badge {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+    .term-badge--t2 {
+      background: rgba(9, 132, 227, 0.15);
+      color: #0984e3;
+    }
+    .week-header__title-row { margin-bottom: var(--space-3); }
+    .week-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .week-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+    }
+    .week-header__badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      border-radius: var(--radius-full);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .badge--standard { background: rgba(0, 255, 136, 0.1); color: var(--accent); }
+    .badge--method {
+      background: rgba(108, 92, 231, 0.12);
+      color: #a29bfe;
+    }
+    .badge--desc {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 0;
+      font-weight: var(--weight-normal);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Quick Navigation ── */
+    .week-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .week-nav__link {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .week-nav__link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .week-nav__link--active { background: var(--surface-2); color: var(--accent); }
+
+    /* ── Two-Column Layout ── */
+    .week-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .week-layout { grid-template-columns: 1fr; }
+    }
+
+    .week-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .content-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .content-section h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--accent);
+    }
+    .content-section h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .content-section h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+    .section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-relaxed);
+    }
+    .content-section p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+    }
+    .content-section ul,
+    .content-section ol {
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-4);
+      padding-left: var(--space-5);
+    }
+    .content-section li {
+      margin-bottom: var(--space-2);
+    }
+    .content-section a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent);
+      transition: opacity var(--transition-fast);
+    }
+    .content-section a:hover { opacity: 0.75; }
+
+    /* ── Lesson Inline Nav ── */
+    .lesson-inline-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .lesson-inline-nav__current {
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .lesson-inline-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+      border-bottom: none;
+    }
+    .lesson-inline-nav__link:hover { opacity: 0.8; }
+
+    /* ── Connection Box ── */
+    .connection-box {
+      background: var(--surface-2);
+      border: 1px solid var(--accent);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin: var(--space-5) 0;
+    }
+    .connection-box h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      margin-top: 0;
+    }
+
+    /* ── Step list (numbered prompts) ── */
+    .step-list {
+      list-style: none !important;
+      counter-reset: step-counter;
+      padding-left: 0 !important;
+      margin: var(--space-4) 0 !important;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: calc(var(--space-5) + 28px);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-3);
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0984e3;
+      color: var(--surface-0);
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-sm);
+      border-radius: var(--radius-full);
+    }
+
+    /* ── Reason grid (3 cards under "Why paper specifically") ── */
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    @media (max-width: 800px) {
+      .reason-grid { grid-template-columns: 1fr; }
+    }
+    .reason-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid #0984e3;
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .reason-card h4 {
+      margin: 0 0 var(--space-3) 0;
+      color: #0984e3;
+      font-size: var(--text-base);
+    }
+    .reason-card p {
+      font-size: var(--text-sm);
+      margin-bottom: 0;
+    }
+
+    /* ── Sources list ── */
+    .sources-list {
+      font-size: var(--text-sm);
+      list-style: square;
+      color: var(--text-muted);
+    }
+    .sources-list li {
+      margin-bottom: var(--space-2);
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────
+       SIDEBAR
+       ───────────────────────────────────────────────────────────────────── */
+    .week-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: sticky;
+      top: calc(var(--space-8) + 60px);
+    }
+    .sidebar-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .sidebar-card h3 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .sidebar-card--objectives { border-top: 3px solid var(--accent); }
+    .sidebar-card--connection { border-top: 3px solid #0984e3; }
+
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .objectives-list li {
+      position: relative;
+      padding-left: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .objectives-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sidebar-link__icon { flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    .sidebar-text--highlight {
+      background: var(--surface-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid #0984e3;
+      margin-top: var(--space-3);
+    }
+
+    /* ── How-to numbered list (sidebar) ── */
+    .how-to-list {
+      padding-left: var(--space-5);
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .how-to-list li {
+      margin-bottom: var(--space-2);
+    }
+  </style>
+
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script is:inline>
+
+    /* IntersectionObserver — Fade-in-up animations */
+    (function initObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    })();
+
+  </script>
+
+</BaseLayout>

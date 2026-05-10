@@ -21,7 +21,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 /* Week numbers 1–40 for the browse grid */
 const totalWeeks = 40;
 /* Weeks with dedicated content pages — add week numbers here as they're built */
-const activeWeeks = [3, 4, 5, 6, 7, 8, 9, 10, 11];
+const activeWeeks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
+/* Term boundaries: T1 = 1–10, T2 = 11–21, T3 = 22–31, T4 = 32–40 */
+const termFor = (w: number): 1 | 2 | 3 | 4 =>
+  w <= 10 ? 1 : w <= 21 ? 2 : w <= 31 ? 3 : 4;
 ---
 
 <BaseLayout title="Level 3 Biology — Course Platform">
@@ -274,16 +278,43 @@ const activeWeeks = [3, 4, 5, 6, 7, 8, 9, 10, 11];
         <p class="section-subtitle">Navigate to any week of the course</p>
       </div>
 
+      <!-- Term colour key — matches the active-chip colours below -->
+      <div class="weeks-legend fade-in-up" aria-label="Term colour key">
+        <span class="legend-item legend-item--term-1">
+          <span class="legend-swatch" aria-hidden="true"></span>
+          <span class="legend-label">Term 1 &middot; Wks 1&ndash;10</span>
+        </span>
+        <span class="legend-item legend-item--term-2">
+          <span class="legend-swatch" aria-hidden="true"></span>
+          <span class="legend-label">Term 2 &middot; Wks 11&ndash;21</span>
+        </span>
+        <span class="legend-item legend-item--term-3">
+          <span class="legend-swatch" aria-hidden="true"></span>
+          <span class="legend-label">Term 3 &middot; Wks 22&ndash;31</span>
+        </span>
+        <span class="legend-item legend-item--term-4">
+          <span class="legend-swatch" aria-hidden="true"></span>
+          <span class="legend-label">Term 4 &middot; Wks 32&ndash;40</span>
+        </span>
+      </div>
+
       <div class="weeks-grid fade-in-up">
         {Array.from({ length: totalWeeks }, (_, i) => {
           const weekNum = i + 1;
           const isActive = activeWeeks.includes(weekNum);
+          const termClass = `week-chip--term-${termFor(weekNum)}`;
           return isActive ? (
-            <a href={`${base}/week/${weekNum}`} class="week-chip week-chip--active">
+            <a
+              href={`${base}/week/${weekNum}`}
+              class={`week-chip week-chip--active ${termClass}`}
+            >
               {weekNum}
             </a>
           ) : (
-            <span class="week-chip week-chip--disabled" aria-disabled="true">
+            <span
+              class={`week-chip week-chip--disabled ${termClass}`}
+              aria-disabled="true"
+            >
               {weekNum}
             </span>
           );
@@ -872,6 +903,82 @@ const activeWeeks = [3, 4, 5, 6, 7, 8, 9, 10, 11];
     color: var(--text-muted);
     cursor: default;
     opacity: 0.45;
+  }
+
+  /* --------------------------------------------------------------------------
+     Term Colour Key + Term-Coloured Active Chips
+     Term 1 = green (default), Term 2 = blue, Term 3 = purple, Term 4 = red.
+     Term colour is applied to active chips only — disabled chips stay neutral.
+     -------------------------------------------------------------------------- */
+  .weeks-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    align-items: center;
+    margin-bottom: var(--space-5);
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+  .legend-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-sm, 4px);
+    border: 1px solid currentColor;
+  }
+  .legend-item--term-1 { color: var(--green-vivid, #00ff88); }
+  .legend-item--term-1 .legend-swatch { background: rgba(0, 255, 136, 0.18); }
+  .legend-item--term-2 { color: #0984e3; }
+  .legend-item--term-2 .legend-swatch { background: rgba(9, 132, 227, 0.22); }
+  .legend-item--term-3 { color: #6c5ce7; }
+  .legend-item--term-3 .legend-swatch { background: rgba(108, 92, 231, 0.22); }
+  .legend-item--term-4 { color: #f43f5e; }
+  .legend-item--term-4 .legend-swatch { background: rgba(244, 63, 94, 0.22); }
+
+  .legend-item .legend-label { color: var(--text-secondary); }
+
+  /* Term 1 = the existing green default. Nothing to override. */
+
+  /* Term 2 — Blue */
+  .week-chip--term-2.week-chip--active {
+    background: rgba(9, 132, 227, 0.15);
+    color: #0984e3;
+    border-color: #0984e3;
+  }
+  .week-chip--term-2.week-chip--active:hover {
+    background: #0984e3;
+    color: var(--surface-0);
+    box-shadow: 0 0 20px rgba(9, 132, 227, 0.4);
+  }
+
+  /* Term 3 — Purple */
+  .week-chip--term-3.week-chip--active {
+    background: rgba(108, 92, 231, 0.15);
+    color: #6c5ce7;
+    border-color: #6c5ce7;
+  }
+  .week-chip--term-3.week-chip--active:hover {
+    background: #6c5ce7;
+    color: var(--surface-0);
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+  }
+
+  /* Term 4 — Red */
+  .week-chip--term-4.week-chip--active {
+    background: rgba(244, 63, 94, 0.15);
+    color: #f43f5e;
+    border-color: #f43f5e;
+  }
+  .week-chip--term-4.week-chip--active:hover {
+    background: #f43f5e;
+    color: var(--surface-0);
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
   }
 </style>
 

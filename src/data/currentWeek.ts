@@ -7,24 +7,25 @@
 
 export const currentWeek = {
   /** Week number (matches /week/:num route) */
-  number: 11,
+  number: 13,
   /** Term display string */
-  term: 'Term 1',
+  term: 'Term 2',
   /** Main topic title for the large card */
-  topicTitle: 'Your Internal — Writing Time',
+  topicTitle: 'Why Paper Beats Browser',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91604 — "Keeping it Steady" • due Fri 8 May, 23:59',
+  topicSubtitle: 'AS 91603 prep • Lesson 1: paper retrieval practice on Wks 3–6',
   /** Standard accent colour variable */
-  accentColour: 'var(--standard-4-colour)',
+  accentColour: 'var(--standard-3-colour)',
   /** Description paragraph for the large card */
   description:
-    'The AS 91604 internal is live. Lesson 1: introduction to the standard, ' +
-    'the four-part report, the AI Use policy, and where support lives. ' +
-    'Lessons 2 & 3 (double): textbook site access via a personal email, ' +
-    'dry-run feedback, Milestone 1 sign-off, then supervised writing time ' +
-    'on Parts A and B. Due Friday 8 May, 23:59 via Teams.',
+    'Laptops shut, paper out. Four free-recall prompts on the pre-homeostasis ' +
+    'topics from Weeks 3 to 6, five to seven minutes each, closed-book. The ' +
+    'point is for you to feel why closed-book paper recall is the most ' +
+    'efficient revision tool you have. The page explains the science: ' +
+    'generation effect, desirable difficulties, and the honest version of ' +
+    'the paper-vs-browser argument. Lessons 2 to 4 will be set later in the week.',
   /** Standard badge info */
-  standardCode: 'AS 91604',
-  credits: 3,
-  type: 'Internal' as const,
+  standardCode: 'AS 91603',
+  credits: 5,
+  type: 'External' as const,
 };
