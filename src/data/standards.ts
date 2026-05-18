@@ -53,6 +53,7 @@ export const standards: Standard[] = [
       { num: 2, title: 'Introduction to the Course & Structure', hasContent: false },
       { num: 3, title: 'Simple Animal Responses', hasContent: true },
       { num: 9, title: 'Our Planet — Animal Behaviours', hasContent: true },
+      { num: 15, title: 'Animals in Time — Biological Rhythms', hasContent: true },
     ],
   },
   {

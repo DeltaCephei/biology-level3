@@ -7,23 +7,26 @@
 
 export const currentWeek = {
   /** Week number (matches /week/:num route) */
-  number: 13,
+  number: 15,
   /** Term display string */
   term: 'Term 2',
   /** Main topic title for the large card */
-  topicTitle: 'Why Paper Beats Browser',
+  topicTitle: 'Animals in Time: Biological Rhythms',
   /** Standard code + description for the subtitle */
-  topicSubtitle: 'AS 91603 prep • Lesson 1: paper retrieval practice on Wks 3–6',
+  topicSubtitle: 'AS 91603 • Lesson 1: introduction to biological rhythms in animals',
   /** Standard accent colour variable */
   accentColour: 'var(--standard-3-colour)',
   /** Description paragraph for the large card */
   description:
-    'Laptops shut, paper out. Four free-recall prompts on the pre-homeostasis ' +
-    'topics from Weeks 3 to 6, five to seven minutes each, closed-book. The ' +
-    'point is for you to feel why closed-book paper recall is the most ' +
-    'efficient revision tool you have. The page explains the science: ' +
-    'generation effect, desirable difficulties, and the honest version of ' +
-    'the paper-vs-browser argument. Lessons 2 to 4 will be set later in the week.',
+    'Back to plant and animal responses. This week we look at how animals ' +
+    'time their lives — daily, tidal, monthly and yearly. Lesson 1 lays the ' +
+    'foundation: the four rhythm classes, the four words examiners want ' +
+    '(endogenous, exogenous, zeitgeber, entrainment), the mammalian ' +
+    'eye → SCN → pineal → melatonin pathway, and the three activity ' +
+    'patterns (diurnal, nocturnal, crepuscular). Two embedded videos, an ' +
+    'interactive check-yourself, and the Scipad pages to do tonight. ' +
+    'Lessons 2 to 4 (actograms, NZ case studies, Excellence writing) will ' +
+    'be set later in the week.',
   /** Standard badge info */
   standardCode: 'AS 91603',
   credits: 5,
